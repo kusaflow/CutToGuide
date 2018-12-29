@@ -13,7 +13,6 @@ public class MainGame extends Game {
 
 	@Override
 	public void create () {
-	    AllVariables.shapeRenderer = new ShapeRenderer();
 	    AllVariables.batch = new SpriteBatch();
 		this.setScreen(new temp(this));
 	}
@@ -29,6 +28,5 @@ public class MainGame extends Game {
 	@Override
 	public void dispose () {
 		AllVariables.batch.dispose();
-		AllVariables.shapeRenderer.dispose();
 	}
 }

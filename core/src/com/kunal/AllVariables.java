@@ -9,5 +9,4 @@ public class AllVariables {
     public static final int HEIGHT = 720;
 
     public static SpriteBatch batch;
-    public static ShapeRenderer shapeRenderer;
 }
