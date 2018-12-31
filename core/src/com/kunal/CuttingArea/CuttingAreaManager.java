@@ -5,8 +5,15 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.PolygonRegion;
+import com.badlogic.gdx.graphics.g2d.PolygonSprite;
+import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.EarClippingTriangulator;
+import com.badlogic.gdx.utils.FloatArray;
 import com.badlogic.gdx.utils.ShortArray;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -16,12 +23,6 @@ import com.kunal.MainGame;
 import java.util.LinkedList;
 
 public class CuttingAreaManager implements Screen {
-
-    /*
-    for drawing polygons i use this tutorial
-    --->https://www.youtube.com/watch?v=UL_XQLu6sPQ
-
-     */
 
     MainGame game;
     private OrthographicCamera cam;
@@ -36,7 +37,10 @@ public class CuttingAreaManager implements Screen {
     // all the points of the big square
     private int[][] BigSqurePoints = new int[16][2];
 
-    
+    //drawing shapes
+    private float ver[];
+
+
 
     public CuttingAreaManager(MainGame game) {
         this.game = game;
@@ -97,14 +101,14 @@ public class CuttingAreaManager implements Screen {
         vertices.add(BigSqurePoints[12][0]); //12
         vertices.add(BigSqurePoints[12][1]);
         */
+
         vertices.add((byte) 0);
         vertices.add((byte) 3);
         vertices.add((byte) 15);
         vertices.add((byte) 12);
 
-
-
         shapes.add(vertices);
+
 
         //Integer[] data = shapes.get(0).toArray(new Integer[shapes.get(0).size()]);
 
@@ -125,12 +129,28 @@ public class CuttingAreaManager implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+
+        sr.begin(ShapeRenderer.ShapeType.Line);
+
+        sr.setColor(0,0.6f,1,1);
+        for (int i =0; i < shapes.size(); i++){
+            ver = new float[shapes.get(i).size()*2];
+            for(int j=0, k=0; j< shapes.get(i).size(); j++){
+                ver[k] = BigSqurePoints[shapes.get(i).get(j)][0];
+                k++;
+                ver[k] = BigSqurePoints[shapes.get(i).get(j)][1];
+                k++;
+            }
+            sr.polygon(ver);
+            ver = null;
+        }
+        sr.end();
+
+
         sr.begin(ShapeRenderer.ShapeType.Filled);
-
-        sr.setColor(0,1,0.5f,1);
-        sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
-
-        sr.setColor(1,1,1,1);
+        //sr.setColor(0,1,0.5f,1);
+        //sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
+        sr.setColor(1,0.2f,0.2f,1);
         for (int i=0; i<16; i++){
             sr.circle(BigSqurePoints[i][0], BigSqurePoints[i][1], 5);
         }
@@ -141,7 +161,27 @@ public class CuttingAreaManager implements Screen {
 
     private void update(float dt){
         input(dt);
-        cam.update();
+        try {
+            cam.update();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        sr.setProjectionMatrix(cam.combined);
+
+        for (int i =0; i < shapes.size(); i++){
+            ver = new float[shapes.get(i).size()*2];
+            for(int j=0, k=0; j< shapes.get(i).size(); j++){
+                ver[k] = BigSqurePoints[shapes.get(i).get(j)][0];
+                k++;
+                ver[k] = BigSqurePoints[shapes.get(i).get(j)][1];
+                k++;
+            }
+            ver = null;
+
+        }
+
+
+
 
 
     }
