@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.kunal.CuttingArea.CuttingAreaManager;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.PlayArea;
 
 public class temp implements Screen {
 
@@ -25,7 +26,7 @@ public class temp implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         if(Gdx.input.justTouched()){
-            game.setScreen(new CuttingAreaManager(game));
+            game.setScreen(new PlayArea(game));
         }
     }
 
