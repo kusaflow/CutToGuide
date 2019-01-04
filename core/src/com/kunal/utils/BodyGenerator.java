@@ -12,7 +12,7 @@ import com.kunal.AllVariables;
 
 public class BodyGenerator {
 
-    public static Body BodyAssemble(World world, Boolean isStatic, String fixtureId, Vector2 initPos, Vector2 dim, float density, short cbit, short mbit){
+    public static Body BodyAssemble(World world, Boolean isStatic, String fixtureId, Vector2 initPos, Vector2 dim,float friction, float density, short cbit, short mbit){
         Body b ;
         BodyDef bdef = new BodyDef();
 
@@ -35,7 +35,7 @@ public class BodyGenerator {
         fdef.shape = shape;
         fdef.density=density;
         fdef.restitution = 0;
-        fdef.friction = 0.5f;
+        fdef.friction = friction;
         fdef.filter.categoryBits = cbit;
         fdef.filter.maskBits = mbit;
 
@@ -45,7 +45,7 @@ public class BodyGenerator {
         return b;
     }
 
-    public static Body CircleBody(World world, Boolean isStatic, String fixtureId, Vector2 initPos, float Radius,short cbit, short mbit){
+    public static Body CircleBody(World world, Boolean isStatic, String fixtureId, Vector2 initPos, float Radius,float friction,short cbit, short mbit){
         Body b ;
         BodyDef bdef = new BodyDef();
 
@@ -67,8 +67,8 @@ public class BodyGenerator {
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
         fdef.density=1f;
-        fdef.restitution = 0.2f;
-        fdef.friction = 0.5f;
+        fdef.restitution = 0;
+        fdef.friction = friction;
         fdef.filter.categoryBits = cbit;
         fdef.filter.maskBits = mbit;
 

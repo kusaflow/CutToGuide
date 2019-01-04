@@ -63,6 +63,11 @@ public class PlayArea implements Screen {
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
 
+        if (Gdx.input.isKeyPressed(Input.Keys.B))
+            game.setScreen(new temp(game));
+
+
+
     }
 
 
@@ -76,6 +81,7 @@ public class PlayArea implements Screen {
         campos.y = AllVariables.BackWheel.getPosition().y*AllVariables.PPM;
         cam.position.set(campos);
         cam.update();
+
     }
 
     private void input(float dt){
@@ -91,6 +97,13 @@ public class PlayArea implements Screen {
             vely +=1;
         }
         mover.setLinearVelocity(velx, vely);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.Z)){
+            AllVariables.BackWheel.setAngularVelocity(20);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.X)){
+            AllVariables.BackWheel.setAngularVelocity(-20);
+        }
     }
 
     @Override
