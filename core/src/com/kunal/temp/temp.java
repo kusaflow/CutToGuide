@@ -26,7 +26,8 @@ public class temp implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         if(Gdx.input.justTouched()){
-            game.setScreen(new PlayArea(game));
+            //game.setScreen(new PlayArea(game));
+            game.setScreen(new CuttingAreaManager(game));
         }
     }
 

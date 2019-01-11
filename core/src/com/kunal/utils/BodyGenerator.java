@@ -45,7 +45,7 @@ public class BodyGenerator {
         return b;
     }
 
-    public static Body CircleBody(World world, Boolean isStatic, String fixtureId, Vector2 initPos, float Radius,float friction,short cbit, short mbit){
+    public static Body CircleBody(World world, Boolean isStatic, String fixtureId, Vector2 initPos, float Radius, float density,float friction,short cbit, short mbit){
         Body b ;
         BodyDef bdef = new BodyDef();
 
@@ -66,7 +66,7 @@ public class BodyGenerator {
 
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
-        fdef.density=1f;
+        fdef.density=density;
         fdef.restitution = 0;
         fdef.friction = friction;
         fdef.filter.categoryBits = cbit;

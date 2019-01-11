@@ -2,19 +2,11 @@ package com.kunal.CuttingArea;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.PolygonRegion;
-import com.badlogic.gdx.graphics.g2d.PolygonSprite;
-import com.badlogic.gdx.graphics.g2d.PolygonSpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.math.EarClippingTriangulator;
-import com.badlogic.gdx.utils.FloatArray;
-import com.badlogic.gdx.utils.ShortArray;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
@@ -31,6 +23,9 @@ public class CuttingAreaManager implements Screen {
     private LinkedList<Byte> vertices;
     private LinkedList<LinkedList<Byte>> shapes;
 
+    private LinkedList<MinMaxClass> minmax;
+    private LinkedList<Byte> inputsToChop;
+
     private ShapeRenderer sr;
 
 
@@ -39,6 +34,8 @@ public class CuttingAreaManager implements Screen {
 
     //drawing shapes
     private float ver[];
+
+    private int presentX, presntY;
 
 
 
@@ -55,6 +52,9 @@ public class CuttingAreaManager implements Screen {
         //shapes and vertices
         vertices = new LinkedList<Byte>();
         shapes = new LinkedList<LinkedList<Byte>>();
+
+        //inputs to chop
+        inputsToChop = new LinkedList<Byte>();
 
 
         //all big squre Points
@@ -144,16 +144,28 @@ public class CuttingAreaManager implements Screen {
             sr.polygon(ver);
             ver = null;
         }
+
         sr.end();
 
-
         sr.begin(ShapeRenderer.ShapeType.Filled);
+
         //sr.setColor(0,1,0.5f,1);
         //sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
         sr.setColor(1,0.2f,0.2f,1);
         for (int i=0; i<16; i++){
-            sr.circle(BigSqurePoints[i][0], BigSqurePoints[i][1], 5);
+            sr.circle(BigSqurePoints[i][0], BigSqurePoints[i][1], 7);
         }
+
+        sr.setColor(1f,0f,0f,1);
+        try {
+
+            for (int i = 1; i < inputsToChop.size()-1; i++) {
+                sr.rectLine(BigSqurePoints[inputsToChop.get(i)][0], BigSqurePoints[inputsToChop.get(i)][1],
+                        BigSqurePoints[inputsToChop.get(i+1)][0],BigSqurePoints[inputsToChop.get(i+1)][1],5);
+            }
+            sr.rectLine(BigSqurePoints[inputsToChop.getLast()][0],BigSqurePoints[inputsToChop.getLast()][1],presentX, AllVariables.HEIGHT-presntY,5);
+
+        }catch (Exception e){}
 
         sr.end();
 
@@ -187,12 +199,150 @@ public class CuttingAreaManager implements Screen {
     }
 
     private void input(float dt) {
+        Gdx.input.setInputProcessor(
+                new InputProcessor() {
+
+                    @Override
+                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        inputsToChop.clear();
+                        inputsToChop.add((byte) 20);
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDragged(int screenX, int screenY, int pointer) {
+
+                        presentX = screenX;
+                        presntY = screenY;
+
+                        if (screenX > BigSqurePoints[0][0] - 25 && screenX < BigSqurePoints[0][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[0][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[0][1] - 25)) {
+                                if (inputsToChop.getLast() != 0)
+                                    inputsToChop.add((byte) 0);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[4][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[4][1] - 25)) {
+                                if (inputsToChop.getLast() != 4)
+                                    inputsToChop.add((byte) 4);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[8][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[8][1] - 25)) {
+                                if (inputsToChop.getLast() != 8)
+                                    inputsToChop.add((byte) 8);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[12][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[12][1] - 25)) {
+                                if (inputsToChop.getLast() != 12)
+                                    inputsToChop.add((byte) 12);
+                            }
+                        } else if (screenX > BigSqurePoints[1][0] - 25 && screenX < BigSqurePoints[1][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[1][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[1][1] - 25)) {
+                                if (inputsToChop.getLast() != 1)
+                                    inputsToChop.add((byte) 1);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[5][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[5][1] - 25)) {
+                                if (inputsToChop.getLast() != 5)
+                                    inputsToChop.add((byte) 5);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[9][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[9][1] - 25)) {
+                                if (inputsToChop.getLast() != 9)
+                                    inputsToChop.add((byte) 9);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[13][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[13][1] - 25)) {
+                                if (inputsToChop.getLast() != 13)
+                                    inputsToChop.add((byte) 13);
+                            }
+                        } else if (screenX > BigSqurePoints[2][0] - 25 && screenX < BigSqurePoints[2][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[2][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[2][1] - 25)) {
+                                if (inputsToChop.getLast() != 2)
+                                    inputsToChop.add((byte) 2);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[6][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[6][1] - 25)) {
+                                if (inputsToChop.getLast() != 6)
+                                    inputsToChop.add((byte) 6);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[10][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[10][1] - 25)) {
+                                if (inputsToChop.getLast() != 10)
+                                    inputsToChop.add((byte) 10);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[14][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[14][1] - 25)) {
+                                if (inputsToChop.getLast() != 14)
+                                    inputsToChop.add((byte) 14);
+                            }
+                        } else if (screenX > BigSqurePoints[3][0] - 25 && screenX < BigSqurePoints[3][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[3][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[3][1] - 25)) {
+                                if (inputsToChop.getLast() != 3)
+                                    inputsToChop.add((byte) 3);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[7][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[7][1] - 25)) {
+                                if (inputsToChop.getLast() != 7)
+                                    inputsToChop.add((byte) 7);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[11][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[11][1] - 25)) {
+                                if (inputsToChop.getLast() != 11)
+                                    inputsToChop.add((byte) 11);
+                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[15][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[15][1] - 25)) {
+                                if (inputsToChop.getLast() != 15)
+                                    inputsToChop.add((byte) 15);
+                            }
+                        }
+
+                        return false;
+                    }
+
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        //remove first element
+                        try {
+                            inputsToChop.removeFirst();
+                        } catch (Exception e) {
+                        }
+
+                        System.out.println(inputsToChop);
+
+
+                        if (inputsToChop.isEmpty())
+                            return false;
+
+                        for (int i = 1; i < inputsToChop.size(); i++) {
+                            if (inputsToChop.get(i) == 4)
+                                inputsToChop.add(i, (byte)20);
+
+                            //if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %4 == 0){
+                                //System.out.println("alright");
+                            //}
+                        }
+
+                        System.out.println(inputsToChop);
+
+
+
+                        return false;
+                    }
+
+
+
+                    @Override
+                    public boolean keyDown(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyUp(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyTyped(char character) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mouseMoved(int screenX, int screenY) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean scrolled(int amount) {
+                        return false;
+                    }
+                }
+        );
 
     }
 
     @Override
     public void resize(int width, int height) {
         port.update(width, height);
+        cam.update();
     }
 
     @Override

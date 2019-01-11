@@ -99,10 +99,17 @@ public class PlayArea implements Screen {
         mover.setLinearVelocity(velx, vely);
 
         if (Gdx.input.isKeyPressed(Input.Keys.Z)){
-            AllVariables.BackWheel.setAngularVelocity(20);
+            AllVariables.BackWheel.setAngularVelocity(40);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.X)){
-            AllVariables.BackWheel.setAngularVelocity(-20);
+            AllVariables.BackWheel.setAngularVelocity(-40);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.M)){
+            AllVariables.FrontWheel.setAngularVelocity(0);
+        }
+
+        if (Gdx.input.isTouched()){
+            AllVariables.BackWheel.setAngularVelocity(-40);
         }
     }
 
