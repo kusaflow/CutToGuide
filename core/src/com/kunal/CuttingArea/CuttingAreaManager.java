@@ -23,6 +23,8 @@ public class CuttingAreaManager implements Screen {
     private LinkedList<Byte> vertices;
     private LinkedList<LinkedList<Byte>> shapes;
 
+    //minmax to store the values minimum and max value of any row or columb of the selected shape
+    //null value is stored when no vertex found on the respective coloum or row
     private LinkedList<MinMaxClass> minmax;
     private LinkedList<Byte> inputsToChop;
 
@@ -55,6 +57,9 @@ public class CuttingAreaManager implements Screen {
 
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
+
+        //minmax linked list
+        minmax = new LinkedList<MinMaxClass>();
 
 
         //all big squre Points
@@ -103,9 +108,18 @@ public class CuttingAreaManager implements Screen {
         */
 
         vertices.add((byte) 0);
+        vertices.add((byte) 1);
+        vertices.add((byte) 2);
         vertices.add((byte) 3);
+        vertices.add((byte) 7);
+        vertices.add((byte) 11);
         vertices.add((byte) 15);
+        vertices.add((byte) 14);
+        vertices.add((byte) 13);
         vertices.add((byte) 12);
+        vertices.add((byte) 8);
+        vertices.add((byte) 4);
+
 
         shapes.add(vertices);
 
@@ -159,9 +173,11 @@ public class CuttingAreaManager implements Screen {
         sr.setColor(1f,0f,0f,1);
         try {
 
-            for (int i = 1; i < inputsToChop.size()-1; i++) {
-                sr.rectLine(BigSqurePoints[inputsToChop.get(i)][0], BigSqurePoints[inputsToChop.get(i)][1],
-                        BigSqurePoints[inputsToChop.get(i+1)][0],BigSqurePoints[inputsToChop.get(i+1)][1],5);
+            for (int i = 0; i < inputsToChop.size()-1; i++) {
+                try {
+                    sr.rectLine(BigSqurePoints[inputsToChop.get(i)][0], BigSqurePoints[inputsToChop.get(i)][1],
+                            BigSqurePoints[inputsToChop.get(i + 1)][0], BigSqurePoints[inputsToChop.get(i + 1)][1], 5);
+                }catch (Exception e){}
             }
             sr.rectLine(BigSqurePoints[inputsToChop.getLast()][0],BigSqurePoints[inputsToChop.getLast()][1],presentX, AllVariables.HEIGHT-presntY,5);
 
@@ -283,25 +299,20 @@ public class CuttingAreaManager implements Screen {
                         //remove first element
                         try {
                             inputsToChop.removeFirst();
+
                         } catch (Exception e) {
                         }
 
                         System.out.println(inputsToChop);
 
-
                         if (inputsToChop.isEmpty())
                             return false;
 
-                        for (int i = 1; i < inputsToChop.size(); i++) {
-                            if (inputsToChop.get(i) == 4)
-                                inputsToChop.add(i, (byte)20);
-
-                            //if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %4 == 0){
-                                //System.out.println("alright");
-                            //}
-                        }
+                        fillingMissingPoints();
 
                         System.out.println(inputsToChop);
+
+                        cuttingTheParts();
 
 
 
@@ -336,6 +347,87 @@ public class CuttingAreaManager implements Screen {
                     }
                 }
         );
+
+    }
+
+    private void fillingMissingPoints(){
+
+        //refilling the unconsistancies
+        for (int i = 1; i < inputsToChop.size(); i++) {
+
+            //upside down cutting
+            if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %4 == 0){
+                //up to down
+                if((inputsToChop.get(i) - inputsToChop.get(i-1))/4 >=2){
+                    inputsToChop.add(i,(byte)(inputsToChop.get(i)-4));
+                    i--;
+                    continue;
+                }else if ((inputsToChop.get(i) - inputsToChop.get(i-1))/4 <=-2){
+                    inputsToChop.add(i,(byte)(inputsToChop.get(i)+4));
+                    i--;
+                    continue;
+                }
+            }
+
+            //cross left to right
+            if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %5 == 0){
+                //upleft to downright
+                if((inputsToChop.get(i) - inputsToChop.get(i-1))/5 >=2 &&  BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i-1)][0]
+                        &&  BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i-1)][1]){
+                    inputsToChop.add(i,(byte)(inputsToChop.get(i)-5));
+                    i--;
+                    continue;
+                }
+                //downright to up left
+                else if ((inputsToChop.get(i) - inputsToChop.get(i-1))/5 <=-2 &&  BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i-1)][0]
+                        &&  BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i-1)][1]){
+                    inputsToChop.add(i,(byte)(inputsToChop.get(i)+5));
+                    i--;
+                    continue;
+                }
+            }
+
+            //cross right to left
+            if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %3 == 0){
+                //upright to downleft
+                if((inputsToChop.get(i) - inputsToChop.get(i-1))/3 >=2 &&  BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i-1)][0]
+                        &&  BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i-1)][1]){
+                    inputsToChop.add(i,(byte)(inputsToChop.get(i)-3));
+                    i--;
+                    continue;
+                }
+                //downleft to upright
+                else if ((inputsToChop.get(i) - inputsToChop.get(i-1))/3 <=-2 &&  BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i-1)][0]
+                        &&  BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i-1)][1]){
+                    inputsToChop.add(i,(byte)(inputsToChop.get(i)+3));
+                    i--;
+                    continue;
+                }
+            }
+
+            //sideways
+            if(((inputsToChop.get(i) - inputsToChop.get(i-1)) >= 2 && (inputsToChop.get(i) - inputsToChop.get(i-1)) <= 4)
+                    || ((inputsToChop.get(i) - inputsToChop.get(i-1)) <= -2 && (inputsToChop.get(i) - inputsToChop.get(i-1)) >= -4)){
+                if (BigSqurePoints[inputsToChop.get(i)][1] == BigSqurePoints[inputsToChop.get(i-1)][1]){
+                    if ((inputsToChop.get(i) - inputsToChop.get(i-1)) >= 2){
+                        inputsToChop.add(i,(byte)(inputsToChop.get(i)-1));
+                        i--;
+                        continue;
+                    }else if ((inputsToChop.get(i) - inputsToChop.get(i-1)) <= -2){
+                        inputsToChop.add(i,(byte)(inputsToChop.get(i)+1));
+                        i--;
+                        continue;
+                    }
+                }
+            }
+        }
+    }
+
+    private void minmaxAssignment(){
+       
+    }
+
+    private void cuttingTheParts(){
 
     }
 
