@@ -30,6 +30,8 @@ public class CuttingAreaManager implements Screen {
 
     LinkedList<Byte> inputsToChop;
 
+    int step =0;
+
     private ShapeRenderer sr;
 
 
@@ -301,7 +303,8 @@ public class CuttingAreaManager implements Screen {
                         //remove first element
                         try {
                             inputsToChop.removeFirst();
-                            //inputsToChop.addLast(inputsToChop.getFirst());
+                            if (inputsToChop.getLast() != inputsToChop.getFirst())
+                                inputsToChop.addLast(inputsToChop.getFirst());
                             presentX = BigSqurePoints[inputsToChop.getLast()][0];
                             presntY = AllVariables.HEIGHT - BigSqurePoints[inputsToChop.getLast()][1];
 
@@ -309,16 +312,12 @@ public class CuttingAreaManager implements Screen {
                         }
 
 
-                        System.out.println(inputsToChop);
-
                         if (inputsToChop.isEmpty())
                             return false;
 
                         fillingMissingPoints();
 
                         // if internal cutting is done function is returned
-
-                        System.out.println(inputsToChop);
 
                         cuttingTheParts();
 
@@ -452,6 +451,7 @@ public class CuttingAreaManager implements Screen {
         //for h4 the variable axis is xaxis and fixed axis is y(700) axis is variable
         //--------------------------------------
 
+        minmax.clear();
         MinMaxClass minmax1, minmax2, minmax3, minmax4;
 
         minmax1 = new MinMaxClass();
@@ -619,16 +619,129 @@ public class CuttingAreaManager implements Screen {
 
         }
 
+        vertices = new LinkedList<Byte>();
+
+        step =1;
+
+        //step 1 is vin             2 is hmax           3 is vmax       4 is hmin
 
         //if cutting type 1 is implemented
         //which is using one side of parent shape and not cutting with single line or 2 cuts with one pattern
-        //for (int i =0; i< minmax.size(); i++){
-            //if (minmax.g)
-        //}
+        for (int i =0; true; i++){
+            if (step == 1) {
+                if (!minmax.get(i).isminOverlap)
+                    vertices.add(minmax.get(i).min);
+//                else{
+//                    if (minmax.get(i+1).isminOverlap)
+//                        cutShape(i, false);
+//                    else
+//                        vertices.add(minmax.get(i).min);
+//                }
 
 
+                if (i == 3) {
+                    step = 2;
+                    i++;
+                    continue;
+                }else{
+                    continue;
+                }
+            }
+
+            if (step == 2){
+                if (!minmax.get(i).ismaxOverlap)
+                    vertices.add(minmax.get(i).max);
+//                else{
+//                    if (minmax.get(i+1).ismaxOverlap)
+//                        cutShape(i, true);
+//                    else
+//                        vertices.add(minmax.get(i).max);
+//                }
+                if (i == 7) {
+                    step = 3;
+                    i=2;
+                }else{
+                    continue;
+                }
+            }
+
+            if (step == 3){
+                if (!minmax.get(i).ismaxOverlap)
+                    vertices.add(minmax.get(i).max);
+//                else{
+//                    if (!minmax.get(i-1).ismaxOverlap)
+//                        cutShape(i, true);
+//                    else
+//                        vertices.add(minmax.get(i).max);
+//                }
+                if (i == 0) {
+                    step = 4;
+                    i=6;
+                }else{
+                    i-=2;
+                    continue;
+                }
+            }
+
+            if (step == 4){
+                if (!minmax.get(i).isminOverlap)
+                    vertices.add(minmax.get(i).min);
+//                else{
+//                    if (!minmax.get(i-1).isminOverlap)
+//                        cutShape(i, false);
+//                    else
+//                        vertices.add(minmax.get(i).min);
+//                }
+                if (i == 5) {
+                    break;
+                }else {
+                    i-=2;
+                }
+            }
+        }
+
+        System.out.println(vertices);
 
 
+    }
+
+    private void cutShape(int index, boolean ismax) {
+
+        if (ismax)
+            vertices.add(minmax.get(index).max);
+        else
+            vertices.add(minmax.get(index).min);
+        int n = index;
+
+        boolean isforward;
+
+        for (int i =0; true; i++){
+            if (step ==1 || step == 4) {
+                if (inputsToChop.get(i) == minmax.get(i).min) {
+                    if (inputsToChop.get(i + 1) == minmax.get(i + 1).min) {
+                        isforward = false;
+                    } else {
+                        isforward = true;
+                    }
+                    break;
+                }
+            }
+
+            if (step ==2 || step == 3) {
+                if (inputsToChop.get(i) == minmax.get(i).max) {
+                    if (inputsToChop.get(i + 1) == minmax.get(i + 1).max) {
+                        isforward = false;
+                    } else {
+                        isforward = true;
+                    }
+                    break;
+                }
+            }
+        }
+
+        if (!isforward){
+
+        }
     }
 
 
