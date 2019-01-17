@@ -30,7 +30,7 @@ public class CuttingAreaManager implements Screen {
 
     LinkedList<Byte> inputsToChop;
 
-    int step =0;
+    int step = 0, t = 0;
 
     private ShapeRenderer sr;
 
@@ -148,50 +148,45 @@ public class CuttingAreaManager implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
-        sr.begin(ShapeRenderer.ShapeType.Line);
+        sr.begin(ShapeRenderer.ShapeType.Filled);
+        sr.setColor(0, 0.6f, 1, 1);
 
-        sr.setColor(0,0.6f,1,1);
-        for (int i =0; i < shapes.size(); i++){
-            ver = new float[shapes.get(i).size()*2];
-            for(int j=0, k=0; j< shapes.get(i).size(); j++){
-                ver[k] = BigSqurePoints[shapes.get(i).get(j)][0];
-                k++;
-                ver[k] = BigSqurePoints[shapes.get(i).get(j)][1];
-                k++;
+        
+        for (int i = 0; i < shapes.size(); i++) {
+            for (int j = 0, k = 0; j < shapes.get(i).size()-1; j++) {
+                sr.rectLine(BigSqurePoints[shapes.get(i).get(j)][0], BigSqurePoints[shapes.get(i).get(j)][1],
+                        BigSqurePoints[shapes.get(i).get(j+1)][0], BigSqurePoints[shapes.get(i).get(j+1)][1], 2);
             }
-            sr.polygon(ver);
-            ver = null;
         }
 
-        sr.end();
 
-        sr.begin(ShapeRenderer.ShapeType.Filled);
-
-        //sr.setColor(0,1,0.5f,1);
+            //sr.setColor(0,1,0.5f,1);
         //sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
-        sr.setColor(1,0.2f,0.2f,1);
-        for (int i=0; i<16; i++){
+        sr.setColor(1, 0.2f, 0.2f, 1);
+        for (int i = 0; i < 16; i++) {
             sr.circle(BigSqurePoints[i][0], BigSqurePoints[i][1], 7);
         }
 
-        sr.setColor(1f,0f,0f,1);
+        sr.setColor(1f, 0f, 0f, 1);
         try {
 
-            for (int i = 0; i < inputsToChop.size()-1; i++) {
+            for (int i = 0; i < inputsToChop.size() - 1; i++) {
                 try {
                     sr.rectLine(BigSqurePoints[inputsToChop.get(i)][0], BigSqurePoints[inputsToChop.get(i)][1],
                             BigSqurePoints[inputsToChop.get(i + 1)][0], BigSqurePoints[inputsToChop.get(i + 1)][1], 5);
-                }catch (Exception e){}
+                } catch (Exception e) {
+                }
             }
-            sr.rectLine(BigSqurePoints[inputsToChop.getLast()][0],BigSqurePoints[inputsToChop.getLast()][1],presentX, AllVariables.HEIGHT-presntY,5);
+            sr.rectLine(BigSqurePoints[inputsToChop.getLast()][0], BigSqurePoints[inputsToChop.getLast()][1], presentX, AllVariables.HEIGHT - presntY, 5);
 
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
 
         sr.end();
 
     }
 
-    private void update(float dt){
+    private void update(float dt) {
         input(dt);
         try {
             cam.update();
@@ -200,20 +195,17 @@ public class CuttingAreaManager implements Screen {
         }
         sr.setProjectionMatrix(cam.combined);
 
-        for (int i =0; i < shapes.size(); i++){
-            ver = new float[shapes.get(i).size()*2];
-            for(int j=0, k=0; j< shapes.get(i).size(); j++){
-                ver[k] = BigSqurePoints[shapes.get(i).get(j)][0];
-                k++;
-                ver[k] = BigSqurePoints[shapes.get(i).get(j)][1];
-                k++;
-            }
-            ver = null;
-
-        }
-
-
-
+//        for (int i = 0; i < shapes.size(); i++) {
+//            ver = new float[shapes.get(i).size() * 2];
+//            for (int j = 0, k = 0; j < shapes.get(i).size(); j++) {
+//                ver[k] = BigSqurePoints[shapes.get(i).get(j)][0];
+//                k++;
+//                ver[k] = BigSqurePoints[shapes.get(i).get(j)][1];
+//                k++;
+//            }
+//            ver = null;
+//
+//        }
 
 
     }
@@ -321,11 +313,10 @@ public class CuttingAreaManager implements Screen {
 
                         cuttingTheParts();
 
-
+                        inputsToChop.clear();
 
                         return false;
                     }
-
 
 
                     @Override
@@ -357,71 +348,71 @@ public class CuttingAreaManager implements Screen {
 
     }
 
-     private void fillingMissingPoints(){
+    private void fillingMissingPoints() {
 
         //refilling the unconsistancies
         for (int i = 1; i < inputsToChop.size(); i++) {
 
             //upside down cutting
-            if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %4 == 0){
+            if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) % 4 == 0) {
                 //up to down
-                if((inputsToChop.get(i) - inputsToChop.get(i-1))/4 >=2){
-                    inputsToChop.add(i,(byte)(inputsToChop.get(i)-4));
+                if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 4 >= 2) {
+                    inputsToChop.add(i, (byte) (inputsToChop.get(i) - 4));
                     i--;
                     continue;
-                }else if ((inputsToChop.get(i) - inputsToChop.get(i-1))/4 <=-2){
-                    inputsToChop.add(i,(byte)(inputsToChop.get(i)+4));
+                } else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 4 <= -2) {
+                    inputsToChop.add(i, (byte) (inputsToChop.get(i) + 4));
                     i--;
                     continue;
                 }
             }
 
             //cross left to right
-            if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %5 == 0){
+            if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) % 5 == 0) {
                 //upleft to downright
-                if((inputsToChop.get(i) - inputsToChop.get(i-1))/5 >=2 &&  BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i-1)][0]
-                        &&  BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i-1)][1]){
-                    inputsToChop.add(i,(byte)(inputsToChop.get(i)-5));
+                if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 5 >= 2 && BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                    inputsToChop.add(i, (byte) (inputsToChop.get(i) - 5));
                     i--;
                     continue;
                 }
                 //downright to up left
-                else if ((inputsToChop.get(i) - inputsToChop.get(i-1))/5 <=-2 &&  BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i-1)][0]
-                        &&  BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i-1)][1]){
-                    inputsToChop.add(i,(byte)(inputsToChop.get(i)+5));
+                else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 5 <= -2 && BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                    inputsToChop.add(i, (byte) (inputsToChop.get(i) + 5));
                     i--;
                     continue;
                 }
             }
 
             //cross right to left
-            if ((inputsToChop.get(i) - inputsToChop.get(i-1)) %3 == 0){
+            if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) % 3 == 0) {
                 //upright to downleft
-                if((inputsToChop.get(i) - inputsToChop.get(i-1))/3 >=2 &&  BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i-1)][0]
-                        &&  BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i-1)][1]){
-                    inputsToChop.add(i,(byte)(inputsToChop.get(i)-3));
+                if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 3 >= 2 && BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                    inputsToChop.add(i, (byte) (inputsToChop.get(i) - 3));
                     i--;
                     continue;
                 }
                 //downleft to upright
-                else if ((inputsToChop.get(i) - inputsToChop.get(i-1))/3 <=-2 &&  BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i-1)][0]
-                        &&  BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i-1)][1]){
-                    inputsToChop.add(i,(byte)(inputsToChop.get(i)+3));
+                else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 3 <= -2 && BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                    inputsToChop.add(i, (byte) (inputsToChop.get(i) + 3));
                     i--;
                     continue;
                 }
             }
 
             //sideways
-            if(((inputsToChop.get(i) - inputsToChop.get(i-1)) >= 2 && (inputsToChop.get(i) - inputsToChop.get(i-1)) <= 4)
-                    || ((inputsToChop.get(i) - inputsToChop.get(i-1)) <= -2 && (inputsToChop.get(i) - inputsToChop.get(i-1)) >= -4)){
-                if (BigSqurePoints[inputsToChop.get(i)][1] == BigSqurePoints[inputsToChop.get(i-1)][1]){
-                    if ((inputsToChop.get(i) - inputsToChop.get(i-1)) >= 2){
-                        inputsToChop.add(i,(byte)(inputsToChop.get(i)-1));
+            if (((inputsToChop.get(i) - inputsToChop.get(i - 1)) >= 2 && (inputsToChop.get(i) - inputsToChop.get(i - 1)) <= 4)
+                    || ((inputsToChop.get(i) - inputsToChop.get(i - 1)) <= -2 && (inputsToChop.get(i) - inputsToChop.get(i - 1)) >= -4)) {
+                if (BigSqurePoints[inputsToChop.get(i)][1] == BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                    if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) >= 2) {
+                        inputsToChop.add(i, (byte) (inputsToChop.get(i) - 1));
                         i--;
                         continue;
-                    }else if ((inputsToChop.get(i) - inputsToChop.get(i-1)) <= -2){
-                        inputsToChop.add(i,(byte)(inputsToChop.get(i)+1));
+                    } else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) <= -2) {
+                        inputsToChop.add(i, (byte) (inputsToChop.get(i) + 1));
                         i--;
                         continue;
                     }
@@ -430,7 +421,7 @@ public class CuttingAreaManager implements Screen {
         }
     }
 
-    private void minmaxAssignment(int shapeNumber){
+    private void minmaxAssignment(int shapeNumber) {
         //shapes.get(shapeNumber)
         //order for putting is v1 v2 v3 v4 h1 h2 h3 h4
         //--------------------------------------
@@ -457,17 +448,17 @@ public class CuttingAreaManager implements Screen {
         minmax1 = new MinMaxClass();
         minmax2 = new MinMaxClass();
         minmax3 = new MinMaxClass();
-        minmax4= new MinMaxClass();
+        minmax4 = new MinMaxClass();
 
         //v1 v2 v3 v4
-        for (byte i : shapes.get(shapeNumber)){
+        for (byte i : shapes.get(shapeNumber)) {
             //v1
-            if(BigSqurePoints[i][0] == 550){
-                if (minmax1.min == null && minmax1.max == null){
+            if (BigSqurePoints[i][0] == 550) {
+                if (minmax1.min == null && minmax1.max == null) {
                     minmax1.min = i;
                     minmax1.max = i;
                 }
-                if(i > minmax1.max)
+                if (i > minmax1.max)
                     minmax1.max = i;
 
                 if (i < minmax1.min)
@@ -475,12 +466,12 @@ public class CuttingAreaManager implements Screen {
             }
 
             //v2
-            if(BigSqurePoints[i][0] == 770){
-                if (minmax2.min == null && minmax2.max == null){
+            if (BigSqurePoints[i][0] == 770) {
+                if (minmax2.min == null && minmax2.max == null) {
                     minmax2.min = i;
                     minmax2.max = i;
                 }
-                if(i > minmax2.max)
+                if (i > minmax2.max)
                     minmax2.max = i;
 
                 if (i < minmax2.min)
@@ -488,12 +479,12 @@ public class CuttingAreaManager implements Screen {
             }
 
             //v3
-            if(BigSqurePoints[i][0] == 990){
-                if (minmax3.min == null && minmax3.max == null){
+            if (BigSqurePoints[i][0] == 990) {
+                if (minmax3.min == null && minmax3.max == null) {
                     minmax3.min = i;
                     minmax3.max = i;
                 }
-                if(i > minmax3.max)
+                if (i > minmax3.max)
                     minmax3.max = i;
 
                 if (i < minmax3.min)
@@ -501,12 +492,12 @@ public class CuttingAreaManager implements Screen {
             }
 
             //v4
-            if(BigSqurePoints[i][0] == 1210){
-                if (minmax4.min == null && minmax4.max == null){
+            if (BigSqurePoints[i][0] == 1210) {
+                if (minmax4.min == null && minmax4.max == null) {
                     minmax4.min = i;
                     minmax4.max = i;
                 }
-                if(i > minmax4.max)
+                if (i > minmax4.max)
                     minmax4.max = i;
 
                 if (i < minmax4.min)
@@ -523,17 +514,17 @@ public class CuttingAreaManager implements Screen {
         minmax1 = new MinMaxClass();
         minmax2 = new MinMaxClass();
         minmax3 = new MinMaxClass();
-        minmax4= new MinMaxClass();
+        minmax4 = new MinMaxClass();
 
         //h1 h2 h3 h4
-        for (byte i : shapes.get(shapeNumber)){
+        for (byte i : shapes.get(shapeNumber)) {
             //v1
-            if(BigSqurePoints[i][1] == 700){
-                if (minmax1.min == null && minmax1.max == null){
+            if (BigSqurePoints[i][1] == 700) {
+                if (minmax1.min == null && minmax1.max == null) {
                     minmax1.min = i;
                     minmax1.max = i;
                 }
-                if(i > minmax1.max)
+                if (i > minmax1.max)
                     minmax1.max = i;
 
                 if (i < minmax1.min)
@@ -541,12 +532,12 @@ public class CuttingAreaManager implements Screen {
             }
 
             //v2
-            if(BigSqurePoints[i][1] == 480){
-                if (minmax2.min == null && minmax2.max == null){
+            if (BigSqurePoints[i][1] == 480) {
+                if (minmax2.min == null && minmax2.max == null) {
                     minmax2.min = i;
                     minmax2.max = i;
                 }
-                if(i > minmax2.max)
+                if (i > minmax2.max)
                     minmax2.max = i;
 
                 if (i < minmax2.min)
@@ -554,12 +545,12 @@ public class CuttingAreaManager implements Screen {
             }
 
             //v3
-            if(BigSqurePoints[i][1] == 260){
-                if (minmax3.min == null && minmax3.max == null){
+            if (BigSqurePoints[i][1] == 260) {
+                if (minmax3.min == null && minmax3.max == null) {
                     minmax3.min = i;
                     minmax3.max = i;
                 }
-                if(i > minmax3.max)
+                if (i > minmax3.max)
                     minmax3.max = i;
 
                 if (i < minmax3.min)
@@ -567,12 +558,12 @@ public class CuttingAreaManager implements Screen {
             }
 
             //v4
-            if(BigSqurePoints[i][1] == 40){
-                if (minmax4.min == null && minmax4.max == null){
+            if (BigSqurePoints[i][1] == 40) {
+                if (minmax4.min == null && minmax4.max == null) {
                     minmax4.min = i;
                     minmax4.max = i;
                 }
-                if(i > minmax4.max)
+                if (i > minmax4.max)
                     minmax4.max = i;
 
                 if (i < minmax4.min)
@@ -588,7 +579,7 @@ public class CuttingAreaManager implements Screen {
 
     }
 
-    public void cuttingTheParts(){
+    public void cuttingTheParts() {
         //identifying the shape on which cutting is executed
 //
 //        int numberofOverLap;
@@ -600,19 +591,20 @@ public class CuttingAreaManager implements Screen {
 //            }
 //
 //        }
+        int shapen = 0;
 //
 
 
         //min max
-        minmaxAssignment(0);
+        minmaxAssignment(shapen);
 
         //true false for min max
-        for (int i=0; i<inputsToChop.size(); i++){
-            for (int j =0; j < minmax.size(); j++) {
-                if (minmax.get(j).max == inputsToChop.get(i)){
+        for (int i = 0; i < inputsToChop.size(); i++) {
+            for (int j = 0; j < minmax.size(); j++) {
+                if (minmax.get(j).max == inputsToChop.get(i)) {
                     minmax.get(j).ismaxOverlap = true;
                 }
-                if (minmax.get(j).min == inputsToChop.get(i)){
+                if (minmax.get(j).min == inputsToChop.get(i)) {
                     minmax.get(j).isminOverlap = true;
                 }
             }
@@ -621,91 +613,128 @@ public class CuttingAreaManager implements Screen {
 
         vertices = new LinkedList<Byte>();
 
-        step =1;
+        step = 1;
 
         //step 1 is vin             2 is hmax           3 is vmax       4 is hmin
 
         //if cutting type 1 is implemented
         //which is using one side of parent shape and not cutting with single line or 2 cuts with one pattern
-        for (int i =0; true; i++){
+        for (int i = 0; true; i++) {
             if (step == 1) {
                 if (!minmax.get(i).isminOverlap)
                     vertices.add(minmax.get(i).min);
-//                else{
-//                    if (minmax.get(i+1).isminOverlap)
-//                        cutShape(i, false);
-//                    else
-//                        vertices.add(minmax.get(i).min);
-//                }
+                else {
+                    if (i + 1 == 4) {
+                        i += 2;
+                        if (minmax.get(i - 2).ismaxOverlap)
+                            cutShape(i, false);
+                        else
+                            vertices.add(minmax.get(i).min);
+                        i -= 2;
+                    } else {
+                        if (minmax.get(i + 1).isminOverlap)
+                            cutShape(i, false);
+                        else
+                            vertices.add(minmax.get(i).min);
+                    }
+                }
 
 
                 if (i == 3) {
                     step = 2;
                     i++;
                     continue;
-                }else{
+                } else {
                     continue;
                 }
             }
 
-            if (step == 2){
+            if (step == 2) {
                 if (!minmax.get(i).ismaxOverlap)
                     vertices.add(minmax.get(i).max);
-//                else{
-//                    if (minmax.get(i+1).ismaxOverlap)
-//                        cutShape(i, true);
-//                    else
-//                        vertices.add(minmax.get(i).max);
-//                }
+                else {
+                    if (i + 1 == 8) {
+                        t = 2;
+                        if (minmax.get(t).ismaxOverlap)
+                            cutShape(i, true);
+                        else
+                            vertices.add(minmax.get(i).max);
+                    } else {
+                        if (minmax.get(i + 1).ismaxOverlap)
+                            cutShape(i, true);
+                        else
+                            vertices.add(minmax.get(i).max);
+                    }
+                }
                 if (i == 7) {
                     step = 3;
-                    i=2;
-                }else{
+                    i = 2;
+                } else {
                     continue;
                 }
             }
 
-            if (step == 3){
+            if (step == 3) {
                 if (!minmax.get(i).ismaxOverlap)
                     vertices.add(minmax.get(i).max);
-//                else{
-//                    if (!minmax.get(i-1).ismaxOverlap)
-//                        cutShape(i, true);
-//                    else
-//                        vertices.add(minmax.get(i).max);
-//                }
+                else {
+                    if (i - 1 == -1) {
+                        t = 6;
+                        if (minmax.get(t).isminOverlap)
+                            cutShape(i, true);
+                        else
+                            vertices.add(minmax.get(i).max);
+                    } else {
+                        if (minmax.get(i - 1).ismaxOverlap)
+                            cutShape(i, true);
+                        else
+                            vertices.add(minmax.get(i).max);
+                    }
+                }
                 if (i == 0) {
                     step = 4;
-                    i=6;
-                }else{
-                    i-=2;
+                    i = 6;
+                } else {
+                    i -= 2;
                     continue;
                 }
             }
 
-            if (step == 4){
+            if (step == 4) {
                 if (!minmax.get(i).isminOverlap)
                     vertices.add(minmax.get(i).min);
-//                else{
-//                    if (!minmax.get(i-1).isminOverlap)
-//                        cutShape(i, false);
-//                    else
-//                        vertices.add(minmax.get(i).min);
-//                }
+                else {
+                    if (minmax.get(i - 1).isminOverlap)
+                        cutShape(i, false);
+                    else
+                        vertices.add(minmax.get(i).min);
+
+                }
                 if (i == 5) {
                     break;
-                }else {
-                    i-=2;
+                } else {
+                    i -= 2;
                 }
             }
         }
 
-        System.out.println(vertices);
+        //shapes.remove(shapen);
+        shapes.add(inputsToChop);
+        shapes.add(vertices);
+
+        //System.out.println(shapes);
+
+
+
 
 
     }
 
     private void cutShape(int index, boolean ismax) {
+
+    }
+
+    private void cutShapea(int index, boolean ismax) {
 
         if (ismax)
             vertices.add(minmax.get(index).max);
