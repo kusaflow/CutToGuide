@@ -126,6 +126,7 @@ public class CuttingAreaManager implements Screen {
         shapes.add(vertices);
 
 
+
         //Integer[] data = shapes.get(0).toArray(new Integer[shapes.get(0).size()]);
 
 
@@ -301,8 +302,6 @@ public class CuttingAreaManager implements Screen {
                         //remove first element
                         try {
                             inputsToChop.removeFirst();
-                            if (inputsToChop.getLast() != inputsToChop.getFirst())
-                                inputsToChop.addLast(inputsToChop.getFirst());
                             presentX = BigSqurePoints[inputsToChop.getLast()][0];
                             presntY = AllVariables.HEIGHT - BigSqurePoints[inputsToChop.getLast()][1];
 
@@ -315,11 +314,16 @@ public class CuttingAreaManager implements Screen {
 
                         fillingMissingPoints();
 
-                        // if internal cutting is done function is returned
+                        System.out.println(inputsToChop);
 
-                        cuttingTheParts();
+                        if(!cutThePiece()){
+                            //error to say thay you stated from the middle and not from the start
+                        }
 
-                        //inputsToChop.clear();
+
+                        inputsToChop.clear();
+
+
 
                         return false;
                     }
@@ -430,363 +434,84 @@ public class CuttingAreaManager implements Screen {
         }
     }
 
-    private void minmaxAssignment(int shapeNumber) {
-        //shapes.get(shapeNumber)
-        //order for putting is v1 v2 v3 v4 h1 h2 h3 h4
-        //--------------------------------------
-        //for v1 the fixed axis is x(550) axis and y axis is variable
-        //--------------------------------------
-        //for v2 the fixed axis is x(770) axis and y axis is variable
-        //--------------------------------------
-        //for v3 the fixed axis is x(990) axis and y axis is variable
-        //--------------------------------------
-        //for v4 the fixed axis is x(1210) axis and y axis is variable
-        //--------------------------------------
-        //for h1 the variable axis is xaxis and fixed axis is y(40) axis is variable
-        //--------------------------------------
-        //for h2 the variable axis is xaxis and fixed axis is y(260) axis is variable
-        //--------------------------------------
-        //for h3 the variable axis is xaxis and fixed axis is y(480) axis is variable
-        //--------------------------------------
-        //for h4 the variable axis is xaxis and fixed axis is y(700) axis is variable
-        //--------------------------------------
 
-        minmax.clear();
-        MinMaxClass minmax1, minmax2, minmax3, minmax4;
+    private Boolean cutThePiece() {
 
-        minmax1 = new MinMaxClass();
-        minmax2 = new MinMaxClass();
-        minmax3 = new MinMaxClass();
-        minmax4 = new MinMaxClass();
+        short theShapeNumber = -1;
+        LinkedList<Byte> overlabers = new LinkedList<Byte>();
 
-        //v1 v2 v3 v4
-        for (byte i : shapes.get(shapeNumber)) {
-            //v1
-            if (BigSqurePoints[i][0] == 550) {
-                if (minmax1.min == null && minmax1.max == null) {
-                    minmax1.min = i;
-                    minmax1.max = i;
-                }
-                if (i > minmax1.max)
-                    minmax1.max = i;
-
-                if (i < minmax1.min)
-                    minmax1.min = i;
-            }
-
-            //v2
-            if (BigSqurePoints[i][0] == 770) {
-                if (minmax2.min == null && minmax2.max == null) {
-                    minmax2.min = i;
-                    minmax2.max = i;
-                }
-                if (i > minmax2.max)
-                    minmax2.max = i;
-
-                if (i < minmax2.min)
-                    minmax2.min = i;
-            }
-
-            //v3
-            if (BigSqurePoints[i][0] == 990) {
-                if (minmax3.min == null && minmax3.max == null) {
-                    minmax3.min = i;
-                    minmax3.max = i;
-                }
-                if (i > minmax3.max)
-                    minmax3.max = i;
-
-                if (i < minmax3.min)
-                    minmax3.min = i;
-            }
-
-            //v4
-            if (BigSqurePoints[i][0] == 1210) {
-                if (minmax4.min == null && minmax4.max == null) {
-                    minmax4.min = i;
-                    minmax4.max = i;
-                }
-                if (i > minmax4.max)
-                    minmax4.max = i;
-
-                if (i < minmax4.min)
-                    minmax4.min = i;
-            }
-
-        }
-
-        minmax.add(minmax1);
-        minmax.add(minmax2);
-        minmax.add(minmax3);
-        minmax.add(minmax4);
-
-        minmax1 = new MinMaxClass();
-        minmax2 = new MinMaxClass();
-        minmax3 = new MinMaxClass();
-        minmax4 = new MinMaxClass();
-
-        //h1 h2 h3 h4
-        for (byte i : shapes.get(shapeNumber)) {
-            //v1
-            if (BigSqurePoints[i][1] == 700) {
-                if (minmax1.min == null && minmax1.max == null) {
-                    minmax1.min = i;
-                    minmax1.max = i;
-                }
-                if (i > minmax1.max)
-                    minmax1.max = i;
-
-                if (i < minmax1.min)
-                    minmax1.min = i;
-            }
-
-            //v2
-            if (BigSqurePoints[i][1] == 480) {
-                if (minmax2.min == null && minmax2.max == null) {
-                    minmax2.min = i;
-                    minmax2.max = i;
-                }
-                if (i > minmax2.max)
-                    minmax2.max = i;
-
-                if (i < minmax2.min)
-                    minmax2.min = i;
-            }
-
-            //v3
-            if (BigSqurePoints[i][1] == 260) {
-                if (minmax3.min == null && minmax3.max == null) {
-                    minmax3.min = i;
-                    minmax3.max = i;
-                }
-                if (i > minmax3.max)
-                    minmax3.max = i;
-
-                if (i < minmax3.min)
-                    minmax3.min = i;
-            }
-
-            //v4
-            if (BigSqurePoints[i][1] == 40) {
-                if (minmax4.min == null && minmax4.max == null) {
-                    minmax4.min = i;
-                    minmax4.max = i;
-                }
-                if (i > minmax4.max)
-                    minmax4.max = i;
-
-                if (i < minmax4.min)
-                    minmax4.min = i;
-            }
-
-        }
-
-        minmax.add(minmax1);
-        minmax.add(minmax2);
-        minmax.add(minmax3);
-        minmax.add(minmax4);
-
-    }
-
-    public void cuttingTheParts() {
-        //identifying the shape on which cutting is executed
-//
-//        int numberofOverLap;
-//
-//        for (int i=0; i<shapes.size(); i++){
-//            numberofOverLap = 0;
-//            for (int j=0; j<shapes.get(i).size(); j++){
-//
-//            }
-//
-//        }
-        int shapen = 0;
-//
-
-
-        //min max
-        minmaxAssignment(shapen);
-
-        //true false for min max
-        for (int i = 0; i < inputsToChop.size(); i++) {
-            for (int j = 0; j < minmax.size(); j++) {
-                if (minmax.get(j).max == inputsToChop.get(i)) {
-                    minmax.get(j).ismaxOverlap = true;
-                }
-                if (minmax.get(j).min == inputsToChop.get(i)) {
-                    minmax.get(j).isminOverlap = true;
-                }
-            }
-
-        }
-
-        vertices = new LinkedList<Byte>();
-        //vertices.clear();
-
-
-
-        step = 1;
-
-        //step 1 is vin             2 is hmax           3 is vmax       4 is hmin
-
-        //if cutting type 1 is implemented
-        //which is using one side of parent shape and not cutting with single line or 2 cuts with one pattern
-        for (int i = 0; true; i++) {
-            if (step == 1) {
-                if (!minmax.get(i).isminOverlap)
-                    vertices.add(minmax.get(i).min);
-                else {
-                    if (i + 1 == 4) {
-                        i += 2;
-                        if (minmax.get(i - 2).ismaxOverlap)
-                            cutShape(i, false);
-                        else
-                            vertices.add(minmax.get(i).min);
-                        i -= 2;
-                    } else {
-                        if (minmax.get(i + 1).isminOverlap)
-                            cutShape(i, false);
-                        else
-                            vertices.add(minmax.get(i).min);
-                    }
-                }
-
-
-                if (i == 3) {
-                    step = 2;
-                    i++;
-                    continue;
-                } else {
-                    continue;
-                }
-            }
-
-            if (step == 2) {
-                if (!minmax.get(i).ismaxOverlap)
-                    vertices.add(minmax.get(i).max);
-                else {
-                    if (i + 1 == 8) {
-                        t = 2;
-                        if (minmax.get(t).ismaxOverlap)
-                            cutShape(i, true);
-                        else
-                            vertices.add(minmax.get(i).max);
-                    } else {
-                        if (minmax.get(i + 1).ismaxOverlap)
-                            cutShape(i, true);
-                        else
-                            vertices.add(minmax.get(i).max);
-                    }
-                }
-                if (i == 7) {
-                    step = 3;
-                    i = 2;
-                } else {
-                    continue;
-                }
-            }
-
-            if (step == 3) {
-                if (!minmax.get(i).ismaxOverlap)
-                    vertices.add(minmax.get(i).max);
-                else {
-                    if (i - 1 == -1) {
-                        t = 6;
-                        if (minmax.get(t).isminOverlap)
-                            cutShape(i, true);
-                        else
-                            vertices.add(minmax.get(i).max);
-                    } else {
-                        if (minmax.get(i - 1).ismaxOverlap)
-                            cutShape(i, true);
-                        else
-                            vertices.add(minmax.get(i).max);
-                    }
-                }
-                if (i == 0) {
-                    step = 4;
-                    i = 6;
-                } else {
-                    i -= 2;
-                    continue;
-                }
-            }
-
-            if (step == 4) {
-                if (!minmax.get(i).isminOverlap)
-                    vertices.add(minmax.get(i).min);
-                else {
-                    if (minmax.get(i - 1).isminOverlap)
-                        cutShape(i, false);
-                    else
-                        vertices.add(minmax.get(i).min);
-
-                }
-                if (i == 5) {
-                    break;
-                } else {
-                    i -= 2;
-                }
+        //finding the piece to be cut
+        for (int i=0; i<shapes.size(); i++){
+            for (int j=0; j<shapes.get(i).size(); j++){
+                if (inputsToChop.get(0) == shapes.get(i).get(j))
+                    overlabers.add((byte) i);
             }
         }
 
-        //shapes.remove(shapen);
-        //shapes.add(inputsToChop);
-        shapes.add(vertices);
+        if (overlabers.size() == 1){
+            theShapeNumber = overlabers.getFirst();
+        }
+        else{
 
-        System.out.println(vertices);
-
-
-
+        }
 
 
-    }
+        if (theShapeNumber == -1)
+            return false;
+        overlabers.clear();
 
-    private void cutShape(int index, boolean ismax) {
-        if (ismax)
-            System.out.println(minmax.get(index).max);
-        else
-            System.out.println(minmax.get(index).min);
-    }
 
-    private void cutShapea(int index, boolean ismax) {
+        short startPoint =0 , endPoint =0;
 
-        if (ismax)
-            vertices.add(minmax.get(index).max);
-        else
-            vertices.add(minmax.get(index).min);
-        int n = index;
 
-        boolean isforward;
+        //finding the point from where the cutting starts
+        // the vertice from where the next point is inside the shape and not on side
+        // and after that similaly we find the point where is ends
 
-        for (int i =0; true; i++){
-            if (step ==1 || step == 4) {
-                if (inputsToChop.get(i) == minmax.get(i).min) {
-                    if (inputsToChop.get(i + 1) == minmax.get(i + 1).min) {
-                        isforward = false;
-                    } else {
-                        isforward = true;
-                    }
+        boolean onEdge =false;
+
+        if (inputsToChop.size() == 2){
+            startPoint = inputsToChop.getFirst();
+            endPoint = inputsToChop.getLast();
+        }else {
+            //staring point
+            for (int i = 0; i < inputsToChop.size(); i++) {
+                onEdge = false;
+                for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
+                    if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
+                        onEdge = true;
+                }
+                if (onEdge)
+                    continue;
+                else {
+                    startPoint = inputsToChop.get(i - 1);
                     break;
                 }
             }
 
-            if (step ==2 || step == 3) {
-                if (inputsToChop.get(i) == minmax.get(i).max) {
-                    if (inputsToChop.get(i + 1) == minmax.get(i + 1).max) {
-                        isforward = false;
-                    } else {
-                        isforward = true;
-                    }
+            //end point
+            for (int i = inputsToChop.size() - 1; i > 0; i--) {
+                onEdge = false;
+                for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
+                    if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
+                        onEdge = true;
+                }
+                if (onEdge)
+                    continue;
+                else {
+                    endPoint = inputsToChop.get(i + 1);
                     break;
                 }
             }
         }
 
-        if (!isforward){
+        System.out.println(startPoint + "\t" + endPoint);
 
-        }
+
+        return true;
+
     }
+
 
 
     @Override
