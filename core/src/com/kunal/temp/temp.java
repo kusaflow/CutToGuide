@@ -28,6 +28,7 @@ public class temp implements Screen {
         if(Gdx.input.justTouched()){
             //game.setScreen(new PlayArea(game));
             game.setScreen(new CuttingAreaManager(game));
+
         }
     }
 

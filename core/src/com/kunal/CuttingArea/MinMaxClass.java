@@ -1,6 +1,9 @@
 package com.kunal.CuttingArea;
 
-public class MinMaxClass {
-    public  Byte min = null, max= null;
-    public  Boolean isminOverlap = false, ismaxOverlap = false;
+class MinMaxClass {
+    public Byte max = null, min=null;
+
+
+    public boolean ismaxOverlap = false;
+    public boolean isminOverlap = false;
 }
