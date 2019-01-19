@@ -314,11 +314,10 @@ public class CuttingAreaManager implements Screen {
 
                         fillingMissingPoints();
 
-                        System.out.println(inputsToChop);
-
-                        if(!cutThePiece()){
+                        if (!cutThePiece()) {
                             //error to say thay you stated from the middle and not from the start
                         }
+
 
 
                         inputsToChop.clear();
@@ -468,7 +467,7 @@ public class CuttingAreaManager implements Screen {
         // the vertice from where the next point is inside the shape and not on side
         // and after that similaly we find the point where is ends
 
-        boolean onEdge =false;
+        boolean tempBool =false;
 
         if (inputsToChop.size() == 2){
             startPoint = inputsToChop.getFirst();
@@ -476,12 +475,12 @@ public class CuttingAreaManager implements Screen {
         }else {
             //staring point
             for (int i = 0; i < inputsToChop.size(); i++) {
-                onEdge = false;
+                tempBool = false;
                 for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
                     if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
-                        onEdge = true;
+                        tempBool = true;
                 }
-                if (onEdge)
+                if (tempBool)
                     continue;
                 else {
                     startPoint = inputsToChop.get(i - 1);
@@ -491,12 +490,12 @@ public class CuttingAreaManager implements Screen {
 
             //end point
             for (int i = inputsToChop.size() - 1; i > 0; i--) {
-                onEdge = false;
+                tempBool = false;
                 for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
                     if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
-                        onEdge = true;
+                        tempBool = true;
                 }
-                if (onEdge)
+                if (tempBool)
                     continue;
                 else {
                     endPoint = inputsToChop.get(i + 1);
@@ -505,8 +504,80 @@ public class CuttingAreaManager implements Screen {
             }
         }
 
-        System.out.println(startPoint + "\t" + endPoint);
+        //tempBool is not in use so using it to detect if startpoint is found or not
+        tempBool = false;
+        vertices = new LinkedList<Byte>();
 
+        for (short i = 0; true; i++){
+            if (tempBool == false) {
+                if(shapes.get(theShapeNumber).get(i) == startPoint)
+                    tempBool = true;
+            }
+
+            if(tempBool) {
+                if (i > shapes.get(theShapeNumber).size()-1)
+                    i = 0;
+
+                vertices.add(shapes.get(theShapeNumber).get(i));
+
+                if (shapes.get(theShapeNumber).get(i) == endPoint)
+                    break;
+
+            }
+        }
+        //the pointer is at endpoint
+        //using tempbool again as it has no use at this point
+        tempBool = false;
+        for (int i = inputsToChop.size() - 1; i > 0; i--){
+            if (tempBool == false){
+                if (inputsToChop.get(i) == endPoint) {
+                    tempBool = true;
+                    continue;
+                }
+            }
+            if (tempBool)
+                vertices.add(inputsToChop.get(i));
+        }
+        shapes.add(vertices);
+        //one part added
+
+        //tempBool is not in use so using it to detect if startpoint is found or not
+        tempBool = false;
+        vertices = new LinkedList<Byte>();
+
+        for (short i = (short) (shapes.get(theShapeNumber).size()-1); true; i--){
+            if (tempBool == false) {
+                if(shapes.get(theShapeNumber).get(i) == startPoint)
+                    tempBool = true;
+            }
+
+            if(tempBool) {
+                if (i < 0)
+                    i = (short) (shapes.get(theShapeNumber).size() -1);
+
+                vertices.add(shapes.get(theShapeNumber).get(i));
+
+                if (shapes.get(theShapeNumber).get(i) == endPoint)
+                    break;
+
+            }
+        }
+        //the pointer is at endpoint
+        //using tempbool again as it has no use at this point
+        tempBool = false;
+        for (int i = inputsToChop.size() - 1; i > 0; i--){
+            if (tempBool == false){
+                if (inputsToChop.get(i) == endPoint) {
+                    tempBool = true;
+                    continue;
+                }
+            }
+            if (tempBool)
+                vertices.add(inputsToChop.get(i));
+        }
+
+        shapes.remove(theShapeNumber);
+        shapes.add(vertices);
 
         return true;
 
