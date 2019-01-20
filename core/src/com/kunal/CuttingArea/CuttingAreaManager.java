@@ -319,6 +319,11 @@ public class CuttingAreaManager implements Screen {
                         }
 
 
+                        for (int i =0; i< shapes.size(); i++)
+                            System.out.println(shapes.get(i));
+
+                        System.out.println("\n\n\n");
+
 
                         inputsToChop.clear();
 
@@ -455,8 +460,23 @@ public class CuttingAreaManager implements Screen {
         }
 
 
-        if (theShapeNumber == -1)
+        if (theShapeNumber == -1) {
+            //error to show that the start point is not on any edge
             return false;
+        }
+         short endVal = -1;
+
+        for (short i=0; i<shapes.get(theShapeNumber).size(); i++){
+            if(inputsToChop.getLast() == shapes.get(theShapeNumber).get(i)){
+                endVal++;
+            }
+        }
+
+        if (endVal == -1){
+            //error message to say that you cannot end on anywhere is should lie in a edge only
+            return false;
+        }
+
         overlabers.clear();
 
 
@@ -582,6 +602,7 @@ public class CuttingAreaManager implements Screen {
         return true;
 
     }
+
 
 
 
