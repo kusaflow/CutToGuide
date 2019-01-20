@@ -442,6 +442,26 @@ public class CuttingAreaManager implements Screen {
     private Boolean cutThePiece() {
 
         short theShapeNumber = -1;
+
+        //check if input point is repeted then there is no cutting
+        for (int i =0; i<inputsToChop.size(); i++){
+            theShapeNumber = -1;
+            for (int j=0; j <inputsToChop.size(); j++){
+                if (inputsToChop.get(i) == inputsToChop.get(j)){
+                    theShapeNumber++;
+                }
+            }
+
+            if (theShapeNumber == 0)
+                continue;
+            else {
+                System.out.println("overlap");
+                return false;
+            }
+        }
+
+        theShapeNumber = -1;
+
         LinkedList<Byte> overlabers = new LinkedList<Byte>();
 
         //finding the piece to be cut
@@ -462,6 +482,7 @@ public class CuttingAreaManager implements Screen {
 
         if (theShapeNumber == -1) {
             //error to show that the start point is not on any edge
+            System.out.println("the start point is not on any edge");
             return false;
         }
          short endVal = -1;
@@ -474,6 +495,7 @@ public class CuttingAreaManager implements Screen {
 
         if (endVal == -1){
             //error message to say that you cannot end on anywhere is should lie in a edge only
+            System.out.println("you cannot end on anywhere is should lie in a edge only");
             return false;
         }
 
@@ -524,6 +546,14 @@ public class CuttingAreaManager implements Screen {
             }
         }
 
+
+
+        if (startPoint == 0 && endPoint == 0){
+            //error multiple cutting
+            return false;
+        }
+
+
         //tempBool is not in use so using it to detect if startpoint is found or not
         tempBool = false;
         vertices = new LinkedList<Byte>();
@@ -555,12 +585,25 @@ public class CuttingAreaManager implements Screen {
                     continue;
                 }
             }
-            if (tempBool)
+            if (tempBool) {
+                for (int t =0; t < shapes.get(theShapeNumber).size(); t++){
+                    if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(t)){
+                        if (inputsToChop.get(i) != startPoint){
+                            System.out.println("multiplecutting");
+                            //error to show there are multiple cutting happened
+                            return false;
+                        }
+                    }
+                }
                 vertices.add(inputsToChop.get(i));
+            }
         }
+        System.out.println(startPoint + "\t" + endPoint);
         shapes.add(vertices);
         //one part added
 
+
+        //otherside
         //tempBool is not in use so using it to detect if startpoint is found or not
         tempBool = false;
         vertices = new LinkedList<Byte>();
