@@ -319,10 +319,10 @@ public class CuttingAreaManager implements Screen {
                         }
 
 
-                        for (int i =0; i< shapes.size(); i++)
-                            System.out.println(shapes.get(i));
-
-                        System.out.println("\n\n\n");
+//                        for (int i =0; i< shapes.size(); i++)
+//                            System.out.println(shapes.get(i));
+//
+//                        System.out.println("\n\n\n");
 
 
                         inputsToChop.clear();
@@ -463,28 +463,56 @@ public class CuttingAreaManager implements Screen {
         theShapeNumber = -1;
 
         LinkedList<Byte> overlabers = new LinkedList<Byte>();
+        Boolean tempBool =false, foundFront = false, stoploop=false;
+
 
         //finding the piece to be cut
-        for (int i=0; i<shapes.size(); i++){
-            for (int j=0; j<shapes.get(i).size(); j++){
+        for (int i = 0; i < shapes.size(); i++) {
+            for (int j = 0; j < shapes.get(i).size(); j++) {
                 if (inputsToChop.get(0) == shapes.get(i).get(j))
                     overlabers.add((byte) i);
             }
+        }
+
+        if (overlabers.isEmpty()) {
+            //error to show that the start point is not on any edge
+            System.out.println("the start point is not on any edge");
+            return false;
         }
 
         if (overlabers.size() == 1){
             theShapeNumber = overlabers.getFirst();
         }
         else{
+            try {
+                int k = 0, x = 0;
+                while (!tempBool) {
+                    k++;
+                    x = overlabers.size();
+                    for (int i = 0; i < overlabers.size(); i++) {
+                        for (int j = 0; j < shapes.get(overlabers.get(i)).size(); j++) {
+                            if (inputsToChop.get(k) == shapes.get(overlabers.get(i)).get(j))
+                                overlabers.add((byte) i);
+                        }
+                    }
+                    for (short xyz = 0; xyz < x - 1; xyz++)
+                        overlabers.removeFirst();
+
+                    if (overlabers.size() == 1) {
+                        theShapeNumber = overlabers.getFirst();
+                        tempBool = true;
+                    }
+
+                }
+            }catch (Exception e){
+                return false;
+            }
 
         }
+        System.out.println(overlabers);
 
 
-        if (theShapeNumber == -1) {
-            //error to show that the start point is not on any edge
-            System.out.println("the start point is not on any edge");
-            return false;
-        }
+
          short endVal = -1;
 
         for (short i=0; i<shapes.get(theShapeNumber).size(); i++){
@@ -509,7 +537,9 @@ public class CuttingAreaManager implements Screen {
         // the vertice from where the next point is inside the shape and not on side
         // and after that similaly we find the point where is ends
 
-        boolean tempBool =false, foundFront = false, stoploop=false;
+        tempBool =false;
+        foundFront = false;
+        stoploop=false;
 
         if (inputsToChop.size() == 2){
             startPoint = inputsToChop.getFirst();
@@ -552,36 +582,6 @@ public class CuttingAreaManager implements Screen {
                 }
             }
 
-            /*
-            for (int i = 0; i < inputsToChop.size(); i++) {
-                tempBool = false;
-                for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
-                    if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
-                        tempBool = true;
-                }
-                if (tempBool)
-                    continue;
-                else {
-                    startPoint = inputsToChop.get(i - 1);
-                }
-                break;
-            }
-
-            //end point
-            for (int i = inputsToChop.size() - 1; i > 0; i--) {
-                tempBool = false;
-                for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
-                    if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
-                        tempBool = true;
-                }
-                if (tempBool)
-                    continue;
-                else {
-                    endPoint = inputsToChop.get(i + 1);
-                    break;
-                }
-            }
-            */
         }
 
         if (startPoint == 0 && endPoint == 0){
@@ -657,7 +657,6 @@ public class CuttingAreaManager implements Screen {
                 vertices.add(inputsToChop.get(i));
             }
         }
-        System.out.println(startPoint + "\t" + endPoint);
         shapes.add(vertices);
         //one part added
 
