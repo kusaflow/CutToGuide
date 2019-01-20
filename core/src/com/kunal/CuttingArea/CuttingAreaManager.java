@@ -509,13 +509,50 @@ public class CuttingAreaManager implements Screen {
         // the vertice from where the next point is inside the shape and not on side
         // and after that similaly we find the point where is ends
 
-        boolean tempBool =false;
+        boolean tempBool =false, foundFront = false, stoploop=false;
 
         if (inputsToChop.size() == 2){
             startPoint = inputsToChop.getFirst();
             endPoint = inputsToChop.getLast();
         }else {
-            //staring point
+            //false means the start point is being searches and at true we found the end point
+            foundFront = false;
+
+            for (int i = 0; i < inputsToChop.size() && stoploop == false; i++){
+                //strting point
+                if (foundFront == false){
+                    tempBool = false;
+                    for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
+                        if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
+                            tempBool = true;
+                    }
+                    if (tempBool)
+                        continue;
+                    else {
+                        startPoint = inputsToChop.get(i - 1);
+                        foundFront = true;
+                        continue;
+                    }
+                }
+
+                //end point
+                if (foundFront == true){
+                    tempBool = false;
+                    for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
+                        if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
+                            tempBool = true;
+                    }
+                    if (tempBool){
+                        endPoint = inputsToChop.get(i);
+                        stoploop = true;
+                    }
+                    else {
+                        continue;
+                    }
+                }
+            }
+
+            /*
             for (int i = 0; i < inputsToChop.size(); i++) {
                 tempBool = false;
                 for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
@@ -526,8 +563,8 @@ public class CuttingAreaManager implements Screen {
                     continue;
                 else {
                     startPoint = inputsToChop.get(i - 1);
-                    break;
                 }
+                break;
             }
 
             //end point
@@ -544,14 +581,32 @@ public class CuttingAreaManager implements Screen {
                     break;
                 }
             }
+            */
         }
-
-
 
         if (startPoint == 0 && endPoint == 0){
             //error multiple cutting
             return false;
         }
+
+//        tempBool = false;
+//        foundFront = false;
+//
+//        for (int i =0; i<shapes.get(theShapeNumber).size(); i++){
+//            if (startPoint == shapes.get(theShapeNumber).get(i))
+//                tempBool = true;
+//
+//            if (endPoint == shapes.get(theShapeNumber).get(i))
+//                foundFront = true;
+//        }
+//
+//        if (!tempBool) {
+//            return false;
+//        }
+//
+//        if (!foundFront){
+//            return false;
+//        }
 
 
         //tempBool is not in use so using it to detect if startpoint is found or not
