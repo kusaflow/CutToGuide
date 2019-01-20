@@ -589,24 +589,28 @@ public class CuttingAreaManager implements Screen {
             return false;
         }
 
-//        tempBool = false;
-//        foundFront = false;
-//
-//        for (int i =0; i<shapes.get(theShapeNumber).size(); i++){
-//            if (startPoint == shapes.get(theShapeNumber).get(i))
-//                tempBool = true;
-//
-//            if (endPoint == shapes.get(theShapeNumber).get(i))
-//                foundFront = true;
-//        }
-//
-//        if (!tempBool) {
-//            return false;
-//        }
-//
-//        if (!foundFront){
-//            return false;
-//        }
+        tempBool = false;
+
+        for (short i = (short) (inputsToChop.size() -1); i>0; i--){
+            if (!tempBool){
+                if (inputsToChop.get(i) == endPoint){
+                    tempBool = true;
+                    continue;
+                }
+            }
+            if (tempBool) {
+                for (short j = 0; j < shapes.size(); j++) {
+                    for (short k = 0; k < shapes.get(j).size(); k++) {
+                        if (inputsToChop.get(i) == shapes.get(j).get(k)){
+                            if (shapes.get(j) != shapes.get(theShapeNumber)){
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
 
 
         //tempBool is not in use so using it to detect if startpoint is found or not
