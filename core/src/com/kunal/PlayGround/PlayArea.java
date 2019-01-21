@@ -231,7 +231,7 @@ public class PlayArea implements Screen {
 
                         if (screenX > 980 && screenX < 1140 && screenY >330 && screenY <440){
                             Brake.setAlpha(0.9f);
-                            isBothBrakePressed = true;
+                            isBothBrakePressed = true; 
                         }
 
 
