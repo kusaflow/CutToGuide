@@ -33,12 +33,18 @@ public class PlayArea implements Screen {
 
     private ShapeRenderer sred;
 
-    ObjectCreation objectCreation;
+    private ObjectCreation objectCreation;
 
     //PlayingButtons
-    Sprite speedSprite;
-    int XofspeedSprite =65, YofspeedSprit=150;
-    Boolean isspeedSpritePressed = false;
+    private Sprite speedSprite;
+    private int XofspeedSprite =65, YofspeedSprit=150;
+    private Boolean isspeedSpritePressed = false;
+
+    //brakes
+    private Sprite BackBrake, FrontBrake, Brake;
+    Boolean isBackBrakePressed = false, isFrontBrakePressed = false, isBothBrakePressed = false;
+
+
 
     Body mover;
 
@@ -68,6 +74,23 @@ public class PlayArea implements Screen {
         speedSprite.setSize(80,80);
         speedSprite.setPosition(XofspeedSprite - speedSprite.getWidth()/2,YofspeedSprit - speedSprite.getHeight()/2);
 
+        Brake = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
+        Brake.setPosition(1000,350);
+        Brake.setSize(120,60);
+        Brake.setAlpha(0.4f);
+
+        FrontBrake = new Sprite(new Texture(Gdx.files.internal("playArea/BackBrake.png")));
+        FrontBrake.setPosition(1100,500);
+        FrontBrake.setSize(120,60);
+        FrontBrake.setAlpha(0.4f);
+
+        BackBrake = new Sprite(new Texture(Gdx.files.internal("playArea/FrontBrake.png")));
+        BackBrake.setPosition(1100,200);
+        BackBrake.setSize(120,60);
+        BackBrake.setAlpha(0.4f);
+
+
+
     }
 
     @Override
@@ -96,9 +119,9 @@ public class PlayArea implements Screen {
 
         //brakes for bicycle
         sred.setColor(0.8f,0.6f,0.4f,0.4f);
-        sred.ellipse(1050, 400, 90, 50);
-        sred.ellipse(1100, 600, 120, 60);
-        sred.ellipse(1100, 200, 120, 60);
+        sred.ellipse(1100, 500, 120, 60);//Front
+        sred.ellipse(1000, 350, 120, 60);
+        sred.ellipse(1100, 200, 120, 60);//Back
 
 
         sred.end();
@@ -106,6 +129,9 @@ public class PlayArea implements Screen {
 
         AllVariables.batch.begin();
         speedSprite.draw(AllVariables.batch);
+        Brake.draw(AllVariables.batch);
+        FrontBrake.draw(AllVariables.batch);
+        BackBrake.draw(AllVariables.batch);
         AllVariables.batch.end();
 
 
@@ -192,9 +218,26 @@ public class PlayArea implements Screen {
                         }
                         System.out.println(screenY);
 
+                        if (screenX > 1080 && screenX < 1240){
+                            if (screenY > 480 && screenY < 580){
+                                FrontBrake.setAlpha(0.9f);
+                                isFrontBrakePressed = true;
+                            }
+                            if (screenY > 180 && screenY < 280){
+                                BackBrake.setAlpha(0.9f);
+                                isBackBrakePressed = true;
+                            }
+                        }
+
+                        if (screenX > 980 && screenX < 1140 && screenY >330 && screenY <440){
+                            Brake.setAlpha(0.9f);
+                            isBothBrakePressed = true;
+                        }
 
 
-                        return false;
+
+
+                            return false;
                     }
 
                     @Override
@@ -205,6 +248,18 @@ public class PlayArea implements Screen {
                             YofspeedSprit = 150;
                             isspeedSpritePressed = false;
                             speedSprite.setAlpha(0.6f);
+                        }
+                        if (isBothBrakePressed){
+                            Brake.setAlpha(0.4f);
+                            isBothBrakePressed = false;
+                        }
+                        if (isBackBrakePressed){
+                            BackBrake.setAlpha(0.4f);
+                            isBackBrakePressed = false;
+                        }
+                        if (isFrontBrakePressed){
+                            FrontBrake.setAlpha(0.4f);
+                            isFrontBrakePressed = false;
                         }
                         return false;
                     }
