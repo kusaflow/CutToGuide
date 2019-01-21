@@ -38,6 +38,7 @@ public class PlayArea implements Screen {
     //PlayingButtons
     Sprite speedSprite;
     int XofspeedSprite =65, YofspeedSprit=150;
+    Boolean isspeedSpritePressed = false;
 
     Body mover;
 
@@ -86,11 +87,20 @@ public class PlayArea implements Screen {
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
         //shape renderer
         sred.begin(ShapeRenderer.ShapeType.Filled);
+        //speed controller for bicycle
         sred.rect(50, 150, 30,450,new Color(0,0,1,0.4f), new Color(0,0,1,0.4f), new Color(1,0,0,0.4f), new Color(1,0,0,0.4f));
         sred.setColor(0,0.2f,1,0.6f);
         sred.circle(65, 150,15);
         sred.setColor(0.8f,0.2f,0,0.6f);
         sred.circle(65, 600,15);
+
+        //brakes for bicycle
+        sred.setColor(0.8f,0.6f,0.4f,0.4f);
+        sred.ellipse(1050, 400, 90, 50);
+        sred.ellipse(1100, 600, 120, 60);
+        sred.ellipse(1100, 200, 120, 60);
+
+
         sred.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
@@ -173,10 +183,15 @@ public class PlayArea implements Screen {
 
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        screenY = AllVariables.HEIGHT - screenY;
                         //inputs for cycle speedometer
-                        if (screenX < 200 && screenY > 30 && screenY < 650){
+                        if (screenX < 200 && screenY > 30 && screenY < 300){
+                            isspeedSpritePressed = true;
                             speedSprite.setSize(70, 70);
+                            speedSprite.setAlpha(0.4f);
                         }
+                        System.out.println(screenY);
+
 
 
                         return false;
@@ -185,12 +200,27 @@ public class PlayArea implements Screen {
                     @Override
                     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
                         //resizing things to their normal size
-                        speedSprite.setSize(80, 80);
+                        if (isspeedSpritePressed) {
+                            speedSprite.setSize(80, 80);
+                            YofspeedSprit = 150;
+                            isspeedSpritePressed = false;
+                            speedSprite.setAlpha(0.6f);
+                        }
                         return false;
                     }
 
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        screenY = AllVariables.HEIGHT - screenY;
+
+                        if (isspeedSpritePressed){
+                            if (screenY < 150)
+                                speedSprite.setPosition(speedSprite.getX(), 150);
+                            else if (screenY > 600)
+                                speedSprite.setPosition(speedSprite.getX(), 600);
+                            else
+                                YofspeedSprit = screenY;
+                        }
                         return false;
                     }
 
