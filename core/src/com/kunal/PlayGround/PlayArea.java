@@ -41,8 +41,8 @@ public class PlayArea implements Screen {
     private Boolean isspeedSpritePressed = false;
 
     //brakes
-    private Sprite BackBrake, FrontBrake, Brake;
-    Boolean isBackBrakePressed = false, isFrontBrakePressed = false, isBothBrakePressed = false;
+    private Sprite BackandBrake, FrontBrake, PlayerLaunch;
+    Boolean isBackandBrakePressed = false, isFrontBrakePressed = false, isPlayerLaunchPressed = false;
 
 
 
@@ -74,20 +74,20 @@ public class PlayArea implements Screen {
         speedSprite.setSize(80,80);
         speedSprite.setPosition(XofspeedSprite - speedSprite.getWidth()/2,YofspeedSprit - speedSprite.getHeight()/2);
 
-        Brake = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
-        Brake.setPosition(1000,350);
-        Brake.setSize(120,60);
-        Brake.setAlpha(0.4f);
+        PlayerLaunch = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
+        PlayerLaunch.setPosition(1100,500);
+        PlayerLaunch.setSize(130,130);
+        PlayerLaunch.setAlpha(0.4f);
 
         FrontBrake = new Sprite(new Texture(Gdx.files.internal("playArea/BackBrake.png")));
-        FrontBrake.setPosition(1100,500);
-        FrontBrake.setSize(120,60);
+        FrontBrake.setPosition(1100,200);
+        FrontBrake.setSize(130,130);
         FrontBrake.setAlpha(0.4f);
 
-        BackBrake = new Sprite(new Texture(Gdx.files.internal("playArea/FrontBrake.png")));
-        BackBrake.setPosition(1100,200);
-        BackBrake.setSize(120,60);
-        BackBrake.setAlpha(0.4f);
+        BackandBrake = new Sprite(new Texture(Gdx.files.internal("playArea/FrontBrake.png")));
+        BackandBrake.setPosition(1000,340);
+        BackandBrake.setSize(180,150);
+        BackandBrake.setAlpha(0.4f);
 
 
 
@@ -118,10 +118,11 @@ public class PlayArea implements Screen {
         sred.circle(65, 600,15);
 
         //brakes for bicycle
-        sred.setColor(0.8f,0.6f,0.4f,0.4f);
-        sred.ellipse(1100, 500, 120, 60);//Front
-        sred.ellipse(1000, 350, 120, 60);
-        sred.ellipse(1100, 200, 120, 60);//Back
+        sred.setColor(0.8f,0.1f,0.1f,0.4f);
+        sred.rect(1100, 500, 130, 130); // LauchPlayer
+        sred.rect(1000, 340, 180, 150);
+        sred.rect(1100, 200, 130, 130); // FrontBrake
+
 
 
         sred.end();
@@ -129,9 +130,9 @@ public class PlayArea implements Screen {
 
         AllVariables.batch.begin();
         speedSprite.draw(AllVariables.batch);
-        Brake.draw(AllVariables.batch);
+        PlayerLaunch.draw(AllVariables.batch);
         FrontBrake.draw(AllVariables.batch);
-        BackBrake.draw(AllVariables.batch);
+        BackandBrake.draw(AllVariables.batch);
         AllVariables.batch.end();
 
 
@@ -160,6 +161,8 @@ public class PlayArea implements Screen {
 
         //positions of images
         speedSprite.setPosition(XofspeedSprite - speedSprite.getWidth()/2,YofspeedSprit - speedSprite.getHeight()/2);
+
+        //if isSpeedSpriteinMotion is true then only the cycle will move
 
     }
 
@@ -218,20 +221,24 @@ public class PlayArea implements Screen {
                         }
                         System.out.println(screenY);
 
-                        if (screenX > 1080 && screenX < 1240){
-                            if (screenY > 480 && screenY < 580){
+                        if (screenX > 1080 && screenX < 1250){
+                            //front Brake
+                            if (screenY > 200 && screenY < 330){
                                 FrontBrake.setAlpha(0.9f);
                                 isFrontBrakePressed = true;
                             }
-                            if (screenY > 180 && screenY < 280){
-                                BackBrake.setAlpha(0.9f);
-                                isBackBrakePressed = true;
+
+                            //Launch Player
+                            if (screenY > 500 && screenY < 630){
+                                PlayerLaunch.setAlpha(0.9f);
+                                isPlayerLaunchPressed = true;
                             }
                         }
 
-                        if (screenX > 980 && screenX < 1140 && screenY >330 && screenY <440){
-                            Brake.setAlpha(0.9f);
-                            isBothBrakePressed = true; 
+                        //Back
+                        if (screenX > 980 && screenX < 1200 && screenY >340 && screenY <500){
+                            BackandBrake.setAlpha(0.9f);
+                            isBackandBrakePressed = true;
                         }
 
 
@@ -249,13 +256,13 @@ public class PlayArea implements Screen {
                             isspeedSpritePressed = false;
                             speedSprite.setAlpha(0.6f);
                         }
-                        if (isBothBrakePressed){
-                            Brake.setAlpha(0.4f);
-                            isBothBrakePressed = false;
+                        if (isPlayerLaunchPressed){
+                            PlayerLaunch.setAlpha(0.4f);
+                            isPlayerLaunchPressed = false;
                         }
-                        if (isBackBrakePressed){
-                            BackBrake.setAlpha(0.4f);
-                            isBackBrakePressed = false;
+                        if (isBackandBrakePressed){
+                            BackandBrake.setAlpha(0.4f);
+                            isBackandBrakePressed = false;
                         }
                         if (isFrontBrakePressed){
                             FrontBrake.setAlpha(0.4f);

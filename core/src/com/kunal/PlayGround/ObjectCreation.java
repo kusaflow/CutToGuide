@@ -2,6 +2,8 @@ package com.kunal.PlayGround;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.physics.box2d.joints.DistanceJoint;
+import com.badlogic.gdx.physics.box2d.joints.DistanceJointDef;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJoint;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.kunal.AllVariables;
@@ -24,11 +26,16 @@ public class ObjectCreation {
         BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_land));
 
         RevoluteJointDef rdef = new RevoluteJointDef();
+        //DistanceJointDef rdef = new DistanceJointDef();
 
 
         //--------------------Bicycle Parts
         AllVariables.BackWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(538,25),
                 25,0.5f, 0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land));
+
+        AllVariables.FrontWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(660,25),
+                25, 0.5f,0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land));
+
 
 
         AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(580, 44),
@@ -67,6 +74,14 @@ public class ObjectCreation {
         rdef.localAnchorA.set(20/AllVariables.PPM,0);
         rdef.localAnchorB.set(0, -32/AllVariables.PPM);
         world.createJoint(rdef);
+
+        //rod5 and backwheel bottom part joint
+        rdef.bodyA = AllVariables.BackWheel;
+        rdef.bodyB = AllVariables.rod5;
+        rdef.localAnchorB.set(0, -32/AllVariables.PPM);
+        world.createJoint(rdef);
+
+
 
 
         AllVariables.rod1 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(609, 63),
@@ -120,8 +135,8 @@ public class ObjectCreation {
         rdef.bodyB = AllVariables.rod1;
         rdef.localAnchorA.set(0,10/AllVariables.PPM);
         rdef.localAnchorB.set(24/AllVariables.PPM, 0);
-        rdef.upperAngle = (float)(40*Math.PI/180);
-        rdef.lowerAngle = (float)(40*Math.PI/180);
+        //rdef.upperAngle = (float)(40*Math.PI/180);
+        //rdef.lowerAngle = (float)(40*Math.PI/180);
         world.createJoint(rdef);
 
         //rod6 and rod2
@@ -130,10 +145,6 @@ public class ObjectCreation {
         rdef.localAnchorA.set(0,10/AllVariables.PPM);
         rdef.localAnchorB.set(29/AllVariables.PPM, 0);
         world.createJoint(rdef);
-
-
-        AllVariables.FrontWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(660,25),
-                25, 0.5f,0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land));
 
         //frontwheel and rod6
         rdef.bodyA = AllVariables.rod6;
