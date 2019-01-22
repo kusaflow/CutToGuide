@@ -163,36 +163,22 @@ public class PlayArea implements Screen {
         speedSprite.setPosition(XofspeedSprite - speedSprite.getWidth()/2,YofspeedSprit - speedSprite.getHeight()/2);
 
         //if isSpeedSpriteinMotion is true then only the cycle will move
+        if (isspeedSpritePressed){
+            if ((speedSprite.getY() - 115)/30 < 0.3)
+                AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getAngularVelocity());
+            else
+                AllVariables.BackWheel.setAngularVelocity(-(speedSprite.getY() - 115)/12);
+
+        }
+
+        //brakes or back
+        if (isBackandBrakePressed){
+            AllVariables.BackWheel.setAngularVelocity(2);
+        }
 
     }
 
     private void input(float dt){
-        float velx =0, vely =0;
-
-        if(Gdx.input.isKeyPressed(Input.Keys.A)){
-            velx -=1;
-        }if(Gdx.input.isKeyPressed(Input.Keys.D)){
-            velx +=1;
-        }if(Gdx.input.isKeyPressed(Input.Keys.S)){
-            vely -=1;
-        }if(Gdx.input.isKeyPressed(Input.Keys.W)){
-            vely +=1;
-        }
-        mover.setLinearVelocity(velx, vely);
-
-        if (Gdx.input.isKeyPressed(Input.Keys.Z)){
-            AllVariables.BackWheel.setAngularVelocity(40);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.X)){
-            AllVariables.BackWheel.setAngularVelocity(-40);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.M)){
-            AllVariables.FrontWheel.setAngularVelocity(0);
-        }
-
-        if (Gdx.input.isTouched()){
-            AllVariables.BackWheel.setAngularVelocity(-40);
-        }
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
                     @Override
