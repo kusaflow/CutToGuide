@@ -15,7 +15,7 @@ public class ObjectCreation {
     public void CreateBicycle(World world){
         //Land surface and for now it is temerory
         BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -50),
-                new Vector2(6000, 50), 1,1, AllVariables.Bit_land,
+                new Vector2(12000, 50), 1,1, AllVariables.Bit_land,
                 (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
 
         float f[] = {560, 5,900,150, 900, 5};
@@ -176,6 +176,249 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
 
+
+
+
+    }
+    
+    short len = 3;
+
+    public void PlayerCreation(World world){
+        AllVariables.Front_foot1 = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(600,50), new Vector2(len + len,len),.5f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Back_foot1 = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(600,50), new Vector2(len + len,len),.5f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Front_foot2 = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(608,50), new Vector2(len+len/2 ,len),0.5f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Back_foot2 = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(608,50), new Vector2(len+len/2 ,len),0.5f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Front_leg = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,63), new Vector2(len,len*4f),0.8f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Back_leg = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,63), new Vector2(len,len*4f),0.8f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+
+        AllVariables.Front_Thai = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,80), new Vector2(len,len*5f),0.7f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Back_Thai = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,80), new Vector2(len,len*5f),0.7f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Stomach1 = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,90), new Vector2(len*1.5f,len*2.5f),0.5f,
+                0.5f,(short) (AllVariables.Bit_Bicycle),
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land   | AllVariables.Bit_Tool));
+
+        AllVariables.Stomach2 = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,100), new Vector2(len*1.5f,len*2.5f),0.4f,
+                0.5f,(short) (AllVariables.Bit_Bicycle),
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land  | AllVariables.Bit_Tool));
+
+        AllVariables.Stomach3 = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,110), new Vector2(len*2,len*3.5f),0.3f,
+                0.5f,(short) (AllVariables.Bit_Bicycle),
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land  | AllVariables.Bit_Tool));
+
+        AllVariables.Front_arm = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604, 100), new Vector2(len , len * 3.5f), 0.2f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Back_arm = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604, 100), new Vector2(len , len * 3.5f), 0.2f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Front_hand = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604, 100), new Vector2(len , len * 3.5f), 0.2f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.Back_hand = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604, 100), new Vector2(len , len * 3.5f), 0.2f,
+                0.5f,AllVariables.Bit_Bicycle,
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+
+
+        AllVariables.neck = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,120), new Vector2(len,len*2.5f),0.3f,
+                0.5f,(short) (AllVariables.Bit_Bicycle),
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+        AllVariables.head = BodyGenerator.BodyAssemble(world, false, "player", new Vector2(604,130), new Vector2(len*3f,len*3.5f),0.3f,
+                0.5f,(short) (AllVariables.Bit_Bicycle),
+                (short)(AllVariables.Bit_enimes | AllVariables.Bit_land | AllVariables.Bit_Tool));
+
+
+
+
+        RevoluteJointDef rdef = new RevoluteJointDef();
+
+
+        rdef.bodyA = AllVariables.Front_foot1;
+        rdef.bodyB = AllVariables.Front_leg;
+        rdef.collideConnected = false;
+        rdef.localAnchorA.set(-((len-(len/2))/AllVariables.PPM),0);
+        rdef.localAnchorB.set(0,-((len*5 - (len/2))/AllVariables.PPM));
+        rdef.lowerAngle = (float) (-0.2f * Math.PI);
+        rdef.upperAngle = (float) (0.07f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Front_foot2;
+        rdef.localAnchorA.set((len + len/2)/AllVariables.PPM,0);
+        rdef.localAnchorB.set(-((len+len/2)/AllVariables.PPM),0);
+        rdef.lowerAngle = 0;
+        rdef.upperAngle = (float) (0.3f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Front_leg;
+        rdef.bodyA = AllVariables.Front_Thai;
+        rdef.localAnchorA.set(0,-(len*5 - (len/2))/AllVariables.PPM);
+        rdef.localAnchorB.set(0,((len*4 - (len/2))/AllVariables.PPM));
+        rdef.upperAngle = 0;
+        rdef.lowerAngle = -(float) (0.7f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Stomach1;
+        rdef.localAnchorA.set(0,(len*5 - (len/2))/AllVariables.PPM);
+        rdef.localAnchorB.set(0,-(len*2)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.04f * Math.PI);
+        rdef.lowerAngle = (float) (-0.5f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+        rdef.bodyA = AllVariables.Stomach2;
+        rdef.localAnchorA.set(0, -(len*2)/AllVariables.PPM);
+        rdef.localAnchorB.set(0 , (len*2)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.1f * Math.PI);
+        rdef.lowerAngle = -(float) (0.05f * Math.PI);
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Stomach3;
+        rdef.localAnchorA.set( 0, (len*2)/AllVariables.PPM);
+        rdef.localAnchorB.set(-(len/2) /AllVariables.PPM, -(len*3)/AllVariables.PPM);
+        rdef.upperAngle = 0;
+        rdef.lowerAngle = -(float) (0.05f * Math.PI);
+
+        world.createJoint(rdef);
+
+        rdef.bodyA = AllVariables.Front_arm;
+        rdef.localAnchorA.set(0 , (len*3)/AllVariables.PPM);
+        rdef.localAnchorB.set(-(len/2)/AllVariables.PPM , (len*3)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.5f * Math.PI);
+        rdef.lowerAngle = (float) (-1f * Math.PI);
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Front_hand;
+        rdef.localAnchorA.set(0 , -(len*3)/AllVariables.PPM);
+        rdef.localAnchorB.set(0 , (len*3)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.4f * Math.PI);
+        rdef.lowerAngle = 0;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Stomach3;
+        rdef.bodyA = AllVariables.Back_arm;
+        rdef.localAnchorA.set(0 , (len*3)/AllVariables.PPM);
+        rdef.localAnchorB.set(-(len/2)/AllVariables.PPM , (len*3)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.5f * Math.PI);
+        rdef.lowerAngle = (float) (-1f * Math.PI);
+
+        world.createJoint(rdef);
+
+
+        rdef.bodyB = AllVariables.Back_hand;
+        rdef.localAnchorA.set(0 , -(len*3)/AllVariables.PPM);
+        rdef.localAnchorB.set(0 , (len*3)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.4f * Math.PI);
+        rdef.lowerAngle = 0;
+
+        world.createJoint(rdef);
+
+
+
+
+        rdef.bodyB = AllVariables.Stomach3;
+        rdef.bodyA = AllVariables.neck;
+        rdef.localAnchorA.set(0 , -(len*2)/AllVariables.PPM);
+        rdef.localAnchorB.set(-(len/2)/AllVariables.PPM , (len*3)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.05f * Math.PI);
+        rdef.lowerAngle = (float) (-0.05f * Math.PI);
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.head;
+        rdef.localAnchorA.set(0 , (len*2)/AllVariables.PPM);
+        rdef.localAnchorB.set(-(len/2)/AllVariables.PPM , -(len*2.5f)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.1f * Math.PI);
+        rdef.lowerAngle = (float) (-0.1f * Math.PI);
+
+        world.createJoint(rdef);
+
+
+        //bqck joiminh---------------------------------------------------------------------------------
+        rdef.bodyA = AllVariables.Back_foot1;
+        rdef.bodyB = AllVariables.Back_leg;
+        rdef.localAnchorA.set(-((len-(len/2))/AllVariables.PPM),0);
+        rdef.localAnchorB.set(0,-((len*5 - (len/2))/AllVariables.PPM));
+        rdef.lowerAngle = (float) (-0.2f * Math.PI);
+        rdef.upperAngle = (float) (0.07f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Back_foot2;
+        rdef.localAnchorA.set((len + len/2)/AllVariables.PPM,0);
+        rdef.localAnchorB.set(-((len+len/2)/AllVariables.PPM),0);
+        rdef.lowerAngle = 0;
+        rdef.upperAngle = (float) (0.3f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Back_leg;
+        rdef.bodyA = AllVariables.Back_Thai;
+        rdef.localAnchorA.set(0,-(len*5 - (len/2))/AllVariables.PPM);
+        rdef.localAnchorB.set(0,((len*4 - (len/2))/AllVariables.PPM));
+        rdef.upperAngle = 0;
+        rdef.lowerAngle = -(float) (0.7f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+        rdef.bodyB = AllVariables.Stomach1;
+        rdef.localAnchorA.set(0,(len*5 - (len/2))/AllVariables.PPM);
+        rdef.localAnchorB.set(0,-(len*2)/AllVariables.PPM);
+        rdef.upperAngle = (float) (0.04f * Math.PI);
+        rdef.lowerAngle = (float) (-0.5f * Math.PI);
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
+
+
+        //rod5 and stomach 1
+        rdef.bodyA = AllVariables.rod5;
+        rdef.bodyB = AllVariables.Stomach1;
+        rdef.localAnchorA.set(0,(33f)/AllVariables.PPM);
+
+        rdef.enableLimit = true;
+
+        world.createJoint(rdef);
 
 
 

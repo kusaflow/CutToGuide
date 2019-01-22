@@ -14,6 +14,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -42,7 +43,8 @@ public class PlayArea implements Screen {
 
     //brakes
     private Sprite BackandBrake, FrontBrake, PlayerLaunch;
-    Boolean isBackandBrakePressed = false, isFrontBrakePressed = false, isPlayerLaunchPressed = false;
+    private Boolean isBackandBrakePressed = false, isFrontBrakePressed = false, isPlayerLaunchPressed = false;
+
 
 
 
@@ -65,6 +67,7 @@ public class PlayArea implements Screen {
         objectCreation = new ObjectCreation();
 
         objectCreation.CreateBicycle(world);
+        objectCreation.PlayerCreation(world);
 
         mover = BodyGenerator.BodyAssembleKin(world, false, "mover", new Vector2(523,-50), new Vector2(10,10),AllVariables.Bit_land,AllVariables.Bit_Bicycle);
 
@@ -151,8 +154,6 @@ public class PlayArea implements Screen {
         world.step(1/(1/dt), 6,2);
 
 
-
-
         Vector3 campos = cam.position;
         campos.x = AllVariables.BackWheel.getPosition().x*AllVariables.PPM;
         campos.y = AllVariables.BackWheel.getPosition().y*AllVariables.PPM;
@@ -171,9 +172,23 @@ public class PlayArea implements Screen {
 
         }
 
+
+
         //brakes or back
         if (isBackandBrakePressed){
-            AllVariables.BackWheel.setAngularVelocity(2);
+            if (AllVariables.BackWheel.getLinearVelocity().x < -1f)
+                AllVariables.BackWheel.setAngularVelocity(10);
+            else if(AllVariables.BackWheel.getLinearVelocity().x < -0.45f)
+                AllVariables.BackWheel.setAngularVelocity(5);
+            else
+                AllVariables.BackWheel.setAngularVelocity(2);
+
+        }
+
+        if (isFrontBrakePressed){
+            AllVariables.FrontWheel.setAngularVelocity(0);
+            //AllVariables.FrontWheel.applyForceToCenter(0,-50, true);
+
         }
 
     }
