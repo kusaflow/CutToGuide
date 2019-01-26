@@ -19,11 +19,7 @@ public class AllVariables {
     public static final short Bit_enimes = 4;
     public static final short Bit_Tool= 8;
 
-    public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6, Handle;
-
-    public static Body Front_foot1, Front_foot2, Front_leg, Front_Thai, Back_foot1, Back_foot2, Back_leg, Back_Thai,
-            Stomach1, Stomach2, Stomach3, neck, head, Front_arm, Back_arm, Front_hand, Back_hand, seat;
-
+    public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6;
 
 
 }

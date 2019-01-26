@@ -176,9 +176,6 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
 
-
-
-
     }
     
 
