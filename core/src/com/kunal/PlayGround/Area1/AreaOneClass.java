@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -18,6 +19,7 @@ import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.CreatingBodyForArea1.ShapesAndBodyCreation;
 import com.kunal.PlayGround.ObjectCreation;
+import com.kunal.utils.BodyGenerator;
 
 public class AreaOneClass implements Screen {
     MainGame game;
@@ -38,7 +40,13 @@ public class AreaOneClass implements Screen {
     int levelNumber;
 
     //for physics and body making
-    ShapesAndBodyCreation sp1;
+    ShapesAndBodyCreation shapesAndBodyCreation;
+
+    //drawing level
+    Sprite levelTex;
+
+    //body for the origin of land
+    Body landOrigin;
 
     private Sprite Brake, start;
     private Boolean brakeBool = false, startBool = false;
@@ -51,7 +59,7 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
+        port = new FitViewport(AllVariables.WIDTH*1.4f, AllVariables.HEIGHT*1.4f, cam);
 
         world = new World(new Vector2(0,-10f), false);
 
@@ -73,10 +81,19 @@ public class AreaOneClass implements Screen {
         start.setSize(150, 150);
         start.setAlpha(0.8f);
 
-        //initializing the required physics shape for the level
-        if (levelNumber == 1){
+        levelTex = new Sprite(new Texture(Gdx.files.internal("playArea/tiledMap/area1/level" + levelNumber + ".png")));
 
-        }
+        levelTex.setSize(levelTex.getWidth()*2,levelTex.getHeight()*2);
+
+        landOrigin = BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(0, 0),
+                new Vector2(5, 5), 1,1, AllVariables.Bit_land,
+                (short)(AllVariables.Bit_land));
+
+
+
+        shapesAndBodyCreation = new ShapesAndBodyCreation(levelNumber);
+        shapesAndBodyCreation.createBodies();
+
     }
 
     @Override
@@ -91,16 +108,22 @@ public class AreaOneClass implements Screen {
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
 
+
+        System.out.println(cam.position.x);
+        levelTex.setPosition(cam.position.x,0);
+
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
+        levelTex.draw(AllVariables.batch);
+
+
         AllVariables.batch.end();
 
 
     }
 
     private void update(float dt){
-        input(dt);
         input(dt);
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
@@ -123,9 +146,6 @@ public class AreaOneClass implements Screen {
                 else
                     AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getAngularVelocity()-3);
             }
-            System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
-
-
         }
 
     }
@@ -202,8 +222,6 @@ public class AreaOneClass implements Screen {
     @Override
     public void resize(int width, int height) {
         port.update(width, height);
-        cam.viewportHeight =height;
-        cam.viewportWidth = width;
     }
 
     @Override
