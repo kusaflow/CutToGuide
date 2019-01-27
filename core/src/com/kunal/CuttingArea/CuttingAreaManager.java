@@ -24,10 +24,7 @@ public class CuttingAreaManager implements Screen {
     protected LinkedList<Byte> vertices;
     protected LinkedList<LinkedList<Byte>> shapes;
 
-    //minmax to store the values minimum and max value of any row or columb of the selected shape
-    //null value is stored when no vertex found on the respective coloum or row
-    private LinkedList<MinMaxClass> minmax;
-
+    private LinkedList<Byte> cantuseDots;
 
     protected LinkedList<Byte> inputsToChop;
 
@@ -55,14 +52,14 @@ public class CuttingAreaManager implements Screen {
 
         sr = new ShapeRenderer();
 
+        cantuseDots = new LinkedList<Byte>();
+
         //shapes and vertices
         vertices = new LinkedList<Byte>();
         shapes = new LinkedList<LinkedList<Byte>>();
 
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
-
-        minmax = new LinkedList<MinMaxClass>();
 
         //all big squre Points
         BigSqurePoints[0][0] = 550;
@@ -169,8 +166,15 @@ public class CuttingAreaManager implements Screen {
 
         //sr.setColor(0,1,0.5f,1);
         //sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
-        sr.setColor(1, 0.2f, 0.2f, 1);
         for (int i = 0; i < 16; i++) {
+            sr.setColor(0, 1f, 0.2f, 1);
+            for (int j=0; j<cantuseDots.size(); j++){
+                if (i == cantuseDots.get(j))
+                    sr.setColor(1,0,0,1);
+            }
+            if (i ==5 || i == 6 || i ==9 || i==10)
+                sr.setColor(1,0,0,1);
+
             sr.circle(BigSqurePoints[i][0], BigSqurePoints[i][1], 7);
         }
 
@@ -509,8 +513,6 @@ public class CuttingAreaManager implements Screen {
             }
 
         }
-        System.out.println(overlabers);
-
 
 
          short endVal = -1;
@@ -610,6 +612,9 @@ public class CuttingAreaManager implements Screen {
                 }
             }
         }
+
+        cantuseDots.add((byte) startPoint);
+        cantuseDots.add((byte)endPoint);
 
 
 

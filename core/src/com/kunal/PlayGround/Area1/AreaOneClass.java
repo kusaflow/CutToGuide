@@ -44,7 +44,7 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
+        port = new FitViewport(AllVariables.WIDTH*2, AllVariables.HEIGHT*2, cam);
 
         world = new World(new Vector2(0,-10f), false);
 
@@ -100,11 +100,11 @@ public class AreaOneClass implements Screen {
         cam.position.set(campos);
         cam.update();
 
-        if (brakeBool){
-            AllVariables.BackWheel.setAngularVelocity(20);
-        }
         if (startBool){
-            AllVariables.FrontWheel.setAngularVelocity(-20);
+            if (brakeBool)
+                AllVariables.BackWheel.setAngularVelocity(0);
+            else
+                AllVariables.BackWheel.setAngularVelocity(-20);
         }
 
     }

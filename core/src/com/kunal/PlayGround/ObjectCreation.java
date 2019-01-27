@@ -18,7 +18,7 @@ public class ObjectCreation {
                 new Vector2(12000, 50), 1,1, AllVariables.Bit_land,
                 (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
 
-        float f[] = {560, 5,900,150, 900, 5};
+        float f[] = {760, 5,1100,150, 1100, 5};
 
 
         BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_land));
