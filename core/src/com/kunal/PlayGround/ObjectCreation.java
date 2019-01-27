@@ -20,8 +20,14 @@ public class ObjectCreation {
 
         float f[] = {760, 5,1100,150, 1100, 5};
 
-
         BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_land));
+
+
+        float f2[] = {3760, 5,4100,150, 4100, 5};
+
+        BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f2,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_land));
+
+
 
         RevoluteJointDef rdef = new RevoluteJointDef();
 

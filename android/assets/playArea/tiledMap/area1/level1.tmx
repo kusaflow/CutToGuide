@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-up" width="60" height="12" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="2">
+ <tileset firstgid="1" source="grassland.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="60" height="12">
+  <data encoding="base64" compression="zlib">
+   eJztz0sOQDAUQNEX9Sl7EX9T9sl+WATW4po2TEgMeDc5aZr+UhFN0zRN0+62eCIrNgxGZDTP7uvQn4xv5b7nzi3/i5FgwnzxX/fcsc1HgBDRh+cWGXIUKFGhRoP2g+vpz+z7UyAw
+  </data>
+ </layer>
+ <objectgroup id="2" name="land">
+  <object id="1" x="0" y="315.152">
+   <polyline points="0,0 6.06061,-27.2727 1912.12,-30.303 1918.18,-9.09091"/>
+  </object>
+ </objectgroup>
+</map>

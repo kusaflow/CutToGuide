@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -36,6 +39,10 @@ public class AreaOneClass implements Screen {
     private Sprite Brake, start;
     private Boolean brakeBool = false, startBool = false;
 
+    //tiled map
+    private OrthogonalTiledMapRenderer tmr;
+    private TiledMap map;
+
 
     public AreaOneClass(MainGame game, Vector2 endPoint) {
         this.game = game;
@@ -44,7 +51,7 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH*2, AllVariables.HEIGHT*2, cam);
+        port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
         world = new World(new Vector2(0,-10f), false);
 
@@ -55,6 +62,10 @@ public class AreaOneClass implements Screen {
         objectCreation = new ObjectCreation();
 
         objectCreation.CreateBicycle(world);
+
+        //tiled map
+        map = new TmxMapLoader().load("playArea/tiledMap/area1/level1.tmx");
+        tmr = new OrthogonalTiledMapRenderer(map, 1f/100f);
 
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
         Brake.setPosition(1050,140);
@@ -69,7 +80,6 @@ public class AreaOneClass implements Screen {
 
     @Override
     public void show() {
-
     }
 
     @Override
@@ -85,11 +95,15 @@ public class AreaOneClass implements Screen {
         start.draw(AllVariables.batch);
         AllVariables.batch.end();
 
+        tmr.render();
+
+
     }
 
     private void update(float dt){
         input(dt);
         input(dt);
+        tmr.setView(cam);
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         world.step(1/(1/dt), 6,2);
 
@@ -101,10 +115,18 @@ public class AreaOneClass implements Screen {
         cam.update();
 
         if (startBool){
-            if (brakeBool)
-                AllVariables.BackWheel.setAngularVelocity(0);
-            else
-                AllVariables.BackWheel.setAngularVelocity(-20);
+            if (brakeBool) {
+                //AllVariables.BackWheel.setAngularVelocity(0);
+                AllVariables.FrontWheel.setAngularVelocity(0);
+            }else{
+                if (AllVariables.BackWheel.getAngularVelocity() > -8)
+                    AllVariables.BackWheel.setAngularVelocity(-10);
+                else
+                    AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getAngularVelocity()-3);
+            }
+            System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
+
+
         }
 
     }
@@ -181,6 +203,8 @@ public class AreaOneClass implements Screen {
     @Override
     public void resize(int width, int height) {
         port.update(width, height);
+        cam.viewportHeight =height;
+        cam.viewportWidth = width;
     }
 
     @Override
@@ -200,6 +224,10 @@ public class AreaOneClass implements Screen {
 
     @Override
     public void dispose() {
-
+        world.dispose();
+        b2dr.dispose();
+        sred.dispose();
+        map.dispose();
+        tmr.dispose();
     }
 }
