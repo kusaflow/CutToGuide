@@ -33,7 +33,7 @@ public class temp implements Screen {
             //game.setScreen(new PlayArea(game));
             // game.setScreen(new CuttingAreaManager(game));
             //game.setScreen(new MainLoadingScreen(game));
-            game.setScreen(new AreaOneClass(game, new Vector2(50,100)));
+            game.setScreen(new AreaOneClass(game, new Vector2(50,100), 1));
 
         }
     }

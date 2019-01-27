@@ -8,9 +8,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -19,8 +16,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.Area1.CreatingBodyForArea1.ShapesAndBodyCreation;
 import com.kunal.PlayGround.ObjectCreation;
-import com.kunal.utils.BodyGenerator;
 
 public class AreaOneClass implements Screen {
     MainGame game;
@@ -34,19 +31,22 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
+    //end point is when the level will end
     private Vector2 endPoint;
+
+    //level number
+    int levelNumber;
+
+    //for physics and body making
+    ShapesAndBodyCreation sp1;
 
     private Sprite Brake, start;
     private Boolean brakeBool = false, startBool = false;
 
-    //tiled map
-    private OrthogonalTiledMapRenderer tmr;
-    private TiledMap map;
-
-
-    public AreaOneClass(MainGame game, Vector2 endPoint) {
+    public AreaOneClass(MainGame game, Vector2 endPoint, int levelNumber) {
         this.game = game;
         this.endPoint = endPoint;
+        this.levelNumber = levelNumber;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -63,10 +63,6 @@ public class AreaOneClass implements Screen {
 
         objectCreation.CreateBicycle(world);
 
-        //tiled map
-        map = new TmxMapLoader().load("playArea/tiledMap/area1/level1.tmx");
-        tmr = new OrthogonalTiledMapRenderer(map, 1f/100f);
-
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
         Brake.setPosition(1050,140);
         Brake.setSize(180,150);
@@ -76,6 +72,11 @@ public class AreaOneClass implements Screen {
         start.setPosition(50, 140);
         start.setSize(150, 150);
         start.setAlpha(0.8f);
+
+        //initializing the required physics shape for the level
+        if (levelNumber == 1){
+
+        }
     }
 
     @Override
@@ -95,15 +96,13 @@ public class AreaOneClass implements Screen {
         start.draw(AllVariables.batch);
         AllVariables.batch.end();
 
-        tmr.render();
-
 
     }
 
     private void update(float dt){
         input(dt);
         input(dt);
-        tmr.setView(cam);
+
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         world.step(1/(1/dt), 6,2);
 
@@ -227,7 +226,5 @@ public class AreaOneClass implements Screen {
         world.dispose();
         b2dr.dispose();
         sred.dispose();
-        map.dispose();
-        tmr.dispose();
     }
 }
