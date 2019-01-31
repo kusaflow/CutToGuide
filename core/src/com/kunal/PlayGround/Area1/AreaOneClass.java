@@ -95,7 +95,7 @@ public class AreaOneClass implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
-        tmr.render();
+        // tmr.render();
 
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
