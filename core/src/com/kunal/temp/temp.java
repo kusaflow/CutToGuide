@@ -4,11 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
-import com.kunal.CuttingArea.CuttingAreaManager;
-import com.kunal.Loading.MainLoadingScreen;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
-import com.kunal.PlayGround.PlayArea;
 
 public class temp implements Screen {
 

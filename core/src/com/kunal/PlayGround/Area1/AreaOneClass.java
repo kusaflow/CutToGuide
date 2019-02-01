@@ -90,9 +90,10 @@ public class AreaOneClass implements Screen {
 
     @Override
     public void render(float dt) {
-        update(dt);
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        update(dt);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         // tmr.render();
@@ -101,6 +102,7 @@ public class AreaOneClass implements Screen {
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         AllVariables.batch.end();
+
 
 
     }
@@ -118,7 +120,6 @@ public class AreaOneClass implements Screen {
         cam.position.set(campos);
         cam.update();
         tmr.setView(cam);
-
 
         if (startBool){
             if (brakeBool) {
