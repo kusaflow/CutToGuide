@@ -200,7 +200,9 @@ public class ObjectCreation {
             }
 
             Body b= BodyGenerator.ChainLand(world,false, "cutout", new Vector2(600,80), ver,1,0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
-            //b.setTransform(b.getPosition(),45);
+            VariablesForPlayArea.CutOutBodies.add(b);
+            
+
 
 
             ver = null;

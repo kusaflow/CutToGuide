@@ -1,6 +1,7 @@
 package com.kunal.PlayGround;
 
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 
 import java.util.LinkedList;
 
@@ -20,8 +21,12 @@ public class VariablesForPlayArea {
     //level number
     public static int levelNumber;
 
+    //linked list for bodies
+    public static LinkedList<Body> CutOutBodies;
+
     public VariablesForPlayArea() {
         cantuseDots = new LinkedList<Byte>();
+        CutOutBodies = new LinkedList<Body>();
 
         //all big squre Points
         BigSqurePoints[0][0] = 550;
