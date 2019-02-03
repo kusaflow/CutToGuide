@@ -1,6 +1,7 @@
 package com.kunal.PlayGround.Area1;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -11,6 +12,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
@@ -19,7 +21,9 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.ObjectCreation;
+import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class AreaOneClass implements Screen {
     MainGame game;
@@ -33,12 +37,6 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
-    //end point is when the level will end
-    private Vector2 endPoint;
-
-    //level number
-    int levelNumber;
-
     private Sprite Brake, start;
     private Boolean brakeBool = false, startBool = false;
 
@@ -46,17 +44,21 @@ public class AreaOneClass implements Screen {
     private TiledMap map;
     private OrthogonalTiledMapRenderer tmr;
 
-    public AreaOneClass(MainGame game, Vector2 endPoint, int levelNumber) {
+    private float ver[];
+
+
+    Polygon poly;
+
+
+    public AreaOneClass(MainGame game) {
         this.game = game;
-        this.endPoint = endPoint;
-        this.levelNumber = levelNumber;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
         port = new FitViewport(AllVariables.WIDTH*1.4f, AllVariables.HEIGHT*1.4f, cam);
 
-        world = new World(new Vector2(0,-10f), false);
+        world = new World(new Vector2(0,0f), false);
 
         b2dr = new Box2DDebugRenderer();
 
@@ -65,6 +67,10 @@ public class AreaOneClass implements Screen {
         objectCreation = new ObjectCreation();
 
         objectCreation.CreateBicycle(world);
+        objectCreation.CreateCutouts(world);
+
+        poly = new Polygon();
+
 
         //tiled map
         map = new TmxMapLoader().load("playArea/tiledMap/area1/level1.tmx");
@@ -97,6 +103,29 @@ public class AreaOneClass implements Screen {
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         // tmr.render();
+
+        sred.begin(ShapeRenderer.ShapeType.Line);
+
+        sred.setColor(0, 0.6f, 1, 1);
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
+                k++;
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
+                k++;
+            }
+            //sred.polygon(ver);
+            poly = new Polygon(ver);
+            poly.dirty();
+            poly.rotate(25);
+            sred.polygon(poly.getTransformedVertices());
+
+            ver = null;
+
+        }
+
+        sred.end();
 
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
@@ -176,11 +205,21 @@ public class AreaOneClass implements Screen {
 
                     @Override
                     public boolean keyDown(int keycode) {
+                        if (keycode == Input.Keys.P){
+                            game.setScreen(new CuttingAreaManager(game));
+                        }
+                        if (keycode == Input.Keys.SPACE){
+                            world.setGravity(new Vector2(0,-10));
+                        }
+
                         return false;
                     }
 
                     @Override
                     public boolean keyUp(int keycode) {
+                        if (keycode == Input.Keys.SPACE){
+                            world.setGravity(new Vector2(0,0));
+                        }
                         return false;
                     }
 

@@ -89,14 +89,16 @@ public class BodyGenerator {
         }
         bdef.position.set(initPos.x/ AllVariables.PPM, initPos.y/AllVariables.PPM);
 
-        //bdef.fixedRotation = true;
+        bdef.fixedRotation = false;
 
         b = world.createBody(bdef);
 
         ChainShape shape = new ChainShape();
         for(int i =0; i < dim.length; i++)
             dim[i] = dim[i]/AllVariables.PPM;
-        shape.createChain(dim);
+        //shape.createChain(dim);
+        shape.createLoop(dim);
+
 
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
@@ -128,8 +130,9 @@ public class BodyGenerator {
         b = world.createBody(bdef);
 
         PolygonShape shape = new PolygonShape();
-        for(int i =0; i < dim.length; i++)
-            dim[i] = dim[i]/AllVariables.PPM;
+        for(int i =0; i < dim.length; i++) {
+            dim[i] = dim[i] / AllVariables.PPM;
+        }
         shape.set(dim);
 
         FixtureDef fdef = new FixtureDef();

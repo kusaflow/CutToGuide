@@ -6,13 +6,19 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
+import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class temp implements Screen {
 
     MainGame game;
+    VariablesForPlayArea variablesForPlayArea;
 
     public temp(MainGame game) {
         this.game = game;
+        variablesForPlayArea = new VariablesForPlayArea();
+        variablesForPlayArea.setEndPoint(new Vector2(50,100));
+        variablesForPlayArea.setLevelNumber(1);
     }
 
     @Override
@@ -28,9 +34,11 @@ public class temp implements Screen {
 
         if(Gdx.input.justTouched()){
             //game.setScreen(new PlayArea(game));
-            // game.setScreen(new CuttingAreaManager(game));
+
+            game.setScreen(new CuttingAreaManager(game));
             //game.setScreen(new MainLoadingScreen(game));
-            game.setScreen(new AreaOneClass(game, new Vector2(50,100), 1));
+
+            //game.setScreen(new AreaOneClass(game));
 
         }
     }

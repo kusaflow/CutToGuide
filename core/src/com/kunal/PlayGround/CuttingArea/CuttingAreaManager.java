@@ -11,6 +11,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.temp.temp;
 
 import java.util.LinkedList;
@@ -21,25 +23,21 @@ public class CuttingAreaManager implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    protected LinkedList<Byte> vertices;
-    protected LinkedList<LinkedList<Byte>> shapes;
-
-    private LinkedList<Byte> cantuseDots;
-
     protected LinkedList<Byte> inputsToChop;
 
-    int step = 0, t = 0;
-
     private ShapeRenderer sr;
-
-
-    // all the points of the big square
-    protected int[][] BigSqurePoints = new int[16][2];
 
     //drawing shapes
     private float ver[];
 
     private int presentX, presntY;
+
+    @Override
+    public void dispose() {
+        game.dispose();
+        inputsToChop.clear();
+        sr.dispose();
+    }
 
 
     public CuttingAreaManager(MainGame game) {
@@ -52,48 +50,9 @@ public class CuttingAreaManager implements Screen {
 
         sr = new ShapeRenderer();
 
-        cantuseDots = new LinkedList<Byte>();
-
-        //shapes and vertices
-        vertices = new LinkedList<Byte>();
-        shapes = new LinkedList<LinkedList<Byte>>();
 
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
-
-        //all big squre Points
-        BigSqurePoints[0][0] = 550;
-        BigSqurePoints[0][1] = 700;
-        BigSqurePoints[1][0] = 770;
-        BigSqurePoints[1][1] = 700;
-        BigSqurePoints[2][0] = 990;
-        BigSqurePoints[2][1] = 700;
-        BigSqurePoints[3][0] = 1210;
-        BigSqurePoints[3][1] = 700;
-        BigSqurePoints[4][0] = 550;
-        BigSqurePoints[4][1] = 480;
-        BigSqurePoints[5][0] = 770;
-        BigSqurePoints[5][1] = 480;
-        BigSqurePoints[6][0] = 990;
-        BigSqurePoints[6][1] = 480;
-        BigSqurePoints[7][0] = 1210;
-        BigSqurePoints[7][1] = 480;
-        BigSqurePoints[8][0] = 550;
-        BigSqurePoints[8][1] = 260;
-        BigSqurePoints[9][0] = 770;
-        BigSqurePoints[9][1] = 260;
-        BigSqurePoints[10][0] = 990;
-        BigSqurePoints[10][1] = 260;
-        BigSqurePoints[11][0] = 1210;
-        BigSqurePoints[11][1] = 260;
-        BigSqurePoints[12][0] = 550;
-        BigSqurePoints[12][1] = 40;
-        BigSqurePoints[13][0] = 770;
-        BigSqurePoints[13][1] = 40;
-        BigSqurePoints[14][0] = 990;
-        BigSqurePoints[14][1] = 40;
-        BigSqurePoints[15][0] = 1210;
-        BigSqurePoints[15][1] = 40;
 
         /*// for big square
         vertices.add(BigSqurePoints[0][0]); //0
@@ -105,24 +64,6 @@ public class CuttingAreaManager implements Screen {
         vertices.add(BigSqurePoints[12][0]); //12
         vertices.add(BigSqurePoints[12][1]);
         */
-
-        vertices.add((byte) 0);
-        vertices.add((byte) 1);
-        vertices.add((byte) 2);
-        vertices.add((byte) 3);
-        vertices.add((byte) 7);
-        vertices.add((byte) 11);
-        vertices.add((byte) 15);
-        vertices.add((byte) 14);
-        vertices.add((byte) 13);
-        vertices.add((byte) 12);
-        vertices.add((byte) 8);
-        vertices.add((byte) 4);
-
-
-        shapes.add(vertices);
-
-
 
         //Integer[] data = shapes.get(0).toArray(new Integer[shapes.get(0).size()]);
 
@@ -147,12 +88,12 @@ public class CuttingAreaManager implements Screen {
         sr.begin(ShapeRenderer.ShapeType.Line);
 
         sr.setColor(0, 0.6f, 1, 1);
-        for (int i = 0; i < shapes.size(); i++) {
-            ver = new float[(shapes.get(i).size() * 2)];
-            for (int j = 0, k = 0; j < shapes.get(i).size(); j++) {
-                ver[k] = BigSqurePoints[shapes.get(i).get(j)][0];
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0];
                 k++;
-                ver[k] = BigSqurePoints[shapes.get(i).get(j)][1];
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1];
                 k++;
             }
             sr.polygon(ver);
@@ -168,14 +109,14 @@ public class CuttingAreaManager implements Screen {
         //sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
         for (int i = 0; i < 16; i++) {
             sr.setColor(0, 1f, 0.2f, 1);
-            for (int j=0; j<cantuseDots.size(); j++){
-                if (i == cantuseDots.get(j))
+            for (int j=0; j<VariablesForPlayArea.cantuseDots.size(); j++){
+                if (i == VariablesForPlayArea.cantuseDots.get(j))
                     sr.setColor(1,0,0,1);
             }
             if (i ==5 || i == 6 || i ==9 || i==10)
                 sr.setColor(1,0,0,1);
 
-            sr.circle(BigSqurePoints[i][0], BigSqurePoints[i][1], 7);
+            sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 7);
         }
 
         sr.setColor(1f, 0f, 0f, 1);
@@ -183,12 +124,12 @@ public class CuttingAreaManager implements Screen {
 
             for (int i = 0; i < inputsToChop.size() - 1; i++) {
                 try {
-                    sr.rectLine(BigSqurePoints[inputsToChop.get(i)][0], BigSqurePoints[inputsToChop.get(i)][1],
-                            BigSqurePoints[inputsToChop.get(i + 1)][0], BigSqurePoints[inputsToChop.get(i + 1)][1], 5);
+                    sr.rectLine(VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][1],
+                            VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i + 1)][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i + 1)][1], 5);
                 } catch (Exception e) {
                 }
             }
-            sr.rectLine(BigSqurePoints[inputsToChop.getLast()][0], BigSqurePoints[inputsToChop.getLast()][1], presentX, AllVariables.HEIGHT - presntY, 5);
+            sr.rectLine(VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1], presentX, AllVariables.HEIGHT - presntY, 5);
 
         } catch (Exception e) {
         }
@@ -239,59 +180,59 @@ public class CuttingAreaManager implements Screen {
                         presentX = screenX;
                         presntY = screenY;
 
-                        if (screenX > BigSqurePoints[0][0] - 25 && screenX < BigSqurePoints[0][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[0][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[0][1] - 25)) {
+                        if (screenX > VariablesForPlayArea.BigSqurePoints[0][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[0][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[0][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[0][1] - 25)) {
                                 if (inputsToChop.getLast() != 0)
                                     inputsToChop.add((byte) 0);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[4][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[4][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[4][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[4][1] - 25)) {
                                 if (inputsToChop.getLast() != 4)
                                     inputsToChop.add((byte) 4);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[8][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[8][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[8][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[8][1] - 25)) {
                                 if (inputsToChop.getLast() != 8)
                                     inputsToChop.add((byte) 8);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[12][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[12][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[12][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[12][1] - 25)) {
                                 if (inputsToChop.getLast() != 12)
                                     inputsToChop.add((byte) 12);
                             }
-                        } else if (screenX > BigSqurePoints[1][0] - 25 && screenX < BigSqurePoints[1][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[1][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[1][1] - 25)) {
+                        } else if (screenX > VariablesForPlayArea.BigSqurePoints[1][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[1][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[1][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[1][1] - 25)) {
                                 if (inputsToChop.getLast() != 1)
                                     inputsToChop.add((byte) 1);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[5][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[5][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[5][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[5][1] - 25)) {
                                 if (inputsToChop.getLast() != 5)
                                     inputsToChop.add((byte) 5);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[9][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[9][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[9][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[9][1] - 25)) {
                                 if (inputsToChop.getLast() != 9)
                                     inputsToChop.add((byte) 9);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[13][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[13][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[13][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[13][1] - 25)) {
                                 if (inputsToChop.getLast() != 13)
                                     inputsToChop.add((byte) 13);
                             }
-                        } else if (screenX > BigSqurePoints[2][0] - 25 && screenX < BigSqurePoints[2][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[2][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[2][1] - 25)) {
+                        } else if (screenX > VariablesForPlayArea.BigSqurePoints[2][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[2][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[2][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[2][1] - 25)) {
                                 if (inputsToChop.getLast() != 2)
                                     inputsToChop.add((byte) 2);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[6][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[6][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[6][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[6][1] - 25)) {
                                 if (inputsToChop.getLast() != 6)
                                     inputsToChop.add((byte) 6);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[10][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[10][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[10][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[10][1] - 25)) {
                                 if (inputsToChop.getLast() != 10)
                                     inputsToChop.add((byte) 10);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[14][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[14][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[14][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[14][1] - 25)) {
                                 if (inputsToChop.getLast() != 14)
                                     inputsToChop.add((byte) 14);
                             }
-                        } else if (screenX > BigSqurePoints[3][0] - 25 && screenX < BigSqurePoints[3][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (BigSqurePoints[3][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[3][1] - 25)) {
+                        } else if (screenX > VariablesForPlayArea.BigSqurePoints[3][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[3][0] + 25) {
+                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[3][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[3][1] - 25)) {
                                 if (inputsToChop.getLast() != 3)
                                     inputsToChop.add((byte) 3);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[7][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[7][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[7][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[7][1] - 25)) {
                                 if (inputsToChop.getLast() != 7)
                                     inputsToChop.add((byte) 7);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[11][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[11][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[11][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[11][1] - 25)) {
                                 if (inputsToChop.getLast() != 11)
                                     inputsToChop.add((byte) 11);
-                            } else if (screenY > AllVariables.HEIGHT - (BigSqurePoints[15][1] + 25) && screenY < AllVariables.HEIGHT - (BigSqurePoints[15][1] - 25)) {
+                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[15][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[15][1] - 25)) {
                                 if (inputsToChop.getLast() != 15)
                                     inputsToChop.add((byte) 15);
                             }
@@ -306,8 +247,8 @@ public class CuttingAreaManager implements Screen {
                         //remove first element
                         try {
                             inputsToChop.removeFirst();
-                            presentX = BigSqurePoints[inputsToChop.getLast()][0];
-                            presntY = AllVariables.HEIGHT - BigSqurePoints[inputsToChop.getLast()][1];
+                            presentX = VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0];
+                            presntY = AllVariables.HEIGHT - VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1];
 
                         } catch (Exception e) {
                         }
@@ -342,6 +283,12 @@ public class CuttingAreaManager implements Screen {
                         if (keycode == Input.Keys.B){
                             game.setScreen(new temp(game));
                         }
+
+                        if (keycode == Input.Keys.P){
+                            game.setScreen(new AreaOneClass(game));
+                        }
+
+
                         return false;
                     }
 
@@ -391,15 +338,15 @@ public class CuttingAreaManager implements Screen {
             //cross left to right
             if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) % 5 == 0) {
                 //upleft to downright
-                if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 5 >= 2 && BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i - 1)][0]
-                        && BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 5 >= 2 && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][0] > VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][1] < VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][1]) {
                     inputsToChop.add(i, (byte) (inputsToChop.get(i) - 5));
                     i--;
                     continue;
                 }
                 //downright to up left
-                else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 5 <= -2 && BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i - 1)][0]
-                        && BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 5 <= -2 && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][0] < VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][1] > VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][1]) {
                     inputsToChop.add(i, (byte) (inputsToChop.get(i) + 5));
                     i--;
                     continue;
@@ -409,15 +356,15 @@ public class CuttingAreaManager implements Screen {
             //cross right to left
             if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) % 3 == 0) {
                 //upright to downleft
-                if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 3 >= 2 && BigSqurePoints[inputsToChop.get(i)][0] < BigSqurePoints[inputsToChop.get(i - 1)][0]
-                        && BigSqurePoints[inputsToChop.get(i)][1] < BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 3 >= 2 && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][0] < VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][1] < VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][1]) {
                     inputsToChop.add(i, (byte) (inputsToChop.get(i) - 3));
                     i--;
                     continue;
                 }
                 //downleft to upright
-                else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 3 <= -2 && BigSqurePoints[inputsToChop.get(i)][0] > BigSqurePoints[inputsToChop.get(i - 1)][0]
-                        && BigSqurePoints[inputsToChop.get(i)][1] > BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                else if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) / 3 <= -2 && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][0] > VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][0]
+                        && VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][1] > VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][1]) {
                     inputsToChop.add(i, (byte) (inputsToChop.get(i) + 3));
                     i--;
                     continue;
@@ -427,7 +374,7 @@ public class CuttingAreaManager implements Screen {
             //sideways
             if (((inputsToChop.get(i) - inputsToChop.get(i - 1)) >= 2 && (inputsToChop.get(i) - inputsToChop.get(i - 1)) <= 4)
                     || ((inputsToChop.get(i) - inputsToChop.get(i - 1)) <= -2 && (inputsToChop.get(i) - inputsToChop.get(i - 1)) >= -4)) {
-                if (BigSqurePoints[inputsToChop.get(i)][1] == BigSqurePoints[inputsToChop.get(i - 1)][1]) {
+                if (VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i)][1] == VariablesForPlayArea.BigSqurePoints[inputsToChop.get(i - 1)][1]) {
                     if ((inputsToChop.get(i) - inputsToChop.get(i - 1)) >= 2) {
                         inputsToChop.add(i, (byte) (inputsToChop.get(i) - 1));
                         i--;
@@ -471,9 +418,9 @@ public class CuttingAreaManager implements Screen {
 
 
         //finding the piece to be cut
-        for (int i = 0; i < shapes.size(); i++) {
-            for (int j = 0; j < shapes.get(i).size(); j++) {
-                if (inputsToChop.get(0) == shapes.get(i).get(j))
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+            for (int j = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
+                if (inputsToChop.get(0) == VariablesForPlayArea.shapes.get(i).get(j))
                     overlabers.add((byte) i);
             }
         }
@@ -494,8 +441,8 @@ public class CuttingAreaManager implements Screen {
                     k++;
                     x = overlabers.size();
                     for (int i = 0; i < overlabers.size(); i++) {
-                        for (int j = 0; j < shapes.get(overlabers.get(i)).size(); j++) {
-                            if (inputsToChop.get(k) == shapes.get(overlabers.get(i)).get(j))
+                        for (int j = 0; j < VariablesForPlayArea.shapes.get(overlabers.get(i)).size(); j++) {
+                            if (inputsToChop.get(k) == VariablesForPlayArea.shapes.get(overlabers.get(i)).get(j))
                                 overlabers.add((byte) i);
                         }
                     }
@@ -517,8 +464,8 @@ public class CuttingAreaManager implements Screen {
 
          short endVal = -1;
 
-        for (short i=0; i<shapes.get(theShapeNumber).size(); i++){
-            if(inputsToChop.getLast() == shapes.get(theShapeNumber).get(i)){
+        for (short i=0; i<VariablesForPlayArea.shapes.get(theShapeNumber).size(); i++){
+            if(inputsToChop.getLast() == VariablesForPlayArea.shapes.get(theShapeNumber).get(i)){
                 endVal++;
             }
         }
@@ -554,8 +501,8 @@ public class CuttingAreaManager implements Screen {
                 //strting point
                 if (foundFront == false){
                     tempBool = false;
-                    for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
-                        if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
+                    for (int j = 0; j < VariablesForPlayArea.shapes.get(theShapeNumber).size(); j++) {
+                        if (inputsToChop.get(i) == VariablesForPlayArea.shapes.get(theShapeNumber).get(j))
                             tempBool = true;
                     }
                     if (tempBool)
@@ -570,8 +517,8 @@ public class CuttingAreaManager implements Screen {
                 //end point
                 if (foundFront == true){
                     tempBool = false;
-                    for (int j = 0; j < shapes.get(theShapeNumber).size(); j++) {
-                        if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(j))
+                    for (int j = 0; j < VariablesForPlayArea.shapes.get(theShapeNumber).size(); j++) {
+                        if (inputsToChop.get(i) == VariablesForPlayArea.shapes.get(theShapeNumber).get(j))
                             tempBool = true;
                     }
                     if (tempBool){
@@ -601,10 +548,10 @@ public class CuttingAreaManager implements Screen {
                 }
             }
             if (tempBool) {
-                for (short j = 0; j < shapes.size(); j++) {
-                    for (short k = 0; k < shapes.get(j).size(); k++) {
-                        if (inputsToChop.get(i) == shapes.get(j).get(k)){
-                            if (shapes.get(j) != shapes.get(theShapeNumber)){
+                for (short j = 0; j < VariablesForPlayArea.shapes.size(); j++) {
+                    for (short k = 0; k < VariablesForPlayArea.shapes.get(j).size(); k++) {
+                        if (inputsToChop.get(i) == VariablesForPlayArea.shapes.get(j).get(k)){
+                            if (VariablesForPlayArea.shapes.get(j) != VariablesForPlayArea.shapes.get(theShapeNumber)){
                                 return false;
                             }
                         }
@@ -613,28 +560,28 @@ public class CuttingAreaManager implements Screen {
             }
         }
 
-        cantuseDots.add((byte) startPoint);
-        cantuseDots.add((byte)endPoint);
+        VariablesForPlayArea.cantuseDots.add((byte) startPoint);
+        VariablesForPlayArea.cantuseDots.add((byte)endPoint);
 
 
 
         //tempBool is not in use so using it to detect if startpoint is found or not
         tempBool = false;
-        vertices = new LinkedList<Byte>();
+        VariablesForPlayArea.vertices = new LinkedList<Byte>();
 
         for (short i = 0; true; i++){
             if (tempBool == false) {
-                if(shapes.get(theShapeNumber).get(i) == startPoint)
+                if(VariablesForPlayArea.shapes.get(theShapeNumber).get(i) == startPoint)
                     tempBool = true;
             }
 
             if(tempBool) {
-                if (i > shapes.get(theShapeNumber).size()-1)
+                if (i > VariablesForPlayArea.shapes.get(theShapeNumber).size()-1)
                     i = 0;
 
-                vertices.add(shapes.get(theShapeNumber).get(i));
+                VariablesForPlayArea.vertices.add(VariablesForPlayArea.shapes.get(theShapeNumber).get(i));
 
-                if (shapes.get(theShapeNumber).get(i) == endPoint)
+                if (VariablesForPlayArea.shapes.get(theShapeNumber).get(i) == endPoint)
                     break;
 
             }
@@ -650,8 +597,8 @@ public class CuttingAreaManager implements Screen {
                 }
             }
             if (tempBool) {
-                for (int t =0; t < shapes.get(theShapeNumber).size(); t++){
-                    if (inputsToChop.get(i) == shapes.get(theShapeNumber).get(t)){
+                for (int t =0; t < VariablesForPlayArea.shapes.get(theShapeNumber).size(); t++){
+                    if (inputsToChop.get(i) == VariablesForPlayArea.shapes.get(theShapeNumber).get(t)){
                         if (inputsToChop.get(i) != startPoint){
                             System.out.println("multiplecutting");
                             //error to show there are multiple cutting happened
@@ -659,31 +606,31 @@ public class CuttingAreaManager implements Screen {
                         }
                     }
                 }
-                vertices.add(inputsToChop.get(i));
+                VariablesForPlayArea.vertices.add(inputsToChop.get(i));
             }
         }
-        shapes.add(vertices);
+        VariablesForPlayArea.shapes.add(VariablesForPlayArea.vertices);
         //one part added
 
 
         //otherside
         //tempBool is not in use so using it to detect if startpoint is found or not
         tempBool = false;
-        vertices = new LinkedList<Byte>();
+        VariablesForPlayArea.vertices = new LinkedList<Byte>();
 
-        for (short i = (short) (shapes.get(theShapeNumber).size()-1); true; i--){
+        for (short i = (short) (VariablesForPlayArea.shapes.get(theShapeNumber).size()-1); true; i--){
             if (tempBool == false) {
-                if(shapes.get(theShapeNumber).get(i) == startPoint)
+                if(VariablesForPlayArea.shapes.get(theShapeNumber).get(i) == startPoint)
                     tempBool = true;
             }
 
             if(tempBool) {
                 if (i < 0)
-                    i = (short) (shapes.get(theShapeNumber).size() -1);
+                    i = (short) (VariablesForPlayArea.shapes.get(theShapeNumber).size() -1);
 
-                vertices.add(shapes.get(theShapeNumber).get(i));
+                VariablesForPlayArea.vertices.add(VariablesForPlayArea.shapes.get(theShapeNumber).get(i));
 
-                if (shapes.get(theShapeNumber).get(i) == endPoint)
+                if (VariablesForPlayArea.shapes.get(theShapeNumber).get(i) == endPoint)
                     break;
 
             }
@@ -699,11 +646,11 @@ public class CuttingAreaManager implements Screen {
                 }
             }
             if (tempBool)
-                vertices.add(inputsToChop.get(i));
+                VariablesForPlayArea.vertices.add(inputsToChop.get(i));
         }
 
-        shapes.remove(theShapeNumber);
-        shapes.add(vertices);
+        VariablesForPlayArea.shapes.remove(theShapeNumber);
+        VariablesForPlayArea.shapes.add(VariablesForPlayArea.vertices);
 
         return true;
 
@@ -733,8 +680,4 @@ public class CuttingAreaManager implements Screen {
 
     }
 
-    @Override
-    public void dispose() {
-
-    }
 }

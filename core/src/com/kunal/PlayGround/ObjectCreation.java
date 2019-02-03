@@ -1,6 +1,8 @@
 package com.kunal.PlayGround;
 
+import com.badlogic.gdx.math.EarClippingTriangulator;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJoint;
 import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
@@ -8,6 +10,9 @@ import com.kunal.AllVariables;
 import com.kunal.utils.BodyGenerator;
 
 public class ObjectCreation {
+
+    float ver[];
+
 
     public ObjectCreation() {
     }
@@ -20,12 +25,12 @@ public class ObjectCreation {
 
         float f[] = {760, 5,1100,150, 1100, 5};
 
-        BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_land));
+        BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_Tool | AllVariables.Bit_land));
 
 
         float f2[] = {3760, 5,4100,150, 4100, 5};
 
-        BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f2,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_land));
+        BodyGenerator.PolyShape(world, false, "fa", new Vector2(570, 5), f2,1,0,1,AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle |AllVariables.Bit_Tool| AllVariables.Bit_land));
 
 
 
@@ -35,11 +40,11 @@ public class ObjectCreation {
 
         //--------------------Bicycle Parts
         AllVariables.BackWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(538,25),
-                25,0.5f, 0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land));
+                25,0.5f, 0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes | AllVariables.Bit_Tool| AllVariables.Bit_land));
 
 
         AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(580, 44),
-                new Vector2(30,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes));
+                new Vector2(30,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land| AllVariables.Bit_Tool|AllVariables.Bit_enimes));
 
         //rod3 and back wheel
         rdef.bodyA = AllVariables.BackWheel;
@@ -49,7 +54,7 @@ public class ObjectCreation {
 
 
         AllVariables.rod4 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(632, 22),
-                new Vector2(23,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes));
+                new Vector2(23,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod4 and back wheel
         rdef.bodyA = AllVariables.BackWheel;
@@ -59,7 +64,7 @@ public class ObjectCreation {
 
 
         AllVariables.rod5 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(605, 51),
-                new Vector2(3,33),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes));
+                new Vector2(3,33),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod5 and rod3
         rdef.bodyA = AllVariables.rod3;
@@ -77,7 +82,7 @@ public class ObjectCreation {
 
 
         AllVariables.rod1 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(609, 63),
-                new Vector2(25,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes));
+                new Vector2(25,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod1 and rod5
         rdef.bodyA = AllVariables.rod1;
@@ -94,7 +99,7 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
         AllVariables.rod2 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(609, 44),
-                new Vector2(35,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes));
+                new Vector2(35,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod2 and rod5
         rdef.bodyA = AllVariables.rod2;
@@ -118,7 +123,7 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
         AllVariables.rod6 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(658, 56),
-                new Vector2(3,35),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes));
+                new Vector2(3,35),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
 
 
@@ -140,7 +145,7 @@ public class ObjectCreation {
 
 
         AllVariables.FrontWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(660,25),
-                25, 0.5f,0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land));
+                25, 0.5f,0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land| AllVariables.Bit_Tool));
 
         //frontwheel and rod6
         rdef.bodyA = AllVariables.rod6;
@@ -150,7 +155,7 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
         AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(630, 25),
-                new Vector2(30,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes));
+                new Vector2(30,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod4 can be reused
         //joint b/w rod3 and frontwheel
@@ -183,6 +188,25 @@ public class ObjectCreation {
 
 
     }
-    
+
+    public void CreateCutouts(World world){
+        for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
+            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+            for (int j=0, k=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
+                k++;
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
+                k++;
+            }
+
+            Body b= BodyGenerator.ChainLand(world,false, "cutout", new Vector2(600,80), ver,1,0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
+            //b.setTransform(b.getPosition(),45);
+
+
+            ver = null;
+        }
+
+
+    }
 
 }
