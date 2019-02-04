@@ -111,7 +111,7 @@ public class AreaOneClass implements Screen {
         sred.begin(ShapeRenderer.ShapeType.Line);
 
         sred.setColor(0, 0.6f, 1, 1);
-        /*for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
@@ -121,38 +121,10 @@ public class AreaOneClass implements Screen {
             }
             //sred.polygon(ver);
             poly = new Polygon(ver);
-            poly.rotate(VariablesForPlayArea.CutOutBodies.get(i).getAngle());
-            //poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x,VariablesForPlayArea.CutOutBodies.get(i).getPosition().y);
-            sred.polygon(poly.getTransformedVertices());
-
-            ver = null;
-
-        }*/
-
-
-        for (int i = 0; i < VariablesForPlayArea.CutOutBodies.size(); i++) {
-            //ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
-            Fixture f = VariablesForPlayArea.CutOutBodies.get(i).getFixtureList().get(0);
-            ChainShape s = (ChainShape) f.getShape();
-            Vector2 v = new Vector2();
-            Array<Vector2> verts = new Array<Vector2>();
-
-            for (int j = 0; j < s.getVertexCount(); j++) {
-                s.getVertex(i, v);
-                verts.add(v);
-            }
-            ver = new float[verts.size*2];
-            for (int j = 0,k=0; j < verts.size; j++) {
-                ver[k] = verts.get(j).x * AllVariables.PPM;
-                k++;
-                ver[k] = verts.get(j).y* AllVariables.PPM;
-                k++;
-            }
-
-            //sred.polygon(ver);
-            poly = new Polygon(ver);
             //poly.rotate(VariablesForPlayArea.CutOutBodies.get(i).getAngle());
             //poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x,VariablesForPlayArea.CutOutBodies.get(i).getPosition().y);
+            poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getWorldCenter().x, VariablesForPlayArea.CutOutBodies.get(i).getWorldCenter().y);
+            poly.dirty();
             sred.polygon(poly.getTransformedVertices());
 
             ver = null;
