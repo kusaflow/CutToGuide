@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
+import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
@@ -35,10 +36,12 @@ public class temp implements Screen {
         if(Gdx.input.justTouched()){
             //game.setScreen(new PlayArea(game));
 
-            game.setScreen(new CuttingAreaManager(game));
+            //game.setScreen(new CuttingAreaManager(game));
             //game.setScreen(new MainLoadingScreen(game));
 
             //game.setScreen(new AreaOneClass(game));
+
+            game.setScreen(new AreaSelection(game));
 
         }
     }

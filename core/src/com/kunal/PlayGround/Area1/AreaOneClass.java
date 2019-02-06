@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,11 +16,13 @@ import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -52,7 +55,6 @@ public class AreaOneClass implements Screen {
 
 
     Polygon poly;
-
 
     public AreaOneClass(MainGame game) {
         this.game = game;
@@ -96,6 +98,7 @@ public class AreaOneClass implements Screen {
 
     @Override
     public void show() {
+
     }
 
     @Override
@@ -106,6 +109,8 @@ public class AreaOneClass implements Screen {
         update(dt);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        b2dr.setDrawJoints(false);
+
         // tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
