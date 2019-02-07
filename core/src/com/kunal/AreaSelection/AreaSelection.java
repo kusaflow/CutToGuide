@@ -123,10 +123,9 @@ public class AreaSelection implements Screen {
                     @Override
                     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
                         if(tapDetx == screenX && tapDety == screenY){
-                            for (Sprite s : AreaList) {
-                                if (tapDetx + (cam.position.x - 640) > s.getX() && tapDetx + (cam.position.x - 640) < s.getX() + s.getWidth()) {
-                                    s.rotate(10);
-
+                            for (int i=0; i < AreaList.size(); i++) {
+                                if (tapDetx + (cam.position.x - 640) > AreaList.get(i).getX() && tapDetx + (cam.position.x - 640) < AreaList.get(i).getX() + AreaList.get(i).getWidth()) {
+                                    System.out.println(i+1);
                                 }
                             }
                         }
