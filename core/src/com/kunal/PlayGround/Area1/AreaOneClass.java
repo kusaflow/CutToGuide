@@ -109,6 +109,8 @@ public class AreaOneClass implements Screen {
         update(dt);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        //need to fix this
+        ///sred.setProjectionMatrix(cam.combined);
         b2dr.setDrawJoints(false);
 
         // tmr.render();

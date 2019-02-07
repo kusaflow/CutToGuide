@@ -1,6 +1,8 @@
 package com.kunal.AreaSelection;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,6 +10,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
@@ -23,7 +26,8 @@ public class AreaSelection implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
-    float xtemp;
+
+    float tapDetx, tapDety;
 
     public AreaSelection(MainGame game) {
         this.game = game;
@@ -62,7 +66,6 @@ public class AreaSelection implements Screen {
         AreaList.add(s);
 
 
-
     }
 
     @Override
@@ -89,65 +92,73 @@ public class AreaSelection implements Screen {
     }
 
     private void input(float dt){
-        if(Gdx.input.isTouched()){
-            //cam.position.set(cam.position.x+10, cam.position.y, cam.position.z);
-        }
+        if (cam.position.x < 400)
+            cam.position.set(400, cam.position.y, cam.position.z);
+
 
         Gdx.input.setInputProcessor(
-                new GestureDetector(
-                        new GestureDetector.GestureListener() {
-                            @Override
-                            public boolean touchDown(float x, float y, int pointer, int button) {
-                                xtemp = x;
-                                return false;
-                            }
+                new InputProcessor() {
+                    @Override
+                    public boolean keyDown(int keycode) {
+                        return false;
+                    }
 
-                            @Override
-                            public boolean tap(float x, float y, int count, int button) {
-                                return false;
-                            }
+                    @Override
+                    public boolean keyUp(int keycode) {
+                        return false;
+                    }
 
-                            @Override
-                            public boolean longPress(float x, float y) {
-                                return false;
-                            }
+                    @Override
+                    public boolean keyTyped(char character) {
+                        return false;
+                    }
 
-                            @Override
-                            public boolean fling(float velocityX, float velocityY, int button) {
-                                //cam.position.set(cam.position.x+10, cam.position.y, cam.position.z);
+                    @Override
+                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        tapDetx = screenX;
+                        tapDety = screenY;
+                        return false;
+                    }
 
-                                return false;
-                            }
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        if(tapDetx == screenX && tapDety == screenY){
+                            for (Sprite s : AreaList) {
+                                if (tapDetx + (cam.position.x - 640) > s.getX() && tapDetx + (cam.position.x - 640) < s.getX() + s.getWidth()) {
+                                    s.rotate(10);
 
-                            @Override
-                            public boolean pan(float x, float y, float deltaX, float deltaY) {
-                                cam.position.set(cam.position.x+(xtemp-x), cam.position.y, cam.position.z);
-                                System.out.println((x-deltaX)/AllVariables.PPM);
-                                return false;
-                            }
-
-                            @Override
-                            public boolean panStop(float x, float y, int pointer, int button) {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean zoom(float initialDistance, float distance) {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean pinch(Vector2 initialPointer1, Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2) {
-                                return false;
-                            }
-
-                            @Override
-                            public void pinchStop() {
-
+                                }
                             }
                         }
-                )
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        cam.position.set(cam.position.x+(tapDetx-screenX)/5, cam.position.y, cam.position.z);
+
+                        if (cam.position.x < 0)
+                            cam.position.set(0, cam.position.y, cam.position.z);
+
+
+                        if (cam.position.x > AreaList.getLast().getX())
+                            cam.position.set(AreaList.getLast().getX(), cam.position.y, cam.position.z);
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mouseMoved(int screenX, int screenY) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean scrolled(int amount) {
+                        return false;
+                    }
+                }
         );
+
     }
 
     @Override
