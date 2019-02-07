@@ -10,7 +10,6 @@
         android:name="com.google.android.gms.ads.APPLICATION_ID"
         android:value="ca-app-pub-3940256099942544~3347511713" />
 
-        minSdkVersion >= 9
 
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
