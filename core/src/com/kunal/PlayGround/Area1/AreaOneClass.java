@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
@@ -53,6 +54,8 @@ public class AreaOneClass implements Screen {
 
     private float ver[];
 
+    //for projection matrix
+    Matrix4 m4;
 
     Polygon poly;
 
@@ -94,6 +97,7 @@ public class AreaOneClass implements Screen {
         start.setSize(150, 150);
         start.setAlpha(0.8f);
 
+        //for projection matrix for shape renderer
     }
 
     @Override
@@ -110,14 +114,16 @@ public class AreaOneClass implements Screen {
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         //need to fix this
-        ///sred.setProjectionMatrix(cam.combined);
+
+        sred.setProjectionMatrix(cam.combined.scl(1/50f));
+
         b2dr.setDrawJoints(false);
 
         // tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
-        sred.setColor(0, 0.6f, 1, 1);
+        sred.setColor(1, 1f, 1, 1);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
@@ -131,6 +137,7 @@ public class AreaOneClass implements Screen {
             //poly.rotate(VariablesForPlayArea.CutOutBodies.get(i).getAngle());
             //poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x,VariablesForPlayArea.CutOutBodies.get(i).getPosition().y);
             poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getWorldCenter().x, VariablesForPlayArea.CutOutBodies.get(i).getWorldCenter().y);
+            poly.setScale(0.4f,0.4f);
             poly.dirty();
             sred.polygon(poly.getTransformedVertices());
 
@@ -225,6 +232,16 @@ public class AreaOneClass implements Screen {
                         if (keycode == Input.Keys.SPACE){
                             world.setGravity(new Vector2(0,-10));
                         }
+
+                        if (keycode == Input.Keys.S){
+                            Matrix4 m = new Matrix4();
+                            m.set(sred.getProjectionMatrix());
+                            System.out.println(sred.getProjectionMatrix().scl(0.01f));
+                        }
+                        if (keycode == Input.Keys.C){
+                            System.out.println(cam.projection);
+                        }
+
 
                         return false;
                     }

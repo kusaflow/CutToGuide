@@ -20,10 +20,11 @@ public class AndroidLauncher extends AndroidApplication {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		RelativeLayout layout = new RelativeLayout(this);
-
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+        //initialize(new MainGame(), config);
+
+
+        RelativeLayout layout = new RelativeLayout(this);
 
         View gameView = initializeForView(new MainGame(), config);
 

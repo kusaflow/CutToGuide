@@ -26,6 +26,8 @@ public class AreaSelection implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
+    Sprite settings , shop;
+
 
     float tapDetx, tapDety;
 
@@ -39,28 +41,33 @@ public class AreaSelection implements Screen {
 
         AreaList = new LinkedList<Sprite>();
 
+        settings = new Sprite(new Texture(Gdx.files.internal("AreaSelection/settings.png")));
+        settings.setSize(50,50);
+        shop = new Sprite(new Texture(Gdx.files.internal("AreaSelection/shop.png")));
+        shop.setSize(50,50);
+
         Sprite s;
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area1.jpg")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area1.png")));
         s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
         s.setPosition(100,200);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area2.jpg")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area2.png")));
         s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
         s.setPosition(500,200);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area3.jpg")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area3.png")));
         s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
         s.setPosition(900,200);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area4.jpg")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area4.png")));
         s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
         s.setPosition(1300,200);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.jpg")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.png")));
         s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
         s.setPosition(1700,200);
         AreaList.add(s);
@@ -76,6 +83,8 @@ public class AreaSelection implements Screen {
     @Override
     public void render(float delta) {
         input(delta);
+        settings.setPosition(20,20);
+        shop.setPosition(1000,20);
 
         Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -87,6 +96,8 @@ public class AreaSelection implements Screen {
         AllVariables.batch.begin();
         for (Sprite s : AreaList)
             s.draw(AllVariables.batch);
+        settings.draw(AllVariables.batch);
+        shop.draw(AllVariables.batch);
         AllVariables.batch.end();
 
     }
