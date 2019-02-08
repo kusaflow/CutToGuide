@@ -54,8 +54,7 @@ public class AreaOneClass implements Screen {
 
     private float ver[];
 
-    //for projection matrix
-    Matrix4 m4;
+    float camscl = 1.4f;
 
     Polygon poly;
 
@@ -65,7 +64,7 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH*1.4f, AllVariables.HEIGHT*1.4f, cam);
+        port = new FitViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl, cam);
 
         world = new World(new Vector2(0,0f), false);
 
@@ -89,12 +88,12 @@ public class AreaOneClass implements Screen {
 
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
         Brake.setPosition(1050,140);
-        Brake.setSize(180,150);
+        Brake.setSize(180*camscl,150*camscl);
         Brake.setAlpha(0.4f);
 
         start = new Sprite(new Texture(Gdx.files.internal("playArea/Start.png")));
         start.setPosition(50, 140);
-        start.setSize(150, 150);
+        start.setSize(150*camscl, 150*camscl);
         start.setAlpha(0.8f);
 
         //for projection matrix for shape renderer
@@ -109,8 +108,9 @@ public class AreaOneClass implements Screen {
     public void render(float dt) {
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         update(dt);
+
+        AllVariables.batch.setProjectionMatrix(cam.combined);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         //need to fix this
@@ -171,6 +171,11 @@ public class AreaOneClass implements Screen {
         cam.update();
         tmr.setView(cam);
 
+        //position of sprites
+        start.setPosition(-190+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
+        Brake.setPosition(1200+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
+
+
         if (startBool){
             if (brakeBool) {
                 //AllVariables.BackWheel.setAngularVelocity(0);
@@ -199,12 +204,11 @@ public class AreaOneClass implements Screen {
                         }
                         if (!startBool){
                             if (screenX > 40 && screenX < 220 && screenY > 120 && screenY < 310) {
-                                start.setAlpha(0);
+                                //start.setAlpha(0);
                                 startBool = true;
                             }
                         }
 
-                        System.out.println(screenX);
 
 
                         return false;
