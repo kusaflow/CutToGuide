@@ -100,6 +100,7 @@ public class BodyGenerator {
         shape.createLoop(dim);
 
 
+
         FixtureDef fdef = new FixtureDef();
         fdef.shape = shape;
         fdef.density = density;

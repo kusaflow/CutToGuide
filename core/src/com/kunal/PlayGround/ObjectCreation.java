@@ -190,6 +190,7 @@ public class ObjectCreation {
     }
 
     public void CreateCutouts(World world){
+        VariablesForPlayArea.CutOutBodies.clear();
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j=0, k=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
@@ -201,10 +202,6 @@ public class ObjectCreation {
 
             Body b= BodyGenerator.ChainLand(world,false, "cutout", new Vector2(600,80), ver,1,0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
             VariablesForPlayArea.CutOutBodies.add(b);
-            
-
-
-
             ver = null;
         }
 

@@ -113,22 +113,42 @@ public class AreaOneClass implements Screen {
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
-        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
-        //need to fix this
 
         b2dr.setDrawJoints(false);
 
         // tmr.render();
 
-        
+
+        Array<Vector2> verts = new Array<Vector2>();
+
+        for (int i = 0; i < VariablesForPlayArea.CutOutBodies.size(); i++) {
+            //ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+            Fixture f = VariablesForPlayArea.CutOutBodies.get(i).getFixtureList().get(0);
+            ChainShape s = (ChainShape) f.getShape();
+            Vector2 v = new Vector2();
+
+
+            for (int j = 0; j < s.getVertexCount(); j++) {
+                s.getVertex(j, v);
+                v.x*=AllVariables.PPM;
+                v.y*=AllVariables.PPM;
+                verts.add(v);
+            }
+        }
+
 
 
 
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
+        for (Vector2 v2: verts)
+            AllVariables.batch.draw(new Texture(Gdx.files.internal("playArea/shapeOfBodies/point.jpg")),v2.x,v2.y);
         chooseBody.draw(AllVariables.batch);
         AllVariables.batch.end();
+
+        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+
 
 
 
@@ -222,7 +242,7 @@ public class AreaOneClass implements Screen {
                         }
 
                         if (keycode == Input.Keys.C){
-                            System.out.println(cam.projection);
+
                         }
 
 
