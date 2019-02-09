@@ -45,7 +45,7 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
-    private Sprite Brake, start;
+    private Sprite Brake, start, chooseBody;
     private Boolean brakeBool = false, startBool = false;
 
     //tiled map
@@ -89,12 +89,18 @@ public class AreaOneClass implements Screen {
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
         Brake.setPosition(1050,140);
         Brake.setSize(180*camscl,150*camscl);
-        Brake.setAlpha(0.4f);
+        Brake.setAlpha(0f);
 
         start = new Sprite(new Texture(Gdx.files.internal("playArea/Start.png")));
         start.setPosition(50, 140);
         start.setSize(150*camscl, 150*camscl);
         start.setAlpha(0.8f);
+
+        chooseBody = new Sprite(new Texture(Gdx.files.internal("playArea/ChooseBody.png")));
+        chooseBody.setPosition(50, 140);
+        chooseBody.setSize(150*camscl, 150*camscl);
+        chooseBody.setAlpha(0.8f);
+
 
         //for projection matrix for shape renderer
     }
@@ -151,6 +157,7 @@ public class AreaOneClass implements Screen {
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
+        chooseBody.draw(AllVariables.batch);
         AllVariables.batch.end();
 
 
@@ -174,6 +181,7 @@ public class AreaOneClass implements Screen {
         //position of sprites
         start.setPosition(-190+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
         Brake.setPosition(1200+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
+        chooseBody.setPosition(1200+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
 
 
         if (startBool){
@@ -197,15 +205,21 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = AllVariables.HEIGHT - screenY;
                         if (startBool) {
-                            if (screenX > 1020 && screenX < 1250 && screenY > 120 && screenY < 310) {
+                            if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 Brake.setAlpha(0.9f);
                                 brakeBool = true;
                             }
                         }
                         if (!startBool){
-                            if (screenX > 40 && screenX < 220 && screenY > 120 && screenY < 310) {
-                                //start.setAlpha(0);
+                            if (screenX > 45 && screenX < 200 && screenY > 140 && screenY < 290) {
+                                start.setAlpha(0);
+                                chooseBody.setAlpha(0);
                                 startBool = true;
+                                Brake.setAlpha(0.4f);
+                            }
+                            if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
+                                //code to choosing body
+                                System.out.println("choose Body");
                             }
                         }
 
