@@ -128,7 +128,7 @@ public class AreaOneClass implements Screen {
 
         b2dr.setDrawJoints(false);
 
-        // tmr.render();
+        //tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -214,13 +214,14 @@ public class AreaOneClass implements Screen {
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         world.step(1/(1/dt), 6,2);
-
-
-        Vector3 campos = cam.position;
-        campos.x = AllVariables.BackWheel.getPosition().x*AllVariables.PPM;
-        campos.y = AllVariables.BackWheel.getPosition().y*AllVariables.PPM;
-        cam.position.set(campos);
         cam.update();
+
+
+
+        //Vector3 campos = cam.position;
+        //campos.x = AllVariables.BackWheel.getPosition().x*AllVariables.PPM;
+        //campos.y = AllVariables.BackWheel.getPosition().y*AllVariables.PPM;
+        //cam.position.set(campos);
         tmr.setView(cam);
 
         //position of sprites

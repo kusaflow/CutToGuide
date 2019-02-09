@@ -43,7 +43,6 @@ public class temp implements Screen {
 
             //game.setScreen(new AreaSelection(game));
 
-            //game.setScreen(new grid());
 
         }
     }
