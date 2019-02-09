@@ -183,7 +183,7 @@ public class AreaOneClass implements Screen {
             AllVariables.batch.enableBlending();
             Gdx.gl.glClearColor(1f, 1f, 1f, .5f);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-            
+
 
         }
 
