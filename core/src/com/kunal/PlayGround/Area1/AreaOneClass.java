@@ -45,8 +45,8 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
-    private Sprite Brake, start, chooseBody;
-    private Boolean brakeBool = false, startBool = false;
+    private Sprite Brake, start, chooseBody, secBg;
+    private Boolean brakeBool = false, startBool = false, chooseShape = false;
 
     //tiled map
     private TiledMap map;
@@ -100,6 +100,9 @@ public class AreaOneClass implements Screen {
         chooseBody.setPosition(50, 140);
         chooseBody.setSize(150*camscl, 150*camscl);
         chooseBody.setAlpha(0.8f);
+
+
+
 
 
         //for projection matrix for shape renderer
@@ -176,6 +179,14 @@ public class AreaOneClass implements Screen {
         chooseBody.draw(AllVariables.batch);
         AllVariables.batch.end();
 
+        if (chooseShape){
+            AllVariables.batch.enableBlending();
+            Gdx.gl.glClearColor(1f, 1f, 1f, .5f);
+            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+            
+
+        }
+
 
 
     }
@@ -219,6 +230,11 @@ public class AreaOneClass implements Screen {
                 new InputProcessor() {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        if (chooseShape) {
+                            chooseShape = false;
+                            return false;
+                        }
+
                         screenY = AllVariables.HEIGHT - screenY;
                         if (startBool) {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
@@ -230,14 +246,19 @@ public class AreaOneClass implements Screen {
                             if (screenX > 45 && screenX < 200 && screenY > 140 && screenY < 290) {
                                 start.setAlpha(0);
                                 chooseBody.setAlpha(0);
+                                world.setGravity(new Vector2(0,-10));
                                 startBool = true;
                                 Brake.setAlpha(0.4f);
                             }
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 //code to choosing body
+                                chooseShape = true;
                                 System.out.println("choose Body");
+
                             }
                         }
+
+
 
 
 
