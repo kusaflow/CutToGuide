@@ -41,9 +41,10 @@ public class AndroidLauncher extends AndroidApplication {
                 }
         );
 
-		adView.setAdSize(AdSize.FULL_BANNER);
+		//adView.setAdSize(AdSize.FULL_BANNER);
+        adView.setAdSize(AdSize.BANNER);
 
-		adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+        adView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
         AdRequest.Builder builder = new AdRequest.Builder();
         builder.addTestDevice("9888583A305DA8A163262D36B17A29EE");
 
