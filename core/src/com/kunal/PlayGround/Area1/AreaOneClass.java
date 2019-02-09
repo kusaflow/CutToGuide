@@ -130,12 +130,12 @@ public class AreaOneClass implements Screen {
         sred.begin(ShapeRenderer.ShapeType.Line);
 
         sred.setColor(1, 1f, 1, 1);
-        for (int i = 0; i < VariablesForPlayArea.CutOutBodies.size(); i++) {
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
-                ver[k] = 550/1.4f-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
+                ver[k] = 550-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
                 k++;
-                ver[k] = 40/1.4f -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
+                ver[k] = 40 -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
                 k++;
             }
 
@@ -157,7 +157,7 @@ public class AreaOneClass implements Screen {
             poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x * 100,
                     VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
 
-            poly.setScale(0.4f,0.4f);
+            poly.setScale(1f,1f);
             poly.dirty();
             sred.polygon(poly.getTransformedVertices());
 
@@ -171,8 +171,8 @@ public class AreaOneClass implements Screen {
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
-        //AllVariables.batch.draw(new Texture("badlogic.jpg"), AllVariables.BackWheel.getPosition().x * 100,
-          //      AllVariables.BackWheel.getPosition().y * 100);
+        //AllVariables.batch.draw(new Texture("badlogic.jpg"), VariablesForPlayArea.CutOutBodies.get(0).getPosition().x * 100,
+          ///      VariablesForPlayArea.CutOutBodies.get(0).getPosition().y * 100);
         chooseBody.draw(AllVariables.batch);
         AllVariables.batch.end();
 
