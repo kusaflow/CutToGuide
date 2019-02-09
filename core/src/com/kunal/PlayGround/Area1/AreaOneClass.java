@@ -41,7 +41,6 @@ public class AreaOneClass implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    private ShapeRenderer sred;
 
     private ObjectCreation objectCreation;
 
@@ -56,7 +55,6 @@ public class AreaOneClass implements Screen {
 
     float camscl = 1.4f;
 
-    Polygon poly;
 
     public AreaOneClass(MainGame game) {
         this.game = game;
@@ -70,14 +68,11 @@ public class AreaOneClass implements Screen {
 
         b2dr = new Box2DDebugRenderer();
 
-        sred = new ShapeRenderer();
-
         objectCreation = new ObjectCreation();
 
         objectCreation.CreateBicycle(world);
         objectCreation.CreateCutouts(world);
 
-        poly = new Polygon();
 
 
         //tiled map
@@ -121,15 +116,10 @@ public class AreaOneClass implements Screen {
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         //need to fix this
 
-        sred.setProjectionMatrix(cam.combined.scl(1/50f));
-
         b2dr.setDrawJoints(false);
 
         // tmr.render();
 
-        sred.begin(ShapeRenderer.ShapeType.Line);
-
-        sred.setColor(1, 1f, 1, 1);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
@@ -138,21 +128,12 @@ public class AreaOneClass implements Screen {
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
                 k++;
             }
-            //sred.polygon(ver);
-            poly = new Polygon(ver);
-            //poly.rotate(VariablesForPlayArea.CutOutBodies.get(i).getAngle());
-            //poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x,VariablesForPlayArea.CutOutBodies.get(i).getPosition().y);
-            poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getWorldCenter().x, VariablesForPlayArea.CutOutBodies.get(i).getWorldCenter().y);
-            poly.setScale(0.4f,0.4f);
-            poly.dirty();
-            sred.polygon(poly.getTransformedVertices());
 
             ver = null;
 
         }
 
 
-        sred.end();
 
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
@@ -251,11 +232,6 @@ public class AreaOneClass implements Screen {
                             world.setGravity(new Vector2(0,-10));
                         }
 
-                        if (keycode == Input.Keys.S){
-                            Matrix4 m = new Matrix4();
-                            m.set(sred.getProjectionMatrix());
-                            System.out.println(sred.getProjectionMatrix().scl(0.01f));
-                        }
                         if (keycode == Input.Keys.C){
                             System.out.println(cam.projection);
                         }
@@ -316,6 +292,5 @@ public class AreaOneClass implements Screen {
     public void dispose() {
         world.dispose();
         b2dr.dispose();
-        sred.dispose();
-    }
+     }
 }
