@@ -46,7 +46,7 @@ public class AreaOneClass implements Screen {
     private ObjectCreation objectCreation;
 
     private Sprite Brake, start, chooseBody, secBg;
-    private Boolean brakeBool = false, startBool = false, chooseShape = false;
+    private Boolean brakeBool = false, startBool = false;
 
     //tiled map
     private TiledMap map;
@@ -179,32 +179,6 @@ public class AreaOneClass implements Screen {
         chooseBody.draw(AllVariables.batch);
         AllVariables.batch.end();
 
-        if (chooseShape){
-            AllVariables.batch.enableBlending();
-            Gdx.gl.glClearColor(0f, 0f, 0f, .5f);
-            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-
-            sred.setProjectionMatrix(cam.combined.scl(1.4f));
-
-            sred.begin(ShapeRenderer.ShapeType.Line);
-            sred.line(90 - 155 + (cam.position.x-640),750+ (cam.position.y - 360),90-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
-            sred.line(365-155+ (cam.position.x-640),750+ (cam.position.y - 360),365-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
-            sred.line(640-155+ (cam.position.x-640),750+ (cam.position.y - 360),640-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
-            sred.line(915-155+ (cam.position.x-640),750+ (cam.position.y - 360),915-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
-            sred.line(1190-155+ (cam.position.x-640),750+ (cam.position.y - 360),1190-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
-
-            sred.line(-50-155+ (cam.position.x-640),710-10+ (cam.position.y - 360),1320-155+ (cam.position.x-640),710-10+ (cam.position.y - 360));
-            sred.line(-50-155+ (cam.position.x-640),507+ (cam.position.y - 360),1320-155+ (cam.position.x-640),507+ (cam.position.y - 360));
-            sred.line(-50-155+ (cam.position.x-640),287+ (cam.position.y - 360),1320-155+ (cam.position.x-640),287+ (cam.position.y - 360));
-            sred.line(-50-155+ (cam.position.x-640),102+ (cam.position.y - 360),1320-155+ (cam.position.x-640),102+ (cam.position.y - 360));
-
-
-            sred.end();
-
-
-        }
-
 
 
     }
@@ -214,14 +188,14 @@ public class AreaOneClass implements Screen {
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         world.step(1/(1/dt), 6,2);
+
+
+        Vector3 campos = cam.position;
+        campos.x = (AllVariables.BackWheel.getPosition().x)*AllVariables.PPM;
+        campos.y = (AllVariables.BackWheel.getPosition().y)*AllVariables.PPM;
+        cam.position.set(campos);
         cam.update();
 
-
-
-        //Vector3 campos = cam.position;
-        //campos.x = AllVariables.BackWheel.getPosition().x*AllVariables.PPM;
-        //campos.y = AllVariables.BackWheel.getPosition().y*AllVariables.PPM;
-        //cam.position.set(campos);
         tmr.setView(cam);
 
         //position of sprites
@@ -249,11 +223,6 @@ public class AreaOneClass implements Screen {
                 new InputProcessor() {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-                        if (chooseShape) {
-                            chooseShape = false;
-                            return false;
-                        }
-
                         screenY = AllVariables.HEIGHT - screenY;
                         if (startBool) {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
@@ -271,7 +240,6 @@ public class AreaOneClass implements Screen {
                             }
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 //code to choosing body
-                                chooseShape = true;
                                 System.out.println("choose Body");
 
                             }
