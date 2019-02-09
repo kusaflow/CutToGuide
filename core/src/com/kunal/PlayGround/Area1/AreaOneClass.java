@@ -120,18 +120,7 @@ public class AreaOneClass implements Screen {
 
         // tmr.render();
 
-        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
-            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
-            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
-                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
-                k++;
-                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
-                k++;
-            }
-
-            ver = null;
-
-        }
+        
 
 
 
