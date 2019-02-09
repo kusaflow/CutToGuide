@@ -41,6 +41,7 @@ public class AreaOneClass implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
+    private ShapeRenderer sred;
 
     private ObjectCreation objectCreation;
 
@@ -55,6 +56,7 @@ public class AreaOneClass implements Screen {
 
     float camscl = 1.4f;
 
+    Polygon poly;
 
     public AreaOneClass(MainGame game) {
         this.game = game;
@@ -68,11 +70,14 @@ public class AreaOneClass implements Screen {
 
         b2dr = new Box2DDebugRenderer();
 
+        sred = new ShapeRenderer();
+
         objectCreation = new ObjectCreation();
 
         objectCreation.CreateBicycle(world);
         objectCreation.CreateCutouts(world);
 
+        poly = new Polygon();
 
 
         //tiled map
@@ -113,42 +118,63 @@ public class AreaOneClass implements Screen {
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
+        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        //need to fix this
+
+        sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
         b2dr.setDrawJoints(false);
 
         // tmr.render();
 
+        sred.begin(ShapeRenderer.ShapeType.Line);
 
-        Array<Vector2> verts = new Array<Vector2>();
-
+        sred.setColor(1, 1f, 1, 1);
         for (int i = 0; i < VariablesForPlayArea.CutOutBodies.size(); i++) {
-            //ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
-            Fixture f = VariablesForPlayArea.CutOutBodies.get(i).getFixtureList().get(0);
-            ChainShape s = (ChainShape) f.getShape();
-            Vector2 v = new Vector2();
-
-
-            for (int j = 0; j < s.getVertexCount(); j++) {
-                s.getVertex(j, v);
-                v.x*=AllVariables.PPM;
-                v.y*=AllVariables.PPM;
-                verts.add(v);
+            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
+                ver[k] = 550/1.4f-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
+                k++;
+                ver[k] = 40/1.4f -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
+                k++;
             }
+
+            //sred.polygon(ver);
+            /*ver = new float[8];
+            ver[0] = 0;
+            ver[1] = 0;
+            ver[2] = 50;
+            ver[3] = 0;
+            ver[4] = 50;
+            ver[5] = 50;
+            ver[6] = 0;
+            ver[7] = 50;
+            */
+
+            poly = new Polygon(ver);
+            //poly.setPosition(AllVariables.BackWheel.getPosition().x*100
+              //    , AllVariables.BackWheel.getPosition().y*100);
+            poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x * 100,
+                    VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
+
+            poly.setScale(0.4f,0.4f);
+            poly.dirty();
+            sred.polygon(poly.getTransformedVertices());
+
+            ver = null;
+
         }
 
 
-
+        sred.end();
 
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
-        for (Vector2 v2: verts)
-            AllVariables.batch.draw(new Texture(Gdx.files.internal("playArea/shapeOfBodies/point.jpg")),v2.x,v2.y);
+        //AllVariables.batch.draw(new Texture("badlogic.jpg"), AllVariables.BackWheel.getPosition().x * 100,
+          //      AllVariables.BackWheel.getPosition().y * 100);
         chooseBody.draw(AllVariables.batch);
         AllVariables.batch.end();
-
-        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
-
 
 
 
@@ -241,8 +267,13 @@ public class AreaOneClass implements Screen {
                             world.setGravity(new Vector2(0,-10));
                         }
 
+                        if (keycode == Input.Keys.S){
+                            Matrix4 m = new Matrix4();
+                            m.set(sred.getProjectionMatrix());
+                            System.out.println(sred.getProjectionMatrix().scl(0.01f));
+                        }
                         if (keycode == Input.Keys.C){
-
+                            System.out.println(cam.projection);
                         }
 
 
@@ -301,5 +332,6 @@ public class AreaOneClass implements Screen {
     public void dispose() {
         world.dispose();
         b2dr.dispose();
-     }
+        sred.dispose();
+    }
 }
