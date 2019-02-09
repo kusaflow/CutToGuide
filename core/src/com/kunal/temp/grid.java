@@ -35,10 +35,6 @@ public class grid implements Screen {
         sred.line(0,287,1280,287);
         sred.line(0,102,1280,102);
 
-
-
-
-
         sred.end();
 
 

@@ -181,8 +181,26 @@ public class AreaOneClass implements Screen {
 
         if (chooseShape){
             AllVariables.batch.enableBlending();
-            Gdx.gl.glClearColor(1f, 1f, 1f, .5f);
+            Gdx.gl.glClearColor(0f, 0f, 0f, .5f);
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+
+            sred.setProjectionMatrix(cam.combined.scl(1.4f));
+
+            sred.begin(ShapeRenderer.ShapeType.Line);
+            sred.line(90 - 155 + (cam.position.x-640),750+ (cam.position.y - 360),90-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
+            sred.line(365-155+ (cam.position.x-640),750+ (cam.position.y - 360),365-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
+            sred.line(640-155+ (cam.position.x-640),750+ (cam.position.y - 360),640-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
+            sred.line(915-155+ (cam.position.x-640),750+ (cam.position.y - 360),915-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
+            sred.line(1190-155+ (cam.position.x-640),750+ (cam.position.y - 360),1190-155+ (cam.position.x-640),-50+ (cam.position.y - 360));
+
+            sred.line(-50-155+ (cam.position.x-640),710-10+ (cam.position.y - 360),1320-155+ (cam.position.x-640),710-10+ (cam.position.y - 360));
+            sred.line(-50-155+ (cam.position.x-640),507+ (cam.position.y - 360),1320-155+ (cam.position.x-640),507+ (cam.position.y - 360));
+            sred.line(-50-155+ (cam.position.x-640),287+ (cam.position.y - 360),1320-155+ (cam.position.x-640),287+ (cam.position.y - 360));
+            sred.line(-50-155+ (cam.position.x-640),102+ (cam.position.y - 360),1320-155+ (cam.position.x-640),102+ (cam.position.y - 360));
+
+
+            sred.end();
 
 
         }
