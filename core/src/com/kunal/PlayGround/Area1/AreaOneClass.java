@@ -31,6 +31,7 @@ import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.ObjectCreation;
+import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class AreaOneClass implements Screen {
@@ -240,6 +241,7 @@ public class AreaOneClass implements Screen {
                             }
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 //code to choosing body
+                                game.setScreen(new ShapeChooser(game));
                                 System.out.println("choose Body");
 
                             }
