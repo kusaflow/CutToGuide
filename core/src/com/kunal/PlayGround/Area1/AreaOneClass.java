@@ -242,7 +242,6 @@ public class AreaOneClass implements Screen {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 //code to choosing body
                                 game.setScreen(new ShapeChooser(game));
-                                System.out.println("choose Body");
 
                             }
                         }
