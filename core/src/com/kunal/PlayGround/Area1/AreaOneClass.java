@@ -46,8 +46,8 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
-    private Sprite Brake, start, chooseBody, secBg;
-    private Boolean brakeBool = false, startBool = false;
+    private Sprite Brake, start, chooseBody, HardMoveShapes;
+    private Boolean brakeBool = false, startBool = false, hardMove = false;
 
     //tiled map
     private TiledMap map;
@@ -101,6 +101,12 @@ public class AreaOneClass implements Screen {
         chooseBody.setPosition(50, 140);
         chooseBody.setSize(150*camscl, 150*camscl);
         chooseBody.setAlpha(0.8f);
+
+        HardMoveShapes = new Sprite(new Texture(Gdx.files.internal("playArea/HardMove.png")));
+        HardMoveShapes.setPosition(50, 240);
+        HardMoveShapes.setSize(60*camscl, 60*camscl);
+        HardMoveShapes.setAlpha(0.4f);
+
 
 
 
@@ -175,9 +181,8 @@ public class AreaOneClass implements Screen {
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
-        //AllVariables.batch.draw(new Texture("badlogic.jpg"), VariablesForPlayArea.CutOutBodies.get(0).getPosition().x * 100,
-          ///      VariablesForPlayArea.CutOutBodies.get(0).getPosition().y * 100);
         chooseBody.draw(AllVariables.batch);
+        HardMoveShapes.draw(AllVariables.batch);
         AllVariables.batch.end();
 
 
@@ -203,6 +208,8 @@ public class AreaOneClass implements Screen {
         start.setPosition(-190+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
         Brake.setPosition(1200+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
         chooseBody.setPosition(1200+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
+        HardMoveShapes.setPosition(-220+(cam.position.x - Gdx.graphics.getWidth()/2), 500+(cam.position.y - Gdx.graphics.getHeight()/2));
+
 
 
         if (startBool){
@@ -216,7 +223,6 @@ public class AreaOneClass implements Screen {
                     AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getAngularVelocity()-3);
             }
         }
-
     }
 
     private void input(float dt){
@@ -235,6 +241,7 @@ public class AreaOneClass implements Screen {
                             if (screenX > 45 && screenX < 200 && screenY > 140 && screenY < 290) {
                                 start.setAlpha(0);
                                 chooseBody.setAlpha(0);
+                                HardMoveShapes.setAlpha(0);
                                 world.setGravity(new Vector2(0,-10));
                                 startBool = true;
                                 Brake.setAlpha(0.4f);
@@ -242,9 +249,17 @@ public class AreaOneClass implements Screen {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 //code to choosing body
                                 game.setScreen(new ShapeChooser(game));
+                            }
+                            if(screenX > 22 && screenX < 90 && screenY > 457 && screenY < 520){
+                                hardMove = !hardMove;
+                                if (hardMove)
+                                    HardMoveShapes.setAlpha(1);
+                                else
+                                    HardMoveShapes.setAlpha(0.4f);
 
                             }
                         }
+                        System.out.println(screenX + "\t" + screenY);
 
 
 

@@ -137,9 +137,6 @@ public class ShapeChooser implements Screen {
                 }
             }
 
-            System.out.println(Gdx.input.getX() + "\t" + (720 - Gdx.input.getY()));
-
-
         }
 
     }
