@@ -237,10 +237,15 @@ public class AreaOneClass implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = AllVariables.HEIGHT - screenY;
-                        originX = screenX;
-                        originY = screenY;
-                        shapeX = VariablesForPlayArea.CutOutBodies.get(0).getPosition().x;
-                        shapeY = VariablesForPlayArea.CutOutBodies.get(0).getPosition().y;
+
+                        if(hardMove){
+
+                        }else {
+                            originX = screenX;
+                            originY = screenY;
+                            shapeX = VariablesForPlayArea.CutOutBodies.get(0).getPosition().x;
+                            shapeY = VariablesForPlayArea.CutOutBodies.get(0).getPosition().y;
+                        }
 
 
 
@@ -288,9 +293,11 @@ public class AreaOneClass implements Screen {
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
                         screenY = AllVariables.HEIGHT - screenY;
-                        //VariablesForPlayArea.CutOutBodies.get(0).setTransform(((VariablesForPlayArea.CutOutBodies.get(0).getPosition().x) - ((originX - screenX)))/100,
-                          //      (AllVariables.HEIGHT - VariablesForPlayArea.CutOutBodies.get(0).getPosition().y - (originY - screenY))/100 ,0);
-                        VariablesForPlayArea.CutOutBodies.get(0).setTransform(((shapeX*AllVariables.PPM)+(screenX - originX))/100,shapeY,0);
+
+                        if(!hardMove) {
+                            VariablesForPlayArea.CutOutBodies.get(0).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
+                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, 0);
+                        }
 
 
                         return false;
