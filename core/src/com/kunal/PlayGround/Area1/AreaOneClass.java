@@ -152,18 +152,6 @@ public class AreaOneClass implements Screen {
                 k++;
             }
 
-            //sred.polygon(ver);
-            /*ver = new float[8];
-            ver[0] = 0;
-            ver[1] = 0;
-            ver[2] = 50;
-            ver[3] = 0;
-            ver[4] = 50;
-            ver[5] = 50;
-            ver[6] = 0;
-            ver[7] = 50;
-            */
-
             poly = new Polygon(ver);
             //poly.setPosition(AllVariables.BackWheel.getPosition().x*100
               //    , AllVariables.BackWheel.getPosition().y*100);
@@ -171,6 +159,7 @@ public class AreaOneClass implements Screen {
                     VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
 
             poly.setScale(1f,1f);
+            poly.setRotation(180);
             poly.dirty();
             sred.polygon(poly.getTransformedVertices());
 
@@ -296,7 +285,7 @@ public class AreaOneClass implements Screen {
 
                         if(!hardMove) {
                             VariablesForPlayArea.CutOutBodies.get(0).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, 0);
+                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180*(Math.PI/180)));
                         }
 
 
