@@ -227,6 +227,8 @@ public class AreaOneClass implements Screen {
             }
         }
 
+        System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition().x);
+
     }
 
     private void input(float dt){
@@ -288,7 +290,7 @@ public class AreaOneClass implements Screen {
                         screenY = AllVariables.HEIGHT - screenY;
                         //VariablesForPlayArea.CutOutBodies.get(0).setTransform(((VariablesForPlayArea.CutOutBodies.get(0).getPosition().x) - ((originX - screenX)))/100,
                           //      (AllVariables.HEIGHT - VariablesForPlayArea.CutOutBodies.get(0).getPosition().y - (originY - screenY))/100 ,0);
-                        VariablesForPlayArea.CutOutBodies.get(0).setTransform(shapeX+(originX - screenX)/50,screenY,0);
+                        VariablesForPlayArea.CutOutBodies.get(0).setTransform(((shapeX*AllVariables.PPM)+(screenX - originX))/100,shapeY,0);
 
 
                         return false;
