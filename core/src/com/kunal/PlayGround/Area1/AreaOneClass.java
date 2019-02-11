@@ -57,6 +57,9 @@ public class AreaOneClass implements Screen {
 
     float camscl = 1.4f;
 
+    int originX, originY;
+    float shapeX, shapeY;
+
     Polygon poly;
 
     public AreaOneClass(MainGame game) {
@@ -223,6 +226,7 @@ public class AreaOneClass implements Screen {
                     AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getAngularVelocity()-3);
             }
         }
+
     }
 
     private void input(float dt){
@@ -231,6 +235,13 @@ public class AreaOneClass implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = AllVariables.HEIGHT - screenY;
+                        originX = screenX;
+                        originY = screenY;
+                        shapeX = VariablesForPlayArea.CutOutBodies.get(0).getPosition().x;
+                        shapeY = VariablesForPlayArea.CutOutBodies.get(0).getPosition().y;
+
+
+
                         if (startBool) {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 Brake.setAlpha(0.9f);
@@ -259,11 +270,6 @@ public class AreaOneClass implements Screen {
 
                             }
                         }
-                        System.out.println(screenX + "\t" + screenY);
-
-
-
-
 
                         return false;
                     }
@@ -279,6 +285,12 @@ public class AreaOneClass implements Screen {
 
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        screenY = AllVariables.HEIGHT - screenY;
+                        //VariablesForPlayArea.CutOutBodies.get(0).setTransform(((VariablesForPlayArea.CutOutBodies.get(0).getPosition().x) - ((originX - screenX)))/100,
+                          //      (AllVariables.HEIGHT - VariablesForPlayArea.CutOutBodies.get(0).getPosition().y - (originY - screenY))/100 ,0);
+                        VariablesForPlayArea.CutOutBodies.get(0).setTransform(shapeX+(originX - screenX)/50,screenY,0);
+
+
                         return false;
                     }
 

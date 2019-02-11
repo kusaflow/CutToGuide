@@ -200,8 +200,8 @@ public class ObjectCreation {
                 k++;
             }
 
-            Body b= BodyGenerator.ChainLand(world,false, "cutout", new Vector2(600,80), ver,1,0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
-            b.setTransform(0,20,0);
+            Body b= BodyGenerator.ChainLand(world,false, "cutout", new Vector2(600,80), ver,1,0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle ));//| AllVariables.Bit_land | AllVariables.Bit_Tool));
+            b.setTransform(0,5,0);
             VariablesForPlayArea.CutOutBodies.add(b);
             ver = null;
         }
