@@ -261,7 +261,7 @@ public class AreaOneClass implements Screen {
 
                         if(hardMove){
                             VariablesForPlayArea.CutOutBodies.get(0).setTransform((screenX*camscl + (cam.position.x - Gdx.graphics.getWidth()/2))/AllVariables.PPM,
-                                    (screenY*camscl + (cam.position.y - Gdx.graphics.getHeight()/2))/AllVariables.PPM, (float) (180*(Math.PI/180)));
+                                    (screenY*camscl - 200 + (cam.position.y - Gdx.graphics.getHeight()/2))/AllVariables.PPM, (float) (180*(Math.PI/180)));
 
 
                         }else {
