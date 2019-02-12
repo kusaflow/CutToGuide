@@ -157,6 +157,7 @@ public class AreaOneClass implements Screen {
               //    , AllVariables.BackWheel.getPosition().y*100);
             poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x * 100,
                     VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
+                    //it -am ::200);
 
             poly.setScale(1f,1f);
             poly.setRotation(180);
@@ -216,8 +217,6 @@ public class AreaOneClass implements Screen {
             }
         }
 
-        System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition().x);
-
     }
 
     private void input(float dt){
@@ -227,21 +226,11 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = AllVariables.HEIGHT - screenY;
 
-                        if(hardMove){
-
-                        }else {
-                            originX = screenX;
-                            originY = screenY;
-                            shapeX = VariablesForPlayArea.CutOutBodies.get(0).getPosition().x;
-                            shapeY = VariablesForPlayArea.CutOutBodies.get(0).getPosition().y;
-                        }
-
-
-
                         if (startBool) {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 Brake.setAlpha(0.9f);
                                 brakeBool = true;
+                                return false;
                             }
                         }
                         if (!startBool){
@@ -252,10 +241,12 @@ public class AreaOneClass implements Screen {
                                 world.setGravity(new Vector2(0,-10));
                                 startBool = true;
                                 Brake.setAlpha(0.4f);
+                                return false;
                             }
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 //code to choosing body
                                 game.setScreen(new ShapeChooser(game));
+                                return false;
                             }
                             if(screenX > 22 && screenX < 90 && screenY > 457 && screenY < 520){
                                 hardMove = !hardMove;
@@ -263,8 +254,21 @@ public class AreaOneClass implements Screen {
                                     HardMoveShapes.setAlpha(1);
                                 else
                                     HardMoveShapes.setAlpha(0.4f);
+                                return false;
 
                             }
+                        }
+
+                        if(hardMove){
+                            VariablesForPlayArea.CutOutBodies.get(0).setTransform((screenX*camscl + (cam.position.x - Gdx.graphics.getWidth()/2))/AllVariables.PPM,
+                                    (screenY*camscl + (cam.position.y - Gdx.graphics.getHeight()/2))/AllVariables.PPM, (float) (180*(Math.PI/180)));
+
+
+                        }else {
+                            originX = screenX;
+                            originY = screenY;
+                            shapeX = VariablesForPlayArea.CutOutBodies.get(0).getPosition().x;
+                            shapeY = VariablesForPlayArea.CutOutBodies.get(0).getPosition().y;
                         }
 
                         return false;
