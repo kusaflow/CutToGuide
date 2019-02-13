@@ -217,6 +217,8 @@ public class AreaOneClass implements Screen {
             }
         }
 
+        System.out.println(VariablesForPlayArea.CutOutBodies.size());
+
 
     }
 
@@ -227,7 +229,6 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = AllVariables.HEIGHT - screenY;
 
-                        System.out.println(screenX + "\t" + screenY);
 
                         if (startBool) {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
@@ -262,15 +263,17 @@ public class AreaOneClass implements Screen {
                             }
                         }
 
-                        if(hardMove){
-                            VariablesForPlayArea.CutOutBodies.get(0).setTransform((screenX*camscl + (cam.position.x - Gdx.graphics.getWidth()/2))/AllVariables.PPM,
-                                    (screenY*camscl - 200 + (cam.position.y - Gdx.graphics.getHeight()/2))/AllVariables.PPM, (float) (180*(Math.PI/180)));
+                        if(VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size()-1) {
+                            if (hardMove) {
+                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform((screenX * camscl + (cam.position.x - Gdx.graphics.getWidth() / 2)) / AllVariables.PPM,
+                                        (screenY * camscl - 200 + (cam.position.y - Gdx.graphics.getHeight() / 2)) / AllVariables.PPM, (float) (180 * (Math.PI / 180)));
 
-                        }else {
-                            originX = screenX;
-                            originY = screenY;
-                            shapeX = VariablesForPlayArea.CutOutBodies.get(0).getPosition().x;
-                            shapeY = VariablesForPlayArea.CutOutBodies.get(0).getPosition().y;
+                            } else {
+                                originX = screenX;
+                                originY = screenY;
+                                shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
+                                shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
+                            }
                         }
 
                         return false;
@@ -289,9 +292,12 @@ public class AreaOneClass implements Screen {
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
                         screenY = AllVariables.HEIGHT - screenY;
 
-                        if(!hardMove) {
-                            VariablesForPlayArea.CutOutBodies.get(0).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180*(Math.PI/180)));
+
+                        if(VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size()-1) {
+                            if (!hardMove) {
+                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
+                                        ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180 * (Math.PI / 180)));
+                            }
                         }
 
 
