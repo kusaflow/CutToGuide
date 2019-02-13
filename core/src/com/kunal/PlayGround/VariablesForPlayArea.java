@@ -24,6 +24,8 @@ public class VariablesForPlayArea {
     //linked list for bodies
     public static LinkedList<Body> CutOutBodies;
 
+    public static byte shapeNumberSelected ;
+
     public VariablesForPlayArea() {
         cantuseDots = new LinkedList<Byte>();
         CutOutBodies = new LinkedList<Body>();

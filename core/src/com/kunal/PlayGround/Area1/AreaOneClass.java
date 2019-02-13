@@ -107,7 +107,7 @@ public class AreaOneClass implements Screen {
 
         HardMoveShapes = new Sprite(new Texture(Gdx.files.internal("playArea/HardMove.png")));
         HardMoveShapes.setPosition(50, 240);
-        HardMoveShapes.setSize(60*camscl, 60*camscl);
+        HardMoveShapes.setSize(100*camscl, 100*camscl);
         HardMoveShapes.setAlpha(0.4f);
 
 
@@ -217,6 +217,7 @@ public class AreaOneClass implements Screen {
             }
         }
 
+
     }
 
     private void input(float dt){
@@ -225,6 +226,8 @@ public class AreaOneClass implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = AllVariables.HEIGHT - screenY;
+
+                        System.out.println(screenX + "\t" + screenY);
 
                         if (startBool) {
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
@@ -248,7 +251,7 @@ public class AreaOneClass implements Screen {
                                 game.setScreen(new ShapeChooser(game));
                                 return false;
                             }
-                            if(screenX > 22 && screenX < 90 && screenY > 457 && screenY < 520){
+                            if(screenX > 22 && screenX < 125 && screenY > 457 && screenY < 560){
                                 hardMove = !hardMove;
                                 if (hardMove)
                                     HardMoveShapes.setAlpha(1);
@@ -262,7 +265,6 @@ public class AreaOneClass implements Screen {
                         if(hardMove){
                             VariablesForPlayArea.CutOutBodies.get(0).setTransform((screenX*camscl + (cam.position.x - Gdx.graphics.getWidth()/2))/AllVariables.PPM,
                                     (screenY*camscl - 200 + (cam.position.y - Gdx.graphics.getHeight()/2))/AllVariables.PPM, (float) (180*(Math.PI/180)));
-
 
                         }else {
                             originX = screenX;

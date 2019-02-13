@@ -18,7 +18,7 @@ public class ShapeChooser implements Screen {
 
     MainGame game;
     ShapeRenderer sred;
-    int x=90,y=287;
+    int x=-900,y=287;
     Sprite LetsCut, okTick;
 
     OrthographicCamera cam;
@@ -83,6 +83,7 @@ public class ShapeChooser implements Screen {
         sred.rect(x, y,275,203);
 
         sred.end();
+        System.out.println(VariablesForPlayArea.shapeNumberSelected);
 
     }
 
@@ -91,35 +92,36 @@ public class ShapeChooser implements Screen {
         if (Gdx.input.justTouched()) {
             if (Gdx.input.getX() > 40 && Gdx.input.getX() < 315) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 101 && AllVariables.HEIGHT -  Gdx.input.getY() < 304) {
-                    x=40;y=101;
+                    x=40;y=101;VariablesForPlayArea.shapeNumberSelected =0;
                 } else if (AllVariables.HEIGHT - Gdx.input.getY() > 304 && AllVariables.HEIGHT -  Gdx.input.getY() < 507) {
-                    x=40;y=304;
+                    x=40;y=304;VariablesForPlayArea.shapeNumberSelected =4;
                 } else if (AllVariables.HEIGHT - Gdx.input.getY() > 507 && AllVariables.HEIGHT -  Gdx.input.getY() < 710) {
-                    x=40;y=507;
+                    x=40;y=507;VariablesForPlayArea.shapeNumberSelected =8;
                 }
             } else if (Gdx.input.getX() > 315 && Gdx.input.getX() < 590) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 101 && AllVariables.HEIGHT -  Gdx.input.getY() < 304){
-                    x=315;y=101;
+                    x=315;y=101;VariablesForPlayArea.shapeNumberSelected =1;
                 }else if (AllVariables.HEIGHT - Gdx.input.getY() > 304 && AllVariables.HEIGHT -  Gdx.input.getY() < 507){
-                    x=315;y=304;
+                    x=315;y=304;VariablesForPlayArea.shapeNumberSelected =5;
                 }else if (AllVariables.HEIGHT - Gdx.input.getY() > 507 && AllVariables.HEIGHT -  Gdx.input.getY() < 710){
-                    x=315;y=507;
+                    x=315;y=507;VariablesForPlayArea.shapeNumberSelected =9;
                 }
             } else if (Gdx.input.getX() > 590 && Gdx.input.getX() < 865) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 101 && AllVariables.HEIGHT -  Gdx.input.getY() < 304){
-                    x=590;y=101;
+                    x=590;y=101;VariablesForPlayArea.shapeNumberSelected =2;
                 }else if (AllVariables.HEIGHT - Gdx.input.getY() > 304 && AllVariables.HEIGHT -  Gdx.input.getY() < 507){
-                    x=590;y=304;
+                    x=590;y=304;VariablesForPlayArea.shapeNumberSelected =6;
                 }else if (AllVariables.HEIGHT - Gdx.input.getY() > 507 && AllVariables.HEIGHT -  Gdx.input.getY() < 710){
-                    x=590;y=507;
+                    x=590;y=507;VariablesForPlayArea.shapeNumberSelected =10;
                 }
             } else if (Gdx.input.getX() > 865 && Gdx.input.getX() < 1140) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 101 && AllVariables.HEIGHT -  Gdx.input.getY() < 304){
-                    x=865;y=101;
+                    x=865;y=101;VariablesForPlayArea.shapeNumberSelected =3;
                 }else if (AllVariables.HEIGHT - Gdx.input.getY() > 304 && AllVariables.HEIGHT -  Gdx.input.getY() < 507){
-                    x=865;y=304;
+                    x=865;y=304;VariablesForPlayArea.shapeNumberSelected =7;
                 }else if (AllVariables.HEIGHT - Gdx.input.getY() > 507 && AllVariables.HEIGHT -  Gdx.input.getY() < 710){
-                    x=865;y=507;
+                    x=865;y=507;VariablesForPlayArea.shapeNumberSelected =11
+                    ;
                 }
             }
 
