@@ -70,7 +70,7 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl, cam);
+        //port = new FitViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl, cam);
         port = new ScreenViewport(cam);
         //port.setCamera(cam);
         //port.setScreenSize(AllVariables.WIDTH, AllVariables.HEIGHT);

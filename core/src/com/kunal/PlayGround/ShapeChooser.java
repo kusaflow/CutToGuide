@@ -14,6 +14,8 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 
 public class ShapeChooser implements Screen {
 
@@ -34,7 +36,7 @@ public class ShapeChooser implements Screen {
         //cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        //port = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), cam);
+        //port = new FillViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
         port.apply();
         cam.update();
@@ -94,6 +96,7 @@ public class ShapeChooser implements Screen {
     private void input(float dt){
 
         if (Gdx.input.justTouched()) {
+
             if (Gdx.input.getX() > 40 * AllVariables.inpM && Gdx.input.getX() < 315* AllVariables.inpM) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 101* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 304* AllVariables.inpM) {
                     x=40;y=101;VariablesForPlayArea.shapeNumberSelected =8;
@@ -131,14 +134,14 @@ public class ShapeChooser implements Screen {
             //oktick
             else if (Gdx.input.getX() > 1140* AllVariables.inpM && Gdx.input.getX() < 1300* AllVariables.inpM) {
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM &&  (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM){
-                    //game.setScreen(new AreaOneClass(game));
-                    System.out.println("down wala");
+                    game.setScreen(new AreaOneClass(game));
+                    //System.out.println("down wala");
                 }
 
                 //letsCut
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507* AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM){
-                    //game.setScreen(new CuttingAreaManager(game));
-                    System.out.println("up wala");
+                    game.setScreen(new CuttingAreaManager(game));
+                    //System.out.println("up wala");
                 }
             }
 
