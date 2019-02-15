@@ -7,22 +7,23 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.Area1.AreaOneClass;
-import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 
 public class ShapeChooser implements Screen {
 
-    MainGame game;
-    ShapeRenderer sred;
-    int x=-900,y=287;
-    Sprite LetsCut, okTick;
+    private MainGame game;
+    private ShapeRenderer sred;
+    private int x=-900,y=287;
+    private Sprite LetsCut, okTick;
 
-    OrthographicCamera cam;
-    Viewport port;
+    private OrthographicCamera cam;
+    private Viewport port;
 
 
     public ShapeChooser(MainGame game) {
@@ -30,9 +31,13 @@ public class ShapeChooser implements Screen {
         sred = new ShapeRenderer();
 
         cam = new OrthographicCamera();
+        //cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
+        //port = new FitViewport(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), cam);
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
+        port.apply();
+        cam.update();
 
 
         LetsCut = new Sprite(new Texture(Gdx.files.internal("ChooseShape/LetsCut.png")));
@@ -59,6 +64,7 @@ public class ShapeChooser implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
+        sred.setProjectionMatrix(cam.combined);
 
         AllVariables.batch.begin();
         LetsCut.draw(AllVariables.batch);
@@ -88,7 +94,7 @@ public class ShapeChooser implements Screen {
     private void input(float dt){
 
         if (Gdx.input.justTouched()) {
-            System.out.println(Gdx.graphics.getWidth() + "\t" + Gdx.graphics.getHeight());
+            System.out.println(Gdx.graphics.getHeight());
 
             if (Gdx.input.getX() > 40 && Gdx.input.getX() < 315) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 101 && AllVariables.HEIGHT -  Gdx.input.getY() < 304) {
@@ -128,13 +134,13 @@ public class ShapeChooser implements Screen {
             else if (Gdx.input.getX() > 1140 && Gdx.input.getX() < 1300) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 304 && AllVariables.HEIGHT -  Gdx.input.getY() < 507){
                     //game.setScreen(new AreaOneClass(game));
+                    System.out.println("down wala");
                 }
-            }
 
-            //letsCut
-            if (Gdx.input.getX() > 1140 && Gdx.input.getX() < 1300) {
+                //letsCut
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 507 && AllVariables.HEIGHT -  Gdx.input.getY() < 710){
                     //game.setScreen(new CuttingAreaManager(game));
+                    System.out.println("up wala");
                 }
             }
 

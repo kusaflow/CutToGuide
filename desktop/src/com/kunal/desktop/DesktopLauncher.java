@@ -8,8 +8,10 @@ import com.kunal.MainGame;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-	    config.width = AllVariables.WIDTH;
-	    config.height = AllVariables.HEIGHT;
+	    //config.width = AllVariables.WIDTH;
+	    //config.height = AllVariables.HEIGHT;
+		config.width = 700;
+		config.height = 360;
 	    new LwjglApplication(new MainGame(), config);
 	}
 }

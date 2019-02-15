@@ -1,5 +1,6 @@
 package com.kunal;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 
@@ -11,6 +12,8 @@ public class AllVariables {
     public static SpriteBatch batch;
 
     public static final float PPM = 100;
+
+    public static float inpM = Gdx.graphics.getHeight()/HEIGHT;
 
 
     //Masks
