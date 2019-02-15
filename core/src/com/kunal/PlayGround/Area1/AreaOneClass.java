@@ -25,7 +25,9 @@ import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
@@ -68,7 +70,14 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl, cam);
+        //port = new FitViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl, cam);
+        port = new ScreenViewport(cam);
+        //port.setCamera(cam);
+        //port.setScreenSize(AllVariables.WIDTH, AllVariables.HEIGHT);
+        //port = new FillViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl);
+        //port.setCamera(cam);
+
+        port.apply();
 
         world = new World(new Vector2(0,0f), false);
 
@@ -217,7 +226,7 @@ public class AreaOneClass implements Screen {
             }
         }
 
-        System.out.println(VariablesForPlayArea.CutOutBodies.size());
+        //System.out.println(VariablesForPlayArea.CutOutBodies.size());
 
 
     }
@@ -357,6 +366,10 @@ public class AreaOneClass implements Screen {
     @Override
     public void resize(int width, int height) {
         port.update(width, height);
+        //port.setWorldSize(width*camscl,height*camscl);
+        //cam.setToOrtho(false,width*camscl, height*camscl);
+        cam.update();
+
     }
 
     @Override
