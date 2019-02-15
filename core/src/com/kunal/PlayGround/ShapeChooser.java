@@ -88,6 +88,8 @@ public class ShapeChooser implements Screen {
     private void input(float dt){
 
         if (Gdx.input.justTouched()) {
+            System.out.println(Gdx.graphics.getWidth() + "\t" + Gdx.graphics.getHeight());
+
             if (Gdx.input.getX() > 40 && Gdx.input.getX() < 315) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 101 && AllVariables.HEIGHT -  Gdx.input.getY() < 304) {
                     x=40;y=101;VariablesForPlayArea.shapeNumberSelected =8;
@@ -125,14 +127,14 @@ public class ShapeChooser implements Screen {
             //oktick
             else if (Gdx.input.getX() > 1140 && Gdx.input.getX() < 1300) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 304 && AllVariables.HEIGHT -  Gdx.input.getY() < 507){
-                    game.setScreen(new AreaOneClass(game));
+                    //game.setScreen(new AreaOneClass(game));
                 }
             }
 
             //letsCut
             if (Gdx.input.getX() > 1140 && Gdx.input.getX() < 1300) {
                 if (AllVariables.HEIGHT - Gdx.input.getY() > 507 && AllVariables.HEIGHT -  Gdx.input.getY() < 710){
-                    game.setScreen(new CuttingAreaManager(game));
+                    //game.setScreen(new CuttingAreaManager(game));
                 }
             }
 

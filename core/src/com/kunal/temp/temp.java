@@ -8,6 +8,7 @@ import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
+import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class temp implements Screen {
@@ -39,9 +40,11 @@ public class temp implements Screen {
             //game.setScreen(new CuttingAreaManager(game));
             //game.setScreen(new MainLoadingScreen(game));
 
-            game.setScreen(new AreaOneClass(game));
+            //game.setScreen(new AreaOneClass(game));
 
             //game.setScreen(new AreaSelection(game));
+
+            game.setScreen(new ShapeChooser(game));
 
 
         }
