@@ -13,7 +13,7 @@ public class AllVariables {
 
     public static final float PPM = 100;
 
-    public static float inpM = Gdx.graphics.getHeight()/HEIGHT;
+    public static float inpM;
 
 
     //Masks

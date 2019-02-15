@@ -15,6 +15,7 @@ public class MainGame extends Game {
 	public void create () {
 	    AllVariables.batch = new SpriteBatch();
 		this.setScreen(new temp(this));
+		AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
 	}
 
 	@Override
