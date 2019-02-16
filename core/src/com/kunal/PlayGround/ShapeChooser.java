@@ -95,8 +95,6 @@ public class ShapeChooser implements Screen {
 
     private void input(float dt){
 
-        System.out.println(AllVariables.witdth_translation);
-
         if (Gdx.input.justTouched()) {
             if (Gdx.input.getX() > (40 * AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (315* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 101* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 304* AllVariables.inpM) {
@@ -136,14 +134,15 @@ public class ShapeChooser implements Screen {
             else if (Gdx.input.getX() > (1140* AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() <(1300* AllVariables.inpM)+AllVariables.witdth_translation) {
 
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM &&  (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM){
-                    //game.setScreen(new AreaOneClass(game));
+                    game.setScreen(new AreaOneClass(game));
                     //System.out.println("down wala");
                 }
 
                 //letsCut
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM){
-                    //game.setScreen(new CuttingAreaManager(game));
+                    game.setScreen(new CuttingAreaManager(game));
                     //System.out.println("up wala");
+
                 }
             }
 
