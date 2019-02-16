@@ -54,28 +54,16 @@ public class CuttingAreaManager implements Screen {
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
 
-        /*// for big square
-        vertices.add(BigSqurePoints[0][0]); //0
-        vertices.add(BigSqurePoints[0][1]);
-        vertices.add(BigSqurePoints[3][0]); //3
-        vertices.add(BigSqurePoints[3][1]);
-        vertices.add(BigSqurePoints[15][0]); //15
-        vertices.add(BigSqurePoints[15][1]);
-        vertices.add(BigSqurePoints[12][0]); //12
-        vertices.add(BigSqurePoints[12][1]);
-        */
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
-        //Integer[] data = shapes.get(0).toArray(new Integer[shapes.get(0).size()]);
-
-
-        //System.out.println(shapes.size());
-        //System.out.println(shapes.get(0).size());
     }
 
 
     @Override
     public void show() {
-
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
 
     @Override
@@ -129,7 +117,7 @@ public class CuttingAreaManager implements Screen {
                 } catch (Exception e) {
                 }
             }
-            sr.rectLine(VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1], presentX, AllVariables.HEIGHT - presntY, 5);
+            sr.rectLine(VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1], presentX/AllVariables.inpM + AllVariables.witdth_translation, (Gdx.graphics.getHeight() - presntY)/AllVariables.inpM, 5);
 
         } catch (Exception e) {
         }
@@ -180,59 +168,59 @@ public class CuttingAreaManager implements Screen {
                         presentX = screenX;
                         presntY = screenY;
 
-                        if (screenX > VariablesForPlayArea.BigSqurePoints[0][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[0][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[0][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[0][1] - 25)) {
+                        if (screenX > ((VariablesForPlayArea.BigSqurePoints[0][0] - 25)* AllVariables.inpM)+AllVariables.witdth_translation && screenX < ((VariablesForPlayArea.BigSqurePoints[0][0] + 25)* AllVariables.inpM)+AllVariables.witdth_translation) {
+                            if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 0)
                                     inputsToChop.add((byte) 0);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[4][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[4][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[4][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[4][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 4)
                                     inputsToChop.add((byte) 4);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[8][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[8][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[8][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[8][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 8)
                                     inputsToChop.add((byte) 8);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[12][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[12][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[12][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[12][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 12)
                                     inputsToChop.add((byte) 12);
                             }
-                        } else if (screenX > VariablesForPlayArea.BigSqurePoints[1][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[1][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[1][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[1][1] - 25)) {
+                        } else if (screenX > ((VariablesForPlayArea.BigSqurePoints[1][0] - 25)* AllVariables.inpM)+AllVariables.witdth_translation && screenX < ((VariablesForPlayArea.BigSqurePoints[1][0] + 25)* AllVariables.inpM) + AllVariables.witdth_translation) {
+                            if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[1][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[1][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 1)
                                     inputsToChop.add((byte) 1);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[5][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[5][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[5][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[5][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 5)
                                     inputsToChop.add((byte) 5);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[9][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[9][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[9][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[9][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 9)
                                     inputsToChop.add((byte) 9);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[13][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[13][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[13][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[13][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 13)
                                     inputsToChop.add((byte) 13);
                             }
-                        } else if (screenX > VariablesForPlayArea.BigSqurePoints[2][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[2][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[2][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[2][1] - 25)) {
+                        } else if (screenX > ((VariablesForPlayArea.BigSqurePoints[2][0] - 25)* AllVariables.inpM)+AllVariables.witdth_translation && screenX < ((VariablesForPlayArea.BigSqurePoints[2][0] + 25)* AllVariables.inpM)+AllVariables.witdth_translation) {
+                            if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[2][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[2][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 2)
                                     inputsToChop.add((byte) 2);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[6][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[6][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[6][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[6][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 6)
                                     inputsToChop.add((byte) 6);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[10][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[10][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[10][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[10][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 10)
                                     inputsToChop.add((byte) 10);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[14][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[14][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[14][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[14][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 14)
                                     inputsToChop.add((byte) 14);
                             }
-                        } else if (screenX > VariablesForPlayArea.BigSqurePoints[3][0] - 25 && screenX < VariablesForPlayArea.BigSqurePoints[3][0] + 25) {
-                            if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[3][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[3][1] - 25)) {
+                        } else if (screenX > ((VariablesForPlayArea.BigSqurePoints[3][0] - 25)* AllVariables.inpM)+AllVariables.witdth_translation && screenX < ((VariablesForPlayArea.BigSqurePoints[3][0] + 25)* AllVariables.inpM)+AllVariables.witdth_translation) {
+                            if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[3][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[3][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 3)
                                     inputsToChop.add((byte) 3);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[7][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[7][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[7][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[7][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 7)
                                     inputsToChop.add((byte) 7);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[11][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[11][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[11][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[11][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 11)
                                     inputsToChop.add((byte) 11);
-                            } else if (screenY > AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[15][1] + 25) && screenY < AllVariables.HEIGHT - (VariablesForPlayArea.BigSqurePoints[15][1] - 25)) {
+                            } else if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[15][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[15][1] - 25)* AllVariables.inpM) {
                                 if (inputsToChop.getLast() != 15)
                                     inputsToChop.add((byte) 15);
                             }
@@ -248,7 +236,7 @@ public class CuttingAreaManager implements Screen {
                         try {
                             inputsToChop.removeFirst();
                             presentX = VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0];
-                            presntY = AllVariables.HEIGHT - VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1];
+                            presntY = Gdx.graphics.getHeight() - VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1];
 
                         } catch (Exception e) {
                         }
@@ -663,6 +651,8 @@ public class CuttingAreaManager implements Screen {
     public void resize(int width, int height) {
         port.update(width, height);
         cam.update();
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
 
     @Override
