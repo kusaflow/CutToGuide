@@ -14,6 +14,7 @@ public class AllVariables {
     public static final float PPM = 100;
 
     public static float inpM;
+    public static int witdth_translation;
 
 
     //Masks

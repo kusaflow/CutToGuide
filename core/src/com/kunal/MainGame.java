@@ -16,6 +16,7 @@ public class MainGame extends Game {
 	    AllVariables.batch = new SpriteBatch();
 		this.setScreen(new temp(this));
 		AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+		AllVariables.witdth_translation = (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 	}
 
 	@Override
