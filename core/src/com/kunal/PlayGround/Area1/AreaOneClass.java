@@ -232,10 +232,11 @@ public class AreaOneClass implements Screen {
                 new InputProcessor() {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-                        screenY = AllVariables.HEIGHT - screenY;
+                        screenY = Gdx.graphics.getHeight() - screenY;
 
 
                         if (startBool) {
+                            //for brake
                             if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
                                 Brake.setAlpha(0.9f);
                                 brakeBool = true;
@@ -243,7 +244,10 @@ public class AreaOneClass implements Screen {
                             }
                         }
                         if (!startBool){
-                            if (screenX > 45 && screenX < 200 && screenY > 140 && screenY < 290) {
+                            //for start
+                            if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
+                                    && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
+                                    && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                                 start.setAlpha(0);
                                 chooseBody.setAlpha(0);
                                 HardMoveShapes.setAlpha(0);
@@ -252,12 +256,18 @@ public class AreaOneClass implements Screen {
                                 Brake.setAlpha(0.4f);
                                 return false;
                             }
-                            if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
+                            //shape chooser
+                            if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                                 //code to choosing body
                                 game.setScreen(new ShapeChooser(game));
                                 return false;
                             }
-                            if(screenX > 22 && screenX < 125 && screenY > 457 && screenY < 560){
+                            //harmove
+                            if(screenX > (22 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 457* AllVariables.inpM && screenY < 560* AllVariables.inpM){
                                 hardMove = !hardMove;
                                 if (hardMove)
                                     HardMoveShapes.setAlpha(1);
@@ -270,8 +280,8 @@ public class AreaOneClass implements Screen {
 
                         if(VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size()-1) {
                             if (hardMove) {
-                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform((screenX * camscl + (cam.position.x - Gdx.graphics.getWidth() / 2)) / AllVariables.PPM,
-                                        (screenY * camscl - 200 + (cam.position.y - Gdx.graphics.getHeight() / 2)) / AllVariables.PPM, (float) (180 * (Math.PI / 180)));
+                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform((screenX * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM,
+                                        (screenY * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM, (float) (180 * (Math.PI / 180)));
 
                             } else {
                                 originX = screenX;
@@ -295,7 +305,7 @@ public class AreaOneClass implements Screen {
 
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
-                        screenY = AllVariables.HEIGHT - screenY;
+                        screenY = Gdx.graphics.getHeight() - screenY;
 
 
                         if(VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size()-1) {
@@ -311,20 +321,11 @@ public class AreaOneClass implements Screen {
 
                     @Override
                     public boolean keyDown(int keycode) {
-                        if (keycode == Input.Keys.P){
+                        if (keycode == Input.Keys.Z){
                             game.setScreen(new CuttingAreaManager(game));
                         }
                         if (keycode == Input.Keys.SPACE){
                             world.setGravity(new Vector2(0,-10));
-                        }
-
-                        if (keycode == Input.Keys.S){
-                            Matrix4 m = new Matrix4();
-                            m.set(sred.getProjectionMatrix());
-                            System.out.println(sred.getProjectionMatrix().scl(0.01f));
-                        }
-                        if (keycode == Input.Keys.C){
-                            System.out.println(cam.projection);
                         }
 
 
