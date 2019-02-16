@@ -51,10 +51,15 @@ public class ShapeChooser implements Screen {
         okTick.setPosition(1140, 304);
         okTick.setSize(140, 203);
 
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
     }
 
     @Override
     public void show() {
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
     }
 

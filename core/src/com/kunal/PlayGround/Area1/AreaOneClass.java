@@ -100,7 +100,7 @@ public class AreaOneClass implements Screen {
         Brake.setAlpha(0f);
 
         start = new Sprite(new Texture(Gdx.files.internal("playArea/Start.png")));
-        start.setPosition(50, 140);
+        start.setPosition(-190, 50);
         start.setSize(150*camscl, 150*camscl);
         start.setAlpha(0.8f);
 
@@ -116,15 +116,15 @@ public class AreaOneClass implements Screen {
 
 
 
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
-
-
-        //for projection matrix for shape renderer
     }
 
     @Override
     public void show() {
-
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
 
     @Override
@@ -132,8 +132,6 @@ public class AreaOneClass implements Screen {
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         update(dt);
-
-        AllVariables.batch.setProjectionMatrix(cam.combined);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         //need to fix this
@@ -175,6 +173,9 @@ public class AreaOneClass implements Screen {
 
         sred.end();
 
+        AllVariables.batch.setProjectionMatrix(cam.combined);
+
+
         AllVariables.batch.begin();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
@@ -202,10 +203,10 @@ public class AreaOneClass implements Screen {
         tmr.setView(cam);
 
         //position of sprites
-        start.setPosition(-190+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
-        Brake.setPosition(1200+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
-        chooseBody.setPosition(1200+(cam.position.x - Gdx.graphics.getWidth()/2), 50+(cam.position.y - Gdx.graphics.getHeight()/2));
-        HardMoveShapes.setPosition(-220+(cam.position.x - Gdx.graphics.getWidth()/2), 500+(cam.position.y - Gdx.graphics.getHeight()/2));
+        start.setPosition(-190+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
+        Brake.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
+        chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
+        HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT)/2);
 
 
 
@@ -361,9 +362,10 @@ public class AreaOneClass implements Screen {
     @Override
     public void resize(int width, int height) {
         port.update(width, height);
-        //port.setWorldSize(width*camscl,height*camscl);
-        //cam.setToOrtho(false,width*camscl, height*camscl);
         cam.update();
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
 
     }
 
