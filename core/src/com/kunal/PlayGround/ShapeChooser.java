@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -27,7 +28,10 @@ public class ShapeChooser implements Screen {
 
     private OrthographicCamera cam;
     private Viewport port;
+    private float ver[];
+    private Polygon poly;
 
+    private short[][] ShapePts = new short[12][2];
 
     public ShapeChooser(MainGame game) {
         this.game = game;
@@ -42,6 +46,8 @@ public class ShapeChooser implements Screen {
         port.apply();
         cam.update();
 
+        poly = new Polygon();
+
 
         LetsCut = new Sprite(new Texture(Gdx.files.internal("ChooseShape/LetsCut.png")));
         LetsCut.setPosition(1140, 507);
@@ -53,6 +59,33 @@ public class ShapeChooser implements Screen {
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
+        ShapePts[0][0] =190 + 40;
+        ShapePts[0][1] =30 + 507;
+        ShapePts[1][0] =190 + 315;
+        ShapePts[1][1] =30 + 507;
+        ShapePts[2][0] =190 + 590;
+        ShapePts[2][1] =30 + 507;
+        ShapePts[3][0] =190 + 865;
+        ShapePts[3][1] =30 + 507;
+        ShapePts[4][0] =190 + 40;
+        ShapePts[4][1] =30 + 304;
+        ShapePts[5][0] =190 + 315;
+        ShapePts[5][1] =30 + 304;
+        ShapePts[6][0] =190 + 590;
+        ShapePts[6][1] =30 + 304;
+        ShapePts[7][0] =190 + 865;
+        ShapePts[7][1] =30 + 304;
+        ShapePts[8][0] =190 + 40;
+        ShapePts[8][1] =30 + 101;
+        ShapePts[9][0] =190 + 315;
+        ShapePts[9][1] =30 + 101;
+        ShapePts[10][0] =190 + 590;
+        ShapePts[10][1] =30 + 101;
+        ShapePts[11][0] =190 + 865;
+        ShapePts[11][1] =30 + 101;
+
+
 
     }
 
@@ -79,16 +112,41 @@ public class ShapeChooser implements Screen {
         AllVariables.batch.end();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
+
+        //verticle
         sred.line(40,720,40,0);
         sred.line(315,720,315,0);
         sred.line(590,720,590,0);
         sred.line(865,720,865,0);
         sred.line(1140,720,1140,0);
 
+        //horizontal
         sred.line(0,710,1280,710);
         sred.line(0,507,1280,507);
         sred.line(0,304,1280,304);
         sred.line(0,101,1280,101);
+
+        sred.setColor(1, 1f, 1, 1);
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
+                ver[k] = 550-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
+                k++;
+                ver[k] = 40 -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
+                k++;
+            }
+
+            poly = new Polygon(ver);
+            poly.setPosition(ShapePts[i][0], ShapePts[i][1]);
+
+            poly.setScale(0.5f,0.5f);
+            poly.setRotation(180);
+            poly.dirty();
+            sred.polygon(poly.getTransformedVertices());
+
+            ver = null;
+
+        }
 
         sred.end();
 
