@@ -84,7 +84,9 @@ public class CuttingAreaManager implements Screen {
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1];
                 k++;
             }
-            sr.polygon(ver);
+            try {
+                sr.polygon(ver);
+            }catch (Exception e){}
             ver = null;
 
         }
@@ -117,7 +119,8 @@ public class CuttingAreaManager implements Screen {
                 } catch (Exception e) {
                 }
             }
-            sr.rectLine(VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1], presentX/AllVariables.inpM + AllVariables.witdth_translation, (Gdx.graphics.getHeight() - presntY)/AllVariables.inpM, 5);
+            sr.rectLine(VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1],
+                    presentX/AllVariables.inpM + AllVariables.witdth_translation, (720 - Gdx.graphics.getHeight() + presntY), 5);
 
         } catch (Exception e) {
         }
@@ -165,8 +168,8 @@ public class CuttingAreaManager implements Screen {
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
 
-                        presentX = screenX;
-                        presntY = screenY;
+                        presentX = (int) (screenX* AllVariables.inpM + AllVariables.witdth_translation);
+                        presntY = (int) (screenY * AllVariables.inpM);
 
                         if (screenX > ((VariablesForPlayArea.BigSqurePoints[0][0] - 25)* AllVariables.inpM)+AllVariables.witdth_translation && screenX < ((VariablesForPlayArea.BigSqurePoints[0][0] + 25)* AllVariables.inpM)+AllVariables.witdth_translation) {
                             if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] - 25)* AllVariables.inpM) {
@@ -379,6 +382,9 @@ public class CuttingAreaManager implements Screen {
 
 
     private Boolean cutThePiece() {
+
+        if (inputsToChop.size() <=2)
+            return false;
 
         short theShapeNumber = -1;
 
