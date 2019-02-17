@@ -120,7 +120,7 @@ public class CuttingAreaManager implements Screen {
                 }
             }
             sr.rectLine(VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][0], VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1],
-                    presentX/AllVariables.inpM + AllVariables.witdth_translation, (720 - Gdx.graphics.getHeight() + presntY), 5);
+                    (presentX/AllVariables.inpM) - AllVariables.witdth_translation/AllVariables.inpM, (Gdx.graphics.getHeight() - presntY)/AllVariables.inpM, 5);
 
         } catch (Exception e) {
         }
@@ -162,14 +162,16 @@ public class CuttingAreaManager implements Screen {
                         inputsToChop.clear();
                         inputsToChop.add((byte) 20);
 
+                        System.out.println(screenX);
+
                         return false;
                     }
 
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
 
-                        presentX = (int) (screenX* AllVariables.inpM + AllVariables.witdth_translation);
-                        presntY = (int) (screenY * AllVariables.inpM);
+                        presentX = screenX;
+                        presntY = screenY;
 
                         if (screenX > ((VariablesForPlayArea.BigSqurePoints[0][0] - 25)* AllVariables.inpM)+AllVariables.witdth_translation && screenX < ((VariablesForPlayArea.BigSqurePoints[0][0] + 25)* AllVariables.inpM)+AllVariables.witdth_translation) {
                             if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] - 25)* AllVariables.inpM) {
