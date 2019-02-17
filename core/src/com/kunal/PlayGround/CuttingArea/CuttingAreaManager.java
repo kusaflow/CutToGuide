@@ -385,8 +385,13 @@ public class CuttingAreaManager implements Screen {
 
     private Boolean cutThePiece() {
 
-        if (inputsToChop.size() <=2)
-            return false;
+        if (inputsToChop.size() ==2) {
+            if(VariablesForPlayArea.BigSqurePoints[inputsToChop.get(0)][1] == VariablesForPlayArea.BigSqurePoints[inputsToChop.get(1)][1]){
+                return false;
+            }else if(VariablesForPlayArea.BigSqurePoints[inputsToChop.get(0)][0] == VariablesForPlayArea.BigSqurePoints[inputsToChop.get(1)][0]){
+                return false;
+            }
+        }
 
         short theShapeNumber = -1;
 
