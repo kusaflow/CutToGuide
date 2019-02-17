@@ -60,29 +60,29 @@ public class ShapeChooser implements Screen {
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
-        ShapePts[0][0] =190 + 40;
+        ShapePts[0][0] =200 + 40;
         ShapePts[0][1] =30 + 507;
-        ShapePts[1][0] =190 + 315;
+        ShapePts[1][0] =200 + 315;
         ShapePts[1][1] =30 + 507;
-        ShapePts[2][0] =190 + 590;
+        ShapePts[2][0] =200 + 590;
         ShapePts[2][1] =30 + 507;
-        ShapePts[3][0] =190 + 865;
+        ShapePts[3][0] =200 + 865;
         ShapePts[3][1] =30 + 507;
-        ShapePts[4][0] =190 + 40;
+        ShapePts[4][0] =200 + 40;
         ShapePts[4][1] =30 + 304;
-        ShapePts[5][0] =190 + 315;
+        ShapePts[5][0] =200 + 315;
         ShapePts[5][1] =30 + 304;
-        ShapePts[6][0] =190 + 590;
+        ShapePts[6][0] =200 + 590;
         ShapePts[6][1] =30 + 304;
-        ShapePts[7][0] =190 + 865;
+        ShapePts[7][0] =200 + 865;
         ShapePts[7][1] =30 + 304;
-        ShapePts[8][0] =190 + 40;
+        ShapePts[8][0] =200 + 40;
         ShapePts[8][1] =30 + 101;
-        ShapePts[9][0] =190 + 315;
+        ShapePts[9][0] =200 + 315;
         ShapePts[9][1] =30 + 101;
-        ShapePts[10][0] =190 + 590;
+        ShapePts[10][0] =200 + 590;
         ShapePts[10][1] =30 + 101;
-        ShapePts[11][0] =190 + 865;
+        ShapePts[11][0] =200 + 865;
         ShapePts[11][1] =30 + 101;
 
 
