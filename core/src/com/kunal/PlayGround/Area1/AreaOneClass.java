@@ -35,6 +35,7 @@ import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
+import com.kunal.utils.BodyGenerator;
 
 public class AreaOneClass implements Screen {
     MainGame game;
@@ -86,6 +87,12 @@ public class AreaOneClass implements Screen {
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();
+
+        //safelt platforn for all objects
+        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1000),
+                new Vector2(500, 50), 1,1, AllVariables.Bit_land,
+                (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
+
 
 
         //tiled map

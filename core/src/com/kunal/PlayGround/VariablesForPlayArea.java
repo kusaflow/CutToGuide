@@ -21,6 +21,9 @@ public class VariablesForPlayArea {
     //level number
     public static int levelNumber;
 
+    //positions of shapes
+    LinkedList<Vector2> Sh_pos;
+
     //linked list for bodies
     public static LinkedList<Body> CutOutBodies;
 
