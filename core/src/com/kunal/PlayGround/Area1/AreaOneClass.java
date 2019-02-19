@@ -237,7 +237,9 @@ public class AreaOneClass implements Screen {
 
                         if (startBool) {
                             //for brake
-                            if (screenX > 1040 && screenX < 1230 && screenY > 140 && screenY < 290) {
+                            if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
+                                    && screenX < (1230* AllVariables.inpM)+AllVariables.witdth_translation
+                                    && screenY > 140*AllVariables.inpM && screenY < 290*AllVariables.inpM) {
                                 Brake.setAlpha(0.9f);
                                 brakeBool = true;
                                 return false;
