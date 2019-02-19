@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.temp.temp;
 
@@ -95,6 +96,7 @@ public class CuttingAreaManager implements Screen {
 
         sr.begin(ShapeRenderer.ShapeType.Filled);
 
+        sr.rect(0,300, 200, 200);
         //sr.setColor(0,1,0.5f,1);
         //sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
         for (int i = 0; i < 16; i++) {
@@ -163,6 +165,14 @@ public class CuttingAreaManager implements Screen {
                         inputsToChop.add((byte) 20);
 
                         System.out.println(screenX);
+
+                        screenY = Gdx.graphics.getHeight() - screenY;
+
+                        if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
+                                screenX < 200 * AllVariables.inpM + AllVariables.witdth_translation &&
+                                screenY > 300 * AllVariables.inpM && screenY < 500 * AllVariables.inpM){
+                            game.setScreen(new ShapeChooser(game));
+                        }
 
                         return false;
                     }
