@@ -93,11 +93,11 @@ public class VariablesForPlayArea {
     }
 
     public void setEndPoint(Vector2 endPoint) {
-        this.endPoint = endPoint;
+        VariablesForPlayArea.endPoint = endPoint;
     }
 
     public void setLevelNumber(int levelNumber) {
-        this.levelNumber = levelNumber;
+        VariablesForPlayArea.levelNumber = levelNumber;
     }
 
     public Vector2 getEndPoint() {

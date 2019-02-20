@@ -33,6 +33,7 @@ import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.ObjectCreation;
+import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.BodyGenerator;
@@ -64,6 +65,7 @@ public class AreaOneClass implements Screen {
     float shapeX, shapeY;
 
     Polygon poly;
+    PlayAreaUtils playAreaUtils;
 
     public AreaOneClass(MainGame game) {
         this.game = game;
@@ -87,6 +89,8 @@ public class AreaOneClass implements Screen {
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();
+
+        playAreaUtils = new PlayAreaUtils();
 
         //safelt platforn for all objects
         BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1000),
@@ -125,7 +129,6 @@ public class AreaOneClass implements Screen {
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
-
 
 
     }
@@ -266,6 +269,9 @@ public class AreaOneClass implements Screen {
                                 world.setGravity(new Vector2(0,-10));
                                 startBool = true;
                                 Brake.setAlpha(0.4f);
+                                playAreaUtils.MoveShapesToRealWorld();
+                                VariablesForPlayArea.shapeNumberSelected = 15;
+
                                 return false;
                             }
                             //shape chooser
