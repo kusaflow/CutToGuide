@@ -50,7 +50,7 @@ public class AreaOneClass implements Screen {
     private ObjectCreation objectCreation;
 
     private Sprite Brake, start, chooseBody, HardMoveShapes;
-    private Boolean brakeBool = false, startBool = false, hardMove = false;
+    private Boolean brakeBool = false, startBool = false, hardMove = false, hardmoveFaultResolver = false;
 
     //tiled map
     private TiledMap map;
@@ -125,6 +125,8 @@ public class AreaOneClass implements Screen {
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
+
 
     }
 
@@ -240,6 +242,7 @@ public class AreaOneClass implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
+                        hardmoveFaultResolver = false;
 
 
                         if (startBool) {
@@ -282,6 +285,7 @@ public class AreaOneClass implements Screen {
                                     HardMoveShapes.setAlpha(1);
                                 else
                                     HardMoveShapes.setAlpha(0.4f);
+                                hardmoveFaultResolver = true;
                                 return false;
 
                             }
@@ -293,12 +297,14 @@ public class AreaOneClass implements Screen {
                                         (((screenX - AllVariables.witdth_translation)/AllVariables.inpM)  * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM,
                                         ((screenY/AllVariables.inpM)  * camscl - 200 + (cam.position.y - AllVariables.HEIGHT/ 2)) / AllVariables.PPM,
                                         (float) (180 * (Math.PI / 180)));
+                                return false;
 
                             } else {
                                 originX = screenX;
                                 originY = screenY;
                                 shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
                                 shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
+                                return false;
                             }
                         }
 
@@ -319,10 +325,14 @@ public class AreaOneClass implements Screen {
                         screenY = Gdx.graphics.getHeight() - screenY;
 
 
-                        if(VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size()-1) {
+                        if(!hardmoveFaultResolver) {
                             if (!hardMove) {
-                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                        ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180 * (Math.PI / 180)));
+                                if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+                                    if (!hardMove) {
+                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
+                                                ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180 * (Math.PI / 180)));
+                                    }
+                                }
                             }
                         }
 
