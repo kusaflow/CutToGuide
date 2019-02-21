@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
@@ -168,9 +169,18 @@ public class CuttingAreaManager implements Screen {
 
                         screenY = Gdx.graphics.getHeight() - screenY;
 
+                        //back to shape choose class
                         if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 200 * AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenY > 300 * AllVariables.inpM && screenY < 500 * AllVariables.inpM){
+
+                            VariablesForPlayArea.Sh_pos.clear();
+                            Vector2 v= new Vector2();
+                            v.add(640/AllVariables.PPM, -1000/AllVariables.PPM);
+
+                            for(int i =0; i<VariablesForPlayArea.shapes.size(); i++)
+                                VariablesForPlayArea.Sh_pos.add(v);
+
                             game.setScreen(new ShapeChooser(game));
                         }
 

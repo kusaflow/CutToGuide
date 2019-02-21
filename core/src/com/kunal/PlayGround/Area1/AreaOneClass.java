@@ -51,7 +51,7 @@ public class AreaOneClass implements Screen {
     private ObjectCreation objectCreation;
 
     private Sprite Brake, start, chooseBody, HardMoveShapes;
-    private Boolean brakeBool = false, startBool = false, hardMove = false, hardmoveFaultResolver = false;
+    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false;
 
     //tiled map
     private TiledMap map;
@@ -93,8 +93,8 @@ public class AreaOneClass implements Screen {
         playAreaUtils = new PlayAreaUtils();
 
         //safelt platforn for all objects
-        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1000),
-                new Vector2(500, 50), 1,1, AllVariables.Bit_land,
+        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1200),
+                new Vector2(200, 50), 1,1, AllVariables.Bit_land,
                 (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
 
 
@@ -123,12 +123,19 @@ public class AreaOneClass implements Screen {
         HardMoveShapes = new Sprite(new Texture(Gdx.files.internal("playArea/HardMove.png")));
         HardMoveShapes.setPosition(50, 240);
         HardMoveShapes.setSize(100*camscl, 100*camscl);
-        HardMoveShapes.setAlpha(0.4f);
+        HardMoveShapes.setAlpha(1f);
 
 
+
+        //pos remapping
+        for (int i =0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
+            VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), 0);
+        }
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
+
 
 
     }
