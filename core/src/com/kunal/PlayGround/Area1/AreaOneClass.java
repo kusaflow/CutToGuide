@@ -227,7 +227,12 @@ public class AreaOneClass implements Screen {
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT)/2);
 
-
+        try {
+            //reintializing the shape position
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+                VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).set(VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
+            }
+        }catch (Exception e){}
 
         if (startBool){
             if (brakeBool) {
@@ -241,7 +246,7 @@ public class AreaOneClass implements Screen {
             }
         }
 
-        //System.out.println(VariablesForPlayArea.CutOutBodies.size());
+        //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition());
 
 
     }
