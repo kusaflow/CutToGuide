@@ -73,7 +73,7 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl, cam);
+        port = new FitViewport(AllVariables.WIDTH*camscl*3, AllVariables.HEIGHT*camscl*3, cam);
 
         port.apply();
 
@@ -227,12 +227,10 @@ public class AreaOneClass implements Screen {
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT)/2);
 
-        try {
-            //reintializing the shape position
-            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-                VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).set(VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
-            }
-        }catch (Exception e){}
+        //reintializing the shape position
+        if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+            VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).set(VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
+        }
 
         if (startBool){
             if (brakeBool) {
