@@ -129,7 +129,7 @@ public class AreaOneClass implements Screen {
 
         //pos remapping
         for (int i =0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
-            VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), 0);
+            VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
         }
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
@@ -363,6 +363,10 @@ public class AreaOneClass implements Screen {
                         }
                         if (keycode == Input.Keys.SPACE){
                             world.setGravity(new Vector2(0,-10));
+                        }
+                        if (keycode == Input.Keys.S){
+                            for (Vector2 v : VariablesForPlayArea.Sh_pos)
+                                System.out.println(v);
                         }
 
 
