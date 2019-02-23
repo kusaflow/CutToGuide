@@ -84,6 +84,8 @@ public class VariablesForPlayArea {
 
         Sh_pos.add(new Vector2(640f/AllVariables.PPM, -1000f/AllVariables.PPM));
 
+        cantuseDots.clear();
+
         vertices.add((byte) 0);
         vertices.add((byte) 1);
         vertices.add((byte) 2);
