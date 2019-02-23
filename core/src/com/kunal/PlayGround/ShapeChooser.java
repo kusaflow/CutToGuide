@@ -1,6 +1,7 @@
 package com.kunal.PlayGround;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Polygon;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -112,6 +114,16 @@ public class ShapeChooser implements Screen {
         AllVariables.batch.end();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
+
+        //temp
+        if(Gdx.input.isKeyJustPressed(Input.Keys.O)){
+            for (Vector2 v : VariablesForPlayArea.Sh_pos)
+                System.out.println(v);
+        }
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.C)){
+            System.out.println("\n\n\n\n\n\n\n\n");
+        }
 
         //verticle
         sred.line(40,720,40,0);

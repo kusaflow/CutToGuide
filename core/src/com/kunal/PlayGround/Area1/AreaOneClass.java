@@ -73,7 +73,7 @@ public class AreaOneClass implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        port = new FitViewport(AllVariables.WIDTH*camscl*3, AllVariables.HEIGHT*camscl*3, cam);
+        port = new FitViewport(AllVariables.WIDTH*camscl, AllVariables.HEIGHT*camscl, cam);
 
         port.apply();
 
@@ -128,9 +128,9 @@ public class AreaOneClass implements Screen {
 
 
         //pos remapping
-        for (int i =0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
-            VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
-        }
+        //for (int i =0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
+            //VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
+        //}
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -229,7 +229,8 @@ public class AreaOneClass implements Screen {
 
         //reintializing the shape position
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-            VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).set(VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
+            //VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).  .set(VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
+            VariablesForPlayArea.Sh_pos.set(VariablesForPlayArea.shapeNumberSelected, VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
         }
 
         if (startBool){
@@ -367,6 +368,15 @@ public class AreaOneClass implements Screen {
                         if (keycode == Input.Keys.S){
                             for (Vector2 v : VariablesForPlayArea.Sh_pos)
                                 System.out.println(v);
+                        }
+
+                        if(keycode == Input.Keys.O){
+                            for (Vector2 v : VariablesForPlayArea.Sh_pos)
+                                System.out.println(v);
+                        }
+
+                        if(keycode == Input.Keys.C){
+                            System.out.println("\n\n\n\n\n\n\n\n");
                         }
 
 
