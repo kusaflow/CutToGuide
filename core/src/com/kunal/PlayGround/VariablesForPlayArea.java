@@ -77,7 +77,13 @@ public class VariablesForPlayArea {
 
     }
 
-    public void flush(){
+    public static void flush(){
+        shapes.clear();
+        vertices.clear();
+        //Sh_pos.clear();
+
+        //Sh_pos.add(new Vector2(640f/AllVariables.PPM, -1000f/AllVariables.PPM));
+
         vertices.add((byte) 0);
         vertices.add((byte) 1);
         vertices.add((byte) 2);

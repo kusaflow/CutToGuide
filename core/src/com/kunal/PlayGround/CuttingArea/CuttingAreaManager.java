@@ -165,8 +165,6 @@ public class CuttingAreaManager implements Screen {
                         inputsToChop.clear();
                         inputsToChop.add((byte) 20);
 
-                        System.out.println(screenX);
-
                         screenY = Gdx.graphics.getHeight() - screenY;
 
                         //back to shape choose class

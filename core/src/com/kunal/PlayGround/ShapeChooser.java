@@ -121,15 +121,6 @@ public class ShapeChooser implements Screen {
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
-        //temp
-        if(Gdx.input.isKeyJustPressed(Input.Keys.O)){
-            for (Vector2 v : VariablesForPlayArea.Sh_pos)
-                System.out.println(v);
-        }
-
-        if(Gdx.input.isKeyJustPressed(Input.Keys.C)){
-            System.out.println("\n\n\n\n\n\n\n\n");
-        }
 
         //verticle
         sred.line(40,720,40,0);
@@ -227,8 +218,8 @@ public class ShapeChooser implements Screen {
 
                 //reCut
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (101*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 304* AllVariables.inpM){
-                    //VariablesForPlayArea v = new VariablesForPlayArea();
-                    //v.flush();
+                    //VariablesForPlayArea.CutOutBodies.clear();
+                    VariablesForPlayArea.flush();
                     //System.out.println("Lets RecUT");
                 }
 
