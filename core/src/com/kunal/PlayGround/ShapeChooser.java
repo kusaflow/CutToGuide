@@ -26,7 +26,7 @@ public class ShapeChooser implements Screen {
     private MainGame game;
     private ShapeRenderer sred;
     private int x=-900,y=287;
-    private Sprite LetsCut, okTick;
+    private Sprite LetsCut, okTick, reCut;
 
     private OrthographicCamera cam;
     private Viewport port;
@@ -58,6 +58,11 @@ public class ShapeChooser implements Screen {
         okTick = new Sprite(new Texture(Gdx.files.internal("ChooseShape/okTick.png")));
         okTick.setPosition(1140, 304);
         okTick.setSize(140, 203);
+
+        reCut = new Sprite(new Texture(Gdx.files.internal("ChooseShape/reCut.png")));
+        reCut.setPosition(1140, 101);
+        reCut.setSize(140, 203);
+
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -111,6 +116,7 @@ public class ShapeChooser implements Screen {
         AllVariables.batch.begin();
         LetsCut.draw(AllVariables.batch);
         okTick.draw(AllVariables.batch);
+        reCut.draw(AllVariables.batch);
         AllVariables.batch.end();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
@@ -205,20 +211,27 @@ public class ShapeChooser implements Screen {
                 }
             }
 
-            //oktick
             else if (Gdx.input.getX() > (1140* AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() <(1300* AllVariables.inpM)+AllVariables.witdth_translation) {
 
+                //letsCut
+                if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM) {
+                    game.setScreen(new CuttingAreaManager(game));
+                    //System.out.println("up wala");
+                }
+
+                //okTick
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM &&  (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM){
                     game.setScreen(new AreaOneClass(game));
                     //System.out.println("down wala");
                 }
 
-                //letsCut
-                if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM){
-                    game.setScreen(new CuttingAreaManager(game));
-                    //System.out.println("up wala");
-
+                //reCut
+                if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (101*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 304* AllVariables.inpM){
+                    //VariablesForPlayArea v = new VariablesForPlayArea();
+                    //v.flush();
+                    //System.out.println("Lets RecUT");
                 }
+
             }
 
         }

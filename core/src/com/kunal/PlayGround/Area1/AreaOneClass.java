@@ -229,7 +229,6 @@ public class AreaOneClass implements Screen {
 
         //reintializing the shape position
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-            //VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).  .set(VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
             VariablesForPlayArea.Sh_pos.set(VariablesForPlayArea.shapeNumberSelected, VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
         }
 
