@@ -268,6 +268,20 @@ public class AreaOneClass implements Screen {
                                 return false;
                             }
                         }
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        screenY = Gdx.graphics.getHeight() - screenY;
+
+
+                        if (brakeBool) {
+                            Brake.setAlpha(0.4f);
+                            brakeBool = false;
+                        }
+
                         if (!startBool){
                             //for start
                             if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
@@ -324,15 +338,6 @@ public class AreaOneClass implements Screen {
                             }
                         }
 
-                        return false;
-                    }
-
-                    @Override
-                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-                        if (brakeBool) {
-                            Brake.setAlpha(0.4f);
-                            brakeBool = false;
-                        }
                         return false;
                     }
 
