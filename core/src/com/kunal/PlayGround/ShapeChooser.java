@@ -21,6 +21,8 @@ import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 
+import java.util.Random;
+
 public class ShapeChooser implements Screen {
 
     private MainGame game;
@@ -34,6 +36,7 @@ public class ShapeChooser implements Screen {
     private Polygon poly;
 
     private short[][] ShapePts = new short[12][2];
+
 
     public ShapeChooser(MainGame game) {
         this.game = game;
@@ -107,8 +110,13 @@ public class ShapeChooser implements Screen {
     public void render(float dt) {
         input(dt);
         cam.update();
-        Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
+
+
+        Gdx.gl.glClearColor(0.105f, 0.118f, 0.198f, 1f);
+        //Gdx.gl.glClearColor(0,0,0, 1f);
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
         sred.setProjectionMatrix(cam.combined);
@@ -159,10 +167,22 @@ public class ShapeChooser implements Screen {
 
         sred.end();
 
-        sred.begin(ShapeRenderer.ShapeType.Filled);
-        sred.rect(x, y,275,203);
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
+        sred.begin(ShapeRenderer.ShapeType.Filled);
+        //sred.setColor(0.423f,0.751f,0.588f,0.2f);
+        sred.setColor(0.963f, 0.901f, 0.265f,0.2f);
+        //0.786,0.597,0.623;
+        //0.783,0.488,0.671;
+        //0.963,0.901,0.265;
+
+
+        sred.rect(x, y,275,203);
         sred.end();
+
+        Gdx.gl.glDisable(GL20.GL_BLEND);
+
     }
 
     private void input(float dt){
