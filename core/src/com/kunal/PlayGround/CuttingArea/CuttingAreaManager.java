@@ -404,11 +404,24 @@ public class CuttingAreaManager implements Screen {
     private Boolean cutThePiece() {
 
         if (inputsToChop.size() ==2) {
-            if(VariablesForPlayArea.BigSqurePoints[inputsToChop.get(0)][1] == VariablesForPlayArea.BigSqurePoints[inputsToChop.get(1)][1]){
-                return false;
-            }else if(VariablesForPlayArea.BigSqurePoints[inputsToChop.get(0)][0] == VariablesForPlayArea.BigSqurePoints[inputsToChop.get(1)][0]){
-                return false;
-            }
+            if(inputsToChop.get(0) == 4 || inputsToChop.get(0) == 8 || inputsToChop.get(0) == 7 || inputsToChop.get(0) == 11)
+                if ((inputsToChop.get(0) - inputsToChop.get(1)) % 4 == 0)
+                    return false;
+            if(inputsToChop.get(0) == 1 || inputsToChop.get(0) == 2 || inputsToChop.get(0) ==13 || inputsToChop.get(0) == 14)
+                if ((inputsToChop.get(0) - inputsToChop.get(1))  ==  -1 || (inputsToChop.get(0) - inputsToChop.get(1))  ==  1)
+                    return false;
+            if (inputsToChop.get(0) == 0)
+                if (inputsToChop.get(1) == 1 || inputsToChop.get(1) == 4)
+                    return false;
+            if (inputsToChop.get(0) == 3)
+                if (inputsToChop.get(1) == 2 || inputsToChop.get(1) == 7)
+                    return false;
+            if (inputsToChop.get(0) == 15)
+                if (inputsToChop.get(1) == 14 || inputsToChop.get(1) == 11)
+                    return false;
+            if (inputsToChop.get(0) == 12)
+                if (inputsToChop.get(1) == 8 || inputsToChop.get(1) == 13)
+                    return false;
         }
 
         short theShapeNumber = -1;
