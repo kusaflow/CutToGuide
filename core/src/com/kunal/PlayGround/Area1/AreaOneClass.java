@@ -269,6 +269,53 @@ public class AreaOneClass implements Screen {
                             }
                         }
 
+                        if(!startBool){
+
+                            //harmove
+                            if(screenX > (22 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 457* AllVariables.inpM && screenY < 560* AllVariables.inpM){
+                                hardMove = !hardMove;
+                                if (hardMove)
+                                    HardMoveShapes.setAlpha(1);
+                                else
+                                    HardMoveShapes.setAlpha(0.4f);
+                                hardmoveFaultResolver = true;
+                                return false;
+
+                            }
+                        }
+
+
+                        if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
+
+
+                        }else if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
+
+                        } else {
+                            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+                                if (hardMove) {
+                                    VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
+                                            (((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM,
+                                            ((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM,
+                                            (float) (180 * (Math.PI / 180)));
+                                    return false;
+
+                                } else {
+                                    originX = screenX;
+                                    originY = screenY;
+                                    shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
+                                    shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
+                                    return false;
+                                }
+                            }
+                        }
+
+
                         return false;
                     }
 
@@ -306,37 +353,8 @@ public class AreaOneClass implements Screen {
                                 game.setScreen(new ShapeChooser(game));
                                 return false;
                             }
-                            //harmove
-                            if(screenX > (22 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 457* AllVariables.inpM && screenY < 560* AllVariables.inpM){
-                                hardMove = !hardMove;
-                                if (hardMove)
-                                    HardMoveShapes.setAlpha(1);
-                                else
-                                    HardMoveShapes.setAlpha(0.4f);
-                                hardmoveFaultResolver = true;
-                                return false;
-
-                            }
                         }
 
-                        if(VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size()-1) {
-                            if (hardMove) {
-                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
-                                        (((screenX - AllVariables.witdth_translation)/AllVariables.inpM)  * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM,
-                                        ((screenY/AllVariables.inpM)  * camscl - 200 + (cam.position.y - AllVariables.HEIGHT/ 2)) / AllVariables.PPM,
-                                        (float) (180 * (Math.PI / 180)));
-                                return false;
-
-                            } else {
-                                originX = screenX;
-                                originY = screenY;
-                                shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
-                                shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
-                                return false;
-                            }
-                        }
 
                         return false;
                     }
