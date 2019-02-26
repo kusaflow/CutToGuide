@@ -387,19 +387,7 @@ public class AreaOneClass implements Screen {
                         if (keycode == Input.Keys.SPACE){
                             world.setGravity(new Vector2(0,-10));
                         }
-                        if (keycode == Input.Keys.S){
-                            for (Vector2 v : VariablesForPlayArea.Sh_pos)
-                                System.out.println(v);
-                        }
 
-                        if(keycode == Input.Keys.O){
-                            for (Vector2 v : VariablesForPlayArea.Sh_pos)
-                                System.out.println(v);
-                        }
-
-                        if(keycode == Input.Keys.C){
-                            System.out.println("\n\n\n\n\n\n\n\n");
-                        }
 
 
                         return false;
