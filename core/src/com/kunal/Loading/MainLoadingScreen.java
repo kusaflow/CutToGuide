@@ -13,10 +13,10 @@ public class MainLoadingScreen implements Screen {
     ShapeRenderer sred;
 
     //circle initial position
-    int c3x = AllVariables.WIDTH/2 -60, c3y = AllVariables.HEIGHT/2 - 60;
-    int c2x = AllVariables.WIDTH/2 +60, c2y = AllVariables.HEIGHT/2 - 60;
-    int c1x = AllVariables.WIDTH/2 -60, c1y = AllVariables.HEIGHT/2 + 60;
-    int c4x = AllVariables.WIDTH/2 +60, c4y = AllVariables.HEIGHT/2 + 60;
+    int c3x = Gdx.graphics.getWidth()/2 -60, c3y = Gdx.graphics.getHeight()/2 - 60;
+    int c2x = Gdx.graphics.getWidth()/2 +60, c2y = Gdx.graphics.getHeight()/2 - 60;
+    int c1x = Gdx.graphics.getWidth()/2 -60, c1y = Gdx.graphics.getHeight()/2 + 60;
+    int c4x = Gdx.graphics.getWidth()/2 +60, c4y = Gdx.graphics.getHeight()/2 + 60;
 
 
     public MainLoadingScreen(MainGame game) {
