@@ -131,17 +131,17 @@ public class ShapeChooser implements Screen {
 
 
         //verticle
-        sred.line(40,720,40,0);
-        sred.line(315,720,315,0);
-        sred.line(590,720,590,0);
-        sred.line(865,720,865,0);
-        sred.line(1140,720,1140,0);
+        sred.line(40,710,40,101);
+        sred.line(315,710,315,101);
+        sred.line(590,710,590,101);
+        sred.line(865,710,865,101);
+        sred.line(1140,710,1140,101);
 
         //horizontal
-        sred.line(0,710,1280,710);
-        sred.line(0,507,1280,507);
-        sred.line(0,304,1280,304);
-        sred.line(0,101,1280,101);
+        sred.line(40,710,1280,710);
+        sred.line(40,507,1280,507);
+        sred.line(40,304,1280,304);
+        sred.line(40,101,1280,101);
 
         sred.setColor(1, 1f, 1, 1);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
