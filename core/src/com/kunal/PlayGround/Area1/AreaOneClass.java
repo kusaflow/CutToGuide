@@ -50,8 +50,11 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false;
+
+    //CamScroller
+    private int CamScrollerX = 1200;
 
     //tiled map
     private TiledMap map;
@@ -124,6 +127,11 @@ public class AreaOneClass implements Screen {
         HardMoveShapes.setPosition(50, 240);
         HardMoveShapes.setSize(100*camscl, 100*camscl);
         HardMoveShapes.setAlpha(1f);
+
+        CamScroller = new Sprite(new Texture(Gdx.files.internal("playArea/CamScroller.png")));
+        CamScroller.setPosition(50,240);
+        CamScroller.setSize(60*camscl, 60*camscl);
+        CamScroller.setAlpha(1);
 
 
 
@@ -200,6 +208,7 @@ public class AreaOneClass implements Screen {
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
         HardMoveShapes.draw(AllVariables.batch);
+        CamScroller.draw(AllVariables.batch);
         AllVariables.batch.end();
 
 
@@ -226,6 +235,7 @@ public class AreaOneClass implements Screen {
         Brake.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT)/2);
+        CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), 770+(cam.position.y - AllVariables.HEIGHT/2));
 
         //reintializing the shape position
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
@@ -256,6 +266,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
+                        System.out.println(screenX + "\t" + screenY);
 
 
                         if (startBool) {
@@ -284,6 +295,8 @@ public class AreaOneClass implements Screen {
                                 return false;
 
                             }
+
+                            //camScroller
                         }
 
 
