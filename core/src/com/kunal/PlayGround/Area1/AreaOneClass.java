@@ -54,7 +54,7 @@ public class AreaOneClass implements Screen {
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false;
 
     //CamScroller
-    private int CamScrollerX = 1200;
+    private short CamScrollerX = 1320, CamScrollerY = 770;
 
     //tiled map
     private TiledMap map;
@@ -235,7 +235,7 @@ public class AreaOneClass implements Screen {
         Brake.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT)/2);
-        CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), 770+(cam.position.y - AllVariables.HEIGHT/2));
+        CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), CamScrollerY+(cam.position.y - AllVariables.HEIGHT/2));
 
         //reintializing the shape position
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
@@ -266,7 +266,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
 
 
                         if (startBool) {
@@ -284,7 +284,7 @@ public class AreaOneClass implements Screen {
 
                             //harmove
                             if(screenX > (22 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (120 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 457* AllVariables.inpM && screenY < 560* AllVariables.inpM){
                                 hardMove = !hardMove;
                                 if (hardMove)
@@ -297,6 +297,11 @@ public class AreaOneClass implements Screen {
                             }
 
                             //camScroller
+                            if (screenX > (1125 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 650* AllVariables.inpM && screenY < 720* AllVariables.inpM){
+                                System.out.println("omPLan");
+                            }
                         }
 
 
