@@ -56,6 +56,10 @@ public class AreaOneClass implements Screen {
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
     private byte camScrollSize =60;
+    private int dragged_touchX =0;
+
+    //position of camera x
+    private float camposX = 555.10986f;
 
     //tiled map
     private TiledMap map;
@@ -229,10 +233,14 @@ public class AreaOneClass implements Screen {
         world.step(1/(1/dt), 6,2);
 
 
-        Vector3 campos = cam.position;
-        campos.x = (AllVariables.BackWheel.getPosition().x)*AllVariables.PPM;
-        campos.y = (AllVariables.BackWheel.getPosition().y)*AllVariables.PPM;
-        cam.position.set(campos);
+        //Vector3 campos = cam.position;
+        //campos.x = (AllVariables.BackWheel.getPosition().x)*AllVariables.PPM;
+        //campos.y = (AllVariables.BackWheel.getPosition().y)*AllVariables.PPM;
+        //cam.position.set(campos);
+
+
+        cam.position.set(camposX, 90f, cam.position.z);
+        //cam.position.set(camposX, cam.position.y, cam.position.z);
         cam.update();
 
         tmr.setView(cam);
@@ -241,9 +249,39 @@ public class AreaOneClass implements Screen {
         start.setPosition(-190+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         Brake.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
-        HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 550+(cam.position.y -AllVariables.HEIGHT)/2);
+        HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
         CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), CamScrollerY+(cam.position.y - AllVariables.HEIGHT/2));
-        DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 450+(cam.position.y -AllVariables.HEIGHT)/2);
+        DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
+
+        //cam dragging
+        if (isCamScrollerTouched){
+            //moved to left
+            if(originX - dragged_touchX > Gdx.graphics.getWidth()/24){
+                CamScrollerX = 1250;
+                CamScrollerY = 755;
+                camScrollSize = 50;
+                if (hardMove)
+                    camposX-=30f;
+                else
+                    camposX-=10f;
+            }
+            //moved to right
+            else if(dragged_touchX - originX > Gdx.graphics.getWidth()/28){
+                CamScrollerX = 1400;
+                CamScrollerY = 755;
+                camScrollSize = 50;
+                if (hardMove)
+                    camposX+=30f;
+                else
+                    camposX+=10f;
+
+
+            }else{
+                CamScrollerX = 1320;
+                CamScrollerY = 750;
+                camScrollSize = 60;
+            }
+        }
 
         //reintializing the shape position
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
@@ -322,6 +360,7 @@ public class AreaOneClass implements Screen {
                                 CamScroller.setAlpha(0.7f);
                                 originX = screenX;
                                 originY = screenY;
+                                dragged_touchX = screenX;
 
                             }
 
@@ -432,22 +471,7 @@ public class AreaOneClass implements Screen {
                         //this else is placed to prevent drag to happen for cam when touched on cam buttin and if not then the shape drag will happen
 
                         if (isCamScrollerTouched){
-                            //moved to left
-                            if(originX - screenX > Gdx.graphics.getWidth()/24){
-                                CamScrollerX = 1250;
-                                CamScrollerY = 760;
-                                camScrollSize = 50;
-                            }
-                            //moved to right
-                            else if(screenX - originX > Gdx.graphics.getWidth()/28){
-                                CamScrollerX = 1400;
-                                CamScrollerY = 760;
-                                camScrollSize = 50;
-                            }else{
-                                CamScrollerX = 1320;
-                                CamScrollerY = 750;
-                                camScrollSize = 60;
-                            }
+                            dragged_touchX = screenX;
 
                         }else {
 
