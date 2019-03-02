@@ -386,6 +386,7 @@ public class AreaOneClass implements Screen {
                                 chooseBody.setAlpha(0);
                                 HardMoveShapes.setAlpha(0);
                                 toDrawDropAnyShapeButton = false;
+                                CamScroller.setAlpha(0);
                                 world.setGravity(new Vector2(0,-10));
                                 startBool = true;
                                 Brake.setAlpha(0.4f);
