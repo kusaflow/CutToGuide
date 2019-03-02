@@ -249,11 +249,15 @@ public class AreaOneClass implements Screen {
             VariablesForPlayArea.Sh_pos.set(VariablesForPlayArea.shapeNumberSelected, VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
         }
 
-        //DropAnyShape alpha init
-        if (VariablesForPlayArea.shapeNumberSelected <= 11)
-            DropAnyShapeButton.setAlpha(1f);
-        else
-            DropAnyShapeButton.setAlpha(0.5f);
+        if (toDrawDropAnyShapeButton) {
+            //DropAnyShape alpha init
+            if (VariablesForPlayArea.shapeNumberSelected <= 11)
+                DropAnyShapeButton.setAlpha(1f);
+            else
+                DropAnyShapeButton.setAlpha(0.5f);
+        }else {
+            DropAnyShapeButton.setAlpha(0f);
+        }
 
         if (startBool){
             if (brakeBool) {
@@ -279,8 +283,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        System.out.println(screenX + "\t" + screenY);
-
+                        //System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -295,9 +298,9 @@ public class AreaOneClass implements Screen {
                         if(!startBool){
 
                             //harmove
-                            if(screenX > (22 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (120 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 457* AllVariables.inpM && screenY < 560* AllVariables.inpM){
+                            if(screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 480* AllVariables.inpM && screenY < 595* AllVariables.inpM){
                                 hardMove = !hardMove;
                                 if (hardMove)
                                     HardMoveShapes.setAlpha(1);
@@ -315,7 +318,15 @@ public class AreaOneClass implements Screen {
                                 isCamScrollerTouched = true;
                                 CamScroller.setAlpha(0.7f);
                             }
-                        }
+
+                            //Drop any shape resolver
+                            if (screenX > (25 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 415* AllVariables.inpM && screenY < 470* AllVariables.inpM){
+                                VariablesForPlayArea.shapeNumberSelected = 15;
+                            }
+
+                            }
 
 
                         if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
@@ -374,6 +385,7 @@ public class AreaOneClass implements Screen {
                                 start.setAlpha(0);
                                 chooseBody.setAlpha(0);
                                 HardMoveShapes.setAlpha(0);
+                                toDrawDropAnyShapeButton = false;
                                 world.setGravity(new Vector2(0,-10));
                                 startBool = true;
                                 Brake.setAlpha(0.4f);
