@@ -283,7 +283,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -337,6 +337,10 @@ public class AreaOneClass implements Screen {
                         }else if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
+
+                        }else if (screenX > (1115 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (1195 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 635* AllVariables.inpM && screenY < 705* AllVariables.inpM) {
 
                         } else {
                             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
@@ -413,17 +417,26 @@ public class AreaOneClass implements Screen {
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
                         screenY = Gdx.graphics.getHeight() - screenY;
 
+                        //this else is placed to prevent drag to happen for cam when touched on cam buttin and if not then the shape drag will happen
 
-                        if(!hardmoveFaultResolver) {
-                            if (!hardMove) {
-                                if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-                                    if (!hardMove) {
-                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                                ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180 * (Math.PI / 180)));
+                        if (isCamScrollerTouched){
+
+                        }else {
+
+
+                            if (!hardmoveFaultResolver) {
+                                if (!hardMove) {
+                                    if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+                                        if (!hardMove) {
+                                            VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
+                                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180 * (Math.PI / 180)));
+                                        }
                                     }
                                 }
                             }
                         }
+
+
 
 
                         return false;
