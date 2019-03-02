@@ -95,6 +95,48 @@ public class ShapeChooser implements Screen {
         ShapePts[11][0] =200 + 865;
         ShapePts[11][1] =30 + 101;
 
+        //reinitinting the shapechooser selection
+        if (VariablesForPlayArea.shapeNumberSelected <= 11){
+            if (VariablesForPlayArea.shapeNumberSelected == 0){
+                x = 40;
+                y = 507;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 1){
+                x = 315;
+                y = 507;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 2){
+                x = 590;
+                y = 507;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 3){
+                x = 865;
+                y = 507;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 4){
+                x = 40;
+                y = 304;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 5){
+                x = 315;
+                y = 304;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 6){
+                x = 590;
+                y = 304;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 7){
+                x = 865;
+                y = 304;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 8){
+                x = 40;
+                y = 101;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 9){
+                x = 315;
+                y = 101;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 10){
+                x = 590;
+                y = 101;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 11){
+                x = 865;
+                y = 101;
+            }
+        }
+
+
 
 
     }
@@ -170,13 +212,13 @@ public class ShapeChooser implements Screen {
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
+        //rect
         sred.begin(ShapeRenderer.ShapeType.Filled);
         //sred.setColor(0.423f,0.751f,0.588f,0.2f);
         sred.setColor(0.963f, 0.901f, 0.265f,0.2f);
         //0.786,0.597,0.623;
         //0.783,0.488,0.671;
         //0.963,0.901,0.265;
-
 
         sred.rect(x, y,275,203);
         sred.end();

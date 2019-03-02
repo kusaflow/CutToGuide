@@ -50,11 +50,11 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller;
-    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton;
+    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, isDropAnyShapeButton = false, toDrawDropAnyShapeButton = true;
 
     //CamScroller
-    private short CamScrollerX = 1320, CamScrollerY = 770;
+    private short CamScrollerX = 1320, CamScrollerY = 750;
 
     //tiled map
     private TiledMap map;
@@ -133,6 +133,11 @@ public class AreaOneClass implements Screen {
         CamScroller.setSize(60*camscl, 60*camscl);
         CamScroller.setAlpha(1);
 
+        DropAnyShapeButton = new Sprite(new Texture(Gdx.files.internal("playArea/DropAnyShapeButton.png")));
+        DropAnyShapeButton.setPosition(50,240);
+        DropAnyShapeButton.setSize(100*camscl, 60*camscl);
+        DropAnyShapeButton.setAlpha(0.5f);
+
 
 
         //pos remapping
@@ -209,6 +214,7 @@ public class AreaOneClass implements Screen {
         chooseBody.draw(AllVariables.batch);
         HardMoveShapes.draw(AllVariables.batch);
         CamScroller.draw(AllVariables.batch);
+        DropAnyShapeButton.draw(AllVariables.batch);
         AllVariables.batch.end();
 
 
@@ -234,13 +240,20 @@ public class AreaOneClass implements Screen {
         start.setPosition(-190+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         Brake.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
-        HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT)/2);
+        HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 550+(cam.position.y -AllVariables.HEIGHT)/2);
         CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), CamScrollerY+(cam.position.y - AllVariables.HEIGHT/2));
+        DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 450+(cam.position.y -AllVariables.HEIGHT)/2);
 
         //reintializing the shape position
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
             VariablesForPlayArea.Sh_pos.set(VariablesForPlayArea.shapeNumberSelected, VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
         }
+
+        //DropAnyShape alpha init
+        if (VariablesForPlayArea.shapeNumberSelected <= 11)
+            DropAnyShapeButton.setAlpha(1f);
+        else
+            DropAnyShapeButton.setAlpha(0.5f);
 
         if (startBool){
             if (brakeBool) {
@@ -266,8 +279,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        //System.out.println(screenX + "\t" + screenY);
-
+                        System.out.println(screenX + "\t" + screenY);
 
                         if (startBool) {
                             //for brake
@@ -293,14 +305,15 @@ public class AreaOneClass implements Screen {
                                     HardMoveShapes.setAlpha(0.4f);
                                 hardmoveFaultResolver = true;
                                 return false;
-
                             }
 
                             //camScroller
                             if (screenX > (1125 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 650* AllVariables.inpM && screenY < 720* AllVariables.inpM){
-                                System.out.println("omPLan");
+                                //System.out.println("omPLan");
+                                isCamScrollerTouched = true;
+                                CamScroller.setAlpha(0.7f);
                             }
                         }
 
@@ -346,6 +359,12 @@ public class AreaOneClass implements Screen {
                             Brake.setAlpha(0.4f);
                             brakeBool = false;
                         }
+
+                        if (isCamScrollerTouched) {
+                            CamScroller.setAlpha(1f);
+                            isCamScrollerTouched = false;
+                        }
+
 
                         if (!startBool){
                             //for start
