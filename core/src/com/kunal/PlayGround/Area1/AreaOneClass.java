@@ -55,6 +55,7 @@ public class AreaOneClass implements Screen {
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
+    private byte camScrollSize =60;
 
     //tiled map
     private TiledMap map;
@@ -130,7 +131,7 @@ public class AreaOneClass implements Screen {
 
         CamScroller = new Sprite(new Texture(Gdx.files.internal("playArea/CamScroller.png")));
         CamScroller.setPosition(50,240);
-        CamScroller.setSize(60*camscl, 60*camscl);
+        CamScroller.setSize(camScrollSize*camscl, camscl*camscl);
         CamScroller.setAlpha(1);
 
         DropAnyShapeButton = new Sprite(new Texture(Gdx.files.internal("playArea/DropAnyShapeButton.png")));
@@ -259,6 +260,8 @@ public class AreaOneClass implements Screen {
             DropAnyShapeButton.setAlpha(0f);
         }
 
+        //size changer for camScroller
+        CamScroller.setSize(camScrollSize*camscl, camScrollSize*camscl);
         if (startBool){
             if (brakeBool) {
                 //AllVariables.BackWheel.setAngularVelocity(0);
@@ -380,6 +383,8 @@ public class AreaOneClass implements Screen {
 
                         if(isCamScrollerTouched) {
                             CamScrollerX = 1320;
+                            CamScrollerY = 750;
+                            camScrollSize = 60;
                         }
 
                         if (isCamScrollerTouched) {
@@ -430,10 +435,18 @@ public class AreaOneClass implements Screen {
                             //moved to left
                             if(originX - screenX > Gdx.graphics.getWidth()/24){
                                 CamScrollerX = 1250;
+                                CamScrollerY = 760;
+                                camScrollSize = 50;
                             }
                             //moved to right
-                            else if(screenX - originX > Gdx.graphics.getWidth()/24){
+                            else if(screenX - originX > Gdx.graphics.getWidth()/28){
                                 CamScrollerX = 1400;
+                                CamScrollerY = 760;
+                                camScrollSize = 50;
+                            }else{
+                                CamScrollerX = 1320;
+                                CamScrollerY = 750;
+                                camScrollSize = 60;
                             }
 
                         }else {
