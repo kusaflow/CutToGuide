@@ -317,6 +317,9 @@ public class AreaOneClass implements Screen {
                                 //System.out.println("omPLan");
                                 isCamScrollerTouched = true;
                                 CamScroller.setAlpha(0.7f);
+                                originX = screenX;
+                                originY = screenY;
+
                             }
 
                             //Drop any shape resolver
@@ -375,6 +378,10 @@ public class AreaOneClass implements Screen {
                             brakeBool = false;
                         }
 
+                        if(isCamScrollerTouched) {
+                            CamScrollerX = 1320;
+                        }
+
                         if (isCamScrollerTouched) {
                             CamScroller.setAlpha(1f);
                             isCamScrollerTouched = false;
@@ -420,6 +427,14 @@ public class AreaOneClass implements Screen {
                         //this else is placed to prevent drag to happen for cam when touched on cam buttin and if not then the shape drag will happen
 
                         if (isCamScrollerTouched){
+                            //moved to left
+                            if(originX - screenX > Gdx.graphics.getWidth()/24){
+                                CamScrollerX = 1250;
+                            }
+                            //moved to right
+                            else if(screenX - originX > Gdx.graphics.getWidth()/24){
+                                CamScrollerX = 1400;
+                            }
 
                         }else {
 
