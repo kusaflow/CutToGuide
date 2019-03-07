@@ -51,7 +51,7 @@ public class AreaOneClass implements Screen {
     private ObjectCreation objectCreation;
 
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW;
-    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false;
+    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false;
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
@@ -314,6 +314,24 @@ public class AreaOneClass implements Screen {
             VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected), (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)* (Math.PI/180)));
         }
 
+        //changing rotation
+        if (ACWTouched){
+            tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
+            tempRotForShape-=2;
+            if(tempRotForShape<=0)
+                tempRotForShape = (short) (360 - tempRotForShape);
+            VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+        }
+
+        if (CWtouched){
+            tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
+            tempRotForShape+=2;
+            if(tempRotForShape>=360)
+                tempRotForShape = (short) (tempRotForShape - 360);
+            VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+        }
+
+
         if (toDrawDropAnyShapeButton) {
             //DropAnyShape alpha init
             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size() -1) {
@@ -411,12 +429,8 @@ public class AreaOneClass implements Screen {
                                 if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
-                                    tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
-                                    tempRotForShape-=20;
-                                    if(tempRotForShape<=0)
-                                        tempRotForShape = (short) (360 - tempRotForShape);
-                                    VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
 
+                                    ACWTouched = true;
                                 }
 
                                 //for Clock Wise
@@ -424,6 +438,7 @@ public class AreaOneClass implements Screen {
                                         && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 390 * AllVariables.inpM && screenY < 460 * AllVariables.inpM) {
 
+                                    CWtouched = true;
                                 }
                             }
 
@@ -486,6 +501,12 @@ public class AreaOneClass implements Screen {
                             CamScroller.setAlpha(1f);
                             isCamScrollerTouched = false;
                         }
+
+                        if (ACWTouched)
+                            ACWTouched = false;
+
+                        if (CWtouched)
+                            CWtouched = false;
 
 
                         if (!startBool){
