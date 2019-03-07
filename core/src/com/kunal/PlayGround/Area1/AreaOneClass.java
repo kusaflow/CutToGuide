@@ -458,6 +458,14 @@ public class AreaOneClass implements Screen {
                                 && screenX < (1195 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 635* AllVariables.inpM && screenY < 705* AllVariables.inpM) {
 
+                        }else if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 390 * AllVariables.inpM && screenY < 460 * AllVariables.inpM){
+
+                        } else if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM){
+
                         } else {
                             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
                                 if (hardMove) {
@@ -517,6 +525,8 @@ public class AreaOneClass implements Screen {
                                 start.setAlpha(0);
                                 chooseBody.setAlpha(0);
                                 HardMoveShapes.setAlpha(0);
+                                ShapeRotACW.setAlpha(0);
+                                ShapeRotCW.setAlpha(0);
                                 toDrawDropAnyShapeButton = false;
                                 CamScroller.setAlpha(0);
                                 world.setGravity(new Vector2(0,-10));
