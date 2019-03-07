@@ -173,11 +173,18 @@ public class CuttingAreaManager implements Screen {
                                 screenY > 300 * AllVariables.inpM && screenY < 500 * AllVariables.inpM){
 
                             VariablesForPlayArea.Sh_pos.clear();
+
+                            //clearing rotation
+                            VariablesForPlayArea.Angle_Of_Shape.clear();
+
+
                             Vector2 v= new Vector2();
                             v.add(640/AllVariables.PPM, -1000/AllVariables.PPM);
 
-                            for(int i =0; i<VariablesForPlayArea.shapes.size(); i++)
+                            for(int i =0; i<VariablesForPlayArea.shapes.size(); i++) {
                                 VariablesForPlayArea.Sh_pos.add(v);
+                                VariablesForPlayArea.Angle_Of_Shape.add((short) 180);
+                            }
 
                             game.setScreen(new ShapeChooser(game));
                         }

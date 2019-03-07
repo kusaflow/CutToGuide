@@ -61,6 +61,9 @@ public class AreaOneClass implements Screen {
     //position of camera x
     private float camposX = 555.10986f;
 
+    //temp Rotation Folder for shapes
+    short tempRotForShape;
+
     //tiled map
     private TiledMap map;
     private OrthogonalTiledMapRenderer tmr;
@@ -211,7 +214,7 @@ public class AreaOneClass implements Screen {
                     //it -am ::200);
 
             poly.setScale(1f,1f);
-            poly.setRotation(180);
+            poly.setRotation(VariablesForPlayArea.Angle_Of_Shape.get(i));
             poly.dirty();
             sred.polygon(poly.getTransformedVertices());
 
@@ -305,9 +308,10 @@ public class AreaOneClass implements Screen {
             }
         }
 
-        //reintializing the shape position
+        //reintializing the shape position and rotation
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
             VariablesForPlayArea.Sh_pos.set(VariablesForPlayArea.shapeNumberSelected, VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
+            VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected), (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)* (Math.PI/180)));
         }
 
         if (toDrawDropAnyShapeButton) {
@@ -354,7 +358,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -402,6 +406,26 @@ public class AreaOneClass implements Screen {
                             }
 
                             //rotation of shapes
+                            if (isAnyShapeSelected) {
+                                //Anti Clock Wise
+                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
+                                    tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
+                                    tempRotForShape-=20;
+                                    if(tempRotForShape<=0)
+                                        tempRotForShape = (short) (360 - tempRotForShape);
+                                    VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+
+                                }
+
+                                //for Clock Wise
+                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 390 * AllVariables.inpM && screenY < 460 * AllVariables.inpM) {
+
+                                }
+                            }
 
                         }
 
@@ -425,7 +449,7 @@ public class AreaOneClass implements Screen {
                                     VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
                                             (((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM,
                                             ((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM,
-                                            (float) (180 * (Math.PI / 180)));
+                                            (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)*(Math.PI/180)));
                                     return false;
 
                                 } else {
@@ -513,7 +537,8 @@ public class AreaOneClass implements Screen {
                                     if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
                                         if (!hardMove) {
                                             VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100, (float) (180 * (Math.PI / 180)));
+                                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100,
+                                                    (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)*(Math.PI/180)));
                                         }
                                     }
                                 }
