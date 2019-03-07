@@ -184,15 +184,16 @@ public class ObjectCreation {
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j=0, k=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
-                ver[k] = 550-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/(2);
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][0]/(2) - VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/(2);
                 k++;
-                ver[k] = 40-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/(2);
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][1]/(2)-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/(2);
                 k++;
             }
 
             Body b= BodyGenerator.ChainLand(world,false, "cutout", new Vector2(600,80), ver,1f,0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle ));//| AllVariables.Bit_land | AllVariables.Bit_Tool));
             b.setTransform(VariablesForPlayArea.Sh_pos.get(i), (float) (VariablesForPlayArea.Angle_Of_Shape.get(i)*(Math.PI/180)));
             VariablesForPlayArea.CutOutBodies.add(b);
+
 
             ver = null;
         }
