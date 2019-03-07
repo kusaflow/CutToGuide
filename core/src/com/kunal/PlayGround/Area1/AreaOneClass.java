@@ -50,8 +50,8 @@ public class AreaOneClass implements Screen {
 
     private ObjectCreation objectCreation;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton;
-    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, isDropAnyShapeButton = false, toDrawDropAnyShapeButton = true;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW;
+    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true;
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
@@ -135,13 +135,25 @@ public class AreaOneClass implements Screen {
 
         CamScroller = new Sprite(new Texture(Gdx.files.internal("playArea/CamScroller.png")));
         CamScroller.setPosition(50,240);
-        CamScroller.setSize(camScrollSize*camscl, camscl*camscl);
+        CamScroller.setSize(camScrollSize*camscl, camScrollSize*camscl);
         CamScroller.setAlpha(1);
 
         DropAnyShapeButton = new Sprite(new Texture(Gdx.files.internal("playArea/DropAnyShapeButton.png")));
         DropAnyShapeButton.setPosition(50,240);
         DropAnyShapeButton.setSize(100*camscl, 60*camscl);
         DropAnyShapeButton.setAlpha(0.5f);
+
+        ShapeRotACW = new Sprite(new Texture(Gdx.files.internal("playArea/ShapeRotation_ACW.png")));
+        ShapeRotACW.setPosition(50,240);
+        ShapeRotACW.setSize(70*camscl, 70*camscl);
+        ShapeRotACW.setAlpha(0.8f);
+
+
+        ShapeRotCW = new Sprite(new Texture(Gdx.files.internal("playArea/ShapeRotation_CW.png")));
+        ShapeRotCW.setPosition(50,240);
+        ShapeRotCW.setSize(70*camscl, 70*camscl);
+        ShapeRotCW.setAlpha(0.8f);
+
 
 
 
@@ -220,6 +232,10 @@ public class AreaOneClass implements Screen {
         HardMoveShapes.draw(AllVariables.batch);
         CamScroller.draw(AllVariables.batch);
         DropAnyShapeButton.draw(AllVariables.batch);
+        if(toDrawDropAnyShapeButton){
+            ShapeRotACW.draw(AllVariables.batch);
+            ShapeRotCW.draw(AllVariables.batch);
+        }
         AllVariables.batch.end();
 
 
@@ -252,6 +268,12 @@ public class AreaOneClass implements Screen {
         HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
         CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), CamScrollerY+(cam.position.y - AllVariables.HEIGHT/2));
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
+
+        if (toDrawDropAnyShapeButton){
+            ShapeRotACW.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y - AllVariables.HEIGHT/2));
+            ShapeRotCW.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y - AllVariables.HEIGHT/2));
+
+        }
 
         //cam dragging
         if (isCamScrollerTouched){
