@@ -270,8 +270,8 @@ public class AreaOneClass implements Screen {
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
 
         if (toDrawDropAnyShapeButton){
-            ShapeRotACW.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y - AllVariables.HEIGHT/2));
-            ShapeRotCW.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y - AllVariables.HEIGHT/2));
+            ShapeRotACW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 580+(cam.position.y - AllVariables.HEIGHT/2));
+            ShapeRotCW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 400+(cam.position.y - AllVariables.HEIGHT/2));
 
         }
 
@@ -401,7 +401,9 @@ public class AreaOneClass implements Screen {
                                 VariablesForPlayArea.shapeNumberSelected = 15;
                             }
 
-                            }
+                            //rotation of shapes
+
+                        }
 
 
                         if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
