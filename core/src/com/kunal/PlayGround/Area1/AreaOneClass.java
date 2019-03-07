@@ -51,7 +51,7 @@ public class AreaOneClass implements Screen {
     private ObjectCreation objectCreation;
 
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW;
-    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true;
+    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false;
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
@@ -232,7 +232,7 @@ public class AreaOneClass implements Screen {
         HardMoveShapes.draw(AllVariables.batch);
         CamScroller.draw(AllVariables.batch);
         DropAnyShapeButton.draw(AllVariables.batch);
-        if(toDrawDropAnyShapeButton){
+        if(isAnyShapeSelected){
             ShapeRotACW.draw(AllVariables.batch);
             ShapeRotCW.draw(AllVariables.batch);
         }
@@ -312,13 +312,20 @@ public class AreaOneClass implements Screen {
 
         if (toDrawDropAnyShapeButton) {
             //DropAnyShape alpha init
-            if (VariablesForPlayArea.shapeNumberSelected <= 11)
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size() -1) {
+                //a shape is selected
                 DropAnyShapeButton.setAlpha(1f);
-            else
+                isAnyShapeSelected = true;
+            }
+            else {
+                //no shape is selected
                 DropAnyShapeButton.setAlpha(0.5f);
+                isAnyShapeSelected = false;
+            }
         }else {
             DropAnyShapeButton.setAlpha(0f);
         }
+
 
         //size changer for camScroller
         CamScroller.setSize(camScrollSize*camscl, camScrollSize*camscl);
@@ -334,6 +341,7 @@ public class AreaOneClass implements Screen {
             }
         }
 
+        //System.out.println(isAnyShapeSelected);
         //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition());
 
 
@@ -346,7 +354,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
