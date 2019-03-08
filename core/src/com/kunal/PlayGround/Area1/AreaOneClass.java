@@ -376,7 +376,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -465,6 +465,8 @@ public class AreaOneClass implements Screen {
                         } else if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM){
+
+                        }else if (isCamScrollerTouched || ACWTouched || CWtouched){
 
                         } else {
                             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
@@ -561,15 +563,15 @@ public class AreaOneClass implements Screen {
                             dragged_touchX = screenX;
 
                         }else {
-
-
                             if (!hardmoveFaultResolver) {
                                 if (!hardMove) {
                                     if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
                                         if (!hardMove) {
-                                            VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                                    ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100,
-                                                    (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)*(Math.PI/180)));
+                                            if(!ACWTouched && !CWtouched) {
+                                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
+                                                        ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100,
+                                                        (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
+                                            }
                                         }
                                     }
                                 }
