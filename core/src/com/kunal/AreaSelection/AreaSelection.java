@@ -40,23 +40,23 @@ public class AreaSelection implements Screen {
         AreaList = new LinkedList<Sprite>();
 
         settings = new Sprite(new Texture(Gdx.files.internal("AreaSelection/settings.png")));
-        settings.setSize(70,70);
-        settings.setPosition(1150,640);
+        settings.setSize(90,90);
+        settings.setPosition(1150,620);
 
         //space for coins==================================================================================================
 
         credit = new Sprite(new Texture(Gdx.files.internal("AreaSelection/credit.png")));
         credit.setSize(200,70);
-        credit.setPosition(250, 640);
+        credit.setPosition(250, 620);
 
 
         shop = new Sprite(new Texture(Gdx.files.internal("AreaSelection/shop.png")));
         shop.setSize(200,200);
-        shop.setPosition(20, 350);
+        shop.setPosition(20, 380);
 
         Tutorial = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Tutorial.png")));
         Tutorial.setSize(200,200);
-        Tutorial.setPosition(20, 100);
+        Tutorial.setPosition(20, 150);
 
         showMoreLevelsOnLeft = new Sprite(new Texture(Gdx.files.internal("AreaSelection/PrevLevel.png")));
         showMoreLevelsOnLeft.setSize(70,250);
@@ -67,34 +67,47 @@ public class AreaSelection implements Screen {
         showMoreLevelsOnRight.setPosition(1200, 200);
 
         backToPrevScreen = new Sprite(new Texture(Gdx.files.internal("AreaSelection/BackToPrevScreen.png")));
-        backToPrevScreen.setSize(200,400);
-        backToPrevScreen.setPosition(450, 150);
+        backToPrevScreen.setSize(120,80);
+        backToPrevScreen.setPosition(20, 620);
 
         Sprite s;
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area1.png")));
         s.setSize(200, 400);
-        s.setPosition(450,150);
+        s.setPosition(390,150);
         AreaList.add(s);
 
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area2.png")));
-        s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
-        s.setPosition(500,200);
+        s.setSize(200, 400);
+        s.setPosition(660,150);
         AreaList.add(s);
 
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area3.png")));
-        s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
-        s.setPosition(900,200);
+        s.setSize(200, 400);
+        s.setPosition(930,150);
         AreaList.add(s);
 
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area4.png")));
-        s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
-        s.setPosition(1300,200);
+        s.setSize(200, 400);
+        s.setPosition(1300,150);
         AreaList.add(s);
 
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.png")));
-        s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
-        s.setPosition(1700,200);
+        s.setSize(200, 400);
+        s.setPosition(1700,150);
         AreaList.add(s);
+
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.png")));
+        s.setSize(200, 400);
+        s.setPosition(1700,150);
+        AreaList.add(s);
+
+        ///last one for coming soon levels
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/AreaComingSoon.png")));
+        s.setSize(200, 400);
+        s.setPosition(1700,150);
+        AreaList.add(s);
+
+
 
 
     }
@@ -118,8 +131,8 @@ public class AreaSelection implements Screen {
 
 
         AllVariables.batch.begin();
-        //for (Sprite s : AreaList)
-            //s.draw(AllVariables.batch);
+        for (Sprite s : AreaList)
+            s.draw(AllVariables.batch);
         settings.draw(AllVariables.batch);
         shop.draw(AllVariables.batch);
         credit.draw(AllVariables.batch);
