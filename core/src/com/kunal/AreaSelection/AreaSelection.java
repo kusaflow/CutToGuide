@@ -29,6 +29,8 @@ public class AreaSelection implements Screen {
 
     Sprite settings , shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial;
 
+    short LevelState=0;
+
     public AreaSelection(MainGame game) {
         this.game = game;
 
@@ -70,6 +72,8 @@ public class AreaSelection implements Screen {
         backToPrevScreen.setSize(120,80);
         backToPrevScreen.setPosition(20, 620);
 
+
+        //first 3
         Sprite s;
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area1.png")));
         s.setSize(200, 400);
@@ -86,35 +90,39 @@ public class AreaSelection implements Screen {
         s.setPosition(930,150);
         AreaList.add(s);
 
+
+        //next 3
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area4.png")));
         s.setSize(200, 400);
-        s.setPosition(1300,150);
+        s.setPosition(490,150);
+        s.setAlpha(0);
         AreaList.add(s);
 
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.png")));
         s.setSize(200, 400);
-        s.setPosition(1700,150);
+        s.setPosition(760,150);
+        s.setAlpha(0);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.png")));
-        s.setSize(200, 400);
-        s.setPosition(1700,150);
-        AreaList.add(s);
 
         ///last one for coming soon levels
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/AreaComingSoon.png")));
         s.setSize(200, 400);
-        s.setPosition(1700,150);
+        s.setPosition(1130,150);
+        s.setAlpha(0);
         AreaList.add(s);
 
 
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
 
     }
 
     @Override
     public void show() {
-
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
 
     @Override
@@ -145,7 +153,7 @@ public class AreaSelection implements Screen {
     }
 
     private void update(float dt){
-
+       // System.out.println(LevelState);
     }
 
     private void input(float dt){
@@ -169,6 +177,33 @@ public class AreaSelection implements Screen {
 
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        screenY = AllVariables.HEIGHT - screenY;
+                        //System.out.println(screenX + "\t" +screenY);
+
+                        //prev levels
+                        if(screenX >= (250* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (520* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
+                            System.out.println("left");
+                            if(LevelState == 0){
+
+                            }else {
+                                LevelState--;
+                            }
+                        }
+
+                        //next levels-------------------------------------------------------------------------change level state accordingly
+                        if(screenX >= (1200* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (1270* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
+                            System.out.println("right");
+                            if(LevelState == 1){
+
+                            }else {
+                                LevelState++;
+                            }
+                        }
+
                         return false;
                     }
 
@@ -199,6 +234,10 @@ public class AreaSelection implements Screen {
     @Override
     public void resize(int width, int height) {
         port.update(width, height);
+        cam.update();
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
     }
 
     @Override
