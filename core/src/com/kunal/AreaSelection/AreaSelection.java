@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
@@ -26,7 +27,7 @@ public class AreaSelection implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
-    Sprite settings , shop;
+    Sprite settings , shop, credit, back;
 
 
     float tapDetx, tapDety;
@@ -43,8 +44,12 @@ public class AreaSelection implements Screen {
 
         settings = new Sprite(new Texture(Gdx.files.internal("AreaSelection/settings.png")));
         settings.setSize(50,50);
+
         shop = new Sprite(new Texture(Gdx.files.internal("AreaSelection/shop.png")));
         shop.setSize(50,50);
+
+        credit = new Sprite(new Texture(Gdx.files.internal("AreaSelection/credit.png")));
+        credit.setSize(50,50);
 
         Sprite s;
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area1.png")));
@@ -82,9 +87,8 @@ public class AreaSelection implements Screen {
 
     @Override
     public void render(float delta) {
+        update(delta);
         input(delta);
-        settings.setPosition(20,20);
-        shop.setPosition(1000,20);
 
         Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -93,12 +97,21 @@ public class AreaSelection implements Screen {
         cam.update();
 
 
+
         AllVariables.batch.begin();
         for (Sprite s : AreaList)
             s.draw(AllVariables.batch);
         settings.draw(AllVariables.batch);
-        shop.draw(AllVariables.batch);
+        //shop.draw(AllVariables.batch);
+        //credit.draw(AllVariables.batch);
         AllVariables.batch.end();
+
+    }
+
+    private void update(float dt){
+        credit.setPosition(100,100);
+        shop.setPosition(500,500);
+        settings.setPosition(942+(cam.position.x - AllVariables.WIDTH/2), 535+(cam.position.y - AllVariables.HEIGHT/2));
 
     }
 
@@ -145,7 +158,7 @@ public class AreaSelection implements Screen {
 
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
-                        cam.position.set(cam.position.x+(tapDetx-screenX)/5, cam.position.y, cam.position.z);
+                        //cam.position.set(cam.position.x+(tapDetx-screenX)/5, cam.position.y, cam.position.z);
 
                         if (cam.position.x < 0)
                             cam.position.set(0, cam.position.y, cam.position.z);
