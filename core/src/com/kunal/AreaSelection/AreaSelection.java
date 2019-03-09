@@ -27,10 +27,7 @@ public class AreaSelection implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
-    Sprite settings , shop, credit, back;
-
-
-    float tapDetx, tapDety;
+    Sprite settings , shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial;
 
     public AreaSelection(MainGame game) {
         this.game = game;
@@ -43,18 +40,40 @@ public class AreaSelection implements Screen {
         AreaList = new LinkedList<Sprite>();
 
         settings = new Sprite(new Texture(Gdx.files.internal("AreaSelection/settings.png")));
-        settings.setSize(50,50);
+        settings.setSize(70,70);
+        settings.setPosition(1150,640);
 
-        shop = new Sprite(new Texture(Gdx.files.internal("AreaSelection/shop.png")));
-        shop.setSize(50,50);
+        //space for coins==================================================================================================
 
         credit = new Sprite(new Texture(Gdx.files.internal("AreaSelection/credit.png")));
-        credit.setSize(50,50);
+        credit.setSize(200,70);
+        credit.setPosition(250, 640);
+
+
+        shop = new Sprite(new Texture(Gdx.files.internal("AreaSelection/shop.png")));
+        shop.setSize(200,200);
+        shop.setPosition(20, 350);
+
+        Tutorial = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Tutorial.png")));
+        Tutorial.setSize(200,200);
+        Tutorial.setPosition(20, 100);
+
+        showMoreLevelsOnLeft = new Sprite(new Texture(Gdx.files.internal("AreaSelection/PrevLevel.png")));
+        showMoreLevelsOnLeft.setSize(70,250);
+        showMoreLevelsOnLeft.setPosition(250, 200);
+
+        showMoreLevelsOnRight = new Sprite(new Texture(Gdx.files.internal("AreaSelection/NextLevel.png")));
+        showMoreLevelsOnRight.setSize(70,250);
+        showMoreLevelsOnRight.setPosition(1200, 200);
+
+        backToPrevScreen = new Sprite(new Texture(Gdx.files.internal("AreaSelection/BackToPrevScreen.png")));
+        backToPrevScreen.setSize(200,400);
+        backToPrevScreen.setPosition(450, 150);
 
         Sprite s;
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area1.png")));
-        s.setSize(Gdx.graphics.getWidth()/4, Gdx.graphics.getHeight()/1.6f);
-        s.setPosition(100,200);
+        s.setSize(200, 400);
+        s.setPosition(450,150);
         AreaList.add(s);
 
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area2.png")));
@@ -99,26 +118,24 @@ public class AreaSelection implements Screen {
 
 
         AllVariables.batch.begin();
-        for (Sprite s : AreaList)
-            s.draw(AllVariables.batch);
+        //for (Sprite s : AreaList)
+            //s.draw(AllVariables.batch);
         settings.draw(AllVariables.batch);
-        //shop.draw(AllVariables.batch);
-        //credit.draw(AllVariables.batch);
+        shop.draw(AllVariables.batch);
+        credit.draw(AllVariables.batch);
+        Tutorial.draw(AllVariables.batch);
+        backToPrevScreen.draw(AllVariables.batch);
+        showMoreLevelsOnLeft.draw(AllVariables.batch);
+        showMoreLevelsOnRight.draw(AllVariables.batch);
         AllVariables.batch.end();
 
     }
 
     private void update(float dt){
-        credit.setPosition(100,100);
-        shop.setPosition(500,500);
-        settings.setPosition(942+(cam.position.x - AllVariables.WIDTH/2), 535+(cam.position.y - AllVariables.HEIGHT/2));
 
     }
 
     private void input(float dt){
-        if (cam.position.x < 400)
-            cam.position.set(400, cam.position.y, cam.position.z);
-
 
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
@@ -139,34 +156,16 @@ public class AreaSelection implements Screen {
 
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-                        tapDetx = screenX;
-                        tapDety = screenY;
                         return false;
                     }
 
                     @Override
                     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-                        if(tapDetx == screenX && tapDety == screenY){
-                            for (int i=0; i < AreaList.size(); i++) {
-                                if (tapDetx + (cam.position.x - 640) > AreaList.get(i).getX() && tapDetx + (cam.position.x - 640) < AreaList.get(i).getX() + AreaList.get(i).getWidth()) {
-                                    System.out.println(i+1);
-                                }
-                            }
-                        }
                         return false;
                     }
 
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
-                        //cam.position.set(cam.position.x+(tapDetx-screenX)/5, cam.position.y, cam.position.z);
-
-                        if (cam.position.x < 0)
-                            cam.position.set(0, cam.position.y, cam.position.z);
-
-
-                        if (cam.position.x > AreaList.getLast().getX())
-                            cam.position.set(AreaList.getLast().getX(), cam.position.y, cam.position.z);
-
                         return false;
                     }
 
