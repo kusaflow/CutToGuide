@@ -472,8 +472,8 @@ public class AreaOneClass implements Screen {
                             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
                                 if (hardMove) {
                                     VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
-                                            (((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM,
-                                            ((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM,
+                                            ((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM)- VariablesForPlayArea.BigSqurePoints[0][0]/(2)/ AllVariables.PPM,
+                                            (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM)+ VariablesForPlayArea.BigSqurePoints[12][1]/(2)/ AllVariables.PPM,
                                             (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)*(Math.PI/180)));
                                     return false;
 
