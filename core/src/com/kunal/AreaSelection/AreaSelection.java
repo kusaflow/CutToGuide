@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.Area1.AreaOneClass;
 
 import java.util.LinkedList;
 
@@ -271,6 +272,7 @@ public class AreaSelection implements Screen {
                                 && screenX <= (220* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 150* AllVariables.inpM && screenY <= 350* AllVariables.inpM) {
                             //code for Tutorial
+                            game.setScreen(new AreaOneClass(game));
                             return false;
                         }
 
@@ -399,6 +401,20 @@ public class AreaSelection implements Screen {
 
     @Override
     public void dispose() {
+        game.dispose();
+        AreaList.clear();
+        settings.getTexture().dispose();
+        shop.getTexture().dispose();
+        credit.getTexture().dispose();
+        backToPrevScreen.getTexture().dispose();
+        showMoreLevelsOnRight.getTexture().dispose();
+        showMoreLevelsOnLeft.getTexture().dispose();
+        Tutorial.getTexture().dispose();
+
+
+
+
+
 
     }
 }
