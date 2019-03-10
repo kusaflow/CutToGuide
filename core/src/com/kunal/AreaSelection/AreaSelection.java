@@ -258,6 +258,15 @@ public class AreaSelection implements Screen {
                             return false;
                         }
 
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        screenY = Gdx.graphics.getHeight() - screenY;
+
+
                         //shop
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (220* AllVariables.inpM) + AllVariables.witdth_translation
@@ -344,15 +353,6 @@ public class AreaSelection implements Screen {
 
                             return false;
                         }
-
-
-
-
-                        return false;
-                    }
-
-                    @Override
-                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
                         return false;
                     }
 
