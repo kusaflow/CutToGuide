@@ -31,8 +31,13 @@ public class AreaSelection implements Screen {
 
     short LevelState=0;
 
+    float positionY, transparency;
+
     public AreaSelection(MainGame game) {
         this.game = game;
+
+        positionY = 150;
+        transparency = 1;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -94,13 +99,13 @@ public class AreaSelection implements Screen {
         //next 3
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area4.png")));
         s.setSize(200, 400);
-        s.setPosition(490,150);
+        s.setPosition(390,150);
         s.setAlpha(0);
         AreaList.add(s);
 
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.png")));
         s.setSize(200, 400);
-        s.setPosition(760,150);
+        s.setPosition(660,150);
         s.setAlpha(0);
         AreaList.add(s);
 
@@ -108,7 +113,7 @@ public class AreaSelection implements Screen {
         ///last one for coming soon levels
         s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/AreaComingSoon.png")));
         s.setSize(200, 400);
-        s.setPosition(1130,150);
+        s.setPosition(930,150);
         s.setAlpha(0);
         AreaList.add(s);
 
@@ -153,7 +158,51 @@ public class AreaSelection implements Screen {
     }
 
     private void update(float dt){
-       // System.out.println(LevelState);
+        //System.out.println(LevelState);
+        if (transparency >= 1){
+
+        }else{
+            transparency += 0.1f;
+        }
+
+        if (positionY >= 150){
+
+        }else{
+            positionY += 10;
+        }
+
+        if (LevelState == 0){
+            AreaList.get(0).setAlpha(transparency);
+            AreaList.get(1).setAlpha(transparency);
+            AreaList.get(2).setAlpha(transparency);
+            AreaList.get(3).setAlpha(1-transparency);
+            AreaList.get(4).setAlpha(1-transparency);
+            AreaList.get(5).setAlpha(1-transparency);
+
+            AreaList.get(0).setPosition(390, positionY);
+            AreaList.get(1).setPosition(660, positionY);
+            AreaList.get(2).setPosition(930, positionY);
+            AreaList.get(3).setPosition(390, 150 - positionY);
+            AreaList.get(4).setPosition(660, 150 - positionY);
+            AreaList.get(5).setPosition(930, 150 - positionY);
+
+        }if (LevelState == 1){
+            AreaList.get(0).setAlpha(1-transparency);
+            AreaList.get(1).setAlpha(1-transparency);
+            AreaList.get(2).setAlpha(1-transparency);
+            AreaList.get(3).setAlpha(transparency);
+            AreaList.get(4).setAlpha(transparency);
+            AreaList.get(5).setAlpha(transparency);
+
+            AreaList.get(0).setPosition(390, 150 - positionY);
+            AreaList.get(1).setPosition(660, 150 - positionY);
+            AreaList.get(2).setPosition(930, 150 - positionY);
+            AreaList.get(3).setPosition(390, positionY);
+            AreaList.get(4).setPosition(660, positionY);
+            AreaList.get(5).setPosition(930, positionY);
+
+        }
+
     }
 
     private void input(float dt){
@@ -177,18 +226,19 @@ public class AreaSelection implements Screen {
 
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-                        screenY = AllVariables.HEIGHT - screenY;
+                        screenY = Gdx.graphics.getHeight() - screenY;
                         //System.out.println(screenX + "\t" +screenY);
 
                         //prev levels
                         if(screenX >= (250* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (520* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
-                            System.out.println("left");
                             if(LevelState == 0){
 
                             }else {
                                 LevelState--;
+                                transparency = 0;
+                                positionY = 70;
                             }
                         }
 
@@ -196,11 +246,12 @@ public class AreaSelection implements Screen {
                         if(screenX >= (1200* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (1270* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
-                            System.out.println("right");
                             if(LevelState == 1){
 
                             }else {
                                 LevelState++;
+                                transparency =0;
+                                positionY = 70;
                             }
                         }
 
