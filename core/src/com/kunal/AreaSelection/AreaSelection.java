@@ -231,7 +231,7 @@ public class AreaSelection implements Screen {
 
                         //prev levels
                         if(screenX >= (250* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX <= (520* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (320* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
                             if(LevelState == 0){
 
@@ -240,6 +240,7 @@ public class AreaSelection implements Screen {
                                 transparency = 0;
                                 positionY = 70;
                             }
+                            return false;
                         }
 
                         //next levels-------------------------------------------------------------------------change level state accordingly
@@ -253,7 +254,97 @@ public class AreaSelection implements Screen {
                                 transparency =0;
                                 positionY = 70;
                             }
+                            return false;
                         }
+
+                        //shop
+                        if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (220* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 380* AllVariables.inpM && screenY <= 580* AllVariables.inpM) {
+                            //code for shop
+                            return false;
+                        }
+
+
+                        //tutorials
+                        if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (220* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 150* AllVariables.inpM && screenY <= 350* AllVariables.inpM) {
+                            //code for Tutorial
+                            return false;
+                        }
+
+                        //back
+                        if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
+                            //code for Back
+                            return false;
+                        }
+
+                        //credits
+                        if(screenX >= (250* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (450* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
+                            //code for credits
+                            return false;
+                        }
+
+                        //coins---------------------------------------------------------------leaving for now
+
+                        //setting
+                        if(screenX >= (1150* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (1240* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 620* AllVariables.inpM && screenY <= 710* AllVariables.inpM) {
+                            //code for settings
+                            return false;
+                        }
+
+                        //level Area Selection
+                        if(screenX >= (390* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (590* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 150* AllVariables.inpM && screenY <= 550* AllVariables.inpM) {
+
+                            if(LevelState == 0){
+                                System.out.println("Area 1");
+                            }
+                            else if (LevelState == 1){
+                                System.out.println("Area 4");
+                            }
+
+                            return false;
+                        }
+
+                        if(screenX >= (660* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (860* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 150* AllVariables.inpM && screenY <= 550* AllVariables.inpM) {
+
+                            if(LevelState == 0){
+                                System.out.println("Area 2");
+                            }
+                            else if (LevelState == 1){
+                                System.out.println("Area 5");
+                            }
+
+                            return false;
+                        }
+
+                        if(screenX >= (930* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (1130* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 150* AllVariables.inpM && screenY <= 550* AllVariables.inpM) {
+
+                            if(LevelState == 0){
+                                System.out.println("Area 3");
+                            }
+                            else if (LevelState == 1){
+                                System.out.println("Area 6");
+                            }
+
+                            return false;
+                        }
+
+
+
 
                         return false;
                     }
