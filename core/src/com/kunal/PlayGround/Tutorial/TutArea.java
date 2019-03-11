@@ -67,6 +67,9 @@ public class TutArea implements Screen {
     Polygon poly;
     PlayAreaUtils playAreaUtils;
 
+    //follow cycle if start is pressed
+    boolean CamfollowCycle = false;
+
     public TutArea(MainGame game) {
         this.game = game;
 
@@ -100,7 +103,7 @@ public class TutArea implements Screen {
 
 
         //tiled map
-        map = new TmxMapLoader().load("playArea/tiledMap/area1/level1.tmx");
+        map = new TmxMapLoader().load("playArea/tiledMap/tut/tut.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
 
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
@@ -181,7 +184,7 @@ public class TutArea implements Screen {
 
         b2dr.setDrawJoints(false);
 
-        //tmr.render();
+        tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -246,8 +249,10 @@ public class TutArea implements Screen {
         //campos.y = (AllVariables.BackWheel.getPosition().y)*AllVariables.PPM;
         //cam.position.set(campos);
 
-
-        cam.position.set(camposX, 90f, cam.position.z);
+        if (!CamfollowCycle)
+            cam.position.set(camposX, 90f, cam.position.z);
+        else
+            cam.position.set((AllVariables.BackWheel.getPosition().x)*AllVariables.PPM, 90f, cam.position.z);
         //cam.position.set(camposX, cam.position.y, cam.position.z);
         cam.update();
 
@@ -289,13 +294,21 @@ public class TutArea implements Screen {
                 else
                     camposX+=10f;
 
-
             }else{
                 CamScrollerX = 1320;
                 CamScrollerY = 750;
                 camScrollSize = 60;
             }
         }
+
+        //x is init point and y is final point
+        if(camposX > VariablesForPlayArea.endPoint.x){
+            camposX = VariablesForPlayArea.endPoint.xm;
+        }
+        else if (camposX < VariablesForPlayArea.endPoint.y){
+            camposX = VariablesForPlayArea.endPoint.y;
+        }
+
 
         //reintializing the shape position and rotation
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
@@ -525,6 +538,7 @@ public class TutArea implements Screen {
                                 Brake.setAlpha(0.4f);
                                 playAreaUtils.MoveShapesToRealWorld();
                                 VariablesForPlayArea.shapeNumberSelected = 15;
+                                CamfollowCycle = true;
 
                                 return false;
                             }
