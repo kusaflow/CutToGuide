@@ -48,7 +48,7 @@ public class TutArea implements Screen {
     private int dragged_touchX =0;
 
     //position of camera x
-    private float camposX = 555.10986f;
+    private float camposX = 700f;
 
     //temp Rotation Folder for shapes
     short tempRotForShape;
@@ -68,7 +68,7 @@ public class TutArea implements Screen {
     PlayAreaUtils playAreaUtils;
 
     //follow cycle if start is pressed
-    boolean CamfollowCycle = false;
+    private boolean CamfollowCycle = false, startAnimToMoveCycle = false;
 
     public TutArea(MainGame game) {
         this.game = game;
@@ -161,6 +161,7 @@ public class TutArea implements Screen {
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
 
+        VariablesForPlayArea.areaNumber = 0;
 
 
     }
@@ -250,11 +251,25 @@ public class TutArea implements Screen {
         //cam.position.set(campos);
 
         if (!CamfollowCycle)
-            cam.position.set(camposX, 90f, cam.position.z);
+            cam.position.set(camposX, 600, cam.position.z);
         else
-            cam.position.set((AllVariables.BackWheel.getPosition().x)*AllVariables.PPM, 90f, cam.position.z);
+            cam.position.set((AllVariables.BackWheel.getPosition().x) * AllVariables.PPM, 600f, cam.position.z);
+
+        if (startAnimToMoveCycle){
+            if(camposX > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM + 20 &&
+                    camposX > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM - 20 ){
+
+            }else{
+                if(camposX  > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    camposX -=20;
+                if(camposX  < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    camposX +=20;
+
+            }
+        }
         //cam.position.set(camposX, cam.position.y, cam.position.z);
         cam.update();
+
 
         tmr.setView(cam);
 
@@ -308,8 +323,6 @@ public class TutArea implements Screen {
         else if (camposX > VariablesForPlayArea.endPoint.y){
             camposX = VariablesForPlayArea.endPoint.y;
         }
-
-        System.out.println(camposX);
 
         //reintializing the shape position and rotation
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {

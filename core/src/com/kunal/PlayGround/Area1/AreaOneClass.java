@@ -168,6 +168,7 @@ public class AreaOneClass implements Screen {
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
+        VariablesForPlayArea.areaNumber = 1;
 
 
 

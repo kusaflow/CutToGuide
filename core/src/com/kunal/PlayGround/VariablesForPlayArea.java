@@ -22,6 +22,10 @@ public class VariablesForPlayArea {
     //level number
     public static int levelNumber;
 
+    //area number
+    // 0 is for tut
+    public static short areaNumber =0;
+
     //positions of shapes
     public static LinkedList<Vector2> Sh_pos;
 
