@@ -17,7 +17,7 @@ public class ObjectCreation {
     public ObjectCreation() {
     }
 
-    public void CreateBicycle(World world){
+    public void CreateBicycle(World world, int verticalElevation){
         //Land surface and for now it is temerory
         BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -50),
                 new Vector2(12000, 50), 1,1, AllVariables.Bit_land,
@@ -29,11 +29,11 @@ public class ObjectCreation {
 
 
         //--------------------Bicycle Parts
-        AllVariables.BackWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(538,25),
+        AllVariables.BackWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(538,verticalElevation + 25),
                 25,0.5f, 0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes | AllVariables.Bit_Tool| AllVariables.Bit_land));
 
 
-        AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(580, 44),
+        AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(580, verticalElevation + 44),
                 new Vector2(30,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land| AllVariables.Bit_Tool|AllVariables.Bit_enimes));
 
         //rod3 and back wheel
@@ -43,7 +43,7 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
 
-        AllVariables.rod4 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(632, 22),
+        AllVariables.rod4 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(632, verticalElevation + 22),
                 new Vector2(23,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod4 and back wheel
@@ -53,7 +53,7 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
 
-        AllVariables.rod5 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(605, 51),
+        AllVariables.rod5 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(605, verticalElevation + 51),
                 new Vector2(3,33),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod5 and rod3
@@ -71,7 +71,7 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
 
-        AllVariables.rod1 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(609, 63),
+        AllVariables.rod1 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(609, verticalElevation + 63),
                 new Vector2(25,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod1 and rod5
@@ -88,7 +88,7 @@ public class ObjectCreation {
         rdef.localAnchorB.set(-24/AllVariables.PPM, 0);
         world.createJoint(rdef);
 
-        AllVariables.rod2 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(609, 44),
+        AllVariables.rod2 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(609, verticalElevation + 44),
                 new Vector2(35,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod2 and rod5
@@ -112,7 +112,7 @@ public class ObjectCreation {
         rdef.localAnchorB.set(-34/AllVariables.PPM, 0);
         world.createJoint(rdef);
 
-        AllVariables.rod6 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(658, 56),
+        AllVariables.rod6 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(658, verticalElevation + 56),
                 new Vector2(3,35),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
 
@@ -134,7 +134,7 @@ public class ObjectCreation {
         world.createJoint(rdef);
 
 
-        AllVariables.FrontWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(660,25),
+        AllVariables.FrontWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(660,verticalElevation + 25),
                 25, 0.5f,0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land| AllVariables.Bit_Tool));
 
         //frontwheel and rod6
@@ -144,7 +144,7 @@ public class ObjectCreation {
         rdef.localAnchorB.set(0,0);
         world.createJoint(rdef);
 
-        AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(630, 25),
+        AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(630, verticalElevation + 25),
                 new Vector2(30,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
         //rod4 can be reused

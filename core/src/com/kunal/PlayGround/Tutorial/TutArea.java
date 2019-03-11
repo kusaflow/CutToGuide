@@ -88,7 +88,7 @@ public class TutArea implements Screen {
 
         objectCreation = new ObjectCreation();
 
-        objectCreation.CreateBicycle(world);
+        objectCreation.CreateBicycle(world , 20);
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();
