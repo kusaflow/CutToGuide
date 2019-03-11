@@ -185,7 +185,7 @@ public class TutArea implements Screen {
 
         b2dr.setDrawJoints(false);
 
-        tmr.render();
+        //tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -251,24 +251,40 @@ public class TutArea implements Screen {
         //cam.position.set(campos);
 
         if (!CamfollowCycle)
-            cam.position.set(camposX, 600, cam.position.z);
+            cam.position.set(camposX, 90, cam.position.z);
         else
-            cam.position.set((AllVariables.BackWheel.getPosition().x) * AllVariables.PPM, 600f, cam.position.z);
+            cam.position.set((AllVariables.BackWheel.getPosition().x) * AllVariables.PPM, 90f, cam.position.z);
 
         if (startAnimToMoveCycle){
-            if(camposX > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM + 20 &&
-                    camposX > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM - 20 ){
+            if(camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -40 &&
+                    camposX - 146 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+40 ){
+                start.setAlpha(0);
+                chooseBody.setAlpha(0);
+                HardMoveShapes.setAlpha(0);
+                ShapeRotACW.setAlpha(0);
+                ShapeRotCW.setAlpha(0);
+                toDrawDropAnyShapeButton = false;
+                CamScroller.setAlpha(0);
+                startBool = true;
 
+                world.setGravity(new Vector2(0,-10));
+                Brake.setAlpha(0.4f);
+                playAreaUtils.MoveShapesToRealWorld();
+                VariablesForPlayArea.shapeNumberSelected = 15;
+                CamfollowCycle = true;
+                startAnimToMoveCycle = false;
             }else{
-                if(camposX  > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
-                    camposX -=20;
-                if(camposX  < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
-                    camposX +=20;
+                if(camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    camposX -=40;
+                if(camposX - 136 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    camposX +=40;
 
             }
         }
         //cam.position.set(camposX, cam.position.y, cam.position.z);
         cam.update();
+
+        //System.out.println(camposX - 136 + "\t" + (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM);
 
 
         tmr.setView(cam);
@@ -540,20 +556,8 @@ public class TutArea implements Screen {
                             if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
-                                start.setAlpha(0);
-                                chooseBody.setAlpha(0);
-                                HardMoveShapes.setAlpha(0);
-                                ShapeRotACW.setAlpha(0);
-                                ShapeRotCW.setAlpha(0);
-                                toDrawDropAnyShapeButton = false;
-                                CamScroller.setAlpha(0);
-                                world.setGravity(new Vector2(0,-10));
-                                startBool = true;
-                                Brake.setAlpha(0.4f);
-                                playAreaUtils.MoveShapesToRealWorld();
-                                VariablesForPlayArea.shapeNumberSelected = 15;
-                                CamfollowCycle = true;
 
+                                startAnimToMoveCycle = true;
                                 return false;
                             }
                             //shape chooser
