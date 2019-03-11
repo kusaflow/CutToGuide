@@ -302,13 +302,14 @@ public class TutArea implements Screen {
         }
 
         //x is init point and y is final point
-        if(camposX > VariablesForPlayArea.endPoint.x){
-            camposX = VariablesForPlayArea.endPoint.xm;
+        if(camposX < VariablesForPlayArea.endPoint.x){
+            camposX = VariablesForPlayArea.endPoint.x;
         }
-        else if (camposX < VariablesForPlayArea.endPoint.y){
+        else if (camposX > VariablesForPlayArea.endPoint.y){
             camposX = VariablesForPlayArea.endPoint.y;
         }
 
+        System.out.println(camposX);
 
         //reintializing the shape position and rotation
         if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
