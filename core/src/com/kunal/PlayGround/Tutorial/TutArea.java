@@ -261,8 +261,8 @@ public class TutArea implements Screen {
             CamfollowCycle = false;
 
         if (startAnimToMoveCycle){
-            if(camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -40 &&
-                    camposX - 146 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+40 ){
+            if(camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -25 &&
+                    camposX - 146 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
                 start.setAlpha(0);
                 chooseBody.setAlpha(0);
                 HardMoveShapes.setAlpha(0);
