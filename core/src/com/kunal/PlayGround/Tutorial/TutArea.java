@@ -68,7 +68,7 @@ public class TutArea implements Screen {
     PlayAreaUtils playAreaUtils;
 
     //follow cycle if start is pressed
-    private boolean CamfollowCycle = false, startAnimToMoveCycle = false;
+    private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
 
     public TutArea(MainGame game) {
         this.game = game;
@@ -88,7 +88,7 @@ public class TutArea implements Screen {
 
         objectCreation = new ObjectCreation();
 
-        objectCreation.CreateBicycle(world , 20);
+        objectCreation.CreateBicycle(world , 600);
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();
@@ -185,7 +185,7 @@ public class TutArea implements Screen {
 
         b2dr.setDrawJoints(false);
 
-        //tmr.render();
+        tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -251,9 +251,14 @@ public class TutArea implements Screen {
         //cam.position.set(campos);
 
         if (!CamfollowCycle)
-            cam.position.set(camposX, 90, cam.position.z);
-        else
-            cam.position.set((AllVariables.BackWheel.getPosition().x) * AllVariables.PPM, 90f, cam.position.z);
+            cam.position.set(camposX, 600, cam.position.z);
+        else {
+            camposX = (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM;
+            cam.position.set(camposX, 600f, cam.position.z);
+        }
+
+        if (camposX >= VariablesForPlayArea.endPoint.y)
+            CamfollowCycle = false;
 
         if (startAnimToMoveCycle){
             if(camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -40 &&
@@ -273,6 +278,7 @@ public class TutArea implements Screen {
                 VariablesForPlayArea.shapeNumberSelected = 15;
                 CamfollowCycle = true;
                 startAnimToMoveCycle = false;
+                finalvalofcamcontroller = true;
             }else{
                 if(camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
                     camposX -=40;
@@ -332,12 +338,13 @@ public class TutArea implements Screen {
             }
         }
 
-        //x is init point and y is final point
-        if(camposX < VariablesForPlayArea.endPoint.x){
-            camposX = VariablesForPlayArea.endPoint.x;
-        }
-        else if (camposX > VariablesForPlayArea.endPoint.y){
-            camposX = VariablesForPlayArea.endPoint.y;
+        if (!finalvalofcamcontroller) {
+            //x is init point and y is final point
+            if (camposX < VariablesForPlayArea.endPoint.x) {
+                camposX = VariablesForPlayArea.endPoint.x;
+            } else if (camposX > VariablesForPlayArea.endPoint.y) {
+                camposX = VariablesForPlayArea.endPoint.y;
+            }
         }
 
         //reintializing the shape position and rotation
