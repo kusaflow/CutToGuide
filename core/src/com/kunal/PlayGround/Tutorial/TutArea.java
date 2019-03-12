@@ -172,8 +172,8 @@ public class TutArea implements Screen {
 
     @Override
     public void render(float dt) {
-        //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
-        Gdx.gl.glClearColor(.2f, 0.2f, .2f, 1);
+        Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
+        //Gdx.gl.glClearColor(.2f, 0.2f, .2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         update(dt);
 
@@ -233,13 +233,17 @@ public class TutArea implements Screen {
         }
         AllVariables.batch.end();
 
+        sred.setColor(0.9f, 0.2f, 0.2f,1);
+        sred.begin(ShapeRenderer.ShapeType.Filled);
+        sred.rectLine(200,200,200,350,50);
+        sred.end();
+
 
 
     }
 
     private void update(float dt){
         input(dt);
-
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         world.step(1/(1/dt), 6,2);
 
@@ -614,7 +618,7 @@ public class TutArea implements Screen {
                     @Override
                     public boolean keyDown(int keycode) {
                         if (keycode == Input.Keys.Z){
-                            game.setScreen(new CuttingAreaManager(game));
+                            game.setScreen(new CuttingAreaManagerfortut(game));
                         }
                         if (keycode == Input.Keys.SPACE){
                             world.setGravity(new Vector2(0,-10));
