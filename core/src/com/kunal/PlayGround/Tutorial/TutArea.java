@@ -64,6 +64,7 @@ public class TutArea implements Screen {
     Polygon poly;
     PlayAreaUtils playAreaUtils;
 
+
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
 
