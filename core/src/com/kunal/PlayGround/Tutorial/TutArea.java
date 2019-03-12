@@ -174,7 +174,8 @@ public class TutArea implements Screen {
 
     @Override
     public void render(float dt) {
-        Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
+        //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
+        Gdx.gl.glClearColor(.2f, 0.2f, .2f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         update(dt);
 
@@ -183,7 +184,7 @@ public class TutArea implements Screen {
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
-        b2dr.setDrawJoints(false);
+        Gdx.gl.glDisable(GL20.GL_BLEND);
 
         tmr.render();
 
