@@ -571,7 +571,7 @@ public class TutArea implements Screen {
                                     && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                                 //code to choosing body
-                                game.setScreen(new ShapeChooser(game));
+                                game.setScreen(new ShapeChooserForTut(game));
                                 return false;
                             }
                         }

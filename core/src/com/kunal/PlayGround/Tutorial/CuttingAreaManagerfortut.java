@@ -186,7 +186,7 @@ public class CuttingAreaManagerfortut implements Screen {
                                 VariablesForPlayArea.Angle_Of_Shape.add((short) 180);
                             }
 
-                            game.setScreen(new ShapeChooser(game));
+                            game.setScreen(new ShapeChooserForTut(game));
                         }
 
                         return false;

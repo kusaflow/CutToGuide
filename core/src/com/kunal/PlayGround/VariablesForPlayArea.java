@@ -39,6 +39,9 @@ public class VariablesForPlayArea {
 
     public static byte shapeNumberSelected = 15 ;
 
+    //tut state
+    public static short tutstep = 0;
+
     public VariablesForPlayArea() {
         cantuseDots = new LinkedList<Byte>();
         CutOutBodies = new LinkedList<Body>();

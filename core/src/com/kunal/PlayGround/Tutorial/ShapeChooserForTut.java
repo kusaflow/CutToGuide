@@ -261,16 +261,13 @@ public class ShapeChooserForTut implements Screen {
 
                 //letsCut
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM) {
-                    game.setScreen(new CuttingAreaManager(game));
+                    game.setScreen(new CuttingAreaManagerfortut(game));
                     //System.out.println("up wala");
                 }
 
                 //okTick
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM &&  (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM){
-                    if (VariablesForPlayArea.areaNumber == 0)
-                        game.setScreen(new TutArea(game));
-                    else if (VariablesForPlayArea.areaNumber == 1)
-                        game.setScreen(new AreaOneClass(game));
+                    game.setScreen(new TutArea(game));
                     //System.out.println("down wala");
                 }
 
