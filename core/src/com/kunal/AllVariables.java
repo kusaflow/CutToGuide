@@ -1,6 +1,7 @@
 package com.kunal;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.physics.box2d.Body;
 
@@ -15,6 +16,8 @@ public class AllVariables {
 
     public static float inpM;
     public static int witdth_translation;
+
+    public static BitmapFont bitmapFont;
 
 
     //Masks

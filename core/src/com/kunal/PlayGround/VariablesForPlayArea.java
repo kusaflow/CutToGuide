@@ -26,6 +26,10 @@ public class VariablesForPlayArea {
     // 0 is for tut
     public static short areaNumber =0;
 
+    //position of camera x
+    public static float camposX = 700f;
+
+
     //positions of shapes
     public static LinkedList<Vector2> Sh_pos;
 

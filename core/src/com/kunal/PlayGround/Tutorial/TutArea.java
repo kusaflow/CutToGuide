@@ -47,9 +47,6 @@ public class TutArea implements Screen {
     private byte camScrollSize =60;
     private int dragged_touchX =0;
 
-    //position of camera x
-    private float camposX = 700f;
-
     //temp Rotation Folder for shapes
     short tempRotForShape;
 
@@ -252,18 +249,18 @@ public class TutArea implements Screen {
         //cam.position.set(campos);
 
         if (!CamfollowCycle)
-            cam.position.set(camposX, 600, cam.position.z);
+            cam.position.set(VariablesForPlayArea.camposX, 600, cam.position.z);
         else {
-            camposX = (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM;
-            cam.position.set(camposX, 600f, cam.position.z);
+            VariablesForPlayArea.camposX = (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM;
+            cam.position.set(VariablesForPlayArea.camposX, 600f, cam.position.z);
         }
 
-        if (camposX >= VariablesForPlayArea.endPoint.y)
+        if (VariablesForPlayArea.camposX >= VariablesForPlayArea.endPoint.y)
             CamfollowCycle = false;
 
         if (startAnimToMoveCycle){
-            if(camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -25 &&
-                    camposX - 146 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
+            if(VariablesForPlayArea.camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -25 &&
+                    VariablesForPlayArea.camposX - 146 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
                 start.setAlpha(0);
                 chooseBody.setAlpha(0);
                 HardMoveShapes.setAlpha(0);
@@ -281,10 +278,10 @@ public class TutArea implements Screen {
                 startAnimToMoveCycle = false;
                 finalvalofcamcontroller = true;
             }else{
-                if(camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
-                    camposX -=40;
-                if(camposX - 136 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
-                    camposX +=40;
+                if(VariablesForPlayArea.camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    VariablesForPlayArea.camposX -=40;
+                if(VariablesForPlayArea.camposX - 136 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    VariablesForPlayArea.camposX +=40;
 
             }
         }
@@ -318,9 +315,9 @@ public class TutArea implements Screen {
                 CamScrollerY = 755;
                 camScrollSize = 50;
                 if (hardMove)
-                    camposX-=30f;
+                    VariablesForPlayArea.camposX-=30f;
                 else
-                    camposX-=10f;
+                    VariablesForPlayArea.camposX-=10f;
             }
             //moved to right
             else if(dragged_touchX - originX > Gdx.graphics.getWidth()/28){
@@ -328,9 +325,9 @@ public class TutArea implements Screen {
                 CamScrollerY = 755;
                 camScrollSize = 50;
                 if (hardMove)
-                    camposX+=30f;
+                    VariablesForPlayArea.camposX+=30f;
                 else
-                    camposX+=10f;
+                    VariablesForPlayArea.camposX+=10f;
 
             }else{
                 CamScrollerX = 1320;
@@ -341,10 +338,10 @@ public class TutArea implements Screen {
 
         if (!finalvalofcamcontroller) {
             //x is init point and y is final point
-            if (camposX < VariablesForPlayArea.endPoint.x) {
-                camposX = VariablesForPlayArea.endPoint.x;
-            } else if (camposX > VariablesForPlayArea.endPoint.y) {
-                camposX = VariablesForPlayArea.endPoint.y;
+            if (VariablesForPlayArea.camposX < VariablesForPlayArea.endPoint.x) {
+                VariablesForPlayArea.camposX = VariablesForPlayArea.endPoint.x;
+            } else if (VariablesForPlayArea.camposX > VariablesForPlayArea.endPoint.y) {
+                VariablesForPlayArea.camposX = VariablesForPlayArea.endPoint.y;
             }
         }
 
