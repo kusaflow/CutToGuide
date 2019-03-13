@@ -235,7 +235,8 @@ public class TutArea implements Screen {
 
         sred.setColor(0.9f, 0.2f, 0.2f,1);
         sred.begin(ShapeRenderer.ShapeType.Filled);
-        sred.rectLine(200,200,200,350,50);
+        sred.rectLine(1415+(cam.position.x - AllVariables.WIDTH/2), 800,1415+(cam.position.x - AllVariables.WIDTH/2),900,25);
+        sred.circle(1415+(cam.position.x - AllVariables.WIDTH/2),800,12.5f);
         sred.end();
 
 
