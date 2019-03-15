@@ -137,7 +137,7 @@ public class TutArea implements Screen {
 
         ShapeRotACW = new Sprite(new Texture(Gdx.files.internal("playArea/ShapeRotation_ACW.png")));
         ShapeRotACW.setPosition(50,240);
-        ShapeRotACW.setSize(70*camscl, 70*camscl);
+        ShapeRotACW.setSize(50*camscl, 50*camscl);
         ShapeRotACW.setAlpha(0.8f);
 
 
@@ -239,11 +239,73 @@ public class TutArea implements Screen {
         }
         AllVariables.batch.end();
 
+        //diff arrows
+        /*
         sred.setColor(0.9f, 0.2f, 0.2f,1);
         sred.begin(ShapeRenderer.ShapeType.Filled);
-        sred.rectLine(1415+(cam.position.x - AllVariables.WIDTH/2), 800,1415+(cam.position.x - AllVariables.WIDTH/2),900,25);
-        sred.circle(1415+(cam.position.x - AllVariables.WIDTH/2),800,12.5f);
+
+
+        //cam mover----------------------------------------------------------------------------------------------------------
+        sred.rectLine(1250+(cam.position.x - AllVariables.WIDTH/2), 950,1480+(cam.position.x - AllVariables.WIDTH/2),950,15);
+
+        sred.rectLine(1250+(cam.position.x - AllVariables.WIDTH/2), 948,1300+(cam.position.x - AllVariables.WIDTH/2),980,15);
+        sred.rectLine(1250+(cam.position.x - AllVariables.WIDTH/2), 952,1300+(cam.position.x - AllVariables.WIDTH/2),920,15);
+
+        sred.rectLine(1480+(cam.position.x - AllVariables.WIDTH/2), 948,1430+(cam.position.x - AllVariables.WIDTH/2),980,15);
+        sred.rectLine(1480+(cam.position.x - AllVariables.WIDTH/2), 952,1430+(cam.position.x - AllVariables.WIDTH/2),920,15);
+
+        //sred.circle(1415+(cam.position.x - AllVariables.WIDTH/2),800,12.5f);
+
+
+        //multiWorker===================================================================================================================
+        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 850,100+(cam.position.x - AllVariables.WIDTH/2),850,15);
+        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 848,20+(cam.position.x - AllVariables.WIDTH/2),880,15);
+        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 852,20+(cam.position.x - AllVariables.WIDTH/2),820,15);
+
+
+        //drop all shapes =---------------------------------------------------------------------------------------------------------------------
+        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 720,100+(cam.position.x - AllVariables.WIDTH/2),720,15);
+        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 718,20+(cam.position.x - AllVariables.WIDTH/2),750,15);
+        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 722,20+(cam.position.x - AllVariables.WIDTH/2),690,15);
+
+
+
+        //play button
+        sred.rectLine(80+(cam.position.x - AllVariables.WIDTH/2), 400,220+(cam.position.x - AllVariables.WIDTH/2),400,15);
+        sred.rectLine(80+(cam.position.x - AllVariables.WIDTH/2), 398,130+(cam.position.x - AllVariables.WIDTH/2),430,15);
+        sred.rectLine(80+(cam.position.x - AllVariables.WIDTH/2), 402,130+(cam.position.x - AllVariables.WIDTH/2),370,15);
+
+
+        //shapechooser
+        sred.rectLine(1020+(cam.position.x - AllVariables.WIDTH/2), 400,1160+(cam.position.x - AllVariables.WIDTH/2),400,15);
+        sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 398,1110+(cam.position.x - AllVariables.WIDTH/2),430,15);
+        sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 402,1110+(cam.position.x - AllVariables.WIDTH/2),370,15);
+
+
+
+        //rot_clockwise
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 880,1290+(cam.position.x - AllVariables.WIDTH/2),880,15);
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 878,1350+(cam.position.x - AllVariables.WIDTH/2),910,15);
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 882,1350+(cam.position.x - AllVariables.WIDTH/2),850,15);
+
+
+
+        //rot_anticlockwise
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 760,1290+(cam.position.x - AllVariables.WIDTH/2),760,15);
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 758,1350+(cam.position.x - AllVariables.WIDTH/2),790,15);
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 762,1350+(cam.position.x - AllVariables.WIDTH/2),730,15);
+
+
+
+        //45deg
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 650,1290+(cam.position.x - AllVariables.WIDTH/2),650,15);
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 648,1350+(cam.position.x - AllVariables.WIDTH/2),680,15);
+        sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 652,1350+(cam.position.x - AllVariables.WIDTH/2),620,15);
+
+
+
         sred.end();
+        */
 
 
 
