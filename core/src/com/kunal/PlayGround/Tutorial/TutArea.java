@@ -481,27 +481,39 @@ public class TutArea implements Screen {
 
                             //rotation of shapes
                             if (isAnyShapeSelected) {
-                                //for Clock Wise
-                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
+                                //for clock Wise
+                                if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 535 * AllVariables.inpM && screenY < 585 * AllVariables.inpM) {
 
                                     ACWTouched = true;
                                 }
 
                                 //for anti Clock Wise
-                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 390 * AllVariables.inpM && screenY < 460 * AllVariables.inpM) {
+                                else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM) {
 
                                     CWtouched = true;
                                 }
 
                                 //for 45 deg rotation
-                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
 
+                                    tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
+                                    if(tempRotForShape % 45 == 0){
+                                        tempRotForShape+=45;
+                                        if(tempRotForShape>=360)
+                                            tempRotForShape = (short) (tempRotForShape - 360);
+                                        VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+                                    }else{
+                                        tempRotForShape =(short)((45 * (tempRotForShape / 45)));
+                                        if(tempRotForShape>=360)
+                                            tempRotForShape = (short) (tempRotForShape - 360);
+                                        VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+                                    }
 
                                 }
                             }

@@ -486,15 +486,15 @@ public class AreaOneClass implements Screen {
                             //rotation of shapes
                             if (isAnyShapeSelected) {
                                 //for lock Wise
-                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 535 * AllVariables.inpM && screenY < 570 * AllVariables.inpM) {
+                                        && screenY > 535 * AllVariables.inpM && screenY < 585 * AllVariables.inpM) {
 
                                     ACWTouched = true;
                                 }
 
                                 //for anti Clock Wise
-                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM) {
 
@@ -502,10 +502,22 @@ public class AreaOneClass implements Screen {
                                 }
 
                                 //for 45 deg rotation
-                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
 
+                                    tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
+                                    if(tempRotForShape % 45 == 0){
+                                        tempRotForShape+=45;
+                                        if(tempRotForShape>=360)
+                                            tempRotForShape = (short) (tempRotForShape - 360);
+                                        VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+                                    }else{
+                                        tempRotForShape =(short)((45 * (tempRotForShape / 45)));
+                                        if(tempRotForShape>=360)
+                                            tempRotForShape = (short) (tempRotForShape - 360);
+                                        VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+                                    }
 
                                 }
                             }
