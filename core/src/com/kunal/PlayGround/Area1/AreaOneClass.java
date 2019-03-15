@@ -316,8 +316,8 @@ public class AreaOneClass implements Screen {
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
 
         if (toDrawDropAnyShapeButton){
-            ShapeRotACW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 610+(cam.position.y - AllVariables.HEIGHT/2));
-            ShapeRotCW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 370+(cam.position.y - AllVariables.HEIGHT/2));
+            ShapeRotACW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 370+(cam.position.y - AllVariables.HEIGHT/2));
+            ShapeRotCW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 610+(cam.position.y - AllVariables.HEIGHT/2));
             per45degRot.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 490+(cam.position.y - AllVariables.HEIGHT/2));
 
         }
@@ -371,7 +371,10 @@ public class AreaOneClass implements Screen {
         //changing rotation
         if (ACWTouched){
             tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
-            tempRotForShape-=2;
+            if (hardMove)
+                tempRotForShape-=3;
+            else
+                tempRotForShape-=1;
             if(tempRotForShape<=0)
                 tempRotForShape = (short) (360 - tempRotForShape);
             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
@@ -379,7 +382,10 @@ public class AreaOneClass implements Screen {
 
         if (CWtouched){
             tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
-            tempRotForShape+=2;
+            if (hardMove)
+                tempRotForShape+=3;
+            else
+                tempRotForShape+=1;
             if(tempRotForShape>=360)
                 tempRotForShape = (short) (tempRotForShape - 360);
             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
@@ -430,7 +436,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -479,20 +485,28 @@ public class AreaOneClass implements Screen {
 
                             //rotation of shapes
                             if (isAnyShapeSelected) {
-                                //Anti Clock Wise
+                                //for lock Wise
                                 if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
+                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 535 * AllVariables.inpM && screenY < 570 * AllVariables.inpM) {
 
                                     ACWTouched = true;
                                 }
 
-                                //for Clock Wise
+                                //for anti Clock Wise
                                 if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 390 * AllVariables.inpM && screenY < 460 * AllVariables.inpM) {
+                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM) {
 
                                     CWtouched = true;
+                                }
+
+                                //for 45 deg rotation
+                                if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
+
+
                                 }
                             }
 
@@ -519,6 +533,10 @@ public class AreaOneClass implements Screen {
                         } else if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM){
+
+                        } else if (screenX > (1180 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 360 * AllVariables.inpM && screenY < 605 * AllVariables.inpM){
 
                         }else if (isCamScrollerTouched || ACWTouched || CWtouched){
 
