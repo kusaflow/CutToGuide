@@ -64,7 +64,6 @@ public class TutArea implements Screen {
     Polygon poly;
     PlayAreaUtils playAreaUtils;
 
-
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
 
@@ -569,7 +568,7 @@ public class TutArea implements Screen {
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
 
                                 startAnimToMoveCycle = true;
-                                return false;
+                                return true;
                             }
                             //shape chooser
                             if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
@@ -577,7 +576,7 @@ public class TutArea implements Screen {
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                                 //code to choosing body
                                 game.setScreen(new ShapeChooserForTut(game));
-                                return false;
+                                return true;
                             }
                         }
 

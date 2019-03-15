@@ -58,9 +58,6 @@ public class AreaOneClass implements Screen {
     private byte camScrollSize =60;
     private int dragged_touchX =0;
 
-    //position of camera x
-    private float camposX = 555.10986f;
-
     //temp Rotation Folder for shapes
     short tempRotForShape;
 
@@ -77,6 +74,10 @@ public class AreaOneClass implements Screen {
 
     Polygon poly;
     PlayAreaUtils playAreaUtils;
+
+    //follow cycle if start is pressed
+    private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
+
 
     public AreaOneClass(MainGame game) {
         this.game = game;
@@ -96,7 +97,7 @@ public class AreaOneClass implements Screen {
 
         objectCreation = new ObjectCreation();
 
-        objectCreation.CreateBicycle(world, 50);
+        objectCreation.CreateBicycle(world, 600);
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();
@@ -191,8 +192,6 @@ public class AreaOneClass implements Screen {
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
-        b2dr.setDrawJoints(false);
-
         //tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
@@ -259,8 +258,45 @@ public class AreaOneClass implements Screen {
         //cam.position.set(campos);
 
 
-        cam.position.set(camposX, 90f, cam.position.z);
-        //cam.position.set(camposX, cam.position.y, cam.position.z);
+
+        if (!CamfollowCycle)
+            cam.position.set(VariablesForPlayArea.camposX, 600, cam.position.z);
+        else {
+            VariablesForPlayArea.camposX = (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM;
+            cam.position.set(VariablesForPlayArea.camposX, 600f, cam.position.z);
+        }
+
+        if (VariablesForPlayArea.camposX >= VariablesForPlayArea.endPoint.y)
+            CamfollowCycle = false;
+
+        if (startAnimToMoveCycle){
+            if(VariablesForPlayArea.camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -25 &&
+                    VariablesForPlayArea.camposX - 146 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
+                start.setAlpha(0);
+                chooseBody.setAlpha(0);
+                HardMoveShapes.setAlpha(0);
+                ShapeRotACW.setAlpha(0);
+                ShapeRotCW.setAlpha(0);
+                toDrawDropAnyShapeButton = false;
+                CamScroller.setAlpha(0);
+                startBool = true;
+
+                world.setGravity(new Vector2(0,-10));
+                Brake.setAlpha(0.4f);
+                playAreaUtils.MoveShapesToRealWorld();
+                VariablesForPlayArea.shapeNumberSelected = 15;
+                CamfollowCycle = true;
+                startAnimToMoveCycle = false;
+                finalvalofcamcontroller = true;
+            }else{
+                if(VariablesForPlayArea.camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    VariablesForPlayArea.camposX -=40;
+                if(VariablesForPlayArea.camposX - 136 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                    VariablesForPlayArea.camposX +=40;
+
+            }
+        }
+
         cam.update();
 
         tmr.setView(cam);
@@ -287,9 +323,9 @@ public class AreaOneClass implements Screen {
                 CamScrollerY = 755;
                 camScrollSize = 50;
                 if (hardMove)
-                    camposX-=30f;
+                    VariablesForPlayArea.camposX-=30f;
                 else
-                    camposX-=10f;
+                    VariablesForPlayArea.camposX-=10f;
             }
             //moved to right
             else if(dragged_touchX - originX > Gdx.graphics.getWidth()/28){
@@ -297,9 +333,9 @@ public class AreaOneClass implements Screen {
                 CamScrollerY = 755;
                 camScrollSize = 50;
                 if (hardMove)
-                    camposX+=30f;
+                    VariablesForPlayArea.camposX+=30f;
                 else
-                    camposX+=10f;
+                    VariablesForPlayArea.camposX+=10f;
 
 
             }else{
@@ -525,20 +561,8 @@ public class AreaOneClass implements Screen {
                             if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
-                                start.setAlpha(0);
-                                chooseBody.setAlpha(0);
-                                HardMoveShapes.setAlpha(0);
-                                ShapeRotACW.setAlpha(0);
-                                ShapeRotCW.setAlpha(0);
-                                toDrawDropAnyShapeButton = false;
-                                CamScroller.setAlpha(0);
-                                world.setGravity(new Vector2(0,-10));
-                                startBool = true;
-                                Brake.setAlpha(0.4f);
-                                playAreaUtils.MoveShapesToRealWorld();
-                                VariablesForPlayArea.shapeNumberSelected = 15;
-
-                                return false;
+                                startAnimToMoveCycle = true;
+                                return true;
                             }
                             //shape chooser
                             if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
