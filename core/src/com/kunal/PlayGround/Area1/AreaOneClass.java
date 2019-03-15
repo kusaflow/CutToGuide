@@ -270,8 +270,8 @@ public class AreaOneClass implements Screen {
             CamfollowCycle = false;
 
         if (startAnimToMoveCycle){
-            if(VariablesForPlayArea.camposX - 146 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -25 &&
-                    VariablesForPlayArea.camposX - 146 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
+            if(VariablesForPlayArea.camposX - 156 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -25 &&
+                    VariablesForPlayArea.camposX - 156 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
                 start.setAlpha(0);
                 chooseBody.setAlpha(0);
                 HardMoveShapes.setAlpha(0);
@@ -289,9 +289,9 @@ public class AreaOneClass implements Screen {
                 startAnimToMoveCycle = false;
                 finalvalofcamcontroller = true;
             }else{
-                if(VariablesForPlayArea.camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                if(VariablesForPlayArea.camposX - 146 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
                     VariablesForPlayArea.camposX -=40;
-                if(VariablesForPlayArea.camposX - 136 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                if(VariablesForPlayArea.camposX - 146 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
                     VariablesForPlayArea.camposX +=40;
 
             }
