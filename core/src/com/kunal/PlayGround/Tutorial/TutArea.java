@@ -39,7 +39,7 @@ public class TutArea implements Screen {
 
     private ObjectCreation objectCreation;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false;
 
     //CamScroller
@@ -143,8 +143,14 @@ public class TutArea implements Screen {
 
         ShapeRotCW = new Sprite(new Texture(Gdx.files.internal("playArea/ShapeRotation_CW.png")));
         ShapeRotCW.setPosition(50,240);
-        ShapeRotCW.setSize(70*camscl, 70*camscl);
+        ShapeRotCW.setSize(50*camscl, 50*camscl);
         ShapeRotCW.setAlpha(0.8f);
+
+
+        per45degRot = new Sprite(new Texture(Gdx.files.internal("playArea/ShapeRotation_per45deg.png")));
+        per45degRot.setPosition(50,240);
+        per45degRot.setSize(50*camscl, 50*camscl);
+        per45degRot.setAlpha(0.8f);
 
 
 
@@ -229,6 +235,7 @@ public class TutArea implements Screen {
         if(isAnyShapeSelected){
             ShapeRotACW.draw(AllVariables.batch);
             ShapeRotCW.draw(AllVariables.batch);
+            per45degRot.draw(AllVariables.batch);
         }
         AllVariables.batch.end();
 
@@ -307,8 +314,9 @@ public class TutArea implements Screen {
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
 
         if (toDrawDropAnyShapeButton){
-            ShapeRotACW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 580+(cam.position.y - AllVariables.HEIGHT/2));
-            ShapeRotCW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 400+(cam.position.y - AllVariables.HEIGHT/2));
+            ShapeRotACW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 610+(cam.position.y - AllVariables.HEIGHT/2));
+            ShapeRotCW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 370+(cam.position.y - AllVariables.HEIGHT/2));
+            per45degRot.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 490+(cam.position.y - AllVariables.HEIGHT/2));
 
         }
 
