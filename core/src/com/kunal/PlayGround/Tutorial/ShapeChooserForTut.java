@@ -32,6 +32,8 @@ public class ShapeChooserForTut implements Screen {
 
 
     public ShapeChooserForTut(MainGame game) {
+        VariablesForPlayArea.tutstep = 4;
+
         this.game = game;
         sred = new ShapeRenderer();
 
@@ -163,7 +165,7 @@ public class ShapeChooserForTut implements Screen {
         AllVariables.batch.end();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
-
+        sred.setColor(0.963f, 0.901f, 0.265f,0.2f);
 
         //verticle
         sred.line(40,710,40,101);
@@ -178,7 +180,7 @@ public class ShapeChooserForTut implements Screen {
         sred.line(40,304,1280,304);
         sred.line(40,101,1280,101);
 
-        sred.setColor(1, 1f, 1, 1);
+        sred.setColor(1,1,1,1);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
@@ -214,6 +216,16 @@ public class ShapeChooserForTut implements Screen {
         //0.963,0.901,0.265;
 
         sred.rect(x, y,275,203);
+
+        //for cutting shapes
+        sred.setColor(0.9f, 0.2f, 0.2f,1f);
+
+        sred.rectLine(1000, 600,1100,600,15);
+        sred.rectLine(1100, 597,1070,630,15);
+        sred.rectLine(1100, 603,1070,570,15);
+
+
+
         sred.end();
 
         Gdx.gl.glDisable(GL20.GL_BLEND);

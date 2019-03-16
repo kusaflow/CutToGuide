@@ -705,7 +705,8 @@ public class TutArea implements Screen {
 
                             //next speed
                             VariablesForPlayArea.tutstep++;
-                            game.setScreen(new ShapeChooserForTut(game));
+                            if (VariablesForPlayArea.tutstep == 4)
+                                game.setScreen(new ShapeChooserForTut(game));
 
                             return true;
                         }
@@ -726,7 +727,8 @@ public class TutArea implements Screen {
                                 //code to choosing body
                                 if (VariablesForPlayArea.tutstep == 3)
                                     VariablesForPlayArea.tutstep++;
-                                game.setScreen(new ShapeChooserForTut(game));
+                                if (VariablesForPlayArea.tutstep >=4)
+                                    game.setScreen(new ShapeChooserForTut(game));
                                 return true;
                             }
                         }
