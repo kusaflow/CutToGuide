@@ -280,12 +280,17 @@ public class TutArea implements Screen {
 
             sred.rectLine(1480 + (cam.position.x - AllVariables.WIDTH / 2), 948, 1430 + (cam.position.x - AllVariables.WIDTH / 2), 980, 15);
             sred.rectLine(1480 + (cam.position.x - AllVariables.WIDTH / 2), 952, 1430 + (cam.position.x - AllVariables.WIDTH / 2), 920, 15);
-        }else if (VariablesForPlayArea.tutstep ==2){
+        }else if (VariablesForPlayArea.tutstep ==2) {
             //multiWorker===================================================================================================================
-            sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 850,100+(cam.position.x - AllVariables.WIDTH/2),850,15);
-            sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 848,20+(cam.position.x - AllVariables.WIDTH/2),880,15);
-            sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 852,20+(cam.position.x - AllVariables.WIDTH/2),820,15);
+            sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 850, 100 + (cam.position.x - AllVariables.WIDTH / 2), 850, 15);
+            sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 848, 20 + (cam.position.x - AllVariables.WIDTH / 2), 880, 15);
+            sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 852, 20 + (cam.position.x - AllVariables.WIDTH / 2), 820, 15);
 
+        }else if (VariablesForPlayArea.tutstep == 3){
+            //shapechooser
+            sred.rectLine(1020+(cam.position.x - AllVariables.WIDTH/2), 400,1160+(cam.position.x - AllVariables.WIDTH/2),400,15);
+            sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 398,1110+(cam.position.x - AllVariables.WIDTH/2),430,15);
+            sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 402,1110+(cam.position.x - AllVariables.WIDTH/2),370,15);
         }
 
 
@@ -304,11 +309,6 @@ public class TutArea implements Screen {
         sred.rectLine(80+(cam.position.x - AllVariables.WIDTH/2), 398,130+(cam.position.x - AllVariables.WIDTH/2),430,15);
         sred.rectLine(80+(cam.position.x - AllVariables.WIDTH/2), 402,130+(cam.position.x - AllVariables.WIDTH/2),370,15);
 
-
-        //shapechooser
-        sred.rectLine(1020+(cam.position.x - AllVariables.WIDTH/2), 400,1160+(cam.position.x - AllVariables.WIDTH/2),400,15);
-        sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 398,1110+(cam.position.x - AllVariables.WIDTH/2),430,15);
-        sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 402,1110+(cam.position.x - AllVariables.WIDTH/2),370,15);
 
 
 
@@ -519,8 +519,8 @@ public class TutArea implements Screen {
         }
         else if (VariablesForPlayArea.tutstep == 2){
             message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN UNCHECK THIS \nTO MOVE SLOWLY INSISE THE GAME";
-        }else if (VariablesForPlayArea.tutstep == 0){
-            message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN UNCHECK THIS \nTO MOVE SLOWLY INSISE THE GAME";
+        }else if (VariablesForPlayArea.tutstep == 3){
+            message = "YOU CAN CHOOSE DIFFERENT SHAPES FROM HERE";
         }
 
 
@@ -705,6 +705,8 @@ public class TutArea implements Screen {
 
                             //next speed
                             VariablesForPlayArea.tutstep++;
+                            game.setScreen(new ShapeChooserForTut(game));
+
                             return true;
                         }
 
@@ -722,6 +724,8 @@ public class TutArea implements Screen {
                                     && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                                 //code to choosing body
+                                if (VariablesForPlayArea.tutstep == 3)
+                                    VariablesForPlayArea.tutstep++;
                                 game.setScreen(new ShapeChooserForTut(game));
                                 return true;
                             }
