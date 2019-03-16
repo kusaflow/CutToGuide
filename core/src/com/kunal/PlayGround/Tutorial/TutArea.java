@@ -68,7 +68,7 @@ public class TutArea implements Screen {
     Polygon poly;
     PlayAreaUtils playAreaUtils;
 
-    BitmapFont fontTut;
+    public static BitmapFont fontTut;
 
     String message = "";
 
@@ -283,14 +283,20 @@ public class TutArea implements Screen {
         }else if (VariablesForPlayArea.tutstep ==2) {
             //multiWorker===================================================================================================================
             sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 850, 100 + (cam.position.x - AllVariables.WIDTH / 2), 850, 15);
+            sred.circle(100 + (cam.position.x - AllVariables.WIDTH / 2),850, 7.5f);
             sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 848, 20 + (cam.position.x - AllVariables.WIDTH / 2), 880, 15);
+            sred.circle(20 + (cam.position.x - AllVariables.WIDTH / 2),880, 7.5f);
             sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 852, 20 + (cam.position.x - AllVariables.WIDTH / 2), 820, 15);
+            sred.circle(20 + (cam.position.x - AllVariables.WIDTH / 2),820, 7.5f);
 
         }else if (VariablesForPlayArea.tutstep == 3){
             //shapechooser
             sred.rectLine(1020+(cam.position.x - AllVariables.WIDTH/2), 400,1160+(cam.position.x - AllVariables.WIDTH/2),400,15);
+            sred.circle(1020 + (cam.position.x - AllVariables.WIDTH / 2),400, 7.5f);
             sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 398,1110+(cam.position.x - AllVariables.WIDTH/2),430,15);
+            sred.circle(1110 + (cam.position.x - AllVariables.WIDTH / 2),430, 7.5f);
             sred.rectLine(1160+(cam.position.x - AllVariables.WIDTH/2), 402,1110+(cam.position.x - AllVariables.WIDTH/2),370,15);
+            sred.circle(1110 + (cam.position.x - AllVariables.WIDTH / 2),370, 7.5f);
         }
 
 

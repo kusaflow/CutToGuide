@@ -27,6 +27,7 @@ public class ShapeChooserForTut implements Screen {
     private Viewport port;
     private float ver[];
     private Polygon poly;
+    String msg= "";
 
     private short[][] ShapePts = new short[12][2];
 
@@ -145,6 +146,7 @@ public class ShapeChooserForTut implements Screen {
 
     @Override
     public void render(float dt) {
+        update();
         input(dt);
         cam.update();
 
@@ -217,19 +219,36 @@ public class ShapeChooserForTut implements Screen {
 
         sred.rect(x, y,275,203);
 
+        sred.setColor(1,1,1,1);
+        sred.rect(40, 101, 275, 203);
+
         //for cutting shapes
         sred.setColor(0.9f, 0.2f, 0.2f,1f);
 
-        sred.rectLine(1000, 600,1100,600,15);
-        sred.rectLine(1100, 597,1070,630,15);
-        sred.rectLine(1100, 603,1070,570,15);
-
-
+        if (VariablesForPlayArea.tutstep == 4) {
+            sred.rectLine(1000, 600, 1100, 600, 15);
+            sred.circle(1000 ,600, 7.5f);
+            sred.rectLine(1100, 597, 1070, 630, 15);
+            sred.circle(1070 ,630, 7.5f);
+            sred.rectLine(1100, 603, 1070, 570, 15);
+            sred.circle(1070 ,570, 7.5f);
+        }
 
         sred.end();
 
+        AllVariables.batch.begin();
+        TutArea.fontTut.draw(AllVariables.batch, "TOUCH HERE TO PROCEED",43,150);
+        AllVariables.batch.end();
+
+
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
+    }
+
+    private void update(){
+        if (VariablesForPlayArea.tutstep == 4){
+            msg = "";
+        }
     }
 
     private void input(float dt){
