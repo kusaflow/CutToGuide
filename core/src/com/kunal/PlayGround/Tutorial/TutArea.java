@@ -4,10 +4,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -63,6 +66,8 @@ public class TutArea implements Screen {
 
     Polygon poly;
     PlayAreaUtils playAreaUtils;
+
+    BitmapFont fontTut;
 
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
@@ -166,6 +171,15 @@ public class TutArea implements Screen {
 
         VariablesForPlayArea.areaNumber = 0;
 
+        fontTut = new BitmapFont();
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 24;
+        prams.color = Color.ORANGE;
+        fontTut = generator.generateFont(prams);
+
+
 
     }
 
@@ -219,6 +233,12 @@ public class TutArea implements Screen {
 
         }
 
+        sred.end();
+
+
+        sred.begin(ShapeRenderer.ShapeType.Filled);
+        sred.setColor(Color.WHITE);
+        sred.rect(400+(cam.position.x - AllVariables.WIDTH/2),900,400,200);
 
         sred.end();
 
@@ -237,7 +257,9 @@ public class TutArea implements Screen {
             ShapeRotCW.draw(AllVariables.batch);
             per45degRot.draw(AllVariables.batch);
         }
+        AllVariables.bitmapFont.draw(AllVariables.batch ,"TOUCH HERE TO PROCEED", 200,500);
         AllVariables.batch.end();
+
 
         //diff arrows
         /*
