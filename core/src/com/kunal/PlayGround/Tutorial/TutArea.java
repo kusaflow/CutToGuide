@@ -29,6 +29,7 @@ import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.BodyGenerator;
+import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 public class TutArea implements Screen {
     MainGame game;
@@ -68,6 +69,8 @@ public class TutArea implements Screen {
     PlayAreaUtils playAreaUtils;
 
     BitmapFont fontTut;
+
+    String message = "";
 
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
@@ -176,7 +179,7 @@ public class TutArea implements Screen {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
         prams.size = 40;
-        prams.color = Color.ORANGE;
+        prams.color = Color.BROWN;
         fontTut = generator.generateFont(prams);
 
 
@@ -258,31 +261,35 @@ public class TutArea implements Screen {
             per45degRot.draw(AllVariables.batch);
         }
         fontTut.draw(AllVariables.batch ,"  TOUCH HERE TO\n        PROCEED", 400+(cam.position.x - AllVariables.WIDTH/2),1045);
+        fontTut.draw(AllVariables.batch ,message, 200+(cam.position.x - AllVariables.WIDTH/2),800);
         AllVariables.batch.end();
 
 
         //diff arrows
-        /*
+
         sred.setColor(0.9f, 0.2f, 0.2f,1);
         sred.begin(ShapeRenderer.ShapeType.Filled);
 
 
-        //cam mover----------------------------------------------------------------------------------------------------------
-        sred.rectLine(1250+(cam.position.x - AllVariables.WIDTH/2), 950,1480+(cam.position.x - AllVariables.WIDTH/2),950,15);
+        if (VariablesForPlayArea.tutstep == 1) {
+            //cam mover----------------------------------------------------------------------------------------------------------
+            sred.rectLine(1250 + (cam.position.x - AllVariables.WIDTH / 2), 950, 1480 + (cam.position.x - AllVariables.WIDTH / 2), 950, 15);
 
-        sred.rectLine(1250+(cam.position.x - AllVariables.WIDTH/2), 948,1300+(cam.position.x - AllVariables.WIDTH/2),980,15);
-        sred.rectLine(1250+(cam.position.x - AllVariables.WIDTH/2), 952,1300+(cam.position.x - AllVariables.WIDTH/2),920,15);
+            sred.rectLine(1250 + (cam.position.x - AllVariables.WIDTH / 2), 948, 1300 + (cam.position.x - AllVariables.WIDTH / 2), 980, 15);
+            sred.rectLine(1250 + (cam.position.x - AllVariables.WIDTH / 2), 952, 1300 + (cam.position.x - AllVariables.WIDTH / 2), 920, 15);
 
-        sred.rectLine(1480+(cam.position.x - AllVariables.WIDTH/2), 948,1430+(cam.position.x - AllVariables.WIDTH/2),980,15);
-        sred.rectLine(1480+(cam.position.x - AllVariables.WIDTH/2), 952,1430+(cam.position.x - AllVariables.WIDTH/2),920,15);
+            sred.rectLine(1480 + (cam.position.x - AllVariables.WIDTH / 2), 948, 1430 + (cam.position.x - AllVariables.WIDTH / 2), 980, 15);
+            sred.rectLine(1480 + (cam.position.x - AllVariables.WIDTH / 2), 952, 1430 + (cam.position.x - AllVariables.WIDTH / 2), 920, 15);
+        }else if (VariablesForPlayArea.tutstep ==2){
+            //multiWorker===================================================================================================================
+            sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 850,100+(cam.position.x - AllVariables.WIDTH/2),850,15);
+            sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 848,20+(cam.position.x - AllVariables.WIDTH/2),880,15);
+            sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 852,20+(cam.position.x - AllVariables.WIDTH/2),820,15);
 
-        //sred.circle(1415+(cam.position.x - AllVariables.WIDTH/2),800,12.5f);
+        }
 
 
-        //multiWorker===================================================================================================================
-        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 850,100+(cam.position.x - AllVariables.WIDTH/2),850,15);
-        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 848,20+(cam.position.x - AllVariables.WIDTH/2),880,15);
-        sred.rectLine(-30+(cam.position.x - AllVariables.WIDTH/2), 852,20+(cam.position.x - AllVariables.WIDTH/2),820,15);
+        /*
 
 
         //drop all shapes =---------------------------------------------------------------------------------------------------------------------
@@ -324,10 +331,10 @@ public class TutArea implements Screen {
         sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 648,1350+(cam.position.x - AllVariables.WIDTH/2),680,15);
         sred.rectLine(1400+(cam.position.x - AllVariables.WIDTH/2), 652,1350+(cam.position.x - AllVariables.WIDTH/2),620,15);
 
-
+*/
 
         sred.end();
-        */
+
 
 
 
@@ -505,6 +512,16 @@ public class TutArea implements Screen {
 
         //System.out.println(isAnyShapeSelected);
         //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition());
+
+        //message val
+        if (VariablesForPlayArea.tutstep == 1){
+            message = "TOU CAN DRAG THIS LEFT & RIGHT TO MOVE INSIDE THE GAME";
+        }
+        else if (VariablesForPlayArea.tutstep == 2){
+            message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN UNCHECK THIS \nTO MOVE SLOWLY INSISE THE GAME";
+        }else if (VariablesForPlayArea.tutstep == 0){
+            message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN UNCHECK THIS \nTO MOVE SLOWLY INSISE THE GAME";
+        }
 
 
     }
