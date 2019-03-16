@@ -175,7 +175,7 @@ public class TutArea implements Screen {
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        prams.size = 50;
+        prams.size = 40;
         prams.color = Color.ORANGE;
         fontTut = generator.generateFont(prams);
 
@@ -257,7 +257,7 @@ public class TutArea implements Screen {
             ShapeRotCW.draw(AllVariables.batch);
             per45degRot.draw(AllVariables.batch);
         }
-        fontTut.draw(AllVariables.batch ,"TOUCH HERE TO PROCEED", 400+(cam.position.x - AllVariables.WIDTH/2),1000);
+        fontTut.draw(AllVariables.batch ,"  TOUCH HERE TO\n        PROCEED", 400+(cam.position.x - AllVariables.WIDTH/2),1045);
         AllVariables.batch.end();
 
 
@@ -682,6 +682,14 @@ public class TutArea implements Screen {
                         if (CWtouched)
                             CWtouched = false;
 
+                        if (screenX > (465* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenX < (755* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenY > 570* AllVariables.inpM && screenY < 720* AllVariables.inpM) {
+
+                            //next speed
+                            VariablesForPlayArea.tutstep++;
+                            return true;
+                        }
 
                         if (!startBool){
                             //for start
