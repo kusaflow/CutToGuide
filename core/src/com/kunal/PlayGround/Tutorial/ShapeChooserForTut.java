@@ -233,11 +233,20 @@ public class ShapeChooserForTut implements Screen {
             sred.rectLine(1100, 603, 1070, 570, 15);
             sred.circle(1070 ,570, 7.5f);
         }
+        if (VariablesForPlayArea.tutstep == 5) {
+            sred.rectLine(1000, 500, 1100, 500, 15);
+            sred.circle(1000 ,600, 7.5f);
+            sred.rectLine(1100, 597, 1070, 630, 15);
+            sred.circle(1070 ,630, 7.5f);
+            sred.rectLine(1100, 603, 1070, 570, 15);
+            sred.circle(1070 ,570, 7.5f);
+        }
 
         sred.end();
 
         AllVariables.batch.begin();
-        TutArea.fontTut.draw(AllVariables.batch, "TOUCH HERE TO PROCEED",43,150);
+        TutArea.fontTut.draw(AllVariables.batch, "TOUCH HERE \nTO PROCEED",43,240);
+        TutArea.fontTut.draw(AllVariables.batch, msg, 100, 450);
         AllVariables.batch.end();
 
 
@@ -247,7 +256,13 @@ public class ShapeChooserForTut implements Screen {
 
     private void update(){
         if (VariablesForPlayArea.tutstep == 4){
-            msg = "";
+            msg = "THIS TO CREATE YOUR SHAPES";
+        }
+        if (VariablesForPlayArea.tutstep == 5){
+            msg = "THIS TO GO BACK TO CYCLE";
+        }
+        if (VariablesForPlayArea.tutstep == 6){
+            msg = "THIS TO UNCUT ALL \n(WORKS WHEN HAVE MORE THEN 1 SHAPES)";
         }
     }
 
@@ -256,7 +271,9 @@ public class ShapeChooserForTut implements Screen {
         if (Gdx.input.justTouched()) {
             if (Gdx.input.getX() > (40 * AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (315* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 101* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 304* AllVariables.inpM) {
-                    x=40;y=101;VariablesForPlayArea.shapeNumberSelected =8;
+                    //x=40;y=101;
+                    VariablesForPlayArea.tutstep++;
+                    VariablesForPlayArea.shapeNumberSelected =8;
                 } else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 304* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 507* AllVariables.inpM) {
                     x=40;y=304;VariablesForPlayArea.shapeNumberSelected =4;
                 } else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 507* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM) {

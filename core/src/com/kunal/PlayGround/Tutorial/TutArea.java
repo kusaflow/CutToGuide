@@ -711,8 +711,11 @@ public class TutArea implements Screen {
 
                             //next speed
                             VariablesForPlayArea.tutstep++;
-                            if (VariablesForPlayArea.tutstep == 4)
+                            if (VariablesForPlayArea.tutstep == 4) {
+                                Gdx.input.setInputProcessor(null);
                                 game.setScreen(new ShapeChooserForTut(game));
+                            }
+
 
                             return true;
                         }
@@ -733,8 +736,10 @@ public class TutArea implements Screen {
                                 //code to choosing body
                                 if (VariablesForPlayArea.tutstep == 3)
                                     VariablesForPlayArea.tutstep++;
-                                if (VariablesForPlayArea.tutstep >=4)
+                                if (VariablesForPlayArea.tutstep >=4) {
+                                    Gdx.input.setInputProcessor(null);
                                     game.setScreen(new ShapeChooserForTut(game));
+                                }
                                 return true;
                             }
                         }
@@ -846,5 +851,7 @@ public class TutArea implements Screen {
         world.dispose();
         b2dr.dispose();
         sred.dispose();
+        game.dispose();
+        this.game.dispose();
     }
 }
