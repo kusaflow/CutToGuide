@@ -21,6 +21,7 @@ public class AllVariables {
     public static BitmapFont bitmapFont;
 
 
+
     //Masks
     public static final short Bit_Bicycle= 1;
     public static final short Bit_land = 2;
