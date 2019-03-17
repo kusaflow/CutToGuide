@@ -73,7 +73,9 @@ public class TutArea implements Screen {
     String message = "";
 
     //follow cycle if start is pressed
-    private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
+    private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false, ARROWMESSAGE= false;
+
+    int xArrowMess =0, yArrowMess=0;
 
     public TutArea(MainGame game) {
         this.game = game;
@@ -262,6 +264,8 @@ public class TutArea implements Screen {
         }
         fontTut.draw(AllVariables.batch ,"  TOUCH HERE TO\n        PROCEED", 400+(cam.position.x - AllVariables.WIDTH/2),1045);
         fontTut.draw(AllVariables.batch ,message, 200+(cam.position.x - AllVariables.WIDTH/2),800);
+        if (ARROWMESSAGE)
+            fontTut.draw(AllVariables.batch, "TAP HERE", xArrowMess, yArrowMess);
         AllVariables.batch.end();
 
 
@@ -280,7 +284,8 @@ public class TutArea implements Screen {
 
             sred.rectLine(1480 + (cam.position.x - AllVariables.WIDTH / 2), 948, 1430 + (cam.position.x - AllVariables.WIDTH / 2), 980, 15);
             sred.rectLine(1480 + (cam.position.x - AllVariables.WIDTH / 2), 952, 1430 + (cam.position.x - AllVariables.WIDTH / 2), 920, 15);
-        }else if (VariablesForPlayArea.tutstep ==2) {
+
+        }else if (VariablesForPlayArea.tutstep ==2  || VariablesForPlayArea.tutstep == 7 || VariablesForPlayArea.tutstep == 8) {
             //multiWorker===================================================================================================================
             sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 850, 100 + (cam.position.x - AllVariables.WIDTH / 2), 850, 15);
             sred.circle(100 + (cam.position.x - AllVariables.WIDTH / 2),850, 7.5f);
@@ -288,6 +293,11 @@ public class TutArea implements Screen {
             sred.circle(20 + (cam.position.x - AllVariables.WIDTH / 2),880, 7.5f);
             sred.rectLine(-30 + (cam.position.x - AllVariables.WIDTH / 2), 852, 20 + (cam.position.x - AllVariables.WIDTH / 2), 820, 15);
             sred.circle(20 + (cam.position.x - AllVariables.WIDTH / 2),820, 7.5f);
+
+            if (VariablesForPlayArea.tutstep != 7){
+                xArrowMess = (int) (100 + ((int)(cam.position.x) - AllVariables.WIDTH / 2));
+                yArrowMess = 900;
+            }
 
         }else if (VariablesForPlayArea.tutstep == 3){
             //shapechooser
@@ -524,17 +534,24 @@ public class TutArea implements Screen {
             message = "YOU CAN DRAG THIS LEFT & RIGHT TO MOVE INSIDE THE GAME";
         }
         else if (VariablesForPlayArea.tutstep == 2){
-            message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN UNCHECK THIS \nTO MOVE SLOWLY INSIDE THE GAME";
+            message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN TURN OFF THIS \nTO MOVE SLOWLY INSIDE THE GAME";
         }else if (VariablesForPlayArea.tutstep == 3){
-            message = "YOU CAN CHOOSE DIFFERENT SHAPES FROM HERE";
+            message = "YOU CAN CHOOSE DIFFERENT SHAPES FROM HERE(TAP THERE)";
+        }else if (VariablesForPlayArea.tutstep == 7){
+            message = "WITH THIS BUTTON TURN ON YOU CAN \nDROP SHAPES INSTANTLY(TAP ANYWHERE)";
+        }else if (VariablesForPlayArea.tutstep == 8){
+            message = "TO MAKE IT SMOOTH TURNOFF THIS(TAP HERE) AND \nDRAG YOUR FINGER ANYWHERE ON THE SCREEN";
         }
 
-        if (VariablesForPlayArea.tutstep >= 4){
+        if (VariablesForPlayArea.tutstep >= 4 && VariablesForPlayArea.tutstep<=7){
+            VariablesForPlayArea.tutstep = 7;
             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
             }else {
                 VariablesForPlayArea.shapeNumberSelected = 0;
             }
         }
+
+        System.out.println(VariablesForPlayArea.tutstep);
 
 
     }
@@ -570,6 +587,10 @@ public class TutArea implements Screen {
                                 else
                                     HardMoveShapes.setAlpha(0.4f);
                                 hardmoveFaultResolver = true;
+                                if (VariablesForPlayArea.tutstep == 2)
+                                    ARROWMESSAGE = false;
+
+
                                 return false;
                             }
 
@@ -712,12 +733,15 @@ public class TutArea implements Screen {
                         if (CWtouched)
                             CWtouched = false;
 
+                        //next
                         if (screenX > (465* AllVariables.inpM)+AllVariables.witdth_translation
                                 && screenX < (755* AllVariables.inpM)+AllVariables.witdth_translation
                                 && screenY > 570* AllVariables.inpM && screenY < 720* AllVariables.inpM) {
 
                             //next speed
                             VariablesForPlayArea.tutstep++;
+                            if (VariablesForPlayArea.tutstep == 2)
+                                ARROWMESSAGE = true;
                             if (VariablesForPlayArea.tutstep == 4) {
                                 Gdx.input.setInputProcessor(null);
                                 game.setScreen(new ShapeChooserForTut(game));

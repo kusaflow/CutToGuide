@@ -3,12 +3,7 @@
  <tileset firstgid="1" source="tilesheet_complete.tsx"/>
  <layer id="1" name="Tile Layer 1" width="150" height="20">
   <data encoding="base64" compression="zlib">
-   eJztmckNwjAQRc0ONUANYecKLcIVWoErNAGiAyiBHwkkZGxnEseKgW/pKYo941nylcsoxSVZs0bVGfzOWqOXmy/op2+eN/jeM/xTXZmQrrz2Ma5zXakL2KKOnaCWJVgZ9vfwPTSy7aT3leWn2+l55r2z31Rq0LR/e5umXrYSzeTVVegeFvHpPfM/4nky1PJ+T3qMlqoWaIMO3506yiKG/Kt+74IhGIExmIBp2lcwB4t/PffQVRT5R3Be00iIl66qzj0WqKtPqCt/ruQDH11VnTuJF+qKhIC6IiGgrkgIqCsSAuqKEEIIIYQQ8g/ULPvJ2zPR9ovOi2yzI1sMaQ26rR5PMsOS5CWJXRZ6P0LEMMWTxJLYvObNJl+XNmKYYWZpsYwZaZE5quQb5anNdZc0/6I1uO5z/W8emumPYQ==
+   eJztmUkOwjAMRcsMl2GGLVwRtnAV2MIlQByFX4lKKGRwmxgK/EhPkMZ2bPe3CiLLOCRj3vp0Br8zNujl9gv6GZunxD/XlQ3pKGtfx3FpZtkV7FDHXlDLCqwt1w/wPbbCdtJ4qfxMOzPPsjELf9e9d2mqsJVopqyutHtYxWfwyP+Ez7Olluc4+XIbdEAX9DjnPHLeByMwBhMwBTMwBwuw/NP12Hkef/igjvW9Y71hMCQkAdQV0eBGXmBviQbUFNGAmiIa8H1FNKCmiAbUFdFAohvbd2qK+KiiqU/nTOqPVFOESOH5iaSG5/J0NBzXXe/9mN9Irvvi2kNag2lrO0+H9CHNP7R3Ksx+aOxh20+yl8Sm+L/Z5uvTxjuR1FdFK2WemVAfbXmFcpfW5osVyi22Bl88X+/uONtWVA==
   </data>
  </layer>
- <objectgroup id="4" name="land">
-  <object id="2" x="0.666667" y="160.667">
-   <polyline points="0,0 0,-56 7.33333,-65.3333 212,-65.3333 2206.67,-65.3333 2207.33,254 2687.33,254.667 2686.67,-64.6667 4788,-64.6667 4800,-54 4800,62"/>
-  </object>
- </objectgroup>
 </map>
