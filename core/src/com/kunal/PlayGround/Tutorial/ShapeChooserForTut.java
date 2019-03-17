@@ -277,7 +277,6 @@ public class ShapeChooserForTut implements Screen {
     }
 
     private void input(float dt){
-System.out.println(VariablesForPlayArea.tutstep);
         if (Gdx.input.justTouched()) {
             if (Gdx.input.getX() > (40 * AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (315* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 101* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 304* AllVariables.inpM) {

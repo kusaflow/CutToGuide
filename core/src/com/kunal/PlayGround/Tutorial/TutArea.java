@@ -529,6 +529,13 @@ public class TutArea implements Screen {
             message = "YOU CAN CHOOSE DIFFERENT SHAPES FROM HERE";
         }
 
+        if (VariablesForPlayArea.tutstep >= 4){
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+            }else {
+                VariablesForPlayArea.shapeNumberSelected = 0;
+            }
+        }
+
 
     }
 
