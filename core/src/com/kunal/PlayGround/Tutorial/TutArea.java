@@ -521,10 +521,10 @@ public class TutArea implements Screen {
 
         //message val
         if (VariablesForPlayArea.tutstep == 1){
-            message = "TOU CAN DRAG THIS LEFT & RIGHT TO MOVE INSIDE THE GAME";
+            message = "YOU CAN DRAG THIS LEFT & RIGHT TO MOVE INSIDE THE GAME";
         }
         else if (VariablesForPlayArea.tutstep == 2){
-            message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN UNCHECK THIS \nTO MOVE SLOWLY INSISE THE GAME";
+            message = "THIS IS FAST. TO SLOW IT DOWN YOU CAN UNCHECK THIS \nTO MOVE SLOWLY INSIDE THE GAME";
         }else if (VariablesForPlayArea.tutstep == 3){
             message = "YOU CAN CHOOSE DIFFERENT SHAPES FROM HERE";
         }
