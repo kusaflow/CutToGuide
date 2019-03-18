@@ -295,9 +295,9 @@ public class AreaOneClass implements Screen {
                 startAnimToMoveCycle = false;
                 finalvalofcamcontroller = true;
             }else{
-                if(VariablesForPlayArea.camposX - 146 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                if(VariablesForPlayArea.camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
                     VariablesForPlayArea.camposX -=40;
-                if(VariablesForPlayArea.camposX - 146 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
+                if(VariablesForPlayArea.camposX - 136 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
                     VariablesForPlayArea.camposX +=40;
 
             }

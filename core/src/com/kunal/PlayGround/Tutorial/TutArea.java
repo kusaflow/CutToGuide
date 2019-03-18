@@ -551,7 +551,7 @@ public class TutArea implements Screen {
             }
         }
 
-        System.out.println(VariablesForPlayArea.tutstep);
+        //System.out.println(VariablesForPlayArea.tutstep);
 
 
     }
