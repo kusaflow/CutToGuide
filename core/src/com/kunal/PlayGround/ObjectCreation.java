@@ -12,9 +12,11 @@ import com.kunal.utils.BodyGenerator;
 public class ObjectCreation {
 
     float ver[];
+    PlayAreaUtils playAreaUtils;
 
 
     public ObjectCreation() {
+        playAreaUtils = new PlayAreaUtils();
     }
 
     public void CreateBicycle(World world, int verticalElevation){
@@ -179,10 +181,14 @@ public class ObjectCreation {
 
     }
 
+
+    //for cutoutBodies list
+    //first filling with true cordinates so that to obtain a polygon
+    //finaly putting them in body to create body of it
     public void CreateCutouts(World world){
         VariablesForPlayArea.CutOutBodies.clear();
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
-            System.out.println(VariablesForPlayArea.shapes.get(i));
+            System.out.println(VariablesForPlayArea.shapes.get(i).size());
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j=0, k=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][0]/(2) - VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/(2);
@@ -201,11 +207,6 @@ public class ObjectCreation {
 
     }
 
-    public void TCreateCutouts(World world) {
-        VariablesForPlayArea.CutOutBodies.clear();
-        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
-            System.out.println(VariablesForPlayArea.shapes.get(i));
-        }
-    }
+
 
 }

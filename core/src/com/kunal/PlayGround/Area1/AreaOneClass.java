@@ -391,6 +391,7 @@ public class AreaOneClass implements Screen {
             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
         }
 
+        System.out.println();
 
         if (toDrawDropAnyShapeButton) {
             //DropAnyShape alpha init
