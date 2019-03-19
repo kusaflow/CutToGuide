@@ -182,6 +182,7 @@ public class ObjectCreation {
     public void CreateCutouts(World world){
         VariablesForPlayArea.CutOutBodies.clear();
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
+            System.out.println(VariablesForPlayArea.shapes.get(i));
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j=0, k=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][0]/(2) - VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/(2);
@@ -198,7 +199,13 @@ public class ObjectCreation {
             ver = null;
         }
 
+    }
 
+    public void TCreateCutouts(World world) {
+        VariablesForPlayArea.CutOutBodies.clear();
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+            System.out.println(VariablesForPlayArea.shapes.get(i));
+        }
     }
 
 }

@@ -436,7 +436,7 @@ public class AreaOneClass implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -616,6 +616,7 @@ public class AreaOneClass implements Screen {
                                     && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                                 //code to choosing body
+                                Gdx.input.setInputProcessor(null);
                                 game.setScreen(new ShapeChooser(game));
                                 return false;
                             }
