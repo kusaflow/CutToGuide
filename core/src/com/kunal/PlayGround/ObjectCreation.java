@@ -17,11 +17,13 @@ public class ObjectCreation {
     PlayAreaUtils playAreaUtils;
 
     LinkedList<Byte> vertPoly;
+    Boolean ismod4 = false;
 
 
     public ObjectCreation() {
         playAreaUtils = new PlayAreaUtils();
         vertPoly = new LinkedList<Byte>();
+        ismod4 = false;
     }
 
 
@@ -220,11 +222,18 @@ public class ObjectCreation {
 
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
             vertPoly.add(VariablesForPlayArea.shapes.get(i).getFirst());
+            ismod4 = false;
             for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
                 if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1))%4 == 0){
+                    if (!ismod4)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    ismod4 = true;
+                    continue;
+                }else {
+                    vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    ismod4 = false;
 
                 }
-                vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
 
             }
             vertPoly.add(VariablesForPlayArea.shapes.get(i).getLast());
