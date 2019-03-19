@@ -36,6 +36,7 @@ public class VariablesForPlayArea {
     //linked list for bodies
     public static LinkedList<Body> CutOutBodies;
     public static LinkedList<Short> Angle_Of_Shape;
+    public static LinkedList<LinkedList<Byte>> CutoutShapeVertices;
 
     public static byte shapeNumberSelected = 15 ;
 
@@ -45,6 +46,7 @@ public class VariablesForPlayArea {
     public VariablesForPlayArea() {
         cantuseDots = new LinkedList<Byte>();
         CutOutBodies = new LinkedList<Body>();
+        CutoutShapeVertices = new LinkedList<LinkedList<Byte>>();
         Angle_Of_Shape = new LinkedList<Short>();
         Sh_pos = new LinkedList<Vector2>();
         Sh_pos.add(new Vector2(640/AllVariables.PPM, -1000/AllVariables.PPM));

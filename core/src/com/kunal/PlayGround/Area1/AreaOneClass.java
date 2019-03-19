@@ -391,8 +391,6 @@ public class AreaOneClass implements Screen {
             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
         }
 
-        System.out.println();
-
         if (toDrawDropAnyShapeButton) {
             //DropAnyShape alpha init
             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size() -1) {
@@ -665,6 +663,15 @@ public class AreaOneClass implements Screen {
                         }
                         if (keycode == Input.Keys.SPACE){
                             world.setGravity(new Vector2(0,-10));
+                        }
+
+                        if (keycode == Input.Keys.A) {
+                            for (int i=0; i< VariablesForPlayArea.shapes.size();i++)
+                                System.out.println(VariablesForPlayArea.shapes.get(i));
+                        }
+                        if (keycode == Input.Keys.S){
+                            for (int i=0; i< VariablesForPlayArea.CutoutShapeVertices.size();i++)
+                                System.out.println(VariablesForPlayArea.CutoutShapeVertices.get(i));
                         }
 
 

@@ -9,15 +9,21 @@ import com.badlogic.gdx.physics.box2d.joints.RevoluteJointDef;
 import com.kunal.AllVariables;
 import com.kunal.utils.BodyGenerator;
 
-public class ObjectCreation {
+import java.util.LinkedList;
 
+public class ObjectCreation {
     float ver[];
+
     PlayAreaUtils playAreaUtils;
+
+    LinkedList<Byte> vertPoly;
 
 
     public ObjectCreation() {
         playAreaUtils = new PlayAreaUtils();
+        vertPoly = new LinkedList<Byte>();
     }
+
 
     public void CreateBicycle(World world, int verticalElevation){
         //Land surface and for now it is temerory
@@ -187,8 +193,10 @@ public class ObjectCreation {
     //finaly putting them in body to create body of it
     public void CreateCutouts(World world){
         VariablesForPlayArea.CutOutBodies.clear();
+        VariablesForPlayArea.CutoutShapeVertices.clear();
+        createshapestoPolygonCompatible();
+
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
-            System.out.println(VariablesForPlayArea.shapes.get(i).size());
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j=0, k=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][0]/(2) - VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/(2);
@@ -207,6 +215,23 @@ public class ObjectCreation {
 
     }
 
+    //try to minimize the shapes corrdinates to min of 8 to becaues in box2d more than 8 vertices the body cannot be init as polygon
+    private void createshapestoPolygonCompatible(){
+
+        for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
+            vertPoly.add(VariablesForPlayArea.shapes.get(i).getFirst());
+            for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
+                if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1))%4 == 0){
+
+                }
+                vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+
+            }
+            vertPoly.add(VariablesForPlayArea.shapes.get(i).getLast());
+            VariablesForPlayArea.CutoutShapeVertices.add(vertPoly);
+            vertPoly = new LinkedList<Byte>();
+        }
+    }
 
 
 }
