@@ -17,7 +17,7 @@ public class ObjectCreation {
     PlayAreaUtils playAreaUtils;
 
     LinkedList<Byte> vertPoly;
-    Boolean ismod4 = false;
+    Boolean ismod4 = false, isHorizontal = false;
 
 
     public ObjectCreation() {
@@ -223,15 +223,25 @@ public class ObjectCreation {
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
             vertPoly.add(VariablesForPlayArea.shapes.get(i).getFirst());
             ismod4 = false;
+            isHorizontal = false;
             for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
                 if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1))%4 == 0){
                     if (!ismod4)
                         vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
                     ismod4 = true;
+                    isHorizontal = false;
                     continue;
-                }else {
+                }else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == -1
+                    || (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == 1){
+                        if (!isHorizontal)
+                            vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                        isHorizontal = true;
+                        ismod4 = false;
+
+                } else {
                     vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
                     ismod4 = false;
+                    isHorizontal = false;
 
                 }
 
