@@ -22,6 +22,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.ChainShape;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
+import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Array;
@@ -77,6 +78,12 @@ public class AreaOneClass implements Screen {
 
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
+
+    //temp for drawing
+    Fixture f;
+    PolygonShape s;
+    Vector2 tempForShapes;
+
 
 
     public AreaOneClass(MainGame game) {
@@ -177,6 +184,7 @@ public class AreaOneClass implements Screen {
         VariablesForPlayArea.areaNumber = 1;
 
 
+        tempForShapes = new Vector2();
 
     }
 
@@ -202,6 +210,7 @@ public class AreaOneClass implements Screen {
         sred.begin(ShapeRenderer.ShapeType.Line);
 
         sred.setColor(1, 1f, 1, 1);
+/*
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
@@ -211,6 +220,7 @@ public class AreaOneClass implements Screen {
                 k++;
             }
 
+
             poly = new Polygon(ver);
             //poly.setPosition(AllVariables.BackWheel.getPosition().x*100
               //    , AllVariables.BackWheel.getPosition().y*100);
@@ -218,7 +228,6 @@ public class AreaOneClass implements Screen {
                     VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
                     //it -am ::200);
 
-            poly.setScale(1f,1f);
             poly.setRotation(VariablesForPlayArea.Angle_Of_Shape.get(i));
             poly.dirty();
             sred.polygon(poly.getTransformedVertices());
@@ -226,7 +235,31 @@ public class AreaOneClass implements Screen {
             ver = null;
 
         }
+*/
 
+        for (int i = 0; i < VariablesForPlayArea.CutoutShapeVertices.size(); i++) {
+            ver = new float[(VariablesForPlayArea.CutoutShapeVertices.get(i).size() * 2)];
+            f = VariablesForPlayArea.CutOutBodies.get(i).getFixtureList().get(0);
+            s = (PolygonShape) f.getShape();
+            for (int j = 0, k = 0; j < s.getVertexCount(); j++) {
+                s.getVertex(j, tempForShapes);
+                ver[k] = tempRotForShape;
+            }
+
+            poly = new Polygon(ver);
+            //poly.setPosition(AllVariables.BackWheel.getPosition().x*100
+            //    , AllVariables.BackWheel.getPosition().y*100);
+            poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x * 100,
+                    VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
+            //it -am ::200);
+
+            poly.setRotation(VariablesForPlayArea.Angle_Of_Shape.get(i));
+            poly.dirty();
+            sred.polygon(poly.getTransformedVertices());
+
+            ver = null;
+
+        }
 
         sred.end();
 
