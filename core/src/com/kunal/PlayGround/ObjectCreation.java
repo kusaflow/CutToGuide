@@ -222,8 +222,18 @@ public class ObjectCreation {
 
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
             vertPoly.add(VariablesForPlayArea.shapes.get(i).getFirst());
-            ismod4 = false;
-            isHorizontal = false;
+            if ((VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1))%4 == 0){
+                ismod4 = true;
+            }else{
+                ismod4 = false;
+            }
+
+            if ((VariablesForPlayArea.shapes.get(i).get(0) - VariablesForPlayArea.shapes.get(i).get(1)) == -1
+                    || (VariablesForPlayArea.shapes.get(i).get(0) - VariablesForPlayArea.shapes.get(i).get(1)) == 1){
+                isHorizontal = true;
+            }else{
+                isHorizontal = false;
+            }
             for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
                 if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1))%4 == 0){
                     if (!ismod4)
