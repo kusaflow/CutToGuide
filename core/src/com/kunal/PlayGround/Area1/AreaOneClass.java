@@ -364,11 +364,6 @@ public class AreaOneClass implements Screen {
         }
 
 
-        //reintializing the shape position and rotation
-        if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-            VariablesForPlayArea.Sh_pos.set(VariablesForPlayArea.shapeNumberSelected, VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
-            VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected), (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)* (Math.PI/180)));
-        }
 
         //changing rotation
         if (ACWTouched){
@@ -409,6 +404,16 @@ public class AreaOneClass implements Screen {
             DropAnyShapeButton.setAlpha(0f);
         }
 
+        //reintializing the shape position and rotation
+        if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+            VariablesForPlayArea.Sh_pos.set(VariablesForPlayArea.shapeNumberSelected, VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition());
+            VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected), (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)* (Math.PI/180)));
+        }
+
+        for (int i=0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
+            VariablesForPlayArea.Angle_Of_Shape.set(i, (short) (VariablesForPlayArea.CutOutBodies.get(i).getAngle()*(180/Math.PI) ));
+        }
+        //-------------------------------------------
 
         //size changer for camScroller
         CamScroller.setSize(camScrollSize*camscl, camScrollSize*camscl);
