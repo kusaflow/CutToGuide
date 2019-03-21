@@ -79,12 +79,6 @@ public class AreaOneClass implements Screen {
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
 
-    //temp for drawing
-    Fixture f;
-    PolygonShape s;
-    Vector2 tempsh;
-
-
 
     public AreaOneClass(MainGame game) {
         this.game = game;
@@ -208,13 +202,13 @@ public class AreaOneClass implements Screen {
         sred.begin(ShapeRenderer.ShapeType.Line);
 
         sred.setColor(1, 1f, 1, 1);
-/*
-        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
-            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
-            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
-                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][0]/(2)-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
+
+        for (int i = 0; i < VariablesForPlayArea.CutoutShapeVertices.size(); i++) {
+            ver = new float[(VariablesForPlayArea.CutoutShapeVertices.get(i).size() * 2)];
+            for (int j = 0, k = 0; j < VariablesForPlayArea.CutoutShapeVertices.get(i).size(); j++) {
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(0)][0]/(2)-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(j)][0]/2;
                 k++;
-                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][1]/(2) -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(0)][1]/(2) -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(j)][1]/2;
                 k++;
             }
 
@@ -233,36 +227,7 @@ public class AreaOneClass implements Screen {
             ver = null;
 
         }
-*/
 
-tempsh = new Vector2();
-        for (int i = 0; i < VariablesForPlayArea.CutoutShapeVertices.size(); i++) {
-            ver = new float[(VariablesForPlayArea.CutoutShapeVertices.get(i).size() * 2)];
-            f = VariablesForPlayArea.CutOutBodies.get(i).getFixtureList().get(0);
-            s = (PolygonShape) f.getShape();
-            for (int j = 0, k = 0; j < s.getVertexCount(); j++) {
-                s.getVertex(j, tempsh);
-                ver[k] = tempsh.x;
-                k++;
-                ver[k] = tempsh.y;
-                k++;
-            }
-
-            poly = new Polygon(ver);
-            //poly.setPosition(AllVariables.BackWheel.getPosition().x*100
-            //    , AllVariables.BackWheel.getPosition().y*100);
-            poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x * 100,
-                    VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
-            poly.scale(100);
-            //it -am ::200);
-
-            poly.setRotation(VariablesForPlayArea.Angle_Of_Shape.get(i));
-            poly.dirty();
-            sred.polygon(poly.getTransformedVertices());
-
-            ver = null;
-
-        }
 
         sred.end();
 
@@ -319,6 +284,7 @@ tempsh = new Vector2();
                 HardMoveShapes.setAlpha(0);
                 ShapeRotACW.setAlpha(0);
                 ShapeRotCW.setAlpha(0);
+                per45degRot.setAlpha(0);
                 toDrawDropAnyShapeButton = false;
                 CamScroller.setAlpha(0);
                 startBool = true;
