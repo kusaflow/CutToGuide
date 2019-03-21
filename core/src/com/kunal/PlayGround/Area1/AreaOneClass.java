@@ -82,7 +82,7 @@ public class AreaOneClass implements Screen {
     //temp for drawing
     Fixture f;
     PolygonShape s;
-    Vector2 tempForShapes;
+    Vector2 tempsh;
 
 
 
@@ -184,8 +184,6 @@ public class AreaOneClass implements Screen {
         VariablesForPlayArea.areaNumber = 1;
 
 
-        tempForShapes = new Vector2();
-
     }
 
     @Override
@@ -237,13 +235,17 @@ public class AreaOneClass implements Screen {
         }
 */
 
+tempsh = new Vector2();
         for (int i = 0; i < VariablesForPlayArea.CutoutShapeVertices.size(); i++) {
             ver = new float[(VariablesForPlayArea.CutoutShapeVertices.get(i).size() * 2)];
             f = VariablesForPlayArea.CutOutBodies.get(i).getFixtureList().get(0);
             s = (PolygonShape) f.getShape();
             for (int j = 0, k = 0; j < s.getVertexCount(); j++) {
-                s.getVertex(j, tempForShapes);
-                ver[k] = tempRotForShape;
+                s.getVertex(j, tempsh);
+                ver[k] = tempsh.x;
+                k++;
+                ver[k] = tempsh.y;
+                k++;
             }
 
             poly = new Polygon(ver);
@@ -251,6 +253,7 @@ public class AreaOneClass implements Screen {
             //    , AllVariables.BackWheel.getPosition().y*100);
             poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x * 100,
                     VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
+            poly.scale(100);
             //it -am ::200);
 
             poly.setRotation(VariablesForPlayArea.Angle_Of_Shape.get(i));
