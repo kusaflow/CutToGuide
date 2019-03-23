@@ -29,9 +29,9 @@ public class ObjectCreation {
 
     public void CreateBicycle(World world, int verticalElevation){
         //Land surface and for now it is temerory
-        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, verticalElevation -100),
-                new Vector2(12000, 50), 1,1, AllVariables.Bit_land,
-                (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
+       // BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, verticalElevation -100),
+         //       new Vector2(12000, 50), 1,1, AllVariables.Bit_land,
+           //     (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
 
 
         RevoluteJointDef rdef = new RevoluteJointDef();

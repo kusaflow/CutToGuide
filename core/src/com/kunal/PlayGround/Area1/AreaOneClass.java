@@ -115,6 +115,7 @@ public class AreaOneClass implements Screen {
         //tiled map
         map = new TmxMapLoader().load("playArea/tiledMap/area1/level1.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
+        PlayAreaUtils.parseTiledObj(world,map.getLayers().get("land1").getObjects());
 
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
