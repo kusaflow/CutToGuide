@@ -51,7 +51,13 @@ public class PlayAreaUtils {
             BodyDef bdef = new BodyDef();
             bdef.type = BodyDef.BodyType.StaticBody;
             body = world.createBody(bdef);
-            body.createFixture(shape, 1f);
+            FixtureDef fdef = new FixtureDef();
+            fdef.density = 1.0f;
+            fdef.filter.maskBits = AllVariables.Bit_Bicycle | AllVariables.Bit_enimes | AllVariables.Bit_Tool;
+            fdef.filter.categoryBits = AllVariables.Bit_land;
+            fdef.restitution = 0.4f;
+            fdef.shape = shape;
+            body.createFixture(fdef);
             shape.dispose();
         }
     }
