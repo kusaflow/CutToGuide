@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-up" width="200" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="2" nextobjectid="1">
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-up" width="200" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="5">
  <tileset firstgid="1" source="tilesheet_complete.tsx"/>
  <layer id="1" name="Tile Layer 1" width="200" height="20">
   <data encoding="base64" compression="zlib">
-   eJztx8ENgCAABEEMInajqP3X5oUieM0m89hSJEmSJGlNNfZocUT33s8/44o7Rjzxeu/nf7EBAAAAAAAAAAAAAMv8E5g15Q==
+   eJztmE1OwzAQhd0foHAFuELDP3cBieOABDvYwDVAgh1s4BrtFeAIvCixFExI48b2TJs30idnNs6L7RnPxBgazc9GYAw2wGY5Wn8iqItG02D74AAcgqMaf93tDgnifiSt4q9p1RXatHznAzQ81uiYggwMS57Ac/mcJdTn2he0fidYtze8413B/rimVVdo0/KdH9Dw2RAflhmYV3wp20WRtzcOO6dbS27Rp7/APwcXprgvBs6YKdBX9S9NN3Nrx2P69Bf4V+DaFLEwdcZMgb6qfwNujZ/NEOjzYfE8IEQQexfFmv/F+MfINoqqnbKulNC8DLYHlNYheR5i74vEvtu7KKbePEZeze8arM04iaA5FrYHTLmvMWKyy9rG3hef+TXkUB+9eYzktVe1BqvrLU7AKTgr/Zj6U+X8WDmoKSY1nRMJ2q55yPVJtdap3tPmfEnTNSdrvGtT73Oq9Um11j7vWZe6v49ojt2UuGc4ZN5YhTuAkCbcM6ypz9JwxxOyLJr+ifiitfdjTiAa0Nr7hZyLsUbI/7DH7jd9z4/8P0ia6Ht+5P9BQsiq8gO+dImN
   </data>
  </layer>
+ <objectgroup id="2" name="land1">
+  <object id="4" x="4" y="236">
+   <polyline points="0,0 -4,-86 -2,-100 1.33333,-107.333 4506.67,-108.667 4508.67,-222.667 4513.33,-231.333 4518,-235.333 4752.67,-237.333 4758.67,-232.667 4763.33,-223.333 4764.67,-109.333 5882.67,-108.667 5979.33,-12 6392.67,-12.6667 6396,-9.33333 6396,18"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="3" name="land2">
+  <object id="1" x="1728" y="576" width="52" height="24"/>
+ </objectgroup>
+ <objectgroup id="4" name="land3">
+  <object id="2" x="1812" y="592" width="40" height="24"/>
+ </objectgroup>
+ <objectgroup id="5" name="land4">
+  <object id="3" x="1780" y="492" width="84" height="48"/>
+ </objectgroup>
 </map>
