@@ -21,7 +21,7 @@ public class temp implements Screen {
     public temp(MainGame game) {
         this.game = game;
         variablesForPlayArea = new VariablesForPlayArea();
-        variablesForPlayArea.setEndPoint(new Vector2(700,4000));
+        variablesForPlayArea.setEndPoint(new Vector2(200,4000));
         variablesForPlayArea.setLevelNumber(1);
     }
 

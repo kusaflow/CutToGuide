@@ -47,16 +47,16 @@ public class AreaOneClass implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    private ShapeRenderer sred;
-
-    private ObjectCreation objectCreation;
-
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false;
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
     private byte camScrollSize =60;
+    private ShapeRenderer sred;
+
+    private ObjectCreation objectCreation;
+
     private int dragged_touchX =0;
 
     //temp Rotation Folder for shapes
@@ -113,7 +113,7 @@ public class AreaOneClass implements Screen {
 
 
         //tiled map
-        map = new TmxMapLoader().load("playArea/tiledMap/area1/level1_111.tmx");
+        map = new TmxMapLoader().load("playArea/tiledMap/area1/level1_1.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
         PlayAreaUtils.parseTiledObj(world,map.getLayers().get("land1").getObjects());
 
@@ -189,6 +189,7 @@ public class AreaOneClass implements Screen {
 
     @Override
     public void render(float dt) {
+        System.out.println(cam.position.x);
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
