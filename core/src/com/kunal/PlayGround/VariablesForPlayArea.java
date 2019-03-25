@@ -27,7 +27,7 @@ public class VariablesForPlayArea {
     public static short areaNumber =0;
 
     //position of camera x
-    public static float camposX = 700f;
+    public static float camposX = 1200f;
 
 
     //positions of shapes

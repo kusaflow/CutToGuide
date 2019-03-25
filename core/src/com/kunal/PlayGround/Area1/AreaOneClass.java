@@ -178,6 +178,8 @@ public class AreaOneClass implements Screen {
 
         VariablesForPlayArea.areaNumber = 1;
 
+        VariablesForPlayArea.endPoint.x = 1200;
+        VariablesForPlayArea.endPoint.y = 5600;
 
     }
 
@@ -619,6 +621,7 @@ public class AreaOneClass implements Screen {
                                     && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                                 startAnimToMoveCycle = true;
+                                VariablesForPlayArea.endPoint.x = 200;
                                 return true;
                             }
                             //shape chooser
