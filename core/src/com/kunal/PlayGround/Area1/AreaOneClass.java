@@ -189,6 +189,7 @@ public class AreaOneClass implements Screen {
 
     @Override
     public void render(float dt) {
+        //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         update(dt);
@@ -198,7 +199,7 @@ public class AreaOneClass implements Screen {
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
-        //tmr.render();
+        tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -224,6 +225,7 @@ public class AreaOneClass implements Screen {
             poly.setRotation(VariablesForPlayArea.Angle_Of_Shape.get(i));
             poly.dirty();
             sred.polygon(poly.getTransformedVertices());
+
 
             ver = null;
 

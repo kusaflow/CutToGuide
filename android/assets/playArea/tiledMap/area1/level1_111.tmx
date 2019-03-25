@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-up" width="150" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="6">
+ <tileset firstgid="1" source="tilesheet_complete.tsx"/>
+ <layer id="1" name="Tile Layer 1" width="150" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztWkmOE0EQbLfZESf4RpudK3wD/gP34QqfmLnDFT4x8xayJZccE4rMyircY1tySyG33bXkEhmVtjwM5yu6nhruGe4bHojXZ4cz7Xyd8PXS8Mrw2vBGvL49nGnn64SvlcBnw5ft/Xg4047+em54IT6/WA/D93V9XHa9fc3jcWxnry1q7DTseDRt8dXwbXu/Se4R2Zi1Zal52TnXVkQ3hh/mx0/hC6/z0fBJrPPL5v5e18fxlR3XO4/HsZ29tqixsyYVHm0AIyCzR2Rj1pal5mXnPDb7nxj+GP4KX3Cd+TH2pQ/P72+9n3l1abja3heNKho2Hpm9x/D+0bDrS7k/nfvRd4b3hg/B57V5p/585tG14WbYnYMzr1DDcL633qnHt9X+0otOBOxTx+H2GYDAHrY2tiA77phRNMzzr/hYYqv6/5aYZVDWUuhZa0Vrts7HvrR8HnFshPelbiOfGFNivNrTe+6N4e9t0V5qXjSnaJjiCcYN48j9v4ov+4S2ZexS+c/mhn1gTqFeR3XC3BhhHu41OXspmyK/kLP8GceS65zXVf7zvuhXVG/8TPXpCswPtAV7sbI/2xPVR5SnTE6zehVxyZub4SfPw1gw11WukcvMCy9eaqzKyzj4Nc16kNFs1szJeVbOuKz+8rorsT7XTk1r0MaIvxnNyvAwC68WOM6qRpBbfDZ6uWR/VQzKGng+qTNDaaQ3DnOpfK3FQKGccb39Tet5EeVwH+uoNVWdZjisdNqzl8cjt9gvVZOKm0pbyj3ruepFlO2Yr4jD0TOv5lrr1eMyxzfyqYZs3lvX7NFhPr+UbZna4N7A47niDYPXjLQpkwvFK++7hlcHvXlRuh3ZpWKl+vds/6bGRnXA4729WvTY67G8ulD54B65pcaUf2qtDd1n18Aairil+MQxj7QWbcMYqrm1WM/Ifi+oIVuHng/7hLKN88J5jPhS068aP2pcygK/g/doEJ5vUR5quWXOc63XemulJ0vkfZ+IOKDiU3IV9WoRdzJ6FtWcWtfLP2oA6yD77nEry3H+LXhJIM8wHz3atoRmZfSS60/9XtKqAZF/OLYWC3WW1c5VpUM8voxp0Tf8PwPqUKtOtoL/R9GjVRkdU9raCsWnKNas/3cNtiHidE2rev3guB/C933NX+rcxL288/2YUNM3fPW49L88uksuHSqWtXm1uf8AB8MfpQ==
+  </data>
+ </layer>
+ <objectgroup id="3" name="land1">
+  <object id="5" x="-2.66667" y="241.333">
+   <polyline points="0,0 1.33333,-81.3333 2305.33,-84 2306.67,-232 2313.33,-241.333 2592,-242.667 2592,-84 4792,-82.6667 4804,-73.3333 4804,33.3333"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="4" name="land2">
+  <object id="4" x="670.667" y="453.333">
+   <polyline points="0,0 36,-1.33333"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="5" name="land3">
+  <object id="3" x="669.333" y="496">
+   <polyline points="0,0 36,-1.33333"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="6" name="land4">
+  <object id="2" x="669.333" y="477.333">
+   <polyline points="0,0 36,-1.33333"/>
+  </object>
+ </objectgroup>
+</map>
