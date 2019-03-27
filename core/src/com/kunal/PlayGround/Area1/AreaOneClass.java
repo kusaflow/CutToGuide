@@ -113,7 +113,7 @@ public class AreaOneClass implements Screen {
 
 
         //tiled map
-        map = new TmxMapLoader().load("playArea/tiledMap/level1_1.tmx");
+        map = new TmxMapLoader().load("playArea/tiledMap/level" + VariablesForPlayArea.levelNumber +".tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
         PlayAreaUtils.parseTiledObj(world,map.getLayers().get("land1").getObjects());
 
