@@ -191,7 +191,6 @@ public class AreaOneClass implements Screen {
 
     @Override
     public void render(float dt) {
-        System.out.println(cam.position.x);
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
