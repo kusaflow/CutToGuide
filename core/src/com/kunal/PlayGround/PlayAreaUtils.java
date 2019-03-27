@@ -57,6 +57,7 @@ public class PlayAreaUtils {
             fdef.filter.categoryBits = AllVariables.Bit_land;
             fdef.restitution = 0.4f;
             fdef.shape = shape;
+            fdef.friction = 0.8f;
             body.createFixture(fdef);
             shape.dispose();
         }
