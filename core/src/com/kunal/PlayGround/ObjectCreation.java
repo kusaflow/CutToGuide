@@ -17,7 +17,7 @@ public class ObjectCreation {
     PlayAreaUtils playAreaUtils;
 
     LinkedList<Byte> vertPoly;
-    Boolean ismod4 = false, isHorizontal = false;
+    Boolean ismod4 = false, isHorizontal = false, ismod5 = false;
 
 
     public ObjectCreation() {
@@ -198,7 +198,7 @@ public class ObjectCreation {
         VariablesForPlayArea.CutoutShapeVertices.clear();
         createshapestoPolygonCompatible();
 
-        System.out.println();
+        //System.out.println();
         if (VariablesForPlayArea.CutoutShapeVertices.size() <= 8){
             for (int i = 0; i < VariablesForPlayArea.CutoutShapeVertices.size(); i++) {
                 ver = new float[(VariablesForPlayArea.CutoutShapeVertices.get(i).size() * 2)];
@@ -248,31 +248,65 @@ public class ObjectCreation {
                 ismod4 = false;
             }
 
+            //horijontal
             if ((VariablesForPlayArea.shapes.get(i).get(0) - VariablesForPlayArea.shapes.get(i).get(1)) == -1
                     || (VariablesForPlayArea.shapes.get(i).get(0) - VariablesForPlayArea.shapes.get(i).get(1)) == 1){
-                isHorizontal = true;
+                if ((VariablesForPlayArea.shapes.get(i).get(0) == 3 && VariablesForPlayArea.shapes.get(i).get(1) == 4) ||
+                        (VariablesForPlayArea.shapes.get(i).get(1) == 3 && VariablesForPlayArea.shapes.get(i).get(0) == 4) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 7 && VariablesForPlayArea.shapes.get(i).get(1) == 8) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 8 && VariablesForPlayArea.shapes.get(i).get(1) == 7) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 11 && VariablesForPlayArea.shapes.get(i).get(1) == 12) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 12 && VariablesForPlayArea.shapes.get(i).get(1) == 11)
+                ){
+                    isHorizontal = false;
+                }else {
+                    isHorizontal = true;
+                }
             }else{
                 isHorizontal = false;
             }
+
+            //mod5
+            if ((VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1))%5 == 0){
+                ismod5 = true;
+            }else{
+                ismod5 = false;
+            }
+
             for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
+                //ismod4
                 if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1))%4 == 0){
                     if (!ismod4)
                         vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
                     ismod4 = true;
                     isHorizontal = false;
-                    continue;
-                }else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == -1
+                    ismod5 = false;
+                }
+                //mod5
+                else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j+1))%5 == 0){
+                    if (!ismod5)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    ismod5 = true;
+                    isHorizontal = false;
+                    ismod4 = false;
+                }
+
+                //horijontal
+                else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == -1
                     || (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == 1){
-                        if (!isHorizontal)
-                            vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+
+                    if (!isHorizontal)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+
                         isHorizontal = true;
                         ismod4 = false;
+                        ismod5 = false;
 
                 } else {
                     vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
                     ismod4 = false;
                     isHorizontal = false;
-
+                    ismod5 = false;
                 }
 
             }
