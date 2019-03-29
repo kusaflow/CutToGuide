@@ -60,7 +60,7 @@ public class AreaOneClass implements Screen {
     private int dragged_touchX =0;
 
     //temp Rotation Folder for shapes
-    short tempRotForShape;
+    float tempRotForShape;
 
     //tiled map
     private TiledMap map;
@@ -378,7 +378,7 @@ public class AreaOneClass implements Screen {
             else
                 tempRotForShape-=1;
             if(tempRotForShape<=0)
-                tempRotForShape = (short) (360 - tempRotForShape);
+                tempRotForShape = (360 - tempRotForShape);
             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
         }
 
@@ -416,7 +416,7 @@ public class AreaOneClass implements Screen {
         }
 
         for (int i=0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
-            VariablesForPlayArea.Angle_Of_Shape.set(i, (short) (VariablesForPlayArea.CutOutBodies.get(i).getAngle()*(180/Math.PI) ));
+            VariablesForPlayArea.Angle_Of_Shape.set(i, (float) (VariablesForPlayArea.CutOutBodies.get(i).getAngle()*(180/Math.PI)));
         }
         //-------------------------------------------
 

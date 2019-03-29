@@ -29,7 +29,6 @@ import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.BodyGenerator;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
 
 public class TutArea implements Screen {
     MainGame game;
@@ -52,7 +51,7 @@ public class TutArea implements Screen {
     private int dragged_touchX =0;
 
     //temp Rotation Folder for shapes
-    short tempRotForShape;
+    float tempRotForShape;
 
     //tiled map
     private TiledMap map;

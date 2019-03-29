@@ -183,7 +183,7 @@ public class CuttingAreaManager implements Screen {
 
                             for(int i =0; i<VariablesForPlayArea.shapes.size(); i++) {
                                 VariablesForPlayArea.Sh_pos.add(v);
-                                VariablesForPlayArea.Angle_Of_Shape.add((short) 180);
+                                VariablesForPlayArea.Angle_Of_Shape.add(180f);
                             }
 
                             game.setScreen(new ShapeChooser(game));
