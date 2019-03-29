@@ -142,6 +142,7 @@ public class BodyGenerator {
         fdef.restitution = Bouncy;
         fdef.friction = friction;
 
+
         fdef.filter.categoryBits = cbit;
         fdef.filter.maskBits = mbit;
 

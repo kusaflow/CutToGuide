@@ -17,7 +17,7 @@ public class ObjectCreation {
     PlayAreaUtils playAreaUtils;
 
     LinkedList<Byte> vertPoly;
-    Boolean ismod4 = false, isHorizontal = false, ismod5 = false;
+    Boolean ismod4 = false, isHorizontal = false, ismod5 = false, ismod3 = false;
 
 
     public ObjectCreation() {
@@ -196,7 +196,7 @@ public class ObjectCreation {
     public void CreateCutouts(World world){
         VariablesForPlayArea.CutOutBodies.clear();
         VariablesForPlayArea.CutoutShapeVertices.clear();
-        createshapestoPolygonCompatible();
+        /*createshapestoPolygonCompatible();
 
         //System.out.println();
         if (VariablesForPlayArea.CutoutShapeVertices.size() <= 8){
@@ -216,7 +216,7 @@ public class ObjectCreation {
 
                 ver = null;
             }
-        }else {
+        }else {*/
             for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
                 ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
                 for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
@@ -233,7 +233,7 @@ public class ObjectCreation {
 
                 ver = null;
             }
-        }
+        //}
 
     }
 
@@ -273,6 +273,14 @@ public class ObjectCreation {
                 ismod5 = false;
             }
 
+            //mod3
+            if ((VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1))%3 == 0){
+                ismod3 = true;
+            }else{
+                ismod3 = false;
+            }
+
+
             for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
                 //ismod4
                 if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1))%4 == 0){
@@ -281,6 +289,7 @@ public class ObjectCreation {
                     ismod4 = true;
                     isHorizontal = false;
                     ismod5 = false;
+                    ismod3 = false;
                 }
                 //mod5
                 else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j+1))%5 == 0){
@@ -289,7 +298,17 @@ public class ObjectCreation {
                     ismod5 = true;
                     isHorizontal = false;
                     ismod4 = false;
+                    ismod3 = false;
                 }
+                else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j+1))%3 == 0){
+                    if (!ismod3)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    ismod3 = true;
+                    isHorizontal = false;
+                    ismod4 = false;
+                    ismod5 = false;
+                }
+                //mod3
 
                 //horijontal
                 else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == -1
@@ -301,12 +320,14 @@ public class ObjectCreation {
                         isHorizontal = true;
                         ismod4 = false;
                         ismod5 = false;
+                        ismod3 = false;
 
                 } else {
                     vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
                     ismod4 = false;
                     isHorizontal = false;
                     ismod5 = false;
+                    ismod3 = false;
                 }
 
             }
