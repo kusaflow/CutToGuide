@@ -22,7 +22,7 @@ public class PlayAreaUtils {
     public PlayAreaUtils() {
     }
 
-    public void MoveShapesToRealWorld(){
+    public static void MoveShapesToRealWorld(){
         for (Body b : VariablesForPlayArea.CutOutBodies){
             FixtureDef fdef = new FixtureDef();
             fdef.density = b.getFixtureList().get(0).getDensity();
@@ -53,7 +53,7 @@ public class PlayAreaUtils {
             body = world.createBody(bdef);
             FixtureDef fdef = new FixtureDef();
             fdef.density = 1.0f;
-            fdef.filter.maskBits = AllVariables.Bit_Bicycle | AllVariables.Bit_enimes | AllVariables.Bit_Tool;
+            fdef.filter.maskBits = (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_enimes | AllVariables.Bit_Tool | AllVariables.Bit_land);
             fdef.filter.categoryBits = AllVariables.Bit_land;
             fdef.restitution = 0.4f;
             fdef.shape = shape;

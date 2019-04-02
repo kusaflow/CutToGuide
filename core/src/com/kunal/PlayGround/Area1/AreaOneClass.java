@@ -74,7 +74,6 @@ public class AreaOneClass implements Screen {
     float shapeX, shapeY;
 
     Polygon poly;
-    PlayAreaUtils playAreaUtils;
 
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
@@ -102,8 +101,6 @@ public class AreaOneClass implements Screen {
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();
-
-        playAreaUtils = new PlayAreaUtils();
 
         //safelt platforn for all objects
         BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1200),
@@ -207,12 +204,12 @@ public class AreaOneClass implements Screen {
 
         sred.setColor(1, 1f, 1, 1);
 
-        for (int i = 0; i < VariablesForPlayArea.CutoutShapeVertices.size(); i++) {
-            ver = new float[(VariablesForPlayArea.CutoutShapeVertices.get(i).size() * 2)];
-            for (int j = 0, k = 0; j < VariablesForPlayArea.CutoutShapeVertices.get(i).size(); j++) {
-                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(0)][0]/(2)-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(j)][0]/2;
+        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+            ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][0]/(2)-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
                 k++;
-                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(0)][1]/(2) -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.CutoutShapeVertices.get(i).get(j)][1]/2;
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][1]/(2) -VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1]/2;
                 k++;
             }
 
@@ -258,6 +255,7 @@ public class AreaOneClass implements Screen {
     }
 
     private void update(float dt){
+        //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getFixtureList().get(0).getFilterData().maskBits);
         input(dt);
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
@@ -281,6 +279,7 @@ public class AreaOneClass implements Screen {
         if (VariablesForPlayArea.camposX >= VariablesForPlayArea.endPoint.y)
             CamfollowCycle = false;
 
+        //start
         if (startAnimToMoveCycle){
             if(VariablesForPlayArea.camposX - 156 >= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM  -25 &&
                     VariablesForPlayArea.camposX - 156 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
@@ -296,7 +295,7 @@ public class AreaOneClass implements Screen {
 
                 world.setGravity(new Vector2(0,-10));
                 Brake.setAlpha(0.4f);
-                playAreaUtils.MoveShapesToRealWorld();
+                PlayAreaUtils.MoveShapesToRealWorld();
                 VariablesForPlayArea.shapeNumberSelected = 15;
                 CamfollowCycle = true;
                 startAnimToMoveCycle = false;
