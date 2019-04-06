@@ -27,7 +27,7 @@ public class levelSelection implements Screen {
 
         port.apply();
 
-        levelArea1 = new Texture(Gdx.files.internal(""));
+        levelArea1 = new Texture(Gdx.files.internal("levelSelection/levelArea.png"));
 
 
     }
@@ -41,6 +41,10 @@ public class levelSelection implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0f, 0f, 0f, 0f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        AllVariables.batch.begin();
+        AllVariables.batch.draw(levelArea1,0,0);
+        AllVariables.batch.end();
 
 
     }

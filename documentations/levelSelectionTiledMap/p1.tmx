@@ -4,7 +4,7 @@
  <tileset firstgid="145" source="prototype.tsx"/>
  <layer id="1" name="land" width="144" height="81">
   <data encoding="base64" compression="zlib">
-   eJzt3IENgCAMBEAcx/0XJI6ghdDWuwka+EBFwhgAAP9zX6crIDsZIUJ++nnm1LwCAAD04jsPANazvwLsZ60lQn4AAAAAgE6cebKLbAEA1LSqj9MPAgAAAAAAAMB5q9+Fz3AfIEMNAFCRPRQAgOr0tAAAAAAARDhnfsd4AQAAAAAA3VX+H1K5dvKTL76aPTYD8Q==
+   eJzt3AEOgCAIAEB7Tv//YOsJJSXg3QuYsIniHAMAYD/nsToCslMjzFA//dw5lVcAAIBenPMAIJ79FQAAAAAAAPiL+SRfUVsAADVF9XH6QQAAAAAAAABYL/pf+AzvATLEAAAV2UMBAKhOTwsAAAAAwAz3zM9YLwAAAAAAoLvK85DKsZOf+uKtC5AWA50=
   </data>
  </layer>
 </map>
