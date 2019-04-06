@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.2" tiledversion="1.2.1" orientation="orthogonal" renderorder="right-up" width="144" height="81" tilewidth="40" tileheight="40" infinite="0" nextlayerid="2" nextobjectid="1">
  <tileset firstgid="1" source="librarypack.tsx"/>
+ <tileset firstgid="145" source="prototype.tsx"/>
  <layer id="1" name="land" width="144" height="81">
   <data encoding="base64" compression="zlib">
-   eJztwQENAAAAwqD3T20PBxQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMCnAbZAAAE=
+   eJzt3IENgCAMBEAcx/0XJI6ghdDWuwka+EBFwhgAAP9zX6crIDsZIUJ++nnm1LwCAAD04jsPANazvwLsZ60lQn4AAAAAgE6cebKLbAEA1LSqj9MPAgAAAAAAAMB5q9+Fz3AfIEMNAFCRPRQAgOr0tAAAAAAARDhnfsd4AQAAAAAA3VX+H1K5dvKTL76aPTYD8Q==
   </data>
  </layer>
 </map>

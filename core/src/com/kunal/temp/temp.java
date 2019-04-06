@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AreaSelection.AreaSelection;
+import com.kunal.AreaSelection.levelSelection;
 import com.kunal.Loading.MainLoadingScreen;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
@@ -42,7 +43,7 @@ public class temp implements Screen {
             //game.setScreen(new CuttingAreaManager(game));
             //game.setScreen(new MainLoadingScreen(game));
 
-            game.setScreen(new AreaOneClass(game));
+            //game.setScreen(new AreaOneClass(game));
 
             //game.setScreen(new AreaSelection(game));
 
@@ -51,6 +52,8 @@ public class temp implements Screen {
             //game.setScreen(new TutArea(game));
 
             //game.setScreen(new ShapeChooser(game));
+
+            game.setScreen(new levelSelection(game));
 
 
         }
