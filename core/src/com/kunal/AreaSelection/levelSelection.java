@@ -5,14 +5,10 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.maps.tiled.TiledMap;
-import com.badlogic.gdx.maps.tiled.TmxMapLoader;
-import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class levelSelection implements Screen {
 
@@ -20,11 +16,6 @@ public class levelSelection implements Screen {
     OrthographicCamera cam;
     Viewport port;
     Texture levelArea1;
-
-
-    //tiled map
-    private TiledMap map;
-    private OrthogonalTiledMapRenderer tmr;
 
     public levelSelection(MainGame game) {
         this.game = game;
@@ -36,9 +27,11 @@ public class levelSelection implements Screen {
 
         port.apply();
 
-        //tiled map
-        map = new TmxMapLoader().load("levelSelection/tiledMap/LevelArea.tmx");
-        tmr = new OrthogonalTiledMapRenderer(map);
+        levelArea1 = new Texture(Gdx.files.internal("levelSelection/p1.png"));
+
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
 
     }
 
@@ -52,10 +45,8 @@ public class levelSelection implements Screen {
         Gdx.gl.glClearColor(0f, 0f, 0f, 0f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        tmr.render();
-
         AllVariables.batch.begin();
-        AllVariables.batch.draw(levelArea1,0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        AllVariables.batch.draw(levelArea1,0,0, AllVariables.WIDTH/1.33f, AllVariables.HEIGHT/1.33f);
         AllVariables.batch.end();
 
 
