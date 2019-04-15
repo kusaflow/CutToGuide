@@ -6,10 +6,14 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class levelSelection implements Screen {
 
@@ -32,7 +36,7 @@ public class levelSelection implements Screen {
 
         //levelArea1 = new Texture(Gdx.files.internal("levelSelection/p1.png"));
         l1 = new Sprite(new Texture(Gdx.files.internal("levelSelection/stm2.png")));
-        l1.setSize(200,20);
+        l1.setSize(AllVariables.WIDTH,AllVariables.HEIGHT);
         l1.setPosition(0,0);
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
@@ -50,6 +54,8 @@ public class levelSelection implements Screen {
     public void render(float delta) {
         Gdx.gl.glClearColor(0f, 0f, 0f, 0f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+        AllVariables.batch.setProjectionMatrix(cam.combined);
 
         AllVariables.batch.begin();
         /*AllVariables.batch.draw(levelArea1,0,0, Gdx.graphics.getWidth()3.
