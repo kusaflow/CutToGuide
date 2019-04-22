@@ -35,7 +35,7 @@ public class levelSelection implements Screen {
         port.apply();
 
         //levelArea1 = new Texture(Gdx.files.internal("levelSelection/p1.png"));
-        l1 = new Sprite(new Texture(Gdx.files.internal("levelSelection/stm2.png")));
+        l1 = new Sprite(new Texture(Gdx.files.internal("levelSelection/p1.png")));
         l1.setSize(AllVariables.WIDTH,AllVariables.HEIGHT);
         l1.setPosition(0,0);
 
