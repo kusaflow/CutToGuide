@@ -45,7 +45,7 @@ public class temp implements Screen {
 
             //game.setScreen(new AreaOneClass(game));
 
-            //game.setScreen(new AreaSelection(game));
+            game.setScreen(new AreaSelection(game));
 
             //this is compulsory before setting tut area
             VariablesForPlayArea.tutstep = 0;
@@ -53,7 +53,7 @@ public class temp implements Screen {
 
             //game.setScreen(new ShapeChooser(game));
 
-            game.setScreen(new levelSelection(game));
+            //game.setScreen(new levelSelection(game));
 
 
         }
