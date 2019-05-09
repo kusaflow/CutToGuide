@@ -1,6 +1,7 @@
 package com.kunal.Shop;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.kunal.MainGame;
@@ -8,9 +9,11 @@ import com.kunal.MainGame;
 public class Shop implements Screen {
 
     MainGame game;
+    Screen prevScreen;
 
     public Shop(MainGame game, Screen PrevScreen) {
         this.game = game;
+        prevScreen = PrevScreen;
     }
 
     @Override
@@ -31,6 +34,9 @@ public class Shop implements Screen {
     }
 
     private void input(){
+
+        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
+            game.setScreen(prevScreen);
 
     }
 
