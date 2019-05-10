@@ -37,13 +37,28 @@ public class Shop implements Screen {
         freeAd.setPosition(30,350);
 
         cancel= new Sprite(new Texture(Gdx.files.internal("Shop/cancel.png")));
-        cancel.setSize(200,200);
-        cancel.setPosition(30,20);
+        cancel.setSize(150,150);
+        cancel.setPosition(30,110);
 
         buy1= new Sprite(new Texture(Gdx.files.internal("Shop/buy1.png")));
         buy1.setSize(200,200);
-        buy1.setPosition(550,600);
+        buy1.setPosition(550,400);
 
+        buy2= new Sprite(new Texture(Gdx.files.internal("Shop/buy2.png")));
+        buy2.setSize(200,200);
+        buy2.setPosition(850,400);
+
+        buy3= new Sprite(new Texture(Gdx.files.internal("Shop/buy3.png")));
+        buy3.setSize(200,200);
+        buy3.setPosition(400,110);
+
+        buy4= new Sprite(new Texture(Gdx.files.internal("Shop/buy4.png")));
+        buy4.setSize(200,200);
+        buy4.setPosition(700,110);
+
+        buy5= new Sprite(new Texture(Gdx.files.internal("Shop/buy5.png")));
+        buy5.setSize(200,200);
+        buy5.setPosition(1000,110);
 
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
@@ -69,6 +84,10 @@ public class Shop implements Screen {
         cancel.draw(AllVariables.batch);
         freeAd.draw(AllVariables.batch);
         buy1.draw(AllVariables.batch);
+        buy2.draw(AllVariables.batch);
+        buy3.draw(AllVariables.batch);
+        buy4.draw(AllVariables.batch);
+        buy5.draw(AllVariables.batch);
         AllVariables.batch.end();
 
     }
