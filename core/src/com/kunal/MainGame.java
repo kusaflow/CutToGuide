@@ -14,6 +14,13 @@ import com.kunal.temp.temp;
 
 public class MainGame extends Game {
 
+    public MainGame() {
+    }
+
+    public MainGame(AdVideoInterface adv) {
+		AllVariables.adv = adv;
+	}
+
 	@Override
 	public void create () {
 	    AllVariables.batch = new SpriteBatch();

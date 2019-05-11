@@ -24,6 +24,8 @@ public class AllVariables {
     //the coins in the game I will call them KusaCoin
     public static int kusaCoin = 100;
 
+    public static AdVideoInterface adv = null;
+
 
     //Masks
     public static final short Bit_Bicycle= 1;

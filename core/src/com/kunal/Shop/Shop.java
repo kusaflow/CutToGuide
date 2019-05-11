@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import com.kunal.AdVideoInterface;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 
@@ -23,6 +24,8 @@ public class Shop implements Screen {
     private Sprite freeAd, buy1, buy2, buy3, buy4, buy5, cancel;
 
     String tempToShowTheKusaCoins = "";
+
+    AdVideoInterface adVideoInterface = null;
 
 
     public Shop(MainGame game, Screen PrevScreen) {
@@ -107,6 +110,19 @@ public class Shop implements Screen {
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
             AllVariables.kusaCoin+=100;//game.setScreen(prevScreen);
+
+
+        if(Gdx.input.justTouched()){
+            //System.out.println(Gdx.input.getX() + "\t" +  (720 - Gdx.input.getY()));
+            if(Gdx.input.getX() >= (30* AllVariables.inpM) + AllVariables.witdth_translation
+                    && Gdx.input.getX() <= (375* AllVariables.inpM) + AllVariables.witdth_translation
+                    && Gdx.graphics.getHeight() - Gdx.input.getY() >= 350 * AllVariables.inpM
+                    && Gdx.graphics.getHeight() - Gdx.input.getY() <= 700 * AllVariables.inpM
+            ) {
+                //adVideoInterface.show();
+                AllVariables.adv.show();
+            }
+        }
 
     }
 

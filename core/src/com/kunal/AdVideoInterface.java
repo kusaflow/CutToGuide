@@ -1,5 +1,8 @@
 package com.kunal;
 
 public interface AdVideoInterface {
-    void show();
+    public boolean hasVideoLoaded();
+    public void loadRewardedVideoAd();
+    public void showRewardedVideoAd();
+    public void setVideoEventListener(VideoEventListener listener);
 }
