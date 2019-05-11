@@ -21,18 +21,23 @@ import com.kunal.MainGame;
 public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener {
     private static final String TAG = "AndroidLauncher";
     private AdView adView;
-    private RewardedVideoAd mAd;
+
+    private RewardedVideoAd adRewardedVideoView;
+    private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
+    private VideoEventListener vel;
+
+    Boolean is_video_ad_loaded = false;
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
-        //initialize(new MainGame(), config);
+        //initialize(new MainGame(this), config);
 
         //ad banner ---------------------------------------------------------------------------------
         RelativeLayout layout = new RelativeLayout(this);
 
-        View gameView = initializeForView(new MainGame(), config);
+        View gameView = initializeForView(new MainGame(this), config);
 
         layout.addView(gameView);
 
@@ -70,25 +75,53 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
 
         //rewared ad video-----------------------------------------------------------------------------------------
-        mAd = MobileAds.getRewardedVideoAdInstance(this);
-        mAd.setRewardedVideoAdListener(this);
-        loadRewardedVideoAd();
+        setupRewarded();
 
 	}
 
 
 	//rewared ad video
-	private void loadRewardedVideoAd(){
-	    if (!mAd.isLoaded()){
-	        mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+    public void loadRewardedVideoAd(){
+        adRewardedVideoView.loadAd(REWARDED_VIDEO_AD_UNIT_ID, new AdRequest.Builder().build());
+    }
+
+
+    public void setupRewarded() {
+        adRewardedVideoView = MobileAds.getRewardedVideoAdInstance(this);
+        adRewardedVideoView.setRewardedVideoAdListener(this);
+        loadRewardedVideoAd();
+    }
+
+    @Override
+    public boolean hasVideoLoaded(){
+        if(is_video_ad_loaded) {
+            return true;
         }
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if (!adRewardedVideoView.isLoaded()) {
+                    loadRewardedVideoAd();
+                }
+            }
+        });
+        return false;
     }
 
     // to show video--
-    @Override
-    public void show() {
-        if (mAd.isLoaded())
-            mAd.show();
+    public void showRewardedVideoAd(){
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if (adRewardedVideoView.isLoaded()) {
+                    adRewardedVideoView.show();
+                } else {
+                    loadRewardedVideoAd();
+                }
+            }
+        });
+    }
+
+    public void setVideoEventListener (VideoEventListener listener) {
+        this.vel = listener;
     }
 
     //listeners for rewarded ads
@@ -97,7 +130,10 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
     @Override
     public void onRewardedVideoAdLoaded() {
-
+        if(vel != null) {
+            vel.onRewardedVideoAdLoadedEvent();
+        }
+        is_video_ad_loaded = true;
     }
 
     @Override
@@ -112,12 +148,19 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
     @Override
     public void onRewardedVideoAdClosed() {
+        is_video_ad_loaded = false;
         loadRewardedVideoAd();
+        if(vel != null) {
+            vel.onRewardedVideoAdClosedEvent();
+        }
     }
 
     @Override
-    public void onRewarded(RewardItem rewardItem) {
-        AllVariables.kusaCoin+=100;
+    public void onRewarded(RewardItem reward) {
+        if(vel != null) {
+            // The type and the amount can be set in your AdMob console
+            vel.onRewardedEvent(reward.getType(), reward.getAmount());
+        }
     }
 
     @Override
@@ -140,19 +183,19 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
     @Override
     protected void onPause() {
-	    mAd.pause(this);
+        adRewardedVideoView.pause(this);
         super.onPause();
     }
 
     @Override
     protected void onResume() {
-	    mAd.resume(this);
+        adRewardedVideoView.resume(this);
         super.onResume();
     }
 
     @Override
     protected void onDestroy() {
-	    mAd.destroy(this);
+	    adRewardedVideoView.destroy(this);
         super.onDestroy();
     }
 }

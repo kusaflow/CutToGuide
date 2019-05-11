@@ -12,8 +12,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AdVideoInterface;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.VideoEventListener;
 
-public class Shop implements Screen {
+public class Shop implements Screen, VideoEventListener {
 
     MainGame game;
     Screen prevScreen;
@@ -65,6 +66,8 @@ public class Shop implements Screen {
         buy5.setSize(200,200);
         buy5.setPosition(1000,110);
 
+
+        AllVariables.adv.setVideoEventListener(this);
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -120,7 +123,9 @@ public class Shop implements Screen {
                     && Gdx.graphics.getHeight() - Gdx.input.getY() <= 700 * AllVariables.inpM
             ) {
                 //adVideoInterface.show();
-                AllVariables.adv.show();
+                if(AllVariables.adv.hasVideoLoaded()) {
+                    AllVariables.adv.showRewardedVideoAd();
+                }
             }
         }
 
@@ -151,6 +156,24 @@ public class Shop implements Screen {
 
     @Override
     public void dispose() {
+
+    }
+
+
+    //video loader--------------------------------------
+
+    @Override
+    public void onRewardedEvent(String type, int amount) {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdLoadedEvent() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosedEvent() {
 
     }
 }
