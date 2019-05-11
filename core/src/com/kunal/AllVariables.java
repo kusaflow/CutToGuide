@@ -21,6 +21,9 @@ public class AllVariables {
     public static BitmapFont bitmapFont;
 
 
+    //the coins in the game I will call them KusaCoin
+    public static int kusaCoin = 100;
+
 
     //Masks
     public static final short Bit_Bicycle= 1;

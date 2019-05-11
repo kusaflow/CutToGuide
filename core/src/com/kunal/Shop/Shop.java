@@ -20,7 +20,9 @@ public class Shop implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
-    Sprite freeAd, buy1, buy2, buy3, buy4, buy5, cancel;
+    private Sprite freeAd, buy1, buy2, buy3, buy4, buy5, cancel;
+
+    String tempToShowTheKusaCoins = "";
 
 
     public Shop(MainGame game, Screen PrevScreen) {
@@ -88,6 +90,11 @@ public class Shop implements Screen {
         buy3.draw(AllVariables.batch);
         buy4.draw(AllVariables.batch);
         buy5.draw(AllVariables.batch);
+        tempToShowTheKusaCoins = "" +  AllVariables.kusaCoin;
+        AllVariables.bitmapFont.draw(AllVariables.batch, tempToShowTheKusaCoins, 600, 650);
+
+
+
         AllVariables.batch.end();
 
     }
@@ -99,7 +106,7 @@ public class Shop implements Screen {
     private void input(){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
-            game.setScreen(prevScreen);
+            AllVariables.kusaCoin+=100;//game.setScreen(prevScreen);
 
     }
 

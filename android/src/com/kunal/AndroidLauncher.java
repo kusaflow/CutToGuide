@@ -12,11 +12,16 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardItem;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
+import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.kunal.MainGame;
 
-public class AndroidLauncher extends AndroidApplication {
+public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener {
     private static final String TAG = "AndroidLauncher";
     private AdView adView;
+    private RewardedVideoAd mAd;
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -24,7 +29,7 @@ public class AndroidLauncher extends AndroidApplication {
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
         //initialize(new MainGame(), config);
 
-
+        //ad banner ---------------------------------------------------------------------------------
         RelativeLayout layout = new RelativeLayout(this);
 
         View gameView = initializeForView(new MainGame(), config);
@@ -61,6 +66,93 @@ public class AndroidLauncher extends AndroidApplication {
 
         adView.loadAd(builder.build());
         setContentView(layout);
+        //banner ad finish here--------------------------------------------------------------------------------------
+
+
+        //rewared ad video-----------------------------------------------------------------------------------------
+        mAd = MobileAds.getRewardedVideoAdInstance(this);
+        mAd.setRewardedVideoAdListener(this);
+        loadRewardedVideoAd();
 
 	}
+
+
+	//rewared ad video
+	private void loadRewardedVideoAd(){
+	    if (!mAd.isLoaded()){
+	        mAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+        }
+    }
+
+    // to show video--
+    @Override
+    public void show() {
+        if (mAd.isLoaded())
+            mAd.show();
+    }
+
+    //listeners for rewarded ads
+
+    //end of listeners
+
+    @Override
+    public void onRewardedVideoAdLoaded() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdOpened() {
+
+    }
+
+    @Override
+    public void onRewardedVideoStarted() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdClosed() {
+        loadRewardedVideoAd();
+    }
+
+    @Override
+    public void onRewarded(RewardItem rewardItem) {
+        AllVariables.kusaCoin+=100;
+    }
+
+    @Override
+    public void onRewardedVideoAdLeftApplication() {
+
+    }
+
+    @Override
+    public void onRewardedVideoAdFailedToLoad(int i) {
+
+    }
+
+    @Override
+    public void onRewardedVideoCompleted() {
+
+    }
+
+    //end of rewared video-------------------------------------------------------------
+
+
+    @Override
+    protected void onPause() {
+	    mAd.pause(this);
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+	    mAd.resume(this);
+        super.onResume();
+    }
+
+    @Override
+    protected void onDestroy() {
+	    mAd.destroy(this);
+        super.onDestroy();
+    }
 }
