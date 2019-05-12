@@ -164,7 +164,7 @@ public class Shop implements Screen, VideoEventListener {
 
     @Override
     public void onRewardedEvent(String type, int amount) {
-
+        AllVariables.kusaCoin+=100;
     }
 
     @Override
