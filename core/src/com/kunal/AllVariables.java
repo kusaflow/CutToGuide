@@ -26,6 +26,11 @@ public class AllVariables {
 
     public static AdVideoInterface adv = null;
 
+    public static int PresentAreaNumber = 0;
+    /*
+    0 is for no area meaning it is at AreaSelection Menu
+     */
+
 
     //Masks
     public static final short Bit_Bicycle= 1;

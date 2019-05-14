@@ -1,4 +1,4 @@
-package com.kunal.AreaSelection;
+package com.kunal.garbage;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;

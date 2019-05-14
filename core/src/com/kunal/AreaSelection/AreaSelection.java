@@ -15,6 +15,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
+import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 
@@ -39,6 +40,8 @@ public class AreaSelection implements Screen {
 
         positionY = 150;
         transparency = 1;
+
+        AllVariables.PresentAreaNumber = 0;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -298,6 +301,7 @@ public class AreaSelection implements Screen {
                                 && screenX <= (450* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
                             //code for credits
+                            System.out.println("cretits");
                             return false;
                         }
 
@@ -308,20 +312,26 @@ public class AreaSelection implements Screen {
                                 && screenX <= (1240* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 710* AllVariables.inpM) {
                             //code for settings
+                            System.out.println("setting");
                             return false;
                         }
 
-                        //level Area Selection
+                        //level Area Selection------------------------------------------------------------------
                         if(screenX >= (390* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (590* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 150* AllVariables.inpM && screenY <= 550* AllVariables.inpM) {
 
                             if(LevelState == 0){
                                 System.out.println("Area 1");
+                                AllVariables.PresentAreaNumber = 1;
                             }
                             else if (LevelState == 1){
                                 System.out.println("Area 4");
+                                AllVariables.PresentAreaNumber = 4;
                             }
+
+                            Gdx.input.setInputProcessor(null);
+                            game.setScreen(new LevelNumberSelection(game));
 
                             return false;
                         }
@@ -332,10 +342,14 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 System.out.println("Area 2");
+                                AllVariables.PresentAreaNumber = 2;
                             }
                             else if (LevelState == 1){
                                 System.out.println("Area 5");
+                                AllVariables.PresentAreaNumber = 5;
                             }
+                            Gdx.input.setInputProcessor(null);
+                            game.setScreen(new LevelNumberSelection(game));
 
                             return false;
                         }
@@ -346,10 +360,14 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 System.out.println("Area 3");
+                                AllVariables.PresentAreaNumber = 3;
                             }
                             else if (LevelState == 1){
                                 System.out.println("Area 6");
+                                AllVariables.PresentAreaNumber = 6;
                             }
+                            Gdx.input.setInputProcessor(null);
+                            game.setScreen(new LevelNumberSelection(game));
 
                             return false;
                         }
