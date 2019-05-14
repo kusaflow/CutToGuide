@@ -5,6 +5,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.MainGame;
+import com.kunal.MainLoading.MainLoadingScreen;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.Shop.Shop;
 
@@ -35,12 +36,12 @@ public class temp implements Screen {
             //game.setScreen(new PlayArea(game));
 
             //game.setScreen(new CuttingAreaManager(game));
-            //game.setScreen(new MainLoadingScreen(game));
+            game.setScreen(new MainLoadingScreen(game));
 
             //game.setScreen(new AreaOneClass(game));
 
             //game.setScreen(new AreaSelection(game));
-            game.setScreen(new Shop(game,this));
+            //game.setScreen(new Shop(game,this));
 
             //this is compulsory before setting tut area
             VariablesForPlayArea.tutstep = 0;
