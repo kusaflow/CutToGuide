@@ -20,7 +20,10 @@ public class LevelNumberSelection implements Screen {
     String DataInFile = "";
 
     //dataFromFile in the variables
-    byte UnlockedLevel, TotalLevel, Stars[];
+    short UnlockedLevel, TotalLevel, Stars[];
+    String tempstring= "";
+    boolean doSkip = false;
+    short hashCount =0, shorttmp;
 
     /*
     for the file structure :
@@ -45,8 +48,42 @@ public class LevelNumberSelection implements Screen {
 
     private void processData(){
         char[] data = DataInFile.toCharArray();
+        hashCount = 0;
+        tempstring = "";
 
         for (int i =0; i<DataInFile.length(); i++){
+            if (doSkip){
+                if (data[i] == '\n'){
+                    doSkip = false;
+                    hashCount = 0;
+                    continue;
+                }else {
+                    continue;
+                }
+            }
+
+            if (hashCount == 0){
+                if (data[i] != '#') {
+                    tempstring += data[i];
+                }else {
+                    hashCount++;
+                    shorttmp = new Short(tempstring);
+                    tempstring = "";
+
+                    if (shorttmp == AllVariables.PresentAreaNumber)
+                        continue;
+                    else
+                        doSkip = true;
+                        continue;
+                }
+            }
+
+
+
+
+
+
+
 
         }
 
@@ -72,8 +109,11 @@ public class LevelNumberSelection implements Screen {
     private void input(float dt){
         if (Gdx.input.isKeyJustPressed(Input.Keys.B))
             game.setScreen(new AreaSelection(game));
-        if (Gdx.input.isKeyJustPressed(Input.Keys.D))
-            System.out.println(DataInFile);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.D)) {
+            System.out.println("Unlock Levels : \t" + UnlockedLevel);
+            System.out.println("Total Levels : \t" + TotalLevel);
+            System.out.println("Stars : \t" + Stars);
+        }
 
     }
 

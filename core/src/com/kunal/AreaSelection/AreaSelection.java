@@ -322,11 +322,11 @@ public class AreaSelection implements Screen {
                                 && screenY >= 150* AllVariables.inpM && screenY <= 550* AllVariables.inpM) {
 
                             if(LevelState == 0){
-                                System.out.println("Area 1");
+                                //System.out.println("Area 1");
                                 AllVariables.PresentAreaNumber = 1;
                             }
                             else if (LevelState == 1){
-                                System.out.println("Area 4");
+                                //System.out.println("Area 4");
                                 AllVariables.PresentAreaNumber = 4;
                             }
 
@@ -341,11 +341,11 @@ public class AreaSelection implements Screen {
                                 && screenY >= 150* AllVariables.inpM && screenY <= 550* AllVariables.inpM) {
 
                             if(LevelState == 0){
-                                System.out.println("Area 2");
+                                //System.out.println("Area 2");
                                 AllVariables.PresentAreaNumber = 2;
                             }
                             else if (LevelState == 1){
-                                System.out.println("Area 5");
+                                //System.out.println("Area 5");
                                 AllVariables.PresentAreaNumber = 5;
                             }
                             Gdx.input.setInputProcessor(null);
@@ -359,11 +359,11 @@ public class AreaSelection implements Screen {
                                 && screenY >= 150* AllVariables.inpM && screenY <= 550* AllVariables.inpM) {
 
                             if(LevelState == 0){
-                                System.out.println("Area 3");
+                                //System.out.println("Area 3");
                                 AllVariables.PresentAreaNumber = 3;
                             }
                             else if (LevelState == 1){
-                                System.out.println("Area 6");
+                                //System.out.println("Area 6");
                                 AllVariables.PresentAreaNumber = 6;
                             }
                             Gdx.input.setInputProcessor(null);
