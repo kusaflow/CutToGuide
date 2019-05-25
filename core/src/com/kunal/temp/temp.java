@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.VariablesForPlayArea;
+import com.kunal.Shop.Shop;
 
 public class temp implements Screen {
 
