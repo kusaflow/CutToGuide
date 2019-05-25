@@ -3,6 +3,7 @@ package com.kunal.AreaSelection.levelNumberSelection;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -15,6 +16,17 @@ public class LevelNumberSelection implements Screen {
     MainGame game;
     OrthographicCamera cam;
     Viewport port;
+    FileHandle file;
+    String DataInFile = "";
+
+    //dataFromFile in the variables
+    byte UnlockedLevel, TotalLevel, Stars[];
+
+    /*
+    for the file structure :
+        for every area the format is : "_LevelNumber_#_UnLockedLevels_#_TotalLevels_#_UnLockedLevel_MultiplyBy_Star"
+        "$" is the end of the file
+     */
 
 
     public LevelNumberSelection(MainGame game) {
@@ -24,7 +36,21 @@ public class LevelNumberSelection implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        System.out.println(AllVariables.PresentAreaNumber);
+        file = Gdx.files.internal("TextFiles/LevelAreaInfo");
+        DataInFile = file.readString();
+
+        processData();
+
+    }
+
+    private void processData(){
+        char[] data = DataInFile.toCharArray();
+
+        for (int i =0; i<DataInFile.length(); i++){
+
+        }
+
+
     }
 
     @Override
@@ -46,6 +72,9 @@ public class LevelNumberSelection implements Screen {
     private void input(float dt){
         if (Gdx.input.isKeyJustPressed(Input.Keys.B))
             game.setScreen(new AreaSelection(game));
+        if (Gdx.input.isKeyJustPressed(Input.Keys.D))
+            System.out.println(DataInFile);
+
     }
 
     @Override
