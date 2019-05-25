@@ -12,6 +12,8 @@ import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 
+import java.util.LinkedList;
+
 public class LevelNumberSelection implements Screen {
     MainGame game;
     OrthographicCamera cam;
@@ -20,10 +22,11 @@ public class LevelNumberSelection implements Screen {
     String DataInFile = "";
 
     //dataFromFile in the variables
-    short UnlockedLevel, TotalLevel, Stars[];
-    String tempstring= "";
-    boolean doSkip = false;
-    short hashCount =0, shorttmp;
+    private short UnlockedLevel, TotalLevel;
+    private LinkedList<Short> stars;
+    private String tempstring= "";
+    private boolean doSkip = false;
+    private short hashCount =0, shorttmp;
 
     /*
     for the file structure :
@@ -41,6 +44,8 @@ public class LevelNumberSelection implements Screen {
 
         file = Gdx.files.internal("TextFiles/LevelAreaInfo");
         DataInFile = file.readString();
+
+        stars = new LinkedList<Short>();
 
         processData();
 
@@ -70,21 +75,61 @@ public class LevelNumberSelection implements Screen {
                     shorttmp = new Short(tempstring);
                     tempstring = "";
 
-                    if (shorttmp == AllVariables.PresentAreaNumber)
+                    if (shorttmp == AllVariables.PresentAreaNumber) {
                         continue;
-                    else
+                    } else {
                         doSkip = true;
                         continue;
+                    }
                 }
             }
 
+            if (hashCount == 1){
+                if (data[i] != '#'){
+                    tempstring += data[i];
+                }else{
+                    hashCount++;
+                    shorttmp = new Short(tempstring);
+                    tempstring = "";
 
+                    UnlockedLevel = shorttmp;
+                    continue;
+                }
+            }
 
+            if (hashCount == 2){
+                if (data[i] != '#'){
+                    tempstring += data[i];
+                }else{
+                    hashCount++;
+                    shorttmp = new Short(tempstring);
+                    tempstring = "";
 
+                    TotalLevel = shorttmp;
 
+                    stars.clear();
+                    continue;
+                }
+            }
 
+            if (hashCount == 3){
+                if (data[i] != '#'){
+                    tempstring += data[i];
+                    shorttmp = new Short(tempstring);
+                    tempstring = "";
 
+                    stars.add(shorttmp);
+                }else{
+                    hashCount++;
+                    continue;
+                }
+            }
 
+            if (hashCount == 4){
+                break;
+            }
+
+            ///////////////////////////////
         }
 
 
@@ -112,7 +157,7 @@ public class LevelNumberSelection implements Screen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.D)) {
             System.out.println("Unlock Levels : \t" + UnlockedLevel);
             System.out.println("Total Levels : \t" + TotalLevel);
-            System.out.println("Stars : \t" + Stars);
+            System.out.println("Stars : \t" + stars);
         }
 
     }
