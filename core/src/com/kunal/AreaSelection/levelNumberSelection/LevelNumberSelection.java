@@ -6,11 +6,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.VariablesForPlayArea;
 
 import java.util.LinkedList;
 
@@ -24,9 +26,10 @@ public class LevelNumberSelection implements Screen {
     //dataFromFile in the variables
     private short UnlockedLevel, TotalLevel;
     private LinkedList<Short> stars;
-    private String tempstring= "";
-    private boolean doSkip = false;
-    private short hashCount =0, shorttmp;
+
+    private Texture stone;
+
+    private Texture cross;
 
     /*
     for the file structure :
@@ -49,9 +52,17 @@ public class LevelNumberSelection implements Screen {
 
         processData();
 
+        //texture and sprites
+        stone = new Texture(Gdx.files.internal("AreaSelection/levelSelection/stone.png"));
+        cross = new Texture(Gdx.files.internal("utils/hudX.png"));
+
     }
 
     private void processData(){
+        String tempstring= "";
+        boolean doSkip = false;
+        short hashCount =0, shorttmp;
+
         char[] data = DataInFile.toCharArray();
         hashCount = 0;
         tempstring = "";
@@ -144,10 +155,41 @@ public class LevelNumberSelection implements Screen {
 
     @Override
     public void render(float delta) {
-        Gdx.gl.glClearColor(0.5f, 0.4f, 0.3f, 1f);
+        Gdx.gl.glClearColor(0.1f, 0.1f, 0.3f, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
+        AllVariables.batch.setProjectionMatrix(cam.combined);
         input(delta);
+
+        cam.update();
+
+
+        AllVariables.batch.begin();
+
+        //cross to go back
+        AllVariables.batch.draw(cross,0,720-128);
+
+        //all stages
+        AllVariables.batch.draw(stone, 250,460, 120,200);
+        AllVariables.batch.draw(stone, 450,460, 120,200);
+        AllVariables.batch.draw(stone, 650,460, 120,200);
+        AllVariables.batch.draw(stone, 850,460, 120,200);
+        AllVariables.batch.draw(stone, 1050,460, 120,200);
+
+        AllVariables.batch.draw(stone, 250,200, 120,200);
+        AllVariables.batch.draw(stone, 450,200, 120,200);
+        AllVariables.batch.draw(stone, 650,200, 120,200);
+        AllVariables.batch.draw(stone, 850,200, 120,200);
+        AllVariables.batch.draw(stone, 1050,200, 120,200);
+
+
+
+
+
+
+
+
+
+        AllVariables.batch.end();
 
     }
 
@@ -159,6 +201,14 @@ public class LevelNumberSelection implements Screen {
             System.out.println("Total Levels : \t" + TotalLevel);
             System.out.println("Stars : \t" + stars);
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.A))
+            cam.position.set(cam.position.x-=10, cam.position.y, cam.position.z);
+
+        if (Gdx.input.isKeyPressed(Input.Keys.S))
+            cam.position.set(cam.position.x+=10, cam.position.y, cam.position.z);
+
+
+
 
     }
 
