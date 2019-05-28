@@ -28,6 +28,7 @@ public class LevelNumberSelection implements Screen {
     private LinkedList<Short> stars;
 
     private Texture stone;
+    private Texture number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
 
     private Texture cross;
 
@@ -55,6 +56,19 @@ public class LevelNumberSelection implements Screen {
         //texture and sprites
         stone = new Texture(Gdx.files.internal("AreaSelection/levelSelection/stone.png"));
         cross = new Texture(Gdx.files.internal("utils/hudX.png"));
+
+        //number
+        number0 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number0.png"));
+        number1 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number1.png"));
+        number2 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number2.png"));
+        number3 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number3.png"));
+        number4 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number4.png"));
+        number5 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number5.png"));
+        number6 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number6.png"));
+        number7 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number7.png"));
+        number8 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number8.png"));
+        number9 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number9.png"));
+
 
     }
 
@@ -180,6 +194,12 @@ public class LevelNumberSelection implements Screen {
         AllVariables.batch.draw(stone, 650,200, 120,200);
         AllVariables.batch.draw(stone, 850,200, 120,200);
         AllVariables.batch.draw(stone, 1050,200, 120,200);
+
+        //number init
+        //1
+        AllVariables.batch.draw(number1,290, 492, 30,50);
+        //1
+        //AllVariables.batch.draw(number0,260, 500, 30,50);
 
 
 
