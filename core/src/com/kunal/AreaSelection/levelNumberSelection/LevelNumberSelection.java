@@ -58,16 +58,16 @@ public class LevelNumberSelection implements Screen {
         cross = new Texture(Gdx.files.internal("utils/hudX.png"));
 
         //number
-        number0 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number0.png"));
-        number1 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number1.png"));
-        number2 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number2.png"));
-        number3 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number3.png"));
-        number4 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number4.png"));
-        number5 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number5.png"));
-        number6 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number6.png"));
-        number7 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number7.png"));
-        number8 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number8.png"));
-        number9 = new Texture(Gdx.files.internal("AreaSelection/Numbers/number9.png"));
+        number0 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud0.png"));
+        number1 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud1.png"));
+        number2 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud2.png"));
+        number3 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud3.png"));
+        number4 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud4.png"));
+        number5 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud5.png"));
+        number6 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud6.png"));
+        number7 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud7.png"));
+        number8 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud8.png"));
+        number9 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud9.png"));
 
 
     }
@@ -182,24 +182,45 @@ public class LevelNumberSelection implements Screen {
         //cross to go back
         AllVariables.batch.draw(cross,0,720-128);
 
-        //all stages
-        AllVariables.batch.draw(stone, 250,460, 120,200);
-        AllVariables.batch.draw(stone, 450,460, 120,200);
-        AllVariables.batch.draw(stone, 650,460, 120,200);
-        AllVariables.batch.draw(stone, 850,460, 120,200);
-        AllVariables.batch.draw(stone, 1050,460, 120,200);
+        for (int i =0,inc=0; i<TotalLevel/10;i++,inc+=1280) {
+            //all stages
+            AllVariables.batch.draw(stone, 250 + inc, 460, 120, 200);
+            AllVariables.batch.draw(stone, 450 + inc, 460, 120, 200);
+            AllVariables.batch.draw(stone, 650 + inc, 460, 120, 200);
+            AllVariables.batch.draw(stone, 850 + inc, 460, 120, 200);
+            AllVariables.batch.draw(stone, 1050 + inc, 460, 120, 200);
 
-        AllVariables.batch.draw(stone, 250,200, 120,200);
-        AllVariables.batch.draw(stone, 450,200, 120,200);
-        AllVariables.batch.draw(stone, 650,200, 120,200);
-        AllVariables.batch.draw(stone, 850,200, 120,200);
-        AllVariables.batch.draw(stone, 1050,200, 120,200);
+            AllVariables.batch.draw(stone, 250 + inc, 200, 120, 200);
+            AllVariables.batch.draw(stone, 450 + inc, 200, 120, 200);
+            AllVariables.batch.draw(stone, 650 + inc, 200, 120, 200);
+            AllVariables.batch.draw(stone, 850 + inc, 200, 120, 200);
+            AllVariables.batch.draw(stone, 1050 + inc, 200, 120, 200);
+        }
 
         //number init
         //1
-        AllVariables.batch.draw(number1,290, 492, 30,50);
-        //1
-        //AllVariables.batch.draw(number0,260, 500, 30,50);
+        AllVariables.batch.draw(number1,260, 470, 100,100);
+        //2
+        AllVariables.batch.draw(number2,460, 470, 100,100);
+        //3
+        AllVariables.batch.draw(number3,660, 470, 100,100);
+        //4
+        AllVariables.batch.draw(number4,860, 470, 100,100);
+        //5
+        AllVariables.batch.draw(number5,1060, 470, 100,100);
+        //6
+        AllVariables.batch.draw(number6,260, 210, 100,100);
+        //7
+        AllVariables.batch.draw(number7,460, 210, 100,100);
+        //8
+        AllVariables.batch.draw(number8,660, 210, 100,100);
+        //9
+        AllVariables.batch.draw(number9,860, 210, 100,100);
+        //10
+        AllVariables.batch.draw(number1,1040, 210, 100,100);
+        AllVariables.batch.draw(number0,1080, 210, 100,100);
+
+
 
 
 
