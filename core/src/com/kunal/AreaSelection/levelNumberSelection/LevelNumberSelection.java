@@ -345,6 +345,22 @@ public class LevelNumberSelection implements Screen {
 
     @Override
     public void dispose() {
-
+        game.dispose();
+        DataInFile="";
+        stars.clear();
+        stone.dispose();
+        number0.dispose();
+        number1.dispose();
+        number2.dispose();
+        number3.dispose();
+        number4.dispose();
+        number5.dispose();
+        number6.dispose();
+        number7.dispose();
+        number8.dispose();
+        number9.dispose();
+        cross.dispose();
+        movRight.dispose();
+        movLeft.dispose();
     }
 }
