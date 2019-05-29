@@ -30,7 +30,7 @@ public class LevelNumberSelection implements Screen {
     private Texture stone;
     private Texture number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
 
-    private Texture cross;
+    private Texture cross, movRight, movLeft;
 
     /*
     for the file structure :
@@ -56,6 +56,9 @@ public class LevelNumberSelection implements Screen {
         //texture and sprites
         stone = new Texture(Gdx.files.internal("AreaSelection/levelSelection/stone.png"));
         cross = new Texture(Gdx.files.internal("utils/hudX.png"));
+        movRight = new Texture(Gdx.files.internal("utils/arrowRight.png"));
+        movLeft = new Texture(Gdx.files.internal("utils/arrowLeft.png"));
+
 
         //number
         number0 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud0.png"));
@@ -180,7 +183,10 @@ public class LevelNumberSelection implements Screen {
         AllVariables.batch.begin();
 
         //cross to go back
-        AllVariables.batch.draw(cross,0,720-128);
+        AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);
+        AllVariables.batch.draw(movLeft,400+cam.position.x-AllVariables.WIDTH/2,720-128);
+        AllVariables.batch.draw(movRight,900+cam.position.x-AllVariables.WIDTH/2,720-128);
+
 
         for (int i =0,inc=0; i<TotalLevel/10;i++,inc+=1280) {
             //all stages
@@ -211,7 +217,7 @@ public class LevelNumberSelection implements Screen {
         //6
         AllVariables.batch.draw(number6,260, 210, 100,100);
         //7
-        AllVariables.batch.draw(number7,460, 210, 100,100);
+        AllVariables.batch.draw(number7,465, 210, 100,100);
         //8
         AllVariables.batch.draw(number8,660, 210, 100,100);
         //9
@@ -242,11 +248,11 @@ public class LevelNumberSelection implements Screen {
             System.out.println("Total Levels : \t" + TotalLevel);
             System.out.println("Stars : \t" + stars);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.A))
-            cam.position.set(cam.position.x-=10, cam.position.y, cam.position.z);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.A))
+            cam.position.set(cam.position.x-=1280, cam.position.y, cam.position.z);
 
-        if (Gdx.input.isKeyPressed(Input.Keys.S))
-            cam.position.set(cam.position.x+=10, cam.position.y, cam.position.z);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S))
+            cam.position.set(cam.position.x+=1280, cam.position.y, cam.position.z);
 
 
 
@@ -255,8 +261,8 @@ public class LevelNumberSelection implements Screen {
 
     @Override
     public void resize(int width, int height) {
-        //port.update(width, height);
-        //cam.update();
+        port.update(width, height);
+        cam.update();
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
