@@ -24,13 +24,13 @@ public class LevelNumberSelection implements Screen {
     String DataInFile = "";
 
     //dataFromFile in the variables
-    private short UnlockedLevel, TotalLevel;
+    private short UnlockedLevel, TotalLevel, levelState, levelTrack;
     private LinkedList<Short> stars;
 
     private Texture stone;
     private Texture number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
 
-    private Texture cross, movRight, movLeft;
+    private Texture cross, movRight, movLeft, lock;
 
     /*
     for the file structure :
@@ -50,6 +50,10 @@ public class LevelNumberSelection implements Screen {
         DataInFile = file.readString();
 
         stars = new LinkedList<Short>();
+
+        levelState = 0;
+
+        levelTrack=0;
 
         processData();
 
@@ -71,6 +75,8 @@ public class LevelNumberSelection implements Screen {
         number7 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud7.png"));
         number8 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud8.png"));
         number9 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud9.png"));
+
+        lock = new Texture(Gdx.files.internal("AreaSelection/levelSelection/locked.png"));
 
 
     }
@@ -223,8 +229,8 @@ public class LevelNumberSelection implements Screen {
         //9
         AllVariables.batch.draw(number9,860, 210, 100,100);
         //10
-        AllVariables.batch.draw(number1,1040 + 1280, 210, 100,100);
-        AllVariables.batch.draw(number0,1080 + 1280, 210, 100,100);
+        AllVariables.batch.draw(number1,1040 , 210, 100,100);
+        AllVariables.batch.draw(number0,1080 , 210, 100,100);
         //11
         AllVariables.batch.draw(number1,240 + 1280, 470, 100,100);
         AllVariables.batch.draw(number1,280 + 1280, 470, 100,100);
@@ -286,16 +292,23 @@ public class LevelNumberSelection implements Screen {
         AllVariables.batch.draw(number3,1040 + 1280*2, 210, 100,100);
         AllVariables.batch.draw(number0,1080 + 1280*2, 210, 100,100);
 
+        //Lock
+        levelTrack = 0;
+        for (int i =0, inci = 0; i<TotalLevel/10; i++){
+            for (int j =0, incj=470; j<2; j++){
+                for (int k =0, inck=240; k<5;k++){
+                    levelTrack++;
+                    if (levelTrack <= UnlockedLevel){
 
-
-
-
-
-
-
-
-
-
+                    }else {
+                        AllVariables.batch.draw(lock,inck+inci,incj,120,120);
+                    }
+                    inck+=200;
+                }
+                incj = 210;
+            }
+            inci+=1280;
+        }
 
         AllVariables.batch.end();
 
@@ -309,11 +322,22 @@ public class LevelNumberSelection implements Screen {
             System.out.println("Total Levels : \t" + TotalLevel);
             System.out.println("Stars : \t" + stars);
         }
-        if (Gdx.input.isKeyJustPressed(Input.Keys.A))
-            cam.position.set(cam.position.x-=1280, cam.position.y, cam.position.z);
+        if (Gdx.input.isKeyJustPressed(Input.Keys.A)) {
+            levelState--;
+            if (levelState<=-1)
+                levelState=0;
+            else
+                cam.position.set(cam.position.x -= 1280, cam.position.y, cam.position.z);
+        }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.S))
-            cam.position.set(cam.position.x+=1280, cam.position.y, cam.position.z);
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)) {
+            levelState++;
+            if (levelState >= TotalLevel/10)
+                levelState = (short) (TotalLevel/10 -1);
+            else
+                cam.position.set(cam.position.x += 1280, cam.position.y, cam.position.z);
+        }
 
 
 
