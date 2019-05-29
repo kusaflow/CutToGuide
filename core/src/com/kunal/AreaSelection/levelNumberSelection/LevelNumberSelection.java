@@ -223,8 +223,69 @@ public class LevelNumberSelection implements Screen {
         //9
         AllVariables.batch.draw(number9,860, 210, 100,100);
         //10
-        AllVariables.batch.draw(number1,1040, 210, 100,100);
-        AllVariables.batch.draw(number0,1080, 210, 100,100);
+        AllVariables.batch.draw(number1,1040 + 1280, 210, 100,100);
+        AllVariables.batch.draw(number0,1080 + 1280, 210, 100,100);
+        //11
+        AllVariables.batch.draw(number1,240 + 1280, 470, 100,100);
+        AllVariables.batch.draw(number1,280 + 1280, 470, 100,100);
+        //12
+        AllVariables.batch.draw(number1,440 + 1280, 470, 100,100);
+        AllVariables.batch.draw(number2,480 + 1280, 470, 100,100);
+        //13
+        AllVariables.batch.draw(number1,640 + 1280, 470, 100,100);
+        AllVariables.batch.draw(number3,680 + 1280, 470, 100,100);
+        //14
+        AllVariables.batch.draw(number1,840 + 1280, 470, 100,100);
+        AllVariables.batch.draw(number4,880 + 1280, 470, 100,100);
+        //15
+        AllVariables.batch.draw(number1,1040 + 1280, 470, 100,100);
+        AllVariables.batch.draw(number5,1080 + 1280, 470, 100,100);
+        //16
+        AllVariables.batch.draw(number1,240 + 1280, 210, 100,100);
+        AllVariables.batch.draw(number6,280 + 1280, 210, 100,100);
+        //17
+        AllVariables.batch.draw(number1,440 + 1280, 210, 100,100);
+        AllVariables.batch.draw(number7,480 + 1280, 210, 100,100);
+        //18
+        AllVariables.batch.draw(number1,640 + 1280, 210, 100,100);
+        AllVariables.batch.draw(number8,680 + 1280, 210, 100,100);
+        //19
+        AllVariables.batch.draw(number1,840 + 1280, 210, 100,100);
+        AllVariables.batch.draw(number9,880 + 1280, 210, 100,100);
+        //20
+        AllVariables.batch.draw(number2,1040 + 1280, 210, 100,100);
+        AllVariables.batch.draw(number0,1080 + 1280, 210, 100,100);
+        //21
+        AllVariables.batch.draw(number2,240 + 1280*2, 470, 100,100);
+        AllVariables.batch.draw(number1,280 + 1280*2, 470, 100,100);
+        //22
+        AllVariables.batch.draw(number2,440 + 1280*2, 470, 100,100);
+        AllVariables.batch.draw(number2,480 + 1280*2, 470, 100,100);
+        //23
+        AllVariables.batch.draw(number2,640 + 1280*2, 470, 100,100);
+        AllVariables.batch.draw(number3,680 + 1280*2, 470, 100,100);
+        //24
+        AllVariables.batch.draw(number2,840 + 1280*2, 470, 100,100);
+        AllVariables.batch.draw(number4,880 + 1280*2, 470, 100,100);
+        //25
+        AllVariables.batch.draw(number2,1040 + 1280*2, 470, 100,100);
+        AllVariables.batch.draw(number5,1080 + 1280*2, 470, 100,100);
+        //26
+        AllVariables.batch.draw(number2,240 + 1280*2, 210, 100,100);
+        AllVariables.batch.draw(number6,280 + 1280*2, 210, 100,100);
+        //27
+        AllVariables.batch.draw(number2,440 + 1280*2, 210, 100,100);
+        AllVariables.batch.draw(number7,480 + 1280*2, 210, 100,100);
+        //28
+        AllVariables.batch.draw(number2,640 + 1280*2, 210, 100,100);
+        AllVariables.batch.draw(number8,680 + 1280*2, 210, 100,100);
+        //29
+        AllVariables.batch.draw(number2,840 + 1280*2, 210, 100,100);
+        AllVariables.batch.draw(number9,880 + 1280*2, 210, 100,100);
+        //30
+        AllVariables.batch.draw(number3,1040 + 1280*2, 210, 100,100);
+        AllVariables.batch.draw(number0,1080 + 1280*2, 210, 100,100);
+
 
 
 
