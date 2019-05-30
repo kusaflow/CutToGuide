@@ -190,7 +190,9 @@ public class LevelNumberSelection implements Screen {
 
         //cross to go back
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);
+        //move left
         AllVariables.batch.draw(movLeft,400+cam.position.x-AllVariables.WIDTH/2,720-128);
+        //move right
         AllVariables.batch.draw(movRight,900+cam.position.x-AllVariables.WIDTH/2,720-128);
 
 
@@ -337,6 +339,39 @@ public class LevelNumberSelection implements Screen {
                 levelState = (short) (TotalLevel/10 -1);
             else
                 cam.position.set(cam.position.x += 1280, cam.position.y, cam.position.z);
+        }
+
+        if (Gdx.input.justTouched()){
+            //cross
+            if (Gdx.input.getX() >= (0*AllVariables.inpM)+AllVariables.witdth_translation &&
+                Gdx.input.getX() < (128*AllVariables.inpM)+AllVariables.witdth_translation &&
+                Gdx.input.getY() >= 0 * AllVariables.inpM && Gdx.input.getY() < 128*AllVariables.inpM){
+                game.setScreen(new AreaSelection(game));
+            }
+
+            //left
+            if (Gdx.input.getX() >= (400*AllVariables.inpM)+AllVariables.witdth_translation &&
+                    Gdx.input.getX() < (500*AllVariables.inpM)+AllVariables.witdth_translation &&
+                    Gdx.input.getY() >= 0 * AllVariables.inpM && Gdx.input.getY() < 128*AllVariables.inpM){
+                levelState--;
+                if (levelState<=-1)
+                    levelState=0;
+                else
+                    cam.position.set(cam.position.x -= 1280, cam.position.y, cam.position.z);
+            }
+
+            //right
+            if (Gdx.input.getX() >= (900*AllVariables.inpM)+AllVariables.witdth_translation &&
+                    Gdx.input.getX() < (1000*AllVariables.inpM)+AllVariables.witdth_translation &&
+                    Gdx.input.getY() >= 0 * AllVariables.inpM && Gdx.input.getY() < 128*AllVariables.inpM){
+                levelState++;
+                if (levelState >= TotalLevel/10)
+                    levelState = (short) (TotalLevel/10 -1);
+                else
+                    cam.position.set(cam.position.x += 1280, cam.position.y, cam.position.z);
+            }
+
+            //System.out.println(Gdx.input.getX()+"\t"+Gdx.input.getY());
         }
 
 
