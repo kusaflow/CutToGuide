@@ -30,7 +30,8 @@ public class LevelNumberSelection implements Screen {
     private Texture stone;
     private Texture number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
 
-    private Texture cross, movRight, movLeft, lock;
+    private Texture cross, movRight, movLeft, lock, starTex;
+    private Boolean upperLayer = true;
 
     /*
     for the file structure :
@@ -77,6 +78,8 @@ public class LevelNumberSelection implements Screen {
         number9 = new Texture(Gdx.files.internal("AreaSelection/Numbers/hud9.png"));
 
         lock = new Texture(Gdx.files.internal("AreaSelection/levelSelection/locked.png"));
+
+        starTex = new Texture(Gdx.files.internal("AreaSelection/levelSelection/star.png"));
 
 
     }
@@ -311,6 +314,37 @@ public class LevelNumberSelection implements Screen {
             }
             inci+=1280;
         }
+
+        //AllVariables.batch.draw(starTex, 255, 425, 50, 50);
+        //AllVariables.batch.draw(starTex, 285, 425, 50, 50);
+        //AllVariables.batch.draw(starTex, 315, 425, 50, 50);
+
+        //stars
+        upperLayer = false;
+        for (int i =0, incStar = -1280, incTonextLevel=0; i<UnlockedLevel; i++){
+            if (i%5 == 0) {
+                if (upperLayer) {
+                    upperLayer = false;
+                    incTonextLevel = 255;
+                }
+                else {
+                    upperLayer = true;
+                    incTonextLevel = 255;
+                }
+            }
+            if (i%10==0)
+                incStar+=1280;
+
+            if (upperLayer){
+                for (int j=0, incSmall = incTonextLevel; j<stars.get(i); j++, incSmall+=30)
+                    AllVariables.batch.draw(starTex, incSmall + incStar, 425, 50, 50);
+            }else {
+                for (int j=0, incSmall = incTonextLevel; j<stars.get(i); j++, incSmall+=30)
+                    AllVariables.batch.draw(starTex, incSmall + incStar, 165, 50, 50);
+            }
+            incTonextLevel+=200;
+        }
+
 
         AllVariables.batch.end();
 
