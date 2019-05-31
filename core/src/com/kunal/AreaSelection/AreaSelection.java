@@ -70,16 +70,16 @@ public class AreaSelection implements Screen {
         Tutorial.setPosition(20, 150);
 
         showMoreLevelsOnLeft = new Sprite(new Texture(Gdx.files.internal("AreaSelection/PrevLevel.png")));
-        showMoreLevelsOnLeft.setSize(70,250);
-        showMoreLevelsOnLeft.setPosition(250, 200);
+        showMoreLevelsOnLeft.setSize(100,200);
+        showMoreLevelsOnLeft.setPosition(250, 240);
 
         showMoreLevelsOnRight = new Sprite(new Texture(Gdx.files.internal("AreaSelection/NextLevel.png")));
-        showMoreLevelsOnRight.setSize(70,250);
-        showMoreLevelsOnRight.setPosition(1200, 200);
+        showMoreLevelsOnRight.setSize(100,200);
+        showMoreLevelsOnRight.setPosition(1200, 240);
 
-        backToPrevScreen = new Sprite(new Texture(Gdx.files.internal("AreaSelection/BackToPrevScreen.png")));
-        backToPrevScreen.setSize(120,80);
-        backToPrevScreen.setPosition(20, 620);
+        backToPrevScreen = new Sprite(new Texture(Gdx.files.internal("utils/hudX.png")));
+        backToPrevScreen.setSize(120,120);
+        backToPrevScreen.setPosition(0, 720-128);
 
 
         //first 3
