@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
@@ -18,7 +19,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.kunal.MainGame;
 
-public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener {
+public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener, toastMessage {
     private static final String TAG = "AndroidLauncher";
     private AdView adView;
 
@@ -198,4 +199,5 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 	    adRewardedVideoView.destroy(this);
         super.onDestroy();
     }
+
 }

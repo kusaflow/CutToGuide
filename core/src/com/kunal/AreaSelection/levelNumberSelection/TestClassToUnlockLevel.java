@@ -1,13 +1,17 @@
 package com.kunal.AreaSelection.levelNumberSelection;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.kunal.MainGame;
 
 public class TestClassToUnlockLevel implements Screen {
     MainGame game;
 
-    public TestClassToUnlockLevel(MainGame game) {
+    public TestClassToUnlockLevel(MainGame game, short unlockLevel) {
         this.game = game;
+
     }
 
     @Override
@@ -17,6 +21,13 @@ public class TestClassToUnlockLevel implements Screen {
 
     @Override
     public void render(float delta) {
+        Gdx.gl.glClearColor(0.5f, 0.1f, 0.6f, 0.2f);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY)){
+            game.setScreen(new LevelNumberSelection(game));
+        }
 
     }
 
