@@ -34,7 +34,7 @@ public class LevelNumberSelection implements Screen {
     private Boolean upperLayer = true;
 
     /*
-    for the file structure :
+    for the file structure  :
         for every area the format is : "_LevelNumber_#_UnLockedLevels_#_TotalLevels_#_UnLockedLevel_MultiplyBy_Star"
         "$" is the end of the file
      */
