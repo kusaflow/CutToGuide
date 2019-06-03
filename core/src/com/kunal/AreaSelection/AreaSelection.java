@@ -78,7 +78,7 @@ public class AreaSelection implements Screen {
         showMoreLevelsOnRight.setPosition(1200, 240);
 
         backToPrevScreen = new Sprite(new Texture(Gdx.files.internal("utils/hudX.png")));
-        backToPrevScreen.setSize(120,120);
+        backToPrevScreen.setSize(128,128);
         backToPrevScreen.setPosition(0, 720-128);
 
 
