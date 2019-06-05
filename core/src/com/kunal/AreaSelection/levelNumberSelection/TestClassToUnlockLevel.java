@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.GL20;
+import com.kunal.AllVariables;
 import com.kunal.MainGame;
 
 public class TestClassToUnlockLevel implements Screen {
@@ -13,6 +14,18 @@ public class TestClassToUnlockLevel implements Screen {
     short UnlockLevel;
     FileHandle file;
     String DataInFile;
+
+    String tempstring= "";
+    boolean doSkip = false;
+    short hashCount =0, shorttmp;
+
+    short starValue;
+
+    boolean breakTowriteinfile = false;
+    short placeToStartfile;
+
+
+
 
     public TestClassToUnlockLevel(MainGame game, short unlockLevel) {
         this.game = game;
@@ -43,10 +56,54 @@ public class TestClassToUnlockLevel implements Screen {
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.U)){
-            char[] data = DataInFile.toCharArray();
+            if (AllVariables.PresentLevelNumber+1 == 31){
+
+            }else {
+                char[] data = DataInFile.toCharArray();
+                hashCount = 0;
+                tempstring = "";
+                doSkip = false;
+                breakTowriteinfile = false;
+
+                for (int i = 0; i < DataInFile.length() && breakTowriteinfile == false; i++) {
+                    if (doSkip) {
+                        if (data[i] == '\n') {
+                            doSkip = false;
+                            hashCount = 0;
+                            continue;
+                        } else {
+                            continue;
+                        }
+                    }
+
+                    if (hashCount == 0) {
+                        if (data[i] != '#') {
+                            tempstring += data[i];
+                        } else {
+                            hashCount++;
+                            shorttmp = new Short(tempstring);
+                            tempstring = "";
+
+                            if (shorttmp == AllVariables.PresentAreaNumber) {
+                                breakTowriteinfile = true;
+                                continue;
+                            } else {
+                                doSkip = true;
+                                continue;
+                            }
+                        }
+                    }
+                }
+
+                System.out.println("the level added is " + (AllVariables.PresentLevelNumber+1));
+
+                //UnlockLevel++;
+
+                //String unlclvl = String.valueOf(UnlockLevel);
+                //char[] charUnlclvl = unlclvl.toCharArray();
 
 
-
+            }
         }
 
 
