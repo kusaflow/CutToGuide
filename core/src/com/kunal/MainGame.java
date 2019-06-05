@@ -1,8 +1,10 @@
 package com.kunal;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Files;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
@@ -33,6 +35,20 @@ public class MainGame extends Game {
         prams.size = 24;
         prams.color = Color.ORANGE;
         AllVariables.bitmapFont = generator.generateFont(prams);
+
+        //creating local file
+		if (!Gdx.files.local("TextFiles/LevelAreaInfo").exists()){
+			FileHandle savedata = Gdx.files.local("TextFiles/LevelAreaInfo");
+			String data = "1#1#30#000000000000000000000000000000#\n" +
+					"2#3#30#320000000000000000000000000000#\n" +
+					"3#7#30#312312000000000000000000000000#\n" +
+					"4#12#30#321231231230000000000000000000#\n" +
+					"5#19#30#321123313213213213000000000000#\n" +
+					"6#25#30#321313121311321131231231000000#\n" +
+					"$";
+			savedata.writeString(data,true);
+			System.out.println("writing");
+		}
 
 		this.setScreen(new temp(this));
 

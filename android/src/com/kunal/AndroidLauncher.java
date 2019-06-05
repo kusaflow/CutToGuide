@@ -19,7 +19,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.kunal.MainGame;
 
-public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener, toastMessage {
+public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener {
     private static final String TAG = "AndroidLauncher";
     private AdView adView;
 

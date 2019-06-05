@@ -47,7 +47,7 @@ public class LevelNumberSelection implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        file = Gdx.files.internal("TextFiles/LevelAreaInfo");
+        file = Gdx.files.local("TextFiles/LevelAreaInfo");
         DataInFile = file.readString();
 
         stars = new LinkedList<Short>();
@@ -406,37 +406,37 @@ public class LevelNumberSelection implements Screen {
             }
 
             if (cam.position.x == 640){
-                if (Gdx.input.getY() >= 150 && Gdx.input.getY() <= 275){
+                if (Gdx.input.getY() >= 150* AllVariables.inpM && Gdx.input.getY() <= 275* AllVariables.inpM){
                     //1--------------------------------------------
-                    if (Gdx.input.getX() >= 230 && Gdx.input.getX() <= 395){
+                    if (Gdx.input.getX() >=( 230*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 395*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 1){
                             AllVariables.PresentLevelNumber =1;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //2---------------------------------------
-                    else if (Gdx.input.getX() >= 430 && Gdx.input.getX() <= 595){
+                    else if (Gdx.input.getX() >=( 430*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 595*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 2){
                             AllVariables.PresentLevelNumber =2;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //3----------------------------------------
-                    else if (Gdx.input.getX() >= 630 && Gdx.input.getX() <= 795){
+                    else if (Gdx.input.getX() >=( 630*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 795*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 3){
                             AllVariables.PresentLevelNumber =3;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //4-------------------------------------------
-                    else if (Gdx.input.getX() >= 830 && Gdx.input.getX() <= 995){
+                    else if (Gdx.input.getX() >=( 830*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 995*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 4){
                             AllVariables.PresentLevelNumber =4;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //5-----------------------------------------------
-                    else if (Gdx.input.getX() >= 1030 && Gdx.input.getX() <= 1195){
+                    else if (Gdx.input.getX() >= (1030*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <= (1195*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 5){
                             AllVariables.PresentLevelNumber =5;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
@@ -444,37 +444,37 @@ public class LevelNumberSelection implements Screen {
                     }
 
                 }
-                else if (Gdx.input.getY() >= 410 && Gdx.input.getY() <= 535){
+                else if (Gdx.input.getY() >= 410* AllVariables.inpM && Gdx.input.getY() <= 535* AllVariables.inpM){
                     //6-------------------------------------------------
-                    if (Gdx.input.getX() >= 230 && Gdx.input.getX() <= 395){
+                    if (Gdx.input.getX() >=( 230*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 395*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 6){
                             AllVariables.PresentLevelNumber =6;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //7-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 430 && Gdx.input.getX() <= 595){
+                    else if (Gdx.input.getX() >=( 430*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 595*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 7){
                             AllVariables.PresentLevelNumber =7;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //8-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 630 && Gdx.input.getX() <= 795){
+                    else if (Gdx.input.getX() >=( 630*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 795*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 8){
                             AllVariables.PresentLevelNumber =8;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //9-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 830 && Gdx.input.getX() <= 995){
+                    else if (Gdx.input.getX() >=( 830*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 995*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 9){
                             AllVariables.PresentLevelNumber =9;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //10--------------------------------------------------------
-                    else if (Gdx.input.getX() >= 1030 && Gdx.input.getX() <= 1195){
+                    else if (Gdx.input.getX() >= (1030*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <= (1195*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 10){
                             AllVariables.PresentLevelNumber =10;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
@@ -485,74 +485,74 @@ public class LevelNumberSelection implements Screen {
             }
             // 11 to 20
             else if (cam.position.x == 1920){
-                if (Gdx.input.getY() >= 150 && Gdx.input.getY() <= 275){
+                if (Gdx.input.getY() >= 150* AllVariables.inpM && Gdx.input.getY() <= 275* AllVariables.inpM){
                     //11--------------------------------------------
-                    if (Gdx.input.getX() >= 230 && Gdx.input.getX() <= 395){
+                    if (Gdx.input.getX() >=( 230*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 395*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 11){
                             AllVariables.PresentLevelNumber =11;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //12---------------------------------------
-                    else if (Gdx.input.getX() >= 430 && Gdx.input.getX() <= 595){
+                    else if (Gdx.input.getX() >=( 430*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 595*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 12){
                             AllVariables.PresentLevelNumber =12;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //13----------------------------------------
-                    else if (Gdx.input.getX() >= 630 && Gdx.input.getX() <= 795){
+                    else if (Gdx.input.getX() >=( 630*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 795*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 13){
                             AllVariables.PresentLevelNumber =13;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //14-------------------------------------------
-                    else if (Gdx.input.getX() >= 830 && Gdx.input.getX() <= 995){
+                    else if (Gdx.input.getX() >=( 830*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 995*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 14){
                             AllVariables.PresentLevelNumber =14;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //15-----------------------------------------------
-                    else if (Gdx.input.getX() >= 1030 && Gdx.input.getX() <= 1195){
+                    else if (Gdx.input.getX() >= (1030*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <= (1195*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 15){
                             AllVariables.PresentLevelNumber =15;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
 
-                }else if (Gdx.input.getY() >= 410 && Gdx.input.getY() <= 535){
+                }else if (Gdx.input.getY() >= 410* AllVariables.inpM && Gdx.input.getY() <= 535* AllVariables.inpM){
                     //16-------------------------------------------------
-                    if (Gdx.input.getX() >= 230 && Gdx.input.getX() <= 395){
+                    if (Gdx.input.getX() >=( 230*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 395*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 16){
                             AllVariables.PresentLevelNumber =16;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //17-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 430 && Gdx.input.getX() <= 595){
+                    else if (Gdx.input.getX() >=( 430*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 595*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 17){
                             AllVariables.PresentLevelNumber =17;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //18-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 630 && Gdx.input.getX() <= 795){
+                    else if (Gdx.input.getX() >=( 630*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 795*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 18){
                             AllVariables.PresentLevelNumber =18;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //19-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 830 && Gdx.input.getX() <= 995){
+                    else if (Gdx.input.getX() >=( 830*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 995*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 19){
                             AllVariables.PresentLevelNumber =19;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //20--------------------------------------------------------
-                    else if (Gdx.input.getX() >= 1030 && Gdx.input.getX() <= 1195){
+                    else if (Gdx.input.getX() >= (1030*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <= (1195*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 20){
                             AllVariables.PresentLevelNumber =20;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
@@ -562,74 +562,74 @@ public class LevelNumberSelection implements Screen {
             }
             //21 to 30
             else if (cam.position.x == 3200){
-                if (Gdx.input.getY() >= 150 && Gdx.input.getY() <= 275){
+                if (Gdx.input.getY() >= 150* AllVariables.inpM && Gdx.input.getY() <= 275* AllVariables.inpM){
                     //21--------------------------------------------
-                    if (Gdx.input.getX() >= 230 && Gdx.input.getX() <= 395){
+                    if (Gdx.input.getX() >=( 230*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 395*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 21){
                             AllVariables.PresentLevelNumber =21;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //22---------------------------------------
-                    else if (Gdx.input.getX() >= 430 && Gdx.input.getX() <= 595){
+                    else if (Gdx.input.getX() >=( 430*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 595*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 22){
                             AllVariables.PresentLevelNumber =22;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //23----------------------------------------
-                    else if (Gdx.input.getX() >= 630 && Gdx.input.getX() <= 795){
+                    else if (Gdx.input.getX() >=( 630*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 795*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 23){
                             AllVariables.PresentLevelNumber =23;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //24-------------------------------------------
-                    else if (Gdx.input.getX() >= 830 && Gdx.input.getX() <= 995){
+                    else if (Gdx.input.getX() >=( 830*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 995*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 24){
                             AllVariables.PresentLevelNumber =24;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //25-----------------------------------------------
-                    else if (Gdx.input.getX() >= 1030 && Gdx.input.getX() <= 1195){
+                    else if (Gdx.input.getX() >= (1030*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <= (1195*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 25){
                             AllVariables.PresentLevelNumber =25;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
 
-                }else if (Gdx.input.getY() >= 410 && Gdx.input.getY() <= 535){
+                }else if (Gdx.input.getY() >= 410* AllVariables.inpM && Gdx.input.getY() <= 535* AllVariables.inpM){
                     //26-------------------------------------------------
-                    if (Gdx.input.getX() >= 230 && Gdx.input.getX() <= 395){
+                    if (Gdx.input.getX() >=( 230*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 395*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 26){
                             AllVariables.PresentLevelNumber =26;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //27-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 430 && Gdx.input.getX() <= 595){
+                    else if (Gdx.input.getX() >=( 430*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 595*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 27){
                             AllVariables.PresentLevelNumber =27;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //28-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 630 && Gdx.input.getX() <= 795){
+                    else if (Gdx.input.getX() >=( 630*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 795*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 28){
                             AllVariables.PresentLevelNumber =28;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //29-------------------------------------------------------
-                    else if (Gdx.input.getX() >= 830 && Gdx.input.getX() <= 995){
+                    else if (Gdx.input.getX() >=( 830*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <=( 995*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 29){
                             AllVariables.PresentLevelNumber =29;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                         }
                     }
                     //30--------------------------------------------------------
-                    else if (Gdx.input.getX() >= 1030 && Gdx.input.getX() <= 1195){
+                    else if (Gdx.input.getX() >= (1030*AllVariables.inpM)+AllVariables.witdth_translation  && Gdx.input.getX() <= (1195*AllVariables.inpM)+AllVariables.witdth_translation ){
                         if (UnlockedLevel >= 30){
                             AllVariables.PresentLevelNumber =30;
                             game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
