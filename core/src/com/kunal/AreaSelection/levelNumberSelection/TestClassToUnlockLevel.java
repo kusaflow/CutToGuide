@@ -31,7 +31,7 @@ public class TestClassToUnlockLevel implements Screen {
         this.game = game;
         this.UnlockLevel = unlockLevel;
 
-        file = Gdx.files.internal("TextFiles/LevelAreaInfo");
+        file = Gdx.files.local("TextFiles/LevelAreaInfo");
         DataInFile = file.readString();
 
     }
@@ -58,6 +58,8 @@ public class TestClassToUnlockLevel implements Screen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.U)){
             if (AllVariables.PresentLevelNumber+1 == 31){
 
+            }else if (AllVariables.PresentLevelNumber+1<=UnlockLevel) {
+
             }else {
                 char[] data = DataInFile.toCharArray();
                 hashCount = 0;
@@ -65,7 +67,8 @@ public class TestClassToUnlockLevel implements Screen {
                 doSkip = false;
                 breakTowriteinfile = false;
 
-                for (int i = 0; i < DataInFile.length() && breakTowriteinfile == false; i++) {
+                int i;
+                for (i = 0; i < DataInFile.length() && breakTowriteinfile == false; i++) {
                     if (doSkip) {
                         if (data[i] == '\n') {
                             doSkip = false;
@@ -95,14 +98,22 @@ public class TestClassToUnlockLevel implements Screen {
                     }
                 }
 
-                System.out.println("the level added is " + (AllVariables.PresentLevelNumber+1));
+                AllVariables.PresentLevelNumber++;
 
-                //UnlockLevel++;
+                String unlclvl = String.valueOf(AllVariables.PresentLevelNumber);
+                char[] charUnlclvl = unlclvl.toCharArray();
 
-                //String unlclvl = String.valueOf(UnlockLevel);
-                //char[] charUnlclvl = unlclvl.toCharArray();
+                for (int j=0; j<charUnlclvl.length; j++,i++){
+                    data[i] = charUnlclvl [j];
+                }
 
+                DataInFile="";
+                for (i =0; i<data.length; i++){
+                    DataInFile+=data[i];
+                }
 
+                // System.out.println(DataInFile);
+                file.writeString(DataInFile,false);
             }
         }
 
