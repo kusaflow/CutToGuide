@@ -1,7 +1,6 @@
-package com.kunal.PlayGround;
+package com.kunal.PlayGround.constScreen;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,20 +8,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Polygon;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.utils.viewport.ExtendViewport;
-import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
-import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
+import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.Tutorial.TutArea;
-
-import java.util.Random;
+import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class ShapeChooser implements Screen {
 

@@ -1,4 +1,4 @@
-package com.kunal.PlayGround.CuttingArea;
+package com.kunal.PlayGround.constScreen.CuttingArea;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -13,7 +13,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
-import com.kunal.PlayGround.ShapeChooser;
+import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.temp.temp;
 

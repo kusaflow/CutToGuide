@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,29 +12,18 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
-import com.badlogic.gdx.math.Matrix4;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
-import com.badlogic.gdx.physics.box2d.ChainShape;
-import com.badlogic.gdx.physics.box2d.Fixture;
-import com.badlogic.gdx.physics.box2d.PolygonShape;
-import com.badlogic.gdx.physics.box2d.Shape;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
+import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
-import com.kunal.PlayGround.ShapeChooser;
+import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.BodyGenerator;
 
@@ -460,7 +448,7 @@ public class AreaOneClass implements Screen {
 
                         if(!startBool){
 
-                            //harmove
+                            //hardmove
                             if(screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 480* AllVariables.inpM && screenY < 595* AllVariables.inpM){

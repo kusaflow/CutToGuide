@@ -23,10 +23,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
-import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.BodyGenerator;
 

@@ -13,7 +13,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
-import com.kunal.PlayGround.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.temp.temp;
 
