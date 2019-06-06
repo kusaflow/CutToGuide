@@ -29,7 +29,7 @@ public class ShapeChooser implements Screen {
     private float ver[];
     private Polygon poly;
 
-    private short[][] ShapePts = new short[12][2];
+    private short[][] ShapePts = new short[20][2];
 
 
     public ShapeChooser(MainGame game) {
@@ -64,70 +64,114 @@ public class ShapeChooser implements Screen {
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
-        ShapePts[0][0] =200 + 40;
-        ShapePts[0][1] =30 + 507;
-        ShapePts[1][0] =200 + 315;
-        ShapePts[1][1] =30 + 507;
-        ShapePts[2][0] =200 + 590;
-        ShapePts[2][1] =30 + 507;
-        ShapePts[3][0] =200 + 865;
-        ShapePts[3][1] =30 + 507;
-        ShapePts[4][0] =200 + 40;
-        ShapePts[4][1] =30 + 304;
-        ShapePts[5][0] =200 + 315;
-        ShapePts[5][1] =30 + 304;
-        ShapePts[6][0] =200 + 590;
-        ShapePts[6][1] =30 + 304;
-        ShapePts[7][0] =200 + 865;
-        ShapePts[7][1] =30 + 304;
-        ShapePts[8][0] =200 + 40;
-        ShapePts[8][1] =30 + 101;
-        ShapePts[9][0] =200 + 315;
-        ShapePts[9][1] =30 + 101;
-        ShapePts[10][0] =200 + 590;
-        ShapePts[10][1] =30 + 101;
-        ShapePts[11][0] =200 + 865;
-        ShapePts[11][1] =30 + 101;
+        ShapePts[0][0] =150 + 40;
+        ShapePts[0][1] =30 + 557;
+        ShapePts[1][0] =150 + 260;
+        ShapePts[1][1] =30 + 557;
+        ShapePts[2][0] =150 + 480;
+        ShapePts[2][1] =30 + 557;
+        ShapePts[3][0] =150 + 700;
+        ShapePts[3][1] =30 + 557;
+        ShapePts[4][0] =150 + 920;
+        ShapePts[4][1] =30 + 557;
+        ShapePts[5][0] =150 + 40;
+        ShapePts[5][1] =30 + 405;
+        ShapePts[6][0] =150 + 260;
+        ShapePts[6][1] =30 + 405;
+        ShapePts[7][0] =150 + 480;
+        ShapePts[7][1] =30 + 405;
+        ShapePts[8][0] =150 + 700;
+        ShapePts[8][1] =30 + 405;
+        ShapePts[9][0] =150 + 920;
+        ShapePts[9][1] =30 + 405;
+        ShapePts[10][0] =150 + 40;
+        ShapePts[10][1] =30 + 252;
+        ShapePts[11][0] =150 + 260;
+        ShapePts[11][1] =30 + 252;
+        ShapePts[12][0] =150 + 480;
+        ShapePts[12][1] =30 + 252;
+        ShapePts[13][0] =150 + 700;
+        ShapePts[13][1] =30 + 252;
+        ShapePts[14][0] =150 + 920;
+        ShapePts[14][1] =30 + 252;
+        ShapePts[15][0] =150 + 40;
+        ShapePts[15][1] =30 + 100;
+        ShapePts[16][0] =150 + 260;
+        ShapePts[16][1] =30 + 100;
+        ShapePts[17][0] =150 + 480;
+        ShapePts[17][1] =30 + 100;
+        ShapePts[18][0] =150 + 700;
+        ShapePts[18][1] =30 + 100;
+        ShapePts[19][0] =150 + 920;
+        ShapePts[19][1] =30 + 100;
+
+
+
 
         //reinitinting the shapechooser selection
         if (VariablesForPlayArea.shapeNumberSelected <= 11){
             if (VariablesForPlayArea.shapeNumberSelected == 0){
                 x = 40;
-                y = 507;
+                y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 1){
-                x = 315;
-                y = 507;
+                x = 252;
+                y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 2){
-                x = 590;
-                y = 507;
+                x = 405;
+                y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 3){
-                x = 865;
-                y = 507;
+                x = 700;
+                y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 4){
-                x = 40;
-                y = 304;
+                x = 920;
+                y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 5){
-                x = 315;
-                y = 304;
-            }else if (VariablesForPlayArea.shapeNumberSelected == 6){
-                x = 590;
-                y = 304;
-            }else if (VariablesForPlayArea.shapeNumberSelected == 7){
-                x = 865;
-                y = 304;
-            }else if (VariablesForPlayArea.shapeNumberSelected == 8){
                 x = 40;
-                y = 101;
+                y = 405;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 6){
+                x = 252;
+                y = 405;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 7){
+                x = 405;
+                y = 405;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 8){
+                x = 700;
+                y = 405;
             }else if (VariablesForPlayArea.shapeNumberSelected == 9){
-                x = 315;
-                y = 101;
+                x = 920;
+                y = 405;
             }else if (VariablesForPlayArea.shapeNumberSelected == 10){
-                x = 590;
-                y = 101;
+                x = 40;
+                y = 252;
             }else if (VariablesForPlayArea.shapeNumberSelected == 11){
-                x = 865;
-                y = 101;
+                x = 252;
+                y = 252;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 12){
+                x = 405;
+                y = 252;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 13){
+                x = 700;
+                y = 252;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 14){
+                x = 920;
+                y = 252;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 15){
+                x = 40;
+                y = 100;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 16){
+                x = 252;
+                y = 100;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 17){
+                x = 405;
+                y = 100;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 18){
+                x = 700;
+                y = 100;
+            }else if (VariablesForPlayArea.shapeNumberSelected == 19){
+                x = 920;
+                y = 100;
             }
+
         }
 
 
@@ -194,7 +238,7 @@ public class ShapeChooser implements Screen {
             poly = new Polygon(ver);
             poly.setPosition(ShapePts[i][0], ShapePts[i][1]);
 
-            poly.setScale(0.5f,0.5f);
+            poly.setScale(0.3f,0.3f);
             poly.setRotation(180);
             poly.dirty();
             sred.polygon(poly.getTransformedVertices());
