@@ -106,18 +106,16 @@ public class ShapeChooser implements Screen {
         ShapePts[19][1] =30 + 100;
 
 
-
-
         //reinitinting the shapechooser selection
-        if (VariablesForPlayArea.shapeNumberSelected <= 11){
+        if (VariablesForPlayArea.shapeNumberSelected <= 19){
             if (VariablesForPlayArea.shapeNumberSelected == 0){
                 x = 40;
                 y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 1){
-                x = 252;
+                x = 260;
                 y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 2){
-                x = 405;
+                x = 480;
                 y = 557;
             }else if (VariablesForPlayArea.shapeNumberSelected == 3){
                 x = 700;
@@ -129,10 +127,10 @@ public class ShapeChooser implements Screen {
                 x = 40;
                 y = 405;
             }else if (VariablesForPlayArea.shapeNumberSelected == 6){
-                x = 252;
+                x = 260;
                 y = 405;
             }else if (VariablesForPlayArea.shapeNumberSelected == 7){
-                x = 405;
+                x = 480;
                 y = 405;
             }else if (VariablesForPlayArea.shapeNumberSelected == 8){
                 x = 700;
@@ -144,10 +142,10 @@ public class ShapeChooser implements Screen {
                 x = 40;
                 y = 252;
             }else if (VariablesForPlayArea.shapeNumberSelected == 11){
-                x = 252;
+                x = 260;
                 y = 252;
             }else if (VariablesForPlayArea.shapeNumberSelected == 12){
-                x = 405;
+                x = 480;
                 y = 252;
             }else if (VariablesForPlayArea.shapeNumberSelected == 13){
                 x = 700;
@@ -159,10 +157,10 @@ public class ShapeChooser implements Screen {
                 x = 40;
                 y = 100;
             }else if (VariablesForPlayArea.shapeNumberSelected == 16){
-                x = 252;
+                x = 260;
                 y = 100;
             }else if (VariablesForPlayArea.shapeNumberSelected == 17){
-                x = 405;
+                x = 480;
                 y = 100;
             }else if (VariablesForPlayArea.shapeNumberSelected == 18){
                 x = 700;
@@ -272,55 +270,55 @@ public class ShapeChooser implements Screen {
         if (Gdx.input.justTouched()) {
             if (Gdx.input.getX() > (40 * AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (260* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 100* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 252* AllVariables.inpM) {
-                    x=40;y=100;VariablesForPlayArea.shapeNumberSelected =8;
+                    x=40;y=100;VariablesForPlayArea.shapeNumberSelected =15;
                 } else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 252* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 405* AllVariables.inpM) {
-                    x=40;y=252;VariablesForPlayArea.shapeNumberSelected =4;
+                    x=40;y=252;VariablesForPlayArea.shapeNumberSelected =10;
                 } else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 405* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 557* AllVariables.inpM) {
-                    x=40;y=405;VariablesForPlayArea.shapeNumberSelected =0;
+                    x=40;y=405;VariablesForPlayArea.shapeNumberSelected =5;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 557* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM) {
                     x=40;y=557;VariablesForPlayArea.shapeNumberSelected =0;
                 }
             } else if (Gdx.input.getX() > (260* AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (480* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 100* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 252* AllVariables.inpM){
-                    x=260;y=100;VariablesForPlayArea.shapeNumberSelected =9;
+                    x=260;y=100;VariablesForPlayArea.shapeNumberSelected =16;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 252* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 405* AllVariables.inpM){
-                    x=260;y=252;VariablesForPlayArea.shapeNumberSelected =5;
+                    x=260;y=252;VariablesForPlayArea.shapeNumberSelected =11;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 405* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 557* AllVariables.inpM){
-                    x=260;y=405;VariablesForPlayArea.shapeNumberSelected =1;
+                    x=260;y=405;VariablesForPlayArea.shapeNumberSelected =6;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 557* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM){
                     x=260;y=557;VariablesForPlayArea.shapeNumberSelected =1;
                 }
             } else if (Gdx.input.getX() > (480* AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (700* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 100* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 252* AllVariables.inpM){
-                    x=480;y=100;VariablesForPlayArea.shapeNumberSelected =10;
+                    x=480;y=100;VariablesForPlayArea.shapeNumberSelected =17;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 252* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 405* AllVariables.inpM){
-                    x=480;y=252;VariablesForPlayArea.shapeNumberSelected =6;
+                    x=480;y=252;VariablesForPlayArea.shapeNumberSelected =12;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 405* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 557* AllVariables.inpM){
-                    x=480;y=405;VariablesForPlayArea.shapeNumberSelected =2;
+                    x=480;y=405;VariablesForPlayArea.shapeNumberSelected =7;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 557* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM){
                     x=480;y=557;VariablesForPlayArea.shapeNumberSelected =2;
                 }
             } else if (Gdx.input.getX() > (700* AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (920* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 100* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 252* AllVariables.inpM){
-                    x=700;y=100;VariablesForPlayArea.shapeNumberSelected =11;
+                    x=700;y=100;VariablesForPlayArea.shapeNumberSelected =18;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 252* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 405* AllVariables.inpM){
-                    x=700;y=252;VariablesForPlayArea.shapeNumberSelected =7;
+                    x=700;y=252;VariablesForPlayArea.shapeNumberSelected =13;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 405* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 557* AllVariables.inpM){
-                    x=700;y=405;VariablesForPlayArea.shapeNumberSelected =3;
+                    x=700;y=405;VariablesForPlayArea.shapeNumberSelected =8;
                 }
                 else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 557* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM){
                     x=700;y=557;VariablesForPlayArea.shapeNumberSelected =3;
                 }
             } else if (Gdx.input.getX() > (920* AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (1140* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 100* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 252* AllVariables.inpM){
-                    x=920;y=100;VariablesForPlayArea.shapeNumberSelected =11;
+                    x=920;y=100;VariablesForPlayArea.shapeNumberSelected =19;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 252* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 405* AllVariables.inpM){
-                    x=920;y=252;VariablesForPlayArea.shapeNumberSelected =7;
+                    x=920;y=252;VariablesForPlayArea.shapeNumberSelected =14;
                 }else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 405* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 557* AllVariables.inpM){
-                    x=920;y=405;VariablesForPlayArea.shapeNumberSelected =3;
+                    x=920;y=405;VariablesForPlayArea.shapeNumberSelected =9;
                 }
                 else if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 557* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM){
-                    x=920;y=557;VariablesForPlayArea.shapeNumberSelected =3;
+                    x=920;y=557;VariablesForPlayArea.shapeNumberSelected =4;
                 }
             }
 
