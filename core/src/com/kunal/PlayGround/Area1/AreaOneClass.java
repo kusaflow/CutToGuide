@@ -26,6 +26,7 @@ import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.BodyGenerator;
+import com.kunal.utils.TiledMapLoadingHelper;
 
 public class AreaOneClass implements Screen {
     MainGame game;
@@ -90,6 +91,11 @@ public class AreaOneClass implements Screen {
 
         poly = new Polygon();
 
+        //for testing
+        AllVariables.PresentAreaNumber = 101;
+        AllVariables.PresentLevelNumber = 101;
+        //for testing
+
         //safelt platforn for all objects
         BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1500),
                 new Vector2(2000, 50), 1,1, AllVariables.Bit_land,
@@ -97,9 +103,10 @@ public class AreaOneClass implements Screen {
 
 
         //tiled map
-        map = new TmxMapLoader().load("playArea/tiledMap/level" + VariablesForPlayArea.levelNumber +".tmx");
+        map = new TmxMapLoader().load("playArea/tiledMap/level2.tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
-        PlayAreaUtils.parseTiledObj(world,map.getLayers().get("land1").getObjects());
+        for (int parseObjI = 1; parseObjI <= TiledMapLoadingHelper.NumberOfObj(); parseObjI++)
+            PlayAreaUtils.parseTiledObj(world,map.getLayers().get("OL"+parseObjI).getObjects());
 
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
