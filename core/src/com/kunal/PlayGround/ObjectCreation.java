@@ -197,9 +197,10 @@ public class ObjectCreation {
         VariablesForPlayArea.CutOutBodies.clear();
         VariablesForPlayArea.CutoutShapeVertices.clear();
         //createshapestoPolygonCompatible();
+        createshapestoPolygonCompatibleimproved();
 
         //System.out.println();
-        if (VariablesForPlayArea.CutoutShapeVertices.size() <= 8){
+        if (AllShapesHaveLessThan8Vertices()) {
             for (int i = 0; i < VariablesForPlayArea.CutoutShapeVertices.size(); i++) {
                 ver = new float[(VariablesForPlayArea.CutoutShapeVertices.get(i).size() * 2)];
                 for (int j = 0, k = 0; j < VariablesForPlayArea.CutoutShapeVertices.get(i).size(); j++) {
@@ -216,28 +217,129 @@ public class ObjectCreation {
 
                 ver = null;
             }
-        }else {
-            for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
-                ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
-                for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
-                    ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][0] / (2) - VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0] / (2);
-                    k++;
-                    ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(0)][1] / (2) - VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1] / (2);
-                    k++;
-                }
-
-                Body b = BodyGenerator.ChainLand(world, false, "cutout", new Vector2(600, 80), ver, 1f, 0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
-                b.setTransform(VariablesForPlayArea.Sh_pos.get(i), (float) (VariablesForPlayArea.Angle_Of_Shape.get(i) * (Math.PI / 180)));
-                VariablesForPlayArea.CutOutBodies.add(b);
-
-                ver = null;
-            }
         }
+
 
     }
 
+
+
+
     //try to minimize the shapes corrdinates to min of 8 to becaues in box2d more than 8 vertices the body cannot be init as polygon
+    private void createshapestoPolygonCompatibleimproved(){
+
+        boolean horizontal, vertical, rightToLeft, leftToRight;
+
+        for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
+            vertPoly.add(VariablesForPlayArea.shapes.get(i).getFirst());
+            if ((VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1)) == 4
+                || (VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1)) == -4){
+                vertical = true;
+            }else{
+                vertical = false;
+            }
+
+            //horijontal
+            if ((VariablesForPlayArea.shapes.get(i).get(0) - VariablesForPlayArea.shapes.get(i).get(1)) == -1
+                    || (VariablesForPlayArea.shapes.get(i).get(0) - VariablesForPlayArea.shapes.get(i).get(1)) == 1){
+                if ((VariablesForPlayArea.shapes.get(i).get(0) == 3 && VariablesForPlayArea.shapes.get(i).get(1) == 4) ||
+                        (VariablesForPlayArea.shapes.get(i).get(1) == 3 && VariablesForPlayArea.shapes.get(i).get(0) == 4) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 7 && VariablesForPlayArea.shapes.get(i).get(1) == 8) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 8 && VariablesForPlayArea.shapes.get(i).get(1) == 7) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 11 && VariablesForPlayArea.shapes.get(i).get(1) == 12) ||
+                        (VariablesForPlayArea.shapes.get(i).get(0) == 12 && VariablesForPlayArea.shapes.get(i).get(1) == 11)
+                ){
+                    horizontal = false;
+                }else {
+                    horizontal = true;
+                }
+            }else{
+                horizontal = false;
+            }
+
+            //left to right
+            if ((VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1)) == 5 ||
+                    (VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1)) == -5){
+                leftToRight = true;
+            }else{
+                leftToRight = false;
+            }
+
+            //right to left
+            if ((VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1)) == 3 ||
+                    (VariablesForPlayArea.shapes.get(i).getFirst() - VariablesForPlayArea.shapes.get(i).get(1)) == -3){
+                rightToLeft = true;
+            }else{
+                rightToLeft = false;
+            }
+
+////////////////////////////////////////////////////////////////////////////////////
+            for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
+                //vertical
+                if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == 4 ||
+                        (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == -4){
+                    if (!vertical)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    vertical = true;
+                    horizontal = false;
+                    leftToRight = false;
+                    rightToLeft = false;
+                }
+                //left to right
+                else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j+1)) == 5 ||
+                        (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j+1)) == -5){
+                    if (!leftToRight)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    leftToRight = true;
+                    horizontal = false;
+                    vertical = false;
+                    rightToLeft = false;
+                }
+                //right to left
+                else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j+1)) == 3 ||
+                        (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j+1)) == -3){
+                    if (!rightToLeft)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    rightToLeft = true;
+                    horizontal = false;
+                    vertical = false;
+                    leftToRight = false;
+                }
+                //horizontal
+                else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == -1
+                    || (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == 1){
+
+
+
+                    if (!horizontal)
+                        vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+
+                        horizontal = true;
+                        vertical = false;
+                        leftToRight = false;
+                        rightToLeft = false;
+
+                } else {
+                    vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    vertical = false;
+                    horizontal = false;
+                    leftToRight = false;
+                    rightToLeft = false;
+                }
+
+            }
+            vertPoly.add(VariablesForPlayArea.shapes.get(i).getLast());
+            VariablesForPlayArea.CutoutShapeVertices.add(vertPoly);
+
+            vertPoly = new LinkedList<Byte>();
+
+        }
+    }
+
+
     private void createshapestoPolygonCompatible(){
+
+        boolean horizontal, vertical, rightToLeft, leftToRight;
 
         for (int i =0; i<VariablesForPlayArea.shapes.size(); i++){
             vertPoly.add(VariablesForPlayArea.shapes.get(i).getFirst());
@@ -279,7 +381,7 @@ public class ObjectCreation {
                 ismod3 = false;
             }
 
-
+////////////////////////////////////////////////////////////////////////////////////
             for (int j=1; j<VariablesForPlayArea.shapes.get(i).size()-1; j++){
                 //ismod4
                 if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1))%4 == 0){
@@ -311,15 +413,15 @@ public class ObjectCreation {
 
                 //horijontal
                 else if ((VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == -1
-                    || (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == 1){
+                        || (VariablesForPlayArea.shapes.get(i).get(j) - VariablesForPlayArea.shapes.get(i).get(j + 1)) == 1){
 
                     if (!isHorizontal)
                         vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
 
-                        isHorizontal = true;
-                        ismod4 = false;
-                        ismod5 = false;
-                        ismod3 = false;
+                    isHorizontal = true;
+                    ismod4 = false;
+                    ismod5 = false;
+                    ismod3 = false;
 
                 } else {
                     vertPoly.add(VariablesForPlayArea.shapes.get(i).get(j));
@@ -336,5 +438,8 @@ public class ObjectCreation {
         }
     }
 
+    private boolean AllShapesHaveLessThan8Vertices(){
 
+        return true;
+    }
 }

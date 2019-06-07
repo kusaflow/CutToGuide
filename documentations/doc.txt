@@ -1,0 +1,4 @@
+doc for making shapes to less than or equl to 8 vertices
+    >mod4
+        >add first vert to the list
+        >

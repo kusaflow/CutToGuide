@@ -96,36 +96,6 @@ public class AreaOneClass implements Screen {
                 (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
 
 
-        ver = new float[24];
-        ver[0] = 0;
-        ver[1] = 0;
-        ver[2] = -130;
-        ver[3] = 0;
-        ver[4] = -260;
-        ver[5] = 0;
-        ver[6] = -390;
-        ver[7] = 0;
-        ver[8] = -390;
-        ver[9] = 97;
-        ver[10] = -390;
-        ver[11] = 194;
-        ver[12] = -390;
-        ver[13] = 290;
-        ver[14] = -260;
-        ver[15] = 290;
-        ver[16] = -130;
-        ver[17] = 290;
-        ver[18] = 0;
-        ver[19] = 290;
-        ver[20] = 0;
-        ver[21] = 194;
-        ver[22] = 0;
-        ver[23] = 97;
-
-        //temp
-        BodyGenerator.ChainLand(world, false, "cutout", new Vector2(900, 650), ver, 1f, 0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
-
-
         //tiled map
         map = new TmxMapLoader().load("playArea/tiledMap/level" + VariablesForPlayArea.levelNumber +".tmx");
         tmr = new OrthogonalTiledMapRenderer(map);
