@@ -196,7 +196,7 @@ public class ObjectCreation {
     public void CreateCutouts(World world){
         VariablesForPlayArea.CutOutBodies.clear();
         VariablesForPlayArea.CutoutShapeVertices.clear();
-        /*createshapestoPolygonCompatible();
+        //createshapestoPolygonCompatible();
 
         //System.out.println();
         if (VariablesForPlayArea.CutoutShapeVertices.size() <= 8){
@@ -216,7 +216,7 @@ public class ObjectCreation {
 
                 ver = null;
             }
-        }else {*/
+        }else {
             for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
                 ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
                 for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
@@ -226,14 +226,13 @@ public class ObjectCreation {
                     k++;
                 }
 
-                Body b = BodyGenerator.ChainLand(world, false, "cutout", new Vector2(600, 80), ver, 1f, 0.2f, 0.5f, AllVariables.Bit_Tool, AllVariables.Bit_Tool);//(short) (AllVariables.Bit_Bicycle));//| AllVariables.Bit_land | AllVariables.Bit_Tool));
+                Body b = BodyGenerator.ChainLand(world, false, "cutout", new Vector2(600, 80), ver, 1f, 0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
                 b.setTransform(VariablesForPlayArea.Sh_pos.get(i), (float) (VariablesForPlayArea.Angle_Of_Shape.get(i) * (Math.PI / 180)));
                 VariablesForPlayArea.CutOutBodies.add(b);
 
-
                 ver = null;
             }
-        //}
+        }
 
     }
 

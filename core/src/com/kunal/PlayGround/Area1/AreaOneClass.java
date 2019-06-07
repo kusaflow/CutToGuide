@@ -91,10 +91,39 @@ public class AreaOneClass implements Screen {
         poly = new Polygon();
 
         //safelt platforn for all objects
-        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1200),
-                new Vector2(200, 50), 1,1, AllVariables.Bit_land,
+        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1500),
+                new Vector2(2000, 50), 1,1, AllVariables.Bit_land,
                 (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
 
+
+        ver = new float[24];
+        ver[0] = 0;
+        ver[1] = 0;
+        ver[2] = -130;
+        ver[3] = 0;
+        ver[4] = -260;
+        ver[5] = 0;
+        ver[6] = -390;
+        ver[7] = 0;
+        ver[8] = -390;
+        ver[9] = 97;
+        ver[10] = -390;
+        ver[11] = 194;
+        ver[12] = -390;
+        ver[13] = 290;
+        ver[14] = -260;
+        ver[15] = 290;
+        ver[16] = -130;
+        ver[17] = 290;
+        ver[18] = 0;
+        ver[19] = 290;
+        ver[20] = 0;
+        ver[21] = 194;
+        ver[22] = 0;
+        ver[23] = 97;
+
+        //temp
+        BodyGenerator.ChainLand(world, false, "cutout", new Vector2(900, 650), ver, 1f, 0.2f, 0.5f, AllVariables.Bit_Tool, (short) (AllVariables.Bit_Bicycle | AllVariables.Bit_land | AllVariables.Bit_Tool));
 
 
         //tiled map
@@ -284,7 +313,7 @@ public class AreaOneClass implements Screen {
                 world.setGravity(new Vector2(0,-10));
                 Brake.setAlpha(0.4f);
                 PlayAreaUtils.MoveShapesToRealWorld();
-                VariablesForPlayArea.shapeNumberSelected = 15;
+                VariablesForPlayArea.shapeNumberSelected = 21;
                 CamfollowCycle = true;
                 startAnimToMoveCycle = false;
                 finalvalofcamcontroller = true;
