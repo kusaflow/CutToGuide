@@ -39,9 +39,10 @@ public class temp implements Screen {
             //game.setScreen(new CuttingAreaManager(game));
             //game.setScreen(new MainLoadingScreen(game));
 
-            game.setScreen(new AreaOneClass(game));
+            //game.setScreen(new AreaOneClass(game));
 
-            //game.setScreen(new AreaSelection(game));
+            game.setScreen(new AreaSelection(game));
+
             //game.setScreen(new Shop(game,this));
 
             //this is compulsory before setting tut area

@@ -40,6 +40,8 @@ public class VariablesForPlayArea {
 
     public static byte shapeNumberSelected = 15 ;
 
+    public static String LevelMapToBeLoaded = "";
+
     //tut state
     public static short tutstep = 0;
 

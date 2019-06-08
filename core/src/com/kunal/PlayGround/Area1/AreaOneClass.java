@@ -92,8 +92,8 @@ public class AreaOneClass implements Screen {
         poly = new Polygon();
 
         //for testing
-        AllVariables.PresentAreaNumber = 101;
-        AllVariables.PresentLevelNumber = 101;
+        //AllVariables.PresentAreaNumber = 101;
+        //AllVariables.PresentLevelNumber = 101;
         //for testing
 
         //safelt platforn for all objects
@@ -103,10 +103,13 @@ public class AreaOneClass implements Screen {
 
 
         //tiled map
-        map = new TmxMapLoader().load("playArea/tiledMap/level2.tmx");
+        map = new TmxMapLoader().load(VariablesForPlayArea.LevelMapToBeLoaded);
         tmr = new OrthogonalTiledMapRenderer(map);
         for (int parseObjI = 1; parseObjI <= TiledMapLoadingHelper.NumberOfObj(); parseObjI++)
             PlayAreaUtils.parseTiledObj(world,map.getLayers().get("OL"+parseObjI).getObjects());
+
+
+        System.out.println(AllVariables.PresentAreaNumber + "\t" + AllVariables.PresentLevelNumber);
 
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
@@ -354,11 +357,12 @@ public class AreaOneClass implements Screen {
 
         if (!finalvalofcamcontroller) {
             //x is init point and y is final point
-            if (VariablesForPlayArea.camposX < VariablesForPlayArea.endPoint.x) {
+            /*if (VariablesForPlayArea.camposX < VariablesForPlayArea.endPoint.x) {
                 VariablesForPlayArea.camposX = VariablesForPlayArea.endPoint.x;
             } else if (VariablesForPlayArea.camposX > VariablesForPlayArea.endPoint.y) {
                 VariablesForPlayArea.camposX = VariablesForPlayArea.endPoint.y;
             }
+            */
         }
 
 
