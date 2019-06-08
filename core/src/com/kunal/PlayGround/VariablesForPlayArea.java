@@ -24,7 +24,7 @@ public class VariablesForPlayArea {
 
     //area number
     // 0 is for tut
-    public static short areaNumber =0;
+    //public static short areaNumber =0;
 
     //position of camera x
     public static float camposX = 1200f;

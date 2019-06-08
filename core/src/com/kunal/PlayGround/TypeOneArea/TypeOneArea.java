@@ -1,4 +1,4 @@
-package com.kunal.PlayGround.Area1;
+package com.kunal.PlayGround.TypeOneArea;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -20,15 +20,16 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
-import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
+import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
+import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.TiledMapLoadingHelper;
 
-public class AreaOneClass implements Screen {
+public class TypeOneArea implements Screen {
+
     MainGame game;
 
     private World world;
@@ -68,7 +69,7 @@ public class AreaOneClass implements Screen {
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
 
 
-    public AreaOneClass(MainGame game) {
+    public TypeOneArea(MainGame game) {
         this.game = game;
 
         cam = new OrthographicCamera();
@@ -164,7 +165,7 @@ public class AreaOneClass implements Screen {
 
         //pos remapping
         //for (int i =0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
-            //VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
+        //VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
         //}
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
@@ -207,10 +208,10 @@ public class AreaOneClass implements Screen {
 
             poly = new Polygon(ver);
             //poly.setPosition(AllVariables.BackWheel.getPosition().x*100
-              //    , AllVariables.BackWheel.getPosition().y*100);
+            //    , AllVariables.BackWheel.getPosition().y*100);
             poly.setPosition(VariablesForPlayArea.CutOutBodies.get(i).getPosition().x * 100,
                     VariablesForPlayArea.CutOutBodies.get(i).getPosition().y * 100);
-                    //it -am ::200);
+            //it -am ::200);
 
             poly.setRotation(VariablesForPlayArea.Angle_Of_Shape.get(i));
             poly.dirty();
@@ -240,10 +241,8 @@ public class AreaOneClass implements Screen {
             per45degRot.draw(AllVariables.batch);
         }
         AllVariables.batch.end();
-
-
-
     }
+
 
     private void update(float dt){
         //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getFixtureList().get(0).getFilterData().maskBits);
@@ -261,7 +260,7 @@ public class AreaOneClass implements Screen {
         sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM)-25,
                 (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)-25);
         //sred.line((AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)-25,
-          //      (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)+40);
+        //      (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)+40);
 
 
         sred.end();
@@ -366,12 +365,12 @@ public class AreaOneClass implements Screen {
 
         if (!finalvalofcamcontroller) {
             //x is init point and y is final point
-            /*if (VariablesForPlayArea.camposX < VariablesForPlayArea.endPoint.x) {
+            if (VariablesForPlayArea.camposX < VariablesForPlayArea.endPoint.x) {
                 VariablesForPlayArea.camposX = VariablesForPlayArea.endPoint.x;
             } else if (VariablesForPlayArea.camposX > VariablesForPlayArea.endPoint.y) {
                 VariablesForPlayArea.camposX = VariablesForPlayArea.endPoint.y;
             }
-            */
+
         }
 
 
@@ -736,6 +735,7 @@ public class AreaOneClass implements Screen {
 
     }
 
+
     @Override
     public void pause() {
 
@@ -755,6 +755,17 @@ public class AreaOneClass implements Screen {
     public void dispose() {
         world.dispose();
         b2dr.dispose();
+        Brake.getTexture().dispose();
+        start.getTexture().dispose();
+        chooseBody.getTexture().dispose();
+        HardMoveShapes.getTexture().dispose();
+        CamScroller.getTexture().dispose();
+        DropAnyShapeButton.getTexture().dispose();
+        ShapeRotACW.getTexture().dispose();
+        ShapeRotCW.getTexture().dispose();
+        per45degRot.getTexture().dispose();
         sred.dispose();
+        map.dispose();
+        tmr.dispose();
     }
 }

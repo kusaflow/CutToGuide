@@ -171,8 +171,6 @@ public class TutArea implements Screen {
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
 
-        VariablesForPlayArea.areaNumber = 0;
-
         fontTut = new BitmapFont();
 
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));

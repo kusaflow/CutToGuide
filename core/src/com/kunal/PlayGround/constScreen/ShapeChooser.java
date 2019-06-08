@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.Tutorial.TutArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -331,10 +332,10 @@ public class ShapeChooser implements Screen {
 
                 //okTick
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM &&  (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM){
-                    if (VariablesForPlayArea.areaNumber == 0)
-                        game.setScreen(new TutArea(game));
-                    else if (VariablesForPlayArea.areaNumber == 1)
-                        game.setScreen(new AreaOneClass(game));
+                    if (AllVariables.PresentAreaNumber == 1){
+                        if (AllVariables.PresentLevelNumber <=5)
+                            game.setScreen(new TypeOneArea(game));
+                    }
                     //System.out.println("down wala");
                 }
 
