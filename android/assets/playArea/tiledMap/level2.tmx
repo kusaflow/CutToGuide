@@ -1,36 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-up" width="200" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="17" nextobjectid="18">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-up" width="200" height="30" tilewidth="32" tileheight="32" infinite="0" nextlayerid="30" nextobjectid="31">
  <tileset firstgid="1" source="tilesheet_complete.tsx"/>
  <layer id="1" name="Tile Layer 1" width="200" height="30">
   <data encoding="base64" compression="zlib">
    eJztmMtRwzAQhp0HENICtJDwphcYKIfnDS7QBs8bXKCNZEIFUAKriXbQCCexHUu7if5v5htHOdhrWauVlGUAAAAAAAAAAKQ5IVfIrnQgACjjgrwkt8ht4VgA0ISpG0/kMzmyAgD+6gbnxhF5LBkQAErIqxtn5LlcSACowK8bvgCkSl7d8D0ViEsrLbKdjc/2Vu2V2x3BuED9zKob7FWGHGH4TG+H3M1pLzs3NEHctqSjqI87epf7nPeZVTceyEf7+yVLL0cm9VuP7JNNK/dT0/4vxTfF+hNh3L7RM96XKD8+6F0+vfdx64abB64Dcui0OUeug0esg7x+M3B+sNxP3JZigxZ5m+167+mvJdcSabt1w8+DPL8cXwvcvwia+qNMm8+8Tb1oeNe+gvjc9rz13l877iXSnrXf8HXzQ0P8km0+8za50POufQXxue0q9X5AiT5sjn834D9HVuk4UpBrUaj7V1kTr9OiqmvXlRIxV5H3CNJxSI6H0N9F4rtzLQoZr8kRf01c5NoJEHMoeY8Q87uGyMl5+jb0dylzfw1zaJl4TY6YtZe7BsvbW+yTB+ShbYeMP9acH2oOmpaTmsaJhEX7vM7+idXXsZ5TZHxJO++crLHWxv7OsfonVl+Xec6yrPtTVHPuxtQfw3XOG4tQAyCcpj+GNe2zNNR4CKuq6UykrFr3fpgToAa17v3qvBdyDcLJYo+dtqnPjzgfhNNMfX7E+SCEcFH9BaB32TA=
   </data>
  </layer>
- <objectgroup id="12" name="OL1">
-  <object id="11" x="-2.66667" y="961.333">
-   <polyline points="0,0 1.33333,-517.333 1986.67,-513.333 2306.67,-833.333 2361.33,-836 2370.67,-824 2370.67,-65.3333"/>
-  </object>
-  <object id="12" x="-2.66667" y="961.333">
-   <polyline points="0,0 1.33333,-517.333 1986.67,-513.333 2306.67,-833.333 2361.33,-836 2370.67,-824 2370.67,-65.3333"/>
-  </object>
-  <object id="13" x="-2.66667" y="961.333">
-   <polyline points="0,0 1.33333,-517.333 1986.67,-513.333 2306.67,-833.333 2361.33,-836 2370.67,-824 2370.67,-65.3333"/>
+ <objectgroup id="20" name="OL1">
+  <object id="19" x="0" y="960">
+   <polyline points="0,0 0,-512 1984,-512 1984,0"/>
   </object>
  </objectgroup>
- <objectgroup id="13" name="OL2">
-  <object id="14" x="2368" y="818.667">
-   <polyline points="0,0 0,-498.667 128,-370.667 382.667,-369.333 384,45.3333"/>
+ <objectgroup id="21" name="OL2">
+  <object id="21" x="1982.67" y="937.333">
+   <polyline points="0,0 1.33333,-489.333 321.333,-809.333 385.333,-809.333 385.333,-9.33333"/>
   </object>
  </objectgroup>
- <objectgroup id="14" name="OL3">
-  <object id="15" x="2749.33" y="629.333">
-   <polyline points="0,0 2.66667,-149.333 290.667,-149.333 290.667,-181.333 1762.67,-181.333 1762.67,170.667"/>
+ <objectgroup id="22" name="OL3">
+  <object id="22" x="2368" y="896">
+   <polyline points="0,0 0,-576 128,-448 128,0"/>
   </object>
  </objectgroup>
- <objectgroup id="15" name="OL4">
-  <object id="16" x="4512" y="736">
-   <polyline points="0,0 -1.33333,-401.333 4,-416 244,-417.333 253.333,-406.667 256,32"/>
+ <objectgroup id="23" name="OL4">
+  <object id="23" x="2496" y="928">
+   <polyline points="0,0 0,-480 256,-480 256,0"/>
   </object>
  </objectgroup>
- <objectgroup id="16" name="OL5"/>
+ <objectgroup id="24" name="OL5">
+  <object id="24" x="2752" y="896">
+   <polyline points="0,0 0,-416 288,-416 288,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="25" name="OL6">
+  <object id="26" x="3040" y="928">
+   <polyline points="0,0 0,-480 1472,-480 1472,-32"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="26" name="OL7">
+  <object id="27" x="4512" y="864">
+   <polyline points="0,0 0,-512 6.66667,-542.667 245.333,-545.333 257.333,-532 256,0"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="27" name="OL8">
+  <object id="28" x="4768" y="832">
+   <polyline points="0,0 0,-384 1108,-386.667 1122.67,-382.667 1120,32"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="28" name="OL9">
+  <object id="29" x="5888" y="832">
+   <polyline points="0,0 0,-384 96,-288 96,32"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="29" name="OL10">
+  <object id="30" x="5984" y="832">
+   <polyline points="0,0 0,-288 416,-288 416,32"/>
+  </object>
+ </objectgroup>
 </map>
