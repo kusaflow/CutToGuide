@@ -37,8 +37,8 @@ public class TypeOneArea implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot;
-    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot, pause, fadedBG;
+    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false, paused = false;
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
@@ -160,6 +160,14 @@ public class TypeOneArea implements Screen {
         ShapeRotCW.setSize(50*camscl, 50*camscl);
         ShapeRotCW.setAlpha(0.8f);
 
+        pause = new Sprite(new Texture(Gdx.files.internal("playArea/pauseTex.png")));
+        pause.setPosition(50,240);
+        pause.setSize(100*camscl, 100*camscl);
+        pause.setAlpha(0.8f);
+
+        fadedBG = new Sprite(new Texture(Gdx.files.internal("playArea/fadedBG.png")));
+        fadedBG.setPosition(0,0);
+        fadedBG.setSize(Gdx.graphics.getWidth()*2f, Gdx.graphics.getHeight()*2);
 
 
 
@@ -235,11 +243,14 @@ public class TypeOneArea implements Screen {
         HardMoveShapes.draw(AllVariables.batch);
         CamScroller.draw(AllVariables.batch);
         DropAnyShapeButton.draw(AllVariables.batch);
+        pause.draw(AllVariables.batch);
         if(isAnyShapeSelected){
             ShapeRotACW.draw(AllVariables.batch);
             ShapeRotCW.draw(AllVariables.batch);
             per45degRot.draw(AllVariables.batch);
         }
+        if (paused)
+            fadedBG.draw(AllVariables.batch);
         AllVariables.batch.end();
     }
 
@@ -297,6 +308,7 @@ public class TypeOneArea implements Screen {
                 toDrawDropAnyShapeButton = false;
                 CamScroller.setAlpha(0);
                 startBool = true;
+                pause.setAlpha(0);
 
                 world.setGravity(new Vector2(0,-10));
                 Brake.setAlpha(0.4f);
@@ -325,6 +337,9 @@ public class TypeOneArea implements Screen {
         HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
         CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), CamScrollerY+(cam.position.y - AllVariables.HEIGHT/2));
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
+        pause.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
+        fadedBG.setPosition(-280+(cam.position.x - AllVariables.WIDTH/2), -200+(cam.position.y -AllVariables.HEIGHT/2));
+
 
         if (toDrawDropAnyShapeButton){
             ShapeRotACW.setPosition(1420+(cam.position.x - AllVariables.WIDTH/2), 370+(cam.position.y - AllVariables.HEIGHT/2));
@@ -452,7 +467,7 @@ public class TypeOneArea implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -464,80 +479,89 @@ public class TypeOneArea implements Screen {
                             }
                         }
 
-                        if(!startBool){
-
-                            //hardmove
-                            if(screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 480* AllVariables.inpM && screenY < 595* AllVariables.inpM){
-                                hardMove = !hardMove;
-                                if (hardMove)
-                                    HardMoveShapes.setAlpha(1);
-                                else
-                                    HardMoveShapes.setAlpha(0.4f);
-                                hardmoveFaultResolver = true;
-                                return false;
-                            }
-
-                            //camScroller
-                            if (screenX > (1125 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (1190 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 650* AllVariables.inpM && screenY < 720* AllVariables.inpM){
-                                //System.out.println("omPLan");
-                                isCamScrollerTouched = true;
-                                CamScroller.setAlpha(0.7f);
-                                originX = screenX;
-                                originY = screenY;
-                                dragged_touchX = screenX;
-
-                            }
-
-                            //Drop any shape resolver
-                            if (screenX > (25 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 415* AllVariables.inpM && screenY < 470* AllVariables.inpM){
-                                VariablesForPlayArea.shapeNumberSelected = 15;
-                            }
-
-                            //rotation of shapes
-                            if (isAnyShapeSelected) {
-                                //for lock Wise
-                                if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 535 * AllVariables.inpM && screenY < 585 * AllVariables.inpM) {
-
-                                    ACWTouched = true;
+                        if(!startBool) {
+                            if (!paused) {
+                                //hardmove
+                                if (screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 480 * AllVariables.inpM && screenY < 595 * AllVariables.inpM) {
+                                    hardMove = !hardMove;
+                                    if (hardMove)
+                                        HardMoveShapes.setAlpha(1);
+                                    else
+                                        HardMoveShapes.setAlpha(0.4f);
+                                    hardmoveFaultResolver = true;
+                                    return false;
                                 }
 
-                                //for anti Clock Wise
-                                else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM) {
+                                //camScroller
+                                if (screenX > (1125 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 650 * AllVariables.inpM && screenY < 720 * AllVariables.inpM) {
+                                    //System.out.println("omPLan");
+                                    isCamScrollerTouched = true;
+                                    CamScroller.setAlpha(0.7f);
+                                    originX = screenX;
+                                    originY = screenY;
+                                    dragged_touchX = screenX;
 
-                                    CWtouched = true;
                                 }
 
-                                //for 45 deg rotation
-                                else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
+                                //Drop any shape resolver
+                                if (screenX > (25 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 415 * AllVariables.inpM && screenY < 470 * AllVariables.inpM) {
+                                    VariablesForPlayArea.shapeNumberSelected = 15;
+                                }
 
-                                    tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
-                                    if(tempRotForShape % 45 == 0){
-                                        tempRotForShape+=45;
-                                        if(tempRotForShape>=360)
-                                            tempRotForShape = (short) (tempRotForShape - 360);
-                                        VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
-                                    }else{
-                                        tempRotForShape =(short)((45 * (tempRotForShape / 45)));
-                                        if(tempRotForShape>=360)
-                                            tempRotForShape = (short) (tempRotForShape - 360);
-                                        VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+                                //rotation of shapes
+                                if (isAnyShapeSelected) {
+                                    //for lock Wise
+                                    if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenY > 535 * AllVariables.inpM && screenY < 585 * AllVariables.inpM) {
+
+                                        ACWTouched = true;
                                     }
 
+                                    //for anti Clock Wise
+                                    else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM) {
+
+                                        CWtouched = true;
+                                    }
+
+                                    //for 45 deg rotation
+                                    else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
+
+                                        tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
+                                        if (tempRotForShape % 45 == 0) {
+                                            tempRotForShape += 45;
+                                            if (tempRotForShape >= 360)
+                                                tempRotForShape = (short) (tempRotForShape - 360);
+                                            VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+                                        } else {
+                                            tempRotForShape = (short) ((45 * (tempRotForShape / 45)));
+                                            if (tempRotForShape >= 360)
+                                                tempRotForShape = (short) (tempRotForShape - 360);
+                                            VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
+                                        }
+
+                                    }
                                 }
                             }
 
+                            //pause
+                            if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM) {
+                                paused = true;
+                                pause.setAlpha(0);
+
+                            }
                         }
 
 
@@ -566,23 +590,29 @@ public class TypeOneArea implements Screen {
                                 && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 360 * AllVariables.inpM && screenY < 605 * AllVariables.inpM){
 
+                        } else if (screenX > (20 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (150 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 580 * AllVariables.inpM && screenY < 920 * AllVariables.inpM){
+
                         }else if (isCamScrollerTouched || ACWTouched || CWtouched){
 
                         } else {
-                            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-                                if (hardMove) {
-                                    VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
-                                            ((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM)- VariablesForPlayArea.BigSqurePoints[0][0]/(2)/ AllVariables.PPM,
-                                            (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM)+ VariablesForPlayArea.BigSqurePoints[12][1]/(2)/ AllVariables.PPM,
-                                            (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected)*(Math.PI/180)));
-                                    return false;
+                            if (!paused) {
+                                if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+                                    if (hardMove) {
+                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
+                                                ((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM) - VariablesForPlayArea.BigSqurePoints[0][0] / (2) / AllVariables.PPM,
+                                                (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM) + VariablesForPlayArea.BigSqurePoints[12][1] / (2) / AllVariables.PPM,
+                                                (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
+                                        return false;
 
-                                } else {
-                                    originX = screenX;
-                                    originY = screenY;
-                                    shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
-                                    shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
-                                    return false;
+                                    } else {
+                                        originX = screenX;
+                                        originY = screenY;
+                                        shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
+                                        shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
+                                        return false;
+                                    }
                                 }
                             }
                         }
@@ -619,7 +649,7 @@ public class TypeOneArea implements Screen {
                             CWtouched = false;
 
 
-                        if (!startBool){
+                        if (!startBool && !paused){
                             //for start
                             if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
@@ -653,14 +683,16 @@ public class TypeOneArea implements Screen {
                             dragged_touchX = screenX;
 
                         }else {
-                            if (!hardmoveFaultResolver) {
-                                if (!hardMove) {
-                                    if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-                                        if (!hardMove) {
-                                            if(!ACWTouched && !CWtouched) {
-                                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                                        ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100,
-                                                        (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
+                            if (!paused) {
+                                if (!hardmoveFaultResolver) {
+                                    if (!hardMove) {
+                                        if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+                                            if (!hardMove) {
+                                                if (!ACWTouched && !CWtouched) {
+                                                    VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
+                                                            ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100,
+                                                            (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
+                                                }
                                             }
                                         }
                                     }
@@ -690,6 +722,10 @@ public class TypeOneArea implements Screen {
                         if (keycode == Input.Keys.S){
                             for (int i=0; i< VariablesForPlayArea.CutoutShapeVertices.size();i++)
                                 System.out.println(VariablesForPlayArea.CutoutShapeVertices.get(i));
+                        }
+
+                        if (keycode == Input.Keys.B){
+                            paused =false;
                         }
 
 
