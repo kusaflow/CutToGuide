@@ -8,8 +8,11 @@ import com.badlogic.gdx.physics.box2d.Body;
 
 public class AllVariables {
 
-    public static final int WIDTH = 1280;
+    //public static final int WIDTH = 1280;
+    public static final int WIDTH = 1380;
     public static final int HEIGHT = 720;
+
+    public static final byte layout_Shift = 100;
 
     public static SpriteBatch batch;
 

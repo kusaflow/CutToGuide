@@ -107,7 +107,7 @@ public class TypeOneArea implements Screen {
         map = new TmxMapLoader().load(VariablesForPlayArea.LevelMapToBeLoaded);
         tmr = new OrthogonalTiledMapRenderer(map);
         for (int parseObjI = 1; parseObjI <= TiledMapLoadingHelper.NumberOfObj(); parseObjI++)
-            PlayAreaUtils.parseTiledObj(world,map.getLayers().get("OL"+parseObjI).getObjects());
+            PlayAreaUtils.parseTiledObj(world,map.getLayers().get("Object Layer "+parseObjI).getObjects());
 
 
         System.out.println(AllVariables.PresentAreaNumber + "\t" + AllVariables.PresentLevelNumber);

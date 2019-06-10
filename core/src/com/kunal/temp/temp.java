@@ -4,11 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.math.Vector2;
+import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.Shop.Shop;
+import com.kunal.utils.ReDirectToTheLevel;
 
 public class temp implements Screen {
 
@@ -41,7 +44,10 @@ public class temp implements Screen {
 
             //game.setScreen(new AreaOneClass(game));
 
-            game.setScreen(new AreaSelection(game));
+            //game.setScreen(new AreaSelection(game));
+            AllVariables.PresentAreaNumber = 1;
+            AllVariables.PresentLevelNumber = 1;
+            ReDirectToTheLevel.Direct(game);
 
             //game.setScreen(new Shop(game,this));
 
