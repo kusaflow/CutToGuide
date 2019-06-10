@@ -48,6 +48,7 @@ public class MainGame extends Game {
 					"$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
+
 		}
 
 		this.setScreen(new temp(this));

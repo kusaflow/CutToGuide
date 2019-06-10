@@ -1,8 +1,10 @@
 package com.kunal;
 
 import android.content.pm.ActivityInfo;
+import android.graphics.Point;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Display;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -33,6 +35,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 	protected void onCreate (Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
+
         //initialize(new MainGame(this), config);
 
         //ad banner ---------------------------------------------------------------------------------
