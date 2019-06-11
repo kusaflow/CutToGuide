@@ -19,6 +19,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
+import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
@@ -169,13 +170,13 @@ public class TypeOneArea implements Screen {
         fadedBG.setPosition(0,0);
         fadedBG.setSize(Gdx.graphics.getWidth()*2f, Gdx.graphics.getHeight()*2);
 
-        resume = new Sprite(new Texture(Gdx.files.internal("playArea/pausedBG.png")));
+        resume = new Sprite(new Texture(Gdx.files.internal("playArea/resume.png")));
         resume.setPosition(0,0);
-        resume.setSize(200*camscl, 100*camscl);
+        resume.setSize(250*camscl, 100*camscl);
 
-        exit = new Sprite(new Texture(Gdx.files.internal("playArea/fadedBG.png")));
+        exit = new Sprite(new Texture(Gdx.files.internal("playArea/exit.png")));
         exit.setPosition(0,0);
-        exit.setSize(Gdx.graphics.getWidth()*2f, Gdx.graphics.getHeight()*2);
+        exit.setSize(250*camscl, 100*camscl);
 
 
 
@@ -263,7 +264,7 @@ public class TypeOneArea implements Screen {
         if (paused) {
             fadedBG.draw(AllVariables.batch);
             resume.draw(AllVariables.batch);
-
+            exit.draw(AllVariables.batch);
         }
         AllVariables.batch.end();
     }
@@ -353,7 +354,9 @@ public class TypeOneArea implements Screen {
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
         pause.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         fadedBG.setPosition(-280+(cam.position.x - AllVariables.WIDTH/2), -200+(cam.position.y -AllVariables.HEIGHT/2));
-        resume.setPosition(0+(cam.position.x - AllVariables.WIDTH/2), 0+(cam.position.y -AllVariables.HEIGHT/2));
+        resume.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
+        exit.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
+
 
 
 
@@ -568,6 +571,25 @@ public class TypeOneArea implements Screen {
                                         }
 
                                     }
+                                }
+                            }
+
+                            if (paused){
+                                //resume
+                                if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 490 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
+                                    paused = false;
+                                    pause.setAlpha(1);
+
+                                }
+
+                                //exit
+                                if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 345 * AllVariables.inpM && screenY < 445 * AllVariables.inpM) {
+                                    game.setScreen(new LevelNumberSelection(game));
+
                                 }
                             }
 
