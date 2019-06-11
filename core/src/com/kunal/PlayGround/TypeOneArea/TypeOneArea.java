@@ -37,7 +37,7 @@ public class TypeOneArea implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot, pause, fadedBG;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot, pause, fadedBG, resume, exit;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false, paused = false;
 
     //CamScroller
@@ -169,6 +169,17 @@ public class TypeOneArea implements Screen {
         fadedBG.setPosition(0,0);
         fadedBG.setSize(Gdx.graphics.getWidth()*2f, Gdx.graphics.getHeight()*2);
 
+        resume = new Sprite(new Texture(Gdx.files.internal("playArea/pausedBG.png")));
+        resume.setPosition(0,0);
+        resume.setSize(200*camscl, 100*camscl);
+
+        exit = new Sprite(new Texture(Gdx.files.internal("playArea/fadedBG.png")));
+        exit.setPosition(0,0);
+        exit.setSize(Gdx.graphics.getWidth()*2f, Gdx.graphics.getHeight()*2);
+
+
+
+
 
 
         //pos remapping
@@ -249,8 +260,11 @@ public class TypeOneArea implements Screen {
             ShapeRotCW.draw(AllVariables.batch);
             per45degRot.draw(AllVariables.batch);
         }
-        if (paused)
+        if (paused) {
             fadedBG.draw(AllVariables.batch);
+            resume.draw(AllVariables.batch);
+
+        }
         AllVariables.batch.end();
     }
 
@@ -339,6 +353,9 @@ public class TypeOneArea implements Screen {
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
         pause.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         fadedBG.setPosition(-280+(cam.position.x - AllVariables.WIDTH/2), -200+(cam.position.y -AllVariables.HEIGHT/2));
+        resume.setPosition(0+(cam.position.x - AllVariables.WIDTH/2), 0+(cam.position.y -AllVariables.HEIGHT/2));
+
+
 
 
         if (toDrawDropAnyShapeButton){
