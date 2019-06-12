@@ -481,13 +481,14 @@ public class TypeOneArea implements Screen {
     }
 
     private void input(float dt){
+        System.out.println(cam.position.x);
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
