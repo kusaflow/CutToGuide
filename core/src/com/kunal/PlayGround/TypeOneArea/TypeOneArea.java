@@ -481,7 +481,7 @@ public class TypeOneArea implements Screen {
     }
 
     private void input(float dt){
-        System.out.println(cam.position.x);
+        //System.out.println(cam.position.x);
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
                     @Override
@@ -765,7 +765,7 @@ public class TypeOneArea implements Screen {
                         }
 
                         if (keycode == Input.Keys.B){
-                            paused =false;
+                            game.setScreen(new LevelNumberSelection(game));
                         }
 
 

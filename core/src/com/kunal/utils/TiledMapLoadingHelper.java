@@ -22,7 +22,9 @@ public class TiledMapLoadingHelper {
             return 6;
         }
 
-
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber == 3){
+            return 8;
+        }
 
         //area one end--------------------------------------------------
 
