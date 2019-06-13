@@ -5,6 +5,12 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.kunal.AreaSelection.AreaSelection;
+import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
+import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
+import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
+import com.kunal.PlayGround.constScreen.ShapeChooser;
+import com.kunal.Shop.Shop;
 
 public class AllVariables {
 
@@ -33,7 +39,6 @@ public class AllVariables {
     /*
     0 is for no area meaning it is at AreaSelection Menu
      */
-
 
     //Masks
     public static final short Bit_Bicycle= 1;

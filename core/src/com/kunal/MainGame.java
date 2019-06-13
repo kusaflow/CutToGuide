@@ -36,10 +36,15 @@ public class MainGame extends Game {
         prams.color = Color.ORANGE;
         AllVariables.bitmapFont = generator.generateFont(prams);
 
-        //creating local file
+        //for testing only
+		if (Gdx.files.local("TextFiles/LevelAreaInfo").exists()) {
+			Gdx.files.local("TextFiles/LevelAreaInfo").delete();
+		}
+
+			//creating local file
 		if (!Gdx.files.local("TextFiles/LevelAreaInfo").exists()){
 			FileHandle savedata = Gdx.files.local("TextFiles/LevelAreaInfo");
-			String data = "1#1#30#000000000000000000000000000000#\n" +
+			String data = "1#30#30#231232221312133123123123131231#\n" +
 					"2#3#30#320000000000000000000000000000#\n" +
 					"3#7#30#312312000000000000000000000000#\n" +
 					"4#12#30#321231231230000000000000000000#\n" +
