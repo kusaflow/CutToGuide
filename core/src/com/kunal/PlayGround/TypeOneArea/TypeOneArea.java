@@ -559,6 +559,7 @@ public class TypeOneArea implements Screen {
                                             && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
 
+                                        //get the present angle of the shape selected
                                         tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
                                         if (tempRotForShape % 45 == 0) {
                                             tempRotForShape += 45;
@@ -566,7 +567,13 @@ public class TypeOneArea implements Screen {
                                                 tempRotForShape = (short) (tempRotForShape - 360);
                                             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
                                         } else {
-                                            tempRotForShape = (short) ((45 * (tempRotForShape / 45)));
+                                            for (int i =1;true;i++){
+                                                if ((int)(tempRotForShape / (45*i)) <= 0){
+                                                    System.out.println("ok");
+                                                    tempRotForShape -= tempRotForShape - (45*(i));
+                                                    break;
+                                                }
+                                            }
                                             if (tempRotForShape >= 360)
                                                 tempRotForShape = (short) (tempRotForShape - 360);
                                             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
