@@ -274,6 +274,7 @@ public class TypeOneArea implements Screen {
         //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getFixtureList().get(0).getFilterData().maskBits);
         input(dt);
 
+
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         world.step(1/(1/dt), 6,2);
 
@@ -283,8 +284,8 @@ public class TypeOneArea implements Screen {
         sred.begin(ShapeRenderer.ShapeType.Line);
         sred.setColor(0.2f, 1, 0.3f, 1);
         //down
-        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM)-25,
-                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)-25);
+        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM),
+                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM));
         //sred.line((AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)-25,
         //      (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)+40);
 
