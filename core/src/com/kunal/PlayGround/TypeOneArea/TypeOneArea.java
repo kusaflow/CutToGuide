@@ -288,23 +288,26 @@ public class TypeOneArea implements Screen {
         //world.step((1)/(1/dt), 6,2);
 
 
-        //temp area to find the bounds of the bicycle
+        //all collectable code here=========================================================================
+        // //meaning dynamic obj
 
-        sred.begin(ShapeRenderer.ShapeType.Line);
-        sred.setColor(0.2f, 1, 0.3f, 1);
-        //down
-        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM-25),
-                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM-25));
-        sred.line((AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)-25,
-              (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)+60);
-        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM+60),
-                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM+60));
-        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM)-25,
-                (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM)+60);
+        //this statement here because it will always be false and the program will not went in and this save some sweet time
+        if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().x-5 &&
+                (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5)<=TiledMapLoadingHelper.flagpos().x-5){
+            if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().y-5 ||
+                    (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().y-5) {
+                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.flagpos().y+60 ||
+                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.flagpos().y+60) {
 
-        sred.end();
+                    flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
+                    flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
+                }
+            }
 
-        //System.out.println(((AllVariables.BackWheel.getPosition().x * AllVariables.PPM)));
+        }
+
+
+        //System.out.println(((AllVariables.BackWheel.getPosition().y * AllVariables.PPM)));
 
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
@@ -800,10 +803,18 @@ public class TypeOneArea implements Screen {
                             game.setScreen(new LevelNumberSelection(game));
                         }
                         if (keycode == Input.Keys.F){
-                            flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
-                            flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
+                            System.out.println(posMap.getX()+"\t" + posMap.getY());
 
+                            //flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
+                            //flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
                         }
+                        if (keycode == Input.Keys.E){
+                            System.out.println(AllVariables.BackWheel.getPosition().x*AllVariables.PPM +"\t" + AllVariables.BackWheel.getPosition().y*AllVariables.PPM);
+
+                            //flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
+                            //flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
+                        }
+
 
 
 
