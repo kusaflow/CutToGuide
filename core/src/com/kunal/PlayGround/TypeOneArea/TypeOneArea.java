@@ -38,7 +38,7 @@ public class TypeOneArea implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot, pause, fadedBG, resume, exit;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot, pause, fadedBG, resume, exit, flag;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false, paused = false;
 
     //CamScroller
@@ -70,6 +70,7 @@ public class TypeOneArea implements Screen {
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
 
     //posision mapper sprite
+    Sprite posMap;
 
 
     public TypeOneArea(MainGame game) {
@@ -180,9 +181,12 @@ public class TypeOneArea implements Screen {
         exit.setPosition(0,0);
         exit.setSize(250*camscl, 100*camscl);
 
+        flag = new Sprite(new Texture(Gdx.files.internal("playArea/flagRed_up.png")));
+        flag.setPosition(TiledMapLoadingHelper.flagpos().x,TiledMapLoadingHelper.flagpos().y);
 
-
-
+        posMap = new Sprite(new Texture(Gdx.files.internal("badlogic.png")));
+        posMap.setPosition(50,50);
+        posMap.setSize(70,70);
 
 
         //pos remapping
@@ -258,6 +262,7 @@ public class TypeOneArea implements Screen {
         CamScroller.draw(AllVariables.batch);
         DropAnyShapeButton.draw(AllVariables.batch);
         pause.draw(AllVariables.batch);
+        flag.draw(AllVariables.batch);
         if(isAnyShapeSelected){
             ShapeRotACW.draw(AllVariables.batch);
             ShapeRotCW.draw(AllVariables.batch);
@@ -268,6 +273,8 @@ public class TypeOneArea implements Screen {
             resume.draw(AllVariables.batch);
             exit.draw(AllVariables.batch);
         }
+
+        posMap.draw(AllVariables.batch);
         AllVariables.batch.end();
     }
 
@@ -495,6 +502,20 @@ public class TypeOneArea implements Screen {
     }
 
     private void input(float dt){
+        if (Gdx.input.isKeyPressed(Input.Keys.A)){
+            posMap.translate(-5,0);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)){
+            posMap.translate(0,-5);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.D)){
+            posMap.translate(5,0);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W)){
+            posMap.translate(0,5);
+        }
+        System.out.println(posMap.getX()+"\t" + posMap.getY());
+
         //System.out.println(cam.position.x);
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
@@ -775,18 +796,13 @@ public class TypeOneArea implements Screen {
                         if (keycode == Input.Keys.SPACE){
                             world.setGravity(new Vector2(0,-10));
                         }
-
-                        if (keycode == Input.Keys.A) {
-                            for (int i=0; i< VariablesForPlayArea.shapes.size();i++)
-                                System.out.println(VariablesForPlayArea.shapes.get(i));
-                        }
-                        if (keycode == Input.Keys.S){
-                            for (int i=0; i< VariablesForPlayArea.CutoutShapeVertices.size();i++)
-                                System.out.println(VariablesForPlayArea.CutoutShapeVertices.get(i));
-                        }
-
                         if (keycode == Input.Keys.B){
                             game.setScreen(new LevelNumberSelection(game));
+                        }
+                        if (keycode == Input.Keys.F){
+                            flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
+                            flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
+
                         }
 
 

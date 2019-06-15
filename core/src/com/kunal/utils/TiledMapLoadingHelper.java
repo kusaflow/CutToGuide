@@ -1,5 +1,6 @@
 package com.kunal.utils;
 
+import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 
 public class TiledMapLoadingHelper {
@@ -34,5 +35,19 @@ public class TiledMapLoadingHelper {
 
 
         return 0;
+    }
+
+    public static Vector2 flagpos(){
+        Vector2 pos = new Vector2(0,0);
+
+        //area one ------------------------------------------------------
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
+            pos.x = 6145;
+            pos.y = 510;
+            return pos;
+        }
+
+
+        return pos;
     }
 }
