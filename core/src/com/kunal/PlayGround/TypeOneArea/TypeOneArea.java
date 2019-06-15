@@ -69,6 +69,8 @@ public class TypeOneArea implements Screen {
     //follow cycle if start is pressed
     private boolean CamfollowCycle = false, startAnimToMoveCycle = false, finalvalofcamcontroller = false;
 
+    //posision mapper sprite
+
 
     public TypeOneArea(MainGame game) {
         this.game = game;
@@ -276,7 +278,7 @@ public class TypeOneArea implements Screen {
 
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
-        world.step(1/(1/dt), 6,2);
+        //world.step((1)/(1/dt), 6,2);
 
 
         //temp area to find the bounds of the bicycle
@@ -284,13 +286,24 @@ public class TypeOneArea implements Screen {
         sred.begin(ShapeRenderer.ShapeType.Line);
         sred.setColor(0.2f, 1, 0.3f, 1);
         //down
-        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM),
-                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM));
-        //sred.line((AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)-25,
-        //      (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)+40);
-
+        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM-25),
+                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM-25));
+        sred.line((AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)-25,
+              (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM)+60);
+        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM+60),
+                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM)-25, (AllVariables.BackWheel.getPosition().y * AllVariables.PPM+60));
+        sred.line((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM)-25,
+                (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)+25, (AllVariables.FrontWheel.getPosition().y * AllVariables.PPM)+60);
 
         sred.end();
+
+        //System.out.println(((AllVariables.BackWheel.getPosition().x * AllVariables.PPM)));
+
+
+        //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
+        world.step(1/(1/dt), 6,2);
+
+
 
         //ends here
 
@@ -489,7 +502,7 @@ public class TypeOneArea implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
