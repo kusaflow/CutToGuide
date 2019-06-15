@@ -62,9 +62,91 @@ public class TiledMapLoadingHelper {
             return pos;
         }
 
-
-
-
         return pos;
     }
+
+    public static Vector2 coin1Pos(){
+        Vector2 cpos = new Vector2(0,0);
+
+        //area one ------------------------------------------------------
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
+            cpos.x = 1945;
+            cpos.y = 500;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
+            cpos.x = 3290;
+            cpos.y = 515;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
+            cpos.x = 4925;
+            cpos.y = 615;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
+            cpos.x = 6440;
+            cpos.y = 515;
+            return cpos;
+        }
+        return cpos;
+    }
+
+
+    public static Vector2 coin2Pos(){
+        Vector2 cpos = new Vector2(0,0);
+
+        //area one ------------------------------------------------------
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
+            cpos.x = 3290;
+            cpos.y = 500;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
+            cpos.x = 6145;
+            cpos.y = 510;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
+            cpos.x = 5510;
+            cpos.y = 610;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
+            cpos.x = 6440;
+            cpos.y = 515;
+            return cpos;
+        }
+        return cpos;
+    }
+
+
+    public static Vector2 coin3Pos(){
+        Vector2 cpos = new Vector2(0,0);
+
+        //area one ------------------------------------------------------
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
+            cpos.x = 4925;
+            cpos.y = 500;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
+            cpos.x = 6145;
+            cpos.y = 510;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
+            cpos.x = 5510;
+            cpos.y = 610;
+            return cpos;
+        }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
+            cpos.x = 6440;
+            cpos.y = 515;
+            return cpos;
+        }
+        return cpos;
+    }
+
+
 }

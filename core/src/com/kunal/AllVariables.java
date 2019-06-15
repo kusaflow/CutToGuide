@@ -49,4 +49,5 @@ public class AllVariables {
     public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6;
 
 
+    public static String coinAdd = "typesOfCoin/hudCoin.png";
 }

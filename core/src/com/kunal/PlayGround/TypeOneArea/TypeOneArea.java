@@ -39,11 +39,13 @@ public class TypeOneArea implements Screen {
     private Viewport port;
 
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
-            per45degRot, pause, fadedBG, resume, exit, flag;
+            per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, flagAnim = false, coin1anim = false,
             coin2anim = false, coin3anim= false;
+
+    private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
@@ -192,6 +194,23 @@ public class TypeOneArea implements Screen {
         posMap.setPosition(50,50);
         posMap.setSize(70,70);
 
+        coin1 = new Sprite(new Texture(Gdx.files.internal(AllVariables.coinAdd)));
+        coin1.setPosition(TiledMapLoadingHelper.coin1Pos().x,TiledMapLoadingHelper.coin1Pos().y);
+        coin1.setSize(100,100);
+        coin1.setAlpha(coin1Alpha);
+
+        coin2 = new Sprite(new Texture(Gdx.files.internal(AllVariables.coinAdd)));
+        coin2.setPosition(TiledMapLoadingHelper.coin2Pos().x,TiledMapLoadingHelper.coin2Pos().y);
+        coin2.setSize(100,100);
+        coin2.setAlpha(coin2Alpha);
+
+        coin3 = new Sprite(new Texture(Gdx.files.internal(AllVariables.coinAdd)));
+        coin3.setPosition(TiledMapLoadingHelper.coin3Pos().x,TiledMapLoadingHelper.coin3Pos().y);
+        coin3.setSize(100,100);
+        coin3.setAlpha(coin3Alpha);
+
+
+
 
         //pos remapping
         //for (int i =0; i<VariablesForPlayArea.CutOutBodies.size(); i++){
@@ -279,6 +298,11 @@ public class TypeOneArea implements Screen {
         }
 
         posMap.draw(AllVariables.batch);
+        //coin
+        coin1.draw(AllVariables.batch);
+        coin2.draw(AllVariables.batch);
+        coin3.draw(AllVariables.batch);
+
         AllVariables.batch.end();
     }
 
@@ -296,6 +320,7 @@ public class TypeOneArea implements Screen {
         // //meaning dynamic obj
 
         //this statement here because it will always be false and the program will not went in and this save some sweet time
+        //flag
         if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().x-5 &&
                 (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5)<=TiledMapLoadingHelper.flagpos().x-5){
             if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().y-5 ||
@@ -307,7 +332,44 @@ public class TypeOneArea implements Screen {
                     flagAnim = true;
                 }
             }
+        }
 
+        //coin1
+        if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin1Pos().x-5 &&
+                (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5)<=TiledMapLoadingHelper.coin1Pos().x){
+            if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin1Pos().y-5 ||
+                    (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin1Pos().y-5) {
+                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin1Pos().y+100 ||
+                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin1Pos().y+100) {
+                    coin1anim = true;
+                }
+            }
+        }
+
+
+        //coin2
+        if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin2Pos().x-5 &&
+                (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5)<=TiledMapLoadingHelper.coin2Pos().x){
+            if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin2Pos().y-5 ||
+                    (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin2Pos().y-5) {
+                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin2Pos().y+100 ||
+                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin2Pos().y+100) {
+                    coin2anim = true;
+                }
+            }
+        }
+
+
+        //coin3
+        if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin3Pos().x-5 &&
+                (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5)<=TiledMapLoadingHelper.coin3Pos().x){
+            if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin3Pos().y-5 ||
+                    (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin3Pos().y-5) {
+                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin3Pos().y+100 ||
+                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin3Pos().y+100) {
+                    coin3anim = true;
+                }
+            }
         }
 
 
@@ -334,11 +396,40 @@ public class TypeOneArea implements Screen {
             }
             //System.out.println(flag.getWidth() + "\t" + flag.getHeight());
         }
+        if (coin1anim){
+            if (coin1.getScaleX()<=2.5f)
+                coin1.scale(0.5f);
+            if (coin1Alpha <=1) {
+                coin1Alpha += 0.1f;
+                coin1.translate(0,20);
+            }
+        }
+        if (coin2anim){
+            if (coin2.getScaleX()<=2.5f)
+                coin2.scale(0.5f);
+            if (coin2Alpha <=1) {
+                coin2Alpha += 0.1f;
+                coin2.translate(0,20);
+            }
+        }
+        if (coin3anim){
+            if (coin3.getScaleX()<=2.5f)
+                coin3.scale(0.5f);
+            if (coin3Alpha <=1) {
+                coin3Alpha += 0.1f;
+                coin3.translate(0,20);
+            }
+        }
 
 
 
         //==-------------------------------------------------------------------------------------
 
+
+
+        coin1.setAlpha(1-coin1Alpha);
+        coin2.setAlpha(1-coin2Alpha);
+        coin3.setAlpha(1-coin3Alpha);
 
 
         if (!CamfollowCycle)
