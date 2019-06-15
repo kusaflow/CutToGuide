@@ -514,7 +514,7 @@ public class TypeOneArea implements Screen {
         if (Gdx.input.isKeyPressed(Input.Keys.W)){
             posMap.translate(0,5);
         }
-        System.out.println(posMap.getX()+"\t" + posMap.getY());
+        //System.out.println(posMap.getX()+"\t" + posMap.getY());
 
         //System.out.println(cam.position.x);
         Gdx.input.setInputProcessor(
