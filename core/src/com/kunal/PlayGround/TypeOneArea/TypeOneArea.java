@@ -38,8 +38,12 @@ public class TypeOneArea implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW, per45degRot, pause, fadedBG, resume, exit, flag;
-    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false, isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false, ACWTouched = false, CWtouched = false, paused = false;
+    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
+            per45degRot, pause, fadedBG, resume, exit, flag;
+    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
+            isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
+            ACWTouched = false, CWtouched = false, paused = false, flagAnim = false, coin1anim = false,
+            coin2anim = false, coin3anim= false;
 
     //CamScroller
     private short CamScrollerX = 1320, CamScrollerY = 750;
@@ -298,9 +302,9 @@ public class TypeOneArea implements Screen {
                     (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().y-5) {
                 if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.flagpos().y+60 ||
                         (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.flagpos().y+60) {
-
                     flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
                     flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
+                    flagAnim = true;
                 }
             }
 
@@ -321,6 +325,19 @@ public class TypeOneArea implements Screen {
         //campos.x = (AllVariables.BackWheel.getPosition().x)*AllVariables.PPM;
         //campos.y = (AllVariables.BackWheel.getPosition().y)*AllVariables.PPM;
         //cam.position.set(campos);
+
+        //all animations---------------------------------------------------------------------------
+        if (flagAnim){
+            if (flag.getScaleX()<=1.5f){
+                flag.scale(0.1f);
+                flag.translate(3.4f,3.5f);
+            }
+            //System.out.println(flag.getWidth() + "\t" + flag.getHeight());
+        }
+
+
+
+        //==-------------------------------------------------------------------------------------
 
 
 
