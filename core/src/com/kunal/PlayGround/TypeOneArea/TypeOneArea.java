@@ -124,7 +124,7 @@ public class TypeOneArea implements Screen {
 
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
-        Brake = new Sprite(new Texture(Gdx.files.internal("playArea/BothBrake.png")));
+        Brake = new Sprite(new Texture(Gdx.files.internal("playArea/Brake.png")));
         Brake.setPosition(1050,140);
         Brake.setSize(180*camscl,150*camscl);
         Brake.setAlpha(0f);
