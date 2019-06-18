@@ -56,17 +56,17 @@ public class TiledMapLoadingHelper {
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
             pos.x = 5510;
-            pos.y = 610;
+            pos.y = 608;
             return pos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
             pos.x = 6440;
-            pos.y = 515;
+            pos.y = 511;
             return pos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
             pos.x = 6540;
-            pos.y = 515;
+            pos.y = 511;
             return pos;
         }
 
