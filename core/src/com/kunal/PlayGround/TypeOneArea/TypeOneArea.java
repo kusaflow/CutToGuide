@@ -42,7 +42,7 @@ public class TypeOneArea implements Screen {
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
-            ACWTouched = false, CWtouched = false, paused = false, flagAnim = false, coin1anim = false,
+            ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
             coin2anim = false, coin3anim= false;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
@@ -329,7 +329,6 @@ public class TypeOneArea implements Screen {
                         (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.flagpos().y+60) {
                     flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
                     flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
-                    flagAnim = true;
                 }
             }
         }
@@ -389,13 +388,6 @@ public class TypeOneArea implements Screen {
         //cam.position.set(campos);
 
         //all animations---------------------------------------------------------------------------
-        if (flagAnim){
-            if (flag.getScaleX()<=1.5f){
-                flag.scale(0.1f);
-                flag.translate(3.4f,3.5f);
-            }
-            //System.out.println(flag.getWidth() + "\t" + flag.getHeight());
-        }
         if (coin1anim){
             if (coin1.getScaleX()<=2.5f)
                 coin1.scale(0.5f);
@@ -931,7 +923,8 @@ public class TypeOneArea implements Screen {
                             game.setScreen(new LevelNumberSelection(game));
                         }
                         if (keycode == Input.Keys.F){
-                            System.out.println(posMap.getX()+"\t" + posMap.getY());
+                            flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
+                            flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
 
                             //flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
                             //flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());

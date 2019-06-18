@@ -44,6 +44,15 @@ public class ReDirectToTheLevel {
             game.setScreen(new TypeOneArea(game));
             //game.setScreen(new AreaOneClass(game));
         }
+
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==5){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level5.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 6000;
+            game.setScreen(new TypeOneArea(game));
+            //game.setScreen(new AreaOneClass(game));
+        }
+
         //area 1 emd ----------------------------------------------------------------
 
 
