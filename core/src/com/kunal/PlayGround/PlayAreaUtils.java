@@ -79,6 +79,14 @@ public class PlayAreaUtils {
         return poly;
     }
 
+    public static String PowerUpSimplifier(Byte b){
+        if (b ==1) {
+            return "playArea/SpeedPowers/GreenPill.png";
+        }else if (b ==2) {
+            return "playArea/SpeedPowers/RedPill.png";
+        }
 
+        return "";
+    }
 
 }

@@ -1,4 +1,3 @@
-doc for making shapes to less than or equl to 8 vertices
-    >mod4
-        >add first vert to the list
-        >
+Power UP guide :
+    > 1 is for green Pill : it will add speed to the cycle if consumed
+    > 2 is for red Pill : it will decrease the speed of the cycle

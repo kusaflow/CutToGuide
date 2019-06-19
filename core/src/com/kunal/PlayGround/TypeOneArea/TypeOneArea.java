@@ -78,7 +78,6 @@ public class TypeOneArea implements Screen {
     //posision mapper sprite
     Sprite posMap;
 
-
     public TypeOneArea(MainGame game) {
         this.game = game;
 

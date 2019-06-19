@@ -18,6 +18,7 @@ import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.constScreen.ShapeChooser;
 
 import java.util.LinkedList;
 
@@ -428,11 +429,6 @@ public class AreaSelection implements Screen {
         showMoreLevelsOnRight.getTexture().dispose();
         showMoreLevelsOnLeft.getTexture().dispose();
         Tutorial.getTexture().dispose();
-
-
-
-
-
-
+        System.out.println("Area Selection Dispose");
     }
 }

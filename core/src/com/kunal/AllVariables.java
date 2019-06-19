@@ -8,6 +8,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
+import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.Shop.Shop;

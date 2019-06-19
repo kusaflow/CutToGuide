@@ -26,6 +26,11 @@ public class VariablesForPlayArea {
     // 0 is for tut
     //public static short areaNumber =0;
 
+    //powerUP LinkedList
+    public static LinkedList<Byte> powerUps;
+    //power UP position
+    public static LinkedList<Vector2> powerUpPos;
+
     //position of camera x
     public static float camposX = 1200f;
 
@@ -38,7 +43,7 @@ public class VariablesForPlayArea {
     public static LinkedList<Float> Angle_Of_Shape;
     public static LinkedList<LinkedList<Byte>> CutoutShapeVertices;
 
-    public static byte shapeNumberSelected = 15 ;
+    public static byte shapeNumberSelected = 25 ;
 
     public static String LevelMapToBeLoaded = "";
 
@@ -53,6 +58,8 @@ public class VariablesForPlayArea {
         Sh_pos = new LinkedList<Vector2>();
         Sh_pos.add(new Vector2(640/AllVariables.PPM, -1000/AllVariables.PPM));
         Angle_Of_Shape.add(180f);
+        powerUps = new LinkedList<Byte>();
+        powerUpPos = new LinkedList<Vector2>();
 
         //all big squre Points
         BigSqurePoints[0][0] = 430;

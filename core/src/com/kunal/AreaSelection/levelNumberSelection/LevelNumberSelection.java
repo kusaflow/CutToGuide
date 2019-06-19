@@ -1,5 +1,6 @@
 package com.kunal.AreaSelection.levelNumberSelection;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -721,5 +722,6 @@ public class LevelNumberSelection implements Screen {
         cross.dispose();
         movRight.dispose();
         movLeft.dispose();
+        System.out.println("Level selection disposed");
     }
 }

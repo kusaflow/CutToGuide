@@ -13,7 +13,9 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
+import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.Tutorial.TutArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -32,6 +34,9 @@ public class ShapeChooser implements Screen {
 
     private short[][] ShapePts = new short[20][2];
 
+    Sprite powerUpSprite;
+
+    int i =0;
 
     public ShapeChooser(MainGame game) {
         this.game = game;
@@ -60,7 +65,6 @@ public class ShapeChooser implements Screen {
         reCut = new Sprite(new Texture(Gdx.files.internal("ChooseShape/reCut.png")));
         reCut.setPosition(1140, 101);
         reCut.setSize(140, 203);
-
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -190,7 +194,6 @@ public class ShapeChooser implements Screen {
         input(dt);
         cam.update();
 
-
         Gdx.gl.glClearColor(0.105f, 0.118f, 0.198f, 1f);
         //Gdx.gl.glClearColor(0,0,0, 1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -224,7 +227,7 @@ public class ShapeChooser implements Screen {
         sred.line(40,100,1140,100);
 
         sred.setColor(1, 1f, 1, 1);
-        for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+        for (i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
                 ver[k] = 550-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
@@ -242,14 +245,26 @@ public class ShapeChooser implements Screen {
             sred.polygon(poly.getTransformedVertices());
 
             ver = null;
-
         }
 
         sred.end();
 
+        for (int j =0; j < VariablesForPlayArea.powerUps.size(); j++, i++){
+            powerUpSprite = new Sprite(new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(j)))));
+            powerUpSprite.setSize(30,30);
+            powerUpSprite.setPosition(ShapePts[i][0]-50, ShapePts[i][1]+25);
+
+            //renderer
+            AllVariables.batch.begin();
+            powerUpSprite.draw(AllVariables.batch);
+            AllVariables.batch.end();
+            //renderer
+        }
+
+
+        //the option chooser
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
-
         //rect
         sred.begin(ShapeRenderer.ShapeType.Filled);
         //sred.setColor(0.423f,0.751f,0.588f,0.2f);
@@ -335,6 +350,9 @@ public class ShapeChooser implements Screen {
                     if (AllVariables.PresentAreaNumber == 1){
                         if (AllVariables.PresentLevelNumber <=5)
                             game.setScreen(new TypeOneArea(game));
+                        else if (AllVariables.PresentLevelNumber <= 10 && AllVariables.PresentLevelNumber >5)
+                            game.setScreen(new TypeTwoArea(game));
+
                     }
                     //System.out.println("down wala");
                 }
