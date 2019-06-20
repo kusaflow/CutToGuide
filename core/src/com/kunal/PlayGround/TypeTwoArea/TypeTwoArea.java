@@ -233,6 +233,7 @@ public class TypeTwoArea implements Screen {
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         update(dt);
+        input(dt);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         //need to fix this
@@ -305,21 +306,15 @@ public class TypeTwoArea implements Screen {
 
         //powerUps
         for (int i =0; i<VariablesForPlayArea.powerUps.size(); i++) {
-            Sprite s = new Sprite(new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i)))));
-            s.setPosition(VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y);
+            Texture t = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
 
-            s.draw(AllVariables.batch);
+            AllVariables.batch.draw(t,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
         }
-        Texture t = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(1))));
-        AllVariables.batch.draw(t, VariablesForPlayArea.CutOutBodies.get(0).getPosition().x*100,VariablesForPlayArea.CutOutBodies.get(0).getPosition().y*100);
-
         AllVariables.batch.end();
     }
 
 
     private void update(float dt){
-        input(dt);
-
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         //world.step((1)/(1/dt), 6,2);
@@ -568,10 +563,11 @@ public class TypeTwoArea implements Screen {
 
         if (toDrawDropAnyShapeButton) {
             //DropAnyShape alpha init
-            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size() -1) {
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size() + VariablesForPlayArea.powerUps.size() -1) {
                 //a shape is selected
                 DropAnyShapeButton.setAlpha(1f);
-                isAnyShapeSelected = true;
+                if (!powerUpSelected)
+                    isAnyShapeSelected = true;
             }
             else {
                 //no shape is selected
@@ -607,6 +603,15 @@ public class TypeTwoArea implements Screen {
             }
         }
 
+
+        //to check if any power is selected or not
+        if (VariablesForPlayArea.shapeNumberSelected > VariablesForPlayArea.CutOutBodies.size() - 1 &&
+                VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.powerUps.size() + (VariablesForPlayArea.CutOutBodies.size()-1)){
+            powerUpSelected = true;
+        }else{
+            powerUpSelected = false;
+        }
+
         //System.out.println(isAnyShapeSelected);
         //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition());
 
@@ -635,6 +640,7 @@ public class TypeTwoArea implements Screen {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
 
+                        System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -761,11 +767,10 @@ public class TypeTwoArea implements Screen {
                                 && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
                                 && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
 
-
                         }else if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
-
+                            //brake
                         }else if (screenX > (1115 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (1195 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 635* AllVariables.inpM && screenY < 705* AllVariables.inpM) {
@@ -785,17 +790,17 @@ public class TypeTwoArea implements Screen {
                         } else if (screenX > (20 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (150 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 580 * AllVariables.inpM && screenY < 920 * AllVariables.inpM){
-
+                            //hardmove
                         }else if (isCamScrollerTouched || ACWTouched || CWtouched){
 
                         } else {
                             if (!paused) {
-                                if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1 || powerUpSelected) {
+                                if ((VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() + VariablesForPlayArea.powerUps.size() - 1)) {
                                     if (hardMove) {
                                         if (powerUpSelected){
                                             VariablesForPlayArea.powerUpPos.set(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size(),
-                                                    new Vector2(((screenX) + (cam.position.x*camscl-900)),//*AllVariables.inpM + AllVariables.witdth_translation,
-                                                            (screenY*AllVariables.inpM)*camscl + (cam.position.y-(600-95))));
+                                                    new Vector2(((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2))) - 250,
+                                                            ((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20));
                                         }else {
 
                                             VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
@@ -942,6 +947,8 @@ public class TypeTwoArea implements Screen {
                             game.setScreen(new LevelNumberSelection(game));
                         }
                         if (keycode == Input.Keys.F){
+                            for (int i=0; i<VariablesForPlayArea.powerUps.size(); i++)
+                                System.out.println(VariablesForPlayArea.powerUpPos.get(i));
                             //flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
                             //flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
 
