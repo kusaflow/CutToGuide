@@ -316,6 +316,7 @@ public class TypeTwoArea implements Screen {
 
     private void update(float dt){
 
+        System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         //world.step((1)/(1/dt), 6,2);
 
@@ -440,7 +441,7 @@ public class TypeTwoArea implements Screen {
                             AllVariables.BackWheel.applyForceToCenter(new Vector2(200,0), true);
                         }
                         if (VariablesForPlayArea.powerUps.get(i) == 2){
-                            AllVariables.BackWheel.applyForceToCenter(new Vector2(-200,0), true);
+                            AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x *(-20),0), true);
                         }
                         VariablesForPlayArea.powerUpPos.set(i, new Vector2(0, -1000));
                     }
