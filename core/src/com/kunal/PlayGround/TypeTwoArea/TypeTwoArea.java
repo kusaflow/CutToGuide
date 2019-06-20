@@ -428,6 +428,28 @@ public class TypeTwoArea implements Screen {
         coin3.setAlpha(1-coin3Alpha);
 
 
+        //collision mapper for powerUps============================================
+        for (int i =0; i<VariablesForPlayArea.powerUpPos.size(); i++){
+            if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= VariablesForPlayArea.powerUpPos.get(i).x-5 &&
+                    (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5) <= VariablesForPlayArea.powerUpPos.get(i).x){
+                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= VariablesForPlayArea.powerUpPos.get(i).y-5 ||
+                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= VariablesForPlayArea.powerUpPos.get(i).y - 5) {
+                    if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= VariablesForPlayArea.powerUpPos.get(i).y + 50 ||
+                            (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= VariablesForPlayArea.powerUpPos.get(i).y+50) {
+                        if (VariablesForPlayArea.powerUps.get(i) == 1){
+                            AllVariables.BackWheel.applyForceToCenter(new Vector2(200,0), true);
+                        }
+                        if (VariablesForPlayArea.powerUps.get(i) == 2){
+                            AllVariables.BackWheel.applyForceToCenter(new Vector2(-200,0), true);
+                        }
+                        VariablesForPlayArea.powerUpPos.set(i, new Vector2(0, -1000));
+                    }
+                }
+            }
+        }
+
+        //==================================================================================
+
         if (!CamfollowCycle)
             cam.position.set(VariablesForPlayArea.camposX, 600, cam.position.z);
         else {
@@ -611,6 +633,7 @@ public class TypeTwoArea implements Screen {
         }else{
             powerUpSelected = false;
         }
+
 
         //System.out.println(isAnyShapeSelected);
         //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition());
