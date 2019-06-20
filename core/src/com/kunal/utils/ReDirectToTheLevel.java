@@ -73,6 +73,9 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.powerUps.clear();
             VariablesForPlayArea.powerUpPos.clear();
             VariablesForPlayArea.powerUps.add((byte) 1);
+            VariablesForPlayArea.powerUps.add((byte) 2);
+            VariablesForPlayArea.powerUps.add((byte) 1);
+
             putPowerUpsToDefaultPos();
 
             game.setScreen(new TypeTwoArea(game));
@@ -86,7 +89,7 @@ public class ReDirectToTheLevel {
 
     private static void putPowerUpsToDefaultPos(){
         for (int i=0; i<VariablesForPlayArea.powerUps.size(); i++){
-            VariablesForPlayArea.powerUpPos.add(new Vector2(70,627));
+            VariablesForPlayArea.powerUpPos.add(new Vector2(-500,-500));
         }
     }
 

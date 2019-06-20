@@ -305,10 +305,13 @@ public class TypeTwoArea implements Screen {
 
         //powerUps
         for (int i =0; i<VariablesForPlayArea.powerUps.size(); i++) {
-            Sprite s = new Sprite(new Texture(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
+            Sprite s = new Sprite(new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i)))));
             s.setPosition(VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y);
+
             s.draw(AllVariables.batch);
         }
+        Texture t = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(1))));
+        AllVariables.batch.draw(t, VariablesForPlayArea.CutOutBodies.get(0).getPosition().x*100,VariablesForPlayArea.CutOutBodies.get(0).getPosition().y*100);
 
         AllVariables.batch.end();
     }
@@ -791,7 +794,7 @@ public class TypeTwoArea implements Screen {
                                     if (hardMove) {
                                         if (powerUpSelected){
                                             VariablesForPlayArea.powerUpPos.set(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size(),
-                                                    new Vector2((screenX*AllVariables.inpM - AllVariables.witdth_translation)*camscl + (cam.position.x-900),
+                                                    new Vector2(((screenX) + (cam.position.x*camscl-900)),//*AllVariables.inpM + AllVariables.witdth_translation,
                                                             (screenY*AllVariables.inpM)*camscl + (cam.position.y-(600-95))));
                                         }else {
 
@@ -804,11 +807,14 @@ public class TypeTwoArea implements Screen {
                                         return false;
 
                                     } else {
-                                        //dragging of objects
-                                        originX = screenX;
-                                        originY = screenY;
-                                        shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
-                                        shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
+                                        if (!powerUpSelected) {
+                                            //dragging of objects
+                                            originX = screenX;
+                                            originY = screenY;
+                                            shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
+                                            shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
+                                        }
+
                                         return false;
                                     }
                                 }
