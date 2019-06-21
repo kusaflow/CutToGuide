@@ -316,7 +316,7 @@ public class TypeTwoArea implements Screen {
 
     private void update(float dt){
 
-        System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
+        //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         //world.step((1)/(1/dt), 6,2);
 
@@ -433,15 +433,15 @@ public class TypeTwoArea implements Screen {
         for (int i =0; i<VariablesForPlayArea.powerUpPos.size(); i++){
             if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= VariablesForPlayArea.powerUpPos.get(i).x-5 &&
                     (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5) <= VariablesForPlayArea.powerUpPos.get(i).x){
-                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= VariablesForPlayArea.powerUpPos.get(i).y-5 ||
-                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= VariablesForPlayArea.powerUpPos.get(i).y - 5) {
-                    if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= VariablesForPlayArea.powerUpPos.get(i).y + 50 ||
+                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(55+5) >= VariablesForPlayArea.powerUpPos.get(i).y-5 ||
+                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(55+5) >= VariablesForPlayArea.powerUpPos.get(i).y - 5) {
+                    if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= VariablesForPlayArea.powerUpPos.get(i).y + 40 +5 ||
                             (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= VariablesForPlayArea.powerUpPos.get(i).y+50) {
                         if (VariablesForPlayArea.powerUps.get(i) == 1){
                             AllVariables.BackWheel.applyForceToCenter(new Vector2(200,0), true);
                         }
                         if (VariablesForPlayArea.powerUps.get(i) == 2){
-                            AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x *(-20),0), true);
+                            AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x *(-0),0), true);
                         }
                         VariablesForPlayArea.powerUpPos.set(i, new Vector2(0, -1000));
                     }

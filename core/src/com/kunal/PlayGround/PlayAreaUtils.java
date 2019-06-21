@@ -81,9 +81,9 @@ public class PlayAreaUtils {
 
     public static String PowerUpSimplifier(Byte b){
         if (b ==1) {
-            return "playArea/SpeedPowers/GreenPill.png";
+            return "playArea/speedPowers/GreenPill.png";
         }else if (b ==2) {
-            return "playArea/SpeedPowers/RedPill.png";
+            return "playArea/speedPowers/RedPill.png";
         }
 
         return "";

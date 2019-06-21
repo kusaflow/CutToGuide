@@ -68,7 +68,7 @@ public class ReDirectToTheLevel {
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==6){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
             VariablesForPlayArea.endPoint.x = 100;
-            VariablesForPlayArea.endPoint.y = 5600;
+            VariablesForPlayArea.endPoint.y = 6000;
             //powerUps
             VariablesForPlayArea.powerUps.clear();
             VariablesForPlayArea.powerUpPos.clear();
