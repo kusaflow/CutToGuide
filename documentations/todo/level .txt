@@ -1,0 +1,18 @@
+> vertical pipes in which there is only one area left open in which player can enter or exit
+> land areas in which the land can be go down
+> particular area in which the cycle will jump up a bit
+> buttons to open/close some part of area to block or open the area
+> enimes to be beware of
+> random things present at top that will drop on when player reaches some x value.
+		if collided by player the game over. some part of it is visible to player to get the idea and plan thar way
+> top placed player that will shoot on player
+> enery ball that can be collected by player and when needed shoot to the player who are firirng at the player
+> collectable keys that will open only particular locks. basically keys with colour red green blue with there respective 
+		locks.if the player have the key there is no problem in the movement but if doesnt have then it will get
+		collided with the door.
+> rocks that can be breakable by bullets only if there is no bullet it will work as solod shape
+> 
+
+
+
+
