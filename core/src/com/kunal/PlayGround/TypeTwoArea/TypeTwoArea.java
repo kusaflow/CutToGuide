@@ -21,6 +21,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -44,6 +45,8 @@ public class TypeTwoArea implements Screen {
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
             coin2anim = false, coin3anim= false, powerUpSelected = false;
+
+    Texture levelPoweUP;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
@@ -77,6 +80,10 @@ public class TypeTwoArea implements Screen {
 
     //posision mapper sprite
     Sprite posMap;
+
+    //obstables
+        //these class will get initialize only if required otherwise no
+    private flappyBirdPipes fBPipes;
 
 
     public TypeTwoArea(MainGame game) {
@@ -217,6 +224,17 @@ public class TypeTwoArea implements Screen {
         //VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
         //}
 
+        // obstacles
+        if (!VariablesForPlayArea.flappyBirdPipesPiles.isEmpty()){
+            fBPipes = new flappyBirdPipes(world);
+            System.out.println(VariablesForPlayArea.flappyBirdPipesPiles.size());
+        }
+        //=================obstacles
+
+
+
+
+
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
@@ -240,7 +258,11 @@ public class TypeTwoArea implements Screen {
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
-        tmr.render();
+        //things at bg of the of the tiled map goes here
+        if (!VariablesForPlayArea.flappyBirdPipesPiles.isEmpty())
+            fBPipes.render();
+
+        //tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -279,6 +301,7 @@ public class TypeTwoArea implements Screen {
 
 
         AllVariables.batch.begin();
+        //obstacle Flappy bird pipes
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
@@ -292,11 +315,6 @@ public class TypeTwoArea implements Screen {
             ShapeRotCW.draw(AllVariables.batch);
             per45degRot.draw(AllVariables.batch);
         }
-        if (paused) {
-            fadedBG.draw(AllVariables.batch);
-            resume.draw(AllVariables.batch);
-            exit.draw(AllVariables.batch);
-        }
 
         posMap.draw(AllVariables.batch);
         //coin
@@ -306,9 +324,15 @@ public class TypeTwoArea implements Screen {
 
         //powerUps
         for (int i =0; i<VariablesForPlayArea.powerUps.size(); i++) {
-            Texture t = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
+            levelPoweUP = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
+            AllVariables.batch.draw(levelPoweUP,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
+        }
 
-            AllVariables.batch.draw(t,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
+        //this should be at last
+        if (paused) {
+            fadedBG.draw(AllVariables.batch);
+            resume.draw(AllVariables.batch);
+            exit.draw(AllVariables.batch);
         }
         AllVariables.batch.end();
     }
@@ -488,7 +512,6 @@ public class TypeTwoArea implements Screen {
                     VariablesForPlayArea.camposX -=40;
                 if(VariablesForPlayArea.camposX - 136 < (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
                     VariablesForPlayArea.camposX +=40;
-
             }
         }
 
@@ -635,6 +658,12 @@ public class TypeTwoArea implements Screen {
             powerUpSelected = false;
         }
 
+
+        //obstacles===================
+        if (!VariablesForPlayArea.flappyBirdPipesPiles.isEmpty())
+            fBPipes.update();
+
+        //obstacles===================
 
         //System.out.println(isAnyShapeSelected);
         //System.out.println(VariablesForPlayArea.CutOutBodies.get(0).getPosition());
@@ -1058,5 +1087,6 @@ public class TypeTwoArea implements Screen {
         sred.dispose();
         map.dispose();
         tmr.dispose();
+        levelPoweUP.dispose();
     }
 }

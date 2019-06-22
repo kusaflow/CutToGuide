@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
+import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -14,6 +16,14 @@ public class ReDirectToTheLevel {
     }
 
     public static void Direct(MainGame game){
+
+        flappyBirdPipesVariables fbPipes = new flappyBirdPipesVariables();
+
+        //clear it all
+        VariablesForPlayArea.powerUps.clear();
+        VariablesForPlayArea.powerUpPos.clear();
+        VariablesForPlayArea.flappyBirdPipesPiles.clear();
+
 
         // area 1 ----------------------------------------------------------------
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==1){
@@ -67,16 +77,46 @@ public class ReDirectToTheLevel {
         }
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==6){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
-            VariablesForPlayArea.endPoint.x = 100;
+            VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
             //powerUps
-            VariablesForPlayArea.powerUps.clear();
-            VariablesForPlayArea.powerUpPos.clear();
             VariablesForPlayArea.powerUps.add((byte) 1);
             VariablesForPlayArea.powerUps.add((byte) 2);
             VariablesForPlayArea.powerUps.add((byte) 1);
 
             putPowerUpsToDefaultPos();
+
+            game.setScreen(new TypeTwoArea(game));
+        }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level7.tmx";
+
+            VariablesForPlayArea.endPoint.x = 600;
+            VariablesForPlayArea.endPoint.y = 7400;
+
+            fbPipes.x =1500;
+            fbPipes.y = 500;
+            fbPipes.gapeHorizontalLength = 70;
+            fbPipes.gapVerticalLength = 100;
+            fbPipes.gapStartFrombottom = 150;
+            VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
+
+            fbPipes = new flappyBirdPipesVariables();
+            fbPipes.x = 4000;
+            fbPipes.y = 500;
+            fbPipes.gapeHorizontalLength = 130;
+            fbPipes.gapVerticalLength = 200;
+            fbPipes.gapStartFrombottom = 30;
+            VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
+
+            fbPipes = new flappyBirdPipesVariables();
+            fbPipes.x = 6000;
+            fbPipes.y = 500;
+            fbPipes.gapeHorizontalLength = 200;
+            fbPipes.gapVerticalLength = 100;
+            fbPipes.gapStartFrombottom = 300;
+            VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
+
 
             game.setScreen(new TypeTwoArea(game));
         }

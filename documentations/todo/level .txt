@@ -1,4 +1,4 @@
-> vertical pipes in which there is only one area left open in which player can enter or exit
+> vertical pipes in which there is only one area left open in which player can enter or exit --> flappyBirdPipes
 > land areas in which the land can be go down
 > particular area in which the cycle will jump up a bit
 > buttons to open/close some part of area to block or open the area
