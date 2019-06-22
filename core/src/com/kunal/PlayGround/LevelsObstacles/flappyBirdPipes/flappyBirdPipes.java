@@ -15,26 +15,26 @@ public class flappyBirdPipes {
     public flappyBirdPipes(World world){
         tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/endAreaPipe.png"));
 
-        for (int i=0; i< VariablesForPlayArea.flappyBirdPipesPiles.size(); i++) {
+        for (int i=0; i< VariablesForPlayArea.flappyBirdPipesList.size(); i++) {
             //lower Part
             BodyGenerator.BodyAssemble(world, true, "obstacle",
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).x,VariablesForPlayArea.flappyBirdPipesPiles.get(i).y),
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength,VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).x,VariablesForPlayArea.flappyBirdPipesList.get(i).y),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength,VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom),
                     0.5f,1, AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool));
             //lower end
             BodyGenerator.BodyAssemble(world, true, "obstacle",
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).x,VariablesForPlayArea.flappyBirdPipesPiles.get(i).y +VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom-15),
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength+16,32),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).x,VariablesForPlayArea.flappyBirdPipesList.get(i).y +VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom-15),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength+16,32),
                     0.5f,1, AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool));
             //upper end
             BodyGenerator.BodyAssemble(world, true, "obstacle",
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).x,VariablesForPlayArea.flappyBirdPipesPiles.get(i).y +VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapVerticalLength),
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength+16,32),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).x,VariablesForPlayArea.flappyBirdPipesList.get(i).y +VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength+16,32),
                     0.5f,1, AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool));
             //upper part
             BodyGenerator.BodyAssemble(world, true, "obstacle",
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).x,VariablesForPlayArea.flappyBirdPipesPiles.get(i).y +VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapVerticalLength + 384),
-                    new Vector2(VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength,384),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).x,VariablesForPlayArea.flappyBirdPipesList.get(i).y +VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength + 384),
+                    new Vector2(VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength,384),
                     0.5f,1, AllVariables.Bit_land, (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool));
         }
     }
@@ -49,46 +49,46 @@ public class flappyBirdPipes {
 
         AllVariables.batch.begin();
 
-        for (int i=0;i<VariablesForPlayArea.flappyBirdPipesPiles.size();i++) {
+        for (int i=0;i<VariablesForPlayArea.flappyBirdPipesList.size();i++) {
             tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/solidPipe.png"));
             //lower solid painting
-            for (int k=VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom; k>(-1)*VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom;k-=64) {
-                for (int j = VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength; j > -1 * VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength; j -= 64) {
-                    AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x - j,
-                            VariablesForPlayArea.flappyBirdPipesPiles.get(i).y-k);
+            for (int k=VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom; k>(-1)*VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom;k-=64) {
+                for (int j = VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j > -1 * VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j -= 64) {
+                    AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                            VariablesForPlayArea.flappyBirdPipesList.get(i).y-k);
                 }
             }
             //upper solid painting
             for (int k=384; k>-384;k-=64) {
-                for (int j = VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength; j > -1 * VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength; j -= 64) {
-                    AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x - j,
-                            VariablesForPlayArea.flappyBirdPipesPiles.get(i).y + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapVerticalLength +384 -k);
+                for (int j = VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j > -1 * VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j -= 64) {
+                    AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                            VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom + VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength +384 -k);
                 }
             }
 
             //end point painting-------------
             tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/endAreaPipe.png"));
             //====lower==============
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x - VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength - 16,
-                    VariablesForPlayArea.flappyBirdPipesPiles.get(i).y + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom-47);
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength + 16-64,
-                    VariablesForPlayArea.flappyBirdPipesPiles.get(i).y + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom-47);
+            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength - 16,
+                    VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom-47);
+            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x + VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength + 16-64,
+                    VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom-47);
 
             //=====upper==================
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x - VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength - 16,
-                    VariablesForPlayArea.flappyBirdPipesPiles.get(i).y + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapVerticalLength-32);
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength + 16-64,
-                    VariablesForPlayArea.flappyBirdPipesPiles.get(i).y + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapVerticalLength-32);
+            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength - 16,
+                    VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength-32);
+            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x + VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength + 16-64,
+                    VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength-32);
 
             //contineous tiles
             tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/contiEndPipe.png"));
-            for (int j= VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength-16;
-                 j>-1*(VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapeHorizontalLength-16);
+            for (int j= VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength-16;
+                 j>-1*(VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength-16);
                  j-=32){
-                AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x - j,
-                        VariablesForPlayArea.flappyBirdPipesPiles.get(i).y + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom-47);
-                AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesPiles.get(i).x - j,
-                        VariablesForPlayArea.flappyBirdPipesPiles.get(i).y + VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesPiles.get(i).gapVerticalLength-32);
+                AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                        VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom-47);
+                AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                        VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength-32);
 
             }
         }

@@ -5,6 +5,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
@@ -18,11 +19,13 @@ public class ReDirectToTheLevel {
     public static void Direct(MainGame game){
 
         flappyBirdPipesVariables fbPipes = new flappyBirdPipesVariables();
+        CreateHoleVariables createHole = new CreateHoleVariables();
 
         //clear it all
         VariablesForPlayArea.powerUps.clear();
         VariablesForPlayArea.powerUpPos.clear();
-        VariablesForPlayArea.flappyBirdPipesPiles.clear();
+        VariablesForPlayArea.flappyBirdPipesList.clear();
+        VariablesForPlayArea.createHoleList.clear();
 
 
         // area 1 ----------------------------------------------------------------
@@ -94,10 +97,11 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 600;
             VariablesForPlayArea.endPoint.y = 7400;
 
+            /* flappy bird type pipes
             fbPipes.x =1500;
             fbPipes.y = 500;
             fbPipes.gapeHorizontalLength = 64;
-            fbPipes.gapVerticalLength = 100;
+            fbPipes.gapVerticalLength = 400;
             fbPipes.gapStartFrombottom = 160;
             VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
 
@@ -113,9 +117,11 @@ public class ReDirectToTheLevel {
             fbPipes.x = 6000;
             fbPipes.y = 500;
             fbPipes.gapeHorizontalLength = 192;
-            fbPipes.gapVerticalLength = 100;
+            fbPipes.gapVerticalLength = 300;
             fbPipes.gapStartFrombottom = 288;
             VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
+            */
+
 
 
             game.setScreen(new TypeTwoArea(game));

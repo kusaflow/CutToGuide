@@ -225,9 +225,9 @@ public class TypeTwoArea implements Screen {
         //}
 
         // obstacles
-        if (!VariablesForPlayArea.flappyBirdPipesPiles.isEmpty()){
+        if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty()){
             fBPipes = new flappyBirdPipes(world);
-            System.out.println(VariablesForPlayArea.flappyBirdPipesPiles.size());
+            System.out.println(VariablesForPlayArea.flappyBirdPipesList.size());
         }
         //=================obstacles
 
@@ -254,15 +254,16 @@ public class TypeTwoArea implements Screen {
         input(dt);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        //cam.combined.scl(AllVariables.PPM);
         //need to fix this
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
         //things at bg of the of the tiled map goes here
-        if (!VariablesForPlayArea.flappyBirdPipesPiles.isEmpty())
+        if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes.render();
 
-        //tmr.render();
+        tmr.render();
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -660,8 +661,10 @@ public class TypeTwoArea implements Screen {
 
 
         //obstacles===================
-        if (!VariablesForPlayArea.flappyBirdPipesPiles.isEmpty())
-            fBPipes.update();
+        //if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
+          //  fBPipes.update();
+
+
 
         //obstacles===================
 
