@@ -96,25 +96,25 @@ public class ReDirectToTheLevel {
 
             fbPipes.x =1500;
             fbPipes.y = 500;
-            fbPipes.gapeHorizontalLength = 70;
+            fbPipes.gapeHorizontalLength = 64;
             fbPipes.gapVerticalLength = 100;
-            fbPipes.gapStartFrombottom = 150;
+            fbPipes.gapStartFrombottom = 160;
             VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
 
             fbPipes = new flappyBirdPipesVariables();
             fbPipes.x = 4000;
             fbPipes.y = 500;
-            fbPipes.gapeHorizontalLength = 130;
+            fbPipes.gapeHorizontalLength = 128;
             fbPipes.gapVerticalLength = 200;
-            fbPipes.gapStartFrombottom = 30;
+            fbPipes.gapStartFrombottom = 32;
             VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
 
             fbPipes = new flappyBirdPipesVariables();
             fbPipes.x = 6000;
             fbPipes.y = 500;
-            fbPipes.gapeHorizontalLength = 200;
+            fbPipes.gapeHorizontalLength = 192;
             fbPipes.gapVerticalLength = 100;
-            fbPipes.gapStartFrombottom = 300;
+            fbPipes.gapStartFrombottom = 288;
             VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
 
 

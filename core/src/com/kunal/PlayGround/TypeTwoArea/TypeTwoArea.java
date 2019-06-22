@@ -195,7 +195,7 @@ public class TypeTwoArea implements Screen {
         flag.setPosition(TiledMapLoadingHelper.flagpos().x,TiledMapLoadingHelper.flagpos().y);
 
         posMap = new Sprite(new Texture(Gdx.files.internal("badlogic.png")));
-        posMap.setPosition(50,50);
+        posMap.setPosition(32,32);
         posMap.setSize(70,70);
 
         coin1 = new Sprite(new Texture(Gdx.files.internal(AllVariables.coinAdd)));
