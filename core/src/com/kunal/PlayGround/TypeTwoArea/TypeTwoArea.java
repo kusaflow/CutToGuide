@@ -21,6 +21,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.LevelsObstacles.CreateHole.createHole;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
@@ -84,6 +85,8 @@ public class TypeTwoArea implements Screen {
     //obstables
         //these class will get initialize only if required otherwise no
     private flappyBirdPipes fBPipes;
+    private createHole crtHole;
+
 
 
     public TypeTwoArea(MainGame game) {
@@ -225,10 +228,10 @@ public class TypeTwoArea implements Screen {
         //}
 
         // obstacles
-        if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty()){
+        if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes = new flappyBirdPipes(world);
-            System.out.println(VariablesForPlayArea.flappyBirdPipesList.size());
-        }
+        if (!VariablesForPlayArea.createHoleList.isEmpty())
+            crtHole = new createHole(world);
         //=================obstacles
 
 
