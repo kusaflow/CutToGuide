@@ -3,6 +3,10 @@
 > particular area in which the cycle will jump up a bit
 > buttons to open/close some part of area to block or open the area
 > enimes to be beware of
+    >>const enimes who stick to land
+    >>jumpers
+    >>underGroung movers
+    >>come right at you
 > random things present at top that will drop on when player reaches some x value.
 		if collided by player the game over. some part of it is visible to player to get the idea and plan thar way
 > top placed player that will shoot on player
