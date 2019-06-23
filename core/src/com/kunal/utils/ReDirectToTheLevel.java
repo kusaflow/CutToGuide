@@ -126,8 +126,10 @@ public class ReDirectToTheLevel {
             createHole.x = 1824;
             createHole.y = 480;
             createHole.depth = 32*10;
-            createHole.typeOfPAth.add((short) 1);
-            createHole.pos.add(new Vector2(2432,480));
+            createHole.typeOfPAth = 1;
+            createHole.lenght = 608;
+            createHole.mapType = 1;
+            createHole.visible = true;
             VariablesForPlayArea.createHoleList.add(createHole);
 
 
