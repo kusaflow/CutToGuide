@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -52,8 +53,8 @@ public class TypeTwoArea implements Screen {
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
     //CamScroller
-    private short CamScrollerX = 1320, CamScrollerY = 750;
-    private byte camScrollSize =60;
+    private short CamScrollerX = 1020, CamScrollerY = 710;
+    private byte camScrollSize = 100;
     private ShapeRenderer sred;
 
     private ObjectCreation objectCreation;
@@ -234,7 +235,8 @@ public class TypeTwoArea implements Screen {
             crtHole = new createHole(world);
         //=================obstacles
 
-
+        //AllVariables.batch.dispose();
+        AllVariables.batch = new SpriteBatch();
 
 
 
@@ -306,6 +308,9 @@ public class TypeTwoArea implements Screen {
 
         AllVariables.batch.begin();
         //obstacle Flappy bird pipes
+        if (!VariablesForPlayArea.createHoleList.isEmpty())
+            crtHole.render();
+
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
@@ -550,9 +555,9 @@ public class TypeTwoArea implements Screen {
         if (isCamScrollerTouched){
             //moved to left
             if(originX - dragged_touchX > Gdx.graphics.getWidth()/24){
-                CamScrollerX = 1250;
-                CamScrollerY = 755;
-                camScrollSize = 50;
+                CamScrollerX = 950;
+                CamScrollerY = 715;
+                camScrollSize = 70;
                 if (hardMove)
                     VariablesForPlayArea.camposX-=30f;
                 else
@@ -560,9 +565,9 @@ public class TypeTwoArea implements Screen {
             }
             //moved to right
             else if(dragged_touchX - originX > Gdx.graphics.getWidth()/28){
-                CamScrollerX = 1400;
-                CamScrollerY = 755;
-                camScrollSize = 50;
+                CamScrollerX = 1100;
+                CamScrollerY = 715;
+                camScrollSize = 70;
                 if (hardMove)
                     VariablesForPlayArea.camposX+=30f;
                 else
@@ -570,9 +575,9 @@ public class TypeTwoArea implements Screen {
 
 
             }else{
-                CamScrollerX = 1320;
-                CamScrollerY = 750;
-                camScrollSize = 60;
+                CamScrollerX = 1020;
+                CamScrollerY = 710;
+                camScrollSize = 100;
             }
         }
 
@@ -727,9 +732,9 @@ public class TypeTwoArea implements Screen {
                                 }
 
                                 //camScroller
-                                if (screenX > (1125 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (1190 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 650 * AllVariables.inpM && screenY < 720 * AllVariables.inpM) {
+                                if (screenX > (910 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1010 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 600 * AllVariables.inpM && screenY < 710 * AllVariables.inpM) {
                                     //System.out.println("omPLan");
                                     isCamScrollerTouched = true;
                                     CamScroller.setAlpha(0.7f);
@@ -900,9 +905,9 @@ public class TypeTwoArea implements Screen {
                         }
 
                         if(isCamScrollerTouched) {
-                            CamScrollerX = 1320;
-                            CamScrollerY = 750;
-                            camScrollSize = 60;
+                            CamScrollerX = 1020;
+                            CamScrollerY = 710;
+                            camScrollSize = 100;
                         }
 
                         if (isCamScrollerTouched) {

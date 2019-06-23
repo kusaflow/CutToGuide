@@ -122,6 +122,14 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
             */
 
+            createHole = new CreateHoleVariables();
+            createHole.x = 1824;
+            createHole.y = 480;
+            createHole.depth = 32*10;
+            createHole.typeOfPAth.add((short) 1);
+            createHole.pos.add(new Vector2(2432,480));
+            VariablesForPlayArea.createHoleList.add(createHole);
+
 
 
             game.setScreen(new TypeTwoArea(game));
