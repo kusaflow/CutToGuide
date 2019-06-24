@@ -134,11 +134,18 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.createHoleList.add(createHole);
             */
             //jumper
+
             jumper = new JumperVariables();
             jumper.x = 1500;
             jumper.y = 510;
-
             VariablesForPlayArea.jumperList.add(jumper);
+
+            jumper = new JumperVariables();
+            jumper.x = 3500;
+            jumper.y = 510;
+            VariablesForPlayArea.jumperList.add(jumper);
+
+
 
             game.setScreen(new TypeTwoArea(game));
         }

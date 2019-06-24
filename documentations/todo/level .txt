@@ -2,14 +2,15 @@
 an enter or exit --> flappyBirdPipes
 > land areas in which the land can be go down --> createHole
 > particular area in which the cycle will jump up a bit --> jumper
-> buttons to open/close some part of area to block or open the area
-> enimes to be beware of
-    >>const enimes who stick to land
-    >>jumpers
-    >>underGroung movers
-    >>come right at you
+> enimes to be beware of -->EnimesWithNoGun
+    >>const enimes who stick to land --type1
+    >>jumpers -- type2
+    >>underGroung movers -- type3
+    >>come right at you -- type4
 > random things present at top that will drop on when player reaches some x value.
 		if collided by player the game over. some part of it is visible to player to get the idea and plan thar way
+
+> buttons to open/close some part of area to block or open the area
 > top placed player that will shoot on player
 > enery ball that can be collected by player and when needed shoot to the player who are firirng at the player
 > collectable keys that will open only particular locks. basically keys with colour red green blue with there respective 

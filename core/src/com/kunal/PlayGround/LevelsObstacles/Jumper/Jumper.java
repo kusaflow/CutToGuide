@@ -15,9 +15,9 @@ public class Jumper {
     //108
     public void render(){
         for (int i=0; i< VariablesForPlayArea.jumperList.size();i++){
-            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x,VariablesForPlayArea.jumperList.get(i).y);
-            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x+54,VariablesForPlayArea.jumperList.get(i).y);
-            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x + 108,VariablesForPlayArea.jumperList.get(i).y);
+            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x,VariablesForPlayArea.jumperList.get(i).y,64,64);
+            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x+54,VariablesForPlayArea.jumperList.get(i).y,64,64);
+            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x + 108,VariablesForPlayArea.jumperList.get(i).y,64,64);
         }
     }
 
@@ -31,7 +31,7 @@ public class Jumper {
                         if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.jumperList.get(i).y + 23 ||
                                 (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.jumperList.get(i).y + 23) {
                             VariablesForPlayArea.jumperList.get(i).textureChanged = true;
-                            VariablesForPlayArea.jumperList.get(i).texture = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/open.png"));
+                            VariablesForPlayArea.jumperList.get(i).texture = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
                             AllVariables.BackWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 9.5f), true);
                             AllVariables.FrontWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 10), true);
                         }
