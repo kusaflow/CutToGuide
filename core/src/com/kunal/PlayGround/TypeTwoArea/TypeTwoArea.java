@@ -31,6 +31,7 @@ import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.utils.BodyGenerator;
+import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TiledMapLoadingHelper;
 
 public class TypeTwoArea implements Screen {
@@ -43,11 +44,11 @@ public class TypeTwoArea implements Screen {
     private Viewport port;
 
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
-            per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3;
+            per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
-            coin2anim = false, coin3anim= false, powerUpSelected = false;
+            coin2anim = false, coin3anim= false, powerUpSelected = false, gameOver = false;
 
     Texture levelPoweUP;
 
@@ -218,6 +219,11 @@ public class TypeTwoArea implements Screen {
         coin3.setSize(100,100);
         coin3.setAlpha(coin3Alpha);
 
+        gameoverTexure = new Sprite(new Texture(Gdx.files.internal("utils/gameover.png")));
+        menuTex = new Sprite(new Texture(Gdx.files.internal("utils/menu.png")));
+        retryTex = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
+
+
 
         //to check if any power is selected or not
         if (VariablesForPlayArea.shapeNumberSelected > VariablesForPlayArea.CutOutBodies.size() - 1 &&
@@ -235,7 +241,6 @@ public class TypeTwoArea implements Screen {
         if (!VariablesForPlayArea.jumperList.isEmpty())
             jumper = new Jumper();
         //=================obstacles
-
 
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
@@ -339,6 +344,11 @@ public class TypeTwoArea implements Screen {
             resume.draw(AllVariables.batch);
             exit.draw(AllVariables.batch);
         }
+        if (gameOver){
+            gameoverTexure.draw(AllVariables.batch);
+            retryTex.draw(AllVariables.batch);
+            menuTex.draw(AllVariables.batch);
+        }
         AllVariables.batch.end();
     }
 
@@ -410,9 +420,8 @@ public class TypeTwoArea implements Screen {
 
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
-        world.step(1/(1/dt), 6,2);
-
-
+        if (!gameOver)
+            world.step(1/(1/dt), 6,2);
 
         //ends here
 
@@ -535,6 +544,10 @@ public class TypeTwoArea implements Screen {
         fadedBG.setPosition(-280+(cam.position.x - AllVariables.WIDTH/2), -200+(cam.position.y -AllVariables.HEIGHT/2));
         resume.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
         exit.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
+        gameoverTexure.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT/2));
+        menuTex.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
+        retryTex.setPosition(740+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
+
 
 
 
@@ -699,6 +712,20 @@ public class TypeTwoArea implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
+
+                        if (gameOver) {
+                            if (screenX > (515 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (610 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 345 * AllVariables.inpM && screenY < 425 * AllVariables.inpM) {
+                                game.setScreen(new LevelNumberSelection(game));
+                            }
+
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (790 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 355 * AllVariables.inpM && screenY < 424 * AllVariables.inpM) {
+                                ReDirectToTheLevel.Direct(game);
+                            }
+                        }
 
                         System.out.println(screenX + "\t" + screenY);
                         if (startBool) {
@@ -1001,7 +1028,7 @@ public class TypeTwoArea implements Screen {
                             game.setScreen(new CuttingAreaManager(game));
                         }
                         if (keycode == Input.Keys.SPACE){
-                            world.setGravity(new Vector2(0,-10));
+                            gameOver = true;
                         }
                         if (keycode == Input.Keys.B){
                             game.setScreen(new LevelNumberSelection(game));
@@ -1026,9 +1053,6 @@ public class TypeTwoArea implements Screen {
 
                     @Override
                     public boolean keyUp(int keycode) {
-                        if (keycode == Input.Keys.SPACE){
-                            world.setGravity(new Vector2(0,0));
-                        }
                         return false;
                     }
 
