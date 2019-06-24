@@ -10,10 +10,12 @@ import com.kunal.utils.BodyGenerator;
 
 public class flappyBirdPipes {
 
-    Texture tile;
+    Texture tile_contiEndPipe, tile_solid, tile_endArea;
 
     public flappyBirdPipes(World world){
-        tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/endAreaPipe.png"));
+        tile_endArea = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/endAreaPipe.png"));
+        tile_solid = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/solidPipe.png"));
+        tile_contiEndPipe = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/contiEndPipe.png"));
 
         for (int i=0; i< VariablesForPlayArea.flappyBirdPipesList.size(); i++) {
             //lower Part
@@ -50,44 +52,41 @@ public class flappyBirdPipes {
         AllVariables.batch.begin();
 
         for (int i=0;i<VariablesForPlayArea.flappyBirdPipesList.size();i++) {
-            tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/solidPipe.png"));
             //lower solid painting
             for (int k=VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom; k>(-1)*VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom;k-=64) {
                 for (int j = VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j > -1 * VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j -= 64) {
-                    AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                    AllVariables.batch.draw(tile_solid, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
                             VariablesForPlayArea.flappyBirdPipesList.get(i).y-k);
                 }
             }
             //upper solid painting
             for (int k=384; k>-384;k-=64) {
                 for (int j = VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j > -1 * VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength; j -= 64) {
-                    AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                    AllVariables.batch.draw(tile_solid, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
                             VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom + VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength +384 -k);
                 }
             }
 
             //end point painting-------------
-            tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/endAreaPipe.png"));
             //====lower==============
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength - 16,
+            AllVariables.batch.draw(tile_endArea, VariablesForPlayArea.flappyBirdPipesList.get(i).x - VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength - 16,
                     VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom-47);
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x + VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength + 16-64,
+            AllVariables.batch.draw(tile_endArea, VariablesForPlayArea.flappyBirdPipesList.get(i).x + VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength + 16-64,
                     VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom-47);
 
             //=====upper==================
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength - 16,
+            AllVariables.batch.draw(tile_endArea, VariablesForPlayArea.flappyBirdPipesList.get(i).x - VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength - 16,
                     VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength-32);
-            AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x + VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength + 16-64,
+            AllVariables.batch.draw(tile_endArea, VariablesForPlayArea.flappyBirdPipesList.get(i).x + VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength + 16-64,
                     VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength-32);
 
             //contineous tiles
-            tile = new Texture(Gdx.files.internal("playArea/LevelObstacles/FlappyBirdPipes/contiEndPipe.png"));
             for (int j= VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength-16;
                  j>-1*(VariablesForPlayArea.flappyBirdPipesList.get(i).gapeHorizontalLength-16);
                  j-=32){
-                AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                AllVariables.batch.draw(tile_contiEndPipe, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
                         VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom-47);
-                AllVariables.batch.draw(tile, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
+                AllVariables.batch.draw(tile_contiEndPipe, VariablesForPlayArea.flappyBirdPipesList.get(i).x - j,
                         VariablesForPlayArea.flappyBirdPipesList.get(i).y + VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom+VariablesForPlayArea.flappyBirdPipesList.get(i).gapVerticalLength-32);
 
             }
@@ -107,7 +106,4 @@ public class flappyBirdPipes {
 
     }
 
-    public void update(){
-
-    }
 }

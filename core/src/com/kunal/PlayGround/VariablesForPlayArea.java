@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
+import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 
 import java.util.LinkedList;
@@ -56,6 +57,7 @@ public class VariablesForPlayArea {
     //obstacles
     public static LinkedList<flappyBirdPipesVariables> flappyBirdPipesList;
     public static LinkedList<CreateHoleVariables> createHoleList;
+    public static LinkedList<JumperVariables> jumperList;
 
     //==========================================
 
@@ -73,6 +75,8 @@ public class VariablesForPlayArea {
         //obstacles
         flappyBirdPipesList = new LinkedList<flappyBirdPipesVariables>();
         createHoleList = new LinkedList<CreateHoleVariables>();
+        jumperList = new LinkedList<JumperVariables>();
+
 
 
         //all big squre Points

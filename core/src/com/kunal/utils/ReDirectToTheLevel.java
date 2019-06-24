@@ -8,6 +8,7 @@ import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
+import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
@@ -22,12 +23,14 @@ public class ReDirectToTheLevel {
 
         flappyBirdPipesVariables fbPipes = new flappyBirdPipesVariables();
         CreateHoleVariables createHole = new CreateHoleVariables();
+        JumperVariables jumper = new JumperVariables();
 
         //clear it all
         VariablesForPlayArea.powerUps.clear();
         VariablesForPlayArea.powerUpPos.clear();
         VariablesForPlayArea.flappyBirdPipesList.clear();
         VariablesForPlayArea.createHoleList.clear();
+        VariablesForPlayArea.jumperList.clear();
 
 
         // area 1 ----------------------------------------------------------------
@@ -99,6 +102,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 600;
             VariablesForPlayArea.endPoint.y = 7400;
 
+            /*
             // flappy bird type pipes
             fbPipes.x =1500;
             fbPipes.y = 500;
@@ -122,14 +126,19 @@ public class ReDirectToTheLevel {
             fbPipes.gapVerticalLength = 300;
             fbPipes.gapStartFrombottom = 288;
             VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
-
+            */
             /*
             createHole = new CreateHoleVariables();
             createHole.map = new TmxMapLoader().load("playArea/LevelObstacles/createHole/level7/Area1Level7.tmx");
             createHole.tmr = new OrthogonalTiledMapRenderer(createHole.map);
             VariablesForPlayArea.createHoleList.add(createHole);
             */
+            //jumper
+            jumper = new JumperVariables();
+            jumper.x = 1500;
+            jumper.y = 510;
 
+            VariablesForPlayArea.jumperList.add(jumper);
 
             game.setScreen(new TypeTwoArea(game));
         }

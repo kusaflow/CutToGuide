@@ -23,6 +23,7 @@ import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.createHole;
+import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
@@ -86,6 +87,7 @@ public class TypeTwoArea implements Screen {
     //obstables
         //these class will get initialize only if required otherwise no
     private flappyBirdPipes fBPipes;
+    private Jumper jumper;
 
 
 
@@ -230,10 +232,9 @@ public class TypeTwoArea implements Screen {
         // obstacles
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes = new flappyBirdPipes(world);
+        if (!VariablesForPlayArea.jumperList.isEmpty())
+            jumper = new Jumper();
         //=================obstacles
-
-        //AllVariables.batch.dispose();
-        AllVariables.batch = new SpriteBatch();
 
 
 
@@ -304,8 +305,8 @@ public class TypeTwoArea implements Screen {
 
 
         AllVariables.batch.begin();
-        //obstacle Flappy bird pipes
-
+        if (!VariablesForPlayArea.jumperList.isEmpty())
+            jumper.render();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
@@ -328,8 +329,8 @@ public class TypeTwoArea implements Screen {
 
         //powerUps
         for (int i =0; i<VariablesForPlayArea.powerUps.size(); i++) {
-            levelPoweUP = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
-            AllVariables.batch.draw(levelPoweUP,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
+            //levelPoweUP = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
+            //AllVariables.batch.draw(levelPoweUP,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
         }
 
         //this should be at last
@@ -664,8 +665,8 @@ public class TypeTwoArea implements Screen {
 
 
         //obstacles===================
-        //if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
-          //  fBPipes.update();
+        if (!VariablesForPlayArea.jumperList.isEmpty())
+            jumper.update();
 
 
 
