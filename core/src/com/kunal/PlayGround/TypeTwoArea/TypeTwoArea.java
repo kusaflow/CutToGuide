@@ -86,7 +86,6 @@ public class TypeTwoArea implements Screen {
     //obstables
         //these class will get initialize only if required otherwise no
     private flappyBirdPipes fBPipes;
-    private createHole crtHole;
 
 
 
@@ -231,8 +230,6 @@ public class TypeTwoArea implements Screen {
         // obstacles
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes = new flappyBirdPipes(world);
-        if (!VariablesForPlayArea.createHoleList.isEmpty())
-            crtHole = new createHole(world);
         //=================obstacles
 
         //AllVariables.batch.dispose();
@@ -308,8 +305,6 @@ public class TypeTwoArea implements Screen {
 
         AllVariables.batch.begin();
         //obstacle Flappy bird pipes
-        if (!VariablesForPlayArea.createHoleList.isEmpty())
-            crtHole.render();
 
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);

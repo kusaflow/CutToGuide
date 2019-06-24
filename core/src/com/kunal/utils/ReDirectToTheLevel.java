@@ -1,6 +1,8 @@
 package com.kunal.utils;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
@@ -97,13 +99,13 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 600;
             VariablesForPlayArea.endPoint.y = 7400;
 
-            /* flappy bird type pipes
+            // flappy bird type pipes
             fbPipes.x =1500;
             fbPipes.y = 500;
             fbPipes.gapeHorizontalLength = 64;
             fbPipes.gapVerticalLength = 400;
             fbPipes.gapStartFrombottom = 160;
-            VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
+            VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
 
             fbPipes = new flappyBirdPipesVariables();
             fbPipes.x = 4000;
@@ -111,7 +113,7 @@ public class ReDirectToTheLevel {
             fbPipes.gapeHorizontalLength = 128;
             fbPipes.gapVerticalLength = 200;
             fbPipes.gapStartFrombottom = 32;
-            VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
+            VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
 
             fbPipes = new flappyBirdPipesVariables();
             fbPipes.x = 6000;
@@ -119,19 +121,14 @@ public class ReDirectToTheLevel {
             fbPipes.gapeHorizontalLength = 192;
             fbPipes.gapVerticalLength = 300;
             fbPipes.gapStartFrombottom = 288;
-            VariablesForPlayArea.flappyBirdPipesPiles.add(fbPipes);
-            */
+            VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
 
+            /*
             createHole = new CreateHoleVariables();
-            createHole.x = 1824;
-            createHole.y = 480;
-            createHole.depth = 32*10;
-            createHole.typeOfPAth = 1;
-            createHole.lenght = 608;
-            createHole.mapType = 1;
-            createHole.visible = true;
+            createHole.map = new TmxMapLoader().load("playArea/LevelObstacles/createHole/level7/Area1Level7.tmx");
+            createHole.tmr = new OrthogonalTiledMapRenderer(createHole.map);
             VariablesForPlayArea.createHoleList.add(createHole);
-
+            */
 
 
             game.setScreen(new TypeTwoArea(game));
