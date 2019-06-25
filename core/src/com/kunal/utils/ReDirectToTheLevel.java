@@ -11,6 +11,8 @@ import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
+import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
+import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -24,6 +26,7 @@ public class ReDirectToTheLevel {
         flappyBirdPipesVariables fbPipes = new flappyBirdPipesVariables();
         CreateHoleVariables createHole = new CreateHoleVariables();
         JumperVariables jumper = new JumperVariables();
+        HalfSawVariables halfSawVariables = new HalfSawVariables();
 
         //clear it all
         VariablesForPlayArea.powerUps.clear();
@@ -31,7 +34,9 @@ public class ReDirectToTheLevel {
         VariablesForPlayArea.flappyBirdPipesList.clear();
         VariablesForPlayArea.createHoleList.clear();
         VariablesForPlayArea.jumperList.clear();
+        VariablesForPlayArea.halfSawList.clear();
 
+        VariablesForPlayArea.gameOver =false;
 
         // area 1 ----------------------------------------------------------------
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==1){
@@ -41,7 +46,7 @@ public class ReDirectToTheLevel {
             //powerUps
             VariablesForPlayArea.powerUps.clear();
 
-            game.setScreen(new TypeOneArea(game));
+            game.setScreen(new TypeTwoArea(game));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==2){
@@ -51,7 +56,7 @@ public class ReDirectToTheLevel {
             //powerUps
             VariablesForPlayArea.powerUps.clear();
 
-            game.setScreen(new TypeOneArea(game));
+            game.setScreen(new TypeTwoArea(game));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==3){
@@ -61,7 +66,7 @@ public class ReDirectToTheLevel {
             //powerUps
             VariablesForPlayArea.powerUps.clear();
 
-            game.setScreen(new TypeOneArea(game));
+            game.setScreen(new TypeTwoArea(game));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==4){
@@ -71,7 +76,7 @@ public class ReDirectToTheLevel {
             //powerUps
             VariablesForPlayArea.powerUps.clear();
 
-            game.setScreen(new TypeOneArea(game));
+            game.setScreen(new TypeTwoArea(game));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==5){
@@ -81,7 +86,7 @@ public class ReDirectToTheLevel {
             //powerUps
             VariablesForPlayArea.powerUps.clear();
 
-            game.setScreen(new TypeOneArea(game));
+            game.setScreen(new TypeTwoArea(game));
         }
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==6){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
@@ -133,6 +138,7 @@ public class ReDirectToTheLevel {
             createHole.tmr = new OrthogonalTiledMapRenderer(createHole.map);
             VariablesForPlayArea.createHoleList.add(createHole);
             */
+            /*
             //jumper
 
             jumper = new JumperVariables();
@@ -144,6 +150,19 @@ public class ReDirectToTheLevel {
             jumper.x = 3500;
             jumper.y = 510;
             VariablesForPlayArea.jumperList.add(jumper);
+
+            */
+            //halhSaw
+            halfSawVariables = new HalfSawVariables();
+            halfSawVariables.xorigin = 2000;
+            halfSawVariables.yorigin = 512;
+            halfSawVariables.xdestination = 3000;
+            halfSawVariables.ydestination = 512;
+            halfSawVariables.oneisSelected = true;
+            halfSawVariables.orientation = 1;
+
+            VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
 
 
 

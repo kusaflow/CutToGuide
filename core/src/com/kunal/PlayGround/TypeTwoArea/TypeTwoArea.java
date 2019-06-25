@@ -25,6 +25,7 @@ import com.kunal.MainGame;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.createHole;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
+import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -48,7 +49,7 @@ public class TypeTwoArea implements Screen {
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
-            coin2anim = false, coin3anim= false, powerUpSelected = false, gameOver = false;
+            coin2anim = false, coin3anim= false, powerUpSelected = false;
 
     Texture levelPoweUP;
 
@@ -89,6 +90,7 @@ public class TypeTwoArea implements Screen {
         //these class will get initialize only if required otherwise no
     private flappyBirdPipes fBPipes;
     private Jumper jumper;
+    private HalfSaw halfSaw;
 
 
 
@@ -240,6 +242,8 @@ public class TypeTwoArea implements Screen {
             fBPipes = new flappyBirdPipes(world);
         if (!VariablesForPlayArea.jumperList.isEmpty())
             jumper = new Jumper();
+        if (!VariablesForPlayArea.halfSawList.isEmpty())
+            halfSaw = new HalfSaw();
         //=================obstacles
 
 
@@ -258,7 +262,8 @@ public class TypeTwoArea implements Screen {
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        update(dt);
+        if (!VariablesForPlayArea.gameOver)
+            update(dt);
         input(dt);
 
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
@@ -312,6 +317,8 @@ public class TypeTwoArea implements Screen {
         AllVariables.batch.begin();
         if (!VariablesForPlayArea.jumperList.isEmpty())
             jumper.render();
+        if (!VariablesForPlayArea.halfSawList.isEmpty())
+            halfSaw.render();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
@@ -344,7 +351,7 @@ public class TypeTwoArea implements Screen {
             resume.draw(AllVariables.batch);
             exit.draw(AllVariables.batch);
         }
-        if (gameOver){
+        if (VariablesForPlayArea.gameOver){
             gameoverTexure.draw(AllVariables.batch);
             retryTex.draw(AllVariables.batch);
             menuTex.draw(AllVariables.batch);
@@ -420,8 +427,7 @@ public class TypeTwoArea implements Screen {
 
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
-        if (!gameOver)
-            world.step(1/(1/dt), 6,2);
+        world.step(1/(1/dt), 6,2);
 
         //ends here
 
@@ -680,6 +686,8 @@ public class TypeTwoArea implements Screen {
         //obstacles===================
         if (!VariablesForPlayArea.jumperList.isEmpty())
             jumper.update();
+        if (!VariablesForPlayArea.halfSawList.isEmpty())
+            halfSaw.update();
 
 
 
@@ -713,7 +721,7 @@ public class TypeTwoArea implements Screen {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         hardmoveFaultResolver = false;
 
-                        if (gameOver) {
+                        if (VariablesForPlayArea.gameOver) {
                             if (screenX > (515 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (610 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 345 * AllVariables.inpM && screenY < 425 * AllVariables.inpM) {
@@ -728,7 +736,9 @@ public class TypeTwoArea implements Screen {
                         }
 
                         System.out.println(screenX + "\t" + screenY);
-                        if (startBool) {
+
+
+                        if (startBool && !VariablesForPlayArea.gameOver) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenX < (1230* AllVariables.inpM)+AllVariables.witdth_translation
@@ -1028,7 +1038,7 @@ public class TypeTwoArea implements Screen {
                             game.setScreen(new CuttingAreaManager(game));
                         }
                         if (keycode == Input.Keys.SPACE){
-                            gameOver = true;
+                            VariablesForPlayArea.gameOver = true;
                         }
                         if (keycode == Input.Keys.B){
                             game.setScreen(new LevelNumberSelection(game));
@@ -1044,7 +1054,6 @@ public class TypeTwoArea implements Screen {
                             //System.out.println(AllVariables.BackWheel.getPosition().x*AllVariables.PPM +"\t" + AllVariables.BackWheel.getPosition().y*AllVariables.PPM);
                             System.out.println(posMap.getX() + "\t" + posMap.getY());
                         }
-
 
 
 

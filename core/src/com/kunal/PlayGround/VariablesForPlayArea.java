@@ -6,6 +6,7 @@ import com.kunal.AllVariables;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
+import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 
 import java.util.LinkedList;
 
@@ -21,6 +22,8 @@ public class VariablesForPlayArea {
 
     //end point is when the level will end
     public static Vector2 endPoint;
+
+    public static Boolean gameOver = false;
 
     //level number
     public static int levelNumber;
@@ -58,6 +61,7 @@ public class VariablesForPlayArea {
     public static LinkedList<flappyBirdPipesVariables> flappyBirdPipesList;
     public static LinkedList<CreateHoleVariables> createHoleList;
     public static LinkedList<JumperVariables> jumperList;
+    public static LinkedList<HalfSawVariables> halfSawList;
 
     //==========================================
 
@@ -76,6 +80,7 @@ public class VariablesForPlayArea {
         flappyBirdPipesList = new LinkedList<flappyBirdPipesVariables>();
         createHoleList = new LinkedList<CreateHoleVariables>();
         jumperList = new LinkedList<JumperVariables>();
+        halfSawList = new LinkedList<HalfSawVariables>();
 
 
 
