@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class HalfSawVariables {
     public Boolean oneisSelected = true;
+    public Boolean movingForward = true;
     public short orientation =1;
     /*
     1 for +ve x
@@ -15,5 +16,8 @@ public class HalfSawVariables {
     public short yorigin;
     public short xdestination;
     public short ydestination;
+    public short xpos;
+    public short ypos;
+
     public short texchange =0;
 }
