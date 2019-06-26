@@ -838,31 +838,32 @@ public class TypeTwoArea implements Screen {
                                 }
                             }
 
-                            if (paused){
-                                //resume
-                                if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 490 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
-                                    paused = false;
-                                    pause.setAlpha(1);
-
-                                }
-
-                                //exit
-                                if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 345 * AllVariables.inpM && screenY < 445 * AllVariables.inpM) {
-                                    game.setScreen(new LevelNumberSelection(game));
-
-                                }
-                            }
-
                             //pause
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM) {
                                 paused = true;
                                 pause.setAlpha(0);
+
+                            }
+                        }
+
+                        if (paused){
+                            //resume
+                            if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 490 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
+                                paused = false;
+                                if (!startBool)
+                                    pause.setAlpha(1);
+
+                            }
+
+                            //exit
+                            if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 345 * AllVariables.inpM && screenY < 445 * AllVariables.inpM) {
+                                game.setScreen(new LevelNumberSelection(game));
 
                             }
                         }

@@ -6,6 +6,6 @@ public class FullSawVariables {
     public short xpos;
     public short ypos;
     public short size = 20;
-    private Boolean forwardDirection =true;
+    public Boolean forwardDirection =true;
     public Body body;
 }

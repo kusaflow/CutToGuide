@@ -17,12 +17,20 @@ public class FullSaw {
         for (int i=0; i< VariablesForPlayArea.fullSawList.size();i++){
             VariablesForPlayArea.fullSawList.get(i).body = BodyGenerator.CircleBody(world,false, "obstacle",
                     new Vector2(VariablesForPlayArea.fullSawList.get(i).xpos, VariablesForPlayArea.fullSawList.get(i).ypos),
-                    VariablesForPlayArea.fullSawList.get(i).size/2.3f,0.6f, 0.4f,
+                    VariablesForPlayArea.fullSawList.get(i).size/2.3f,1f, 0.6f,
                     AllVariables.Bit_enimes,(short)(AllVariables.Bit_enimes|AllVariables.Bit_Bicycle|AllVariables.Bit_land));
         }
+
+
     }
 
     public void update(){
+        for (int i=0; i<VariablesForPlayArea.fullSawList.size(); i++)
+            if (VariablesForPlayArea.fullSawList.get(i).forwardDirection){
+                VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(2,VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
+            }else {
+                VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(-2,VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
+            }
 
     }
 

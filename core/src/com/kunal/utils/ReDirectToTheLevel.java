@@ -166,9 +166,10 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.halfSawList.add(halfSawVariables);
             */
             fullSawVariables = new FullSawVariables();
-            fullSawVariables.xpos = 2000;
-            fullSawVariables.ypos = 600;
-            fullSawVariables.size = 100;
+            fullSawVariables.xpos = 1000;
+            fullSawVariables.ypos = 572;
+            fullSawVariables.size = 128;
+            fullSawVariables.forwardDirection = true;
 
             VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
