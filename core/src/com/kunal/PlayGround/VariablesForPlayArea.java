@@ -24,6 +24,7 @@ public class VariablesForPlayArea {
     public static Vector2 endPoint;
 
     public static Boolean gameOver = false;
+    public static Boolean rageMode = false;
 
     //level number
     public static int levelNumber;
