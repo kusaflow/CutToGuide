@@ -342,7 +342,7 @@ public class TypeTwoArea implements Screen {
         //powerUps
         for (int i =0; i<VariablesForPlayArea.powerUps.size(); i++) {
             //levelPoweUP = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
-            //AllVariables.batch.draw(levelPoweUP,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
+            //\\AllVariables.batch.draw(levelPoweUP,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
         }
 
         //this should be at last
@@ -1051,8 +1051,11 @@ public class TypeTwoArea implements Screen {
 
                         }
                         if (keycode == Input.Keys.E){
-                            //System.out.println(AllVariables.BackWheel.getPosition().x*AllVariables.PPM +"\t" + AllVariables.BackWheel.getPosition().y*AllVariables.PPM);
                             System.out.println(posMap.getX() + "\t" + posMap.getY());
+                        }
+
+                        if (keycode == Input.Keys.P){
+                            AllVariables.BackWheel.applyForceToCenter(200,0, true);
                         }
 
 

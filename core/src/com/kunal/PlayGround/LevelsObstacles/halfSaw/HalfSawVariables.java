@@ -15,7 +15,6 @@ public class HalfSawVariables {
     public short xorigin;
     public short yorigin;
     public short xdestination;
-    public short ydestination;
     public short xpos;
     public short ypos;
 
