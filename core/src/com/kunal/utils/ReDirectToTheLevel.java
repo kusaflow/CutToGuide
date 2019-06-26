@@ -11,6 +11,7 @@ import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
+import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
@@ -23,10 +24,11 @@ public class ReDirectToTheLevel {
 
     public static void Direct(MainGame game){
 
-        flappyBirdPipesVariables fbPipes = new flappyBirdPipesVariables();
-        CreateHoleVariables createHole = new CreateHoleVariables();
-        JumperVariables jumper = new JumperVariables();
-        HalfSawVariables halfSawVariables = new HalfSawVariables();
+        flappyBirdPipesVariables fbPipes;
+        //CreateHoleVariables createHole;
+        JumperVariables jumper;
+        HalfSawVariables halfSawVariables;
+        FullSawVariables fullSawVariables;
 
         //clear it all
         VariablesForPlayArea.powerUps.clear();
@@ -35,6 +37,7 @@ public class ReDirectToTheLevel {
         VariablesForPlayArea.createHoleList.clear();
         VariablesForPlayArea.jumperList.clear();
         VariablesForPlayArea.halfSawList.clear();
+        VariablesForPlayArea.fullSawList.clear();
 
         VariablesForPlayArea.gameOver =false;
 
@@ -152,6 +155,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.jumperList.add(jumper);
 
             */
+            /*
             //halhSaw
             halfSawVariables = new HalfSawVariables();
             halfSawVariables.xdestination = 2200; //-100 for 2
@@ -160,8 +164,13 @@ public class ReDirectToTheLevel {
             halfSawVariables.yorigin = 512;
 
             VariablesForPlayArea.halfSawList.add(halfSawVariables);
+            */
+            fullSawVariables = new FullSawVariables();
+            fullSawVariables.xpos = 2000;
+            fullSawVariables.ypos = 600;
+            fullSawVariables.size = 100;
 
-
+            VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
 
             game.setScreen(new TypeTwoArea(game));

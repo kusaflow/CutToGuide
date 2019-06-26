@@ -25,6 +25,7 @@ import com.kunal.MainGame;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.createHole;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
+import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
@@ -91,6 +92,7 @@ public class TypeTwoArea implements Screen {
     private flappyBirdPipes fBPipes;
     private Jumper jumper;
     private HalfSaw halfSaw;
+    private FullSaw fullSaw;
 
 
 
@@ -244,6 +246,8 @@ public class TypeTwoArea implements Screen {
             jumper = new Jumper();
         if (!VariablesForPlayArea.halfSawList.isEmpty())
             halfSaw = new HalfSaw();
+        if (!VariablesForPlayArea.fullSawList.isEmpty())
+            fullSaw = new FullSaw(world);
         //=================obstacles
 
 
@@ -319,6 +323,8 @@ public class TypeTwoArea implements Screen {
             jumper.render();
         if (!VariablesForPlayArea.halfSawList.isEmpty())
             halfSaw.render();
+        if (!VariablesForPlayArea.fullSawList.isEmpty())
+            fullSaw.render();
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
@@ -688,6 +694,8 @@ public class TypeTwoArea implements Screen {
             jumper.update();
         if (!VariablesForPlayArea.halfSawList.isEmpty())
             halfSaw.update();
+        if (!VariablesForPlayArea.fullSawList.isEmpty() && startBool)
+            fullSaw.update();
 
 
 
@@ -1055,7 +1063,8 @@ public class TypeTwoArea implements Screen {
                         }
 
                         if (keycode == Input.Keys.P){
-                            AllVariables.BackWheel.applyForceToCenter(200,0, true);
+                            //AllVariables.BackWheel.applyForceToCenter(200,0, true);
+                            VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
                         }
 
 

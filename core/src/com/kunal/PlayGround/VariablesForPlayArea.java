@@ -6,6 +6,7 @@ import com.kunal.AllVariables;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
+import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 
 import java.util.LinkedList;
@@ -63,6 +64,7 @@ public class VariablesForPlayArea {
     public static LinkedList<CreateHoleVariables> createHoleList;
     public static LinkedList<JumperVariables> jumperList;
     public static LinkedList<HalfSawVariables> halfSawList;
+    public static LinkedList<FullSawVariables> fullSawList;
 
     //==========================================
 
@@ -76,6 +78,7 @@ public class VariablesForPlayArea {
         Angle_Of_Shape.add(180f);
         powerUps = new LinkedList<Byte>();
         powerUpPos = new LinkedList<Vector2>();
+        fullSawList = new LinkedList<FullSawVariables>();
 
         //obstacles
         flappyBirdPipesList = new LinkedList<flappyBirdPipesVariables>();

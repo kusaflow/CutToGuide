@@ -17,8 +17,8 @@ an enter or exit --> flappyBirdPipes
 		locks.if the player have the key there is no problem in the movement but if doesnt have then it will get
 		collided with the door.
 > rocks that can be breakable by bullets only if there is no bullet it will work as solod shape
-> 
 
 
 
+> Hint Lines
 
