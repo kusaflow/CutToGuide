@@ -78,6 +78,7 @@ public class VariablesForPlayArea {
         Sh_pos.add(new Vector2(640/AllVariables.PPM, -1000/AllVariables.PPM));
         Angle_Of_Shape.add(180f);
         fullSawList = new LinkedList<FullSawVariables>();
+        powerUpList = new LinkedList<PowerUpInInventoryVariables>();
 
         //obstacles
         flappyBirdPipesList = new LinkedList<flappyBirdPipesVariables>();

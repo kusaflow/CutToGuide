@@ -250,7 +250,7 @@ public class ShapeChooser implements Screen {
         sred.end();
 
         for (int j =0; j < VariablesForPlayArea.powerUpList.size(); j++, i++){
-            powerUpSprite = new Sprite(VariablesForPlayArea.powerUpList.get(i).texture);
+            powerUpSprite = new Sprite(VariablesForPlayArea.powerUpList.get(j).texture);
             powerUpSprite.setSize(30,30);
             powerUpSprite.setPosition(ShapePts[i][0]-50, ShapePts[i][1]+25);
 

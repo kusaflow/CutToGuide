@@ -86,9 +86,6 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
-
-            putPowerUpsToDefaultPos();
-
             game.setScreen(new TypeTwoArea(game));
         }
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
@@ -164,8 +161,20 @@ public class ReDirectToTheLevel {
             */
             powerupVar = new PowerUpInInventoryVariables();
             powerupVar.TypeOfPower =1;
-
             VariablesForPlayArea.powerUpList.add(powerupVar);
+
+            powerupVar = new PowerUpInInventoryVariables();
+            powerupVar.TypeOfPower =1;
+            VariablesForPlayArea.powerUpList.add(powerupVar);
+
+            powerupVar = new PowerUpInInventoryVariables();
+            powerupVar.TypeOfPower =2;
+            VariablesForPlayArea.powerUpList.add(powerupVar);
+
+            powerupVar = new PowerUpInInventoryVariables();
+            powerupVar.TypeOfPower =2;
+            VariablesForPlayArea.powerUpList.add(powerupVar);
+
 
 
             game.setScreen(new TypeTwoArea(game));

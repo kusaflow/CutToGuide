@@ -5,13 +5,13 @@ import com.badlogic.gdx.graphics.Texture;
 /*
 >>>>>>>>>>>>>Type Of Power
     >1 ->> fast Move
-    >2 ->> stoper
+    >2 ->> stopper
     >3 ->> Jumper
  */
 
 public class PowerUpInInventoryVariables {
     public Texture texture;
     public short TypeOfPower;
-    public short x;
-    public short y;
+    public short x = -550;
+    public short y = -550;
 }

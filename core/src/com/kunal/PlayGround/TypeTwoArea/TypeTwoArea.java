@@ -32,6 +32,7 @@ import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
+import com.kunal.PlayGround.powerUpInInventory.PowerUpMngr;
 import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TiledMapLoadingHelper;
@@ -51,8 +52,6 @@ public class TypeTwoArea implements Screen {
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
             coin2anim = false, coin3anim= false, powerUpSelected = false;
-
-    Texture levelPoweUP;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
@@ -89,6 +88,7 @@ public class TypeTwoArea implements Screen {
 
     //obstables
         //these class will get initialize only if required otherwise no
+    private PowerUpMngr powerups;
     private flappyBirdPipes fBPipes;
     private Jumper jumper;
     private HalfSaw halfSaw;
@@ -231,7 +231,7 @@ public class TypeTwoArea implements Screen {
 
         //to check if any power is selected or not
         if (VariablesForPlayArea.shapeNumberSelected > VariablesForPlayArea.CutOutBodies.size() - 1 &&
-            VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.powerUps.size() + (VariablesForPlayArea.CutOutBodies.size()-1)){
+            VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.powerUpList.size() + (VariablesForPlayArea.CutOutBodies.size()-1)){
             powerUpSelected = true;
         }
         //pos remapping
@@ -239,6 +239,9 @@ public class TypeTwoArea implements Screen {
         //VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
         //}
 
+        //powerUps
+        if (!VariablesForPlayArea.powerUpList.isEmpty())
+            powerups = new PowerUpMngr();
         // obstacles
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes = new flappyBirdPipes(world);
@@ -339,17 +342,13 @@ public class TypeTwoArea implements Screen {
             per45degRot.draw(AllVariables.batch);
         }
 
+        powerups.render();
+
         posMap.draw(AllVariables.batch);
         //coin
         coin1.draw(AllVariables.batch);
         coin2.draw(AllVariables.batch);
         coin3.draw(AllVariables.batch);
-
-        //powerUps
-        for (int i =0; i<VariablesForPlayArea.powerUps.size(); i++) {
-            //levelPoweUP = new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(i))));
-            //\\AllVariables.batch.draw(levelPoweUP,VariablesForPlayArea.powerUpPos.get(i).x, VariablesForPlayArea.powerUpPos.get(i).y, 40,40);
-        }
 
         //this should be at last
         if (paused) {
@@ -477,29 +476,6 @@ public class TypeTwoArea implements Screen {
         coin1.setAlpha(1-coin1Alpha);
         coin2.setAlpha(1-coin2Alpha);
         coin3.setAlpha(1-coin3Alpha);
-
-
-        //collision mapper for powerUps============================================
-        for (int i =0; i<VariablesForPlayArea.powerUpPos.size(); i++){
-            if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= VariablesForPlayArea.powerUpPos.get(i).x-5 &&
-                    (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5) <= VariablesForPlayArea.powerUpPos.get(i).x){
-                if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(55+5) >= VariablesForPlayArea.powerUpPos.get(i).y-5 ||
-                        (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(55+5) >= VariablesForPlayArea.powerUpPos.get(i).y - 5) {
-                    if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= VariablesForPlayArea.powerUpPos.get(i).y + 40 +5 ||
-                            (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= VariablesForPlayArea.powerUpPos.get(i).y+50) {
-                        if (VariablesForPlayArea.powerUps.get(i) == 1){
-                            AllVariables.BackWheel.applyForceToCenter(new Vector2(200,0), true);
-                        }
-                        if (VariablesForPlayArea.powerUps.get(i) == 2){
-                            AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x *(-0),0), true);
-                        }
-                        VariablesForPlayArea.powerUpPos.set(i, new Vector2(0, -1000));
-                    }
-                }
-            }
-        }
-
-        //==================================================================================
 
         if (!CamfollowCycle)
             cam.position.set(VariablesForPlayArea.camposX, 600, cam.position.z);
@@ -639,7 +615,7 @@ public class TypeTwoArea implements Screen {
 
         if (toDrawDropAnyShapeButton) {
             //DropAnyShape alpha init
-            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size() + VariablesForPlayArea.powerUps.size() -1) {
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size() + VariablesForPlayArea.powerUpList.size() -1) {
                 //a shape is selected
                 DropAnyShapeButton.setAlpha(1f);
                 if (!powerUpSelected)
@@ -682,12 +658,14 @@ public class TypeTwoArea implements Screen {
 
         //to check if any power is selected or not
         if (VariablesForPlayArea.shapeNumberSelected > VariablesForPlayArea.CutOutBodies.size() - 1 &&
-                VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.powerUps.size() + (VariablesForPlayArea.CutOutBodies.size()-1)){
+                VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.powerUpList.size() + (VariablesForPlayArea.CutOutBodies.size()-1)){
             powerUpSelected = true;
         }else{
             powerUpSelected = false;
         }
 
+        if (!VariablesForPlayArea.powerUpList.isEmpty())
+            powerups.update();
 
         //obstacles===================
         if (!VariablesForPlayArea.jumperList.isEmpty())
@@ -877,21 +855,9 @@ public class TypeTwoArea implements Screen {
                                 && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
                             //brake
-                        }else if (screenX > (1115 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX < (1195 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY > 635* AllVariables.inpM && screenY < 705* AllVariables.inpM) {
-
-                        }else if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY > 390 * AllVariables.inpM && screenY < 460 * AllVariables.inpM){
-
-                        } else if (screenX > (1200 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY > 515 * AllVariables.inpM && screenY < 590 * AllVariables.inpM){
-
                         } else if (screenX > (1180 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY > 360 * AllVariables.inpM && screenY < 605 * AllVariables.inpM){
+                                && screenY > 360 * AllVariables.inpM && screenY < 605 * AllVariables.inpM && !powerUpSelected){
 
                         } else if (screenX > (20 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (150 * AllVariables.inpM) + AllVariables.witdth_translation
@@ -901,12 +867,12 @@ public class TypeTwoArea implements Screen {
 
                         } else {
                             if (!paused) {
-                                if ((VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() + VariablesForPlayArea.powerUps.size() - 1)) {
+                                if ((VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() + VariablesForPlayArea.powerUpList.size() - 1)) {
                                     if (hardMove) {
                                         if (powerUpSelected){
-                                            VariablesForPlayArea.powerUpPos.set(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size(),
-                                                    new Vector2(((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2))) - 250,
-                                                            ((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20));
+                                            System.out.println("comming ");
+                                            VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).x = (short) (((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2))) - 250);
+                                            VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).y = (short) (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20);
                                         }else {
 
                                             VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
@@ -1052,13 +1018,8 @@ public class TypeTwoArea implements Screen {
                         if (keycode == Input.Keys.B){
                             game.setScreen(new LevelNumberSelection(game));
                         }
-                        if (keycode == Input.Keys.F){
-                            for (int i=0; i<VariablesForPlayArea.powerUps.size(); i++)
-                                System.out.println(VariablesForPlayArea.powerUpPos.get(i));
-                            //flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
-                            //flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
 
-                        }
+
                         if (keycode == Input.Keys.E){
                             System.out.println(posMap.getX() + "\t" + posMap.getY());
                         }
