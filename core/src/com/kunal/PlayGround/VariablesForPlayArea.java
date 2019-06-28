@@ -8,6 +8,7 @@ import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
+import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
 
 import java.util.LinkedList;
 
@@ -34,11 +35,6 @@ public class VariablesForPlayArea {
     // 0 is for tut
     //public static short areaNumber =0;
 
-    //powerUP LinkedList
-    public static LinkedList<Byte> powerUps;
-    //power UP position
-    public static LinkedList<Vector2> powerUpPos;
-
     //position of camera x
     public static float camposX = 1200f;
 
@@ -58,6 +54,11 @@ public class VariablesForPlayArea {
     //tut state
     public static short tutstep = 0;
 
+    //===================================
+    //POwerUps
+    public static LinkedList<PowerUpInInventoryVariables> powerUpList;
+    //-----------------------------------
+
     //==========================================
     //obstacles
     public static LinkedList<flappyBirdPipesVariables> flappyBirdPipesList;
@@ -66,7 +67,7 @@ public class VariablesForPlayArea {
     public static LinkedList<HalfSawVariables> halfSawList;
     public static LinkedList<FullSawVariables> fullSawList;
 
-    //==========================================
+    //------------------------------------------
 
     public VariablesForPlayArea() {
         cantuseDots = new LinkedList<Byte>();
@@ -76,8 +77,6 @@ public class VariablesForPlayArea {
         Sh_pos = new LinkedList<Vector2>();
         Sh_pos.add(new Vector2(640/AllVariables.PPM, -1000/AllVariables.PPM));
         Angle_Of_Shape.add(180f);
-        powerUps = new LinkedList<Byte>();
-        powerUpPos = new LinkedList<Vector2>();
         fullSawList = new LinkedList<FullSawVariables>();
 
         //obstacles

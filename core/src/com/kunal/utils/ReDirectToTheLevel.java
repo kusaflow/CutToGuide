@@ -17,6 +17,7 @@ import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
+import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
 
 public class ReDirectToTheLevel {
     public ReDirectToTheLevel() {
@@ -29,10 +30,10 @@ public class ReDirectToTheLevel {
         JumperVariables jumper;
         HalfSawVariables halfSawVariables;
         FullSawVariables fullSawVariables;
+        PowerUpInInventoryVariables powerupVar;
 
         //clear it all
-        VariablesForPlayArea.powerUps.clear();
-        VariablesForPlayArea.powerUpPos.clear();
+        VariablesForPlayArea.powerUpList.clear();
         VariablesForPlayArea.flappyBirdPipesList.clear();
         VariablesForPlayArea.createHoleList.clear();
         VariablesForPlayArea.jumperList.clear();
@@ -46,8 +47,6 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
             VariablesForPlayArea.endPoint.x = 700;
             VariablesForPlayArea.endPoint.y = 5600;
-            //powerUps
-            VariablesForPlayArea.powerUps.clear();
 
             game.setScreen(new TypeTwoArea(game));
         }
@@ -56,8 +55,6 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level2.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 5600;
-            //powerUps
-            VariablesForPlayArea.powerUps.clear();
 
             game.setScreen(new TypeTwoArea(game));
         }
@@ -66,8 +63,6 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level3.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 5000;
-            //powerUps
-            VariablesForPlayArea.powerUps.clear();
 
             game.setScreen(new TypeTwoArea(game));
         }
@@ -76,8 +71,6 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level4.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
-            //powerUps
-            VariablesForPlayArea.powerUps.clear();
 
             game.setScreen(new TypeTwoArea(game));
         }
@@ -86,8 +79,6 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level5.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
-            //powerUps
-            VariablesForPlayArea.powerUps.clear();
 
             game.setScreen(new TypeTwoArea(game));
         }
@@ -95,10 +86,6 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
-            //powerUps
-            VariablesForPlayArea.powerUps.add((byte) 1);
-            VariablesForPlayArea.powerUps.add((byte) 2);
-            VariablesForPlayArea.powerUps.add((byte) 1);
 
             putPowerUpsToDefaultPos();
 
@@ -165,6 +152,8 @@ public class ReDirectToTheLevel {
 
             VariablesForPlayArea.halfSawList.add(halfSawVariables);
             */
+            /*
+            //fullSaw
             fullSawVariables = new FullSawVariables();
             fullSawVariables.xpos = 1000;
             fullSawVariables.ypos = 572;
@@ -172,6 +161,11 @@ public class ReDirectToTheLevel {
             fullSawVariables.forwardDirection = true;
 
             VariablesForPlayArea.fullSawList.add(fullSawVariables);
+            */
+            powerupVar = new PowerUpInInventoryVariables();
+            powerupVar.TypeOfPower =1;
+
+            VariablesForPlayArea.powerUpList.add(powerupVar);
 
 
             game.setScreen(new TypeTwoArea(game));
@@ -181,12 +175,6 @@ public class ReDirectToTheLevel {
 
 
 
-    }
-
-    private static void putPowerUpsToDefaultPos(){
-        for (int i=0; i<VariablesForPlayArea.powerUps.size(); i++){
-            VariablesForPlayArea.powerUpPos.add(new Vector2(-500,-500));
-        }
     }
 
 }

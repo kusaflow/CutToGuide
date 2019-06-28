@@ -1140,6 +1140,5 @@ public class TypeTwoArea implements Screen {
         sred.dispose();
         map.dispose();
         tmr.dispose();
-        levelPoweUP.dispose();
     }
 }

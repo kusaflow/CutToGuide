@@ -249,8 +249,8 @@ public class ShapeChooser implements Screen {
 
         sred.end();
 
-        for (int j =0; j < VariablesForPlayArea.powerUps.size(); j++, i++){
-            powerUpSprite = new Sprite(new Texture(Gdx.files.internal(PlayAreaUtils.PowerUpSimplifier(VariablesForPlayArea.powerUps.get(j)))));
+        for (int j =0; j < VariablesForPlayArea.powerUpList.size(); j++, i++){
+            powerUpSprite = new Sprite(VariablesForPlayArea.powerUpList.get(i).texture);
             powerUpSprite.setSize(30,30);
             powerUpSprite.setPosition(ShapePts[i][0]-50, ShapePts[i][1]+25);
 
