@@ -9,15 +9,25 @@ import com.kunal.utils.TiledMapLoadingHelper;
 
 public class Jumper {
 
+    Texture spring, spung;
+
     public Jumper() {
+        spring = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/spring.png"));
+        spung  = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
     }
 
     //108
     public void render(){
         for (int i=0; i< VariablesForPlayArea.jumperList.size();i++){
-            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x,VariablesForPlayArea.jumperList.get(i).y,64,64);
-            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x+54,VariablesForPlayArea.jumperList.get(i).y,64,64);
-            AllVariables.batch.draw(VariablesForPlayArea.jumperList.get(i).texture,VariablesForPlayArea.jumperList.get(i).x + 108,VariablesForPlayArea.jumperList.get(i).y,64,64);
+            if (!VariablesForPlayArea.jumperList.get(i).textureChanged) {
+                AllVariables.batch.draw(spring, VariablesForPlayArea.jumperList.get(i).x, VariablesForPlayArea.jumperList.get(i).y, 64, 64);
+                AllVariables.batch.draw(spring, VariablesForPlayArea.jumperList.get(i).x + 54, VariablesForPlayArea.jumperList.get(i).y, 64, 64);
+                AllVariables.batch.draw(spring, VariablesForPlayArea.jumperList.get(i).x + 108, VariablesForPlayArea.jumperList.get(i).y, 64, 64);
+            }else {
+                AllVariables.batch.draw(spung, VariablesForPlayArea.jumperList.get(i).x, VariablesForPlayArea.jumperList.get(i).y, 64, 64);
+                AllVariables.batch.draw(spung, VariablesForPlayArea.jumperList.get(i).x + 54, VariablesForPlayArea.jumperList.get(i).y, 64, 64);
+                AllVariables.batch.draw(spung, VariablesForPlayArea.jumperList.get(i).x + 108, VariablesForPlayArea.jumperList.get(i).y, 64, 64);
+            }
         }
     }
 
@@ -31,7 +41,6 @@ public class Jumper {
                         if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.jumperList.get(i).y + 23 ||
                                 (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.jumperList.get(i).y + 23) {
                             VariablesForPlayArea.jumperList.get(i).textureChanged = true;
-                            VariablesForPlayArea.jumperList.get(i).texture = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
                             AllVariables.BackWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 6.5f), true);
                             AllVariables.FrontWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 7), true);
                         }

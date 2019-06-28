@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.Texture;
 public class PowerUpInInventoryVariables {
     public Texture texture;
     public short TypeOfPower;
+    public Boolean active = true;
     public short x = -550;
     public short y = -550;
 }
