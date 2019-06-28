@@ -36,7 +36,7 @@ public class PowerUpMngr {
                                 if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1) {
                                     AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
                                 } else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2) {
-                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-0), 0), true);
+                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
                                 }
                                 VariablesForPlayArea.powerUpList.get(i).active = false;
                             }
