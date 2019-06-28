@@ -8,7 +8,7 @@ import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class PowerUpMngr {
 
-    public PowerUpMngr() {
+    public PowerUpMngr(Boolean reset) {
         for (int i =0; i < VariablesForPlayArea.powerUpList.size(); i++){
             if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1){
                 VariablesForPlayArea.powerUpList.get(i).texture = new Texture(Gdx.files.internal("playArea/speedPowers/GreenPill.png"));
@@ -17,6 +17,8 @@ public class PowerUpMngr {
             }else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 3){
                 VariablesForPlayArea.powerUpList.get(i).texture = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/spring.png"));
             }
+            if (reset)
+                VariablesForPlayArea.powerUpList.get(i).active = true;
 
         }
     }
@@ -33,12 +35,27 @@ public class PowerUpMngr {
                                 (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.powerUpList.get(i).y) {
                             if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 60 ||
                                     (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 60) {
+                                //====================================================
                                 if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1) {
                                     AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
                                 } else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2) {
                                     AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
                                 }
                                 VariablesForPlayArea.powerUpList.get(i).active = false;
+                            }
+                        }
+                    }
+                }else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 3){
+                    if ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.powerUpList.get(i).x + 108 + 64 &&
+                            (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) >= VariablesForPlayArea.powerUpList.get(i).x) {
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.powerUpList.get(i).y ||
+                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.powerUpList.get(i).y) {
+                            if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.powerUpList.get(i).y + 27 ||
+                                    (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.powerUpList.get(i).y + 27) {
+                                //cccccccffffffffffffffffffffffffffffffffffffffffffffffff
+                                VariablesForPlayArea.powerUpList.get(i).active = false;
+                                AllVariables.BackWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 6.5f), true);
+                                AllVariables.FrontWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 7), true);
                             }
                         }
                     }

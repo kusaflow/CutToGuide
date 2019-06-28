@@ -348,10 +348,7 @@ public class ShapeChooser implements Screen {
                 //okTick
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM &&  (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM){
                     if (AllVariables.PresentAreaNumber == 1){
-                        if (AllVariables.PresentLevelNumber <=5)
-                            game.setScreen(new TypeOneArea(game));
-                        else if (AllVariables.PresentLevelNumber <= 10 && AllVariables.PresentLevelNumber >5)
-                            game.setScreen(new TypeTwoArea(game));
+                        game.setScreen(new TypeTwoArea(game, false));
 
                     }
                     //System.out.println("down wala");

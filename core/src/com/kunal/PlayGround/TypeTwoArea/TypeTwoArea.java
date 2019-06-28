@@ -96,7 +96,7 @@ public class TypeTwoArea implements Screen {
 
 
 
-    public TypeTwoArea(MainGame game) {
+    public TypeTwoArea(MainGame game, Boolean reset) {
         this.game = game;
 
         cam = new OrthographicCamera();
@@ -241,7 +241,7 @@ public class TypeTwoArea implements Screen {
 
         //powerUps
         if (!VariablesForPlayArea.powerUpList.isEmpty())
-            powerups = new PowerUpMngr();
+            powerups = new PowerUpMngr(reset);
         // obstacles
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes = new flappyBirdPipes(world);
@@ -717,7 +717,7 @@ public class TypeTwoArea implements Screen {
                             if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (790 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 355 * AllVariables.inpM && screenY < 424 * AllVariables.inpM) {
-                                ReDirectToTheLevel.Direct(game);
+                                ReDirectToTheLevel.Direct(game, true);
                             }
                         }
 

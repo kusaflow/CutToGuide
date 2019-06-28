@@ -23,7 +23,7 @@ public class ReDirectToTheLevel {
     public ReDirectToTheLevel() {
     }
 
-    public static void Direct(MainGame game){
+    public static void Direct(MainGame game, Boolean restarted){
 
         flappyBirdPipesVariables fbPipes;
         //CreateHoleVariables createHole;
@@ -32,13 +32,16 @@ public class ReDirectToTheLevel {
         FullSawVariables fullSawVariables;
         PowerUpInInventoryVariables powerupVar;
 
-        //clear it all
-        VariablesForPlayArea.powerUpList.clear();
-        VariablesForPlayArea.flappyBirdPipesList.clear();
-        VariablesForPlayArea.createHoleList.clear();
-        VariablesForPlayArea.jumperList.clear();
-        VariablesForPlayArea.halfSawList.clear();
-        VariablesForPlayArea.fullSawList.clear();
+        if (!restarted) {
+
+            //clear it all
+            VariablesForPlayArea.powerUpList.clear();
+            VariablesForPlayArea.flappyBirdPipesList.clear();
+            VariablesForPlayArea.createHoleList.clear();
+            VariablesForPlayArea.jumperList.clear();
+            VariablesForPlayArea.halfSawList.clear();
+            VariablesForPlayArea.fullSawList.clear();
+        }
 
         VariablesForPlayArea.gameOver =false;
 
@@ -48,7 +51,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 700;
             VariablesForPlayArea.endPoint.y = 5600;
 
-            game.setScreen(new TypeTwoArea(game));
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==2){
@@ -56,7 +59,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 5600;
 
-            game.setScreen(new TypeTwoArea(game));
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==3){
@@ -64,7 +67,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 5000;
 
-            game.setScreen(new TypeTwoArea(game));
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==4){
@@ -72,7 +75,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
 
-            game.setScreen(new TypeTwoArea(game));
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==5){
@@ -80,19 +83,20 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
 
-            game.setScreen(new TypeTwoArea(game));
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==6){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
-            game.setScreen(new TypeTwoArea(game));
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level7.tmx";
 
             VariablesForPlayArea.endPoint.x = 600;
             VariablesForPlayArea.endPoint.y = 7400;
+            if (!restarted) {
 
             /*
             // flappy bird type pipes
@@ -159,38 +163,37 @@ public class ReDirectToTheLevel {
 
             VariablesForPlayArea.fullSawList.add(fullSawVariables);
             */
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower =1;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower =2;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 2;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower =3;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 3;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower =2;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 2;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower =1;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower =3;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 3;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower =1;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
+            }
 
-
-
-            game.setScreen(new TypeTwoArea(game));
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
         //area 1 end ----------------------------------------------------------------
