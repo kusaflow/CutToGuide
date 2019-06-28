@@ -8,4 +8,5 @@ public class FullSawVariables {
     public short size = 20;
     public Boolean forwardDirection =true;
     public Body body;
+    public Boolean dead = false;
 }
