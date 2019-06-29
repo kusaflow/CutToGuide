@@ -27,6 +27,7 @@ import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
+import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedController;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -93,6 +94,7 @@ public class TypeTwoArea implements Screen {
     private Jumper jumper;
     private HalfSaw halfSaw;
     private FullSaw fullSaw;
+    private SpeedController speedController;
 
 
 
@@ -251,6 +253,8 @@ public class TypeTwoArea implements Screen {
             halfSaw = new HalfSaw();
         if (!VariablesForPlayArea.fullSawList.isEmpty())
             fullSaw = new FullSaw(world);
+        if (!VariablesForPlayArea.speedCtrlList.isEmpty())
+            speedController = new SpeedController();
         //=================obstacles
 
 
@@ -328,6 +332,13 @@ public class TypeTwoArea implements Screen {
             halfSaw.render();
         if (!VariablesForPlayArea.fullSawList.isEmpty())
             fullSaw.render();
+        if (!VariablesForPlayArea.speedCtrlList.isEmpty())
+            speedController.render();
+
+
+        if (!VariablesForPlayArea.powerUpList.isEmpty())
+            powerups.render();
+
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
@@ -341,8 +352,6 @@ public class TypeTwoArea implements Screen {
             ShapeRotCW.draw(AllVariables.batch);
             per45degRot.draw(AllVariables.batch);
         }
-
-        powerups.render();
 
         posMap.draw(AllVariables.batch);
         //coin
@@ -674,6 +683,8 @@ public class TypeTwoArea implements Screen {
             halfSaw.update();
         if (!VariablesForPlayArea.fullSawList.isEmpty() && startBool)
             fullSaw.update();
+        if (!VariablesForPlayArea.fullSawList.isEmpty())
+            speedController.update();
 
 
 

@@ -22,39 +22,3 @@ an enter or exit --> flappyBirdPipes
 
 > Hint Lines
 
-
-temp
-
-
-if (!paused) {
-    if ((VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() + VariablesForPlayArea.powerUps.size() - 1)) {
-        if (hardMove) {
-            if (powerUpSelected){
-                VariablesForPlayArea.powerUpPos.set(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size(),
-                        new Vector2(((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2))) - 250,
-                                ((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20));
-            }else {
-
-                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
-                        ((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM) - VariablesForPlayArea.BigSqurePoints[0][0] / (2) / AllVariables.PPM,
-                        (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM) + VariablesForPlayArea.BigSqurePoints[12][1] / (2) / AllVariables.PPM,
-                        (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
-            }
-
-            return false;
-
-        } else {
-            if (!powerUpSelected) {
-                //dragging of objects
-                originX = screenX;
-                originY = screenY;
-                shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
-                shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
-            }
-
-            return false;
-        }
-    }
-}
-}
-

@@ -8,6 +8,7 @@ import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
+import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedControllerVariables;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
 
 import java.util.LinkedList;
@@ -66,6 +67,7 @@ public class VariablesForPlayArea {
     public static LinkedList<JumperVariables> jumperList;
     public static LinkedList<HalfSawVariables> halfSawList;
     public static LinkedList<FullSawVariables> fullSawList;
+    public static LinkedList<SpeedControllerVariables> speedCtrlList;
 
     //------------------------------------------
 
@@ -77,7 +79,6 @@ public class VariablesForPlayArea {
         Sh_pos = new LinkedList<Vector2>();
         Sh_pos.add(new Vector2(640/AllVariables.PPM, -1000/AllVariables.PPM));
         Angle_Of_Shape.add(180f);
-        fullSawList = new LinkedList<FullSawVariables>();
         powerUpList = new LinkedList<PowerUpInInventoryVariables>();
 
         //obstacles
@@ -85,7 +86,8 @@ public class VariablesForPlayArea {
         createHoleList = new LinkedList<CreateHoleVariables>();
         jumperList = new LinkedList<JumperVariables>();
         halfSawList = new LinkedList<HalfSawVariables>();
-
+        fullSawList = new LinkedList<FullSawVariables>();
+        speedCtrlList = new LinkedList<SpeedControllerVariables>();
 
 
         //all big squre Points
