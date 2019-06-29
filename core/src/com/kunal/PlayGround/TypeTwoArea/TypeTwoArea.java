@@ -683,7 +683,7 @@ public class TypeTwoArea implements Screen {
             halfSaw.update();
         if (!VariablesForPlayArea.fullSawList.isEmpty() && startBool)
             fullSaw.update();
-        if (!VariablesForPlayArea.fullSawList.isEmpty())
+        if (!VariablesForPlayArea.speedCtrlList.isEmpty())
             speedController.update();
 
 
