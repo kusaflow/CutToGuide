@@ -11,8 +11,8 @@ public class HalfSaw {
     Texture t1,t2, tdead;
 
     public HalfSaw() {
-        t1 = new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/halfSaw/sawHalf1.png"));
-        t2 = new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/halfSaw/sawHalf2.png"));
+        t1 = new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/halfSaw/sawHalf1_2.png"));
+        t2 = new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/halfSaw/sawHalf2_2.png"));
         tdead = new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/halfSaw/deadsaw.png"));
         for (int i=0; i<VariablesForPlayArea.halfSawList.size(); i++) {
             VariablesForPlayArea.halfSawList.get(i).xpos = VariablesForPlayArea.halfSawList.get(i).xorigin;

@@ -15,6 +15,7 @@ public class SpeedController {
     }
 
     public void update(){
+        // bicycle
         for (int i=0; i<VariablesForPlayArea.speedCtrlList.size(); i++){
             if (VariablesForPlayArea.speedCtrlList.get(i).active) {
                 if ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
