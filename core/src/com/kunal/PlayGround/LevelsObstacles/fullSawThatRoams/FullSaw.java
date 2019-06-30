@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -11,6 +12,7 @@ import com.kunal.utils.BodyGenerator;
 
 public class FullSaw {
     Sprite fullSaw, dead;
+    FixtureDef fdef;
 
     public FullSaw(World world) {
         fullSaw = new Sprite(new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/FullSaw/fullSaw.png")));
@@ -19,7 +21,7 @@ public class FullSaw {
             VariablesForPlayArea.fullSawList.get(i).body = BodyGenerator.CircleBody(world,false, "fullSaw",
                     new Vector2(VariablesForPlayArea.fullSawList.get(i).xpos, VariablesForPlayArea.fullSawList.get(i).ypos),
                     VariablesForPlayArea.fullSawList.get(i).size/2.3f,0.5f, 0.6f,
-                    AllVariables.Bit_enimes,(short)(AllVariables.Bit_enimes|AllVariables.Bit_Bicycle|AllVariables.Bit_land));
+                    AllVariables.Bit_enimes,(short)(AllVariables.Bit_enimes|AllVariables.Bit_Bicycle|AllVariables.Bit_land|AllVariables.Bit_Tool));
             VariablesForPlayArea.fullSawList.get(i).dead = false;
         }
 
@@ -34,6 +36,28 @@ public class FullSaw {
                 else
                     VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(-2, VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
             }
+
+            //for bicycle ---------------------------------------------------------
+            if (!VariablesForPlayArea.fullSawList.get(i).dead && VariablesForPlayArea.rageMode) {
+                if (((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + 25 + 5 >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM - 56 - 5 &&
+                        (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - 25 <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + 56) ||
+                        ((AllVariables.BackWheel.getPosition().x * AllVariables.PPM) - 25 >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + -56 - 5 &&
+                                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + 56)) {
+                    //------------------------------------------------------------------------------------------------------------------------------------------
+                    if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM - 56 ||
+                            (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM - 56) {
+                        //---------------------------------------------------------------------------------------------------------------------------------------
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM + 56 ||
+                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM + 56) {
+                            //-----------------------------------------------------------------------------------------------------------------------------------
+                            VariablesForPlayArea.fullSawList.get(i).dead = true;
+                            VariablesForPlayArea.fullSawList.get(i).body.destroyFixture(VariablesForPlayArea.fullSawList.get(i).body.getFixtureList().get(0));
+
+                        }
+                    }
+                }
+            }
+            //=====================================================================
 
 
         }

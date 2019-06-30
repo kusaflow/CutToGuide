@@ -35,7 +35,6 @@ import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpMngr;
 import com.kunal.utils.BodyGenerator;
-import com.kunal.utils.ContactListenerForTheBox2d;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TiledMapLoadingHelper;
 
@@ -110,7 +109,6 @@ public class TypeTwoArea implements Screen {
         port.apply();
 
         world = new World(new Vector2(0,0f), false);
-        world.setContactListener(new ContactListenerForTheBox2d());
 
         b2dr = new Box2DDebugRenderer();
 
@@ -734,7 +732,7 @@ public class TypeTwoArea implements Screen {
                             }
                         }
 
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
 
 
                         if (startBool && !VariablesForPlayArea.gameOver) {
