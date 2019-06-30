@@ -38,26 +38,52 @@ public class FullSaw {
             }
 
             //for bicycle ---------------------------------------------------------
-            if (!VariablesForPlayArea.fullSawList.get(i).dead && VariablesForPlayArea.rageMode) {
-                if (((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + 25 + 5 >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM - 56 - 5 &&
-                        (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - 25 <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + 56) ||
-                        ((AllVariables.BackWheel.getPosition().x * AllVariables.PPM) - 25 >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + -56 - 5 &&
-                                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + 56)) {
-                    //------------------------------------------------------------------------------------------------------------------------------------------
-                    if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM - 56 ||
-                            (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM - 56) {
-                        //---------------------------------------------------------------------------------------------------------------------------------------
-                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM + 56 ||
-                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM + 56) {
-                            //-----------------------------------------------------------------------------------------------------------------------------------
-                            VariablesForPlayArea.fullSawList.get(i).dead = true;
-                            VariablesForPlayArea.fullSawList.get(i).body.destroyFixture(VariablesForPlayArea.fullSawList.get(i).body.getFixtureList().get(0));
+            if (!VariablesForPlayArea.fullSawList.get(i).dead) {
+                if (VariablesForPlayArea.rageMode) {
+                    if (((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + 25 + 5 >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM - 56 - 5 &&
+                            (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - 25 <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + 56) ||
+                            ((AllVariables.BackWheel.getPosition().x * AllVariables.PPM) - 25 >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + -56 - 5 &&
+                                    (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM + 56)) {
+                        //------------------------------------------------------------------------------------------------------------------------------------------
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM - 56 ||
+                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM - 56) {
+                            //---------------------------------------------------------------------------------------------------------------------------------------
+                            if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM + 56 ||
+                                    (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM + 56) {
+                                //-----------------------------------------------------------------------------------------------------------------------------------
+                                VariablesForPlayArea.fullSawList.get(i).dead = true;
+                                VariablesForPlayArea.fullSawList.get(i).body.destroyFixture(VariablesForPlayArea.fullSawList.get(i).body.getFixtureList().get(0));
 
+                            }
                         }
                     }
                 }
+
+                //=====================================================================
+
+                // for speed controller-----------------------------------------------
+                for (int j =0; j<VariablesForPlayArea.speedCtrlList.size(); j++){
+                    if ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
+                            (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - (25 + 100) <= VariablesForPlayArea.speedCtrlList.get(i).x) {
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y ||
+                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y) {
+                            if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 60 ||
+                                    (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 60) {
+                                //====================================================
+                                if (VariablesForPlayArea.speedCtrlList.get(i).SpeedIncrementor)
+                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
+                                else
+                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
+
+                                VariablesForPlayArea.speedCtrlList.get(i).active = false;
+                            }
+                        }
+                    }
+                }
+                //====================================================================
+
+
             }
-            //=====================================================================
 
 
         }

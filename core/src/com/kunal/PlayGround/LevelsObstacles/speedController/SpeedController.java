@@ -12,18 +12,23 @@ public class SpeedController {
     public SpeedController(){
         speedInc = new Texture(Gdx.files.internal("playArea/speedPowers/GreenPill.png"));
         speedDec = new Texture(Gdx.files.internal("playArea/speedPowers/RedPill.png"));
+        for (int i=0; i<VariablesForPlayArea.speedCtrlList.size(); i++)
+            VariablesForPlayArea.speedCtrlList.get(i).active = true;
     }
 
     public void update(){
         // bicycle
         for (int i=0; i<VariablesForPlayArea.speedCtrlList.size(); i++){
             if (VariablesForPlayArea.speedCtrlList.get(i).active) {
-                if ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
-                        (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - (25 + 100) <= VariablesForPlayArea.speedCtrlList.get(i).x) {
+                if (((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
+                        (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).x+40) ||
+                        ((AllVariables.BackWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
+                                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).x+40)
+                ) {
                     if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y ||
                             (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y) {
-                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 60 ||
-                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 60) {
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40 ||
+                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40) {
                             //====================================================
                             if (VariablesForPlayArea.speedCtrlList.get(i).SpeedIncrementor)
                                 AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
