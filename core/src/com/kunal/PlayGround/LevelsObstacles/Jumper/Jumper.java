@@ -34,8 +34,10 @@ public class Jumper {
     public void update(){
         for (int i=0; i<VariablesForPlayArea.jumperList.size(); i++) {
             if (!VariablesForPlayArea.jumperList.get(i).textureChanged) {
-                if ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.jumperList.get(i).x + 108 + 64 &&
-                        (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) >= VariablesForPlayArea.jumperList.get(i).x) {
+                if (((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.jumperList.get(i).x + 108 + 64 &&
+                        (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) >= VariablesForPlayArea.jumperList.get(i).x) ||
+                        ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)-25 >= VariablesForPlayArea.jumperList.get(i).x + 172 &&
+                                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.jumperList.get(i).x+172)) {
                     if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.jumperList.get(i).y ||
                             (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.jumperList.get(i).y) {
                         if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.jumperList.get(i).y + 23 ||

@@ -36,12 +36,14 @@ public class HalfSaw {
                     VariablesForPlayArea.halfSawList.get(i).xpos -= 5;
 
                 //collision
-                if ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.halfSawList.get(i).xpos + 128 &&
-                        (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) >= VariablesForPlayArea.halfSawList.get(i).xpos) {
+                if (((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.halfSawList.get(i).xpos + 128 &&
+                        (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) >= VariablesForPlayArea.halfSawList.get(i).xpos) ||
+                        ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM)-25 >= VariablesForPlayArea.halfSawList.get(i).xpos + 128 &&
+                                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) <= VariablesForPlayArea.halfSawList.get(i).xpos+128)) {
                     if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.halfSawList.get(i).ypos ||
                             (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (25) >= VariablesForPlayArea.halfSawList.get(i).ypos) {
-                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.halfSawList.get(i).ypos + 58 ||
-                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.halfSawList.get(i).ypos + 58) {
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.halfSawList.get(i).ypos + 50 ||
+                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.halfSawList.get(i).ypos + 50) {
                             if (VariablesForPlayArea.rageMode)
                                 VariablesForPlayArea.halfSawList.get(i).dead = true;
                             else

@@ -16,10 +16,11 @@ public class FullSaw {
         fullSaw = new Sprite(new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/FullSaw/fullSaw.png")));
         dead = new Sprite(new Texture(Gdx.files.internal("playArea/LevelObstacles/Enimies/FullSaw/saw_dead.png")));
         for (int i=0; i< VariablesForPlayArea.fullSawList.size();i++){
-            VariablesForPlayArea.fullSawList.get(i).body = BodyGenerator.CircleBody(world,false, "obstacle",
+            VariablesForPlayArea.fullSawList.get(i).body = BodyGenerator.CircleBody(world,false, "fullSaw",
                     new Vector2(VariablesForPlayArea.fullSawList.get(i).xpos, VariablesForPlayArea.fullSawList.get(i).ypos),
                     VariablesForPlayArea.fullSawList.get(i).size/2.3f,0.5f, 0.6f,
                     AllVariables.Bit_enimes,(short)(AllVariables.Bit_enimes|AllVariables.Bit_Bicycle|AllVariables.Bit_land));
+            VariablesForPlayArea.fullSawList.get(i).dead = false;
         }
 
 
@@ -27,10 +28,12 @@ public class FullSaw {
 
     public void update(){
         for (int i=0; i<VariablesForPlayArea.fullSawList.size(); i++) {
-            if (VariablesForPlayArea.fullSawList.get(i).forwardDirection)
-                VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(2, VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
-            else
-                VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(-2, VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
+            if (!VariablesForPlayArea.fullSawList.get(i).dead) {
+                if (VariablesForPlayArea.fullSawList.get(i).forwardDirection)
+                    VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(2, VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
+                else
+                    VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(-2, VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
+            }
 
 
         }
