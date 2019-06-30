@@ -14,6 +14,9 @@ public class Jumper {
     public Jumper() {
         spring = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/spring.png"));
         spung  = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
+        for (int i=0; i<VariablesForPlayArea.jumperList.size(); i++){
+            VariablesForPlayArea.jumperList.get(i).textureChanged = false;
+        }
     }
 
     //108
