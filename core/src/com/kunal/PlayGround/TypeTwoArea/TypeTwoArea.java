@@ -655,7 +655,8 @@ public class TypeTwoArea implements Screen {
         if (startBool){
             if (brakeBool) {
                 //AllVariables.BackWheel.setAngularVelocity(0);
-                AllVariables.FrontWheel.setAngularVelocity(0);
+                AllVariables.FrontWheel.setAngularVelocity(AllVariables.BackWheel.getLinearVelocity().x * 50);
+                AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getLinearVelocity().x * 50);
             }else{
                 if (AllVariables.BackWheel.getAngularVelocity() > -8)
                     AllVariables.BackWheel.setAngularVelocity(-10);

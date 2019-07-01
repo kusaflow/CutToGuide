@@ -32,10 +32,9 @@ public class FullSaw {
         for (int i=0; i<VariablesForPlayArea.fullSawList.size(); i++) {
             if (!VariablesForPlayArea.fullSawList.get(i).dead) {
                 if (VariablesForPlayArea.fullSawList.get(i).forwardDirection)
-                    //VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(2, VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
                     VariablesForPlayArea.fullSawList.get(i).body.setAngularVelocity(-2);
                 else
-                    VariablesForPlayArea.fullSawList.get(i).body.setLinearVelocity(-2, VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().y);
+                    VariablesForPlayArea.fullSawList.get(i).body.setAngularVelocity(2);
             }
 
             //for bicycle ---------------------------------------------------------
@@ -77,19 +76,94 @@ public class FullSaw {
                                         if (VariablesForPlayArea.speedCtrlList.get(j).SpeedIncrementor)
                                             VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(400, 0), true);
                                         else
-                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-20), 0), true);
+                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-100), 0), true);
                                         VariablesForPlayArea.speedCtrlList.get(j).active = false;
                                     }
                                 }
                             }
                         }else {
-
+                            if (((VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) -56 <= VariablesForPlayArea.speedCtrlList.get(j).x+40 &&
+                                    (VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) + (56) >= VariablesForPlayArea.speedCtrlList.get(j).x)) {
+                                //---------------------------------------------------------------------------------------------------------
+                                if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) + (56) >= VariablesForPlayArea.speedCtrlList.get(j).y) {
+                                    //------------------------------------------------------------------------------------------------------
+                                    if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.speedCtrlList.get(j).y + 40) {
+                                        //====================================================
+                                        if (VariablesForPlayArea.speedCtrlList.get(j).SpeedIncrementor)
+                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(-400, 0), true);
+                                        else
+                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-100), 0), true);
+                                        VariablesForPlayArea.speedCtrlList.get(j).active = false;
+                                    }
+                                }
+                            }
                         }
 
                         //-------------------------------------------------------------------------
                     }
                 }
-                //====================================================================
+                //Speed cnrt====================================================================
+
+                //jumper=======================================================================
+                for (int j =0; j<VariablesForPlayArea.jumperList.size(); j++){
+                    if (!VariablesForPlayArea.jumperList.get(j).textureChanged){
+                        if (((VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM)-56 <= VariablesForPlayArea.jumperList.get(j).x + 108 + 64 &&
+                                (VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM)+56 >= VariablesForPlayArea.jumperList.get(j).x)) {
+                            //-----------------------------
+                            if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) + (56) >= VariablesForPlayArea.jumperList.get(j).y) {
+                                //----------------------------------
+                                if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (56) <= VariablesForPlayArea.jumperList.get(j).y + 23) {
+                                    VariablesForPlayArea.jumperList.get(j).textureChanged = true;
+                                    VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(0,VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * 200), true);
+                                }
+                            }
+                        }
+
+                    }
+                }
+                //jumper-----------------------------------------------------------------------
+
+                //powerUps=====================================================================
+                for (int j =0; j<VariablesForPlayArea.powerUpList.size(); j++){
+                    if (VariablesForPlayArea.powerUpList.get(j).active){
+                        if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 1 || VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 2){
+                            if (VariablesForPlayArea.fullSawList.get(i).forwardDirection){
+                                if (((VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) + (56) >= VariablesForPlayArea.powerUpList.get(j).x &&
+                                        (VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) - (56) <= VariablesForPlayArea.powerUpList.get(j).x+40)) {
+                                    //---------------------------------------------------------------------------------------------------------
+                                    if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) + (56) >= VariablesForPlayArea.speedCtrlList.get(j).y) {
+                                        //------------------------------------------------------------------------------------------------------
+                                        if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.speedCtrlList.get(j).y + 40) {
+                                            //====================================================
+                                            if (VariablesForPlayArea.speedCtrlList.get(j).SpeedIncrementor)
+                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(400, 0), true);
+                                            else
+                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-100), 0), true);
+                                            VariablesForPlayArea.speedCtrlList.get(j).active = false;
+                                        }
+                                    }
+                                }
+                            }else {
+                                if (((VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) -56 <= VariablesForPlayArea.speedCtrlList.get(j).x+40 &&
+                                        (VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) + (56) >= VariablesForPlayArea.speedCtrlList.get(j).x)) {
+                                    //---------------------------------------------------------------------------------------------------------
+                                    if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) + (56) >= VariablesForPlayArea.speedCtrlList.get(j).y) {
+                                        //------------------------------------------------------------------------------------------------------
+                                        if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.speedCtrlList.get(j).y + 40) {
+                                            //====================================================
+                                            if (VariablesForPlayArea.speedCtrlList.get(j).SpeedIncrementor)
+                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(-400, 0), true);
+                                            else
+                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-100), 0), true);
+                                            VariablesForPlayArea.speedCtrlList.get(j).active = false;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //powerups---------------------------------------------------------------------
 
 
             }

@@ -140,10 +140,12 @@ public class ReDirectToTheLevel {
                 jumper.y = 510;
                 VariablesForPlayArea.jumperList.add(jumper);
                 */
+
                 jumper = new JumperVariables();
                 jumper.x = 2500;
                 jumper.y = 510;
                 VariablesForPlayArea.jumperList.add(jumper);
+
 
                 /*
                 //halhSaw
@@ -154,6 +156,7 @@ public class ReDirectToTheLevel {
                 halfSawVariables.yorigin = 512;
                 VariablesForPlayArea.halfSawList.add(halfSawVariables);
                 */
+
 
                 //fullSaw
                 fullSawVariables = new FullSawVariables();
@@ -200,8 +203,8 @@ public class ReDirectToTheLevel {
                 /*
                 //speed controller
                 speedctlrvar = new SpeedControllerVariables();
-                speedctlrvar.SpeedIncrementor = true;
-                speedctlrvar.x = 1900;
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 800;
                 speedctlrvar.y = 512;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
