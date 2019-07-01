@@ -139,12 +139,13 @@ public class ReDirectToTheLevel {
                 jumper.x = 1500;
                 jumper.y = 510;
                 VariablesForPlayArea.jumperList.add(jumper);
-                */
+
 
                 jumper = new JumperVariables();
                 jumper.x = 2500;
                 jumper.y = 510;
                 VariablesForPlayArea.jumperList.add(jumper);
+                */
 
 
                 /*
@@ -160,17 +161,17 @@ public class ReDirectToTheLevel {
 
                 //fullSaw
                 fullSawVariables = new FullSawVariables();
-                fullSawVariables.xpos = 1000;
+                fullSawVariables.xpos = 3000;
                 fullSawVariables.ypos = 572;
                 fullSawVariables.size = 128;
-                fullSawVariables.forwardDirection = true;
+                fullSawVariables.forwardDirection = false;
 
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
 
 
-                /*
-                powerUps
+
+                //powerUps
                 powerupVar = new PowerUpInInventoryVariables();
                 powerupVar.TypeOfPower = 1;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
@@ -198,7 +199,7 @@ public class ReDirectToTheLevel {
                 powerupVar = new PowerUpInInventoryVariables();
                 powerupVar.TypeOfPower = 1;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
-                */
+
 
                 /*
                 //speed controller

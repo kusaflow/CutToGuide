@@ -54,6 +54,7 @@ public class PowerUpMngr {
                                     (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25 + 5) <= VariablesForPlayArea.powerUpList.get(i).y + 27) {
                                 //cccccccffffffffffffffffffffffffffffffffffffffffffffffff
                                 VariablesForPlayArea.powerUpList.get(i).active = false;
+                                VariablesForPlayArea.powerUpList.get(i).texture = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
                                 AllVariables.BackWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 6.5f), true);
                                 AllVariables.FrontWheel.applyForceToCenter(new Vector2(0,AllVariables.FrontWheel.getLinearVelocity().x * 7), true);
                             }
