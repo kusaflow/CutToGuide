@@ -96,6 +96,9 @@ public class TypeTwoArea implements Screen {
     private FullSaw fullSaw;
     private SpeedController speedController;
 
+    //bicycle maleup
+    private Sprite frontTyre, backtyre;
+
 
 
     public TypeTwoArea(MainGame game, Boolean reset) {
@@ -229,6 +232,74 @@ public class TypeTwoArea implements Screen {
         menuTex = new Sprite(new Texture(Gdx.files.internal("utils/menu.png")));
         retryTex = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
 
+        //bicycle makeUp
+
+        if (AllVariables.tyreType == 1) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/blackWhite.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/blackWhite.png")));
+        }else if (AllVariables.tyreType == 2) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/bronze_1.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/bronze_1.png")));
+        }else if (AllVariables.tyreType == 3) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipBlackWhite_border.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipBlackWhite_border.png")));
+        }else if (AllVariables.tyreType == 4) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipBlueWhite_border.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipBlueWhite_border.png")));
+        }else if (AllVariables.tyreType == 5) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipGreenWhite_border.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipGreenWhite_border.png")));
+        }else if (AllVariables.tyreType == 6) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipRedWhite_border.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipRedWhite_border.png")));
+        }else if (AllVariables.tyreType == 7) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipWhite_border.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipWhite_border.png")));
+        }else if (AllVariables.tyreType == 8) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipWhiteBlue_border.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/chipWhiteBlue_border.png")));
+        }else if (AllVariables.tyreType == 9) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/gold_1.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/gold_1.png")));
+        }else if (AllVariables.tyreType == 10) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/greenLoli.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/greenLoli.png")));
+        }else if (AllVariables.tyreType == 11) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopGreen.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopGreen.png")));
+        }else if (AllVariables.tyreType == 12) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopRed.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopRed.png")));
+        }else if (AllVariables.tyreType == 13) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopWhiteGreen.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopWhiteGreen.png")));
+        }else if (AllVariables.tyreType == 14) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopWhiteRed.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/lollipopWhiteRed.png")));
+        }else if (AllVariables.tyreType == 15) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/redLoli.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/redLoli.png")));
+        }else if (AllVariables.tyreType == 16) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/saw.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/saw.png")));
+        }else if (AllVariables.tyreType == 17) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/silver_1.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/silver_1.png")));
+        }else if (AllVariables.tyreType == 18) {
+            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/yellowLoli.png")));
+            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/yellowLoli.png")));
+        }
+
+
+        frontTyre.setSize(50,50);
+        frontTyre.setOriginCenter();
+
+        backtyre.setSize(50,50);
+        backtyre.setOriginCenter();
+
+
+
+
 
 
         //to check if any power is selected or not
@@ -339,6 +410,10 @@ public class TypeTwoArea implements Screen {
         if (!VariablesForPlayArea.powerUpList.isEmpty())
             powerups.render();
 
+        //bicycle
+        frontTyre.draw(AllVariables.batch);
+        backtyre.draw(AllVariables.batch);
+
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
@@ -375,7 +450,6 @@ public class TypeTwoArea implements Screen {
 
 
     private void update(float dt){
-
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         //world.step((1)/(1/dt), 6,2);
@@ -527,6 +601,9 @@ public class TypeTwoArea implements Screen {
         }
 
         cam.update();
+
+        //bicycle texture update
+        makeupOfCycle();
 
         tmr.setView(cam);
 
@@ -1068,6 +1145,23 @@ public class TypeTwoArea implements Screen {
                     }
                 }
         );
+
+
+    }
+
+    private void makeupOfCycle(){
+        frontTyre.setPosition(100,512);
+        frontTyre.setPosition(AllVariables.FrontWheel.getPosition().x * AllVariables.PPM - 25,
+                AllVariables.FrontWheel.getPosition().y * AllVariables.PPM - 25);
+        frontTyre.setRotation((int) (AllVariables.FrontWheel.getAngle() * (180 / Math.PI)));
+
+
+        backtyre.setPosition(100,512);
+        backtyre.setPosition(AllVariables.BackWheel.getPosition().x * AllVariables.PPM - 25,
+                AllVariables.BackWheel.getPosition().y * AllVariables.PPM - 25);
+        backtyre.setRotation((int) (AllVariables.BackWheel.getAngle() * (180 / Math.PI)));
+
+
 
 
     }
