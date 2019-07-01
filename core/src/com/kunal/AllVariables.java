@@ -41,7 +41,7 @@ public class AllVariables {
     0 is for no area meaning it is at AreaSelection Menu
      */
 
-    //Masks
+    //Mask
     public static final short Bit_Bicycle= 1;
     public static final short Bit_land = 2;
     public static final short Bit_enimes = 4;
