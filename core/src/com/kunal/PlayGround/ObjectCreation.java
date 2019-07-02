@@ -149,34 +149,33 @@ public class ObjectCreation {
         rdef.localAnchorB.set(0,0);
         world.createJoint(rdef);
 
-        AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(130, verticalElevation + 25),
+        AllVariables.rod7 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(130, verticalElevation + 25),
                 new Vector2(30,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
-        //rod4 can be reused
-        //joint b/w rod3 and frontwheel
+        //joint b/w rod7 and frontwheel
         rdef.bodyA = AllVariables.FrontWheel;
-        rdef.bodyB = AllVariables.rod3;
+        rdef.bodyB = AllVariables.rod7;
         rdef.localAnchorA.set(0,0);
         rdef.localAnchorB.set(30/AllVariables.PPM,0);
         world.createJoint(rdef);
 
-        //rod3 reused and rod5
+        //rod7 and rod5
         rdef.bodyA = AllVariables.rod5;
-        rdef.bodyB = AllVariables.rod3;
+        rdef.bodyB = AllVariables.rod7;
         rdef.localAnchorA.set(0,-32/AllVariables.PPM);
         rdef.localAnchorB.set(-27/AllVariables.PPM,0);
         world.createJoint(rdef);
 
-        //rod3 reused and rod2
+        //rod7  and rod2
         rdef.bodyA = AllVariables.rod2;
-        rdef.bodyB = AllVariables.rod3;
+        rdef.bodyB = AllVariables.rod7;
         rdef.localAnchorA.set(-34/AllVariables.PPM,0);
         rdef.localAnchorB.set(-27/AllVariables.PPM,0);
         world.createJoint(rdef);
 
-        //rod3 reused and rod4
+        //rod7  and rod4
         rdef.bodyA = AllVariables.rod4;
-        rdef.bodyB = AllVariables.rod3;
+        rdef.bodyB = AllVariables.rod7;
         rdef.localAnchorA.set(20/AllVariables.PPM,0);
         rdef.localAnchorB.set(-27/AllVariables.PPM,0);
         world.createJoint(rdef);

@@ -47,7 +47,7 @@ public class AllVariables {
     public static final short Bit_enimes = 4;
     public static final short Bit_Tool= 8;
 
-    public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6;
+    public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6, rod7;
 
     public static byte tyreType =1;
 

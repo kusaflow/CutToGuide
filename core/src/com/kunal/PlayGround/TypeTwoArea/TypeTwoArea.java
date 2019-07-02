@@ -97,7 +97,7 @@ public class TypeTwoArea implements Screen {
     private SpeedController speedController;
 
     //bicycle maleup
-    private Sprite frontTyre, backtyre;
+    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, rod7;
 
 
 
@@ -297,6 +297,38 @@ public class TypeTwoArea implements Screen {
         backtyre.setSize(50,50);
         backtyre.setOriginCenter();
 
+        rod1= new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
+        rod2 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
+        rod3 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
+        rod4 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
+        rod5 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
+        rod6 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
+
+        rod1.setSize(50,6);
+        rod1.setOriginCenter();
+
+
+        rod2.setSize(65,6);
+        rod2.setOriginCenter();
+
+        rod3.setSize(60,6);
+        rod3.setOriginCenter();
+
+        rod4.setSize(43,6);
+        rod4.setOriginCenter();
+
+        rod5.setSize(6,66);
+        rod5.setOriginCenter();
+
+        rod6.setSize(6,70);
+        rod6.setOriginCenter();
+
+
+
+
+
+        //--------------------------------------------------------------------------------
+
 
 
 
@@ -342,14 +374,14 @@ public class TypeTwoArea implements Screen {
     @Override
     public void render(float dt) {
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
-        Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
+        Gdx.gl.glClearColor(1f, 1f, 1f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (!VariablesForPlayArea.gameOver)
             update(dt);
         input(dt);
 
-        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
-        //cam.combined.scl(AllVariables.PPM);
+        //b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        cam.combined.scl(AllVariables.PPM);
         //need to fix this
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
@@ -413,6 +445,13 @@ public class TypeTwoArea implements Screen {
         //bicycle
         frontTyre.draw(AllVariables.batch);
         backtyre.draw(AllVariables.batch);
+        rod1.draw(AllVariables.batch);
+        rod2.draw(AllVariables.batch);
+        rod3.draw(AllVariables.batch);
+        rod4.draw(AllVariables.batch);
+        rod5.draw(AllVariables.batch);
+        rod6.draw(AllVariables.batch);
+        //---------------------
 
         Brake.draw(AllVariables.batch);
         start.draw(AllVariables.batch);
@@ -1150,18 +1189,47 @@ public class TypeTwoArea implements Screen {
     }
 
     private void makeupOfCycle(){
-        frontTyre.setPosition(100,512);
         frontTyre.setPosition(AllVariables.FrontWheel.getPosition().x * AllVariables.PPM - 25,
                 AllVariables.FrontWheel.getPosition().y * AllVariables.PPM - 25);
         frontTyre.setRotation((int) (AllVariables.FrontWheel.getAngle() * (180 / Math.PI)));
 
 
-        backtyre.setPosition(100,512);
         backtyre.setPosition(AllVariables.BackWheel.getPosition().x * AllVariables.PPM - 25,
                 AllVariables.BackWheel.getPosition().y * AllVariables.PPM - 25);
         backtyre.setRotation((int) (AllVariables.BackWheel.getAngle() * (180 / Math.PI)));
 
 
+
+        //backwheel to the seat rod
+        rod3.setPosition(AllVariables.rod3.getPosition().x * AllVariables.PPM-30,
+                AllVariables.rod3.getPosition().y * AllVariables.PPM-3);
+        rod3.setRotation((int) (AllVariables.rod3.getAngle() * (180 / Math.PI)));
+
+        //backwheel to the peedle
+        rod4.setPosition(AllVariables.rod4.getPosition().x * AllVariables.PPM-23,
+                AllVariables.rod4.getPosition().y * AllVariables.PPM-3);
+        rod4.setRotation((int) (AllVariables.rod4.getAngle() * (180 / Math.PI)));
+
+        //connect with both rod3 and rod4
+        rod5.setPosition(AllVariables.rod5.getPosition().x * AllVariables.PPM-3,
+                AllVariables.rod5.getPosition().y * AllVariables.PPM-33);
+        rod5.setRotation((int) (AllVariables.rod5.getAngle() * (180 / Math.PI)));
+
+        //connect to rod5 and rod3
+        rod1.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM-25,
+                AllVariables.rod1.getPosition().y * AllVariables.PPM-3);
+        rod1.setRotation((int) (AllVariables.rod1.getAngle() * (180 / Math.PI)));
+
+
+        //connect with rod5, rod1 and rod4
+        rod2.setPosition(AllVariables.rod2.getPosition().x * AllVariables.PPM-35,
+                AllVariables.rod2.getPosition().y * AllVariables.PPM-3);
+        rod2.setRotation((int) (AllVariables.rod2.getAngle() * (180 / Math.PI)));
+
+        //connect with rod1 and rod2
+        rod6.setPosition(AllVariables.rod6.getPosition().x * AllVariables.PPM-3,
+                AllVariables.rod6.getPosition().y * AllVariables.PPM-35);
+        rod6.setRotation((int) (AllVariables.rod6.getAngle() * (180 / Math.PI)));
 
 
     }
