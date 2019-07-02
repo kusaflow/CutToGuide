@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -37,6 +38,7 @@ import com.kunal.PlayGround.powerUpInInventory.PowerUpMngr;
 import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TiledMapLoadingHelper;
+
 
 public class TypeTwoArea implements Screen {
 
@@ -97,7 +99,9 @@ public class TypeTwoArea implements Screen {
     private SpeedController speedController;
 
     //bicycle maleup
-    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, rod7;
+    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6;
+
+    private Texture bg1, bg2, bg3;
 
 
 
@@ -142,6 +146,11 @@ public class TypeTwoArea implements Screen {
             PlayAreaUtils.parseTiledObj(world,map.getLayers().get("Object Layer "+parseObjI).getObjects());
 
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
+
+        //background
+        bg1 = new Texture(Gdx.files.internal("backGround/blue_desert.png"));
+        bg2 = new Texture(Gdx.files.internal("backGround/blue_grass.png"));
+        bg3 = new Texture(Gdx.files.internal("backGround/blue_shroom.png"));
 
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/Brake.png")));
         Brake.setPosition(1050,140);
@@ -374,7 +383,7 @@ public class TypeTwoArea implements Screen {
     @Override
     public void render(float dt) {
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
-        Gdx.gl.glClearColor(1f, 1f, 1f, 1);
+        Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (!VariablesForPlayArea.gameOver)
             update(dt);
@@ -386,9 +395,25 @@ public class TypeTwoArea implements Screen {
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
+        AllVariables.batch.begin();
+
+        AllVariables.batch.draw(bg1,0,512);
+        AllVariables.batch.draw(bg2,-1024,512);
+        AllVariables.batch.draw(bg2,1024,512);
+        AllVariables.batch.draw(bg3,2048,512);
+        AllVariables.batch.draw(bg1,3072,512);
+        AllVariables.batch.draw(bg3,4096,512);
+        AllVariables.batch.draw(bg2,5120,512);
+        AllVariables.batch.draw(bg2,6144,512);
+        AllVariables.batch.draw(bg1,7168,512);
+        AllVariables.batch.draw(bg3,8192,512);
+
+
+
         //things at bg of the of the tiled map goes here
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes.render();
+        AllVariables.batch.end();
 
         tmr.render();
 

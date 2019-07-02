@@ -49,8 +49,6 @@ public class flappyBirdPipes {
         //second endAreaPipe
         //last contiEndPipe
 
-        AllVariables.batch.begin();
-
         for (int i=0;i<VariablesForPlayArea.flappyBirdPipesList.size();i++) {
             //lower solid painting
             for (int k=VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom; k>(-1)*VariablesForPlayArea.flappyBirdPipesList.get(i).gapStartFrombottom;k-=64) {
@@ -101,8 +99,6 @@ public class flappyBirdPipes {
         AllVariables.batch.draw(tile,1500,500+150-47);
         AllVariables.batch.draw(tile,1500-32,500+150-47);
         */
-
-        AllVariables.batch.end();
 
     }
 
