@@ -383,20 +383,22 @@ public class TypeTwoArea implements Screen {
     @Override
     public void render(float dt) {
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
-        Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
+        //Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
+        Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (!VariablesForPlayArea.gameOver)
             update(dt);
         input(dt);
 
-        //b2dr.render(world, cam.combined.scl(AllVariables.PPM));
-        cam.combined.scl(AllVariables.PPM);
+        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        //cam.combined.scl(AllVariables.PPM);
         //need to fix this
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
         AllVariables.batch.begin();
 
+        /*
         AllVariables.batch.draw(bg1,0,512);
         AllVariables.batch.draw(bg2,-1024,512);
         AllVariables.batch.draw(bg2,1024,512);
@@ -408,7 +410,7 @@ public class TypeTwoArea implements Screen {
         AllVariables.batch.draw(bg1,7168,512);
         AllVariables.batch.draw(bg3,8192,512);
 
-
+        */
 
         //things at bg of the of the tiled map goes here
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
@@ -420,6 +422,7 @@ public class TypeTwoArea implements Screen {
         sred.begin(ShapeRenderer.ShapeType.Line);
 
         sred.setColor(1, 1f, 1, 1);
+        //sred.setColor(.1f,.1f,.1f,1);
 
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
