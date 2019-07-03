@@ -277,7 +277,7 @@ public class AreaSelection implements Screen {
                                 && screenX <= (220* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 380* AllVariables.inpM && screenY <= 580* AllVariables.inpM) {
                             dispose();
-                            game.setScreen(new Shop(game));
+                            game.setScreen(new Shop(game,(byte)1,(byte)1));
                             //code for shop
                             return false;
                         }

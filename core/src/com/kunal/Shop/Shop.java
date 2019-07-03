@@ -2,6 +2,8 @@ package com.kunal.Shop;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -13,6 +15,8 @@ import com.kunal.AdVideoInterface;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.VideoEventListener;
+
+import java.util.LinkedList;
 
 public class Shop implements Screen, VideoEventListener {
 
@@ -50,17 +54,21 @@ public class Shop implements Screen, VideoEventListener {
      */
 
     private Sprite freeAd, buy1, buy2, buy3, buy4, buy5, cancel;
-    Texture selectionView,menuKusaCoin, menuWheel, menuCycleBody, menuCollectableCoinType, PowerUps;
-    //kusa Coin
-    //Texture
+    Texture menuKusaCoin, menuBicycle, menuPowerUps;
+    //bicycle
+    LinkedList<Texture> bicy_wheel, typeOfCoin, bicy_bars;
 
     String tempToShowTheKusaCoins = "";
 
     AdVideoInterface adVideoInterface = null;
 
+    private byte menuNumber =0, InnerMenuNumber= 0;
 
-    public Shop(MainGame game) {
+
+    public Shop(MainGame game, Byte mN, Byte Imn) {
         this.game = game;
+        menuNumber = mN;
+        InnerMenuNumber = Imn;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -71,9 +79,9 @@ public class Shop implements Screen, VideoEventListener {
         freeAd.setSize(350,350);
         freeAd.setPosition(30,350);
 
-        cancel= new Sprite(new Texture(Gdx.files.internal("Shop/cancel.png")));
-        cancel.setSize(150,150);
-        cancel.setPosition(30,110);
+        cancel= new Sprite(new Texture(Gdx.files.internal("utils/hudX.png")));
+        cancel.setSize(128,128);
+        cancel.setPosition(0, 720-128);
 
         buy1= new Sprite(new Texture(Gdx.files.internal("Shop/buy1.png")));
         buy1.setSize(200,200);
@@ -94,6 +102,11 @@ public class Shop implements Screen, VideoEventListener {
         buy5= new Sprite(new Texture(Gdx.files.internal("Shop/buy5.png")));
         buy5.setSize(200,200);
         buy5.setPosition(1000,110);
+
+        //essential Menus
+        menuKusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
+        menuBicycle = new Texture(Gdx.files.internal("Shop/buy5.png"));
+
 
 
         //AllVariables.adv.setVideoEventListener(this);
@@ -119,14 +132,16 @@ public class Shop implements Screen, VideoEventListener {
 
         AllVariables.batch.begin();
         cancel.draw(AllVariables.batch);
-        freeAd.draw(AllVariables.batch);
-        buy1.draw(AllVariables.batch);
-        buy2.draw(AllVariables.batch);
-        buy3.draw(AllVariables.batch);
-        buy4.draw(AllVariables.batch);
-        buy5.draw(AllVariables.batch);
+        AllVariables.batch.draw(menuKusaCoin,0,150,140,140);
+
+        //freeAd.draw(AllVariables.batch);
+        //buy1.draw(AllVariables.batch);
+        //buy2.draw(AllVariables.batch);
+        //buy3.draw(AllVariables.batch);
+        //buy4.draw(AllVariables.batch);
+        //buy5.draw(AllVariables.batch);
         tempToShowTheKusaCoins = "" +  AllVariables.kusaCoin;
-        AllVariables.bitmapFont.draw(AllVariables.batch, tempToShowTheKusaCoins, 600, 650);
+        AllVariables.bitmapFont.draw(AllVariables.batch, tempToShowTheKusaCoins, 60, 700);
 
 
 
@@ -157,6 +172,53 @@ public class Shop implements Screen, VideoEventListener {
                 //}
             }
         }
+
+        Gdx.input.setInputProcessor(
+                new InputProcessor() {
+                    @Override
+                    public boolean keyDown(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyUp(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyTyped(char character) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        screenY = Gdx.graphics.getHeight() - screenY;
+                        System.out.println(screenX+"\t" +screenY);
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mouseMoved(int screenX, int screenY) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean scrolled(int amount) {
+                        return false;
+                    }
+                }
+        );
 
     }
 
