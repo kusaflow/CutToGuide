@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AdVideoInterface;
 import com.kunal.AllVariables;
+import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.VideoEventListener;
 
@@ -62,7 +63,7 @@ public class Shop implements Screen, VideoEventListener {
 
     AdVideoInterface adVideoInterface = null;
 
-    private byte menuNumber =0, InnerMenuNumber= 0;
+    private byte menuNumber =0, InnerMenuNumber= 0, choice =0;
 
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
@@ -105,7 +106,8 @@ public class Shop implements Screen, VideoEventListener {
 
         //essential Menus
         menuKusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
-        menuBicycle = new Texture(Gdx.files.internal("Shop/buy5.png"));
+        menuBicycle = new Texture(Gdx.files.internal("Shop/bicycleMenu.png"));
+        menuPowerUps  = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
 
 
 
@@ -132,7 +134,12 @@ public class Shop implements Screen, VideoEventListener {
 
         AllVariables.batch.begin();
         cancel.draw(AllVariables.batch);
-        AllVariables.batch.draw(menuKusaCoin,0,150,140,140);
+        AllVariables.batch.draw(menuKusaCoin,20,453,114,114);
+        AllVariables.batch.draw(menuBicycle,40,289,80,114);
+        AllVariables.batch.draw(menuPowerUps,35,125,100,100);
+
+        AllVariables.batch.draw(menuKusaCoin,400,670,50,50);
+        AllVariables.bitmapFont.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 450, 700);
 
         //freeAd.draw(AllVariables.batch);
         //buy1.draw(AllVariables.batch);
@@ -142,6 +149,7 @@ public class Shop implements Screen, VideoEventListener {
         //buy5.draw(AllVariables.batch);
         tempToShowTheKusaCoins = "" +  AllVariables.kusaCoin;
         AllVariables.bitmapFont.draw(AllVariables.batch, tempToShowTheKusaCoins, 60, 700);
+
 
 
 
@@ -194,6 +202,42 @@ public class Shop implements Screen, VideoEventListener {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         System.out.println(screenX+"\t" +screenY);
+
+                        //cancel
+                        if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY - Gdx.input.getY() >= 620 * AllVariables.inpM
+                                && screenY - Gdx.input.getY() <= 700 * AllVariables.inpM){
+                            dispose();
+                            game.setScreen(new AreaSelection(game));
+                        }
+
+                        //KusaCoin
+                        if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY - Gdx.input.getY() >= 455 * AllVariables.inpM
+                                && screenY - Gdx.input.getY() <= 560 * AllVariables.inpM){
+                            dispose();
+                            menuNumber = 1;
+                        }
+
+                        //bicycle makeup
+                        if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY - Gdx.input.getY() >= 270 * AllVariables.inpM
+                                && screenY - Gdx.input.getY() <= 420 * AllVariables.inpM){
+                            dispose();
+                            menuNumber = 2;
+                        }
+
+                        //powerups
+                        if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (160* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY - Gdx.input.getY() >= 100 * AllVariables.inpM
+                                && screenY - Gdx.input.getY() <= 222 * AllVariables.inpM){
+                            dispose();
+                            menuNumber = 3;
+                        }
 
                         return false;
                     }
