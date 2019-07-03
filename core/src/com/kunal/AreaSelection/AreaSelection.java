@@ -19,6 +19,7 @@ import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
+import com.kunal.Shop.Shop;
 
 import java.util.LinkedList;
 
@@ -63,8 +64,8 @@ public class AreaSelection implements Screen {
 
 
         shop = new Sprite(new Texture(Gdx.files.internal("AreaSelection/shop.png")));
-        shop.setSize(200,200);
-        shop.setPosition(20, 380);
+        shop.setSize(130,130);
+        shop.setPosition(20+35, 380+35);
 
         Tutorial = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Tutorial.png")));
         Tutorial.setSize(200,200);
@@ -275,6 +276,8 @@ public class AreaSelection implements Screen {
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (220* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 380* AllVariables.inpM && screenY <= 580* AllVariables.inpM) {
+                            dispose();
+                            game.setScreen(new Shop(game));
                             //code for shop
                             return false;
                         }
@@ -285,7 +288,8 @@ public class AreaSelection implements Screen {
                                 && screenX <= (220* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 150* AllVariables.inpM && screenY <= 350* AllVariables.inpM) {
                             //code for Tutorial
-                            game.setScreen(new AreaOneClass(game));
+                            dispose();
+                            //game.setScreen(new AreaOneClass(game));
                             return false;
                         }
 
@@ -324,10 +328,12 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 //System.out.println("Area 1");
+                                dispose();
                                 AllVariables.PresentAreaNumber = 1;
                             }
                             else if (LevelState == 1){
                                 //System.out.println("Area 4");
+                                dispose();
                                 AllVariables.PresentAreaNumber = 4;
                             }
 
@@ -343,10 +349,12 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 //System.out.println("Area 2");
+                                dispose();
                                 AllVariables.PresentAreaNumber = 2;
                             }
                             else if (LevelState == 1){
                                 //System.out.println("Area 5");
+                                dispose();
                                 AllVariables.PresentAreaNumber = 5;
                             }
                             Gdx.input.setInputProcessor(null);
@@ -361,10 +369,12 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 //System.out.println("Area 3");
+                                dispose();
                                 AllVariables.PresentAreaNumber = 3;
                             }
                             else if (LevelState == 1){
                                 //System.out.println("Area 6");
+                                dispose();
                                 AllVariables.PresentAreaNumber = 6;
                             }
                             Gdx.input.setInputProcessor(null);
@@ -420,7 +430,6 @@ public class AreaSelection implements Screen {
 
     @Override
     public void dispose() {
-        game.dispose();
         AreaList.clear();
         settings.getTexture().dispose();
         shop.getTexture().dispose();
@@ -429,6 +438,6 @@ public class AreaSelection implements Screen {
         showMoreLevelsOnRight.getTexture().dispose();
         showMoreLevelsOnLeft.getTexture().dispose();
         Tutorial.getTexture().dispose();
-        System.out.println("Area Selection Dispose");
+        Gdx.input.setInputProcessor(null);
     }
 }

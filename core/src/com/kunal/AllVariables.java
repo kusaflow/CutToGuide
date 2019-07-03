@@ -49,7 +49,8 @@ public class AllVariables {
 
     public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6, rod7;
 
-    public static byte tyreType =1;
+    public static byte tyreType =1, bodyOfCycle =1, coinType;
+    public static short speedIncCount =0, speedDecCount =0, JumperCount=0;
 
 
     public static String coinAdd = "typesOfCoin/hudCoin.png";

@@ -17,7 +17,6 @@ import com.kunal.VideoEventListener;
 public class Shop implements Screen, VideoEventListener {
 
     MainGame game;
-    Screen prevScreen;
 
     OrthographicCamera cam;
     Viewport port;
@@ -29,9 +28,8 @@ public class Shop implements Screen, VideoEventListener {
     AdVideoInterface adVideoInterface = null;
 
 
-    public Shop(MainGame game, Screen PrevScreen) {
+    public Shop(MainGame game) {
         this.game = game;
-        prevScreen = PrevScreen;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -67,7 +65,7 @@ public class Shop implements Screen, VideoEventListener {
         buy5.setPosition(1000,110);
 
 
-        AllVariables.adv.setVideoEventListener(this);
+        //AllVariables.adv.setVideoEventListener(this);
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -123,9 +121,9 @@ public class Shop implements Screen, VideoEventListener {
                     && Gdx.graphics.getHeight() - Gdx.input.getY() <= 700 * AllVariables.inpM
             ) {
                 //adVideoInterface.show();
-                if(AllVariables.adv.hasVideoLoaded()) {
-                    AllVariables.adv.showRewardedVideoAd();
-                }
+                //if(AllVariables.adv.hasVideoLoaded()) {
+                    //AllVariables.adv.showRewardedVideoAd();
+                //}
             }
         }
 
