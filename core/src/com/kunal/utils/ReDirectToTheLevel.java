@@ -159,6 +159,7 @@ public class ReDirectToTheLevel {
                 */
 
 
+                /*
                 //fullSaw
                 fullSawVariables = new FullSawVariables();
                 fullSawVariables.xpos = 3000;
@@ -167,10 +168,9 @@ public class ReDirectToTheLevel {
                 fullSawVariables.forwardDirection = false;
 
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
+                */
 
-
-
-
+                /*
                 //powerUps
                 powerupVar = new PowerUpInInventoryVariables();
                 powerupVar.TypeOfPower = 1;
@@ -199,9 +199,10 @@ public class ReDirectToTheLevel {
                 powerupVar = new PowerUpInInventoryVariables();
                 powerupVar.TypeOfPower = 1;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
+                */
 
 
-                /*
+
                 //speed controller
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = false;
@@ -209,6 +210,7 @@ public class ReDirectToTheLevel {
                 speedctlrvar.y = 512;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
+                /*
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = false;
                 speedctlrvar.x = 2200;

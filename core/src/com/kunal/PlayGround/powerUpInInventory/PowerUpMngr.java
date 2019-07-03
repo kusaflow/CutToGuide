@@ -30,11 +30,24 @@ public class PowerUpMngr {
             if (VariablesForPlayArea.powerUpList.get(i).active) {
                 if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1 || VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2) {
                     if ((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.powerUpList.get(i).x &&
-                            (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - (25 + 100) <= VariablesForPlayArea.powerUpList.get(i).x) {
-                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.powerUpList.get(i).y ||
-                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.powerUpList.get(i).y) {
-                            if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 60 ||
-                                    (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 60) {
+                            (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - (25 ) <= VariablesForPlayArea.powerUpList.get(i).x-40
+                    ) {
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.powerUpList.get(i).y) {
+                            if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 40) {
+                                //====================================================
+                                if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1) {
+                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
+                                } else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2) {
+                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
+                                }
+                                VariablesForPlayArea.powerUpList.get(i).active = false;
+                            }
+                        }
+                    }else if (
+                            ((AllVariables.BackWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.powerUpList.get(i).x &&
+                                    (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).x+40) && VariablesForPlayArea.powerUpList.get(i).active){
+                        if ((AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.powerUpList.get(i).y) {
+                            if ((AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 40) {
                                 //====================================================
                                 if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1) {
                                     AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);

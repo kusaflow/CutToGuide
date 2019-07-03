@@ -824,7 +824,7 @@ public class TypeTwoArea implements Screen {
         //obstacles===================
         if (!VariablesForPlayArea.jumperList.isEmpty())
             jumper.update();
-        if (!VariablesForPlayArea.halfSawList.isEmpty())
+        if (!VariablesForPlayArea.halfSawList.isEmpty() && startBool)
             halfSaw.update();
         if (!VariablesForPlayArea.fullSawList.isEmpty() && startBool)
             fullSaw.update();

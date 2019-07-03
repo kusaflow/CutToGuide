@@ -21,14 +21,24 @@ public class SpeedController {
         for (int i=0; i<VariablesForPlayArea.speedCtrlList.size(); i++){
             if (VariablesForPlayArea.speedCtrlList.get(i).active) {
                 if (((AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
-                        (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).x+40) ||
-                        ((AllVariables.BackWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
-                                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).x+40)
+                        (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).x+40)
                 ) {
-                    if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y ||
-                            (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y) {
-                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40 ||
-                                (AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40) {
+                    if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y) {
+                        if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40) {
+                            //====================================================
+                            if (VariablesForPlayArea.speedCtrlList.get(i).SpeedIncrementor)
+                                AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
+                            else
+                                AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
+
+                            VariablesForPlayArea.speedCtrlList.get(i).active = false;
+                        }
+                    }
+                }else if (((AllVariables.BackWheel.getPosition().x * AllVariables.PPM) + (25) >= VariablesForPlayArea.speedCtrlList.get(i).x &&
+                                (AllVariables.BackWheel.getPosition().x * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).x+40 && VariablesForPlayArea.speedCtrlList.get(i).active)
+                ) {
+                    if ((AllVariables.BackWheel.getPosition().y * AllVariables.PPM) + (55) >= VariablesForPlayArea.speedCtrlList.get(i).y) {
+                        if ((AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40) {
                             //====================================================
                             if (VariablesForPlayArea.speedCtrlList.get(i).SpeedIncrementor)
                                 AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
