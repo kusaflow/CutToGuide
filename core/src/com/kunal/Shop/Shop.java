@@ -21,7 +21,38 @@ public class Shop implements Screen, VideoEventListener {
     OrthographicCamera cam;
     Viewport port;
 
+    /*
+    --->shop
+         |
+         |-->In Game Coin (KusaCoin)
+         |
+         |
+         |
+         |
+         |-->Bicycle View
+         |          |
+         |          |--> overLook
+         |          |
+         |          |--> tyre
+         |          |
+         |          |--> body
+         |          |
+         |          |--> coins
+         |
+         |
+         |-->powerUps
+         |          |
+         |          |--> speedInc
+         |          |
+         |          |--> speedDec
+         |          |
+         |          |--> jumper
+     */
+
     private Sprite freeAd, buy1, buy2, buy3, buy4, buy5, cancel;
+    Texture selectionView,menuKusaCoin, menuWheel, menuCycleBody, menuCollectableCoinType, PowerUps;
+    //kusa Coin
+    //Texture
 
     String tempToShowTheKusaCoins = "";
 
