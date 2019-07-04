@@ -17,6 +17,7 @@ import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.VideoEventListener;
+import com.kunal.utils.TextureGiver;
 
 import java.util.LinkedList;
 
@@ -62,8 +63,9 @@ public class Shop implements Screen, VideoEventListener {
     LinkedList<Texture> bicy_wheel, typeOfCoin, bicy_bars;
 
     AdVideoInterface adVideoInterface = null;
+    private Boolean confirmDialog=false;
 
-    private byte menuNumber =0, InnerMenuNumber= 0, choice =0;
+    private byte menuNumber =0, InnerMenuNumber= 0, barCh=0,wheelCh=0,coinCh=0;
 
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
@@ -71,6 +73,10 @@ public class Shop implements Screen, VideoEventListener {
         //menuNumber = mN;
         //InnerMenuNumber = Imn;
         menuNumber = 1;
+
+        barCh = AllVariables.bodyOfCycle;
+        coinCh = AllVariables.coinType;
+        wheelCh = AllVariables.tyreType;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -90,6 +96,22 @@ public class Shop implements Screen, VideoEventListener {
         bgTobuy = new Texture(Gdx.files.internal("Shop/bgToBuy.png"));
         freeKusaCoin = new Texture(Gdx.files.internal("Shop/VideoIcon.png"));
 
+        bicy_wheel = new LinkedList<Texture>();
+        bicy_bars = new LinkedList<Texture>();
+        typeOfCoin = new LinkedList<Texture>();
+
+        //tyres
+        for (int i =1; i<=18; i++){
+            bicy_wheel.add(TextureGiver.tyre((short) i));
+        }
+
+        for (int i =1; i<=3; i++){
+            bicy_bars.add(TextureGiver.bars((short) i));
+        }
+
+        for (int i =1; i<=6; i++){
+            typeOfCoin.add(TextureGiver.coin((short) i));
+        }
 
 
         //AllVariables.adv.setVideoEventListener(this);
@@ -117,7 +139,6 @@ public class Shop implements Screen, VideoEventListener {
 
         AllVariables.batch.begin();
         cancel.draw(AllVariables.batch);
-        AllVariables.bitmapFont.setColor(Color.WHITE);
         if (menuNumber == 1) {
             //menu
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 120, 120);
@@ -150,10 +171,25 @@ public class Shop implements Screen, VideoEventListener {
             AllVariables.batch.draw(bgTobuy, 900, 180, 200, 150);
 
             //kusaCoinForDisplay----------------------------------------------------
-            AllVariables.batch.draw(menuKusaCoin, 400, 340, 50, 50);
+            AllVariables.batch.draw(menuKusaCoin, 330, 400, 50, 50);//1
+            AllVariables.batch.draw(menuKusaCoin, 330, 140, 50, 50);//2
+            AllVariables.batch.draw(menuKusaCoin, 630, 400, 50, 50);//3
+            AllVariables.batch.draw(menuKusaCoin, 630, 140, 50, 50);//4
+            AllVariables.batch.draw(menuKusaCoin, 930, 400, 50, 50);//5
+            AllVariables.batch.draw(menuKusaCoin, 930, 140, 50, 50);//6
 
 
-            //kusaCoinamount
+            AllVariables.bitmapFont.setColor(Color.WHITE);
+            //kusaCoinamount----------------------------------------------------------
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":100", 380, 431);//1
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":200", 380, 171);//2
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":500", 680, 431);//3
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":1000", 680, 171);//4
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":10000", 980, 431);//5
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":8000000", 980, 171);//6
+
+
+
 
 
             AllVariables.bitmapFont.setColor(Color.BLACK);
@@ -213,10 +249,7 @@ public class Shop implements Screen, VideoEventListener {
                     && Gdx.graphics.getHeight() - Gdx.input.getY() >= 350 * AllVariables.inpM
                     && Gdx.graphics.getHeight() - Gdx.input.getY() <= 700 * AllVariables.inpM
             ) {
-                //adVideoInterface.show();
-                //if(AllVariables.adv.hasVideoLoaded()) {
-                    //AllVariables.adv.showRewardedVideoAd();
-                //}
+
             }
         }
 
@@ -283,6 +316,64 @@ public class Shop implements Screen, VideoEventListener {
                             if (menuNumber != 3) {
                                 menuNumber = 3;
                                 InnerMenuNumber = 1;
+                            }
+                        }
+
+
+                        //menu number 1
+                        if (menuNumber == 1){
+
+                            //free ad -------1
+                            if(screenX >= (300* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (500* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 435 * AllVariables.inpM
+                                    && screenY <= 590 * AllVariables.inpM){
+                                System.out.println("Ad Will Play");
+                                //adVideoInterface.show();
+                                //if(AllVariables.adv.hasVideoLoaded()) {
+                                    //AllVariables.adv.showRewardedVideoAd();
+                                //}
+                                return true;
+                            }
+                            //2
+                            else if(screenX >= (600* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (800* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 435 * AllVariables.inpM
+                                    && screenY <= 590 * AllVariables.inpM){
+                                System.out.println("2");
+                                return true;
+                            }
+                            //3
+                            else if(screenX >= (900* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (1100* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 435 * AllVariables.inpM
+                                    && screenY <= 590 * AllVariables.inpM){
+                                System.out.println("3");
+                                return true;
+                            }
+                            //4
+                            else if(screenX >= (300* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (500* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 180 * AllVariables.inpM
+                                    && screenY <= 330 * AllVariables.inpM){
+                                System.out.println("4");
+                                return true;
+                            }
+                            //5
+                            else if(screenX >= (600* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (800* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 180 * AllVariables.inpM
+                                    && screenY <= 330 * AllVariables.inpM){
+                                System.out.println("5");
+                                return true;
+                            }
+                            //6
+                            else if(screenX >= (900* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (1100* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 180 * AllVariables.inpM
+                                    && screenY <= 330 * AllVariables.inpM){
+                                System.out.println("6");
+                                return true;
                             }
                         }
 
