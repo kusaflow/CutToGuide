@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -54,12 +55,11 @@ public class Shop implements Screen, VideoEventListener {
          |          |--> jumper
      */
 
-    private Sprite freeAd, buy1, buy2, buy3, buy4, buy5, cancel;
+    private Sprite cancel;
     Texture menuKusaCoin, menuBicycle, menuPowerUps, astic;
+    Texture freeKusaCoin, bgTobuy;
     //bicycle
     LinkedList<Texture> bicy_wheel, typeOfCoin, bicy_bars;
-
-    String tempToShowTheKusaCoins = "";
 
     AdVideoInterface adVideoInterface = null;
 
@@ -77,40 +77,18 @@ public class Shop implements Screen, VideoEventListener {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        freeAd = new Sprite(new Texture(Gdx.files.internal("Shop/FreeForAd.png")));
-        freeAd.setSize(350,350);
-        freeAd.setPosition(30,350);
-
         cancel= new Sprite(new Texture(Gdx.files.internal("utils/hudX.png")));
         cancel.setSize(128,128);
         cancel.setPosition(0, 720-128);
 
-        buy1= new Sprite(new Texture(Gdx.files.internal("Shop/buy1.png")));
-        buy1.setSize(200,200);
-        buy1.setPosition(550,400);
-
-        buy2= new Sprite(new Texture(Gdx.files.internal("Shop/buy2.png")));
-        buy2.setSize(200,200);
-        buy2.setPosition(850,400);
-
-        buy3= new Sprite(new Texture(Gdx.files.internal("Shop/buy3.png")));
-        buy3.setSize(200,200);
-        buy3.setPosition(400,110);
-
-        buy4= new Sprite(new Texture(Gdx.files.internal("Shop/buy4.png")));
-        buy4.setSize(200,200);
-        buy4.setPosition(700,110);
-
-        buy5= new Sprite(new Texture(Gdx.files.internal("Shop/buy5.png")));
-        buy5.setSize(200,200);
-        buy5.setPosition(1000,110);
 
         //essential Menus
         menuKusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
         menuBicycle = new Texture(Gdx.files.internal("Shop/bicycleMenu.png"));
         menuPowerUps  = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
         astic = new Texture(Gdx.files.internal("utils/astric.png"));
-
+        bgTobuy = new Texture(Gdx.files.internal("Shop/bgToBuy.png"));
+        freeKusaCoin = new Texture(Gdx.files.internal("Shop/VideoIcon.png"));
 
 
 
@@ -132,17 +110,71 @@ public class Shop implements Screen, VideoEventListener {
     public void render(float delta) {
         update();
         Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
+
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
         AllVariables.batch.begin();
         cancel.draw(AllVariables.batch);
+        AllVariables.bitmapFont.setColor(Color.WHITE);
         if (menuNumber == 1) {
+            //menu
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 120, 120);
             AllVariables.batch.draw(menuBicycle, 40, 289, 60, 96);
             AllVariables.batch.draw(menuPowerUps, 35, 125, 80, 80);
             AllVariables.batch.draw(astic, 20, 523, 20, 20);
+
+
+            //=======================================================================
+            //1
+            AllVariables.batch.draw(bgTobuy, 300, 440, 200, 150);
+            AllVariables.batch.draw(freeKusaCoin, 350, 500, 100, 100);
+            //4
+            AllVariables.batch.draw(bgTobuy, 300, 180, 200, 150);
+
+
+            //=======================================================================
+            //2
+            AllVariables.batch.draw(bgTobuy, 600, 440, 200, 150);
+
+            //5
+            AllVariables.batch.draw(bgTobuy, 600, 180, 200, 150);
+
+
+
+            //=======================================================================
+            //3
+            AllVariables.batch.draw(bgTobuy, 900, 440, 200, 150);
+            //6
+            AllVariables.batch.draw(bgTobuy, 900, 180, 200, 150);
+
+            //kusaCoinForDisplay----------------------------------------------------
+            AllVariables.batch.draw(menuKusaCoin, 400, 340, 50, 50);
+
+
+            //kusaCoinamount
+
+
+            AllVariables.bitmapFont.setColor(Color.BLACK);
+            //prize-------------------------------------------------
+            //6
+            AllVariables.bitmapFont.draw(AllVariables.batch, "$250", 970, 260);
+            //3
+            AllVariables.bitmapFont.draw(AllVariables.batch, "$100", 970, 520);
+            //5
+            AllVariables.bitmapFont.draw(AllVariables.batch, "$200", 670, 260);
+            //2
+            AllVariables.bitmapFont.draw(AllVariables.batch, "$50", 670, 520);
+            //4
+            AllVariables.bitmapFont.draw(AllVariables.batch, "$250", 370, 260);
+            //1
+            AllVariables.bitmapFont.draw(AllVariables.batch, "Rewarded \n           Ad", 320, 500);
+
+
+
+
+
         }else if (menuNumber ==2){
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
             AllVariables.batch.draw(menuBicycle, 40, 289, 86, 120);
@@ -155,20 +187,9 @@ public class Shop implements Screen, VideoEventListener {
             AllVariables.batch.draw(astic, 40, 210, 20, 20);
         }
 
+        AllVariables.bitmapFont.setColor(Color.ORANGE);
+        AllVariables.batch.draw(menuKusaCoin, 400, 668, 50, 50);
         AllVariables.bitmapFont.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 450, 700);
-
-
-
-        //freeAd.draw(AllVariables.batch);
-        //buy1.draw(AllVariables.batch);
-        //buy2.draw(AllVariables.batch);
-        //buy3.draw(AllVariables.batch);
-        //buy4.draw(AllVariables.batch);
-        //buy5.draw(AllVariables.batch);
-        tempToShowTheKusaCoins = "" +  AllVariables.kusaCoin;
-        AllVariables.bitmapFont.draw(AllVariables.batch, tempToShowTheKusaCoins, 60, 700);
-
-
 
 
         AllVariables.batch.end();
