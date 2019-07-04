@@ -55,7 +55,7 @@ public class Shop implements Screen, VideoEventListener {
      */
 
     private Sprite freeAd, buy1, buy2, buy3, buy4, buy5, cancel;
-    Texture menuKusaCoin, menuBicycle, menuPowerUps;
+    Texture menuKusaCoin, menuBicycle, menuPowerUps, astic;
     //bicycle
     LinkedList<Texture> bicy_wheel, typeOfCoin, bicy_bars;
 
@@ -68,8 +68,9 @@ public class Shop implements Screen, VideoEventListener {
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
         this.game = game;
-        menuNumber = mN;
-        InnerMenuNumber = Imn;
+        //menuNumber = mN;
+        //InnerMenuNumber = Imn;
+        menuNumber = 1;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -108,6 +109,8 @@ public class Shop implements Screen, VideoEventListener {
         menuKusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
         menuBicycle = new Texture(Gdx.files.internal("Shop/bicycleMenu.png"));
         menuPowerUps  = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
+        astic = new Texture(Gdx.files.internal("utils/astric.png"));
+
 
 
 
@@ -122,6 +125,7 @@ public class Shop implements Screen, VideoEventListener {
     public void show() {
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
     }
 
     @Override
@@ -134,12 +138,26 @@ public class Shop implements Screen, VideoEventListener {
 
         AllVariables.batch.begin();
         cancel.draw(AllVariables.batch);
-        AllVariables.batch.draw(menuKusaCoin,20,453,114,114);
-        AllVariables.batch.draw(menuBicycle,40,289,80,114);
-        AllVariables.batch.draw(menuPowerUps,35,125,100,100);
+        if (menuNumber == 1) {
+            AllVariables.batch.draw(menuKusaCoin, 20, 453, 120, 120);
+            AllVariables.batch.draw(menuBicycle, 40, 289, 60, 96);
+            AllVariables.batch.draw(menuPowerUps, 35, 125, 80, 80);
+            AllVariables.batch.draw(astic, 20, 523, 20, 20);
+        }else if (menuNumber ==2){
+            AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
+            AllVariables.batch.draw(menuBicycle, 40, 289, 86, 120);
+            AllVariables.batch.draw(menuPowerUps, 35, 125, 80, 80);
+            AllVariables.batch.draw(astic, 40, 400, 20, 20);
+        }else if (menuNumber == 3){
+            AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
+            AllVariables.batch.draw(menuBicycle, 40, 289, 60, 96);
+            AllVariables.batch.draw(menuPowerUps, 35, 125, 106, 106);
+            AllVariables.batch.draw(astic, 40, 210, 20, 20);
+        }
 
-        AllVariables.batch.draw(menuKusaCoin,400,670,50,50);
         AllVariables.bitmapFont.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 450, 700);
+
+
 
         //freeAd.draw(AllVariables.batch);
         //buy1.draw(AllVariables.batch);
@@ -206,8 +224,8 @@ public class Shop implements Screen, VideoEventListener {
                         //cancel
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY - Gdx.input.getY() >= 620 * AllVariables.inpM
-                                && screenY - Gdx.input.getY() <= 700 * AllVariables.inpM){
+                                && screenY >= 620 * AllVariables.inpM
+                                && screenY <= 700 * AllVariables.inpM){
                             dispose();
                             game.setScreen(new AreaSelection(game));
                         }
@@ -215,28 +233,36 @@ public class Shop implements Screen, VideoEventListener {
                         //KusaCoin
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY - Gdx.input.getY() >= 455 * AllVariables.inpM
-                                && screenY - Gdx.input.getY() <= 560 * AllVariables.inpM){
+                                && screenY >= 455 * AllVariables.inpM
+                                && screenY <= 560 * AllVariables.inpM){
                             dispose();
                             menuNumber = 1;
+                            InnerMenuNumber = 1;
                         }
 
                         //bicycle makeup
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY - Gdx.input.getY() >= 270 * AllVariables.inpM
-                                && screenY - Gdx.input.getY() <= 420 * AllVariables.inpM){
+                                && screenY >= 270 * AllVariables.inpM
+                                && screenY <= 420 * AllVariables.inpM){
                             dispose();
-                            menuNumber = 2;
+                            if (menuNumber != 2) {
+                                menuNumber = 2;
+                                InnerMenuNumber = 1;
+                            }
                         }
 
                         //powerups
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (160* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY - Gdx.input.getY() >= 100 * AllVariables.inpM
-                                && screenY - Gdx.input.getY() <= 222 * AllVariables.inpM){
+                                && screenY >= 100 * AllVariables.inpM
+                                && screenY <= 222 * AllVariables.inpM){
                             dispose();
-                            menuNumber = 3;
+
+                            if (menuNumber != 3) {
+                                menuNumber = 3;
+                                InnerMenuNumber = 1;
+                            }
                         }
 
                         return false;
