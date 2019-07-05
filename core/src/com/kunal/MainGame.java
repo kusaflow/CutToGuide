@@ -14,6 +14,8 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.kunal.temp.temp;
 
+import java.util.LinkedList;
+
 public class MainGame extends Game {
 
     public MainGame() {
@@ -54,6 +56,18 @@ public class MainGame extends Game {
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
+
+		//temp for setting up the available coin bar and wheel
+		AllVariables.unlockedCoin = new LinkedList<Byte>();
+		AllVariables.unlockedCoin.add((byte)0);
+
+		AllVariables.unlockedBar = new LinkedList<Byte>();
+		AllVariables.unlockedBar.add((byte)0);
+
+		AllVariables.unlockedWheel = new LinkedList<Byte>();
+		AllVariables.unlockedWheel.add((byte)0);
+
+		//=================================================
 
 		this.setScreen(new temp(this));
 

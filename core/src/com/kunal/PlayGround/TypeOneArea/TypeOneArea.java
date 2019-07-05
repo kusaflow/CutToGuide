@@ -96,7 +96,7 @@ public class TypeOneArea implements Screen {
 
         objectCreation = new ObjectCreation();
 
-        objectCreation.CreateBicycle(world, 600);
+        objectCreation.CreateBicycle(world, 600,0);
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();

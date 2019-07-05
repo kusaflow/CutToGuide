@@ -13,6 +13,8 @@ import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.Shop.Shop;
 
+import java.util.LinkedList;
+
 public class AllVariables {
 
     public static int WIDTH = 1280;
@@ -49,8 +51,9 @@ public class AllVariables {
 
     public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6, rod7;
 
-    public static byte tyreType =1, bodyOfCycle =1, coinType=1;
+    public static byte tyreType =0, bodyOfCycle =2, coinType=0;
     public static short speedIncCount =0, speedDecCount =0, JumperCount=0;
+    public static LinkedList<Byte> unlockedWheel, unlockedBar, unlockedCoin;
 
 
     public static String coinAdd = "typesOfCoin/hudCoin.png";

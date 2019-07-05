@@ -37,6 +37,7 @@ import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpMngr;
 import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
+import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
 
 
@@ -123,7 +124,7 @@ public class TypeTwoArea implements Screen {
 
         objectCreation = new ObjectCreation();
 
-        objectCreation.CreateBicycle(world, 600);
+        objectCreation.CreateBicycle(world, 600,0);
         objectCreation.CreateCutouts(world);
 
         poly = new Polygon();
@@ -243,61 +244,9 @@ public class TypeTwoArea implements Screen {
 
         //bicycle makeUp
 
-        if (AllVariables.tyreType == 1) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre1.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre1.png")));
-        }else if (AllVariables.tyreType == 2) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre2.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre2.png")));
-        }else if (AllVariables.tyreType == 3) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre3.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre3.png")));
-        }else if (AllVariables.tyreType == 4) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre4.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre4.png")));
-        }else if (AllVariables.tyreType == 5) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre5.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre5.png")));
-        }else if (AllVariables.tyreType == 6) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre6.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre6.png")));
-        }else if (AllVariables.tyreType == 7) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre7.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre7.png")));
-        }else if (AllVariables.tyreType == 8) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre8.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre8.png")));
-        }else if (AllVariables.tyreType == 9) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre9.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre9.png")));
-        }else if (AllVariables.tyreType == 10) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre10.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre10.png")));
-        }else if (AllVariables.tyreType == 11) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre11.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre11.png")));
-        }else if (AllVariables.tyreType == 12) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre12.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre12.png")));
-        }else if (AllVariables.tyreType == 13) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre13.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre13.png")));
-        }else if (AllVariables.tyreType == 14) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre14.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre14.png")));
-        }else if (AllVariables.tyreType == 15) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre15.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre15.png")));
-        }else if (AllVariables.tyreType == 16) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre16.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre16.png")));
-        }else if (AllVariables.tyreType == 17) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre17.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre17.png")));
-        }else if (AllVariables.tyreType == 18) {
-            frontTyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre18.png")));
-            backtyre = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/tyre/tyre18.png")));
-        }
+        frontTyre = new Sprite(TextureGiver.tyre(AllVariables.tyreType));
+        backtyre = new Sprite(TextureGiver.tyre(AllVariables.tyreType));
+
 
 
         frontTyre.setSize(50,50);
@@ -313,17 +262,17 @@ public class TypeTwoArea implements Screen {
         rod5 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
         rod6 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
 
-        rod1.setSize(50,6);
+        rod1.setSize(6,50);
         rod1.setOriginCenter();
 
 
-        rod2.setSize(65,6);
+        rod2.setSize(6,65);
         rod2.setOriginCenter();
 
-        rod3.setSize(60,6);
+        rod3.setSize(6,60);
         rod3.setOriginCenter();
 
-        rod4.setSize(43,6);
+        rod4.setSize(6,43);
         rod4.setOriginCenter();
 
         rod5.setSize(6,66);
@@ -1229,14 +1178,14 @@ public class TypeTwoArea implements Screen {
 
 
         //backwheel to the seat rod
-        rod3.setPosition(AllVariables.rod3.getPosition().x * AllVariables.PPM-30,
-                AllVariables.rod3.getPosition().y * AllVariables.PPM-3);
-        rod3.setRotation((int) (AllVariables.rod3.getAngle() * (180 / Math.PI)));
+        rod3.setPosition(AllVariables.rod3.getPosition().x * AllVariables.PPM-3,
+                AllVariables.rod3.getPosition().y * AllVariables.PPM-30);
+        rod3.setRotation((int) (AllVariables.rod3.getAngle() * (180 / Math.PI))-90);
 
         //backwheel to the peedle
-        rod4.setPosition(AllVariables.rod4.getPosition().x * AllVariables.PPM-23,
-                AllVariables.rod4.getPosition().y * AllVariables.PPM-3);
-        rod4.setRotation((int) (AllVariables.rod4.getAngle() * (180 / Math.PI)));
+        rod4.setPosition(AllVariables.rod4.getPosition().x * AllVariables.PPM-3,
+                AllVariables.rod4.getPosition().y * AllVariables.PPM-23);
+        rod4.setRotation((int) (AllVariables.rod4.getAngle() * (180 / Math.PI))-90);
 
         //connect with both rod3 and rod4
         rod5.setPosition(AllVariables.rod5.getPosition().x * AllVariables.PPM-3,
@@ -1244,15 +1193,15 @@ public class TypeTwoArea implements Screen {
         rod5.setRotation((int) (AllVariables.rod5.getAngle() * (180 / Math.PI)));
 
         //connect to rod5 and rod3
-        rod1.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM-25,
-                AllVariables.rod1.getPosition().y * AllVariables.PPM-3);
-        rod1.setRotation((int) (AllVariables.rod1.getAngle() * (180 / Math.PI)));
+        rod1.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM-3,
+                AllVariables.rod1.getPosition().y * AllVariables.PPM-25);
+        rod1.setRotation((int) (AllVariables.rod1.getAngle() * (180 / Math.PI))-90);
 
 
         //connect with rod5, rod1 and rod4
-        rod2.setPosition(AllVariables.rod2.getPosition().x * AllVariables.PPM-35,
-                AllVariables.rod2.getPosition().y * AllVariables.PPM-3);
-        rod2.setRotation((int) (AllVariables.rod2.getAngle() * (180 / Math.PI)));
+        rod2.setPosition(AllVariables.rod2.getPosition().x * AllVariables.PPM-3,
+                AllVariables.rod2.getPosition().y * AllVariables.PPM-35);
+        rod2.setRotation((int) (AllVariables.rod2.getAngle() * (180 / Math.PI))-90);
 
         //connect with rod1 and rod2
         rod6.setPosition(AllVariables.rod6.getPosition().x * AllVariables.PPM-3,

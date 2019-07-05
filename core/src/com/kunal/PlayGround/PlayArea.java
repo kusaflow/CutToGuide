@@ -66,7 +66,7 @@ public class PlayArea implements Screen {
 
         objectCreation = new ObjectCreation();
 
-        objectCreation.CreateBicycle(world,20);
+        objectCreation.CreateBicycle(world,20,0);
         mover = BodyGenerator.BodyAssembleKin(world, false, "mover", new Vector2(523,-50), new Vector2(10,10),AllVariables.Bit_land,AllVariables.Bit_Bicycle);
 
         //sprites

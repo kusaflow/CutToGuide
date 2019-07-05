@@ -70,14 +70,14 @@ public class TextureGiver {
     }
 
     public static Texture bars(short i){
-        Texture t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/brown.png"));
+        Texture t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png"));
 
         if (i == 1){
-            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/brown.png"));
+
         }else if (i==2){
             t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png"));
         }else if (i==3){
-            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/vine.png"));
+
         }
 
         return t;
