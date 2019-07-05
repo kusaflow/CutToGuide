@@ -148,8 +148,9 @@ public class Shop implements Screen, VideoEventListener {
             typeOfCoin.add(TextureGiver.coin((short) i));
         }
 
-        CycleBars = new Sprite(bicy_bars.get(barCh));
-        CycleBars.setOriginCenter();
+        CycleBars = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar1.png")));
+        CycleBars.setTexture(bicy_bars.get(barCh));
+        //CycleBars.setOriginCenter();
 
         //AllVariables.adv.setVideoEventListener(this);
 
