@@ -70,14 +70,34 @@ public class TextureGiver {
     }
 
     public static Texture bars(short i){
-        Texture t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png"));
+        Texture t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar1.png"));
 
         if (i == 1){
-
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar1.png"));
         }else if (i==2){
-            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png"));
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar2.png"));
         }else if (i==3){
-
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar3.png"));
+        }else if (i==4){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar4.png"));
+        }else if (i==5){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar5.png"));
+        }else if (i==6){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar6.png"));
+        }else if (i==7){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar7.png"));
+        }else if (i==8){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar8.png"));
+        }else if (i==9){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar9.png"));
+        }else if (i==10){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar10.png"));
+        }else if (i==11){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar11.png"));
+        }else if (i==12){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar12.png"));
+        }else if (i==13){
+            t = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar13.png"));
         }
 
         return t;

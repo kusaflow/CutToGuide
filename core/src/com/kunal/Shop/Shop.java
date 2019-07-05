@@ -21,6 +21,7 @@ import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.VideoEventListener;
+import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.TextureGiver;
 
 import java.util.LinkedList;
@@ -74,7 +75,7 @@ public class Shop implements Screen, VideoEventListener {
 
     private byte menuNumber =0, InnerMenuNumber= 0, barCh=0,wheelCh=0,coinCh=0;
 
-    private LinkedList<Short> PriceOfWheel;
+    private LinkedList<Short> PriceOfWheel, PriceOfBars;
 
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
@@ -95,6 +96,10 @@ public class Shop implements Screen, VideoEventListener {
         PriceOfWheel.add((short) 700);
         PriceOfWheel.add((short) 900);
         PriceOfWheel.add((short) 1000);
+
+        PriceOfBars = new LinkedList<Short>();
+        PriceOfBars.add((short) 200);
+
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -135,7 +140,7 @@ public class Shop implements Screen, VideoEventListener {
             bicy_wheel.add(TextureGiver.tyre((short) i));
         }
 
-        for (int i =1; i<=3; i++){
+        for (int i =1; i<=13; i++){
             bicy_bars.add(TextureGiver.bars((short) i));
         }
 
@@ -271,6 +276,7 @@ public class Shop implements Screen, VideoEventListener {
                 AllVariables.batch.draw(arrowL, 300, 550, 100, 100);
                 AllVariables.batch.draw(arrowR, 1100, 550, 100, 100);
 
+                AllVariables.bitmapFont.setColor(Color.WHITE);
 
                 //left most
                 if (wheelCh != 0) {
@@ -283,7 +289,6 @@ public class Shop implements Screen, VideoEventListener {
                 if (!AllVariables.unlockedWheel.contains((byte)(wheelCh))) {
                     AllVariables.batch.draw(lock, 580, 120, 140, 140);
 
-                    AllVariables.bitmapFont.setColor(Color.WHITE);
                     //pricing
                     AllVariables.batch.draw(menuKusaCoin, 580, 260, 50, 50);
 
@@ -313,6 +318,51 @@ public class Shop implements Screen, VideoEventListener {
                     AllVariables.batch.draw(bicy_wheel.get(wheelCh + 2), 960, 120, 50, 50);
                     if (!AllVariables.unlockedWheel.contains((byte)(wheelCh +2)))
                         AllVariables.batch.draw(lock, 960, 120, 50, 50);
+                }
+
+
+                //upper PArt For Body
+
+                //left most
+                if (barCh != 0) {
+                    AllVariables.batch.draw(bicy_bars.get(barCh- 1), 440, 550, 80, 80);
+                    if (!AllVariables.unlockedBar.contains((byte)(barCh- 1)))
+                        AllVariables.batch.draw(lock, 440, 550, 80, 80);
+                }
+                //mainChoice
+                AllVariables.batch.draw(bicy_bars.get(barCh), 580, 550, 140, 140);
+                if (!AllVariables.unlockedBar.contains((byte)(barCh))) {
+                    AllVariables.batch.draw(lock, 580, 550, 140, 140);
+
+                    //pricing
+                    AllVariables.batch.draw(menuKusaCoin, 580, 500, 50, 50);
+
+                    if(barCh == 1)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
+                    else if (barCh>=2 && barCh<=6)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
+                    else if (barCh>=7 && barCh<=9)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
+                    else if (barCh>=10 && barCh<=12)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
+                    else if (barCh==13)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
+                    else if (barCh>=14 && barCh<=17)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
+
+                }
+
+                //right
+                if (barCh <= bicy_bars.size()-2) {
+                    AllVariables.batch.draw(bicy_bars.get(barCh+ 1), 790, 550, 80, 80);
+                    if (!AllVariables.unlockedBar.contains((byte)(barCh+ 1)))
+                        AllVariables.batch.draw(lock, 790, 550, 80, 80);
+                }
+                //right most
+                if (barCh <= bicy_bars.size()-3) {
+                    AllVariables.batch.draw(bicy_bars.get(barCh+ 2), 960, 550, 50, 50);
+                    if (!AllVariables.unlockedBar.contains((byte)(barCh+2)))
+                        AllVariables.batch.draw(lock, 960, 550, 50, 50);
                 }
 
 
@@ -556,6 +606,30 @@ public class Shop implements Screen, VideoEventListener {
                                         && screenY <= 215 * AllVariables.inpM){
                                     if (wheelCh < bicy_wheel.size()-1)
                                         wheelCh++;
+                                    return true;
+                                }
+
+                                //upside
+                                //wheel left
+                                if(screenX >= (300* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (400* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 550 * AllVariables.inpM
+                                        && screenY <= 650 * AllVariables.inpM){
+                                    if (barCh >= 1) {
+                                        barCh--;
+                                        CycleBars.setTexture(bicy_bars.get(barCh));
+                                    }
+                                    return true;
+                                }
+                                //wheel right
+                                else if(screenX >= (1090* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (1190* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 550 * AllVariables.inpM
+                                        && screenY <= 650 * AllVariables.inpM){
+                                    if (barCh < bicy_bars.size()-1) {
+                                        barCh++;
+                                        CycleBars.setTexture(bicy_bars.get(barCh));
+                                    }
                                     return true;
                                 }
                             }

@@ -255,12 +255,12 @@ public class TypeTwoArea implements Screen {
         backtyre.setSize(50,50);
         backtyre.setOriginCenter();
 
-        rod1= new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
-        rod2 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
-        rod3 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
-        rod4 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
-        rod5 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
-        rod6 = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/green.png")));
+        rod1= new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
+        rod2 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
+        rod3 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
+        rod4 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
+        rod5 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
+        rod6 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
 
         rod1.setSize(6,50);
         rod1.setOriginCenter();
@@ -339,15 +339,15 @@ public class TypeTwoArea implements Screen {
             update(dt);
         input(dt);
 
-        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
-        //cam.combined.scl(AllVariables.PPM);
+        //b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        cam.combined.scl(AllVariables.PPM);
         //need to fix this
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
         AllVariables.batch.begin();
 
-        /*
+/*
         AllVariables.batch.draw(bg1,0,512);
         AllVariables.batch.draw(bg2,-1024,512);
         AllVariables.batch.draw(bg2,1024,512);
@@ -358,8 +358,7 @@ public class TypeTwoArea implements Screen {
         AllVariables.batch.draw(bg2,6144,512);
         AllVariables.batch.draw(bg1,7168,512);
         AllVariables.batch.draw(bg3,8192,512);
-
-        */
+*/
 
         //things at bg of the of the tiled map goes here
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
