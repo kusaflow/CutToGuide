@@ -65,7 +65,7 @@ public class Shop implements Screen, VideoEventListener {
     private Sprite cancel,CycleBars;
     Texture menuKusaCoin, menuBicycle, menuPowerUps, astic;
     Texture freeKusaCoin, bgTobuy;
-    Texture arrowR, arrowL, lock;
+    Texture arrowR, arrowL, lock, seat, handle;
     //bicycle
     LinkedList<Texture> bicy_wheel, typeOfCoin, bicy_bars;
 
@@ -121,6 +121,9 @@ public class Shop implements Screen, VideoEventListener {
         arrowL= new Texture(Gdx.files.internal("utils/arrowLeft.png"));
         lock = new Texture(Gdx.files.internal("AreaSelection/levelSelection/locked.png"));
         arrowR = new Texture(Gdx.files.internal("utils/arrowRight.png"));
+        seat = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/seat.png"));
+        handle = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/handle.png"));
+
 
 
         bicy_wheel = new LinkedList<Texture>();
@@ -145,7 +148,6 @@ public class Shop implements Screen, VideoEventListener {
 
         //AllVariables.adv.setVideoEventListener(this);
 
-        //world.step(1/60f, 6,2);
 
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
@@ -326,7 +328,7 @@ public class Shop implements Screen, VideoEventListener {
 
             CycleBars.setSize(6,50);
             CycleBars.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM-3,
-                    AllVariables.rod1.getPosition().y * AllVariables.PPM-25);
+                    AllVariables.rod1.getPosition().y * AllVariables.PPM-30);
             CycleBars.setRotation((int) (AllVariables.rod1.getAngle() * (180 / Math.PI))-90);
             CycleBars.draw(AllVariables.batch);
 
@@ -345,13 +347,13 @@ public class Shop implements Screen, VideoEventListener {
 
 
             CycleBars.setSize(6,43);
-            CycleBars.setPosition(AllVariables.rod4.getPosition().x * AllVariables.PPM-3,
-                    AllVariables.rod4.getPosition().y * AllVariables.PPM-23);
+            CycleBars.setPosition((AllVariables.rod4.getPosition().x * AllVariables.PPM)+3,
+                    (AllVariables.rod4.getPosition().y * AllVariables.PPM)-33);
             CycleBars.setRotation((int) (AllVariables.rod4.getAngle() * (180 / Math.PI))-90);
             CycleBars.draw(AllVariables.batch);
 
 
-            CycleBars.setSize(6,66);
+            CycleBars.setSize(6,63);
             CycleBars.setPosition(AllVariables.rod5.getPosition().x * AllVariables.PPM-3,
                     AllVariables.rod5.getPosition().y * AllVariables.PPM-33);
             CycleBars.setRotation((int) (AllVariables.rod5.getAngle() * (180 / Math.PI)));
@@ -363,6 +365,10 @@ public class Shop implements Screen, VideoEventListener {
                     AllVariables.rod6.getPosition().y * AllVariables.PPM-35);
             CycleBars.setRotation((int) (AllVariables.rod6.getAngle() * (180 / Math.PI)));
             CycleBars.draw(AllVariables.batch);
+
+            AllVariables.batch.draw(seat,785,425,22,10);
+            AllVariables.batch.draw(handle,829,432,10,10);
+
 
 
 
