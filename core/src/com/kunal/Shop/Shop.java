@@ -114,7 +114,7 @@ public class Shop implements Screen, VideoEventListener {
         }
 
 
-        //AllVariables.adv.setVideoEventListener(this);
+        AllVariables.adv.setVideoEventListener(this);
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -216,6 +216,28 @@ public class Shop implements Screen, VideoEventListener {
             AllVariables.batch.draw(menuBicycle, 40, 289, 86, 120);
             AllVariables.batch.draw(menuPowerUps, 35, 125, 80, 80);
             AllVariables.batch.draw(astic, 40, 400, 20, 20);
+
+            AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),220,420,70,70);
+            AllVariables.batch.draw(typeOfCoin.get(AllVariables.coinType-1),212,220, 100, 100);
+
+            if (InnerMenuNumber == 1)
+                AllVariables.batch.draw(astic, 220, 490, 15, 15);
+            else if (InnerMenuNumber == 2)
+                AllVariables.batch.draw(astic, 220, 290, 15, 15);
+
+
+            AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),400,300,70,70);
+            AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),400,300,70,70);
+
+            AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),600,120,110,110);
+            AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),600,500,110,110);
+
+
+
+
+
+
+
         }else if (menuNumber == 3){
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
             AllVariables.batch.draw(menuBicycle, 40, 289, 60, 96);
@@ -241,17 +263,6 @@ public class Shop implements Screen, VideoEventListener {
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE))
             AllVariables.kusaCoin+=100;//game.setScreen(prevScreen);
 
-
-        if(Gdx.input.justTouched()){
-            //System.out.println(Gdx.input.getX() + "\t" +  (720 - Gdx.input.getY()));
-            if(Gdx.input.getX() >= (30* AllVariables.inpM) + AllVariables.witdth_translation
-                    && Gdx.input.getX() <= (375* AllVariables.inpM) + AllVariables.witdth_translation
-                    && Gdx.graphics.getHeight() - Gdx.input.getY() >= 350 * AllVariables.inpM
-                    && Gdx.graphics.getHeight() - Gdx.input.getY() <= 700 * AllVariables.inpM
-            ) {
-
-            }
-        }
 
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
@@ -329,10 +340,10 @@ public class Shop implements Screen, VideoEventListener {
                                     && screenY >= 435 * AllVariables.inpM
                                     && screenY <= 590 * AllVariables.inpM){
                                 System.out.println("Ad Will Play");
-                                //adVideoInterface.show();
-                                //if(AllVariables.adv.hasVideoLoaded()) {
-                                    //AllVariables.adv.showRewardedVideoAd();
-                                //}
+                                adVideoInterface.show();
+                                if(AllVariables.adv.hasVideoLoaded()) {
+                                    AllVariables.adv.showRewardedVideoAd();
+                                }
                                 return true;
                             }
                             //2
@@ -374,6 +385,18 @@ public class Shop implements Screen, VideoEventListener {
                                     && screenY <= 330 * AllVariables.inpM){
                                 System.out.println("6");
                                 return true;
+                            }
+                        } else if (menuNumber == 2){
+                            if(screenX >= (205* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (310* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 390 * AllVariables.inpM
+                                    && screenY <= 505 * AllVariables.inpM){
+                                InnerMenuNumber = 1;
+                            }else if(screenX >= (205* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX <= (310* AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY >= 220 * AllVariables.inpM
+                                    && screenY <= 315 * AllVariables.inpM){
+                                InnerMenuNumber=2;
                             }
                         }
 
