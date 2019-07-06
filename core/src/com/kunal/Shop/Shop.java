@@ -326,12 +326,12 @@ public class Shop implements Screen, VideoEventListener {
 
                 //left most
                 if (barCh != 0) {
-                    AllVariables.batch.draw(bicy_bars.get(barCh- 1), 440, 550, 80, 80);
+                    AllVariables.batch.draw(bicy_bars.get(barCh- 1), 475, 550, 13, 80);
                     if (!AllVariables.unlockedBar.contains((byte)(barCh- 1)))
                         AllVariables.batch.draw(lock, 440, 550, 80, 80);
                 }
                 //mainChoice
-                AllVariables.batch.draw(bicy_bars.get(barCh), 580, 550, 140, 140);
+                AllVariables.batch.draw(bicy_bars.get(barCh), 645, 550, 13, 140);
                 if (!AllVariables.unlockedBar.contains((byte)(barCh))) {
                     AllVariables.batch.draw(lock, 580, 550, 140, 140);
 
@@ -355,13 +355,13 @@ public class Shop implements Screen, VideoEventListener {
 
                 //right
                 if (barCh <= bicy_bars.size()-2) {
-                    AllVariables.batch.draw(bicy_bars.get(barCh+ 1), 790, 550, 80, 80);
+                    AllVariables.batch.draw(bicy_bars.get(barCh+ 1), 825, 550, 10, 80);
                     if (!AllVariables.unlockedBar.contains((byte)(barCh+ 1)))
                         AllVariables.batch.draw(lock, 790, 550, 80, 80);
                 }
                 //right most
                 if (barCh <= bicy_bars.size()-3) {
-                    AllVariables.batch.draw(bicy_bars.get(barCh+ 2), 960, 550, 50, 50);
+                    AllVariables.batch.draw(bicy_bars.get(barCh+ 2), 980, 550, 10, 50);
                     if (!AllVariables.unlockedBar.contains((byte)(barCh+2)))
                         AllVariables.batch.draw(lock, 960, 550, 50, 50);
                 }
@@ -444,16 +444,12 @@ public class Shop implements Screen, VideoEventListener {
     private void update(){
         input();
         AllVariables.bodyOfCycle = barCh;
-        AllVariables.tyreType = wheelCh;
     }
 
     private void input(){
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             AllVariables.kusaCoin += 100;
-            System.out.println(AllVariables.rod6.getAngle()*(180/Math.PI));
-            //System.out.println(AllVariables.FrontWheel.getPosition().x*100);
-
         }
 
 
