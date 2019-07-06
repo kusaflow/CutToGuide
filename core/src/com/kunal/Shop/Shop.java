@@ -75,7 +75,9 @@ public class Shop implements Screen, VideoEventListener {
 
     private byte menuNumber =0, InnerMenuNumber= 0, barCh=0,wheelCh=0,coinCh=0;
 
-    private LinkedList<Short> PriceOfWheel, PriceOfBars;
+    private LinkedList<Short> PriceOfWheel, PriceOfBars, PriceOfCoins;
+
+    private Boolean coinLocked, wheelLocked, barsLocked;
 
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
@@ -100,6 +102,8 @@ public class Shop implements Screen, VideoEventListener {
         PriceOfBars = new LinkedList<Short>();
         PriceOfBars.add((short) 200);
 
+        PriceOfCoins = new LinkedList<Short>();
+        PriceOfCoins.add((short)300);
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -282,13 +286,16 @@ public class Shop implements Screen, VideoEventListener {
                 //left most
                 if (wheelCh != 0) {
                     AllVariables.batch.draw(bicy_wheel.get(wheelCh - 1), 440, 120, 80, 80);
-                    if (!AllVariables.unlockedWheel.contains((byte)(wheelCh - 1)))
+                    if (!AllVariables.unlockedWheel.contains((byte)(wheelCh - 1))) {
                         AllVariables.batch.draw(lock, 440, 120, 80, 80);
+                    }
                 }
                 //mainChoice
                 AllVariables.batch.draw(bicy_wheel.get(wheelCh), 580, 120, 140, 140);
+                wheelLocked = false;
                 if (!AllVariables.unlockedWheel.contains((byte)(wheelCh))) {
                     AllVariables.batch.draw(lock, 580, 120, 140, 140);
+                    wheelLocked= true;
 
                     //pricing
                     AllVariables.batch.draw(menuKusaCoin, 580, 260, 50, 50);
@@ -332,8 +339,10 @@ public class Shop implements Screen, VideoEventListener {
                 }
                 //mainChoice
                 AllVariables.batch.draw(bicy_bars.get(barCh), 645, 550, 13, 140);
+                barsLocked = false;
                 if (!AllVariables.unlockedBar.contains((byte)(barCh))) {
                     AllVariables.batch.draw(lock, 580, 550, 140, 140);
+                    barsLocked = true;
 
                     //pricing
                     AllVariables.batch.draw(menuKusaCoin, 580, 500, 50, 50);
@@ -366,64 +375,113 @@ public class Shop implements Screen, VideoEventListener {
                         AllVariables.batch.draw(lock, 960, 550, 50, 50);
                 }
 
+                AllVariables.batch.draw(bicy_wheel.get(wheelCh),(AllVariables.FrontWheel.getPosition().x*100)-25,(AllVariables.FrontWheel.getPosition().y*100)-25,50,50);
+                AllVariables.batch.draw(bicy_wheel.get(wheelCh),(AllVariables.BackWheel.getPosition().x*100)-25,(AllVariables.BackWheel.getPosition().y*100)-25,50,50);
 
+
+                CycleBars.setSize(6,50);
+                CycleBars.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM-3,
+                        AllVariables.rod1.getPosition().y * AllVariables.PPM-30);
+                CycleBars.setRotation((int) (AllVariables.rod1.getAngle() * (180 / Math.PI))-90);
+                CycleBars.draw(AllVariables.batch);
+
+                CycleBars.setSize(6,65);
+                CycleBars.setPosition(AllVariables.rod2.getPosition().x * AllVariables.PPM-3,
+                        AllVariables.rod2.getPosition().y * AllVariables.PPM-35);
+                CycleBars.setRotation((int) (AllVariables.rod2.getAngle() * (180 / Math.PI))-90);
+                CycleBars.draw(AllVariables.batch);
+
+
+                CycleBars.setSize(6,60);
+                CycleBars.setPosition(AllVariables.rod3.getPosition().x * AllVariables.PPM-3,
+                        AllVariables.rod3.getPosition().y * AllVariables.PPM-30);
+                CycleBars.setRotation((int) (AllVariables.rod3.getAngle() * (180 / Math.PI))-90);
+                CycleBars.draw(AllVariables.batch);
+
+
+                CycleBars.setSize(6,43);
+                CycleBars.setPosition((AllVariables.rod4.getPosition().x * AllVariables.PPM)+3,
+                        (AllVariables.rod4.getPosition().y * AllVariables.PPM)-33);
+                CycleBars.setRotation((int) (AllVariables.rod4.getAngle() * (180 / Math.PI))-90);
+                CycleBars.draw(AllVariables.batch);
+
+
+                CycleBars.setSize(6,63);
+                CycleBars.setPosition(AllVariables.rod5.getPosition().x * AllVariables.PPM-3,
+                        AllVariables.rod5.getPosition().y * AllVariables.PPM-33);
+                CycleBars.setRotation((int) (AllVariables.rod5.getAngle() * (180 / Math.PI)));
+                CycleBars.draw(AllVariables.batch);
+
+
+                CycleBars.setSize(6,70);
+                CycleBars.setPosition(AllVariables.rod6.getPosition().x * AllVariables.PPM-3,
+                        AllVariables.rod6.getPosition().y * AllVariables.PPM-35);
+                CycleBars.setRotation((int) (AllVariables.rod6.getAngle() * (180 / Math.PI)));
+                CycleBars.draw(AllVariables.batch);
+
+                AllVariables.batch.draw(seat,785,425,22,10);
+                AllVariables.batch.draw(handle,829,432,10,10);
 
             }else if (InnerMenuNumber == 2) {
                 AllVariables.batch.draw(astic, 220, 330, 15, 15);
+
+
+                //lower Arrow
+                AllVariables.batch.draw(arrowL, 300, 110, 100, 100);
+                AllVariables.batch.draw(arrowR, 1080, 110, 100, 100);
+
+
+                //left most
+                if (coinCh != 0) {
+                    AllVariables.batch.draw(typeOfCoin.get(coinCh - 1), 440, 120, 80, 80);
+                    if (!AllVariables.unlockedCoin.contains((byte)(coinCh - 1)))
+                        AllVariables.batch.draw(lock, 440, 120, 80, 80);
+                }
+                //mainChoice
+                AllVariables.batch.draw(typeOfCoin.get(coinCh ), 580, 120, 140, 140);
+                coinLocked = false;
+                if (!AllVariables.unlockedCoin.contains((byte)(coinCh ))) {
+                    AllVariables.batch.draw(lock, 580, 120, 140, 140);
+                    coinLocked = true;
+
+                    //pricing
+                    AllVariables.batch.draw(menuKusaCoin, 580, 260, 50, 50);
+
+                    if(coinCh == 1)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfCoins.get(0), 630, 293);
+                    else if (coinCh >=2 && coinCh <=6)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfCoins.get(0), 630, 293);
+                    else if (coinCh >=7 && coinCh <=9)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfCoins.get(0), 630, 293);
+                    else if (coinCh >=10 && coinCh <=12)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfCoins.get(0), 630, 293);
+                    else if (coinCh ==13)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfCoins.get(0), 630, 293);
+                    else if (coinCh >=14 && coinCh <=17)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfCoins.get(0), 630, 293);
+
+                }
+
+                //right
+                if (coinCh <= typeOfCoin.size()-2) {
+                    AllVariables.batch.draw(typeOfCoin.get(coinCh + 1), 790, 120, 80, 80);
+                    if (!AllVariables.unlockedCoin.contains((byte)(coinCh + 1)))
+                        AllVariables.batch.draw(lock, 790, 120, 80, 80);
+                }
+                //right most
+                if (coinCh <= typeOfCoin.size()-3) {
+                    AllVariables.batch.draw(typeOfCoin.get(coinCh + 2), 960, 120, 50, 50);
+                    if (!AllVariables.unlockedCoin.contains((byte)(coinCh +2)))
+                        AllVariables.batch.draw(lock, 960, 120, 50, 50);
+                }
+
+                //main display
+                AllVariables.batch.draw(typeOfCoin.get(coinCh), 800, 350, 160, 160);
+
+
+
+
             }
-
-
-            AllVariables.batch.draw(bicy_wheel.get(wheelCh),(AllVariables.FrontWheel.getPosition().x*100)-25,(AllVariables.FrontWheel.getPosition().y*100)-25,50,50);
-            AllVariables.batch.draw(bicy_wheel.get(wheelCh),(AllVariables.BackWheel.getPosition().x*100)-25,(AllVariables.BackWheel.getPosition().y*100)-25,50,50);
-
-
-            CycleBars.setSize(6,50);
-            CycleBars.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM-3,
-                    AllVariables.rod1.getPosition().y * AllVariables.PPM-30);
-            CycleBars.setRotation((int) (AllVariables.rod1.getAngle() * (180 / Math.PI))-90);
-            CycleBars.draw(AllVariables.batch);
-
-            CycleBars.setSize(6,65);
-            CycleBars.setPosition(AllVariables.rod2.getPosition().x * AllVariables.PPM-3,
-                    AllVariables.rod2.getPosition().y * AllVariables.PPM-35);
-            CycleBars.setRotation((int) (AllVariables.rod2.getAngle() * (180 / Math.PI))-90);
-            CycleBars.draw(AllVariables.batch);
-
-
-            CycleBars.setSize(6,60);
-            CycleBars.setPosition(AllVariables.rod3.getPosition().x * AllVariables.PPM-3,
-                    AllVariables.rod3.getPosition().y * AllVariables.PPM-30);
-            CycleBars.setRotation((int) (AllVariables.rod3.getAngle() * (180 / Math.PI))-90);
-            CycleBars.draw(AllVariables.batch);
-
-
-            CycleBars.setSize(6,43);
-            CycleBars.setPosition((AllVariables.rod4.getPosition().x * AllVariables.PPM)+3,
-                    (AllVariables.rod4.getPosition().y * AllVariables.PPM)-33);
-            CycleBars.setRotation((int) (AllVariables.rod4.getAngle() * (180 / Math.PI))-90);
-            CycleBars.draw(AllVariables.batch);
-
-
-            CycleBars.setSize(6,63);
-            CycleBars.setPosition(AllVariables.rod5.getPosition().x * AllVariables.PPM-3,
-                    AllVariables.rod5.getPosition().y * AllVariables.PPM-33);
-            CycleBars.setRotation((int) (AllVariables.rod5.getAngle() * (180 / Math.PI)));
-            CycleBars.draw(AllVariables.batch);
-
-
-            CycleBars.setSize(6,70);
-            CycleBars.setPosition(AllVariables.rod6.getPosition().x * AllVariables.PPM-3,
-                    AllVariables.rod6.getPosition().y * AllVariables.PPM-35);
-            CycleBars.setRotation((int) (AllVariables.rod6.getAngle() * (180 / Math.PI)));
-            CycleBars.draw(AllVariables.batch);
-
-            AllVariables.batch.draw(seat,785,425,22,10);
-            AllVariables.batch.draw(handle,829,432,10,10);
-
-
-
-
-
 
         }else if (menuNumber == 3){
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
@@ -574,7 +632,9 @@ public class Shop implements Screen, VideoEventListener {
                                 System.out.println("6");
                                 return true;
                             }
-                        } else if (menuNumber == 2){
+                        }
+                        //-----------------------------------------------------------------------------------------
+                        else if (menuNumber == 2){
                             if(screenX >= (205* AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX <= (310* AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY >= 390 * AllVariables.inpM
@@ -629,6 +689,66 @@ public class Shop implements Screen, VideoEventListener {
                                         barCh++;
                                         CycleBars.setTexture(bicy_bars.get(barCh));
                                     }
+                                    return true;
+                                }
+
+                                //for wheel
+                                if(screenX >= (570* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (735* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 102 * AllVariables.inpM
+                                        && screenY <= 275 * AllVariables.inpM && wheelLocked){
+
+                                    System.out.println("you can buy this wheel");
+
+                                    return true;
+                                }
+
+                                //for bar
+                                if(screenX >= (570* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (735* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 543 * AllVariables.inpM
+                                        && screenY <= 700 * AllVariables.inpM && barsLocked){
+
+                                    System.out.println("you can buy this bar");
+
+                                    return true;
+                                }
+
+
+                                //to buy
+
+
+                            }
+                            //----------------------------
+                            else if (InnerMenuNumber == 2){
+                                //coin left
+                                if(screenX >= (300* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (400* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 120 * AllVariables.inpM
+                                        && screenY <= 215 * AllVariables.inpM){
+                                    if (coinCh>= 1) {
+                                        coinCh--;
+                                    }
+                                    return true;
+                                }
+                                //coin right
+                                else if(screenX >= (1075* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (1175* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 120 * AllVariables.inpM
+                                        && screenY <= 215 * AllVariables.inpM){
+                                    if (coinCh< typeOfCoin.size()-1)
+                                        coinCh++;
+                                    return true;
+                                }
+
+                                //to buy
+                                if(screenX >= (570* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (735* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 102 * AllVariables.inpM
+                                        && screenY <= 275 * AllVariables.inpM && coinLocked){
+
+                                    System.out.println("you can buy this coin");
+
                                     return true;
                                 }
                             }
