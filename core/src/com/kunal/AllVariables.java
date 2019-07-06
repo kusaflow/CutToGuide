@@ -51,7 +51,7 @@ public class AllVariables {
 
     public static Body FrontWheel,BackWheel, rod1, rod2, rod3, rod4, rod5, rod6, rod7;
 
-    public static byte tyreType =0, bodyOfCycle =10, coinType=0;
+    public static byte tyreType =0, bodyOfCycle =0, coinType=0;
     public static short speedIncCount =0, speedDecCount =0, JumperCount=0;
     public static LinkedList<Byte> unlockedWheel, unlockedBar, unlockedCoin;
 

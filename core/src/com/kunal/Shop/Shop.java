@@ -140,7 +140,7 @@ public class Shop implements Screen, VideoEventListener {
             bicy_wheel.add(TextureGiver.tyre((short) i));
         }
 
-        for (int i =1; i<=13; i++){
+        for (int i =1; i<=25; i++){
             bicy_bars.add(TextureGiver.bars((short) i));
         }
 
@@ -348,7 +348,7 @@ public class Shop implements Screen, VideoEventListener {
                         AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
                     else if (barCh==13)
                         AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
-                    else if (barCh>=14 && barCh<=17)
+                    else if (barCh>=14 && barCh<=21)
                         AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
 
                 }
@@ -443,6 +443,8 @@ public class Shop implements Screen, VideoEventListener {
 
     private void update(){
         input();
+        AllVariables.bodyOfCycle = barCh;
+        AllVariables.tyreType = wheelCh;
     }
 
     private void input(){

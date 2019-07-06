@@ -244,8 +244,8 @@ public class TypeTwoArea implements Screen {
 
         //bicycle makeUp
 
-        frontTyre = new Sprite(TextureGiver.tyre(AllVariables.tyreType));
-        backtyre = new Sprite(TextureGiver.tyre(AllVariables.tyreType));
+        frontTyre = new Sprite(TextureGiver.tyre((short) (AllVariables.tyreType+1)));
+        backtyre = new Sprite(TextureGiver.tyre((short) (AllVariables.tyreType+1)));
 
 
 
@@ -255,12 +255,12 @@ public class TypeTwoArea implements Screen {
         backtyre.setSize(50,50);
         backtyre.setOriginCenter();
 
-        rod1= new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
-        rod2 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
-        rod3 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
-        rod4 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
-        rod5 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
-        rod6 = new Sprite(TextureGiver.bars(AllVariables.bodyOfCycle));
+        rod1= new Sprite(TextureGiver.bars((short) (AllVariables.bodyOfCycle+1)));
+        rod2 = new Sprite(TextureGiver.bars((short) (AllVariables.bodyOfCycle+1)));
+        rod3 = new Sprite(TextureGiver.bars((short) (AllVariables.bodyOfCycle+1)));
+        rod4 = new Sprite(TextureGiver.bars((short) (AllVariables.bodyOfCycle+1)));
+        rod5 = new Sprite(TextureGiver.bars((short) (AllVariables.bodyOfCycle+1)));
+        rod6 = new Sprite(TextureGiver.bars((short) (AllVariables.bodyOfCycle+1)));
 
         rod1.setSize(6,50);
         rod1.setOriginCenter();
