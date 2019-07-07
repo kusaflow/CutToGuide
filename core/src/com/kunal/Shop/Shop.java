@@ -9,7 +9,9 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
@@ -63,10 +65,10 @@ public class Shop implements Screen, VideoEventListener {
          |          |--> jumper
      */
 
-    private Sprite cancel,CycleBars;
+    private Sprite cancel,CycleBars, msgBoxTex;
     Texture menuKusaCoin, menuBicycle, menuPowerUps, astic;
     Texture freeKusaCoin, bgTobuy;
-    Texture arrowR, arrowL, lock, seat, handle;
+    Texture arrowR, arrowL, lock, seat, handle, bgblur, buttonBg;
     //bicycle
     LinkedList<Texture> bicy_wheel, typeOfCoin, bicy_bars;
 
@@ -77,8 +79,11 @@ public class Shop implements Screen, VideoEventListener {
 
     private LinkedList<Short> PriceOfWheel, PriceOfBars, PriceOfCoins;
 
-    private Boolean coinLocked, wheelLocked, barsLocked;
+    private Boolean coinLocked, wheelLocked, barsLocked, drawBgblur = false;
 
+    private String msg = "";
+
+    BitmapFont bigText;
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
         this.game = game;
@@ -86,6 +91,18 @@ public class Shop implements Screen, VideoEventListener {
         //InnerMenuNumber = Imn;
         menuNumber = 2;
         InnerMenuNumber = 1;
+
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
+    }
+
+    @Override
+    public void show() {
+        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
+        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
+
 
         barCh = AllVariables.bodyOfCycle;
         coinCh = AllVariables.coinType;
@@ -100,7 +117,17 @@ public class Shop implements Screen, VideoEventListener {
         PriceOfWheel.add((short) 1000);
 
         PriceOfBars = new LinkedList<Short>();
-        PriceOfBars.add((short) 200);
+        PriceOfBars.add((short) 300);
+        PriceOfBars.add((short) 500);
+        PriceOfBars.add((short) 600);
+        PriceOfBars.add((short) 800);
+        PriceOfBars.add((short) 700);
+        PriceOfBars.add((short) 1000);
+
+
+
+
+
 
         PriceOfCoins = new LinkedList<Short>();
         PriceOfCoins.add((short)300);
@@ -120,6 +147,15 @@ public class Shop implements Screen, VideoEventListener {
         cancel.setPosition(0, 720-128);
 
 
+        bigText = new BitmapFont();
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 42;
+        prams.color = Color.FIREBRICK;
+        bigText = generator.generateFont(prams);
+
+
         //essential Menus
         menuKusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
         menuBicycle = new Texture(Gdx.files.internal("Shop/bicycleMenu.png"));
@@ -133,7 +169,13 @@ public class Shop implements Screen, VideoEventListener {
         seat = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/seat.png"));
         handle = new Texture(Gdx.files.internal("playArea/BicycleMakeUp/handle.png"));
 
+        bgblur = new Texture(Gdx.files.internal("playArea/fadedBG.png"));
 
+        buttonBg = new Texture(Gdx.files.internal("Shop/fadedBG.png"));
+
+        msgBoxTex = new Sprite(new Texture(Gdx.files.internal("Shop/ButtonBG.png")));
+        msgBoxTex.setSize(350,350);
+        msgBoxTex.setOriginCenter();
 
         bicy_wheel = new LinkedList<Texture>();
         bicy_bars = new LinkedList<Texture>();
@@ -159,17 +201,6 @@ public class Shop implements Screen, VideoEventListener {
         //AllVariables.adv.setVideoEventListener(this);
 
 
-
-        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
-        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
-
-    }
-
-    @Override
-    public void show() {
-        AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
-        AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
-
     }
 
     @Override
@@ -185,6 +216,7 @@ public class Shop implements Screen, VideoEventListener {
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
         AllVariables.batch.begin();
+
         cancel.draw(AllVariables.batch);
         if (menuNumber == 1) {
             //menu
@@ -347,18 +379,21 @@ public class Shop implements Screen, VideoEventListener {
                     //pricing
                     AllVariables.batch.draw(menuKusaCoin, 580, 500, 50, 50);
 
-                    if(barCh == 1)
+                    if (barCh>=1 && barCh<=4)
                         AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
-                    else if (barCh>=2 && barCh<=6)
-                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
-                    else if (barCh>=7 && barCh<=9)
-                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
-                    else if (barCh>=10 && barCh<=12)
-                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
-                    else if (barCh==13)
-                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
-                    else if (barCh>=14 && barCh<=21)
-                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(0), 630, 530);
+                    else if (barCh>=5 && barCh<=7)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(1), 630, 530);
+                    else if (barCh>=8 && barCh<=10)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(2), 630, 530);
+                    else if (barCh>=11 && barCh <=13)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(3), 630, 530);
+                    else if (barCh>=14 && barCh<=17)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(4), 630, 530);
+                    else if (barCh>=18 && barCh<=22)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(5), 630, 530);
+                    else if (barCh>=22)
+                        AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfBars.get(3), 630, 530);
+
 
                 }
 
@@ -494,14 +529,45 @@ public class Shop implements Screen, VideoEventListener {
         AllVariables.batch.draw(menuKusaCoin, 400, 668, 50, 50);
         AllVariables.bitmapFont.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 450, 700);
 
+//---------------------------------------------------------------------------------------------------
+        if (drawBgblur) {
+            AllVariables.batch.draw(bgblur, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            msgBoxTex.setRotation(0);
+            msgBoxTex.setFlip(false,false);
+            msgBoxTex.setPosition(315,350);
+            msgBoxTex.draw(AllVariables.batch);
+            msgBoxTex.setFlip(true,false);
+            msgBoxTex.setPosition(640,350);
+            msgBoxTex.draw(AllVariables.batch);
+            msgBoxTex.setFlip(false,false);
 
+
+            msgBoxTex.setRotation(90);
+            msgBoxTex.setPosition(130,177);
+            msgBoxTex.draw(AllVariables.batch);
+
+            msgBoxTex.setRotation(-90);
+            msgBoxTex.setPosition(815,177);
+            msgBoxTex.draw(AllVariables.batch);
+
+            msgBoxTex.setRotation(0);
+            msgBoxTex.setPosition(315,0);
+            msgBoxTex.setFlip(true,true);
+            msgBoxTex.draw(AllVariables.batch);
+            msgBoxTex.setFlip(true,true);
+            msgBoxTex.setPosition(640,0);
+            msgBoxTex.draw(AllVariables.batch);
+
+            bigText.draw(AllVariables.batch,  msg, 345, 400);
+
+
+        }
         AllVariables.batch.end();
 
     }
 
     private void update(){
         input();
-        AllVariables.bodyOfCycle = barCh;
     }
 
     private void input(){
@@ -532,6 +598,11 @@ public class Shop implements Screen, VideoEventListener {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         System.out.println(screenX+"\t" +screenY);
+
+                        if (drawBgblur) {
+                            drawBgblur = false;
+                            return true;
+                        }
 
                         //cancel
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
@@ -692,13 +763,14 @@ public class Shop implements Screen, VideoEventListener {
                                     return true;
                                 }
 
-                                //for wheel
+                                //for wheel to buy
                                 if(screenX >= (570* AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX <= (735* AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY >= 102 * AllVariables.inpM
                                         && screenY <= 275 * AllVariables.inpM && wheelLocked){
 
                                     System.out.println("you can buy this wheel");
+                                    drawBgblur = true;
 
                                     return true;
                                 }
@@ -710,6 +782,7 @@ public class Shop implements Screen, VideoEventListener {
                                         && screenY <= 700 * AllVariables.inpM && barsLocked){
 
                                     System.out.println("you can buy this bar");
+                                    drawBgblur = true;
 
                                     return true;
                                 }
@@ -748,7 +821,7 @@ public class Shop implements Screen, VideoEventListener {
                                         && screenY <= 275 * AllVariables.inpM && coinLocked){
 
                                     System.out.println("you can buy this coin");
-
+                                    drawBgblur = true;
                                     return true;
                                 }
                             }
@@ -806,6 +879,31 @@ public class Shop implements Screen, VideoEventListener {
 
     @Override
     public void dispose() {
+        world.dispose();
+        cancel.getTexture().dispose();
+        CycleBars.getTexture().dispose();
+        msgBoxTex.getTexture().dispose();
+        menuKusaCoin.dispose();
+        menuBicycle.dispose();
+        menuPowerUps.dispose();
+        astic.dispose();
+        freeKusaCoin.dispose();
+        bgTobuy.dispose();
+        arrowR.dispose();
+        arrowL.dispose();
+        lock.dispose();
+        seat.dispose();
+        handle.dispose();
+        bgblur.dispose();
+        bicy_wheel.clear();
+        bicy_bars.clear();
+        typeOfCoin.clear();
+
+        PriceOfCoins.clear();
+        PriceOfBars.clear();
+        PriceOfWheel.clear();
+
+        bigText.dispose();
 
     }
 
