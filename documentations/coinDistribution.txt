@@ -1,0 +1,20 @@
+after completing the level the player will get 10 kusacoin for completing the level even if he is retrying the level
+but for collecting the coin in the level player will get additional 30 kusaCoin once
+
+for hint 1 the cost should be 30 kusaCoin in which the only cutouts will be given
+
+for hint 2 the cost should be 60 kusaCoin in which outline where the all cutouts should be there is shown
+    if player already have hint 1 it will cost the player 30 kusaCoin
+
+for hint 3 the level is skipped but the player will not get any coin
+    if player already have hint 1 it will cost player 50 kusaCoin
+    if player already have hint 2 it will cost player 20 kusaCoin
+
+
+
+
+
+
+
+
+
