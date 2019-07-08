@@ -5,6 +5,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -36,6 +37,8 @@ public class Shop implements Screen, VideoEventListener {
     Viewport port;
 
     World world;
+
+    FileHandle kusaCoinFile, lockUnlockFile;
 
     /*
     --->shop
@@ -85,6 +88,7 @@ public class Shop implements Screen, VideoEventListener {
     BitmapFont bigText;
 
     short moneyHolder=0;
+    int kusaCoin;
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
         this.game = game;
@@ -126,12 +130,10 @@ public class Shop implements Screen, VideoEventListener {
         PriceOfBars.add((short) 2000);
 
 
-
-
-
-
         PriceOfCoins = new LinkedList<Short>();
         PriceOfCoins.add((short)600);
+
+        kusaCoin = AllVariables.kusaCoin;
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -147,6 +149,8 @@ public class Shop implements Screen, VideoEventListener {
         cancel.setSize(128,128);
         cancel.setPosition(0, 720-128);
 
+        kusaCoinFile = Gdx.files.local("TextFiles/kusaCoin");
+        lockUnlockFile = Gdx.files.local("TextFiles/LockUnlock");
 
         bigText = new BitmapFont();
 
@@ -618,6 +622,11 @@ public class Shop implements Screen, VideoEventListener {
 
     private void update(){
         input();
+        if (kusaCoin != AllVariables.kusaCoin){
+            String data = String.valueOf(AllVariables.kusaCoin);
+            kusaCoinFile.writeString(data,false);
+            kusaCoin = AllVariables.kusaCoin;
+        }
     }
 
     private void input(){

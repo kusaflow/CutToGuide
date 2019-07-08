@@ -57,6 +57,20 @@ public class MainGame extends Game {
 			System.out.println("writing");
 		}
 
+		if (!Gdx.files.local("TextFiles/kusaCoin").exists()){
+			FileHandle kusaCoin = Gdx.files.local("TextFiles/kusaCoin");
+			String data = "100";
+
+			kusaCoin.writeString(data, false);
+		}
+
+		if (!Gdx.files.local("TextFiles/LockUnlock").exists()){
+			FileHandle kusaCoin = Gdx.files.local("TextFiles/LockUnlock");
+			String data = "0\n0\n0\n0#\n0#\n0#";
+
+			kusaCoin.writeString(data, false);
+		}
+
 		//temp for setting up the available coin bar and wheel
 		AllVariables.unlockedCoin = new LinkedList<Byte>();
 		AllVariables.unlockedCoin.add((byte)0);
