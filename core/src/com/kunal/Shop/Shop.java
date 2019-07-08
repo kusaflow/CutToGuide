@@ -633,7 +633,6 @@ public class Shop implements Screen, VideoEventListener {
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             AllVariables.kusaCoin += 100;
-            writeToFile();
         }
 
 

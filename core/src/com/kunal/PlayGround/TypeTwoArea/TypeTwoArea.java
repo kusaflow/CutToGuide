@@ -100,7 +100,7 @@ public class TypeTwoArea implements Screen {
     private SpeedController speedController;
 
     //bicycle maleup
-    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6;
+    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat;
 
     private Texture bg1, bg2, bg3;
 
@@ -281,6 +281,15 @@ public class TypeTwoArea implements Screen {
         rod6.setSize(6,70);
         rod6.setOriginCenter();
 
+        handle = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/handle.png")));
+        handle.setSize(10,10);
+        handle.setOriginCenter();
+
+        seat = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/seat.png")));
+        seat.setSize(22,10);
+        seat.setOriginCenter();
+
+
 
 
 
@@ -339,8 +348,8 @@ public class TypeTwoArea implements Screen {
             update(dt);
         input(dt);
 
-        //b2dr.render(world, cam.combined.scl(AllVariables.PPM));
-        cam.combined.scl(AllVariables.PPM);
+        b2dr.render(world, cam.combined.scl(AllVariables.PPM));
+        //cam.combined.scl(AllVariables.PPM);
         //need to fix this
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
@@ -427,6 +436,8 @@ public class TypeTwoArea implements Screen {
         rod4.draw(AllVariables.batch);
         rod5.draw(AllVariables.batch);
         rod6.draw(AllVariables.batch);
+        handle.draw(AllVariables.batch);
+        seat.draw(AllVariables.batch);
         //---------------------
 
         Brake.draw(AllVariables.batch);
@@ -1206,6 +1217,16 @@ public class TypeTwoArea implements Screen {
         rod6.setPosition(AllVariables.rod6.getPosition().x * AllVariables.PPM-3,
                 AllVariables.rod6.getPosition().y * AllVariables.PPM-35);
         rod6.setRotation((int) (AllVariables.rod6.getAngle() * (180 / Math.PI)));
+
+        handle.setPosition(AllVariables.handle.getPosition().x * AllVariables.PPM-5,
+                AllVariables.handle.getPosition().y * AllVariables.PPM-5);
+        handle.setRotation((int) (AllVariables.handle.getAngle() * (180 / Math.PI)));
+
+        seat.setPosition(AllVariables.seat.getPosition().x * AllVariables.PPM-11,
+                AllVariables.seat.getPosition().y * AllVariables.PPM-5);
+        seat.setRotation((int) (AllVariables.seat.getAngle() * (180 / Math.PI)));
+
+
 
 
     }

@@ -75,7 +75,6 @@ public class ObjectCreation {
         rdef.localAnchorB.set(0, -32/AllVariables.PPM);
         world.createJoint(rdef);
 
-
         AllVariables.rod1 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(Hor + 109, verticalElevation + 63),
                 new Vector2(25,3),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
@@ -120,8 +119,6 @@ public class ObjectCreation {
         AllVariables.rod6 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(Hor + 158, verticalElevation + 56),
                 new Vector2(3,35),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
 
-
-
         //rod6 and rod1
         rdef.bodyA = AllVariables.rod6;
         rdef.bodyB = AllVariables.rod1;
@@ -137,6 +134,19 @@ public class ObjectCreation {
         rdef.localAnchorA.set(0,10/AllVariables.PPM);
         rdef.localAnchorB.set(29/AllVariables.PPM, 0);
         world.createJoint(rdef);
+
+        AllVariables.handle = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(Hor + 158, verticalElevation + 100),
+                new Vector2(5,5),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
+
+        //rod6 and handle
+        rdef.bodyA = AllVariables.rod6;
+        rdef.bodyB = AllVariables.handle;
+        rdef.localAnchorA.set(0,33/AllVariables.PPM);
+        rdef.localAnchorB.set(0, 0);
+        world.createJoint(rdef);
+
+
+
 
 
         AllVariables.FrontWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(Hor + 160,verticalElevation + 25),
@@ -178,6 +188,17 @@ public class ObjectCreation {
         rdef.bodyB = AllVariables.rod7;
         rdef.localAnchorA.set(20/AllVariables.PPM,0);
         rdef.localAnchorB.set(-27/AllVariables.PPM,0);
+        world.createJoint(rdef);
+
+
+        AllVariables.seat = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(Hor + 105, verticalElevation + 51),
+                new Vector2(11,5),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
+
+        //seat and rod5
+        rdef.bodyA = AllVariables.seat;
+        rdef.bodyB = AllVariables.rod5;
+        rdef.localAnchorA.set(0,0);
+        rdef.localAnchorB.set(0, 33/AllVariables.PPM);
         world.createJoint(rdef);
 
 

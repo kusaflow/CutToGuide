@@ -76,7 +76,7 @@ public class MainGame extends Game {
 
 		if (!Gdx.files.local("TextFiles/LockUnlock").exists()){
 			FileHandle lu = Gdx.files.local("TextFiles/LockUnlock");
-			String data = "0\n0\n0\n0#\n0#\n0#";
+			String data = "0\n0\n0\n0#\n0#\n0#\n";
 			lu.writeString(data, false);
 			AllVariables.tyreType = 0;
 			AllVariables.coinType = 0;
