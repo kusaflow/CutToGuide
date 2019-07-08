@@ -65,25 +65,26 @@ public class Shop implements Screen, VideoEventListener {
          |          |--> jumper
      */
 
-    private Sprite cancel,CycleBars, msgBoxTex;
+    private Sprite cancel,CycleBars, msgBoxTex, buttonBg;
     Texture menuKusaCoin, menuBicycle, menuPowerUps, astic;
     Texture freeKusaCoin, bgTobuy;
-    Texture arrowR, arrowL, lock, seat, handle, bgblur, buttonBg;
+    Texture arrowR, arrowL, lock, seat, handle, bgblur;
     //bicycle
     LinkedList<Texture> bicy_wheel, typeOfCoin, bicy_bars;
 
     AdVideoInterface adVideoInterface = null;
-    private Boolean confirmDialog=false;
 
     private byte menuNumber =0, InnerMenuNumber= 0, barCh=0,wheelCh=0,coinCh=0;
 
     private LinkedList<Short> PriceOfWheel, PriceOfBars, PriceOfCoins;
 
-    private Boolean coinLocked, wheelLocked, barsLocked, drawBgblur = false;
+    private Boolean coinLocked, wheelLocked, barsLocked, drawBgblur = false, cantheyBuy = false, wheelSelected = false;
 
     private String msg = "";
 
     BitmapFont bigText;
+
+    short moneyHolder=0;
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
         this.game = game;
@@ -109,20 +110,20 @@ public class Shop implements Screen, VideoEventListener {
         wheelCh = AllVariables.tyreType;
 
         PriceOfWheel = new LinkedList<Short>();
-        PriceOfWheel.add((short) 200);
         PriceOfWheel.add((short) 300);
-        PriceOfWheel.add((short) 500);
-        PriceOfWheel.add((short) 700);
-        PriceOfWheel.add((short) 900);
+        PriceOfWheel.add((short) 600);
         PriceOfWheel.add((short) 1000);
+        PriceOfWheel.add((short) 1300);
+        PriceOfWheel.add((short) 1500);
+        PriceOfWheel.add((short) 2000);
 
         PriceOfBars = new LinkedList<Short>();
         PriceOfBars.add((short) 300);
-        PriceOfBars.add((short) 500);
-        PriceOfBars.add((short) 600);
-        PriceOfBars.add((short) 800);
         PriceOfBars.add((short) 700);
-        PriceOfBars.add((short) 1000);
+        PriceOfBars.add((short) 1300);
+        PriceOfBars.add((short) 1500);
+        PriceOfBars.add((short) 1200);
+        PriceOfBars.add((short) 2000);
 
 
 
@@ -130,7 +131,7 @@ public class Shop implements Screen, VideoEventListener {
 
 
         PriceOfCoins = new LinkedList<Short>();
-        PriceOfCoins.add((short)300);
+        PriceOfCoins.add((short)600);
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
@@ -171,9 +172,9 @@ public class Shop implements Screen, VideoEventListener {
 
         bgblur = new Texture(Gdx.files.internal("playArea/fadedBG.png"));
 
-        buttonBg = new Texture(Gdx.files.internal("Shop/fadedBG.png"));
+        buttonBg = new Sprite(new Texture(Gdx.files.internal("Shop/ButtonBG.png")));
 
-        msgBoxTex = new Sprite(new Texture(Gdx.files.internal("Shop/ButtonBG.png")));
+        msgBoxTex = new Sprite(new Texture(Gdx.files.internal("Shop/bgFotmsg.png")));
         msgBoxTex.setSize(350,350);
         msgBoxTex.setOriginCenter();
 
@@ -299,11 +300,17 @@ public class Shop implements Screen, VideoEventListener {
             AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType),220,420,70,70);
             AllVariables.batch.draw(typeOfCoin.get(AllVariables.coinType),212,260, 100, 100);
 
+            buttonBg.setColor(1,0.3f,0.3f,0.5f);
+
+
             if (InnerMenuNumber == 1) {
                 AllVariables.batch.draw(astic, 220, 483, 15, 15);
 
                 //AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),400,300,70,70);
                 //AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),400,300,70,70);
+
+                if (wheelCh == AllVariables.tyreType && barCh == AllVariables.bodyOfCycle)
+                    buttonBg.setColor(0f,1f,0f,1f);
 
                 //lower Arrow
                 AllVariables.batch.draw(arrowL, 300, 110, 100, 100);
@@ -344,6 +351,7 @@ public class Shop implements Screen, VideoEventListener {
                         AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfWheel.get(4), 630, 293);
                     else if (wheelCh>=14 && wheelCh<=17)
                         AllVariables.bitmapFont.draw(AllVariables.batch, ""+PriceOfWheel.get(5), 630, 293);
+
 
                 }
 
@@ -461,6 +469,10 @@ public class Shop implements Screen, VideoEventListener {
                 AllVariables.batch.draw(astic, 220, 330, 15, 15);
 
 
+                if (coinCh == AllVariables.coinType)
+                    buttonBg.setColor(0.3f,1,0.3f,.5f);
+
+
                 //lower Arrow
                 AllVariables.batch.draw(arrowL, 300, 110, 100, 100);
                 AllVariables.batch.draw(arrowR, 1080, 110, 100, 100);
@@ -518,6 +530,11 @@ public class Shop implements Screen, VideoEventListener {
 
             }
 
+            // button to confirm
+            buttonBg.setPosition(400, 330);
+            buttonBg.setSize(130,100);
+            buttonBg.draw(AllVariables.batch);
+
         }else if (menuNumber == 3){
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
             AllVariables.batch.draw(menuBicycle, 40, 289, 60, 96);
@@ -558,7 +575,40 @@ public class Shop implements Screen, VideoEventListener {
             msgBoxTex.setPosition(640,0);
             msgBoxTex.draw(AllVariables.batch);
 
-            bigText.draw(AllVariables.batch,  msg, 345, 400);
+            bigText.setColor(Color.GOLD);
+            bigText.draw(AllVariables.batch,  msg, 345, 450);
+
+            if (!cantheyBuy){
+                buttonBg.setColor(0.9f,0f,0f,0.1f);
+                buttonBg.setSize(270,200);
+                buttonBg.setPosition(490,100);
+                buttonBg.draw(AllVariables.batch);
+
+                bigText.setColor(new Color(.9f,0,0,0.3f));
+                bigText.draw(AllVariables.batch, "Cancel", 530, 250);
+
+
+            }else {
+                buttonBg.setColor(0f,1f,0f,0.1f);
+                buttonBg.setPosition(350,100);
+                buttonBg.setSize(270,200);
+                buttonBg.draw(AllVariables.batch);
+
+                buttonBg.setColor(0.9f,0f,0f,0.1f);
+                buttonBg.setPosition(660,100);
+                buttonBg.draw(AllVariables.batch);
+
+                bigText.setColor(new Color(0,1,0,.9f));
+                bigText.draw(AllVariables.batch, "Confirm", 370, 250);
+                bigText.setColor(new Color(.9f,0,0,0.3f));
+                bigText.draw(AllVariables.batch, "Cancel", 700, 250);
+
+
+
+
+
+
+            }
 
 
         }
@@ -600,7 +650,61 @@ public class Shop implements Screen, VideoEventListener {
                         System.out.println(screenX+"\t" +screenY);
 
                         if (drawBgblur) {
-                            drawBgblur = false;
+                            //drawBgblur = false;
+
+                            if (cantheyBuy){
+                                if(screenX >= (265* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (1020* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 165 * AllVariables.inpM
+                                        && screenY <= 555 * AllVariables.inpM) {
+                                        if (screenX >= (660 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                && screenX <= (930 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                && screenY >= 125 * AllVariables.inpM
+                                                && screenY <= 300 * AllVariables.inpM) {
+                                            drawBgblur = false;
+                                        }
+                                        //they bought it
+                                        else if (screenX >= (350 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                && screenX <= (620 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                && screenY >= 125 * AllVariables.inpM
+                                                && screenY <= 300 * AllVariables.inpM){
+                                            AllVariables.kusaCoin-=moneyHolder;
+                                            if (menuNumber == 2){
+                                                if (InnerMenuNumber == 1){
+                                                    if (wheelSelected){
+                                                        AllVariables.unlockedWheel.add(wheelCh);
+                                                    }else {
+                                                        AllVariables.unlockedBar.add(barCh);
+                                                    }
+                                                }else {
+                                                    AllVariables.unlockedCoin.add(coinCh);
+                                                }
+                                            }
+                                            writeToFile();
+                                            drawBgblur = false;
+                                            msg="";
+
+                                        }else {
+                                            drawBgblur = false;
+                                            msg="";
+                                        }
+                                    }
+                            }else {
+                                if(screenX >= (265* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (1020* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 165 * AllVariables.inpM
+                                        && screenY <= 555 * AllVariables.inpM) {
+                                    if (screenX >= (490 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenX <= (760 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenY >= 120 * AllVariables.inpM
+                                            && screenY <= 300 * AllVariables.inpM) {
+                                        drawBgblur = false;
+                                    }
+                                }else {
+                                    drawBgblur = false;
+                                }
+                            }
+
                             return true;
                         }
 
@@ -618,7 +722,6 @@ public class Shop implements Screen, VideoEventListener {
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 455 * AllVariables.inpM
                                 && screenY <= 560 * AllVariables.inpM){
-                            dispose();
                             menuNumber = 1;
                             InnerMenuNumber = 1;
                         }
@@ -628,7 +731,7 @@ public class Shop implements Screen, VideoEventListener {
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 270 * AllVariables.inpM
                                 && screenY <= 420 * AllVariables.inpM){
-                            dispose();
+
                             if (menuNumber != 2) {
                                 menuNumber = 2;
                                 InnerMenuNumber = 1;
@@ -640,7 +743,6 @@ public class Shop implements Screen, VideoEventListener {
                                 && screenX <= (160* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 100 * AllVariables.inpM
                                 && screenY <= 222 * AllVariables.inpM){
-                            dispose();
 
                             if (menuNumber != 3) {
                                 menuNumber = 3;
@@ -718,7 +820,22 @@ public class Shop implements Screen, VideoEventListener {
                                 InnerMenuNumber=2;
                             }
 
-                            if (InnerMenuNumber == 1){
+                            if (InnerMenuNumber == 1){//-----------------------------------------------------------
+
+
+                                //confirm the choice
+                                if(screenX >= (400* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (530* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 325 * AllVariables.inpM
+                                        && screenY <= 425 * AllVariables.inpM){
+                                    if (!wheelLocked && !barsLocked) {
+                                        AllVariables.tyreType = wheelCh;
+                                        AllVariables.bodyOfCycle = barCh;
+                                        writeToFile();
+                                    }
+                                }
+
+
                                 //wheel left
                                 if(screenX >= (300* AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX <= (400* AllVariables.inpM) + AllVariables.witdth_translation
@@ -769,31 +886,159 @@ public class Shop implements Screen, VideoEventListener {
                                         && screenY >= 102 * AllVariables.inpM
                                         && screenY <= 275 * AllVariables.inpM && wheelLocked){
 
-                                    System.out.println("you can buy this wheel");
                                     drawBgblur = true;
+                                    wheelSelected = true;
+                                    if(wheelCh == 1) {
+                                        if (AllVariables.kusaCoin >= PriceOfWheel.get(0)){
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfWheel.get(0);
+                                        }else {
+                                            cantheyBuy = false;
+                                        }
+                                    }
+                                    else if (wheelCh>=2 && wheelCh<=6) {
+                                        if (AllVariables.kusaCoin >= PriceOfWheel.get(1)){
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfWheel.get(1);
+                                        }else {
+                                            cantheyBuy = false;
+                                        }
+                                    }
+                                    else if (wheelCh>=7 && wheelCh<=9) {
+                                        if (AllVariables.kusaCoin >= PriceOfWheel.get(2)){
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfWheel.get(2);
+                                        }else {
+                                            cantheyBuy = false;
+                                        }
+                                    }
+                                    else if (wheelCh>=10 && wheelCh<=12) {
+                                        if (AllVariables.kusaCoin >= PriceOfWheel.get(3)){
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfWheel.get(3);
+                                        }else {
+                                            cantheyBuy = false;
+                                        }
+                                    }
+                                    else if (wheelCh==13) {
+                                        if (AllVariables.kusaCoin >= PriceOfWheel.get(4)){
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfWheel.get(4);
+                                        }else {
+                                            cantheyBuy = false;
+                                        }
+                                    }
+                                    else if (wheelCh>=14 && wheelCh<=17) {
+                                        if (AllVariables.kusaCoin >= PriceOfWheel.get(5)){
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfWheel.get(5);
+                                        }else {
+                                            cantheyBuy = false;
+                                        }
+                                    }
+
+                                    if (cantheyBuy){
+                                        msg = "Confirm This Purchase";
+                                    }else {
+                                        msg = "You Don't Have Enough \n     KusaCoins";
+                                    }
 
                                     return true;
                                 }
 
-                                //for bar
+                                //for bar to buy
                                 if(screenX >= (570* AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX <= (735* AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY >= 543 * AllVariables.inpM
                                         && screenY <= 700 * AllVariables.inpM && barsLocked){
 
-                                    System.out.println("you can buy this bar");
                                     drawBgblur = true;
+                                    wheelSelected = false;
+
+                                    if (barCh>=1 && barCh<=4) {
+                                        if (AllVariables.kusaCoin >= PriceOfBars.get(0)) {
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfBars.get(0);
+                                        }
+                                        else
+                                            cantheyBuy = false;
+                                    }
+                                    else if (barCh>=5 && barCh<=7) {
+                                        if (AllVariables.kusaCoin >= PriceOfBars.get(1)) {
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfBars.get(1);
+                                        }
+                                        else
+                                            cantheyBuy = false;
+                                    }
+                                    else if (barCh>=8 && barCh<=10) {
+                                        if (AllVariables.kusaCoin >= PriceOfBars.get(2)) {
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfBars.get(2);
+                                        }
+                                        else
+                                            cantheyBuy = false;
+                                    }
+                                    else if (barCh>=11 && barCh <=13) {
+                                        if (AllVariables.kusaCoin >= PriceOfBars.get(3)) {
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfBars.get(3);
+                                        }
+                                        else
+                                            cantheyBuy = false;
+                                    }
+                                    else if (barCh>=14 && barCh<=17) {
+                                        if (AllVariables.kusaCoin >= PriceOfBars.get(4)) {
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfBars.get(4);
+                                        }
+                                        else
+                                            cantheyBuy = false;
+                                    }
+                                    else if (barCh>=18 && barCh<=22) {
+                                        if (AllVariables.kusaCoin >= PriceOfBars.get(5)) {
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfBars.get(5);
+                                        }
+                                        else
+                                            cantheyBuy = false;
+                                    }
+                                    else if (barCh>=22) {
+                                        if (AllVariables.kusaCoin >= PriceOfBars.get(3)) {
+                                            cantheyBuy = true;
+                                            moneyHolder = PriceOfBars.get(3);
+                                        }
+                                        else
+                                            cantheyBuy = false;
+                                    }
+
+                                    if (cantheyBuy){
+                                        msg = "Confirm This Purchase";
+                                    }else {
+                                        msg = "You Don't Have Enough \n     KusaCoins";
+                                    }
+
 
                                     return true;
                                 }
 
 
-                                //to buy
-
-
                             }
                             //----------------------------
                             else if (InnerMenuNumber == 2){
+
+
+                                //confirm the choice
+                                if(screenX >= (400* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (530* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 325 * AllVariables.inpM
+                                        && screenY <= 425 * AllVariables.inpM){
+                                    if (!coinLocked) {
+                                        AllVariables.coinType= coinCh;
+                                        writeToFile();
+                                    }
+                                }
+
                                 //coin left
                                 if(screenX >= (300* AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX <= (400* AllVariables.inpM) + AllVariables.witdth_translation
@@ -820,8 +1065,20 @@ public class Shop implements Screen, VideoEventListener {
                                         && screenY >= 102 * AllVariables.inpM
                                         && screenY <= 275 * AllVariables.inpM && coinLocked){
 
-                                    System.out.println("you can buy this coin");
                                     drawBgblur = true;
+
+                                    if (AllVariables.kusaCoin >= PriceOfBars.get(0))
+                                        cantheyBuy = true;
+                                    else
+                                        cantheyBuy = false;
+
+                                    if (cantheyBuy){
+                                        msg = "Confirm This Purchase";
+                                    }else {
+                                        msg = "You Don't Have Enough \n     KusaCoins";
+                                    }
+
+
                                     return true;
                                 }
                             }
@@ -851,6 +1108,11 @@ public class Shop implements Screen, VideoEventListener {
                     }
                 }
         );
+
+    }
+
+    //write to the file
+    void writeToFile(){
 
     }
 

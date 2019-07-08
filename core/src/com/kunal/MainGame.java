@@ -66,6 +66,8 @@ public class MainGame extends Game {
 
 		AllVariables.unlockedWheel = new LinkedList<Byte>();
 		AllVariables.unlockedWheel.add((byte)0);
+		AllVariables.unlockedWheel.add((byte)5);
+
 
 		//=================================================
 
