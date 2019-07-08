@@ -62,28 +62,119 @@ public class MainGame extends Game {
 			String data = "100";
 
 			kusaCoin.writeString(data, false);
+			AllVariables.kusaCoin = 100;
+		}else {
+			FileHandle kusaCoin = Gdx.files.local("TextFiles/kusaCoin");
+			AllVariables.kusaCoin = new Short(kusaCoin.readString());
 		}
 
-		if (!Gdx.files.local("TextFiles/LockUnlock").exists()){
-			FileHandle kusaCoin = Gdx.files.local("TextFiles/LockUnlock");
-			String data = "0\n0\n0\n0#\n0#\n0#";
-
-			kusaCoin.writeString(data, false);
-		}
-
-		//temp for setting up the available coin bar and wheel
 		AllVariables.unlockedCoin = new LinkedList<Byte>();
-		AllVariables.unlockedCoin.add((byte)0);
 
 		AllVariables.unlockedBar = new LinkedList<Byte>();
-		AllVariables.unlockedBar.add((byte)0);
 
 		AllVariables.unlockedWheel = new LinkedList<Byte>();
-		AllVariables.unlockedWheel.add((byte)0);
-		AllVariables.unlockedWheel.add((byte)5);
+
+		if (!Gdx.files.local("TextFiles/LockUnlock").exists()){
+			FileHandle lu = Gdx.files.local("TextFiles/LockUnlock");
+			String data = "0\n0\n0\n0#\n0#\n0#";
+			lu.writeString(data, false);
+			AllVariables.tyreType = 0;
+			AllVariables.coinType = 0;
+			AllVariables.bodyOfCycle = 0;
+			AllVariables.unlockedBar.add((byte) 0);
+			AllVariables.unlockedCoin.add((byte) 0);
+			AllVariables.unlockedWheel.add((byte) 0);
+		}else {
+			FileHandle lu = Gdx.files.local("TextFiles/LockUnlock");
+			char[] data = lu.readString().toCharArray();
+			String temp;
+			short tracker=0;
+			boolean looper;
+
+			//for bar
+			looper = true;
+			temp = "";
+			while (looper){
+				if(data[tracker] == '\n'){
+					looper = false;
+					AllVariables.bodyOfCycle = Byte.valueOf(temp);
+				}else {
+					temp += data[tracker];
+				}
+				tracker++;
+			}
 
 
-		//=================================================
+			//for coin
+			looper = true;
+			temp = "";
+			while (looper){
+				if(data[tracker] == '\n'){
+					looper = false;
+					AllVariables.coinType= Byte.valueOf(temp);
+				}else {
+					temp += data[tracker];
+				}
+				tracker++;
+			}
+
+
+			//for wheel
+			looper = true;
+			temp = "";
+			while (looper){
+				if(data[tracker] == '\n'){
+					looper = false;
+					AllVariables.tyreType= Byte.valueOf(temp);
+				}else {
+					temp += data[tracker];
+				}
+				tracker++;
+			}
+
+
+			//for unlocked bar
+			while (data[tracker] != '\n'){
+				temp="";
+				while (data[tracker] != '#'){
+					temp+=data[tracker];
+					tracker++;
+				}
+
+				AllVariables.unlockedBar.add(Byte.valueOf(temp));
+				temp="";
+				tracker++;
+			}
+			tracker++;
+
+			//for unlocked coin
+			while (data[tracker] != '\n'){
+				temp="";
+				while (data[tracker] != '#'){
+					temp+=data[tracker];
+					tracker++;
+				}
+
+				AllVariables.unlockedCoin.add(Byte.valueOf(temp));
+				temp="";
+				tracker++;
+			}
+			tracker++;
+
+			//for unlocked wheel
+			while (data[tracker] != '\n'){
+				temp="";
+				while (data[tracker] != '#'){
+					temp+=data[tracker];
+					tracker++;
+				}
+
+				AllVariables.unlockedWheel.add(Byte.valueOf(temp));
+				temp="";
+				tracker++;
+			}
+		}
+
 
 		this.setScreen(new temp(this));
 

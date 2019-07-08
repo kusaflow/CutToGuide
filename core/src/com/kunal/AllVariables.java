@@ -61,10 +61,9 @@ public class AllVariables {
 
 //format of basic file is
 //--------------------------
-//kusaCoin
-//wheelSelected
 //barchoice
 //coinChoice
-//unlockWheel
+//wheelSelected
 //unlockbar
 //unlockcoin
+//unlockWheel

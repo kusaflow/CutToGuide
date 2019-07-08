@@ -633,6 +633,7 @@ public class Shop implements Screen, VideoEventListener {
 
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             AllVariables.kusaCoin += 100;
+            writeToFile();
         }
 
 
@@ -1076,10 +1077,12 @@ public class Shop implements Screen, VideoEventListener {
 
                                     drawBgblur = true;
 
-                                    if (AllVariables.kusaCoin >= PriceOfBars.get(0))
+                                    if (AllVariables.kusaCoin >= PriceOfCoins.get(0))
                                         cantheyBuy = true;
                                     else
                                         cantheyBuy = false;
+
+                                    moneyHolder = PriceOfCoins.get(0);
 
                                     if (cantheyBuy){
                                         msg = "Confirm This Purchase";
@@ -1122,7 +1125,20 @@ public class Shop implements Screen, VideoEventListener {
 
     //write to the file
     void writeToFile(){
+        String theData = AllVariables.bodyOfCycle + "\n" + AllVariables.coinType + "\n" + AllVariables.tyreType + "\n";
+        for (int i=0; i<AllVariables.unlockedBar.size(); i++)
+            theData += AllVariables.unlockedBar.get(i)+"#";
+        theData += "\n";
 
+        for (int i=0; i<AllVariables.unlockedCoin.size(); i++)
+            theData += AllVariables.unlockedCoin.get(i)+"#";
+        theData += "\n";
+
+        for (int i=0; i<AllVariables.unlockedWheel.size(); i++)
+            theData += AllVariables.unlockedWheel.get(i)+"#";
+        theData += "\n";
+
+        lockUnlockFile.writeString(theData, false);
     }
 
     @Override
