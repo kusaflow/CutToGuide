@@ -16,6 +16,8 @@ public class PowerUpMngr {
                 VariablesForPlayArea.powerUpList.get(i).texture = new Texture(Gdx.files.internal("playArea/speedPowers/RedPill.png"));
             }else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 3){
                 VariablesForPlayArea.powerUpList.get(i).texture = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/spring.png"));
+            }else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 4){
+                VariablesForPlayArea.powerUpList.get(i).texture = new Texture(Gdx.files.internal("playArea/LevelObstacles/dirReverse/dirRev.png"));
             }
             if (reset)
                 VariablesForPlayArea.powerUpList.get(i).active = true;
@@ -84,7 +86,7 @@ public class PowerUpMngr {
 
     public void render(){
         for (int i=0; i< VariablesForPlayArea.powerUpList.size(); i++){
-            if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1 || VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2) {
+            if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1 || VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2 || VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 4) {
                 if (VariablesForPlayArea.powerUpList.get(i).active) {
                     AllVariables.batch.draw(VariablesForPlayArea.powerUpList.get(i).texture,
                             VariablesForPlayArea.powerUpList.get(i).x,

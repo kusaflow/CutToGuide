@@ -8,6 +8,7 @@ import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
+import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
@@ -34,6 +35,7 @@ public class ReDirectToTheLevel {
         FullSawVariables fullSawVariables;
         PowerUpInInventoryVariables powerupVar;
         SpeedControllerVariables speedctlrvar;
+        DirectionReverseVariables dirRev;
 
         if (!restarted) {
             //clear it all
@@ -44,6 +46,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.halfSawList.clear();
             VariablesForPlayArea.fullSawList.clear();
             VariablesForPlayArea.speedCtrlList.clear();
+            VariablesForPlayArea.dirRevList.clear();
         }
 
         VariablesForPlayArea.gameOver =false;
@@ -159,16 +162,17 @@ public class ReDirectToTheLevel {
                 */
 
 
-                /*
+
                 //fullSaw
                 fullSawVariables = new FullSawVariables();
                 fullSawVariables.xpos = 3000;
                 fullSawVariables.ypos = 572;
                 fullSawVariables.size = 128;
                 fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
 
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
-                */
+
 
                 /*
                 //powerUps
@@ -195,14 +199,15 @@ public class ReDirectToTheLevel {
                 powerupVar = new PowerUpInInventoryVariables();
                 powerupVar.TypeOfPower = 3;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 1;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
                 */
 
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 4;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
 
+
+                /*
                 //speed controller
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = false;
@@ -210,7 +215,6 @@ public class ReDirectToTheLevel {
                 speedctlrvar.y = 512;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
-                /*
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = false;
                 speedctlrvar.x = 2200;
@@ -223,6 +227,17 @@ public class ReDirectToTheLevel {
                 speedctlrvar.y = 512;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
                 */
+
+                /*
+                dirRev = new DirectionReverseVariables();
+                dirRev.x = 2000;
+                dirRev.y = 525;
+                dirRev.active = true;
+
+                VariablesForPlayArea.dirRevList.add(dirRev);
+                */
+
+
 
             }
 

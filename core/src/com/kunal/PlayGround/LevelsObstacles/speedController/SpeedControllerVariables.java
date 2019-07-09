@@ -5,5 +5,4 @@ public class SpeedControllerVariables {
     public Boolean active = true;
     public short x = -550;
     public short y = -550;
-
 }

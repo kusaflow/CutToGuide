@@ -14,6 +14,7 @@ public class SpeedController {
         speedDec = new Texture(Gdx.files.internal("playArea/speedPowers/RedPill.png"));
         for (int i=0; i<VariablesForPlayArea.speedCtrlList.size(); i++)
             VariablesForPlayArea.speedCtrlList.get(i).active = true;
+
     }
 
     public void update(){

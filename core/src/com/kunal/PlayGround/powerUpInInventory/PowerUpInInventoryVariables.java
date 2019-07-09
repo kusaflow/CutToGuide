@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Texture;
     >1 ->> fast Move
     >2 ->> stopper
     >3 ->> Jumper
+    >4 ->> directionChange
  */
 
 public class PowerUpInInventoryVariables {

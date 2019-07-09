@@ -4,6 +4,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
+import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
@@ -68,6 +69,7 @@ public class VariablesForPlayArea {
     public static LinkedList<HalfSawVariables> halfSawList;
     public static LinkedList<FullSawVariables> fullSawList;
     public static LinkedList<SpeedControllerVariables> speedCtrlList;
+    public static LinkedList<DirectionReverseVariables> dirRevList;
 
     //------------------------------------------
 
@@ -88,6 +90,7 @@ public class VariablesForPlayArea {
         halfSawList = new LinkedList<HalfSawVariables>();
         fullSawList = new LinkedList<FullSawVariables>();
         speedCtrlList = new LinkedList<SpeedControllerVariables>();
+        dirRevList = new LinkedList<DirectionReverseVariables>();
 
 
         //all big squre Points

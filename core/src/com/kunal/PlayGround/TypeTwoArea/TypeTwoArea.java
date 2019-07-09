@@ -24,6 +24,7 @@ import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.createHole;
+import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSaw;
@@ -98,6 +99,7 @@ public class TypeTwoArea implements Screen {
     private HalfSaw halfSaw;
     private FullSaw fullSaw;
     private SpeedController speedController;
+    private DirectionReverse directionReverse;
 
     //bicycle maleup
     private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat;
@@ -325,6 +327,8 @@ public class TypeTwoArea implements Screen {
             fullSaw = new FullSaw(world);
         if (!VariablesForPlayArea.speedCtrlList.isEmpty())
             speedController = new SpeedController();
+        if (!VariablesForPlayArea.dirRevList.isEmpty())
+            directionReverse = new DirectionReverse();
         //=================obstacles
 
 
@@ -422,6 +426,8 @@ public class TypeTwoArea implements Screen {
             fullSaw.render();
         if (!VariablesForPlayArea.speedCtrlList.isEmpty())
             speedController.render();
+        if (!VariablesForPlayArea.dirRevList.isEmpty())
+            directionReverse.render();
 
 
         if (!VariablesForPlayArea.powerUpList.isEmpty())
@@ -789,6 +795,9 @@ public class TypeTwoArea implements Screen {
             fullSaw.update();
         if (!VariablesForPlayArea.speedCtrlList.isEmpty())
             speedController.update();
+        if (!VariablesForPlayArea.dirRevList.isEmpty())
+            directionReverse.update();
+
 
 
 

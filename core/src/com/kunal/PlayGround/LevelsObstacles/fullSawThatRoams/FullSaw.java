@@ -23,6 +23,10 @@ public class FullSaw {
                     VariablesForPlayArea.fullSawList.get(i).size/2.3f,0.5f, 0.6f,
                     AllVariables.Bit_enimes,(short)(AllVariables.Bit_enimes|AllVariables.Bit_Bicycle|AllVariables.Bit_land|AllVariables.Bit_Tool));
             VariablesForPlayArea.fullSawList.get(i).dead = false;
+            if (VariablesForPlayArea.fullSawList.get(i).intialDirectionForward)
+                VariablesForPlayArea.fullSawList.get(i).forwardDirection = true;
+            else
+                VariablesForPlayArea.fullSawList.get(i).forwardDirection = false;
         }
 
 
@@ -32,9 +36,9 @@ public class FullSaw {
         for (int i=0; i<VariablesForPlayArea.fullSawList.size(); i++) {
             if (!VariablesForPlayArea.fullSawList.get(i).dead) {
                 if (VariablesForPlayArea.fullSawList.get(i).forwardDirection)
-                    VariablesForPlayArea.fullSawList.get(i).body.setAngularVelocity(-2);
+                    VariablesForPlayArea.fullSawList.get(i).body.setAngularVelocity(-5);
                 else
-                    VariablesForPlayArea.fullSawList.get(i).body.setAngularVelocity(2);
+                    VariablesForPlayArea.fullSawList.get(i).body.setAngularVelocity(5);
             }
 
             //for bicycle ---------------------------------------------------------
@@ -104,6 +108,42 @@ public class FullSaw {
                 }
                 //Speed cnrt====================================================================
 
+                //direction Reverse===================================================================
+                for (int j =0; j<VariablesForPlayArea.dirRevList.size(); j++){
+                    if (VariablesForPlayArea.dirRevList.get(j).active) {
+                        if (VariablesForPlayArea.fullSawList.get(i).forwardDirection){
+                            if (((VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) + (56) >= VariablesForPlayArea.dirRevList.get(j).x &&
+                                    (VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) - (56) <= VariablesForPlayArea.dirRevList.get(j).x+40)) {
+                                //---------------------------------------------------------------------------------------------------------
+                                if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) + (56) >= VariablesForPlayArea.dirRevList.get(j).y) {
+                                    //------------------------------------------------------------------------------------------------------
+                                    if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.dirRevList.get(j).y + 40) {
+                                        //====================================================
+                                        VariablesForPlayArea.fullSawList.get(i).forwardDirection = !VariablesForPlayArea.fullSawList.get(i).forwardDirection;
+                                        VariablesForPlayArea.dirRevList.get(j).active = false;
+                                    }
+                                }
+                            }
+                        }else {
+                            if (((VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) -56 <= VariablesForPlayArea.dirRevList.get(j).x+40 &&
+                                    (VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) + (56) >= VariablesForPlayArea.dirRevList.get(j).x)) {
+                                //---------------------------------------------------------------------------------------------------------
+                                if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) + (56) >= VariablesForPlayArea.dirRevList.get(j).y) {
+                                    //------------------------------------------------------------------------------------------------------
+                                    if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.dirRevList.get(j).y + 40) {
+                                        //====================================================
+                                        VariablesForPlayArea.fullSawList.get(i).forwardDirection = !VariablesForPlayArea.fullSawList.get(i).forwardDirection;
+                                        VariablesForPlayArea.dirRevList.get(j).active = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        //-------------------------------------------------------------------------
+                    }
+                }
+                //dirREverse-----------------------------------------------------------------------
+
                 //jumper=======================================================================
                 for (int j =0; j<VariablesForPlayArea.jumperList.size(); j++){
                     if (!VariablesForPlayArea.jumperList.get(j).textureChanged){
@@ -124,9 +164,10 @@ public class FullSaw {
                 //jumper-----------------------------------------------------------------------
 
                 //powerUps=====================================================================
+                //speed--- and dirChange
                 for (int j =0; j<VariablesForPlayArea.powerUpList.size(); j++){
                     if (VariablesForPlayArea.powerUpList.get(j).active){
-                        if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 1 || VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 2){
+                        if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 1 || VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 2 || VariablesForPlayArea.powerUpList.get(j).TypeOfPower ==4){
                             if (VariablesForPlayArea.fullSawList.get(i).forwardDirection){
                                 if (((VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) + (56) >= VariablesForPlayArea.powerUpList.get(j).x &&
                                         (VariablesForPlayArea.fullSawList.get(i).body.getPosition().x * AllVariables.PPM) - (56) <= VariablesForPlayArea.powerUpList.get(j).x+40)) {
@@ -139,6 +180,9 @@ public class FullSaw {
                                                 VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(400, 0), true);
                                             else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 2)
                                                 VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-20), 0), true);
+                                            else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 4)
+                                                VariablesForPlayArea.fullSawList.get(i).forwardDirection = !VariablesForPlayArea.fullSawList.get(i).forwardDirection;
+
                                             VariablesForPlayArea.powerUpList.get(j).active = false;
                                         }
                                     }
@@ -155,6 +199,8 @@ public class FullSaw {
                                                 VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(-400, 0), true);
                                             else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 2)
                                                 VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-30), 0), true);
+                                            else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 4)
+                                                VariablesForPlayArea.fullSawList.get(i).forwardDirection = !VariablesForPlayArea.fullSawList.get(i).forwardDirection;
                                             VariablesForPlayArea.powerUpList.get(j).active = false;
                                         }
                                     }
