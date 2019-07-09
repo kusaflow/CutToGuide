@@ -137,6 +137,7 @@ public class ObjectCreation {
 
         AllVariables.handle = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(Hor + 158, verticalElevation + 100),
                 new Vector2(5,5),0.6f, 0.5f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_land|AllVariables.Bit_enimes| AllVariables.Bit_Tool));
+        AllVariables.handle.setFixedRotation(true);
 
         //rod6 and handle
         rdef.bodyA = AllVariables.rod6;
