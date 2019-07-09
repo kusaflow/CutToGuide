@@ -624,6 +624,8 @@ public class TypeTwoArea implements Screen {
                 CamfollowCycle = true;
                 startAnimToMoveCycle = false;
                 finalvalofcamcontroller = true;
+
+
             }else{
                 if(VariablesForPlayArea.camposX - 136 > (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM)
                     VariablesForPlayArea.camposX -=40;
