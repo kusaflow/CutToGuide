@@ -55,11 +55,11 @@ public class TypeTwoArea implements Screen {
     private Viewport port;
 
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
-            per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex;
+            per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex, retryWhenStarted, ZoomOutCam;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
-            coin2anim = false, coin3anim= false, powerUpSelected = false;
+            coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
@@ -108,7 +108,6 @@ public class TypeTwoArea implements Screen {
     private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat;
 
     private Texture bg1, bg2, bg3;
-
 
 
     public TypeTwoArea(MainGame game, Boolean reset) {
@@ -246,6 +245,10 @@ public class TypeTwoArea implements Screen {
         gameoverTexure = new Sprite(new Texture(Gdx.files.internal("utils/gameover.png")));
         menuTex = new Sprite(new Texture(Gdx.files.internal("utils/menu.png")));
         retryTex = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
+
+        retryWhenStarted = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
+        ZoomOutCam = new Sprite(new Texture(Gdx.files.internal("playArea/Zoomout.png")));
+        ZoomOutCam.setSize(100,100);
 
         //bicycle makeUp
 
@@ -450,6 +453,11 @@ public class TypeTwoArea implements Screen {
         //---------------------
 
         Brake.draw(AllVariables.batch);
+        if (startBool) {
+            retryWhenStarted.draw(AllVariables.batch);
+            ZoomOutCam.draw(AllVariables.batch);
+        }
+
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
         HardMoveShapes.draw(AllVariables.batch);
@@ -659,9 +667,30 @@ public class TypeTwoArea implements Screen {
         gameoverTexure.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT/2));
         menuTex.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
         retryTex.setPosition(740+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
+        retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
+        ZoomOutCam.setPosition(-170+(cam.position.x - (AllVariables.WIDTH)/2), 100+(cam.position.y - AllVariables.HEIGHT/2));
 
 
-
+        //to zoom out the cam
+        if (ZoomOutBool){
+            retryWhenStarted.setAlpha(0);
+            ZoomOutCam.setAlpha(0);
+            Brake.setAlpha(0);
+            if (cam.zoom < 5){
+                cam.zoom += 0.4f;
+            }else {
+                cam.zoom = 5;
+            }
+        }else {
+            retryWhenStarted.setAlpha(1);
+            ZoomOutCam.setAlpha(1);
+            Brake.setAlpha(0.4f);
+            if (cam.zoom <= 1){
+                cam.zoom = 1;
+            }else {
+                cam.zoom-=0.4f;
+            }
+        }
 
 
 
@@ -835,6 +864,7 @@ public class TypeTwoArea implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
+                        //System.out.println(screenX + "\t" + screenY);
                         hardmoveFaultResolver = false;
 
                         if (VariablesForPlayArea.gameOver) {
@@ -844,6 +874,7 @@ public class TypeTwoArea implements Screen {
                                 game.setScreen(new LevelNumberSelection(game));
                             }
 
+                            //reset
                             if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (790 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 355 * AllVariables.inpM && screenY < 424 * AllVariables.inpM) {
@@ -861,7 +892,21 @@ public class TypeTwoArea implements Screen {
                                     && screenY > 140*AllVariables.inpM && screenY < 290*AllVariables.inpM) {
                                 Brake.setAlpha(0.9f);
                                 brakeBool = true;
-                                return false;
+                                return true;
+                            }
+
+                            if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM){
+                                ReDirectToTheLevel.Direct(game, true);
+                                return true;
+                            }
+
+                            if (screenX > (55 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (140 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM){
+                                ZoomOutBool = true;
+                                return true;
                             }
                         }
 
@@ -1036,6 +1081,7 @@ public class TypeTwoArea implements Screen {
                     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
 
+                        ZoomOutBool = false;
 
                         if (brakeBool) {
                             Brake.setAlpha(0.4f);
