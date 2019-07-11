@@ -95,159 +95,177 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
-            game.setScreen(new TypeTwoArea(game, restarted));
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
-            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level7.tmx";
-
-            VariablesForPlayArea.endPoint.x = 600;
-            VariablesForPlayArea.endPoint.y = 7400;
             if (!restarted) {
-
-                /*
-                // flappy bird type pipes
-                fbPipes.x =1500;
-                fbPipes.y = 500;
-                fbPipes.gapeHorizontalLength = 64;
-                fbPipes.gapVerticalLength = 400;
-                fbPipes.gapStartFrombottom = 160;
-                VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
-
-                fbPipes = new flappyBirdPipesVariables();
-                fbPipes.x = 4000;
-                fbPipes.y = 500;
-                fbPipes.gapeHorizontalLength = 128;
-                fbPipes.gapVerticalLength = 200;
-                fbPipes.gapStartFrombottom = 32;
-                VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
-
-                fbPipes = new flappyBirdPipesVariables();
-                fbPipes.x = 6000;
-                fbPipes.y = 500;
-                fbPipes.gapeHorizontalLength = 192;
-                fbPipes.gapVerticalLength = 300;
-                fbPipes.gapStartFrombottom = 288;
-                VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
-                */
-                /*
-                createHole = new CreateHoleVariables();
-                createHole.map = new TmxMapLoader().load("playArea/LevelObstacles/createHole/level7/Area1Level7.tmx");
-                createHole.tmr = new OrthogonalTiledMapRenderer(createHole.map);
-                VariablesForPlayArea.createHoleList.add(createHole);
-                */
-                /*
-                //jumper
-
-                jumper = new JumperVariables();
-                jumper.x = 1500;
-                jumper.y = 510;
-                VariablesForPlayArea.jumperList.add(jumper);
-
-
-                jumper = new JumperVariables();
-                jumper.x = 2500;
-                jumper.y = 510;
-                VariablesForPlayArea.jumperList.add(jumper);
-                */
-
-
-                /*
-                //halhSaw
-                halfSawVariables = new HalfSawVariables();
-                halfSawVariables.xdestination = 1700; //-100 for 2
-                halfSawVariables.oneisSelected = true;
-                halfSawVariables.xorigin = 1700;
-                halfSawVariables.yorigin = 512;
-                VariablesForPlayArea.halfSawList.add(halfSawVariables);
-                */
-
-
-
-                //fullSaw
-                fullSawVariables = new FullSawVariables();
-                fullSawVariables.xpos = 3000;
-                fullSawVariables.ypos = 572;
-                fullSawVariables.size = 128;
-                fullSawVariables.forwardDirection = false;
-                fullSawVariables.intialDirectionForward = false;
-
-                VariablesForPlayArea.fullSawList.add(fullSawVariables);
-
-
-                /*
-                //powerUps
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 1;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 2;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 3;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 2;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 1;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 3;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-                */
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 4;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
-
-
-                /*
-                //speed controller
-                speedctlrvar = new SpeedControllerVariables();
-                speedctlrvar.SpeedIncrementor = false;
-                speedctlrvar.x = 800;
-                speedctlrvar.y = 512;
-                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
-
-                speedctlrvar = new SpeedControllerVariables();
-                speedctlrvar.SpeedIncrementor = false;
-                speedctlrvar.x = 2200;
-                speedctlrvar.y = 512;
-                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = true;
-                speedctlrvar.x = 3000;
-                speedctlrvar.y = 512;
+                speedctlrvar.x = 1820;
+                speedctlrvar.y = 520;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
-                */
-
-                /*
-                dirRev = new DirectionReverseVariables();
-                dirRev.x = 2000;
-                dirRev.y = 525;
-                dirRev.active = true;
-
-                VariablesForPlayArea.dirRevList.add(dirRev);
-                */
-
-
 
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 6000;
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
+
 
         //area 1 end ----------------------------------------------------------------
 
 
 
     }
+
+    //else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
+    //            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level7.tmx";
+    //
+    //            VariablesForPlayArea.endPoint.x = 600;
+    //            VariablesForPlayArea.endPoint.y = 7400;
+    //            if (!restarted) {
+    //
+    //                /*
+    //                // flappy bird type pipes
+    //                fbPipes.x =1500;
+    //                fbPipes.y = 500;
+    //                fbPipes.gapeHorizontalLength = 64;
+    //                fbPipes.gapVerticalLength = 400;
+    //                fbPipes.gapStartFrombottom = 160;
+    //                VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
+    //
+    //                fbPipes = new flappyBirdPipesVariables();
+    //                fbPipes.x = 4000;
+    //                fbPipes.y = 500;
+    //                fbPipes.gapeHorizontalLength = 128;
+    //                fbPipes.gapVerticalLength = 200;
+    //                fbPipes.gapStartFrombottom = 32;
+    //                VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
+    //
+    //                fbPipes = new flappyBirdPipesVariables();
+    //                fbPipes.x = 6000;
+    //                fbPipes.y = 500;
+    //                fbPipes.gapeHorizontalLength = 192;
+    //                fbPipes.gapVerticalLength = 300;
+    //                fbPipes.gapStartFrombottom = 288;
+    //                VariablesForPlayArea.flappyBirdPipesList.add(fbPipes);
+    //                */
+    //                /*
+    //                createHole = new CreateHoleVariables();
+    //                createHole.map = new TmxMapLoader().load("playArea/LevelObstacles/createHole/level7/Area1Level7.tmx");
+    //                createHole.tmr = new OrthogonalTiledMapRenderer(createHole.map);
+    //                VariablesForPlayArea.createHoleList.add(createHole);
+    //                */
+    //                /*
+    //                //jumper
+    //
+    //                jumper = new JumperVariables();
+    //                jumper.x = 1500;
+    //                jumper.y = 510;
+    //                VariablesForPlayArea.jumperList.add(jumper);
+    //
+    //
+    //                jumper = new JumperVariables();
+    //                jumper.x = 2500;
+    //                jumper.y = 510;
+    //                VariablesForPlayArea.jumperList.add(jumper);
+    //                */
+    //
+    //
+    //                /*
+    //                //halhSaw
+    //                halfSawVariables = new HalfSawVariables();
+    //                halfSawVariables.xdestination = 1700; //-100 for 2
+    //                halfSawVariables.oneisSelected = true;
+    //                halfSawVariables.xorigin = 1700;
+    //                halfSawVariables.yorigin = 512;
+    //                VariablesForPlayArea.halfSawList.add(halfSawVariables);
+    //                */
+    //
+    //
+    //
+    //                //fullSaw
+    //                fullSawVariables = new FullSawVariables();
+    //                fullSawVariables.xpos = 3000;
+    //                fullSawVariables.ypos = 572;
+    //                fullSawVariables.size = 128;
+    //                fullSawVariables.forwardDirection = false;
+    //                fullSawVariables.intialDirectionForward = false;
+    //
+    //                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+    //
+    //
+    //                /*
+    //                //powerUps
+    //                powerupVar = new PowerUpInInventoryVariables();
+    //                powerupVar.TypeOfPower = 1;
+    //                VariablesForPlayArea.powerUpList.add(powerupVar);
+    //
+    //                powerupVar = new PowerUpInInventoryVariables();
+    //                powerupVar.TypeOfPower = 2;
+    //                VariablesForPlayArea.powerUpList.add(powerupVar);
+    //
+    //                powerupVar = new PowerUpInInventoryVariables();
+    //                powerupVar.TypeOfPower = 3;
+    //                VariablesForPlayArea.powerUpList.add(powerupVar);
+    //
+    //                powerupVar = new PowerUpInInventoryVariables();
+    //                powerupVar.TypeOfPower = 2;
+    //                VariablesForPlayArea.powerUpList.add(powerupVar);
+    //
+    //                powerupVar = new PowerUpInInventoryVariables();
+    //                powerupVar.TypeOfPower = 1;
+    //                VariablesForPlayArea.powerUpList.add(powerupVar);
+    //
+    //                powerupVar = new PowerUpInInventoryVariables();
+    //                powerupVar.TypeOfPower = 3;
+    //                VariablesForPlayArea.powerUpList.add(powerupVar);
+    //                */
+    //
+    //                powerupVar = new PowerUpInInventoryVariables();
+    //                powerupVar.TypeOfPower = 4;
+    //                VariablesForPlayArea.powerUpList.add(powerupVar);
+    //
+    //
+    //
+    //                /*
+    //                //speed controller
+    //                speedctlrvar = new SpeedControllerVariables();
+    //                speedctlrvar.SpeedIncrementor = false;
+    //                speedctlrvar.x = 800;
+    //                speedctlrvar.y = 512;
+    //                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+    //
+    //                speedctlrvar = new SpeedControllerVariables();
+    //                speedctlrvar.SpeedIncrementor = false;
+    //                speedctlrvar.x = 2200;
+    //                speedctlrvar.y = 512;
+    //                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+    //
+    //                speedctlrvar = new SpeedControllerVariables();
+    //                speedctlrvar.SpeedIncrementor = true;
+    //                speedctlrvar.x = 3000;
+    //                speedctlrvar.y = 512;
+    //                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+    //                */
+    //
+    //                /*
+    //                dirRev = new DirectionReverseVariables();
+    //                dirRev.x = 2000;
+    //                dirRev.y = 525;
+    //                dirRev.active = true;
+    //
+    //                VariablesForPlayArea.dirRevList.add(dirRev);
+    //                */
+    //
+    //
+    //
+    //            }
+    //
+    //            game.setScreen(new TypeTwoArea(game, restarted));
+    //        }
+    // sds
 
 }

@@ -38,7 +38,7 @@ public class PowerUpMngr {
                             if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 40) {
                                 //====================================================
                                 if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1) {
-                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
+                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 10), true);
                                 } else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2) {
                                     AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
                                 }
@@ -52,7 +52,7 @@ public class PowerUpMngr {
                             if ((AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.powerUpList.get(i).y + 40) {
                                 //====================================================
                                 if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 1) {
-                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 0), true);
+                                    AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 10), true);
                                 } else if (VariablesForPlayArea.powerUpList.get(i).TypeOfPower == 2) {
                                     AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
                                 }
