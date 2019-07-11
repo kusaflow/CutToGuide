@@ -3,6 +3,7 @@ package com.kunal.temp;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
@@ -23,6 +24,7 @@ public class temp implements Screen {
         variablesForPlayArea = new VariablesForPlayArea();
         variablesForPlayArea.setEndPoint(new Vector2(200,4000));
         variablesForPlayArea.setLevelNumber(2);
+
     }
 
     @Override

@@ -79,7 +79,7 @@ public class VariablesForPlayArea {
         CutoutShapeVertices = new LinkedList<LinkedList<Byte>>();
         Angle_Of_Shape = new LinkedList<Float>();
         Sh_pos = new LinkedList<Vector2>();
-        Sh_pos.add(new Vector2(640/AllVariables.PPM, -1000/AllVariables.PPM));
+        Sh_pos.add(new Vector2(640/AllVariables.PPM, -3000/AllVariables.PPM));
         Angle_Of_Shape.add(180f);
         powerUpList = new LinkedList<PowerUpInInventoryVariables>();
 
@@ -139,7 +139,7 @@ public class VariablesForPlayArea {
         vertices.clear();
         Sh_pos.clear();
 
-        Sh_pos.add(new Vector2(640f/AllVariables.PPM, -1000f/AllVariables.PPM));
+        Sh_pos.add(new Vector2(640f/AllVariables.PPM, -3000f/AllVariables.PPM));
 
         cantuseDots.clear();
 

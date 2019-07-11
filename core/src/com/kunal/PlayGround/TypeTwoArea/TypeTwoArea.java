@@ -139,7 +139,7 @@ public class TypeTwoArea implements Screen {
         //for testing
 
         //safelt platforn for all objects
-        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -1500),
+        BodyGenerator.BodyAssemble(world, true, "Land", new Vector2(640, -9000),
                 new Vector2(2000, 50), 1,1, AllVariables.Bit_land,
                 (short)(AllVariables.Bit_Bicycle|AllVariables.Bit_enimes|AllVariables.Bit_Tool|AllVariables.Bit_land));
 

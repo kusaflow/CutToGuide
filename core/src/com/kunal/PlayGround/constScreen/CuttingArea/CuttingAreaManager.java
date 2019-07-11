@@ -179,7 +179,7 @@ public class CuttingAreaManager implements Screen {
 
 
                             Vector2 v= new Vector2();
-                            v.add(640/AllVariables.PPM, -1000/AllVariables.PPM);
+                            v.add(640/AllVariables.PPM, -3000/AllVariables.PPM);
 
                             for(int i =0; i<VariablesForPlayArea.shapes.size(); i++) {
                                 VariablesForPlayArea.Sh_pos.add(v);

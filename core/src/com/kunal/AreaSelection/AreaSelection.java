@@ -37,7 +37,11 @@ public class AreaSelection implements Screen {
 
     float positionY, transparency;
 
+    Texture t;
+
+
     public AreaSelection(MainGame game) {
+        t = new Texture(Gdx.files.internal("bg.png"));
         this.game = game;
 
         positionY = 150;
@@ -150,6 +154,8 @@ public class AreaSelection implements Screen {
 
 
         AllVariables.batch.begin();
+        AllVariables.batch.draw(t,0,0, AllVariables.WIDTH, AllVariables.HEIGHT);
+        /*
         for (Sprite s : AreaList)
             s.draw(AllVariables.batch);
         settings.draw(AllVariables.batch);
@@ -159,6 +165,7 @@ public class AreaSelection implements Screen {
         backToPrevScreen.draw(AllVariables.batch);
         showMoreLevelsOnLeft.draw(AllVariables.batch);
         showMoreLevelsOnRight.draw(AllVariables.batch);
+        */
         AllVariables.batch.end();
 
     }
