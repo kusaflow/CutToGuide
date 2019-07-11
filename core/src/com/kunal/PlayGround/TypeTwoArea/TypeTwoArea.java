@@ -673,22 +673,34 @@ public class TypeTwoArea implements Screen {
 
         //to zoom out the cam
         if (ZoomOutBool){
-            retryWhenStarted.setAlpha(0);
-            ZoomOutCam.setAlpha(0);
-            Brake.setAlpha(0);
             if (cam.zoom < 5){
                 cam.zoom += 0.4f;
+
+                retryWhenStarted.setAlpha(cam.zoom/5);
+                ZoomOutCam.setAlpha(cam.zoom/5);
+                Brake.setAlpha(cam.zoom/5*0.4f);
             }else {
                 cam.zoom = 5;
+
+                retryWhenStarted.setAlpha(0);
+                ZoomOutCam.setAlpha(0);
+                Brake.setAlpha(0);
             }
         }else {
-            retryWhenStarted.setAlpha(1);
-            ZoomOutCam.setAlpha(1);
-            Brake.setAlpha(0.4f);
             if (cam.zoom <= 1){
                 cam.zoom = 1;
+
+                retryWhenStarted.setAlpha(1);
+                ZoomOutCam.setAlpha(1);
+                if (brakeBool)
+                    Brake.setAlpha(0.9f);
+                else
+                    Brake.setAlpha(0.4f);
             }else {
                 cam.zoom-=0.4f;
+                retryWhenStarted.setAlpha(cam.zoom/5);
+                ZoomOutCam.setAlpha(cam.zoom/5);
+                Brake.setAlpha(cam.zoom/5*0.4f);
             }
         }
 

@@ -155,7 +155,7 @@ public class AreaSelection implements Screen {
 
         AllVariables.batch.begin();
         AllVariables.batch.draw(t,0,0, AllVariables.WIDTH, AllVariables.HEIGHT);
-        /*
+
         for (Sprite s : AreaList)
             s.draw(AllVariables.batch);
         settings.draw(AllVariables.batch);
@@ -165,7 +165,7 @@ public class AreaSelection implements Screen {
         backToPrevScreen.draw(AllVariables.batch);
         showMoreLevelsOnLeft.draw(AllVariables.batch);
         showMoreLevelsOnRight.draw(AllVariables.batch);
-        */
+
         AllVariables.batch.end();
 
     }
