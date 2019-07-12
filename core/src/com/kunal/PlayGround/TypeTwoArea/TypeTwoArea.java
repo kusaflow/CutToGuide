@@ -341,6 +341,9 @@ public class TypeTwoArea implements Screen {
         //=================obstacles
 
 
+        VariablesForPlayArea.starsGained = 3;
+
+
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
@@ -839,8 +842,6 @@ public class TypeTwoArea implements Screen {
                 game.setScreen(new LevelCompleted(game));
 
         }
-
-        System.out.println(cam.position.y);
 
         //to check if any power is selected or not
         if (VariablesForPlayArea.shapeNumberSelected > VariablesForPlayArea.CutOutBodies.size() - 1 &&

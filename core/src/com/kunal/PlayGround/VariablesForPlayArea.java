@@ -30,6 +30,8 @@ public class VariablesForPlayArea {
     public static Boolean gameOver = false;
     public static Boolean rageMode = false;
 
+    public static byte starsGained =0;
+
     //level number
     public static int levelNumber;
 
