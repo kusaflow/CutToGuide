@@ -676,39 +676,41 @@ public class TypeTwoArea implements Screen {
 
 
         //to zoom out the cam
-        if (ZoomOutBool){
-            if (cam.zoom < 5){
-                cam.zoom += 0.4f;
+        if (!levelCompleteCAmMove) {
+            if (ZoomOutBool) {
+                if (cam.zoom < 5) {
+                    cam.zoom += 0.4f;
 
-                retryWhenStarted.setAlpha(cam.zoom/5);
-                ZoomOutCam.setAlpha(cam.zoom/5);
-                Brake.setAlpha(cam.zoom/5*0.4f);
-            }else {
-                cam.zoom = 5;
+                    retryWhenStarted.setAlpha(cam.zoom / 5);
+                    ZoomOutCam.setAlpha(cam.zoom / 5);
+                    Brake.setAlpha(cam.zoom / 5 * 0.4f);
+                } else {
+                    cam.zoom = 5;
 
-                retryWhenStarted.setAlpha(0);
-                ZoomOutCam.setAlpha(0);
-                Brake.setAlpha(0);
-            }
-        }else {
-            if (cam.zoom <= 1){
-                cam.zoom = 1;
-
-                retryWhenStarted.setAlpha(1);
-                ZoomOutCam.setAlpha(1);
-                if (startBool) {
-                    if (brakeBool)
-                        Brake.setAlpha(0.9f);
-                    else
-                        Brake.setAlpha(0.4f);
-                }else {
+                    retryWhenStarted.setAlpha(0);
+                    ZoomOutCam.setAlpha(0);
                     Brake.setAlpha(0);
                 }
-            }else {
-                cam.zoom-=0.4f;
-                retryWhenStarted.setAlpha(cam.zoom/5);
-                ZoomOutCam.setAlpha(cam.zoom/5);
-                Brake.setAlpha(cam.zoom/5*0.4f);
+            } else {
+                if (cam.zoom <= 1) {
+                    cam.zoom = 1;
+
+                    retryWhenStarted.setAlpha(1);
+                    ZoomOutCam.setAlpha(1);
+                    if (startBool) {
+                        if (brakeBool)
+                            Brake.setAlpha(0.9f);
+                        else
+                            Brake.setAlpha(0.4f);
+                    } else {
+                        Brake.setAlpha(0);
+                    }
+                } else {
+                    cam.zoom -= 0.4f;
+                    retryWhenStarted.setAlpha(cam.zoom / 5);
+                    ZoomOutCam.setAlpha(cam.zoom / 5);
+                    Brake.setAlpha(cam.zoom / 5 * 0.4f);
+                }
             }
         }
 
@@ -831,12 +833,14 @@ public class TypeTwoArea implements Screen {
 
         //levelUPCam Mover
         if (levelCompleteCAmMove){
-            float y = cam.position.y+20;
-            cam.position.set(cam.position.x, y, cam.position.z);
-            if (cam.position.y>=1200)
+            if (cam.zoom>0)
+                cam.zoom-=0.1;
+            else
                 game.setScreen(new LevelCompleted(game));
+
         }
 
+        System.out.println(cam.position.y);
 
         //to check if any power is selected or not
         if (VariablesForPlayArea.shapeNumberSelected > VariablesForPlayArea.CutOutBodies.size() - 1 &&
@@ -938,7 +942,7 @@ public class TypeTwoArea implements Screen {
                             }
                         }
 
-                        if(!startBool) {
+                        if(!startBool && !startAnimToMoveCycle) {
                             if (!paused) {
                                 //hardmove
                                 if (screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
@@ -1025,7 +1029,6 @@ public class TypeTwoArea implements Screen {
                                     && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM) {
                                 paused = true;
                                 pause.setAlpha(0);
-
                             }
                         }
 
@@ -1143,14 +1146,16 @@ public class TypeTwoArea implements Screen {
                                 VariablesForPlayArea.endPoint.x = 200;
                                 return true;
                             }
-                            //shape chooser
-                            if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
-                                //code to choosing body
-                                Gdx.input.setInputProcessor(null);
-                                game.setScreen(new ShapeChooser(game));
-                                return false;
+                            if (!startAnimToMoveCycle) {
+                                //shape chooser
+                                if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM) {
+                                    //code to choosing body
+                                    Gdx.input.setInputProcessor(null);
+                                    game.setScreen(new ShapeChooser(game));
+                                    return false;
+                                }
                             }
                         }
 
