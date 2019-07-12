@@ -38,6 +38,7 @@ import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
+import com.kunal.PlayGround.constScreen.levelUpScreen.LevelCompleted;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpMngr;
 import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
@@ -59,7 +60,7 @@ public class TypeTwoArea implements Screen {
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
-            coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false;
+            coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false, levelCompleteCAmMove;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
@@ -130,6 +131,8 @@ public class TypeTwoArea implements Screen {
 
         objectCreation.CreateBicycle(world, 600,0);
         objectCreation.CreateCutouts(world);
+
+        levelCompleteCAmMove = false;
 
         poly = new Polygon();
 
@@ -512,6 +515,7 @@ public class TypeTwoArea implements Screen {
                         (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.flagpos().y+60) {
                     flag.setTexture(new Texture(Gdx.files.internal("playArea/flagRed_down.png")));
                     flag.setSize(flag.getTexture().getWidth(), flag.getTexture().getHeight());
+                    levelCompleteCAmMove = true;
                 }
             }
         }
@@ -692,10 +696,14 @@ public class TypeTwoArea implements Screen {
 
                 retryWhenStarted.setAlpha(1);
                 ZoomOutCam.setAlpha(1);
-                if (brakeBool)
-                    Brake.setAlpha(0.9f);
-                else
-                    Brake.setAlpha(0.4f);
+                if (startBool) {
+                    if (brakeBool)
+                        Brake.setAlpha(0.9f);
+                    else
+                        Brake.setAlpha(0.4f);
+                }else {
+                    Brake.setAlpha(0);
+                }
             }else {
                 cam.zoom-=0.4f;
                 retryWhenStarted.setAlpha(cam.zoom/5);
@@ -819,6 +827,14 @@ public class TypeTwoArea implements Screen {
                 else
                     AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getAngularVelocity()-3);
             }
+        }
+
+        //levelUPCam Mover
+        if (levelCompleteCAmMove){
+            float y = cam.position.y+20;
+            cam.position.set(cam.position.x, y, cam.position.z);
+            if (cam.position.y>=1200)
+                game.setScreen(new LevelCompleted(game));
         }
 
 
@@ -1205,6 +1221,9 @@ public class TypeTwoArea implements Screen {
                         }
                         if (keycode == Input.Keys.B){
                             game.setScreen(new LevelNumberSelection(game));
+                        }
+                        if (keycode == Input.Keys.L){
+                            levelCompleteCAmMove = true;
                         }
 
 
