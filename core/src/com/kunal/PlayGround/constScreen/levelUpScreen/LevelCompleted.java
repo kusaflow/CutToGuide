@@ -2,6 +2,7 @@ package com.kunal.PlayGround.constScreen.levelUpScreen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -13,14 +14,17 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
+import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.VariablesForPlayArea;
+import com.kunal.utils.ReDirectToTheLevel;
 
 public class LevelCompleted implements Screen {
     MainGame game;
 
     OrthographicCamera cam;
     Viewport port;
+    FileHandle file;
 
     int timmer, star1,star2,star3, coinsEarned=0;
     Texture kusaCoin, menu, retry, next;
@@ -38,6 +42,8 @@ public class LevelCompleted implements Screen {
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
+
+        file = Gdx.files.local("TextFiles/LevelAreaInfo");
 
         timmer = 0;
         star1 =0;
@@ -121,28 +127,6 @@ public class LevelCompleted implements Screen {
 
         AllVariables.batch.end();
 
-        if (Gdx.input.justTouched()) {
-            if (Gdx.input.getX() > (380 * AllVariables.inpM) + AllVariables.witdth_translation
-                    && Gdx.input.getX() < (540 * AllVariables.inpM) + AllVariables.witdth_translation
-                    && Gdx.input.getY() > 470 * AllVariables.inpM && Gdx.input.getY() < 600 * AllVariables.inpM) {
-                AllVariables.kusaCoin+=coinsEarned;
-
-            }
-            if (Gdx.input.getX() > (560* AllVariables.inpM)+AllVariables.witdth_translation
-                    && Gdx.input.getX() < (710* AllVariables.inpM)+AllVariables.witdth_translation
-                    && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
-                AllVariables.kusaCoin+=coinsEarned;
-
-            }
-            if (Gdx.input.getX() > (770* AllVariables.inpM)+AllVariables.witdth_translation
-                    && Gdx.input.getX() < (910* AllVariables.inpM)+AllVariables.witdth_translation
-                    && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
-                AllVariables.kusaCoin+=coinsEarned;
-
-            }
-            game.setScreen(new AreaSelection(game));
-        }
-
     }
 
     public void update(){
@@ -188,9 +172,41 @@ public class LevelCompleted implements Screen {
     }
 
     public void input(){
-        if (Gdx.input.justTouched()){
-            System.out.println(Gdx.input.getX()+"\t"+Gdx.input.getY());
+        if (Gdx.input.justTouched()) {
+            //menu
+            if (Gdx.input.getX() > (380 * AllVariables.inpM) + AllVariables.witdth_translation
+                    && Gdx.input.getX() < (540 * AllVariables.inpM) + AllVariables.witdth_translation
+                    && Gdx.input.getY() > 470 * AllVariables.inpM && Gdx.input.getY() < 600 * AllVariables.inpM) {
+                AllVariables.kusaCoin+=coinsEarned;
+                changeFile();
+                game.setScreen(new LevelNumberSelection(game));
+            }
+            //retry
+            if (Gdx.input.getX() > (560* AllVariables.inpM)+AllVariables.witdth_translation
+                    && Gdx.input.getX() < (710* AllVariables.inpM)+AllVariables.witdth_translation
+                    && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
+                AllVariables.kusaCoin+=coinsEarned;
+                changeFile();
+                ReDirectToTheLevel.Direct(game, true);
+            }
+            //next
+            if (Gdx.input.getX() > (770* AllVariables.inpM)+AllVariables.witdth_translation
+                    && Gdx.input.getX() < (910* AllVariables.inpM)+AllVariables.witdth_translation
+                    && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
+                AllVariables.kusaCoin+=coinsEarned;
+                if (AllVariables.PresentAreaNumber == 1){
+                    if (AllVariables.PresentLevelNumber < 30)
+                        AllVariables.PresentLevelNumber++;
+                }
+                changeFile();
+                ReDirectToTheLevel.Direct(game, false);
+            }
         }
+    }
+
+    private void changeFile(){
+        char[] data = file.readString().toCharArray();
+
     }
 
     @Override

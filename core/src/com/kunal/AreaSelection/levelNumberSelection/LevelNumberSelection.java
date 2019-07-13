@@ -52,6 +52,7 @@ public class LevelNumberSelection implements Screen {
         file = Gdx.files.local("TextFiles/LevelAreaInfo");
         DataInFile = file.readString();
 
+
         stars = new LinkedList<Short>();
 
         levelState = 0;
@@ -87,6 +88,10 @@ public class LevelNumberSelection implements Screen {
     }
 
     private void processData(){
+
+    }
+
+    private void processDataOldFile(){
         String tempstring= "";
         boolean doSkip = false;
         short hashCount =0, shorttmp;

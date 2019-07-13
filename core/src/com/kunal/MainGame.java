@@ -39,9 +39,9 @@ public class MainGame extends Game {
         AllVariables.bitmapFont = generator.generateFont(prams);
 
         //for testing only
-		if (Gdx.files.local("TextFiles/LevelAreaInfo").exists()) {
-			Gdx.files.local("TextFiles/LevelAreaInfo").delete();
-		}
+		//if (Gdx.files.local("TextFiles/LevelAreaInfo").exists()) {
+		//	Gdx.files.local("TextFiles/LevelAreaInfo").delete();
+		//}
 
 			//creating local file
 		if (!Gdx.files.local("TextFiles/LevelAreaInfo").exists()){

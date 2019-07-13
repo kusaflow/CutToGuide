@@ -341,7 +341,7 @@ public class TypeTwoArea implements Screen {
         //=================obstacles
 
 
-        VariablesForPlayArea.starsGained = 3;
+        VariablesForPlayArea.starsGained = 2;
 
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
