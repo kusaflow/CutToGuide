@@ -44,15 +44,44 @@ public class MainGame extends Game {
 		//}
 
 			//creating local file
-		if (!Gdx.files.local("TextFiles/LevelAreaInfo").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/LevelAreaInfo");
-			String data = "1#30#30#231232221312133123123123131231#\n" +
-					"2#3#30#320000000000000000000000000000#\n" +
-					"3#7#30#312312000000000000000000000000#\n" +
-					"4#12#30#321231231230000000000000000000#\n" +
-					"5#19#30#321123313213213213000000000000#\n" +
-					"6#25#30#321313121311321131231231000000#\n" +
-					"$";
+		if (!Gdx.files.local("TextFiles/area/area1").exists()){
+			FileHandle savedata = Gdx.files.local("TextFiles/area/area1");
+			String data = "1\n30\n30\n231232221312133123123123131231#\n" + "$";
+			savedata.writeString(data,true);
+			System.out.println("writing");
+		}
+		//creating local file
+		if (!Gdx.files.local("TextFiles/area/area2").exists()){
+			FileHandle savedata = Gdx.files.local("TextFiles/area/area2");
+			String data = "2\n30\n30\n231232221312133123123123131231#\n" + "$";
+			savedata.writeString(data,true);
+			System.out.println("writing");
+		}
+		//creating local file
+		if (!Gdx.files.local("TextFiles/area/area3").exists()){
+			FileHandle savedata = Gdx.files.local("TextFiles/area/area3");
+			String data = "3\n30\n30\n231232221312133123123123131231#\n" + "$";
+			savedata.writeString(data,true);
+			System.out.println("writing");
+		}
+		//creating local file
+		if (!Gdx.files.local("TextFiles/area/area4").exists()){
+			FileHandle savedata = Gdx.files.local("TextFiles/area/area4");
+			String data = "4\n30\n30\n231232221312133123123123131231#\n" + "$";
+			savedata.writeString(data,true);
+			System.out.println("writing");
+		}
+		//creating local file
+		if (!Gdx.files.local("TextFiles/area/area5").exists()){
+			FileHandle savedata = Gdx.files.local("TextFiles/area/area5");
+			String data = "5\n30\n30\n231232221312133123123123131231#\n" + "$";
+			savedata.writeString(data,true);
+			System.out.println("writing");
+		}
+		//creating local file
+		if (!Gdx.files.local("TextFiles/area/area6").exists()){
+			FileHandle savedata = Gdx.files.local("TextFiles/area/area6");
+			String data = "6\n30\n30\n231232221312133123123123131231#\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}

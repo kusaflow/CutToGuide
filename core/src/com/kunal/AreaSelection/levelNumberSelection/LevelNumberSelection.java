@@ -49,7 +49,7 @@ public class LevelNumberSelection implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        file = Gdx.files.local("TextFiles/LevelAreaInfo");
+        file = Gdx.files.local("TextFiles/areas/area"+AllVariables.PresentAreaNumber);
         DataInFile = file.readString();
 
 
@@ -88,6 +88,34 @@ public class LevelNumberSelection implements Screen {
     }
 
     private void processData(){
+        char[] data = DataInFile.toCharArray();
+        String tempDAta;
+        int i=0;
+        while (data[i] != '\n'){
+            i++;
+        }
+        i++;
+        tempDAta = "";
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            i++;
+        }
+        UnlockedLevel = new Short(tempDAta);
+        i++;
+        tempDAta = "";
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            i++;
+        }
+        TotalLevel = new Short(tempDAta);
+        i++;
+        tempDAta = "";
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            stars.add(new Short(tempDAta));
+            tempDAta = "";
+            i++;
+        }
 
     }
 
