@@ -19,12 +19,14 @@ import com.kunal.MainGame;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.ReDirectToTheLevel;
 
+import java.util.LinkedList;
+
 public class LevelCompleted implements Screen {
     MainGame game;
 
     OrthographicCamera cam;
     Viewport port;
-    FileHandle file;
+    FileHandle file, kusaCoinFile;
 
     int timmer, star1,star2,star3, coinsEarned=0;
     Texture kusaCoin, menu, retry, next;
@@ -43,7 +45,8 @@ public class LevelCompleted implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        file = Gdx.files.local("TextFiles/LevelAreaInfo");
+        file = Gdx.files.local("TextFiles/areas/area"+AllVariables.PresentAreaNumber);
+        kusaCoinFile = Gdx.files.local("TextFiles/kusaCoin");
 
         timmer = 0;
         star1 =0;
@@ -73,6 +76,8 @@ public class LevelCompleted implements Screen {
         }else if (VariablesForPlayArea.starsGained == 3){
             coinsEarned = 100;
         }
+
+        System.out.println(VariablesForPlayArea.starsGained);
 
         AllVariables.inpM = (float) Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -194,18 +199,77 @@ public class LevelCompleted implements Screen {
                     && Gdx.input.getX() < (910* AllVariables.inpM)+AllVariables.witdth_translation
                     && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
                 AllVariables.kusaCoin+=coinsEarned;
+                changeFile();
                 if (AllVariables.PresentAreaNumber == 1){
                     if (AllVariables.PresentLevelNumber < 30)
                         AllVariables.PresentLevelNumber++;
                 }
-                changeFile();
                 ReDirectToTheLevel.Direct(game, false);
             }
         }
     }
 
     private void changeFile(){
+        kusaCoinFile.writeString(String.valueOf(AllVariables.kusaCoin), false);
+
         char[] data = file.readString().toCharArray();
+        String tempDAta="";
+
+        int UnlockedLevel, TotalLevel;
+        LinkedList<Short> stars = new LinkedList<Short>();
+        int i=0;
+
+        //collecting data
+        while (data[i] != '\n'){
+            i++;
+        }
+        i++;
+        tempDAta = "";
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            i++;
+        }
+        UnlockedLevel = new Short(tempDAta);
+        i++;
+        tempDAta = "";
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            i++;
+        }
+        TotalLevel = new Short(tempDAta);
+        i++;
+        tempDAta = "";
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            stars.add(new Short(tempDAta));
+            tempDAta = "";
+            i++;
+        }
+
+        //to check to update unlockLEvel or not
+        if (UnlockedLevel == AllVariables.PresentLevelNumber && UnlockedLevel != 30){
+            UnlockedLevel++;
+            tempDAta = AllVariables.PresentAreaNumber + "\n" + UnlockedLevel + "\n" + TotalLevel + "\n";
+            stars.set(UnlockedLevel-1,(short) VariablesForPlayArea.starsGained);
+            for (int k=0; k< stars.size(); k++){
+                tempDAta+=String.valueOf(stars.get(k));
+            }
+            tempDAta+="\n$";
+            file.writeString(tempDAta, false);
+        }else {
+            tempDAta = AllVariables.PresentAreaNumber + "\n" + UnlockedLevel + "\n" + TotalLevel + "\n";
+            short t = stars.get(AllVariables.PresentLevelNumber-1);
+            if (t < VariablesForPlayArea.starsGained){
+                stars.set(AllVariables.PresentLevelNumber-1,(short) VariablesForPlayArea.starsGained);
+            }
+            System.out.println(t);
+            for (int k=0; k< stars.size(); k++){
+                tempDAta+=String.valueOf(stars.get(k));
+            }
+            tempDAta+="\n$";
+            file.writeString(tempDAta, false);
+        }
+
 
     }
 

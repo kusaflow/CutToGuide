@@ -341,7 +341,7 @@ public class TypeTwoArea implements Screen {
         //=================obstacles
 
 
-        VariablesForPlayArea.starsGained = 2;
+        VariablesForPlayArea.starsGained = 0;
 
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
@@ -530,6 +530,8 @@ public class TypeTwoArea implements Screen {
                     (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin1Pos().y-5) {
                 if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin1Pos().y+100 ||
                         (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin1Pos().y+100) {
+                    if (!coin1anim)
+                        VariablesForPlayArea.starsGained++;
                     coin1anim = true;
                 }
             }
@@ -543,6 +545,8 @@ public class TypeTwoArea implements Screen {
                     (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin2Pos().y-5) {
                 if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin2Pos().y+100 ||
                         (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin2Pos().y+100) {
+                    if (!coin2anim)
+                        VariablesForPlayArea.starsGained++;
                     coin2anim = true;
                 }
             }
@@ -556,6 +560,8 @@ public class TypeTwoArea implements Screen {
                     (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.coin3Pos().y-5) {
                 if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin3Pos().y+100 ||
                         (AllVariables.BackWheel.getPosition().y*AllVariables.PPM)-(25+5) <= TiledMapLoadingHelper.coin3Pos().y+100) {
+                    if (!coin3anim)
+                        VariablesForPlayArea.starsGained++;
                     coin3anim = true;
                 }
             }
