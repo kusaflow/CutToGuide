@@ -8,8 +8,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -55,12 +57,16 @@ public class TypeTwoArea implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
+    BitmapFont Font;
+
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
-            per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex, retryWhenStarted, ZoomOutCam;
+            per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex,
+            retryWhenStarted, ZoomOutCam, hintBox;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
-            coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false, levelCompleteCAmMove;
+            coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false, levelCompleteCAmMove,
+            hintOneTaken = false ,hintTwoTaken = true ,hintThreeTaken = false;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
@@ -136,6 +142,14 @@ public class TypeTwoArea implements Screen {
 
         poly = new Polygon();
 
+        Font = new BitmapFont();
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 50;
+        prams.color = Color.BLUE;
+        Font = generator.generateFont(prams);
+
         //for testing
         //AllVariables.PresentAreaNumber = 101;
         //AllVariables.PresentLevelNumber = 101;
@@ -210,6 +224,13 @@ public class TypeTwoArea implements Screen {
         pause.setPosition(50,240);
         pause.setSize(100*camscl, 100*camscl);
         pause.setAlpha(0.8f);
+
+        hintBox= new Sprite(new Texture(Gdx.files.internal("playArea/hint.png")));
+        hintBox.setPosition(50,240);
+        //hintBox.setSize(100*camscl, 100*camscl);
+        hintBox.setAlpha(1f);
+
+
 
         fadedBG = new Sprite(new Texture(Gdx.files.internal("playArea/fadedBG.png")));
         fadedBG.setPosition(0,0);
@@ -488,6 +509,42 @@ public class TypeTwoArea implements Screen {
             fadedBG.draw(AllVariables.batch);
             resume.draw(AllVariables.batch);
             exit.draw(AllVariables.batch);
+
+            hintBox.setPosition(400+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
+            if (hintOneTaken)
+                hintBox.setColor(1,0,0,1);
+            else
+                hintBox.setColor(0,1,0,1);
+            hintBox.draw(AllVariables.batch);
+
+            hintBox.setPosition(600+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
+            if (hintTwoTaken)
+                hintBox.setColor(1,0,0,1);
+            else
+                hintBox.setColor(0,1,0,1);
+            hintBox.draw(AllVariables.batch);
+
+
+            hintBox.setPosition(800+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
+            if (hintThreeTaken)
+                hintBox.setColor(1,0,0,1);
+            else
+                hintBox.setColor(0,1,0,1);
+            hintBox.draw(AllVariables.batch);
+
+
+            Font.draw(AllVariables.batch,"Hints",
+                    560+(cam.position.x - AllVariables.WIDTH/2), 400+(cam.position.y -AllVariables.HEIGHT/2));
+
+            Font.draw(AllVariables.batch,"1",
+                    440+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
+            Font.draw(AllVariables.batch,"2",
+                    635+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
+            Font.draw(AllVariables.batch,"3",
+                    835+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
+
+
+
         }
         if (VariablesForPlayArea.gameOver){
             gameoverTexure.draw(AllVariables.batch);
@@ -675,8 +732,8 @@ public class TypeTwoArea implements Screen {
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
         pause.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         fadedBG.setPosition(-280+(cam.position.x - AllVariables.WIDTH/2), -200+(cam.position.y -AllVariables.HEIGHT/2));
-        resume.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
-        exit.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
+        resume.setPosition(220+(cam.position.x - AllVariables.WIDTH/2), 600+(cam.position.y -AllVariables.HEIGHT/2));
+        exit.setPosition(730+(cam.position.x - AllVariables.WIDTH/2), 600+(cam.position.y -AllVariables.HEIGHT/2));
         gameoverTexure.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT/2));
         menuTex.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
         retryTex.setPosition(740+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
@@ -903,7 +960,7 @@ public class TypeTwoArea implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
                         hardmoveFaultResolver = false;
 
                         if (VariablesForPlayArea.gameOver) {
@@ -1041,9 +1098,9 @@ public class TypeTwoArea implements Screen {
 
                         if (paused){
                             //resume
-                            if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 490 * AllVariables.inpM && screenY < 590 * AllVariables.inpM) {
+                            if (screenX > (335 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (595 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
                                 paused = false;
                                 if (!startBool)
                                     pause.setAlpha(1);
@@ -1051,12 +1108,34 @@ public class TypeTwoArea implements Screen {
                             }
 
                             //exit
-                            if (screenX > (520 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (770 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 345 * AllVariables.inpM && screenY < 445 * AllVariables.inpM) {
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
                                 game.setScreen(new LevelNumberSelection(game));
 
                             }
+
+                            //hint 1
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+
+                            }
+
+                            //hint2
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+
+                            }
+
+                            //hint3
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+
+                            }
+
                         }
 
 
