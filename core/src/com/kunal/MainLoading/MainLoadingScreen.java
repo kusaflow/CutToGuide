@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.playScreen.playScreen;
 import com.kunal.temp.temp;
 
 public class MainLoadingScreen implements Screen {
@@ -34,7 +35,7 @@ public class MainLoadingScreen implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        kusaGames = new Sprite(new Texture(Gdx.files.internal("mainLoading/kusaGames.png")));
+        kusaGames = new Sprite(new Texture(Gdx.files.internal("mainLoading/kusaGames.jpg")));
         kusaGames.setPosition(0,0);
         kusaGames.setSize(AllVariables.WIDTH,AllVariables.HEIGHT);
         kusaGames.setAlpha(0);
@@ -81,7 +82,8 @@ public class MainLoadingScreen implements Screen {
             alpha-=0.02f;
         }else if (timmer>=300){
             dispose();
-            game.setScreen(new temp(game));
+            //game.setScreen(new temp(game));
+            game.setScreen(new playScreen(game));
         }
 
         if (alpha<0)
