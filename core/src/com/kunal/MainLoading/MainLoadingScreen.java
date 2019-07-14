@@ -11,6 +11,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.temp.temp;
 
 public class MainLoadingScreen implements Screen {
 
@@ -21,10 +22,11 @@ public class MainLoadingScreen implements Screen {
     private Viewport port;
 
     Sprite kusaGames;
+    int timmer= 0;
+    float alpha =0;
 
 
     public MainLoadingScreen(MainGame game) {
-        sred = new ShapeRenderer();
         this.game = game;
 
         cam = new OrthographicCamera();
@@ -32,12 +34,13 @@ public class MainLoadingScreen implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
+        kusaGames = new Sprite(new Texture(Gdx.files.internal("mainLoading/kusaGames.png")));
+        kusaGames.setPosition(0,0);
+        kusaGames.setSize(AllVariables.WIDTH,AllVariables.HEIGHT);
+        kusaGames.setAlpha(0);
+
         port.apply();
         cam.update();
-
-        kusaGames = new Sprite(new Texture(Gdx.files.internal("mainLoading/KusaGames.png")));
-        kusaGames.setSize(100,100);
-        kusaGames.setPosition(Gdx.graphics.getWidth()/2+ kusaGames.getWidth()/2,  Gdx.graphics.getHeight()/2-kusaGames.getHeight()/2);
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -58,14 +61,31 @@ public class MainLoadingScreen implements Screen {
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
         AllVariables.batch.begin();
+        kusaGames.setAlpha(alpha);
         kusaGames.draw(AllVariables.batch);
+
         AllVariables.batch.end();
 
 
     }
 
     private void update(float dt){
+        timmer++;
+        if (timmer<50){
+            kusaGames.setAlpha(0.01f);
+            alpha+=0.02f;
+        }
+        else if (timmer>=50 && timmer<200){
 
+        }else if (timmer>=200 && timmer<300) {
+            alpha-=0.02f;
+        }else if (timmer>=300){
+            dispose();
+            game.setScreen(new temp(game));
+        }
+
+        if (alpha<0)
+            alpha = 0;
     }
 
     @Override
@@ -93,6 +113,6 @@ public class MainLoadingScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        kusaGames.getTexture().dispose();
     }
 }

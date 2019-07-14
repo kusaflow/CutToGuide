@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.kunal.MainLoading.MainLoadingScreen;
 import com.kunal.temp.temp;
 
 import java.util.LinkedList;
@@ -244,7 +245,8 @@ public class MainGame extends Game {
 		}
 
 
-		this.setScreen(new temp(this));
+
+		this.setScreen(new MainLoadingScreen(this));
 
 	}
 
