@@ -238,7 +238,7 @@ public class MainGame extends Game {
 					tracker++;
 				}
 
-				AllVariables.unlockedWheel.add(Byte.valueOf(temp));
+				//AllVariables.unlockedWheel.add(Byte.valueOf(temp));
 				temp="";
 				tracker++;
 			}
@@ -246,7 +246,8 @@ public class MainGame extends Game {
 
 
 
-		this.setScreen(new MainLoadingScreen(this));
+		//this.setScreen(new MainLoadingScreen(this));
+
 
 	}
 

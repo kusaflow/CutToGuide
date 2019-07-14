@@ -32,7 +32,7 @@ public class LevelNumberSelection implements Screen {
     private Texture stone;
     private Texture number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
 
-    private Texture cross, movRight, movLeft, lock, starTex;
+    private Texture cross, movRight, movLeft, lock, starTex, bg;
     private Boolean upperLayer = true;
 
     /*
@@ -83,6 +83,9 @@ public class LevelNumberSelection implements Screen {
         lock = new Texture(Gdx.files.internal("AreaSelection/levelSelection/locked.png"));
 
         starTex = new Texture(Gdx.files.internal("AreaSelection/levelSelection/star.png"));
+
+        bg = new Texture(Gdx.files.internal("AreaSelection/bg.png"));
+
 
 
     }
@@ -225,6 +228,8 @@ public class LevelNumberSelection implements Screen {
 
 
         AllVariables.batch.begin();
+
+        AllVariables.batch.draw(bg,0,0,AllVariables.WIDTH, AllVariables.HEIGHT);
 
         //cross to go back
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);

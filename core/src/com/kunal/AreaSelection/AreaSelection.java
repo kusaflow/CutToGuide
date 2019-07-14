@@ -37,7 +37,7 @@ public class AreaSelection implements Screen {
 
     float positionY, transparency;
 
-    Texture t;
+    Texture bg;
 
 
     public AreaSelection(MainGame game) {
@@ -86,7 +86,7 @@ public class AreaSelection implements Screen {
         backToPrevScreen.setSize(128,128);
         backToPrevScreen.setPosition(0, 720-128);
 
-        t = new Texture(Gdx.files.internal("badlogic.png"));
+        bg = new Texture(Gdx.files.internal("AreaSelection/bg.png"));
 
 
 
@@ -156,7 +156,7 @@ public class AreaSelection implements Screen {
 
 
         AllVariables.batch.begin();
-        AllVariables.batch.draw(t,0,0, AllVariables.WIDTH, AllVariables.HEIGHT);
+        AllVariables.batch.draw(bg,0,0, AllVariables.WIDTH, AllVariables.HEIGHT);
 
 
         for (Sprite s : AreaList)
