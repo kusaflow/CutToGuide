@@ -40,56 +40,56 @@ public class MainGame extends Game {
         AllVariables.bitmapFont = generator.generateFont(prams);
 
         //for testing only
-		//if (Gdx.files.local("TextFiles/LevelAreaInfo").exists()) {
-		//	Gdx.files.local("TextFiles/LevelAreaInfo").delete();
+		//if (Gdx.files.local("TextFilesToDelete/LevelAreaInfo").exists()) {
+		//	Gdx.files.local("TextFilesToDelete/LevelAreaInfo").delete();
 		//}
 
 			//creating local file
-		if (!Gdx.files.local("TextFiles/areas/area1").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/areas/area1");
-			String data = "1\n30\n30\n231232221312133123123123131231#\n" + "$";
+		if (!Gdx.files.local("TextFilesToDelete/areas/area1").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area1");
+			String data = "1\n30\n30\n231232221312133123123123131231\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
 		//creating local file
-		if (!Gdx.files.local("TextFiles/areas/area2").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/areas/area2");
-			String data = "2\n30\n30\n231232221312133123123123131231#\n" + "$";
+		if (!Gdx.files.local("TextFilesToDelete/areas/area2").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area2");
+			String data = "2\n30\n30\n231232221312133123123123131231\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
 		//creating local file
-		if (!Gdx.files.local("TextFiles/areas/area3").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/areas/area3");
-			String data = "3\n30\n30\n231232221312133123123123131231#\n" + "$";
+		if (!Gdx.files.local("TextFilesToDelete/areas/area3").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area3");
+			String data = "3\n30\n30\n231232221312133123123123131231\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
 		//creating local file
-		if (!Gdx.files.local("TextFiles/areas/area4").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/areas/area4");
-			String data = "4\n30\n30\n231232221312133123123123131231#\n" + "$";
+		if (!Gdx.files.local("TextFilesToDelete/areas/area4").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area4");
+			String data = "4\n30\n30\n231232221312133123123123131231\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
 		//creating local file
-		if (!Gdx.files.local("TextFiles/areas/area5").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/areas/area5");
-			String data = "5\n30\n30\n231232221312133123123123131231#\n" + "$";
+		if (!Gdx.files.local("TextFilesToDelete/areas/area5").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area5");
+			String data = "5\n30\n30\n231232221312133123123123131231\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
 		//creating local file
-		if (!Gdx.files.local("TextFiles/areas/area6").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/areas/area6");
-			String data = "6\n30\n30\n231232221312133123123123131231#\n" + "$";
+		if (!Gdx.files.local("TextFilesToDelete/areas/area6").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area6");
+			String data = "6\n30\n30\n231232221312133123123123131231\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
 		//hint logs
 		//for area1
-		if (!Gdx.files.local("TextFiles/hints/area1/log").exists()){
-			FileHandle savedata = Gdx.files.local("TextFiles/hints/area1/log");
+		if (!Gdx.files.local("TextFilesToDelete/hints/area1/log").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/hints/area1/log");
 			String data = "000\n" +
 					"000\n" +
 					"000\n" +
@@ -126,14 +126,14 @@ public class MainGame extends Game {
 
 
 
-		if (!Gdx.files.local("TextFiles/kusaCoin").exists()){
-			FileHandle kusaCoin = Gdx.files.local("TextFiles/kusaCoin");
-			String data = "100";
+		if (!Gdx.files.local("TextFilesToDelete/kusaCoin").exists()){
+			FileHandle kusaCoin = Gdx.files.local("TextFilesToDelete/kusaCoin");
+			String data = "1000";
 
 			kusaCoin.writeString(data, false);
 			AllVariables.kusaCoin = 100;
 		}else {
-			FileHandle kusaCoin = Gdx.files.local("TextFiles/kusaCoin");
+			FileHandle kusaCoin = Gdx.files.local("TextFilesToDelete/kusaCoin");
 			AllVariables.kusaCoin = new Short(kusaCoin.readString());
 		}
 
@@ -143,8 +143,8 @@ public class MainGame extends Game {
 
 		AllVariables.unlockedWheel = new LinkedList<Byte>();
 
-		if (!Gdx.files.local("TextFiles/LockUnlock").exists()){
-			FileHandle lu = Gdx.files.local("TextFiles/LockUnlock");
+		if (!Gdx.files.local("TextFilesToDelete/LockUnlock").exists()){
+			FileHandle lu = Gdx.files.local("TextFilesToDelete/LockUnlock");
 			String data = "0\n0\n0\n0#\n0#\n0#\n";
 			lu.writeString(data, false);
 			AllVariables.tyreType = 0;
@@ -154,7 +154,7 @@ public class MainGame extends Game {
 			AllVariables.unlockedCoin.add((byte) 0);
 			AllVariables.unlockedWheel.add((byte) 0);
 		}else {
-			FileHandle lu = Gdx.files.local("TextFiles/LockUnlock");
+			FileHandle lu = Gdx.files.local("TextFilesToDelete/LockUnlock");
 			char[] data = lu.readString().toCharArray();
 			String temp;
 			short tracker=0;
@@ -238,7 +238,7 @@ public class MainGame extends Game {
 					tracker++;
 				}
 
-				//AllVariables.unlockedWheel.add(Byte.valueOf(temp));
+				AllVariables.unlockedWheel.add(Byte.valueOf(temp));
 				temp="";
 				tracker++;
 			}

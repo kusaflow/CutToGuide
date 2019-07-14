@@ -31,7 +31,7 @@ public class TestClassToUnlockLevel implements Screen {
         this.game = game;
         this.UnlockLevel = unlockLevel;
 
-        file = Gdx.files.local("TextFiles/LevelAreaInfo");
+        file = Gdx.files.local("TextFilesToDelete/LevelAreaInfo");
         DataInFile = file.readString();
 
     }

@@ -1,6 +1,7 @@
 package com.kunal.playScreen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -20,7 +21,6 @@ import com.kunal.temp.temp;
 public class playScreen implements Screen {
 
     MainGame game;
-    ShapeRenderer sred;
 
     private OrthographicCamera cam;
     private Viewport port;
@@ -76,14 +76,55 @@ public class playScreen implements Screen {
     }
 
     private void update(float dt){
-        if (Gdx.input.justTouched()){
-            if (Gdx.input.getX() > (550 * AllVariables.inpM) + AllVariables.witdth_translation
-                    && Gdx.input.getX()< (775 * AllVariables.inpM) + AllVariables.witdth_translation
-                    && Gdx.input.getY() > 285 * AllVariables.inpM && Gdx.input.getY() < 460 * AllVariables.inpM) {
-                game.setScreen(new AreaSelection(game));
-            }
-            System.out.println(Gdx.input.getX() + "\t" + Gdx.input.getY());
-        }
+        Gdx.input.setInputProcessor(
+                new InputProcessor() {
+                    @Override
+                    public boolean keyDown(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyUp(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyTyped(char character) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        if (screenX > (550 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (775 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 285 * AllVariables.inpM && screenY < 460 * AllVariables.inpM) {
+                            dispose();
+                            game.setScreen(new AreaSelection(game));
+                        }
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mouseMoved(int screenX, int screenY) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean scrolled(int amount) {
+                        return false;
+                    }
+                }
+        );
 
         alpha+=0.08f;
         if(alpha>1)
@@ -115,6 +156,6 @@ public class playScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        playScreen.getTexture().dispose();
     }
 }

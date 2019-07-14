@@ -108,7 +108,6 @@ public class Shop implements Screen, VideoEventListener {
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
 
-
         barCh = AllVariables.bodyOfCycle;
         coinCh = AllVariables.coinType;
         wheelCh = AllVariables.tyreType;
@@ -149,8 +148,8 @@ public class Shop implements Screen, VideoEventListener {
         cancel.setSize(128,128);
         cancel.setPosition(0, 720-128);
 
-        kusaCoinFile = Gdx.files.local("TextFiles/kusaCoin");
-        lockUnlockFile = Gdx.files.local("TextFiles/LockUnlock");
+        kusaCoinFile = Gdx.files.local("TextFilesToDelete/kusaCoin");
+        lockUnlockFile = Gdx.files.local("TextFilesToDelete/LockUnlock");
 
         bigText = new BitmapFont();
 
@@ -214,13 +213,17 @@ public class Shop implements Screen, VideoEventListener {
 
         world.step(1/60f, 6,2);
 
-        Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
+        //Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
+        //Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
+        Gdx.gl.glClearColor(0.6235f,0.854f,0.2666f,0.9f);
+
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
         AllVariables.batch.begin();
+
 
         cancel.draw(AllVariables.batch);
         if (menuNumber == 1) {

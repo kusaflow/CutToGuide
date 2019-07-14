@@ -45,8 +45,8 @@ public class LevelCompleted implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        file = Gdx.files.local("TextFiles/areas/area"+AllVariables.PresentAreaNumber);
-        kusaCoinFile = Gdx.files.local("TextFiles/kusaCoin");
+        file = Gdx.files.local("TextFilesToDelete/areas/area"+AllVariables.PresentAreaNumber);
+        kusaCoinFile = Gdx.files.local("TextFilesToDelete/kusaCoin");
 
         timmer = 0;
         star1 =0;

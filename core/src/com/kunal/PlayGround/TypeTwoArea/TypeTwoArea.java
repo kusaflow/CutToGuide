@@ -251,17 +251,17 @@ public class TypeTwoArea implements Screen {
         posMap.setPosition(32,32);
         posMap.setSize(70,70);
 
-        coin1 = new Sprite(new Texture(Gdx.files.internal(AllVariables.coinAdd)));
+        coin1 = new Sprite(TextureGiver.coin((short) (AllVariables.coinType+1)));
         coin1.setPosition(TiledMapLoadingHelper.coin1Pos().x,TiledMapLoadingHelper.coin1Pos().y);
         coin1.setSize(100,100);
         coin1.setAlpha(coin1Alpha);
 
-        coin2 = new Sprite(new Texture(Gdx.files.internal(AllVariables.coinAdd)));
+        coin2 = new Sprite(TextureGiver.coin((short) (AllVariables.coinType+1)));
         coin2.setPosition(TiledMapLoadingHelper.coin2Pos().x,TiledMapLoadingHelper.coin2Pos().y);
         coin2.setSize(100,100);
         coin2.setAlpha(coin2Alpha);
 
-        coin3 = new Sprite(new Texture(Gdx.files.internal(AllVariables.coinAdd)));
+        coin3 = new Sprite(TextureGiver.coin((short) (AllVariables.coinType+1)));
         coin3.setPosition(TiledMapLoadingHelper.coin3Pos().x,TiledMapLoadingHelper.coin3Pos().y);
         coin3.setSize(100,100);
         coin3.setAlpha(coin3Alpha);

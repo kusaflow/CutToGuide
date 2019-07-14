@@ -49,7 +49,7 @@ public class LevelNumberSelection implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
-        file = Gdx.files.local("TextFiles/areas/area"+AllVariables.PresentAreaNumber);
+        file = Gdx.files.local("TextFilesToDelete/areas/area"+AllVariables.PresentAreaNumber);
         DataInFile = file.readString();
 
 

@@ -17,7 +17,6 @@ import com.kunal.temp.temp;
 public class MainLoadingScreen implements Screen {
 
     MainGame game;
-    ShapeRenderer sred;
 
     private OrthographicCamera cam;
     private Viewport port;

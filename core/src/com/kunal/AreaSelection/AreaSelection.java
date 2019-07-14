@@ -280,7 +280,7 @@ public class AreaSelection implements Screen {
                                 && screenX <= (450* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
                             //code for credits
-                            System.out.println("cretits");
+                            System.out.println("credits");
                             return false;
                         }
 
@@ -294,6 +294,44 @@ public class AreaSelection implements Screen {
                             System.out.println("setting");
                             return false;
                         }
+
+                        //System.out.println(screenX + "\t" +screenY);
+
+                        //prev levels
+                        if(screenX >= (250* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (320* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
+                            if(LevelState == 0){
+
+                            }else {
+                                LevelState--;
+                                transparency = 0;
+                                positionY = 70;
+                            }
+                            return false;
+                        }
+
+                        //next levels-------------------------------------------------------------------------change level state accordingly
+                        if(screenX >= (1200* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (1270* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
+                            if(LevelState == 1){
+
+                            }else {
+                                LevelState++;
+                                transparency =0;
+                                positionY = 70;
+                            }
+                            return false;
+                        }
+
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        screenY = Gdx.graphics.getHeight() - screenY;
 
                         //level Area Selection------------------------------------------------------------------
                         if(screenX >= (390* AllVariables.inpM) + AllVariables.witdth_translation
@@ -356,45 +394,6 @@ public class AreaSelection implements Screen {
 
                             return false;
                         }
-
-
-                        //System.out.println(screenX + "\t" +screenY);
-
-                        //prev levels
-                        if(screenX >= (250* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX <= (320* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
-                            if(LevelState == 0){
-
-                            }else {
-                                LevelState--;
-                                transparency = 0;
-                                positionY = 70;
-                            }
-                            return false;
-                        }
-
-                        //next levels-------------------------------------------------------------------------change level state accordingly
-                        if(screenX >= (1200* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX <= (1270* AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY >= 200* AllVariables.inpM && screenY <= 450* AllVariables.inpM) {
-                            if(LevelState == 1){
-
-                            }else {
-                                LevelState++;
-                                transparency =0;
-                                positionY = 70;
-                            }
-                            return false;
-                        }
-
-
-                        return false;
-                    }
-
-                    @Override
-                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-
                         return false;
                     }
 
