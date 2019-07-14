@@ -737,7 +737,8 @@ public class TypeTwoArea implements Screen {
         gameoverTexure.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT/2));
         menuTex.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
         retryTex.setPosition(740+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
-        retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 400+(cam.position.y -AllVariables.HEIGHT/2));
+        //when started retry
+        retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         ZoomOutCam.setPosition(-170+(cam.position.x - (AllVariables.WIDTH)/2), 100+(cam.position.y - AllVariables.HEIGHT/2));
 
 
@@ -997,7 +998,7 @@ public class TypeTwoArea implements Screen {
                             //retry
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 375 * AllVariables.inpM && screenY < 475 * AllVariables.inpM){
+                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM){
                                 dispose();
                                 ReDirectToTheLevel.Direct(game, true);
                                 return true;

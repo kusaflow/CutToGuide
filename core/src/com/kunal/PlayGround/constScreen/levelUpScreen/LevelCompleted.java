@@ -207,6 +207,8 @@ public class LevelCompleted implements Screen {
                 ReDirectToTheLevel.Direct(game, false);
             }
         }
+
+        Gdx.input.setInputProcessor(null);
     }
 
     private void changeFile(){
