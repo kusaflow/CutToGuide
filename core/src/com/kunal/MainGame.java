@@ -246,7 +246,8 @@ public class MainGame extends Game {
 
 
 
-		//this.setScreen(new MainLoadingScreen(this));
+		this.setScreen(new MainLoadingScreen(this));
+		//this.setScreen(new temp(this));
 
 
 	}

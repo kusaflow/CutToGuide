@@ -230,6 +230,9 @@ public class LevelNumberSelection implements Screen {
         AllVariables.batch.begin();
 
         AllVariables.batch.draw(bg,0,0,AllVariables.WIDTH, AllVariables.HEIGHT);
+        AllVariables.batch.draw(bg,1280,0,AllVariables.WIDTH, AllVariables.HEIGHT);
+        AllVariables.batch.draw(bg,2560,0,AllVariables.WIDTH, AllVariables.HEIGHT);
+
 
         //cross to go back
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);

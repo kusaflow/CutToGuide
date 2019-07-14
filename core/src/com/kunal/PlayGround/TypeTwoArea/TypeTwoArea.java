@@ -737,7 +737,7 @@ public class TypeTwoArea implements Screen {
         gameoverTexure.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 500+(cam.position.y -AllVariables.HEIGHT/2));
         menuTex.setPosition(470+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
         retryTex.setPosition(740+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
-        retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
+        retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 400+(cam.position.y -AllVariables.HEIGHT/2));
         ZoomOutCam.setPosition(-170+(cam.position.x - (AllVariables.WIDTH)/2), 100+(cam.position.y - AllVariables.HEIGHT/2));
 
 
@@ -901,8 +901,10 @@ public class TypeTwoArea implements Screen {
         if (levelCompleteCAmMove){
             if (cam.zoom>0)
                 cam.zoom-=0.1;
-            else
+            else {
+                //this.dispose();
                 game.setScreen(new LevelCompleted(game));
+            }
 
         }
 
@@ -974,6 +976,7 @@ public class TypeTwoArea implements Screen {
                             if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (790 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 355 * AllVariables.inpM && screenY < 424 * AllVariables.inpM) {
+                                dispose();
                                 ReDirectToTheLevel.Direct(game, true);
                             }
                         }
@@ -991,13 +994,15 @@ public class TypeTwoArea implements Screen {
                                 return true;
                             }
 
+                            //retry
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM){
+                                    && screenY > 375 * AllVariables.inpM && screenY < 475 * AllVariables.inpM){
+                                dispose();
                                 ReDirectToTheLevel.Direct(game, true);
                                 return true;
                             }
-
+                            //zoomout
                             if (screenX > (55 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (140 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM){
@@ -1094,48 +1099,6 @@ public class TypeTwoArea implements Screen {
                                 paused = true;
                                 pause.setAlpha(0);
                             }
-                        }
-
-                        if (paused){
-                            //resume
-                            if (screenX > (335 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (595 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-                                paused = false;
-                                if (!startBool)
-                                    pause.setAlpha(1);
-
-                            }
-
-                            //exit
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-                                game.setScreen(new LevelNumberSelection(game));
-
-                            }
-
-                            //hint 1
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-
-                            }
-
-                            //hint2
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-
-                            }
-
-                            //hint3
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-
-                            }
-
                         }
 
 
@@ -1238,11 +1201,53 @@ public class TypeTwoArea implements Screen {
                                         && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM) {
                                     //code to choosing body
-                                    Gdx.input.setInputProcessor(null);
+                                    dispose();
                                     game.setScreen(new ShapeChooser(game));
                                     return false;
                                 }
                             }
+                        }
+
+                        if (paused){
+                            //resume
+                            if (screenX > (335 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (595 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+                                paused = false;
+                                if (!startBool)
+                                    pause.setAlpha(1);
+
+                            }
+
+                            //exit
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+                                game.setScreen(new LevelNumberSelection(game));
+
+                            }
+
+                            //hint 1
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+
+                            }
+
+                            //hint2
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+
+                            }
+
+                            //hint3
+                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+
+                            }
+
                         }
 
 
@@ -1456,5 +1461,6 @@ public class TypeTwoArea implements Screen {
         sred.dispose();
         map.dispose();
         tmr.dispose();
+        Gdx.input.setInputProcessor(null);
     }
 }

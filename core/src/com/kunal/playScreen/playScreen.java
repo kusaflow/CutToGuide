@@ -7,12 +7,14 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.temp.temp;
 
 public class playScreen implements Screen {
@@ -25,6 +27,7 @@ public class playScreen implements Screen {
 
     float alpha = 0;
     Sprite playScreen;
+    VariablesForPlayArea variablesForPlayArea;
 
 
     public playScreen(MainGame game) {
@@ -37,6 +40,10 @@ public class playScreen implements Screen {
 
         port.apply();
         cam.update();
+
+        variablesForPlayArea = new VariablesForPlayArea();
+        variablesForPlayArea.setEndPoint(new Vector2(200,4000));
+        variablesForPlayArea.setLevelNumber(2);
 
         playScreen = new Sprite(new Texture(Gdx.files.internal("playScreen/playscreen.png")));
         playScreen.setPosition(0,0);
