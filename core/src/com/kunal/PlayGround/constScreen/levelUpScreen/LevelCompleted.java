@@ -67,22 +67,59 @@ public class LevelCompleted implements Screen {
         starTex = new Sprite(new Texture(Gdx.files.internal("AreaSelection/levelSelection/star.png")));
         starTex.setOriginCenter();
 
-        if (VariablesForPlayArea.starsGained == 0){
-            coinsEarned = 10;
-        }else if (VariablesForPlayArea.starsGained == 1){
-            coinsEarned = 40;
-        }else if (VariablesForPlayArea.starsGained == 2){
-            coinsEarned = 70;
-        }else if (VariablesForPlayArea.starsGained == 3){
-            coinsEarned = 100;
-        }
-
-        System.out.println(VariablesForPlayArea.starsGained);
+        setCoinEarned();
 
         AllVariables.inpM = (float) Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
     }
 
+    private void setCoinEarned(){
+        char[] data = file.readString().toCharArray();
+        String tempDAta="";
+
+        LinkedList<Short> stars = new LinkedList<Short>();
+        int i=0;
+
+        //collecting data
+        //area number
+        while (data[i] != '\n'){
+            i++;
+        }
+        i++;
+        tempDAta = "";
+        //unlocked level
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            i++;
+        }
+        i++;
+        tempDAta = "";
+        //total level
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            i++;
+        }
+        i++;
+        tempDAta = "";
+        //stars
+        while (data[i] != '\n'){
+            tempDAta+=data[i];
+            stars.add(new Short(tempDAta));
+            tempDAta = "";
+            i++;
+        }
+
+        coinsEarned = 10;
+        short t = stars.get(AllVariables.PresentLevelNumber-1);
+        if (VariablesForPlayArea.starsGained <= t){
+
+        }else {
+            short temp = (short) (VariablesForPlayArea.starsGained - t);
+            for (int i1 =0; i1<temp;i1++)
+                coinsEarned+=30;
+        }
+
+    }
     @Override
     public void show() {
 
