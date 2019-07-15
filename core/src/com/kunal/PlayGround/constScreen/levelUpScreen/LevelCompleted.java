@@ -222,11 +222,13 @@ public class LevelCompleted implements Screen {
         int i=0;
 
         //collecting data
+        //area number
         while (data[i] != '\n'){
             i++;
         }
         i++;
         tempDAta = "";
+        //unlocked level
         while (data[i] != '\n'){
             tempDAta+=data[i];
             i++;
@@ -234,6 +236,7 @@ public class LevelCompleted implements Screen {
         UnlockedLevel = new Short(tempDAta);
         i++;
         tempDAta = "";
+        //total level
         while (data[i] != '\n'){
             tempDAta+=data[i];
             i++;
@@ -241,6 +244,7 @@ public class LevelCompleted implements Screen {
         TotalLevel = new Short(tempDAta);
         i++;
         tempDAta = "";
+        //stars
         while (data[i] != '\n'){
             tempDAta+=data[i];
             stars.add(new Short(tempDAta));
@@ -252,7 +256,7 @@ public class LevelCompleted implements Screen {
         if (UnlockedLevel == AllVariables.PresentLevelNumber && UnlockedLevel != 30){
             UnlockedLevel++;
             tempDAta = AllVariables.PresentAreaNumber + "\n" + UnlockedLevel + "\n" + TotalLevel + "\n";
-            stars.set(UnlockedLevel-1,(short) VariablesForPlayArea.starsGained);
+            stars.set(UnlockedLevel-2,(short) VariablesForPlayArea.starsGained);
             for (int k=0; k< stars.size(); k++){
                 tempDAta+=String.valueOf(stars.get(k));
             }
