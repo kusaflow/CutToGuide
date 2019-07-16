@@ -1316,24 +1316,34 @@ public class TypeTwoArea implements Screen {
                             }
 
                             //hint 1
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-
+                            if (screenX > (400 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (470 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 245 * AllVariables.inpM && screenY < 315 * AllVariables.inpM) {
+                                if (!hintOneTaken) {
+                                    hintOneTaken = true;
+                                    writeToFile();
+                                }
                             }
 
                             //hint2
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+                            if (screenX > (610 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (690 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 245 * AllVariables.inpM && screenY < 315 * AllVariables.inpM) {
+                                if (!hintTwoTaken){
+                                    hintTwoTaken = true;
+                                    writeToFile();
+                                }
 
                             }
 
                             //hint3
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-
+                            if (screenX > (825 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (890 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 245 * AllVariables.inpM && screenY < 315 * AllVariables.inpM) {
+                                if (!hintThreeTaken) {
+                                    hintThreeTaken = true;
+                                    writeToFile();
+                                }
                             }
 
                         }
@@ -1414,12 +1424,16 @@ public class TypeTwoArea implements Screen {
                         if (keycode == Input.Keys.E){
                             System.out.println(posMap.getX() + "\t" + posMap.getY());
                         }
+                        if (keycode == Input.Keys.T){
+                            writeToFile();
+                        }
 
                         if (keycode == Input.Keys.P){
                             //AllVariables.BackWheel.applyForceToCenter(200,0, true);
                             VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
                             System.out.println("rage mode : " + VariablesForPlayArea.rageMode);
                         }
+
 
 
 
@@ -1503,8 +1517,61 @@ public class TypeTwoArea implements Screen {
         seat.setRotation((int) (AllVariables.seat.getAngle() * (180 / Math.PI)));
 
 
+    }
 
+    private void writeToFile(){
+        FileHandle file = Gdx.files.local("TextFilesToDelete/kusaCoin");
+        file.writeString(""+AllVariables.kusaCoin,false);
 
+        file =  Gdx.files.local("TextFilesToDelete/hints/area" + AllVariables.PresentAreaNumber+"/log");
+
+        char[] data = file.readString().toCharArray();
+        String writeableData="";
+        int counter = 0;
+
+        for (int i=1; i<AllVariables.PresentLevelNumber; i++){
+            for (int j=0; j<4; j++) {
+                writeableData += data[counter];
+                counter++;
+            }
+        }
+        if (hintOneTaken)
+            writeableData += '1';
+        else {
+            if (hintOnePurchased)
+                writeableData+='1';
+            else
+                writeableData += '0';
+        }
+
+        if (hintTwoTaken)
+            writeableData+='1';
+        else {
+            if (hintTwoPurchased)
+                writeableData+='1';
+            else
+                writeableData += '0';
+        }
+        if (hintThreeTaken)
+            writeableData+='1';
+        else {
+            if (hintThreePurchased)
+                writeableData+='1';
+            else
+                writeableData += '0';
+        }
+
+        counter+=3;
+        for (int i=AllVariables.PresentLevelNumber+1; i<=30; i++){
+            for (int j=0; j<4; j++) {
+                writeableData += data[counter];
+                counter++;
+            }
+        }
+
+        file.writeString(writeableData,false);
+
+        HintInit();
     }
 
     @Override
@@ -1513,7 +1580,6 @@ public class TypeTwoArea implements Screen {
         cam.update();
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
-
 
     }
 
