@@ -5,14 +5,11 @@ for hint 1 the cost should be 30 kusaCoin in which the only cutouts will be give
 
 for hint 2 the cost should be 60 kusaCoin in which outline where the all cutouts should be there is shown
     if player already have hint 1 it will cost the player 30 kusaCoin
+    if player already have hint 3 it will cost the player 30 kusaCoin	
 
-for hint 3 the level is skipped but the player will not get any coin
-    if player already have hint 1 it will cost player 50 kusaCoin
-    if player already have hint 2 it will cost player 20 kusaCoin
-
-
-
-
+for hint 3 the level is skipped but the player will not get any coin it will cost 90
+    if player already have hint 1 it will cost player 70 kusaCoin
+    if player already have hint 2 it will cost player 40 kusaCoin
 
 
 

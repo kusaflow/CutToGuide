@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -66,7 +67,9 @@ public class TypeTwoArea implements Screen {
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
             coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false, levelCompleteCAmMove,
-            hintOneTaken = false ,hintTwoTaken = true ,hintThreeTaken = false;
+            hintOneTaken = false ,hintTwoTaken = false ,hintThreeTaken = false,
+            hintOnePurchased =false, hintTwoPurchased =false, hintThreePurchased =false;
+    private Byte costOfH1=0, costOfH2=0, costOfH3=0;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
@@ -114,7 +117,7 @@ public class TypeTwoArea implements Screen {
     //bicycle maleup
     private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat;
 
-    private Texture bg1, bg2, bg3;
+    private Texture bg1, bg2, bg3, kusaCoin;
 
 
     public TypeTwoArea(MainGame game, Boolean reset) {
@@ -229,6 +232,8 @@ public class TypeTwoArea implements Screen {
         hintBox.setPosition(50,240);
         //hintBox.setSize(100*camscl, 100*camscl);
         hintBox.setAlpha(1f);
+
+        kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
 
 
 
@@ -363,10 +368,65 @@ public class TypeTwoArea implements Screen {
 
 
         VariablesForPlayArea.starsGained = 0;
-
+        HintInit();
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+    }
+
+    private void HintInit(){
+        FileHandle hintLogFile = Gdx.files.local("TextFilesToDelete/hints/area" + AllVariables.PresentAreaNumber+"/log");
+        char[] data = hintLogFile.readString().toCharArray();
+        int i=0;
+        for (int i1=1; i1< AllVariables.PresentLevelNumber; i1++){
+            while (data[i] != '\n')
+                i++;
+            i++;
+        }
+        if (data[i] == '1')
+            hintOnePurchased = true;
+        else
+            hintOnePurchased = false;
+        i++;
+
+        if (data[i] == '1')
+            hintTwoPurchased = true;
+        else
+            hintTwoPurchased = false;
+        i++;
+
+        if (data[i] == '1')
+            hintThreePurchased = true;
+        else
+            hintThreePurchased = false;
+        i++;
+
+        if (!hintOnePurchased && !hintTwoPurchased && !hintThreePurchased){
+            costOfH1 = 30;
+            costOfH2 = 60;
+            costOfH3 = 90;
+        }else {
+            if (!hintOnePurchased){
+                if ((hintTwoPurchased && hintThreePurchased) || (hintTwoPurchased) || (hintThreePurchased)) {
+                    costOfH1 = 10;
+                }
+            }
+            if (!hintTwoPurchased){
+                if (hintOnePurchased || hintThreePurchased)
+                    costOfH2 = 30;
+                if (hintOnePurchased && hintThreePurchased)
+                    costOfH2=20;
+            }
+            if (!hintThreePurchased){
+                if (hintOnePurchased)
+                    costOfH3 = 70;
+                if (hintTwoPurchased)
+                    costOfH3 = 50;
+                if (hintOnePurchased && hintTwoPurchased)
+                    costOfH3 = 30;
+            }
+        }
+
     }
 
     @Override
@@ -510,7 +570,7 @@ public class TypeTwoArea implements Screen {
             resume.draw(AllVariables.batch);
             exit.draw(AllVariables.batch);
 
-            hintBox.setPosition(400+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
+            hintBox.setPosition(300+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
             if (hintOneTaken)
                 hintBox.setColor(1,0,0,1);
             else
@@ -525,7 +585,7 @@ public class TypeTwoArea implements Screen {
             hintBox.draw(AllVariables.batch);
 
 
-            hintBox.setPosition(800+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
+            hintBox.setPosition(900+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
             if (hintThreeTaken)
                 hintBox.setColor(1,0,0,1);
             else
@@ -537,11 +597,28 @@ public class TypeTwoArea implements Screen {
                     560+(cam.position.x - AllVariables.WIDTH/2), 400+(cam.position.y -AllVariables.HEIGHT/2));
 
             Font.draw(AllVariables.batch,"1",
-                    440+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
+                    340+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
             Font.draw(AllVariables.batch,"2",
                     635+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
             Font.draw(AllVariables.batch,"3",
-                    835+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
+                    935+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
+
+            if (!hintOnePurchased) {
+                AllVariables.batch.draw(kusaCoin,280+(cam.position.x - AllVariables.WIDTH/2), 150+(cam.position.y -AllVariables.HEIGHT/2),50,50);
+                AllVariables.bitmapFont.draw(AllVariables.batch, "" + costOfH1,
+                        340 + (cam.position.x - AllVariables.WIDTH / 2), 180 + (cam.position.y - AllVariables.HEIGHT / 2));
+            }
+            if (!hintTwoPurchased) {
+                AllVariables.batch.draw(kusaCoin,580+(cam.position.x - AllVariables.WIDTH/2), 150+(cam.position.y -AllVariables.HEIGHT/2),50,50);
+                AllVariables.bitmapFont.draw(AllVariables.batch, "" + costOfH2,
+                        635 + (cam.position.x - AllVariables.WIDTH / 2), 180 + (cam.position.y - AllVariables.HEIGHT / 2));
+            }
+            if (!hintThreePurchased) {
+                AllVariables.batch.draw(kusaCoin,880+(cam.position.x - AllVariables.WIDTH/2), 150+(cam.position.y -AllVariables.HEIGHT/2),50,50);
+                AllVariables.bitmapFont.draw(AllVariables.batch, "" + costOfH3,
+                        935 + (cam.position.x - AllVariables.WIDTH / 2), 180 + (cam.position.y - AllVariables.HEIGHT / 2));
+            }
+
 
 
 
@@ -551,6 +628,16 @@ public class TypeTwoArea implements Screen {
             retryTex.draw(AllVariables.batch);
             menuTex.draw(AllVariables.batch);
         }
+
+        if (!startBool){
+            AllVariables.batch.draw(kusaCoin,450+(cam.position.x - AllVariables.WIDTH/2),
+                    770+(cam.position.y -AllVariables.HEIGHT/2),
+                    100,100);
+            Font.draw(AllVariables.batch,""+AllVariables.kusaCoin,
+                    550+(cam.position.x - AllVariables.WIDTH/2), 835+(cam.position.y -AllVariables.HEIGHT/2));
+
+        }
+
         AllVariables.batch.end();
 
     }
