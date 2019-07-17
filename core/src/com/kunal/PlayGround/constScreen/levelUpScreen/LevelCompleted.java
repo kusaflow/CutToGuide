@@ -109,14 +109,14 @@ public class LevelCompleted implements Screen {
             i++;
         }
 
-        coinsEarned = 10;
+        coinsEarned = 1;
         short t = stars.get(AllVariables.PresentLevelNumber-1);
         if (VariablesForPlayArea.starsGained <= t){
 
         }else {
             short temp = (short) (VariablesForPlayArea.starsGained - t);
             for (int i1 =0; i1<temp;i1++)
-                coinsEarned+=30;
+                coinsEarned+=33;
         }
 
     }
