@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -47,6 +46,8 @@ import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
+
+import java.util.LinkedList;
 
 
 public class TypeTwoArea implements Screen {
@@ -325,11 +326,6 @@ public class TypeTwoArea implements Screen {
         seat = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/seat.png")));
         seat.setSize(22,10);
         seat.setOriginCenter();
-
-
-
-
-
 
         //--------------------------------------------------------------------------------
 
@@ -1321,7 +1317,9 @@ public class TypeTwoArea implements Screen {
                                     && screenY > 245 * AllVariables.inpM && screenY < 315 * AllVariables.inpM) {
                                 if (!hintOneTaken) {
                                     hintOneTaken = true;
+                                    AllVariables.kusaCoin-=costOfH1;
                                     writeToFile();
+                                    //open Img
                                 }
                             }
 

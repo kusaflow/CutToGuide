@@ -113,7 +113,7 @@ public class TiledMapLoadingHelper {
         //area one ------------------------------------------------------
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
             cpos.x = 3290;
-            cpos.y = 500;
+            cpos.y = 700;
             return cpos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
