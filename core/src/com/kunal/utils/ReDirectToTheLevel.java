@@ -54,7 +54,7 @@ public class ReDirectToTheLevel {
         // area 1 ----------------------------------------------------------------
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==1){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
-            VariablesForPlayArea.endPoint.x = 700;
+            VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 5600;
 
             game.setScreen(new TypeTwoArea(game, restarted));

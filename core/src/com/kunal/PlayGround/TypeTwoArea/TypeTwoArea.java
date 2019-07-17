@@ -48,6 +48,7 @@ import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 
 public class TypeTwoArea implements Screen {
@@ -118,7 +119,9 @@ public class TypeTwoArea implements Screen {
     //bicycle maleup
     private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat;
 
-    private Texture bg1, bg2, bg3, kusaCoin;
+    private Texture bg1, bg2, kusaCoin;
+
+    private Boolean[] bgRandNumber = new Boolean[15];
 
 
     public TypeTwoArea(MainGame game, Boolean reset) {
@@ -174,9 +177,8 @@ public class TypeTwoArea implements Screen {
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
         //background
-        bg1 = new Texture(Gdx.files.internal("backGround/blue_desert.png"));
-        bg2 = new Texture(Gdx.files.internal("backGround/blue_grass.png"));
-        bg3 = new Texture(Gdx.files.internal("backGround/blue_shroom.png"));
+        bg1 = new Texture(Gdx.files.internal("backGround/colored_grass.png"));
+        bg2 = new Texture(Gdx.files.internal("backGround/colored_land.png"));
 
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/Brake.png")));
         Brake.setPosition(1050,140);
@@ -344,6 +346,13 @@ public class TypeTwoArea implements Screen {
         //VariablesForPlayArea.CutOutBodies.get(i).setTransform(VariablesForPlayArea.Sh_pos.get(i), VariablesForPlayArea.CutOutBodies.get(i).getAngle());
         //}
 
+
+        //random bg
+        Random r = new Random();
+        for (int i =0; i< 15; i++)
+            bgRandNumber[i] = r.nextBoolean();
+
+
         //powerUps
         if (!VariablesForPlayArea.powerUpList.isEmpty())
             powerups = new PowerUpMngr(reset);
@@ -435,7 +444,8 @@ public class TypeTwoArea implements Screen {
     public void render(float dt) {
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
         //Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
-        Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
+        //Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
+        Gdx.gl.glClearColor(1f,1f,1f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (!VariablesForPlayArea.gameOver)
             update(dt);
@@ -447,20 +457,22 @@ public class TypeTwoArea implements Screen {
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
-        AllVariables.batch.begin();
+        //bg
+        sred.begin(ShapeRenderer.ShapeType.Filled);
+        sred.setColor(.8117f, .9529f, .9647f, 1);
+        sred.rect(-1300*4,1236,20000,1900);
+        sred.setColor(.6235294118f, .8549019608f, .26666667f, 1);
+        sred.rect(-1300*4,-2000,20000,2550);
+        sred.end();
 
-/*
-        AllVariables.batch.draw(bg1,0,512);
-        AllVariables.batch.draw(bg2,-1024,512);
-        AllVariables.batch.draw(bg2,1024,512);
-        AllVariables.batch.draw(bg3,2048,512);
-        AllVariables.batch.draw(bg1,3072,512);
-        AllVariables.batch.draw(bg3,4096,512);
-        AllVariables.batch.draw(bg2,5120,512);
-        AllVariables.batch.draw(bg2,6144,512);
-        AllVariables.batch.draw(bg1,7168,512);
-        AllVariables.batch.draw(bg3,8192,512);
-*/
+        AllVariables.batch.begin();
+        for (int i =0, xbg =-1300*4 ; i< 15; i++, xbg+=1024) {
+            if(bgRandNumber[i])
+                AllVariables.batch.draw(bg1,xbg,512);
+            else
+                AllVariables.batch.draw(bg2,xbg,512);
+        }
+
 
         //things at bg of the of the tiled map goes here
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())

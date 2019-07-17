@@ -221,6 +221,7 @@ public class LevelCompleted implements Screen {
                     && Gdx.input.getY() > 470 * AllVariables.inpM && Gdx.input.getY() < 600 * AllVariables.inpM) {
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
+                VariablesForPlayArea.flush();
                 game.setScreen(new LevelNumberSelection(game));
             }
             //retry
@@ -241,6 +242,7 @@ public class LevelCompleted implements Screen {
                     if (AllVariables.PresentLevelNumber < 30)
                         AllVariables.PresentLevelNumber++;
                 }
+                VariablesForPlayArea.flush();
                 ReDirectToTheLevel.Direct(game, false);
             }
         }
