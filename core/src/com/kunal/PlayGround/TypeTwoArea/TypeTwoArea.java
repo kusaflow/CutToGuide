@@ -279,6 +279,7 @@ public class TypeTwoArea implements Screen {
         retryTex = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
 
         retryWhenStarted = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
+        retryWhenStarted.setColor(0,0,0,1);
         ZoomOutCam = new Sprite(new Texture(Gdx.files.internal("playArea/Zoomout.png")));
         ZoomOutCam.setSize(100,100);
 
@@ -483,7 +484,7 @@ public class TypeTwoArea implements Screen {
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
-        sred.setColor(1, 1f, 1, 1);
+        sred.setColor(0, 0f, 0, 1);
         //sred.setColor(.1f,.1f,.1f,1);
 
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
