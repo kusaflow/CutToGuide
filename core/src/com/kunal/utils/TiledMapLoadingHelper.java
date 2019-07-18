@@ -94,8 +94,8 @@ public class TiledMapLoadingHelper {
             return cpos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
-            cpos.x = 4925;
-            cpos.y = 615;
+            cpos.x = 1590;
+            cpos.y = 800;
             return cpos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
@@ -122,8 +122,8 @@ public class TiledMapLoadingHelper {
             return cpos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
-            cpos.x = 5510;
-            cpos.y = 610;
+            cpos.x = 2070;
+            cpos.y = 750;
             return cpos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
@@ -150,8 +150,8 @@ public class TiledMapLoadingHelper {
             return cpos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
-            cpos.x = 5510;
-            cpos.y = 610;
+            cpos.x = 5110;
+            cpos.y = 700;
             return cpos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
