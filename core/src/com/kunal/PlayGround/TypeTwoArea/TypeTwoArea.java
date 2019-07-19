@@ -180,7 +180,6 @@ public class TypeTwoArea implements Screen {
         bg1 = new Sprite(new Texture(Gdx.files.internal("backGround/colored_grass.png")));
         bg2 = new Sprite(new Texture(Gdx.files.internal("backGround/colored_land.png")));
         //bg1.setAlpha(0.5f);
-        bg2.setColor(.5f,.5f,0.5f,1);
 
         //bg2.setAlpha(0.5f);
 
@@ -664,7 +663,7 @@ public class TypeTwoArea implements Screen {
 
 
     private void update(float dt){
-        System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
+       // System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         //world.step((1)/(1/dt), 6,2);
 
