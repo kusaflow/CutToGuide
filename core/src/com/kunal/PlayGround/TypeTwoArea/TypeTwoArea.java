@@ -64,7 +64,7 @@ public class TypeTwoArea implements Screen {
 
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex,
-            retryWhenStarted, ZoomOutCam, hintBox;
+            retryWhenStarted, ZoomOutCam, hintBox, rageYellow;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
@@ -117,9 +117,9 @@ public class TypeTwoArea implements Screen {
     private DirectionReverse directionReverse;
 
     //bicycle maleup
-    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat;
+    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat, bg1, bg2;
 
-    private Texture bg1, bg2, kusaCoin;
+    private Texture kusaCoin;
 
     private Boolean[] bgRandNumber = new Boolean[15];
 
@@ -177,8 +177,12 @@ public class TypeTwoArea implements Screen {
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
         //background
-        bg1 = new Texture(Gdx.files.internal("backGround/colored_grass.png"));
-        bg2 = new Texture(Gdx.files.internal("backGround/colored_land.png"));
+        bg1 = new Sprite(new Texture(Gdx.files.internal("backGround/colored_grass.png")));
+        bg2 = new Sprite(new Texture(Gdx.files.internal("backGround/colored_land.png")));
+        //bg1.setAlpha(0.5f);
+        bg2.setColor(.5f,.5f,0.5f,1);
+
+        //bg2.setAlpha(0.5f);
 
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/Brake.png")));
         Brake.setPosition(1050,140);
@@ -330,6 +334,9 @@ public class TypeTwoArea implements Screen {
         seat.setSize(22,10);
         seat.setOriginCenter();
 
+        rageYellow = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar14.png")));
+        rageYellow.setColor(Color.RED);
+
         //--------------------------------------------------------------------------------
 
 
@@ -445,8 +452,8 @@ public class TypeTwoArea implements Screen {
     public void render(float dt) {
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
         //Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
-        //Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
-        Gdx.gl.glClearColor(1f,1f,1f,1f);
+        Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
+        //Gdx.gl.glClearColor(1f,1f,1f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (!VariablesForPlayArea.gameOver)
             update(dt);
@@ -460,18 +467,23 @@ public class TypeTwoArea implements Screen {
 
         //bg
         sred.begin(ShapeRenderer.ShapeType.Filled);
-        sred.setColor(.8117f, .9529f, .9647f, 1);
+        sred.setColor(.8117f, .9529f, .9647f, 1f);
         sred.rect(-1300*4,1236,20000,1900);
-        sred.setColor(.6235294118f, .8549019608f, .26666667f, 1);
+
+        sred.setColor(.6235294118f, .8549019608f, .26666667f, 1f);
         sred.rect(-1300*4,-2000,20000,2550);
         sred.end();
 
         AllVariables.batch.begin();
         for (int i =0, xbg =-1300*4 ; i< 15; i++, xbg+=1024) {
-            if(bgRandNumber[i])
-                AllVariables.batch.draw(bg1,xbg,512);
-            else
-                AllVariables.batch.draw(bg2,xbg,512);
+            if(bgRandNumber[i]) {
+                bg1.setPosition(xbg, 512);
+                bg1.draw(AllVariables.batch);
+            }
+            else {
+                bg2.setPosition(xbg, 512);
+                bg2.draw(AllVariables.batch);
+            }
         }
 
 
@@ -546,6 +558,15 @@ public class TypeTwoArea implements Screen {
         rod6.draw(AllVariables.batch);
         handle.draw(AllVariables.batch);
         seat.draw(AllVariables.batch);
+
+        if (false) {
+            rageYellow.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM, AllVariables.rod1.getPosition().y * AllVariables.PPM);
+            rageYellow.setSize(200, 100);
+            rageYellow.setRotation((float) ((AllVariables.rod1.getAngle() * (180 / Math.PI))));
+            rageYellow.setOriginCenter();
+            rageYellow.draw(AllVariables.batch);
+
+        }
         //---------------------
 
         Brake.draw(AllVariables.batch);
@@ -653,7 +674,7 @@ public class TypeTwoArea implements Screen {
 
 
     private void update(float dt){
-        //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
+        System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
         //world.step((1)/(1/dt), 6,2);
 
@@ -836,6 +857,11 @@ public class TypeTwoArea implements Screen {
         //when started retry
         retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         ZoomOutCam.setPosition(-170+(cam.position.x - (AllVariables.WIDTH)/2), 100+(cam.position.y - AllVariables.HEIGHT/2));
+
+        if (AllVariables.BackWheel.getLinearVelocity().x > 23)
+            VariablesForPlayArea.rageMode = true;
+        else
+            VariablesForPlayArea.rageMode = false;
 
 
         //to zoom out the cam
@@ -1483,11 +1509,22 @@ public class TypeTwoArea implements Screen {
         frontTyre.setPosition(AllVariables.FrontWheel.getPosition().x * AllVariables.PPM - 25,
                 AllVariables.FrontWheel.getPosition().y * AllVariables.PPM - 25);
         frontTyre.setRotation((int) (AllVariables.FrontWheel.getAngle() * (180 / Math.PI)));
+        if (VariablesForPlayArea.rageMode)
+            frontTyre.setSize(70,70);
+        else
+            frontTyre.setSize(50,50);
+        frontTyre.setOriginCenter();
+
 
 
         backtyre.setPosition(AllVariables.BackWheel.getPosition().x * AllVariables.PPM - 25,
                 AllVariables.BackWheel.getPosition().y * AllVariables.PPM - 25);
         backtyre.setRotation((int) (AllVariables.BackWheel.getAngle() * (180 / Math.PI)));
+        if (VariablesForPlayArea.rageMode)
+            backtyre.setSize(70,70);
+        else
+            backtyre.setSize(50,50);
+        backtyre.setOriginCenter();
 
 
 
@@ -1626,6 +1663,7 @@ public class TypeTwoArea implements Screen {
         ShapeRotACW.getTexture().dispose();
         ShapeRotCW.getTexture().dispose();
         per45degRot.getTexture().dispose();
+        rageYellow.getTexture().dispose();
         sred.dispose();
         map.dispose();
         tmr.dispose();

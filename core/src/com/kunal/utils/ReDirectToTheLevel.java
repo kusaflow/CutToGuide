@@ -56,7 +56,14 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 5600;
+            if (!restarted) {
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = true;
+                speedctlrvar.x = 1820;
+                speedctlrvar.y = 520;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
+            }
             game.setScreen(new TypeTwoArea(game, restarted));
         }
 

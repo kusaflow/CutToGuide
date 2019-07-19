@@ -28,7 +28,7 @@ public class SpeedController {
                         if ((AllVariables.FrontWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40) {
                             //====================================================
                             if (VariablesForPlayArea.speedCtrlList.get(i).SpeedIncrementor)
-                                AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 10), true);
+                                AllVariables.BackWheel.applyForceToCenter(new Vector2(250, 10), true);
                             else
                                 AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
 
@@ -42,7 +42,7 @@ public class SpeedController {
                         if ((AllVariables.BackWheel.getPosition().y * AllVariables.PPM) - (25) <= VariablesForPlayArea.speedCtrlList.get(i).y + 40) {
                             //====================================================
                             if (VariablesForPlayArea.speedCtrlList.get(i).SpeedIncrementor)
-                                AllVariables.BackWheel.applyForceToCenter(new Vector2(200, 10), true);
+                                AllVariables.BackWheel.applyForceToCenter(new Vector2(250, 10), true);
                             else
                                 AllVariables.BackWheel.applyForceToCenter(new Vector2(AllVariables.BackWheel.getLinearVelocity().x * (-20), 0), true);
 
