@@ -64,7 +64,7 @@ public class TypeTwoArea implements Screen {
 
     private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex,
-            retryWhenStarted, ZoomOutCam, hintBox, rageYellow;
+            retryWhenStarted, ZoomOutCam, hintBox;
     private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
@@ -334,9 +334,6 @@ public class TypeTwoArea implements Screen {
         seat.setSize(22,10);
         seat.setOriginCenter();
 
-        rageYellow = new Sprite(new Texture(Gdx.files.internal("playArea/BicycleMakeUp/bars/bar14.png")));
-        rageYellow.setColor(Color.RED);
-
         //--------------------------------------------------------------------------------
 
 
@@ -559,14 +556,7 @@ public class TypeTwoArea implements Screen {
         handle.draw(AllVariables.batch);
         seat.draw(AllVariables.batch);
 
-        if (false) {
-            rageYellow.setPosition(AllVariables.rod1.getPosition().x * AllVariables.PPM, AllVariables.rod1.getPosition().y * AllVariables.PPM);
-            rageYellow.setSize(200, 100);
-            rageYellow.setRotation((float) ((AllVariables.rod1.getAngle() * (180 / Math.PI))));
-            rageYellow.setOriginCenter();
-            rageYellow.draw(AllVariables.batch);
 
-        }
         //---------------------
 
         Brake.draw(AllVariables.batch);
@@ -858,7 +848,7 @@ public class TypeTwoArea implements Screen {
         retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         ZoomOutCam.setPosition(-170+(cam.position.x - (AllVariables.WIDTH)/2), 100+(cam.position.y - AllVariables.HEIGHT/2));
 
-        if (AllVariables.BackWheel.getLinearVelocity().x > 23)
+        if (AllVariables.BackWheel.getLinearVelocity().x > 23.5f)
             VariablesForPlayArea.rageMode = true;
         else
             VariablesForPlayArea.rageMode = false;
@@ -1663,7 +1653,6 @@ public class TypeTwoArea implements Screen {
         ShapeRotACW.getTexture().dispose();
         ShapeRotCW.getTexture().dispose();
         per45degRot.getTexture().dispose();
-        rageYellow.getTexture().dispose();
         sred.dispose();
         map.dispose();
         tmr.dispose();
