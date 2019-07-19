@@ -105,11 +105,20 @@ public class ReDirectToTheLevel {
 
 
                 halfSawVariables = new HalfSawVariables();
-                halfSawVariables.xdestination = 1700; //-100 for 2
+                halfSawVariables.xdestination = 1900; //-100 for 2
                 halfSawVariables.oneisSelected = true;
-                halfSawVariables.xorigin = 1700;
+                halfSawVariables.xorigin = 1600;
                 halfSawVariables.yorigin = 512;
                 VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1900;
+                fullSawVariables.ypos = 572;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
             }
 

@@ -849,8 +849,9 @@ public class TypeTwoArea implements Screen {
 
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
 
-        if (AllVariables.BackWheel.getLinearVelocity().x >= 15f) {
-            AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.08f) ,
+        if (AllVariables.PresentLevelNumber >= 6)
+        if (AllVariables.BackWheel.getLinearVelocity().x >= 12f) {
+            AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.03f) ,
                     AllVariables.BackWheel.getLinearVelocity().y);
             if (AllVariables.BackWheel.getLinearVelocity().x >= 15f)
                 VariablesForPlayArea.rageMode = true;

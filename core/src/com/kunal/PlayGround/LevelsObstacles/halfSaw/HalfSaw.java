@@ -17,7 +17,7 @@ public class HalfSaw {
         for (int i=0; i<VariablesForPlayArea.halfSawList.size(); i++) {
             VariablesForPlayArea.halfSawList.get(i).xpos = VariablesForPlayArea.halfSawList.get(i).xorigin;
             VariablesForPlayArea.halfSawList.get(i).ypos = VariablesForPlayArea.halfSawList.get(i).yorigin;
-            VariablesForPlayArea.halfSawList.get(i).dead = true;
+            VariablesForPlayArea.halfSawList.get(i).dead = false;
         }
     }
 
