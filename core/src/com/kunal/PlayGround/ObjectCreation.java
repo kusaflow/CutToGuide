@@ -35,7 +35,7 @@ public class ObjectCreation {
 
         //--------------------Bicycle Parts
         AllVariables.BackWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(Hor + 38,verticalElevation + 25),
-                25,0.5f, 0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes | AllVariables.Bit_Tool| AllVariables.Bit_land));
+                25,0.5f, 1f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes | AllVariables.Bit_Tool| AllVariables.Bit_land));
 
 
         AllVariables.rod3 = BodyGenerator.BodyAssemble(world, false, "Bicycle", new Vector2(Hor + 80, verticalElevation + 44),
@@ -151,7 +151,7 @@ public class ObjectCreation {
 
 
         AllVariables.FrontWheel = BodyGenerator.CircleBody(world, false, "Bicycle", new Vector2(Hor + 160,verticalElevation + 25),
-                25, 0.5f,0.8f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land| AllVariables.Bit_Tool));
+                25, 0.5f,1f, AllVariables.Bit_Bicycle, (short)(AllVariables.Bit_enimes|AllVariables.Bit_land| AllVariables.Bit_Tool));
 
         //frontwheel and rod6
         rdef.bodyA = AllVariables.rod6;

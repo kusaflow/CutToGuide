@@ -34,7 +34,7 @@ public class TiledMapLoadingHelper {
             return 11;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
-            return 2;
+            return 1;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
             return 3;
@@ -56,7 +56,7 @@ public class TiledMapLoadingHelper {
             return pos;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
-            pos.x = 6145;
+            pos.x = 6445;
             pos.y = 510;
             return pos;
         }

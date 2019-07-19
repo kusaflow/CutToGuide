@@ -56,14 +56,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 5600;
-            if (!restarted) {
-                speedctlrvar = new SpeedControllerVariables();
-                speedctlrvar.SpeedIncrementor = true;
-                speedctlrvar.x = 1820;
-                speedctlrvar.y = 520;
-                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
-            }
             game.setScreen(new TypeTwoArea(game, restarted));
         }
 
@@ -106,9 +99,17 @@ public class ReDirectToTheLevel {
 
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = true;
-                speedctlrvar.x = 1820;
+                speedctlrvar.x = 1320;
                 speedctlrvar.y = 520;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+
+                halfSawVariables = new HalfSawVariables();
+                halfSawVariables.xdestination = 1700; //-100 for 2
+                halfSawVariables.oneisSelected = true;
+                halfSawVariables.xorigin = 1700;
+                halfSawVariables.yorigin = 512;
+                VariablesForPlayArea.halfSawList.add(halfSawVariables);
 
             }
 
@@ -117,6 +118,11 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
+
+            if (!restarted){
+
+            }
+
             game.setScreen(new TypeTwoArea(game, restarted));
         }
 

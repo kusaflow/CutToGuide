@@ -847,9 +847,14 @@ public class TypeTwoArea implements Screen {
         retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         ZoomOutCam.setPosition(-170+(cam.position.x - (AllVariables.WIDTH)/2), 100+(cam.position.y - AllVariables.HEIGHT/2));
 
-        if (AllVariables.BackWheel.getLinearVelocity().x > 23.5f)
-            VariablesForPlayArea.rageMode = true;
-        else
+        //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
+
+        if (AllVariables.BackWheel.getLinearVelocity().x >= 15f) {
+            AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.08f) ,
+                    AllVariables.BackWheel.getLinearVelocity().y);
+            if (AllVariables.BackWheel.getLinearVelocity().x >= 15f)
+                VariablesForPlayArea.rageMode = true;
+        } else
             VariablesForPlayArea.rageMode = false;
 
 
