@@ -237,6 +237,7 @@ public class TypeTwoArea implements Screen {
         hintBox= new Sprite(new Texture(Gdx.files.internal("playArea/hint.png")));
         hintBox.setPosition(50,240);
         //hintBox.setSize(100*camscl, 100*camscl);
+
         hintBox.setAlpha(1f);
 
         kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
