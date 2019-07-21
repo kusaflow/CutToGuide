@@ -107,11 +107,27 @@ public class ReDirectToTheLevel {
 
             game.setScreen(new TypeTwoArea(game, restarted));
         }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
-            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level7.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
 
-            if (!restarted){
+            if (!restarted) {
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 950;
+                speedctlrvar.y = 520;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+
 
             }
 
