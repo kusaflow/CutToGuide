@@ -94,31 +94,14 @@ public class ReDirectToTheLevel {
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==6){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level6.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
-            VariablesForPlayArea.endPoint.y = 6000;
+            VariablesForPlayArea.endPoint.y = 6500;
             if (!restarted) {
 
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = true;
-                speedctlrvar.x = 1320;
+                speedctlrvar.x = 720;
                 speedctlrvar.y = 520;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
-
-
-                halfSawVariables = new HalfSawVariables();
-                halfSawVariables.xdestination = 1900; //-100 for 2
-                halfSawVariables.oneisSelected = true;
-                halfSawVariables.xorigin = 1600;
-                halfSawVariables.yorigin = 512;
-                VariablesForPlayArea.halfSawList.add(halfSawVariables);
-
-                fullSawVariables = new FullSawVariables();
-                fullSawVariables.xpos = 1900;
-                fullSawVariables.ypos = 572;
-                fullSawVariables.size = 128;
-                fullSawVariables.forwardDirection = true;
-                fullSawVariables.intialDirectionForward = true;
-
-                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
             }
 
