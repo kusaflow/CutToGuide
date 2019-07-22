@@ -78,7 +78,7 @@ public class FullSaw {
                                     if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.speedCtrlList.get(j).y + 40) {
                                         //====================================================
                                         if (VariablesForPlayArea.speedCtrlList.get(j).SpeedIncrementor)
-                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(400, 0), true);
+                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(600, 0), true);
                                         else
                                             VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-30), 0), true);
                                         VariablesForPlayArea.speedCtrlList.get(j).active = false;
@@ -94,7 +94,7 @@ public class FullSaw {
                                     if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.speedCtrlList.get(j).y + 40) {
                                         //====================================================
                                         if (VariablesForPlayArea.speedCtrlList.get(j).SpeedIncrementor)
-                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(-400, 0), true);
+                                            VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(-600, 0), true);
                                         else
                                             VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-30), 0), true);
                                         VariablesForPlayArea.speedCtrlList.get(j).active = false;
@@ -177,7 +177,7 @@ public class FullSaw {
                                         if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.powerUpList.get(j).y + 40) {
                                             //====================================================
                                             if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 1)
-                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(400, 0), true);
+                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(600, 0), true);
                                             else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 2)
                                                 VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-20), 0), true);
                                             else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 4)
@@ -196,7 +196,7 @@ public class FullSaw {
                                         if ((VariablesForPlayArea.fullSawList.get(i).body.getPosition().y * AllVariables.PPM) - (55) <= VariablesForPlayArea.powerUpList.get(j).y + 40) {
                                             //====================================================
                                             if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 1)
-                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(-400, 0), true);
+                                                VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(-600, 0), true);
                                             else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 2)
                                                 VariablesForPlayArea.fullSawList.get(i).body.applyForceToCenter(new Vector2(VariablesForPlayArea.fullSawList.get(i).body.getLinearVelocity().x * (-30), 0), true);
                                             else if (VariablesForPlayArea.powerUpList.get(j).TypeOfPower == 4)
