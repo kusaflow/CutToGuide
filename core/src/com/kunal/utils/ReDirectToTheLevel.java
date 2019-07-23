@@ -17,7 +17,6 @@ import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedController;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedControllerVariables;
-import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
@@ -133,6 +132,36 @@ public class ReDirectToTheLevel {
                 fullSawVariables.size = 128;
                 fullSawVariables.forwardDirection = true;
                 fullSawVariables.intialDirectionForward = true;
+
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==8){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level8.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = true;
+                speedctlrvar.x = 1000;
+                speedctlrvar.y = 520;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1400;
+                fullSawVariables.ypos = 572;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
 
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
