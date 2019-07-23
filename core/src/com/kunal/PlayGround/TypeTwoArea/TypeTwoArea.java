@@ -776,6 +776,7 @@ public class TypeTwoArea implements Screen {
         //==-------------------------------------------------------------------------------------
 
 
+        System.out.println(cam.position.x);
 
         coin1.setAlpha(1-coin1Alpha);
         coin2.setAlpha(1-coin2Alpha);
@@ -785,6 +786,9 @@ public class TypeTwoArea implements Screen {
             cam.position.set(VariablesForPlayArea.camposX, 600, cam.position.z);
         else {
             VariablesForPlayArea.camposX = (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM;
+            cam.position.set(VariablesForPlayArea.camposX, 600f, cam.position.z);
+            if (cam.position.x<-4000)
+                VariablesForPlayArea.camposX = -4000;
             cam.position.set(VariablesForPlayArea.camposX, 600f, cam.position.z);
         }
 
@@ -851,10 +855,10 @@ public class TypeTwoArea implements Screen {
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
 
         if (AllVariables.PresentLevelNumber >= 6)
-        if (AllVariables.BackWheel.getLinearVelocity().x >= 15f) {
+        if (AllVariables.BackWheel.getLinearVelocity().x >= 20f) {
             AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.01f) ,
                     AllVariables.BackWheel.getLinearVelocity().y);
-            if (AllVariables.BackWheel.getLinearVelocity().x >= 20f)
+            if (AllVariables.BackWheel.getLinearVelocity().x >= 22f)
                 VariablesForPlayArea.rageMode = true;
         } else
             VariablesForPlayArea.rageMode = false;
