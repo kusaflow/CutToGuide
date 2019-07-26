@@ -9,5 +9,6 @@ public class FullSawVariables {
     public Boolean forwardDirection =true;
     public Boolean intialDirectionForward = true;
     public Body body;
+    public Boolean initialdead = false;
     public Boolean dead = false;
 }

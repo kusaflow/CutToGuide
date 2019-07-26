@@ -14,6 +14,6 @@ public class PowerUpInInventoryVariables {
     public Texture texture;
     public short TypeOfPower;
     public Boolean active = true;
-    public short x = -550;
-    public short y = -550;
+    public short x = -1550;
+    public short y = -5550;
 }

@@ -22,7 +22,10 @@ public class FullSaw {
                     new Vector2(VariablesForPlayArea.fullSawList.get(i).xpos, VariablesForPlayArea.fullSawList.get(i).ypos),
                     VariablesForPlayArea.fullSawList.get(i).size/2.3f,0.5f, 0.6f,
                     AllVariables.Bit_enimes,(short)(AllVariables.Bit_enimes|AllVariables.Bit_Bicycle|AllVariables.Bit_land|AllVariables.Bit_Tool));
-            VariablesForPlayArea.fullSawList.get(i).dead = false;
+            if (VariablesForPlayArea.fullSawList.get(i).initialdead)
+                VariablesForPlayArea.fullSawList.get(i).dead = false;
+            else
+                VariablesForPlayArea.fullSawList.get(i).dead = true;
             if (VariablesForPlayArea.fullSawList.get(i).intialDirectionForward)
                 VariablesForPlayArea.fullSawList.get(i).forwardDirection = true;
             else

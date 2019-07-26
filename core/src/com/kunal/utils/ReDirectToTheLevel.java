@@ -140,7 +140,7 @@ public class ReDirectToTheLevel {
 
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = true;
-                speedctlrvar.x = 1000;
+                speedctlrvar.x = 900;
                 speedctlrvar.y = 520;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
@@ -148,13 +148,26 @@ public class ReDirectToTheLevel {
                 powerupVar.TypeOfPower = 1;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
 
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
                 fullSawVariables = new FullSawVariables();
-                fullSawVariables.xpos = 1400;
+                fullSawVariables.xpos = 1200;
                 fullSawVariables.ypos = 572;
                 fullSawVariables.size = 128;
                 fullSawVariables.forwardDirection = false;
                 fullSawVariables.intialDirectionForward = false;
-                //VariablesForPlayArea.fullSawList.add(fullSawVariables);
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1200;
+                fullSawVariables.ypos = 572;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
 
             }
