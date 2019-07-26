@@ -118,14 +118,6 @@ public class ReDirectToTheLevel {
                 speedctlrvar.y = 520;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 1;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 2;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
                 fullSawVariables = new FullSawVariables();
                 fullSawVariables.xpos = 1000;
                 fullSawVariables.ypos = 572;

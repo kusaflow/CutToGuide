@@ -776,7 +776,7 @@ public class TypeTwoArea implements Screen {
         //==-------------------------------------------------------------------------------------
 
 
-        System.out.println(cam.position.x);
+        //System.out.println(cam.position.x);
 
         coin1.setAlpha(1-coin1Alpha);
         coin2.setAlpha(1-coin2Alpha);
@@ -855,10 +855,15 @@ public class TypeTwoArea implements Screen {
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
 
         if (AllVariables.PresentLevelNumber >= 6)
-        if (AllVariables.BackWheel.getLinearVelocity().x >= 20f) {
-            AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.01f) ,
-                    AllVariables.BackWheel.getLinearVelocity().y);
-            if (AllVariables.BackWheel.getLinearVelocity().x >= 22f)
+        if (AllVariables.BackWheel.getLinearVelocity().x >= 17f) {
+            if (AllVariables.BackWheel.getLinearVelocity().x>20)
+                AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.05f) ,
+                        AllVariables.BackWheel.getLinearVelocity().y);
+            else
+                AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.02f) ,
+                        AllVariables.BackWheel.getLinearVelocity().y);
+
+            if (AllVariables.BackWheel.getLinearVelocity().x >= 18f)
                 VariablesForPlayArea.rageMode = true;
         } else
             VariablesForPlayArea.rageMode = false;
@@ -1347,6 +1352,7 @@ public class TypeTwoArea implements Screen {
                                     && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
                                 game.setScreen(new LevelNumberSelection(game));
+                                VariablesForPlayArea.flush();
 
                             }
 
