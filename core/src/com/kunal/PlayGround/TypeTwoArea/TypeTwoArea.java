@@ -481,6 +481,9 @@ public class TypeTwoArea implements Screen {
                 bg2.setPosition(xbg, 512);
                 bg2.draw(AllVariables.batch);
             }
+            if (xbg==-80){
+                i = 0;
+            }
         }
 
 
