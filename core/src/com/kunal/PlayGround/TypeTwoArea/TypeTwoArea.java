@@ -532,20 +532,10 @@ public class TypeTwoArea implements Screen {
 
 
         AllVariables.batch.begin();
-        if (!VariablesForPlayArea.jumperList.isEmpty())
-            jumper.render();
         if (!VariablesForPlayArea.halfSawList.isEmpty())
             halfSaw.render();
         if (!VariablesForPlayArea.fullSawList.isEmpty())
             fullSaw.render();
-        if (!VariablesForPlayArea.speedCtrlList.isEmpty())
-            speedController.render();
-        if (!VariablesForPlayArea.dirRevList.isEmpty())
-            directionReverse.render();
-
-
-        if (!VariablesForPlayArea.powerUpList.isEmpty())
-            powerups.render();
 
         //bicycle
         frontTyre.draw(AllVariables.batch);
@@ -586,6 +576,16 @@ public class TypeTwoArea implements Screen {
         coin1.draw(AllVariables.batch);
         coin2.draw(AllVariables.batch);
         coin3.draw(AllVariables.batch);
+
+        if (!VariablesForPlayArea.jumperList.isEmpty())
+            jumper.render();
+        if (!VariablesForPlayArea.speedCtrlList.isEmpty())
+            speedController.render();
+        if (!VariablesForPlayArea.dirRevList.isEmpty())
+            directionReverse.render();
+        if (!VariablesForPlayArea.powerUpList.isEmpty())
+            powerups.render();
+
 
         //this should be at last
         if (paused) {
