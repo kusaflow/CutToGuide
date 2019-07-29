@@ -859,8 +859,8 @@ public class TypeTwoArea implements Screen {
 
         if (AllVariables.PresentLevelNumber >= 6)
         if (AllVariables.BackWheel.getLinearVelocity().x >= 17f) {
-            if (AllVariables.BackWheel.getLinearVelocity().x>20)
-                AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.05f) ,
+            if (AllVariables.BackWheel.getLinearVelocity().x>20.5f)
+                AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.04f) ,
                         AllVariables.BackWheel.getLinearVelocity().y);
             else
                 AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.02f) ,

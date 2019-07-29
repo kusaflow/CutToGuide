@@ -172,7 +172,7 @@ public class ReDirectToTheLevel {
 
 
                 fullSawVariables = new FullSawVariables();
-                fullSawVariables.xpos = 7968;
+                fullSawVariables.xpos = 8050;
                 fullSawVariables.ypos = 500;
                 fullSawVariables.size = 128;
                 fullSawVariables.forwardDirection = false;
@@ -209,6 +209,30 @@ public class ReDirectToTheLevel {
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
 
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==9){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level9.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+                halfSawVariables = new HalfSawVariables();
+                halfSawVariables.xdestination = 2400;
+                halfSawVariables.oneisSelected = true;
+                halfSawVariables.xorigin = 1700;
+                halfSawVariables.yorigin = 512;
+                //VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
