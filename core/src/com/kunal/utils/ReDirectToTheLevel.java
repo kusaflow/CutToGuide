@@ -223,7 +223,7 @@ public class ReDirectToTheLevel {
                 halfSawVariables.oneisSelected = true;
                 halfSawVariables.xorigin = 1700;
                 halfSawVariables.yorigin = 512;
-                //VariablesForPlayArea.halfSawList.add(halfSawVariables);
+                VariablesForPlayArea.halfSawList.add(halfSawVariables);
 
 
                 powerupVar = new PowerUpInInventoryVariables();
@@ -231,8 +231,30 @@ public class ReDirectToTheLevel {
                 VariablesForPlayArea.powerUpList.add(powerupVar);
 
                 powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 1;
+                powerupVar.TypeOfPower = 4;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 5000;
+                fullSawVariables.ypos = 500;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 2000;
+                fullSawVariables.ypos = 500;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+
+
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
