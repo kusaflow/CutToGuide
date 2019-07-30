@@ -258,6 +258,31 @@ public class ReDirectToTheLevel {
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==10){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level10.tmx";
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level10.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1500;
+                fullSawVariables.ypos = 500;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                dirRev = new DirectionReverseVariables();
+                dirRev.x = 300;
+                dirRev.y = 525;
+                dirRev.active = true;
+                VariablesForPlayArea.dirRevList.add(dirRev);
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
 
