@@ -274,11 +274,77 @@ public class ReDirectToTheLevel {
                 fullSawVariables.initialdead = false;
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 7600;
+                fullSawVariables.ypos = 700;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
                 dirRev = new DirectionReverseVariables();
                 dirRev.x = 300;
                 dirRev.y = 525;
                 dirRev.active = true;
                 VariablesForPlayArea.dirRevList.add(dirRev);
+
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 3;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 7200;
+                speedctlrvar.y = 570;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 7300;
+                speedctlrvar.y = 570;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 7400;
+                speedctlrvar.y = 570;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 7500;
+                speedctlrvar.y = 570;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 7600;
+                speedctlrvar.y = 570;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 7700;
+                speedctlrvar.y = 570;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = false;
+                speedctlrvar.x = 7800;
+                speedctlrvar.y = 570;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
 
             }
 
