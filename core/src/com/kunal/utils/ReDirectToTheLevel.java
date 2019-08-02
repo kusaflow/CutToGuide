@@ -351,9 +351,48 @@ public class ReDirectToTheLevel {
         }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==11){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level11.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
-            VariablesForPlayArea.endPoint.y = 8500;
+            VariablesForPlayArea.endPoint.y = 9200;
 
             if (!restarted) {
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1300;
+                fullSawVariables.ypos = 760;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1350;
+                fullSawVariables.ypos = 1007;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 7500;
+                fullSawVariables.ypos = 550;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 4;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
             }
 

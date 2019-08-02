@@ -48,6 +48,9 @@ public class TiledMapLoadingHelper {
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
             return 10;
         }
+        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
+            return 8;
+        }
 
         //area one end--------------------------------------------------
 
@@ -64,49 +67,54 @@ public class TiledMapLoadingHelper {
             pos.y = 510;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
             pos.x = 6445;
             pos.y = 510;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
             pos.x = 5710;
             pos.y = 608;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
             pos.x = 6440;
             pos.y = 511;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
             pos.x = 6540;
             pos.y = 511;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
             pos.x = 7000;
             pos.y = 511;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
             pos.x = 9000;
             pos.y = 765;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==8){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==8){
             pos.x = 9000;
             pos.y = 512;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==9){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==9){
             pos.x = 9000;
             pos.y = 512;
             return pos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==10){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==10){
             pos.x = 9000;
             pos.y = 540;
+            return pos;
+        }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
+            pos.x = 9372;
+            pos.y = 380;
             return pos;
         }
 
@@ -122,49 +130,54 @@ public class TiledMapLoadingHelper {
             cpos.y = 500;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
             cpos.x = 1500;
             cpos.y = 825;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
             cpos.x = 1590;
             cpos.y = 800;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
             cpos.x = 1617;
             cpos.y = 987;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
             cpos.x = 2600;
             cpos.y = 830;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
             cpos.x = 3120;
             cpos.y = 475;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
             cpos.x = 2300;
             cpos.y = 537;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 8){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 8){
             cpos.x = 1730;
             cpos.y = 532;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 9){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 9){
             cpos.x = 3287;
             cpos.y = 552;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
             cpos.x = 2937;
             cpos.y = 512;
+            return cpos;
+        }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
+            cpos.x = 2890;
+            cpos.y = 522;
             return cpos;
         }
         return cpos;
@@ -180,49 +193,54 @@ public class TiledMapLoadingHelper {
             cpos.y = 700;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
             cpos.x = 2272;
             cpos.y = 790;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
             cpos.x = 2070;
             cpos.y = 750;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
             cpos.x = 3172;
             cpos.y = 527;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
             cpos.x = 4287;
             cpos.y = 627;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
             cpos.x = 4207;
             cpos.y = 937;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
             cpos.x = 5907;
             cpos.y = 517;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 8){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 8){
             cpos.x = 5407;
             cpos.y = 532;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 9){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 9){
             cpos.x = 5262;
             cpos.y = 542;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
             cpos.x = 5147;
             cpos.y = 577;
+            return cpos;
+        }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
+            cpos.x = 6030;
+            cpos.y = 532;
             return cpos;
         }
         return cpos;
@@ -238,49 +256,54 @@ public class TiledMapLoadingHelper {
             cpos.y = 500;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
             cpos.x = 5657;
             cpos.y = 855;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
             cpos.x = 5310;
             cpos.y = 700;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
             cpos.x = 6040;
             cpos.y = 515;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
             cpos.x = 5740;
             cpos.y = 450;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
             cpos.x = 6160;
             cpos.y = 437;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
             cpos.x = 8382;
             cpos.y = 787;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 8){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 8){
             cpos.x = 7867;
             cpos.y = 572;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==9){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==9){
             cpos.x = 7917;
             cpos.y = 467;
             return cpos;
         }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
             cpos.x = 7428;
             cpos.y = 557;
+            return cpos;
+        }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
+            cpos.x = 7787;
+            cpos.y = 390;
             return cpos;
         }
         return cpos;

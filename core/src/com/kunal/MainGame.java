@@ -16,6 +16,7 @@ import com.kunal.MainLoading.MainLoadingScreen;
 import com.kunal.temp.temp;
 
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class MainGame extends Game {
 
@@ -264,5 +265,7 @@ public class MainGame extends Game {
 	public void dispose () {
 		AllVariables.batch.dispose();
 		AllVariables.bitmapFont.dispose();
+
+
 	}
 }
