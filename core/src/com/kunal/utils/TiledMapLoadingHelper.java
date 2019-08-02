@@ -49,7 +49,7 @@ public class TiledMapLoadingHelper {
             return 10;
         }
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
-            return 8;
+            return 11;
         }
 
         //area one end--------------------------------------------------

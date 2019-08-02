@@ -227,7 +227,12 @@ public class ShapeChooser implements Screen {
         sred.line(40,100,1140,100);
 
         sred.setColor(1, 1f, 1, 1);
+
         for (i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
+            if (VariablesForPlayArea.Sh_pos.get(i).x*AllVariables.PPM == 640)
+                sred.setColor(1, 1f, 1, 1);
+            else
+                sred.setColor(1f, .4f, .4f, 1);
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
                 ver[k] = 550-VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0]/2;
