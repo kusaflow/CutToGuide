@@ -260,7 +260,6 @@ public class ReDirectToTheLevel {
             game.setScreen(new TypeTwoArea(game, restarted));
         }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==10){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level10.tmx";
-            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level10.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 8500;
 
@@ -349,6 +348,16 @@ public class ReDirectToTheLevel {
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==11){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level11.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
 
@@ -357,6 +366,21 @@ public class ReDirectToTheLevel {
 
 
     }
+
+    //level basic template
+    /*
+    else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==10){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level10.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
+        }
+     */
 
     //else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==7){
     //            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level7.tmx";
