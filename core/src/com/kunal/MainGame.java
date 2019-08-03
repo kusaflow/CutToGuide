@@ -48,7 +48,7 @@ public class MainGame extends Game {
 			//creating local file
 		if (!Gdx.files.local("TextFilesToDelete/areas/area1").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area1");
-			String data = "1\n1\n30\n000000000000000000000000000000\n" + "$";
+			String data = "1\n1\n20\n000000000000000000000000000000\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
 		}
