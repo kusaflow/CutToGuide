@@ -45,7 +45,8 @@ public class playScreen implements Screen {
         variablesForPlayArea.setEndPoint(new Vector2(200,4000));
         variablesForPlayArea.setLevelNumber(2);
 
-        playScreen = new Sprite(new Texture(Gdx.files.internal("playScreen/playscreen.png")));
+        //playScreen = new Sprite(new Texture(Gdx.files.internal("playScreen/playscreen.png")));
+        playScreen = new Sprite(new Texture(Gdx.files.internal("playScreen/playscreen.jpg")));
         playScreen.setPosition(0,0);
         playScreen.setSize(AllVariables.WIDTH, AllVariables.HEIGHT);
 
