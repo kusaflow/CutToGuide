@@ -58,13 +58,13 @@ public class ShapeChooser implements Screen {
         LetsCut.setPosition(1140, 507);
         LetsCut.setSize(140, 203);
 
-        okTick = new Sprite(new Texture(Gdx.files.internal("ChooseShape/okTick.png")));
-        okTick.setPosition(1140, 304);
-        okTick.setSize(140, 203);
+        okTick = new Sprite(new Texture(Gdx.files.internal("utils/arrowRight.png")));
+        okTick.setPosition(1140, 334);
+        okTick.setSize(140, 140);
 
-        reCut = new Sprite(new Texture(Gdx.files.internal("ChooseShape/reCut.png")));
-        reCut.setPosition(1140, 101);
-        reCut.setSize(140, 203);
+        reCut = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
+        reCut.setPosition(1140, 131);
+        reCut.setSize(140, 140);
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;

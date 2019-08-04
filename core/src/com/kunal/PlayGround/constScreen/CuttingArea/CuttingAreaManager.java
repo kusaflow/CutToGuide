@@ -6,6 +6,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -34,9 +35,10 @@ public class CuttingAreaManager implements Screen {
 
     private int presentX, presntY;
 
+    private Texture doneSh, retry;
+
     @Override
     public void dispose() {
-        game.dispose();
         inputsToChop.clear();
         sr.dispose();
     }
@@ -56,6 +58,11 @@ public class CuttingAreaManager implements Screen {
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
 
+        doneSh = new Texture("utils/arrowLeft.png");
+        retry = new Texture("utils/retry.png");
+
+
+
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
@@ -74,6 +81,10 @@ public class CuttingAreaManager implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        AllVariables.batch.begin();
+        AllVariables.batch.draw(retry, 0, 610,100,100);
+        AllVariables.batch.draw(doneSh, 0, 250,100,100);
+        AllVariables.batch.end();
 
         sr.begin(ShapeRenderer.ShapeType.Line);
 
@@ -97,7 +108,7 @@ public class CuttingAreaManager implements Screen {
 
         sr.begin(ShapeRenderer.ShapeType.Filled);
 
-        sr.rect(0,300, 200, 200);
+        //sr.rect(0,300, 200, 200);
         //sr.setColor(0,1,0.5f,1);
         //sr.rect(BigSqurePoints[12][0], BigSqurePoints[12][1], 660 ,660);
         for (int i = 0; i < 16; i++) {
@@ -167,10 +178,17 @@ public class CuttingAreaManager implements Screen {
 
                         screenY = Gdx.graphics.getHeight() - screenY;
 
+                        System.out.println(screenX + "\t" + screenY);
+
                         //back to shape choose class
                         if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
-                                screenX < 200 * AllVariables.inpM + AllVariables.witdth_translation &&
-                                screenY > 300 * AllVariables.inpM && screenY < 500 * AllVariables.inpM){
+                                screenX < 110 * AllVariables.inpM + AllVariables.witdth_translation &&
+                                screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM){
+                            VariablesForPlayArea.flush();
+
+                        }if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
+                                screenX < 120 * AllVariables.inpM + AllVariables.witdth_translation &&
+                                screenY > 230 * AllVariables.inpM && screenY < 355 * AllVariables.inpM){
 
                             VariablesForPlayArea.Sh_pos.clear();
 
@@ -187,6 +205,7 @@ public class CuttingAreaManager implements Screen {
                             }
 
                             game.setScreen(new ShapeChooser(game));
+
                         }
 
                         return false;
