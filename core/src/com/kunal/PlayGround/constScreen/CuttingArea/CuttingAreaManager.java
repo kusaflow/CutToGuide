@@ -7,6 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
@@ -33,9 +34,12 @@ public class CuttingAreaManager implements Screen {
     //drawing shapes
     private float ver[];
 
+    private boolean hinystate= false;
+
     private int presentX, presntY;
 
-    private Texture doneSh, retry;
+    private Texture doneSh, retry, key;
+    private Sprite  hintImg;
 
     @Override
     public void dispose() {
@@ -61,7 +65,14 @@ public class CuttingAreaManager implements Screen {
         doneSh = new Texture("utils/arrowLeft.png");
         retry = new Texture("utils/retry.png");
 
+        if (VariablesForPlayArea.HintOneEnabled) {
+            key = new Texture("utils/key.png");
+            hintImg = new Sprite(new Texture("HintImg/HintOne/hint1_" + AllVariables.PresentAreaNumber + "_" + AllVariables.PresentLevelNumber+".JPG"));
+            hintImg.setPosition(0,110);
+            hintImg.setSize(600,500);
 
+
+        }
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
@@ -81,10 +92,6 @@ public class CuttingAreaManager implements Screen {
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        AllVariables.batch.begin();
-        AllVariables.batch.draw(retry, 0, 610,100,100);
-        AllVariables.batch.draw(doneSh, 0, 250,100,100);
-        AllVariables.batch.end();
 
         sr.begin(ShapeRenderer.ShapeType.Line);
 
@@ -141,6 +148,18 @@ public class CuttingAreaManager implements Screen {
 
         sr.end();
 
+
+        AllVariables.batch.begin();
+        AllVariables.batch.draw(retry, 0, 610,100,100);
+        AllVariables.batch.draw(doneSh, 0, 250,100,100);
+        if (VariablesForPlayArea.HintOneEnabled) {
+            AllVariables.batch.draw(key,200, 330);
+            if (hinystate)
+                hintImg.draw(AllVariables.batch);
+
+        }
+        AllVariables.batch.end();
+
     }
 
     private void update(float dt) {
@@ -180,11 +199,22 @@ public class CuttingAreaManager implements Screen {
 
                         System.out.println(screenX + "\t" + screenY);
 
+                        if (hinystate){
+                            hinystate = false;
+                            return false;
+                        }
+
                         //back to shape choose class
                         if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 110 * AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM){
                             VariablesForPlayArea.flush();
+
+                        }if(screenX > 200*AllVariables.inpM + AllVariables.witdth_translation &&
+                                screenX < 325 * AllVariables.inpM + AllVariables.witdth_translation &&
+                                screenY > 350 * AllVariables.inpM && screenY < 447* AllVariables.inpM){
+                            if (VariablesForPlayArea.HintOneEnabled)
+                                hinystate = true;
 
                         }if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 120 * AllVariables.inpM + AllVariables.witdth_translation &&
@@ -324,7 +354,10 @@ public class CuttingAreaManager implements Screen {
                         if (keycode == Input.Keys.P){
                             game.setScreen(new AreaOneClass(game));
                         }
-
+                        if (keycode == Input.Keys.O){
+                            System.out.println(hintImg.getX() + " \t " + hintImg.getY());
+                            System.out.println(hintImg.getWidth() + " \t " + hintImg.getHeight());
+                        }
 
                         return false;
                     }

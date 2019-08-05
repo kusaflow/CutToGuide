@@ -664,6 +664,11 @@ public class TypeTwoArea implements Screen {
 
         }
 
+        if (hintOneTaken && paused){
+            AllVariables.bitmapFont.draw(AllVariables.batch, "Hint 1 enabled go \nto CuttingArea to get help" ,
+                    300+(cam.position.x - AllVariables.WIDTH/2), 150+(cam.position.y -AllVariables.HEIGHT/2));
+        }
+
         AllVariables.batch.end();
 
     }
@@ -1371,7 +1376,6 @@ public class TypeTwoArea implements Screen {
                                     VariablesForPlayArea.HintOneEnabled = true;
                                     AllVariables.kusaCoin-=costOfH1;
                                     writeToFile();
-                                    //open Img
                                 }
                             }
 
