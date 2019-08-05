@@ -29,6 +29,9 @@ public class VariablesForPlayArea {
 
     public static Boolean gameOver = false;
     public static Boolean rageMode = false;
+    public static Boolean HintOneEnabled = false;
+    public static Boolean HintTwoEnabled = false;
+
 
 
     public static byte starsGained =0;

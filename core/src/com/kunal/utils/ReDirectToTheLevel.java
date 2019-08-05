@@ -46,6 +46,8 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.fullSawList.clear();
             VariablesForPlayArea.speedCtrlList.clear();
             VariablesForPlayArea.dirRevList.clear();
+            VariablesForPlayArea.HintOneEnabled = false;
+            VariablesForPlayArea.HintTwoEnabled = false;
         }
 
         VariablesForPlayArea.gameOver =false;

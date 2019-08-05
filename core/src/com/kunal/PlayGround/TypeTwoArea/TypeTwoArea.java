@@ -147,6 +147,9 @@ public class TypeTwoArea implements Screen {
 
         levelCompleteCAmMove = false;
 
+        hintOneTaken = VariablesForPlayArea.HintOneEnabled;
+        hintTwoTaken = VariablesForPlayArea.HintTwoEnabled;
+
         poly = new Polygon();
 
         Font = new BitmapFont();
@@ -1365,6 +1368,7 @@ public class TypeTwoArea implements Screen {
                                     && screenY > 245 * AllVariables.inpM && screenY < 315 * AllVariables.inpM) {
                                 if (!hintOneTaken && AllVariables.kusaCoin >= costOfH1) {
                                     hintOneTaken = true;
+                                    VariablesForPlayArea.HintOneEnabled = true;
                                     AllVariables.kusaCoin-=costOfH1;
                                     writeToFile();
                                     //open Img
@@ -1377,6 +1381,7 @@ public class TypeTwoArea implements Screen {
                                     && screenY > 245 * AllVariables.inpM && screenY < 315 * AllVariables.inpM) {
                                 if (!hintTwoTaken && AllVariables.kusaCoin >= costOfH2){
                                     hintTwoTaken = true;
+                                    VariablesForPlayArea.HintTwoEnabled = true;
                                     AllVariables.kusaCoin-=costOfH2;
                                     writeToFile();
                                 }
