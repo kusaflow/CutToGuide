@@ -54,13 +54,14 @@ public class ShapeChooser implements Screen {
         poly = new Polygon();
 
 
-        LetsCut = new Sprite(new Texture(Gdx.files.internal("ChooseShape/LetsCut.png")));
-        LetsCut.setPosition(1140, 507);
-        LetsCut.setSize(140, 203);
+        LetsCut = new Sprite(new Texture(Gdx.files.internal("utils/arrowRight.png")));
+        LetsCut.setPosition(1140, 537);
+        LetsCut.setSize(140, 140);
 
-        okTick = new Sprite(new Texture(Gdx.files.internal("utils/arrowRight.png")));
+        okTick = new Sprite(new Texture(Gdx.files.internal("utils/hudX.png")));
         okTick.setPosition(1140, 334);
         okTick.setSize(140, 140);
+        okTick.setColor(0.5f,0.2f,0.2f,1);
 
         reCut = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
         reCut.setPosition(1140, 131);
