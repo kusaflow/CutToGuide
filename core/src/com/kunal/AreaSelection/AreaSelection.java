@@ -98,25 +98,25 @@ public class AreaSelection implements Screen {
         s.setPosition(390,150);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area2.png")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/soon.png")));
         s.setSize(200, 400);
         s.setPosition(660,150);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area3.png")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/soon.png")));
         s.setSize(200, 400);
         s.setPosition(930,150);
         AreaList.add(s);
 
 
         //next 3
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area4.png")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/soon.png")));
         s.setSize(200, 400);
         s.setPosition(390,150);
         s.setAlpha(0);
         AreaList.add(s);
 
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/Area5.png")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/soon.png")));
         s.setSize(200, 400);
         s.setPosition(660,150);
         s.setAlpha(0);
@@ -124,7 +124,7 @@ public class AreaSelection implements Screen {
 
 
         ///last one for coming soon levels
-        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/AreaComingSoon.png")));
+        s = new Sprite(new Texture(Gdx.files.internal("AreaSelection/soon.png")));
         s.setSize(200, 400);
         s.setPosition(930,150);
         s.setAlpha(0);
