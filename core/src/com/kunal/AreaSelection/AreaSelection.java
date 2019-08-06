@@ -342,15 +342,18 @@ public class AreaSelection implements Screen {
                                 //System.out.println("Area 1");
                                 dispose();
                                 AllVariables.PresentAreaNumber = 1;
+
+                                Gdx.input.setInputProcessor(null);
+                                game.setScreen(new LevelNumberSelection(game));
                             }
                             else if (LevelState == 1){
                                 //System.out.println("Area 4");
-                                dispose();
-                                AllVariables.PresentAreaNumber = 4;
+                                //dispose();
+                                //AllVariables.PresentAreaNumber = 4;
                             }
 
-                            Gdx.input.setInputProcessor(null);
-                            game.setScreen(new LevelNumberSelection(game));
+                            //Gdx.input.setInputProcessor(null);
+                            //game.setScreen(new LevelNumberSelection(game));
 
                             return false;
                         }
@@ -361,16 +364,16 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 //System.out.println("Area 2");
-                                dispose();
-                                AllVariables.PresentAreaNumber = 2;
+                                //dispose();
+                                //AllVariables.PresentAreaNumber = 2;
                             }
                             else if (LevelState == 1){
                                 //System.out.println("Area 5");
-                                dispose();
-                                AllVariables.PresentAreaNumber = 5;
+                                //dispose();
+                                //AllVariables.PresentAreaNumber = 5;
                             }
-                            Gdx.input.setInputProcessor(null);
-                            game.setScreen(new LevelNumberSelection(game));
+                            //Gdx.input.setInputProcessor(null);
+                            //game.setScreen(new LevelNumberSelection(game));
 
                             return false;
                         }
@@ -381,16 +384,16 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 //System.out.println("Area 3");
-                                dispose();
-                                AllVariables.PresentAreaNumber = 3;
+                                //dispose();
+                                //AllVariables.PresentAreaNumber = 3;
                             }
                             else if (LevelState == 1){
                                 //System.out.println("Area 6");
-                                dispose();
-                                AllVariables.PresentAreaNumber = 6;
+                                //dispose();
+                                //AllVariables.PresentAreaNumber = 6;
                             }
-                            Gdx.input.setInputProcessor(null);
-                            game.setScreen(new LevelNumberSelection(game));
+                            //Gdx.input.setInputProcessor(null);
+                            //game.setScreen(new LevelNumberSelection(game));
 
                             return false;
                         }
