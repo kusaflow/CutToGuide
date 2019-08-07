@@ -105,6 +105,7 @@ public class slideShow implements Screen {
             if (i == focused-1){
                 helpImg.get(i).setAlpha(1f);
             }else {
+                helpImg.get(i).setPosition(xaxis+120, helpImg.get(i).getY());
                 helpImg.get(i).setAlpha(.4f);
                 helpImg.get(i).setSize(helpImg.get(i).getTexture().getWidth()/2f,helpImg.get(i).getTexture().getHeight()/2f);
             }
@@ -136,7 +137,7 @@ public class slideShow implements Screen {
         Sprite s = new Sprite(new Texture(Gdx.files.internal(fileLoc + focused + ".jpg")));
         helpImg.add(s);
 
-        yaxis+=200;
+        yaxis+=300;
 
         cam.position.y = cam.position.y+300;
         cam.update();
