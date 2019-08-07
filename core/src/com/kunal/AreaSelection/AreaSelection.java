@@ -1,26 +1,20 @@
 package com.kunal.AreaSelection;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.input.GestureDetector;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.Area1.AreaOneClass;
-import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.Shop.Shop;
 import com.kunal.playScreen.playScreen;
+import com.kunal.utils.slideShow.slideShow;
 
 import java.util.LinkedList;
 
@@ -263,7 +257,9 @@ public class AreaSelection implements Screen {
                                 && screenY >= 150* AllVariables.inpM && screenY <= 350* AllVariables.inpM) {
                             //code for Tutorial
                             dispose();
-                            //game.setScreen(new AreaOneClass(game));
+                            Gdx.gl.glClearColor(0.1f, 1f, 0.1f, 1f);
+                            Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+                            game.setScreen(new slideShow(game, 1));
                             return false;
                         }
 
