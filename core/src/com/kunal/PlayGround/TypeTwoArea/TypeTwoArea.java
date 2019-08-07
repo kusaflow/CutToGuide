@@ -574,7 +574,7 @@ public class TypeTwoArea implements Screen {
             per45degRot.draw(AllVariables.batch);
         }
 
-        posMap.draw(AllVariables.batch);
+        //posMap.draw(AllVariables.batch);
         //coin
         coin1.draw(AllVariables.batch);
         coin2.draw(AllVariables.batch);
