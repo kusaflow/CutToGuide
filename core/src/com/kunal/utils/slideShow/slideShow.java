@@ -26,7 +26,7 @@ public class slideShow implements Screen {
     MainGame game;
     String fileLoc = "";
     int senderCode;
-    int focused, totalImg, imagesLoaded, yaxis = 400;
+    int focused, totalImg, imagesLoaded, yaxis = 200, xaxis = 200;
     LinkedList<Sprite> helpImg;
 
     private OrthographicCamera cam;
@@ -45,7 +45,7 @@ public class slideShow implements Screen {
         port.apply();
 
         totalImg = slideShowHelper.ImageCount(senderCode);
-        focused = 1;
+        focused = 0;
 
         helpImg = new LinkedList<Sprite>();
         if (totalImg >= 3){
@@ -70,6 +70,10 @@ public class slideShow implements Screen {
             helpImg.add(s);
         }
 
+        helpImg.get(0).setPosition(xaxis, yaxis);
+        helpImg.get(0).setSize(helpImg.get(0).getTexture().getWidth()/2f,helpImg.get(0).getTexture().getHeight()/2f);
+
+
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
@@ -88,18 +92,21 @@ public class slideShow implements Screen {
         Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
+        input();
+
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
-        helpImg.get(2).setPosition(100,200);
-        helpImg.get(2).setSize(helpImg.get(2).getTexture().getWidth()/2f,helpImg.get(2).getTexture().getHeight()/2f);
-        helpImg.get(2).setRotation(10);
+        //helpImg.get(2).setPosition(100,200);
+        //helpImg.get(2).setSize(helpImg.get(2).getTexture().getWidth()/2f,helpImg.get(2).getTexture().getHeight()/2f);
+        //helpImg.get(2).setRotation(10);
 
         AllVariables.batch.begin();
         for (int i=0; i<focused; i++){
             if (i == focused-1){
-                helpImg.get(2).setAlpha(1f);
+                helpImg.get(i).setAlpha(1f);
             }else {
-                helpImg.get(2).setAlpha(.4f);
+                helpImg.get(i).setAlpha(.4f);
+                helpImg.get(i).setSize(helpImg.get(i).getTexture().getWidth()/2f,helpImg.get(i).getTexture().getHeight()/2f);
             }
             helpImg.get(i).draw(AllVariables.batch);
         }
@@ -108,6 +115,34 @@ public class slideShow implements Screen {
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.B))
             game.setScreen(new AreaSelection(game));
+
+
+    }
+
+    private void input(){
+        if (Gdx.input.justTouched()){
+            addNewSlide();
+        }
+    }
+
+    private void addNewSlide(){
+        if (focused == totalImg) {
+            //return to the back class
+            game.setScreen(new AreaSelection(game));
+            return;
+        }
+        focused++;
+
+        Sprite s = new Sprite(new Texture(Gdx.files.internal(fileLoc + focused + ".jpg")));
+        helpImg.add(s);
+
+        yaxis+=200;
+
+        cam.position.y = cam.position.y+300;
+        cam.update();
+
+        helpImg.get(focused-1).setPosition(xaxis, yaxis);
+        helpImg.get(focused-1).setSize(helpImg.get(focused-1).getTexture().getWidth()/1.4f,helpImg.get(focused-1).getTexture().getHeight()/1.4f);
 
 
     }
