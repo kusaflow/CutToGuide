@@ -8,7 +8,7 @@ public class slideShowHelper {
         if (code ==0) {
             // level wise classification
         }else if (code == 1){
-            ret = 41;
+            ret = 40;
         }
 
         return ret;

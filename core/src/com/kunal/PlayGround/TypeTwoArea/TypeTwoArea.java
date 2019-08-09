@@ -1101,7 +1101,7 @@ public class TypeTwoArea implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
                         hardmoveFaultResolver = false;
 
                         if (VariablesForPlayArea.gameOver) {

@@ -2,6 +2,7 @@ package com.kunal.utils.slideShow;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -105,7 +106,7 @@ public class slideShow implements Screen {
             if (i == focused-1){
                 helpImg.get(i).setAlpha(1f);
             }else {
-                helpImg.get(i).setPosition(xaxis+120, helpImg.get(i).getY());
+                helpImg.get(i).setPosition(xaxis+120, helpImg.get(i).getY()+200);
                 helpImg.get(i).setAlpha(.4f);
                 helpImg.get(i).setSize(helpImg.get(i).getTexture().getWidth()/2f,helpImg.get(i).getTexture().getHeight()/2f);
             }
@@ -124,6 +125,57 @@ public class slideShow implements Screen {
         if (Gdx.input.justTouched()){
             addNewSlide();
         }
+        Gdx.input.setInputProcessor(
+                new InputProcessor() {
+                    @Override
+                    public boolean keyDown(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyUp(int keycode) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean keyTyped(char character) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+                        screenY = Gdx.graphics.getHeight() - screenY;
+                        System.out.println(screenX + "\t" + screenY);
+                        if (screenX > (20 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (150 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 580 * AllVariables.inpM && screenY < 920 * AllVariables.inpM){
+                            //hardmove
+                        }
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean touchDragged(int screenX, int screenY, int pointer) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean mouseMoved(int screenX, int screenY) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean scrolled(int amount) {
+                        return false;
+                    }
+                }
+        );
     }
 
     private void addNewSlide(){
@@ -134,8 +186,11 @@ public class slideShow implements Screen {
         }
         focused++;
 
-        Sprite s = new Sprite(new Texture(Gdx.files.internal(fileLoc + focused + ".jpg")));
-        helpImg.add(s);
+        try {
+            Sprite s = new Sprite(new Texture(Gdx.files.internal(fileLoc + (imagesLoaded +1) + ".jpg")));
+            helpImg.add(s);
+        }catch (Exception e){
+        }
 
         yaxis+=300;
 
@@ -180,6 +235,7 @@ public class slideShow implements Screen {
 
 
         helpImg.clear();
+        Gdx.input.setInputProcessor(null);
 
     }
 }
