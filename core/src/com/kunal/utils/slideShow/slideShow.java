@@ -29,6 +29,7 @@ public class slideShow implements Screen {
     int senderCode;
     int focused, totalImg, imagesLoaded, yaxis = 200, xaxis = 200;
     LinkedList<Sprite> helpImg;
+    Texture exit;
 
     private OrthographicCamera cam;
     private Viewport port;
@@ -45,8 +46,10 @@ public class slideShow implements Screen {
 
         port.apply();
 
+        exit = new Texture(Gdx.files.internal("utils/hudX.png"));
+
         totalImg = slideShowHelper.ImageCount(senderCode);
-        focused = 0;
+        focused =0;
 
         helpImg = new LinkedList<Sprite>();
         if (totalImg >= 3){
@@ -112,6 +115,9 @@ public class slideShow implements Screen {
             }
             helpImg.get(i).draw(AllVariables.batch);
         }
+        AllVariables.batch.draw(exit,1120+(cam.position.x - AllVariables.WIDTH/2), 600+(cam.position.y - AllVariables.HEIGHT/2));
+        AllVariables.bitmapFont.draw(AllVariables.batch,"Touch anywhere to continue", 400+(cam.position.x - AllVariables.WIDTH/2), 710+(cam.position.y - AllVariables.HEIGHT/2));
+        AllVariables.bitmapFont.draw(AllVariables.batch,slideShowHelper.TutMessage(senderCode,focused), 100+(cam.position.x - AllVariables.WIDTH/2), 180+(cam.position.y - AllVariables.HEIGHT/2));
         AllVariables.batch.end();
 
 
@@ -122,9 +128,6 @@ public class slideShow implements Screen {
     }
 
     private void input(){
-        if (Gdx.input.justTouched()){
-            addNewSlide();
-        }
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
                     @Override
@@ -146,11 +149,13 @@ public class slideShow implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         System.out.println(screenX + "\t" + screenY);
-                        if (screenX > (20 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX < (150 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY > 580 * AllVariables.inpM && screenY < 920 * AllVariables.inpM){
-                            //hardmove
+                        if (screenX > (1110 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY > 605 * AllVariables.inpM && screenY < 720 * AllVariables.inpM){
+                            game.setScreen(new AreaSelection(game));
+                            return true;
                         }
+                        addNewSlide();
 
                         return false;
                     }
@@ -186,9 +191,11 @@ public class slideShow implements Screen {
         }
         focused++;
 
+
         try {
-            Sprite s = new Sprite(new Texture(Gdx.files.internal(fileLoc + (imagesLoaded +1) + ".jpg")));
+            Sprite s = new Sprite(new Texture(Gdx.files.internal(fileLoc + (focused+3) + ".jpg")));
             helpImg.add(s);
+
         }catch (Exception e){
         }
 
