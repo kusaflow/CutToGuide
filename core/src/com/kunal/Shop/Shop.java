@@ -307,7 +307,7 @@ public class Shop implements Screen, VideoEventListener {
             AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType),220,420,70,70);
             AllVariables.batch.draw(typeOfCoin.get(AllVariables.coinType),212,260, 100, 100);
 
-            buttonBg.setColor(1,0.3f,0.3f,0.5f);
+            buttonBg.setColor(1,0f,0f,0.8f);
 
 
             if (InnerMenuNumber == 1) {
@@ -477,7 +477,7 @@ public class Shop implements Screen, VideoEventListener {
 
 
                 if (coinCh == AllVariables.coinType)
-                    buttonBg.setColor(0.3f,1,0.3f,.5f);
+                    buttonBg.setColor(0f,1,0f,1f);
 
 
                 //lower Arrow
@@ -541,6 +541,7 @@ public class Shop implements Screen, VideoEventListener {
             buttonBg.setPosition(400, 330);
             buttonBg.setSize(130,100);
             buttonBg.draw(AllVariables.batch);
+            AllVariables.bitmapFont.draw(AllVariables.batch, " equip", 420, 390);
 
         }else if (menuNumber == 3){
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
