@@ -3,10 +3,13 @@ package com.kunal.AreaSelection;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
@@ -32,7 +35,9 @@ public class AreaSelection implements Screen {
 
     float positionY, transparency;
 
-    Texture bg;
+    Texture bg, kusaCoin;
+
+    BitmapFont font;
 
 
     public AreaSelection(MainGame game) {
@@ -50,11 +55,20 @@ public class AreaSelection implements Screen {
 
         AreaList = new LinkedList<Sprite>();
 
+        font = new BitmapFont();
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 34;
+        prams.color = Color.ORANGE;
+        font = generator.generateFont(prams);
+
+
         settings = new Sprite(new Texture(Gdx.files.internal("AreaSelection/settings.png")));
         settings.setSize(90,90);
         settings.setPosition(1150,620);
 
-        //space for coins==================================================================================================
+        kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
 
         credit = new Sprite(new Texture(Gdx.files.internal("AreaSelection/credit.png")));
         credit.setSize(200,70);
@@ -163,6 +177,10 @@ public class AreaSelection implements Screen {
         backToPrevScreen.draw(AllVariables.batch);
         showMoreLevelsOnLeft.draw(AllVariables.batch);
         showMoreLevelsOnRight.draw(AllVariables.batch);
+        AllVariables.batch.draw(kusaCoin, 620, 630, 80,80);
+        font.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 700, 680);
+
+
 
         AllVariables.batch.end();
 
