@@ -8,7 +8,7 @@ public class slideShowHelper {
         if (code ==0) {
             // level wise classification
         }else if (code == 1){
-            ret = 40;
+            ret = 39;
         }
 
         return ret;
@@ -68,6 +68,36 @@ public class slideShowHelper {
                 msg = "                  Touch any grid and this faded yellow rectangle \n                                                      will appear to your choice.";
             }else if (focusImg == 24) {
                 msg = "              With the yellow rectangle at your shape touch this \n                                                        to move the shape to mainScreen";
+            }else if (focusImg == 25) {
+                msg = "Notice this will get enable. This means you can interact with shapes.\nTouch this to disable this and then you cant interact with shapes.";
+            }else if (focusImg == 26) {
+                msg = "                                        Touch this to toggle this on/off.";
+            }else if (focusImg == 27) {
+                msg = "           With this on touch anywhere the shape will be placed there.";
+            }else if (focusImg == 28) {
+                msg = "                                        Touch this to toggle this on/off.";
+            }else if (focusImg == 29) {
+                msg = "           Now drag your finger anywhere and shape will move accordingly.";
+            }else if (focusImg == 30) {
+                msg = "                                        This is used to rotate the shapes.";
+            }else if (focusImg == 31) {
+                msg = "                                    This is used rotate the shape clockwise.";
+            }else if (focusImg == 32) {
+                msg = "                             This is used rotate the shape anti-clockwise.";
+            }else if (focusImg == 33) {
+                msg = "                              This is used rotate the shape 45 deg anti-clockwise.";
+            }else if (focusImg == 34) {
+                msg = "        Press this is when you are ready to let bicycle come in action.";
+            }else if (focusImg == 35) {
+                msg = "                                          Camera will move to hard left.";
+            }else if (focusImg == 36) {
+                msg = "                                          Touch this to reset the level.";
+            }else if (focusImg == 37) {
+                msg = "                                      Touch this to have a  zoomed out view.";
+            }else if (focusImg == 38) {
+                msg = "                                                                 Like this.";
+            }else if (focusImg == 39) {
+                msg = "                                           Touch this to slow down bicycle.";
             }
         }
 
