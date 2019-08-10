@@ -5,9 +5,12 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
@@ -32,8 +35,10 @@ public class LevelNumberSelection implements Screen {
     private Texture stone;
     private Texture number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
 
-    private Texture cross, movRight, movLeft, lock, starTex, bg;
+    private Texture cross, movRight, movLeft, lock, starTex, bg, kusaCoin;
     private Boolean upperLayer = true;
+
+    private BitmapFont font;
 
     /*
     for the file structure  :
@@ -52,6 +57,15 @@ public class LevelNumberSelection implements Screen {
         file = Gdx.files.local("TextFilesToDelete/areas/area"+AllVariables.PresentAreaNumber);
         DataInFile = file.readString();
 
+        font = new BitmapFont();
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 34;
+        prams.color = Color.ORANGE;
+        font = generator.generateFont(prams);
+
+        kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
 
         stars = new LinkedList<Short>();
 
@@ -387,6 +401,10 @@ public class LevelNumberSelection implements Screen {
             }
             incTonextLevel+=200;
         }
+
+
+        AllVariables.batch.draw(kusaCoin, 620 + cam.position.x-AllVariables.WIDTH/2, 600, 80,80);
+        font.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 700 +cam.position.x-AllVariables.WIDTH/2, 650);
 
 
         AllVariables.batch.end();
