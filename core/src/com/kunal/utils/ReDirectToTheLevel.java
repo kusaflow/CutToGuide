@@ -374,7 +374,6 @@ public class ReDirectToTheLevel {
                 fullSawVariables.initialdead = false;
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
-
                 fullSawVariables = new FullSawVariables();
                 fullSawVariables.xpos = 7500;
                 fullSawVariables.ypos = 550;
@@ -405,6 +404,46 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.y = 8500;
 
             if (!restarted) {
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1900;
+                fullSawVariables.ypos = 800;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 2600;
+                fullSawVariables.ypos = 900;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 4;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 3160;
+                fullSawVariables.ypos = 700;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 3450;
+                fullSawVariables.ypos = 700;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
             }
 

@@ -574,7 +574,7 @@ public class TypeTwoArea implements Screen {
             per45degRot.draw(AllVariables.batch);
         }
 
-        //posMap.draw(AllVariables.batch);
+        posMap.draw(AllVariables.batch);
         //coin
         coin1.draw(AllVariables.batch);
         coin2.draw(AllVariables.batch);
@@ -1489,8 +1489,8 @@ public class TypeTwoArea implements Screen {
 
                         if (keycode == Input.Keys.P){
                             //AllVariables.BackWheel.applyForceToCenter(200,0, true);
-                            VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
-                            System.out.println("rage mode : " + VariablesForPlayArea.rageMode);
+                            //VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
+                            System.out.println(VariablesForPlayArea.Sh_pos.get(0).scl(100));
                         }
 
 
