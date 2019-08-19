@@ -123,7 +123,6 @@ public class TypeTwoArea implements Screen {
 
     private Boolean[] bgRandNumber = new Boolean[15];
 
-
     public TypeTwoArea(MainGame game, Boolean reset) {
         this.game = game;
 
