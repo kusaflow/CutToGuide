@@ -458,6 +458,45 @@ public class ReDirectToTheLevel {
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==14){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level14.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 630;
+                fullSawVariables.ypos = 1450;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                halfSawVariables = new HalfSawVariables();
+                halfSawVariables.xdestination = 7200;
+                halfSawVariables.oneisSelected = true;
+                halfSawVariables.xorigin = 6700;
+                halfSawVariables.yorigin = 320;
+                VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
+                halfSawVariables = new HalfSawVariables();
+                halfSawVariables.xdestination = 8200;
+                halfSawVariables.oneisSelected = true;
+                halfSawVariables.xorigin = 7600;
+                halfSawVariables.yorigin = 320;
+                VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
+
+
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
 

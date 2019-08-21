@@ -1,6 +1,7 @@
 package com.kunal.PlayGround.constScreen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -287,6 +288,10 @@ public class ShapeChooser implements Screen {
     }
 
     private void input(float dt){
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.X))
+            game.setScreen(new TypeTwoArea(game, false));
+
 
         if (Gdx.input.justTouched()) {
             if (Gdx.input.getX() > (40 * AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (260* AllVariables.inpM)+AllVariables.witdth_translation) {

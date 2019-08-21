@@ -1466,7 +1466,7 @@ public class TypeTwoArea implements Screen {
                     @Override
                     public boolean keyDown(int keycode) {
                         if (keycode == Input.Keys.Z){
-                            game.setScreen(new CuttingAreaManager(game));
+                            game.setScreen(new ShapeChooser(game));
                         }
                         if (keycode == Input.Keys.SPACE){
                             VariablesForPlayArea.gameOver = true;
