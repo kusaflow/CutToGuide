@@ -133,6 +133,11 @@ public class TiledMapLoadingHelper {
             pos.y = 322;
             return pos;
         }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 14){
+            pos.x = 9127;
+            pos.y = 317;
+            return pos;
+        }
 
         return pos;
     }
@@ -204,6 +209,11 @@ public class TiledMapLoadingHelper {
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 13){
             cpos.x = 7017;
             cpos.y = 322;
+            return cpos;
+        }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 14){
+            cpos.x = 1977;
+            cpos.y = 387;
             return cpos;
         }
         return cpos;
@@ -279,6 +289,11 @@ public class TiledMapLoadingHelper {
             cpos.y = 322;
             return cpos;
         }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 14){
+            cpos.x = 4182;
+            cpos.y = 357;
+            return cpos;
+        }
         return cpos;
     }
 
@@ -350,6 +365,11 @@ public class TiledMapLoadingHelper {
         else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 13){
             cpos.x = 7867;
             cpos.y = 322;
+            return cpos;
+        }
+        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 14){
+            cpos.x = 6200;
+            cpos.y = 332;
             return cpos;
         }
         return cpos;
