@@ -116,7 +116,7 @@ public class LevelCompleted implements Screen {
         }else {
             short temp = (short) (VariablesForPlayArea.starsGained - t);
             for (int i1 =0; i1<temp;i1++)
-                coinsEarned+=33;
+                coinsEarned+=53;
         }
 
     }
