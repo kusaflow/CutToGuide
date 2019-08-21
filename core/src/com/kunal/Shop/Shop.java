@@ -59,17 +59,17 @@ public class Shop implements Screen, VideoEventListener {
          |          |--> coins
          |
          |
-         |-->powerUps
+         |-->powerUps N
          |          |
-         |          |--> speedInc
+         |          |--> speedInc N
          |          |
-         |          |--> speedDec
+         |          |--> speedDec N
          |          |
-         |          |--> jumper
+         |          |--> jumper N
      */
 
     private Sprite cancel,CycleBars, msgBoxTex, buttonBg;
-    Texture menuKusaCoin, menuBicycle, menuPowerUps, astic;
+    Texture menuKusaCoin, menuBicycle, astic;
     Texture freeKusaCoin, bgTobuy;
     Texture arrowR, arrowL, lock, seat, handle, bgblur;
     //bicycle
@@ -163,7 +163,6 @@ public class Shop implements Screen, VideoEventListener {
         //essential Menus
         menuKusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
         menuBicycle = new Texture(Gdx.files.internal("Shop/bicycleMenu.png"));
-        menuPowerUps  = new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/sprung.png"));
         astic = new Texture(Gdx.files.internal("utils/astric.png"));
         bgTobuy = new Texture(Gdx.files.internal("Shop/bgToBuy.png"));
         freeKusaCoin = new Texture(Gdx.files.internal("Shop/VideoIcon.png"));
@@ -230,7 +229,6 @@ public class Shop implements Screen, VideoEventListener {
             //menu
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 120, 120);
             AllVariables.batch.draw(menuBicycle, 40, 289, 60, 96);
-            AllVariables.batch.draw(menuPowerUps, 35, 125, 80, 80);
             AllVariables.batch.draw(astic, 20, 523, 20, 20);
 
 
@@ -301,7 +299,6 @@ public class Shop implements Screen, VideoEventListener {
         }else if (menuNumber ==2){
             AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
             AllVariables.batch.draw(menuBicycle, 40, 289, 86, 120);
-            AllVariables.batch.draw(menuPowerUps, 35, 125, 80, 80);
             AllVariables.batch.draw(astic, 40, 400, 20, 20);
 
             AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType),220,420,70,70);
@@ -543,11 +540,6 @@ public class Shop implements Screen, VideoEventListener {
             buttonBg.draw(AllVariables.batch);
             AllVariables.bitmapFont.draw(AllVariables.batch, " equip", 420, 390);
 
-        }else if (menuNumber == 3){
-            AllVariables.batch.draw(menuKusaCoin, 20, 453, 96, 96);
-            AllVariables.batch.draw(menuBicycle, 40, 289, 60, 96);
-            AllVariables.batch.draw(menuPowerUps, 35, 125, 106, 106);
-            AllVariables.batch.draw(astic, 40, 210, 20, 20);
         }
 
         AllVariables.bitmapFont.setColor(Color.ORANGE);
@@ -1175,7 +1167,6 @@ public class Shop implements Screen, VideoEventListener {
         msgBoxTex.getTexture().dispose();
         menuKusaCoin.dispose();
         menuBicycle.dispose();
-        menuPowerUps.dispose();
         astic.dispose();
         freeKusaCoin.dispose();
         bgTobuy.dispose();
