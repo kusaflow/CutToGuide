@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.Tutorial.tutScreen;
 import com.kunal.Shop.Shop;
 import com.kunal.playScreen.playScreen;
 import com.kunal.utils.slideShow.slideShow;
@@ -271,7 +272,8 @@ public class AreaSelection implements Screen {
                             dispose();
                             Gdx.gl.glClearColor(0.1f, 1f, 0.1f, 1f);
                             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-                            game.setScreen(new slideShow(game, 1));
+                            dispose();
+                            game.setScreen(new tutScreen(game));
                             return false;
                         }
 
