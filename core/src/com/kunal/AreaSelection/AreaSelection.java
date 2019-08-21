@@ -29,7 +29,7 @@ public class AreaSelection implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
-    Sprite settings , shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial;
+    Sprite shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial;
 
     short LevelState=0;
 
@@ -62,11 +62,6 @@ public class AreaSelection implements Screen {
         prams.size = 34;
         prams.color = Color.ORANGE;
         font = generator.generateFont(prams);
-
-
-        settings = new Sprite(new Texture(Gdx.files.internal("AreaSelection/settings.png")));
-        settings.setSize(90,90);
-        settings.setPosition(1150,620);
 
         kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
 
@@ -170,7 +165,6 @@ public class AreaSelection implements Screen {
 
         for (Sprite s : AreaList)
             s.draw(AllVariables.batch);
-        settings.draw(AllVariables.batch);
         shop.draw(AllVariables.batch);
         credit.draw(AllVariables.batch);
         Tutorial.draw(AllVariables.batch);
@@ -460,7 +454,6 @@ public class AreaSelection implements Screen {
     @Override
     public void dispose() {
         AreaList.clear();
-        settings.getTexture().dispose();
         shop.getTexture().dispose();
         credit.getTexture().dispose();
         backToPrevScreen.getTexture().dispose();

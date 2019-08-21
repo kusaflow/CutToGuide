@@ -153,6 +153,13 @@ public class slideShow implements Screen {
                                 && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 605 * AllVariables.inpM && screenY < 720 * AllVariables.inpM){
                             game.setScreen(new AreaSelection(game));
+                            try {
+                                helpImg.get(focused - 1).getTexture().dispose();
+                            }catch (Exception e){}
+                            try {
+                                helpImg.get(focused - 2).getTexture().dispose();
+                            }catch (Exception e){}
+
                             return true;
                         }
                         addNewSlide();
@@ -204,8 +211,15 @@ public class slideShow implements Screen {
         cam.position.y = cam.position.y+300;
         cam.update();
 
+
         helpImg.get(focused-1).setPosition(xaxis, yaxis);
         helpImg.get(focused-1).setSize(helpImg.get(focused-1).getTexture().getWidth()/1.4f,helpImg.get(focused-1).getTexture().getHeight()/1.4f);
+
+
+        try {
+            helpImg.get(focused - 2).getTexture().dispose();
+        }catch (Exception e){}
+
 
 
     }
@@ -236,11 +250,6 @@ public class slideShow implements Screen {
 
     @Override
     public void dispose() {
-        for (int i =0; i < helpImg.size(); i++){
-            helpImg.get(i).getTexture().dispose();
-        }
-
-
         helpImg.clear();
         Gdx.input.setInputProcessor(null);
 
