@@ -13,12 +13,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.Area1.AreaOneClass;
-import com.kunal.PlayGround.PlayAreaUtils;
-import com.kunal.PlayGround.TypeOneArea.TypeOneArea;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
-import com.kunal.PlayGround.Tutorial.TutArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class ShapeChooser implements Screen {

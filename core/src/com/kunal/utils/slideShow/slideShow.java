@@ -13,6 +13,8 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.Tutorial.tutScreen;
+import com.kunal.utils.ReDirectToTheLevel;
 
 import java.util.LinkedList;
 
@@ -152,7 +154,12 @@ public class slideShow implements Screen {
                         if (screenX > (1110 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX < (1270 * AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY > 605 * AllVariables.inpM && screenY < 720 * AllVariables.inpM){
-                            game.setScreen(new AreaSelection(game));
+                            if (senderCode >= 1) {
+                                game.setScreen(new tutScreen(game));
+                            }else {
+                                ReDirectToTheLevel.Direct(game, true);
+                                dispose();
+                            }
                             try {
                                 helpImg.get(focused - 1).getTexture().dispose();
                             }catch (Exception e){}
@@ -193,7 +200,10 @@ public class slideShow implements Screen {
     private void addNewSlide(){
         if (focused == totalImg) {
             //return to the back class
-            game.setScreen(new AreaSelection(game));
+            if (senderCode >= 1)
+                game.setScreen(new tutScreen(game));
+            else
+                ReDirectToTheLevel.Direct(game, true);
             return;
         }
         focused++;

@@ -55,7 +55,6 @@ public class temp implements Screen {
 
             //this is compulsory before setting tut area
             VariablesForPlayArea.tutstep = 0;
-            //game.setScreen(new TutArea(game));
 
             //game.setScreen(new ShapeChooser(game));
 

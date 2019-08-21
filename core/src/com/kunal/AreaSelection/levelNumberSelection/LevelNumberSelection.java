@@ -442,6 +442,7 @@ public class LevelNumberSelection implements Screen {
                 Gdx.input.getX() < (128*AllVariables.inpM)+AllVariables.witdth_translation &&
                 Gdx.input.getY() >= 0 * AllVariables.inpM && Gdx.input.getY() < 128*AllVariables.inpM){
                 game.setScreen(new AreaSelection(game));
+                dispose();
             }
 
             //left
@@ -474,6 +475,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =1;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //2---------------------------------------
@@ -482,6 +484,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =2;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //3----------------------------------------
@@ -490,6 +493,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =3;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //4-------------------------------------------
@@ -498,6 +502,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =4;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //5-----------------------------------------------
@@ -506,6 +511,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =5;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
 
@@ -517,6 +523,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =6;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //7-------------------------------------------------------
@@ -525,6 +532,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =7;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //8-------------------------------------------------------
@@ -533,6 +541,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =8;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //9-------------------------------------------------------
@@ -541,6 +550,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =9;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //10--------------------------------------------------------
@@ -549,6 +559,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =10;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                 }
@@ -563,6 +574,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =11;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //12---------------------------------------
@@ -571,6 +583,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =12;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //13----------------------------------------
@@ -579,6 +592,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =13;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //14-------------------------------------------
@@ -587,6 +601,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =14;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //15-----------------------------------------------
@@ -595,6 +610,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =15;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
 
@@ -605,6 +621,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =16;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //17-------------------------------------------------------
@@ -613,6 +630,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =17;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //18-------------------------------------------------------
@@ -621,6 +639,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =18;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //19-------------------------------------------------------
@@ -629,6 +648,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =19;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //20--------------------------------------------------------
@@ -637,6 +657,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =20;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                 }
@@ -650,6 +671,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =21;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //22---------------------------------------
@@ -658,6 +680,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =22;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //23----------------------------------------
@@ -666,6 +689,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =23;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //24-------------------------------------------
@@ -674,6 +698,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =24;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //25-----------------------------------------------
@@ -682,6 +707,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =25;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
 
@@ -692,6 +718,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =26;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //27-------------------------------------------------------
@@ -700,6 +727,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =27;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //28-------------------------------------------------------
@@ -708,6 +736,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =28;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //29-------------------------------------------------------
@@ -716,6 +745,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =29;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                     //30--------------------------------------------------------
@@ -724,6 +754,7 @@ public class LevelNumberSelection implements Screen {
                             AllVariables.PresentLevelNumber =30;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             ReDirectToTheLevel.Direct(game, false);
+                            dispose();
                         }
                     }
                 }
@@ -781,6 +812,5 @@ public class LevelNumberSelection implements Screen {
         cross.dispose();
         movRight.dispose();
         movLeft.dispose();
-        System.out.println("Level selection disposed");
     }
 }
