@@ -18,7 +18,6 @@ import com.kunal.utils.ReDirectToTheLevel;
 
 import java.util.LinkedList;
 
-import sun.applet.Main;
 
 public class slideShow implements Screen {
     /*

@@ -1,0 +1,129 @@
+hello everyone
+
+this is your typical level.(nothing just normal level)
+you see this use this to move left right inside the level. (highlight camscroller)
+move this left ot move left(show camscroller to left)
+or move this right to move right(show camscroller to right)
+tap on this to select shapes and powers that will help you to complete the level(highlight shapechooser)
+a new screen will appear(just shoe shaper chooser screen)
+this grid 5x4 grid contains the items that you can choose(highlight the grid lines with some width and red color)
+(show shapechooser screen without edditing)
+tap on this arrow to cut the shapes(highlight the arrow)
+this is cutting area(show the cutting area)
+
+here all the green points are the points you can initiate the cutting
+and end anywhere
+
+(show a line starting with the green point)
+    like this start with a green point
+(show how to join the points and make a shape)
+    join the points like this
+(lift the finger to make the shape)
+    lift up your thumb or finger to make the shape
+(show cut out shape in the cutting area screen)
+    you see we have two shapes now
+(highlight shape one with animation with one color)
+    one
+(highlight shape two with animation with second color)
+    two
+however if you did something wrong
+(highlight rety)
+    press this to reset the layout
+
+there are some rules to create shapes to make the game more interesting
+
+number 1 you can only start with green points to create a shape and not with red points
+and also used green points will turn red
+
+(create a normal shape[13]to[1])
+    this is valid
+(join [13] to [2])
+    this is not because i started with a red point
+(join [2] to [13])
+    and this is valid because i stated with a green point
+    (join[3]to [13])
+    and you can join any possible green point like this
+
+numeber 2
+(overlap cut the shape)
+    use cant overpal cut the two shapes
+and number 3
+(internal cutting)
+    you cant do internal cutting
+
+to make this all easier and not complex
+you just need to draw the shape if its valid it will be outlined in blue lines
+and it its invalid nothing will happen
+(draw some shapes)
+
+Remember you can cut shapes once only when you come here all shapes from the level are restated so be carefull
+
+(highlight back)
+when you are done with shapes go back by touching here
+
+(nothing)
+as you can see the shapes are layed like this in the grid
+
+(selecting anyshape)
+select any shape by touching it
+
+you can know which shape is selected by seeing this yellow rectagle
+
+(highlight tick)
+when ok with shape toush this tick to take that shape to level
+
+
+(highlight anyshape selected)
+you see this is activates
+
+(unhighlight)
+this means a shape is currently selected by you
+you can touch this to deselect the shape
+
+
+touch abywhere and the shape will come right down to your finger
+
+when you placed the shape near your desired postions
+
+(highlight smooth mover)
+toggle this off and then put your finger anywhere on the screen and move the finger and shape will move according to your finger
+
+(highlight rotator)
+you see there three comeup when a shape is selected
+
+touch uppermost to rotate in clockwise
+
+touch downmost one to rotate anticlockwise
+
+touch middle one to move in multiple of 45 degree
+
+ok i think i wil place this shape there
+
+i touch this red button and now its off
+ and i cant use the shape np more i have to go to shapechooser to to select it again
+
+(highlight play)
+touch this when you are ready
+
+camera will to the left and now bicycle will start to move
+
+you see your shapes stays as they are to make is easier for you ti place shapes because adding physiics to them will make the game more complex
+
+
+youch reset to reset the level
+
+and touch this to apply brake
+
+(highlight cam zoom out)
+youch this to see zommed out view of the level
+
+thats it i hope you like this game
+this is my solo project and first game project
+ if you wanrt to help me improve the email me
+
+ thank you
+
+
+
+
+
