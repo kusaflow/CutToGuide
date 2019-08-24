@@ -56,6 +56,8 @@ public class TiledMapLoadingHelper {
             return 20;
         }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 14){
             return 11;
+        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 15){
+            return 17;
         }
 
         //area one end--------------------------------------------------
