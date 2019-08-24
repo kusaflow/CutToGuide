@@ -515,17 +515,13 @@ public class ReDirectToTheLevel {
                 powerupVar.TypeOfPower = 4;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
 
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 3;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
                 jumper = new JumperVariables();
-                jumper.x = 1600;
+                jumper.x = 1350;
                 jumper.y = 512;
                 VariablesForPlayArea.jumperList.add(jumper);
 
                 jumper = new JumperVariables();
-                jumper.x = 4000;
+                jumper.x = 3750;
                 jumper.y = 512;
                 VariablesForPlayArea.jumperList.add(jumper);
 
@@ -533,11 +529,11 @@ public class ReDirectToTheLevel {
                 halfSawVariables.xdestination = 4800;
                 halfSawVariables.oneisSelected = true;
                 halfSawVariables.xorigin = 4314;
-                halfSawVariables.yorigin = 740;
+                halfSawVariables.yorigin = 736;
                 VariablesForPlayArea.halfSawList.add(halfSawVariables);
 
                 jumper = new JumperVariables();
-                jumper.x = 6387;
+                jumper.x = 6187;
                 jumper.y = 480;
                 VariablesForPlayArea.jumperList.add(jumper);
 
@@ -551,12 +547,12 @@ public class ReDirectToTheLevel {
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
                 fullSawVariables = new FullSawVariables();
-                fullSawVariables.xpos = 630;
-                fullSawVariables.ypos = 1450;
+                fullSawVariables.xpos = 7600;
+                fullSawVariables.ypos = 900;
                 fullSawVariables.size = 128;
-                fullSawVariables.forwardDirection = false;
-                fullSawVariables.intialDirectionForward = false;
-                fullSawVariables.initialdead = true;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = false;
                 VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
 
