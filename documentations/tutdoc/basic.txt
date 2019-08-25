@@ -74,7 +74,7 @@ when ok with shape toush this tick to take that shape to level
 
 
 (highlight anyshape selected)
-you see this is activates
+ you see this is activates
 
 (unhighlight)
 this means a shape is currently selected by you
