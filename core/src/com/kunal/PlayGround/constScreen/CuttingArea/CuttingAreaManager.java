@@ -43,8 +43,14 @@ public class CuttingAreaManager implements Screen {
 
     @Override
     public void dispose() {
-        inputsToChop.clear();
         sr.dispose();
+        doneSh.dispose();
+        retry.dispose();
+        try {
+            key.dispose();
+            hintImg.getTexture().dispose();
+        }catch (Exception e){}
+        Gdx.input.setInputProcessor(null);
     }
 
 
@@ -234,6 +240,7 @@ public class CuttingAreaManager implements Screen {
                                 VariablesForPlayArea.Angle_Of_Shape.add(180f);
                             }
 
+                            dispose();
                             game.setScreen(new ShapeChooser(game));
 
                         }
