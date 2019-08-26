@@ -18,6 +18,7 @@ import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.temp.temp;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.util.LinkedList;
 
@@ -28,6 +29,10 @@ public class CuttingAreaManager implements Screen {
     private Viewport port;
 
     protected LinkedList<Byte> inputsToChop;
+
+    private LinkedList<LinkedList<Byte>> UsedShapes_cord;
+    private LinkedList<Vector2> UsedShapes_pos;
+    private LinkedList<Float> UsedShapes_Rotation;
 
     private ShapeRenderer sr;
 
@@ -63,6 +68,24 @@ public class CuttingAreaManager implements Screen {
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
         sr = new ShapeRenderer();
+
+        UsedShapes_cord = new LinkedList<LinkedList<Byte>>();
+        UsedShapes_pos = new LinkedList<Vector2>();
+        UsedShapes_Rotation = new LinkedList<Float>();
+
+        LinkedList<Byte> temp = new LinkedList<Byte>();
+
+        ///initializing already used shapes
+        for (int i =0; i<VariablesForPlayArea.Sh_pos.size(); i++){
+            if (VariablesForPlayArea.Sh_pos.get(i).y*AllVariables.PPM != -3000){
+                for (int j=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
+                    temp.add(VariablesForPlayArea.shapes.get(i).get(j));
+                }
+                UsedShapes_cord.add(temp);
+                UsedShapes_Rotation.add(VariablesForPlayArea.Angle_Of_Shape.get(i));
+                UsedShapes_pos.add(VariablesForPlayArea.Sh_pos.get(i));
+            }
+        }
 
 
         //inputs to chop
@@ -101,10 +124,28 @@ public class CuttingAreaManager implements Screen {
 
         sr.begin(ShapeRenderer.ShapeType.Line);
 
-        sr.setColor(0, 0.6f, 1, 1);
+        //sr.setColor(0, 0.6f, 1, 1);
+        sr.setColor(1, 0f, 0, 1);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
+
+            Boolean issame = false;
+
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
+                for (int iter = 0; iter < UsedShapes_cord.size(); i++){
+                    for (int iter2=0; iter2 < UsedShapes_cord.get(iter).size(); i++){
+                        if (VariablesForPlayArea.shapes.get(i).get(iter2).equals(UsedShapes_cord.get(iter2))){
+                            issame = true;
+                        }else{
+                            issame = false;
+                        }
+
+                        if (!issame)
+                            iter2 = UsedShapes_cord.size() + 10;
+                    }
+
+                    if (issame)
+                }
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0];
                 k++;
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1];
@@ -112,6 +153,7 @@ public class CuttingAreaManager implements Screen {
             }
             try {
                 sr.polygon(ver);
+                sr.setColor(0, 0.6f, 1, 1);
             }catch (Exception e){}
             ver = null;
 

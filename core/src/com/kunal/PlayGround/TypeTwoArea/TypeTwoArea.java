@@ -52,7 +52,6 @@ import java.util.Random;
 
 
 public class TypeTwoArea implements Screen {
-
     MainGame game;
 
     private World world;
@@ -1487,9 +1486,7 @@ public class TypeTwoArea implements Screen {
                         }
 
                         if (keycode == Input.Keys.P){
-                            //AllVariables.BackWheel.applyForceToCenter(200,0, true);
-                            //VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
-                            System.out.println(VariablesForPlayArea.Sh_pos.get(0).scl(100));
+                            System.out.println(VariablesForPlayArea.shapes);
                         }
 
 

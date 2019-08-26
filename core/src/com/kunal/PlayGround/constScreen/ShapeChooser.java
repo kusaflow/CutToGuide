@@ -227,7 +227,7 @@ public class ShapeChooser implements Screen {
         sred.setColor(1, 1f, 1, 1);
 
         for (i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
-            if (VariablesForPlayArea.Sh_pos.get(i).x*AllVariables.PPM == 640)
+            if (VariablesForPlayArea.Sh_pos.get(i).y*AllVariables.PPM == -3000)
                 sred.setColor(1, 1f, 1, 1);
             else
                 sred.setColor(1f, .4f, .4f, 1);

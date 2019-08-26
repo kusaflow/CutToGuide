@@ -45,6 +45,7 @@ public class AreaSelection implements Screen {
         this.game = game;
 
         positionY = 150;
+
         transparency = 1;
 
         AllVariables.PresentAreaNumber = 0;
