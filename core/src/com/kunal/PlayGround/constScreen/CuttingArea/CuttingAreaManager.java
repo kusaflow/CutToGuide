@@ -122,30 +122,42 @@ public class CuttingAreaManager implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
 
+        Boolean issame = false;
+
+        Gdx.gl.glEnable(GL20.GL_BLEND);
+        Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
+
         sr.begin(ShapeRenderer.ShapeType.Line);
 
-        //sr.setColor(0, 0.6f, 1, 1);
-        sr.setColor(1, 0f, 0, 1);
+        sr.setColor(1, 1f, 1, 0.5f);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
 
-            Boolean issame = false;
-
-            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
-                for (int iter = 0; iter < UsedShapes_cord.size(); i++){
-                    for (int iter2=0; iter2 < UsedShapes_cord.get(iter).size(); i++){
-                        if (VariablesForPlayArea.shapes.get(i).get(iter2).equals(UsedShapes_cord.get(iter2))){
+            for (int j = 0; j < UsedShapes_cord.size(); j++) {
+                issame = false;
+                for (int k = 0; k < UsedShapes_cord.get(j).size(); k++) {
+                    System.out.println(UsedShapes_cord.get(j).size() + "\t" + VariablesForPlayArea.shapes.get(i).size());
+                    if(UsedShapes_cord.get(j).size() == VariablesForPlayArea.shapes.get(i).size()){
+                        if (VariablesForPlayArea.shapes.get(i).get(k).equals(UsedShapes_cord.get(j).get(k))) {
                             issame = true;
-                        }else{
+                        } else {
                             issame = false;
                         }
-
                         if (!issame)
-                            iter2 = UsedShapes_cord.size() + 10;
-                    }
+                            k = UsedShapes_cord.get(0).size() + 100;
 
-                    if (issame)
+                    }else {
+                        k = UsedShapes_cord.get(0).size() + 100;
+                    }
                 }
+                if (issame){
+                    sr.setColor(1, 0f, 0, 1);
+                    j = UsedShapes_cord.size()+100;
+                }
+            }
+
+
+            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0];
                 k++;
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][1];
@@ -153,13 +165,15 @@ public class CuttingAreaManager implements Screen {
             }
             try {
                 sr.polygon(ver);
-                sr.setColor(0, 0.6f, 1, 1);
+                sr.setColor(1, 1f, 1, 0.5f);
             }catch (Exception e){}
             ver = null;
+
 
         }
 
         sr.end();
+        Gdx.gl.glDisable(GL20.GL_BLEND);
 
         sr.begin(ShapeRenderer.ShapeType.Filled);
 
