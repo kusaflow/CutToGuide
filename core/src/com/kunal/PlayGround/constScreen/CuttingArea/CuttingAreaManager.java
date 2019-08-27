@@ -34,6 +34,8 @@ public class CuttingAreaManager implements Screen {
     private LinkedList<Vector2> UsedShapes_pos;
     private LinkedList<Float> UsedShapes_Rotation;
 
+    private LinkedList<Byte> temp;
+
     private ShapeRenderer sr;
 
     //drawing shapes
@@ -73,7 +75,7 @@ public class CuttingAreaManager implements Screen {
         UsedShapes_pos = new LinkedList<Vector2>();
         UsedShapes_Rotation = new LinkedList<Float>();
 
-        LinkedList<Byte> temp = new LinkedList<Byte>();
+        temp = new LinkedList<Byte>();
 
         ///initializing already used shapes
         for (int i =0; i<VariablesForPlayArea.Sh_pos.size(); i++){
@@ -82,11 +84,18 @@ public class CuttingAreaManager implements Screen {
                     temp.add(VariablesForPlayArea.shapes.get(i).get(j));
                 }
                 UsedShapes_cord.add(temp);
+                System.out.println(UsedShapes_cord);
                 UsedShapes_Rotation.add(VariablesForPlayArea.Angle_Of_Shape.get(i));
                 UsedShapes_pos.add(VariablesForPlayArea.Sh_pos.get(i));
             }
+            temp.clear();
         }
 
+        try {
+            System.out.println(UsedShapes_Rotation);
+        }catch (Exception e){
+
+        }
 
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
@@ -132,12 +141,13 @@ public class CuttingAreaManager implements Screen {
         sr.setColor(1, 1f, 1, 0.5f);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
-
             for (int j = 0; j < UsedShapes_cord.size(); j++) {
                 issame = false;
+                //System.out.println(UsedShapes_cord.get(j).size());
                 for (int k = 0; k < UsedShapes_cord.get(j).size(); k++) {
-                    System.out.println(UsedShapes_cord.get(j).size() + "\t" + VariablesForPlayArea.shapes.get(i).size());
+                    //System.out.println(UsedShapes_cord.get(j).size() + "\t" + VariablesForPlayArea.shapes.get(i).size());
                     if(UsedShapes_cord.get(j).size() == VariablesForPlayArea.shapes.get(i).size()){
+                        System.out.println(j + "\t" + i);
                         if (VariablesForPlayArea.shapes.get(i).get(k).equals(UsedShapes_cord.get(j).get(k))) {
                             issame = true;
                         } else {
@@ -418,8 +428,7 @@ public class CuttingAreaManager implements Screen {
                             game.setScreen(new AreaOneClass(game));
                         }
                         if (keycode == Input.Keys.O){
-                            System.out.println(hintImg.getX() + " \t " + hintImg.getY());
-                            System.out.println(hintImg.getWidth() + " \t " + hintImg.getHeight());
+                            System.out.println(VariablesForPlayArea.shapes);
                         }
 
                         return false;
