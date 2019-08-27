@@ -139,9 +139,12 @@ public class CuttingAreaManager implements Screen {
         Gdx.gl.glEnable(GL20.GL_BLEND);
         Gdx.gl.glBlendFunc(GL20.GL_SRC_ALPHA, GL20.GL_ONE_MINUS_SRC_ALPHA);
 
+        LinkedList<Byte> redShapes = new LinkedList<Byte>();
+
         sr.begin(ShapeRenderer.ShapeType.Line);
 
-        sr.setColor(0, 1f, 0, 0.5f);
+        sr.setColor(0, 0.6f, 1, 1);
+        //sr.setColor(0, 1f, 0, 0.5f);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0; j < UsedShapes_cord.size(); j++) {
@@ -164,11 +167,15 @@ public class CuttingAreaManager implements Screen {
                     }
                 }
                 if (issame){
-                    sr.setColor(1, 0f, 0, 1);
+                    //sr.setColor(1, 0f, 0, 1);
                     j = UsedShapes_cord.size()+100;
                 }
             }
 
+            if (issame) {
+                redShapes.add((byte) i);
+                continue;
+            }
 
             for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(i).size(); j++) {
                 ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(i).get(j)][0];
@@ -178,12 +185,26 @@ public class CuttingAreaManager implements Screen {
             }
             try {
                 sr.polygon(ver);
-                sr.setColor(1, 1f, 1, 0.5f);
+                sr.setColor(0, 0.6f, 1, 1);
             }catch (Exception e){}
             ver = null;
-
-
         }
+
+        sr.setColor(1, 0,0 , 1);
+        for (int i = 0; i < redShapes.size(); i++) {
+            ver = new float[(VariablesForPlayArea.shapes.get(redShapes.get(i)).size() * 2)];
+            for (int j = 0, k = 0; j < VariablesForPlayArea.shapes.get(redShapes.get(i)).size(); j++) {
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(redShapes.get(i)).get(j)][0];
+                k++;
+                ver[k] = VariablesForPlayArea.BigSqurePoints[VariablesForPlayArea.shapes.get(redShapes.get(i)).get(j)][1];
+                k++;
+            }
+            try {
+                sr.polygon(ver);
+            }catch (Exception e){}
+            ver = null;
+        }
+
 
         sr.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
