@@ -30,11 +30,9 @@ public class CuttingAreaManager implements Screen {
 
     protected LinkedList<Byte> inputsToChop;
 
-    private LinkedList<LinkedList<Byte>> UsedShapes_cord;
+    private LinkedList<Byte[]> UsedShapes_cord;
     private LinkedList<Vector2> UsedShapes_pos;
     private LinkedList<Float> UsedShapes_Rotation;
-
-    private LinkedList<Byte> temp;
 
     private ShapeRenderer sr;
 
@@ -71,28 +69,33 @@ public class CuttingAreaManager implements Screen {
 
         sr = new ShapeRenderer();
 
-        UsedShapes_cord = new LinkedList<LinkedList<Byte>>();
+        UsedShapes_cord = new LinkedList<Byte[]>();
         UsedShapes_pos = new LinkedList<Vector2>();
         UsedShapes_Rotation = new LinkedList<Float>();
 
-        temp = new LinkedList<Byte>();
+        Byte temp[];
 
         ///initializing already used shapes
         for (int i =0; i<VariablesForPlayArea.Sh_pos.size(); i++){
             if (VariablesForPlayArea.Sh_pos.get(i).y*AllVariables.PPM != -3000){
+                temp = new Byte[VariablesForPlayArea.shapes.get(i).size()];
                 for (int j=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
-                    temp.add(VariablesForPlayArea.shapes.get(i).get(j));
+                    temp[j] = VariablesForPlayArea.shapes.get(i).get(j);
                 }
                 UsedShapes_cord.add(temp);
-                System.out.println(UsedShapes_cord);
+                //System.out.println(UsedShapes_cord);
                 UsedShapes_Rotation.add(VariablesForPlayArea.Angle_Of_Shape.get(i));
                 UsedShapes_pos.add(VariablesForPlayArea.Sh_pos.get(i));
             }
-            temp.clear();
         }
 
         try {
-            System.out.println(UsedShapes_Rotation);
+            for (int i =0; i<UsedShapes_cord.size(); i++) {
+                for (int j =0; j<UsedShapes_cord.get(i).length; j++) {
+                    System.out.print(UsedShapes_cord.get(i)[j]);
+                }
+                System.out.println();
+            }
         }catch (Exception e){
 
         }
@@ -138,26 +141,26 @@ public class CuttingAreaManager implements Screen {
 
         sr.begin(ShapeRenderer.ShapeType.Line);
 
-        sr.setColor(1, 1f, 1, 0.5f);
+        sr.setColor(0, 1f, 0, 0.5f);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
             ver = new float[(VariablesForPlayArea.shapes.get(i).size() * 2)];
             for (int j = 0; j < UsedShapes_cord.size(); j++) {
                 issame = false;
                 //System.out.println(UsedShapes_cord.get(j).size());
-                for (int k = 0; k < UsedShapes_cord.get(j).size(); k++) {
+                for (int k = 0; k < UsedShapes_cord.get(j).length; k++) {
                     //System.out.println(UsedShapes_cord.get(j).size() + "\t" + VariablesForPlayArea.shapes.get(i).size());
-                    if(UsedShapes_cord.get(j).size() == VariablesForPlayArea.shapes.get(i).size()){
-                        System.out.println(j + "\t" + i);
-                        if (VariablesForPlayArea.shapes.get(i).get(k).equals(UsedShapes_cord.get(j).get(k))) {
+                    if(UsedShapes_cord.get(j).length == VariablesForPlayArea.shapes.get(i).size()){
+                        //System.out.println(j + "\t" + i);
+                        if (VariablesForPlayArea.shapes.get(i).get(k) == UsedShapes_cord.get(j)[k]) {
                             issame = true;
                         } else {
                             issame = false;
                         }
                         if (!issame)
-                            k = UsedShapes_cord.get(0).size() + 100;
+                            k = UsedShapes_cord.get(0).length + 100;
 
                     }else {
-                        k = UsedShapes_cord.get(0).size() + 100;
+                        k = UsedShapes_cord.get(0).length + 100;
                     }
                 }
                 if (issame){
