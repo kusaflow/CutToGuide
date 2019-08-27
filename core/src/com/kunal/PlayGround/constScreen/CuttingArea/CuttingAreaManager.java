@@ -185,7 +185,7 @@ public class CuttingAreaManager implements Screen {
             }
             try {
                 sr.polygon(ver);
-                sr.setColor(0, 0.6f, 1, 1);
+                sr.setColor(0,0.6f, 1, 1);
             }catch (Exception e){}
             ver = null;
         }
