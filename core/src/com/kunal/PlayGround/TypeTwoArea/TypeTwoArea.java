@@ -118,7 +118,7 @@ public class TypeTwoArea implements Screen {
     //bicycle maleup
     private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat, bg1, bg2;
 
-    private Texture kusaCoin;
+    private Texture kusaCoin,camScrollerBG;
 
     private Boolean[] bgRandNumber = new Boolean[15];
 
@@ -243,7 +243,7 @@ public class TypeTwoArea implements Screen {
 
         kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
 
-
+        camScrollerBG = new Texture(Gdx.files.internal("playArea/CamScrollerBG.png"));
 
         fadedBG = new Sprite(new Texture(Gdx.files.internal("playArea/fadedBG.png")));
         fadedBG.setPosition(0,0);
@@ -562,6 +562,7 @@ public class TypeTwoArea implements Screen {
         start.draw(AllVariables.batch);
         chooseBody.draw(AllVariables.batch);
         HardMoveShapes.draw(AllVariables.batch);
+        AllVariables.batch.draw(camScrollerBG,1020-68+(cam.position.x - AllVariables.WIDTH/2), 710+55+(cam.position.y - AllVariables.HEIGHT/2));
         CamScroller.draw(AllVariables.batch);
         DropAnyShapeButton.draw(AllVariables.batch);
         pause.draw(AllVariables.batch);
@@ -931,7 +932,7 @@ public class TypeTwoArea implements Screen {
             //moved to left
             if(originX - dragged_touchX > Gdx.graphics.getWidth()/24){
                 CamScrollerX = 950;
-                CamScrollerY = 715;
+                CamScrollerY = 735;
                 camScrollSize = 70;
                 if (hardMove)
                     VariablesForPlayArea.camposX-=30f;
@@ -940,8 +941,8 @@ public class TypeTwoArea implements Screen {
             }
             //moved to right
             else if(dragged_touchX - originX > Gdx.graphics.getWidth()/28){
-                CamScrollerX = 1100;
-                CamScrollerY = 715;
+                CamScrollerX = 1136;
+                CamScrollerY = 735;
                 camScrollSize = 70;
                 if (hardMove)
                     VariablesForPlayArea.camposX+=30f;
