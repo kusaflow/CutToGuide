@@ -1170,7 +1170,7 @@ public class TypeTwoArea implements Screen {
                                         && screenY > 600 * AllVariables.inpM && screenY < 710 * AllVariables.inpM) {
                                     //System.out.println("omPLan");
                                     isCamScrollerTouched = true;
-                                    CamScroller.setAlpha(0.7f);
+                                    CamScroller.setAlpha(0.9f);
                                     originX = screenX;
                                     originY = screenY;
                                     dragged_touchX = screenX;
