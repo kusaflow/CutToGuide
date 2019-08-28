@@ -557,15 +557,15 @@ public class TypeTwoArea implements Screen {
         if (startBool) {
             retryWhenStarted.draw(AllVariables.batch);
             ZoomOutCam.draw(AllVariables.batch);
+        }else {
+            start.draw(AllVariables.batch);
+            chooseBody.draw(AllVariables.batch);
+            HardMoveShapes.draw(AllVariables.batch);
+            AllVariables.batch.draw(camScrollerBG, 1020 - 68 + (cam.position.x - AllVariables.WIDTH / 2), 710 + 55 + (cam.position.y - AllVariables.HEIGHT / 2));
+            CamScroller.draw(AllVariables.batch);
+            DropAnyShapeButton.draw(AllVariables.batch);
+            pause.draw(AllVariables.batch);
         }
-
-        start.draw(AllVariables.batch);
-        chooseBody.draw(AllVariables.batch);
-        HardMoveShapes.draw(AllVariables.batch);
-        AllVariables.batch.draw(camScrollerBG,1020-68+(cam.position.x - AllVariables.WIDTH/2), 710+55+(cam.position.y - AllVariables.HEIGHT/2));
-        CamScroller.draw(AllVariables.batch);
-        DropAnyShapeButton.draw(AllVariables.batch);
-        pause.draw(AllVariables.batch);
         flag.draw(AllVariables.batch);
         if(isAnyShapeSelected){
             ShapeRotACW.draw(AllVariables.batch);

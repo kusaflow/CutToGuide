@@ -106,6 +106,8 @@ public class CuttingAreaManager implements Screen {
 
         }
 
+        System.out.println(UsedShapes_cord.size());
+
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
 
@@ -336,7 +338,7 @@ public class CuttingAreaManager implements Screen {
 
                             Boolean ispresent = false;
 
-                            for(int i =0; i<VariablesForPlayArea.shapes.size(); i++) {
+                            for(int i =0,usedShapeIndex=0; i<VariablesForPlayArea.shapes.size(); i++) {
                                 ispresent = false;
                                 for (int j=0;j<trackerTousedObj.size();j++) {
                                     if (i == trackerTousedObj.get(j)){
@@ -345,8 +347,9 @@ public class CuttingAreaManager implements Screen {
                                     }
                                 }
                                 if (ispresent){
-                                    VariablesForPlayArea.Sh_pos.add(UsedShapes_pos.get(i));
-                                    VariablesForPlayArea.Angle_Of_Shape.add(UsedShapes_Rotation.get(i));
+                                    VariablesForPlayArea.Sh_pos.add(UsedShapes_pos.get(usedShapeIndex));
+                                    VariablesForPlayArea.Angle_Of_Shape.add(UsedShapes_Rotation.get(usedShapeIndex));
+                                    usedShapeIndex++;
                                 }else{
                                     VariablesForPlayArea.Sh_pos.add(v);
                                     VariablesForPlayArea.Angle_Of_Shape.add(180f);
