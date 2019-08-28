@@ -33,6 +33,7 @@ public class CuttingAreaManager implements Screen {
     private LinkedList<Byte[]> UsedShapes_cord;
     private LinkedList<Vector2> UsedShapes_pos;
     private LinkedList<Float> UsedShapes_Rotation;
+    private LinkedList<Byte> trackerTousedObj;
 
     private ShapeRenderer sr;
 
@@ -73,11 +74,14 @@ public class CuttingAreaManager implements Screen {
         UsedShapes_pos = new LinkedList<Vector2>();
         UsedShapes_Rotation = new LinkedList<Float>();
 
-        Byte temp[];
+        trackerTousedObj = new LinkedList<Byte>();
+
+        Byte   temp[];
 
         ///initializing already used shapes
         for (int i =0; i<VariablesForPlayArea.Sh_pos.size(); i++){
             if (VariablesForPlayArea.Sh_pos.get(i).y*AllVariables.PPM != -3000){
+
                 temp = new Byte[VariablesForPlayArea.shapes.get(i).size()];
                 for (int j=0; j<VariablesForPlayArea.shapes.get(i).size(); j++){
                     temp[j] = VariablesForPlayArea.shapes.get(i).get(j);
@@ -86,6 +90,8 @@ public class CuttingAreaManager implements Screen {
                 //System.out.println(UsedShapes_cord);
                 UsedShapes_Rotation.add(VariablesForPlayArea.Angle_Of_Shape.get(i));
                 UsedShapes_pos.add(VariablesForPlayArea.Sh_pos.get(i));
+
+                trackerTousedObj.add((byte) i);
             }
         }
 
@@ -143,6 +149,8 @@ public class CuttingAreaManager implements Screen {
 
         sr.begin(ShapeRenderer.ShapeType.Line);
 
+        trackerTousedObj.clear();
+
         sr.setColor(0, 0.6f, 1, 1);
         //sr.setColor(0, 1f, 0, 0.5f);
         for (int i = 0; i < VariablesForPlayArea.shapes.size(); i++) {
@@ -174,6 +182,7 @@ public class CuttingAreaManager implements Screen {
 
             if (issame) {
                 redShapes.add((byte) i);
+                trackerTousedObj.add((byte) i);
                 continue;
             }
 
@@ -325,9 +334,23 @@ public class CuttingAreaManager implements Screen {
                             Vector2 v= new Vector2();
                             v.add(640/AllVariables.PPM, -3000/AllVariables.PPM);
 
+                            Boolean ispresent = false;
+
                             for(int i =0; i<VariablesForPlayArea.shapes.size(); i++) {
-                                VariablesForPlayArea.Sh_pos.add(v);
-                                VariablesForPlayArea.Angle_Of_Shape.add(180f);
+                                ispresent = false;
+                                for (int j=0;j<trackerTousedObj.size();j++) {
+                                    if (i == trackerTousedObj.get(j)){
+                                        ispresent = true;
+                                        j = trackerTousedObj.size()+10;
+                                    }
+                                }
+                                if (ispresent){
+                                    VariablesForPlayArea.Sh_pos.add(UsedShapes_pos.get(i));
+                                    VariablesForPlayArea.Angle_Of_Shape.add(UsedShapes_Rotation.get(i));
+                                }else{
+                                    VariablesForPlayArea.Sh_pos.add(v);
+                                    VariablesForPlayArea.Angle_Of_Shape.add(180f);
+                                }
                             }
 
                             dispose();
