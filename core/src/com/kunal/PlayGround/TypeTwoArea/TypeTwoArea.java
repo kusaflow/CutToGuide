@@ -61,10 +61,10 @@ public class TypeTwoArea implements Screen {
 
     BitmapFont Font;
 
-    private Sprite Brake, start, chooseBody, HardMoveShapes, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
+    private Sprite Brake, start, chooseBody, MoveToDustBin, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex,
             retryWhenStarted, ZoomOutCam, hintBox;
-    private Boolean brakeBool = false, startBool = false, hardMove = true, hardmoveFaultResolver = false,
+    private Boolean brakeBool = false, startBool = false,/* todrawMoveToDustBin = true, MoveToDustBinBoolFaultResolver = false,*/
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
             coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false, levelCompleteCAmMove,
@@ -199,10 +199,10 @@ public class TypeTwoArea implements Screen {
         chooseBody.setSize(150*camscl, 150*camscl);
         chooseBody.setAlpha(0.8f);
 
-        HardMoveShapes = new Sprite(new Texture(Gdx.files.internal("playArea/HardMove.png")));
-        HardMoveShapes.setPosition(50, 240);
-        HardMoveShapes.setSize(100*camscl, 100*camscl);
-        HardMoveShapes.setAlpha(1f);
+        MoveToDustBin = new Sprite(new Texture(Gdx.files.internal("playArea/HardMove.png")));
+        MoveToDustBin.setPosition(50, 240);
+        MoveToDustBin.setSize(100*camscl, 100*camscl);
+        MoveToDustBin.setAlpha(1f);
 
         CamScroller = new Sprite(new Texture(Gdx.files.internal("playArea/CamScroller.png")));
         CamScroller.setPosition(50,240);
@@ -560,7 +560,7 @@ public class TypeTwoArea implements Screen {
         }else {
             start.draw(AllVariables.batch);
             chooseBody.draw(AllVariables.batch);
-            HardMoveShapes.draw(AllVariables.batch);
+            MoveToDustBin.draw(AllVariables.batch);
             AllVariables.batch.draw(camScrollerBG, 1020 - 68 + (cam.position.x - AllVariables.WIDTH / 2), 710 + 55 + (cam.position.y - AllVariables.HEIGHT / 2));
             CamScroller.draw(AllVariables.batch);
             DropAnyShapeButton.draw(AllVariables.batch);
@@ -811,7 +811,7 @@ public class TypeTwoArea implements Screen {
                     VariablesForPlayArea.camposX - 156 <= (AllVariables.BackWheel.getPosition().x) * AllVariables.PPM+25 ){
                 start.setAlpha(0);
                 chooseBody.setAlpha(0);
-                HardMoveShapes.setAlpha(0);
+                MoveToDustBin.setAlpha(0);
                 ShapeRotACW.setAlpha(0);
                 ShapeRotCW.setAlpha(0);
                 per45degRot.setAlpha(0);
@@ -848,7 +848,7 @@ public class TypeTwoArea implements Screen {
         start.setPosition(-190+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         Brake.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
-        HardMoveShapes.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
+        MoveToDustBin.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
         CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), CamScrollerY+(cam.position.y - AllVariables.HEIGHT/2));
         DropAnyShapeButton.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 440+(cam.position.y -AllVariables.HEIGHT/2));
         pause.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
@@ -934,22 +934,12 @@ public class TypeTwoArea implements Screen {
                 CamScrollerX = 950;
                 CamScrollerY = 735;
                 camScrollSize = 70;
-                if (hardMove)
-                    VariablesForPlayArea.camposX-=30f;
-                else
-                    VariablesForPlayArea.camposX-=10f;
             }
             //moved to right
             else if(dragged_touchX - originX > Gdx.graphics.getWidth()/28){
                 CamScrollerX = 1136;
                 CamScrollerY = 735;
                 camScrollSize = 70;
-                if (hardMove)
-                    VariablesForPlayArea.camposX+=30f;
-                else
-                    VariablesForPlayArea.camposX+=10f;
-
-
             }else{
                 CamScrollerX = 1020;
                 CamScrollerY = 710;
@@ -972,10 +962,7 @@ public class TypeTwoArea implements Screen {
         //changing rotation
         if (ACWTouched){
             tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
-            if (hardMove)
-                tempRotForShape-=3;
-            else
-                tempRotForShape-=1;
+            tempRotForShape-=3;
             if(tempRotForShape<=0)
                 tempRotForShape = (360 - tempRotForShape);
             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
@@ -983,10 +970,7 @@ public class TypeTwoArea implements Screen {
 
         if (CWtouched){
             tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
-            if (hardMove)
-                tempRotForShape+=3;
-            else
-                tempRotForShape+=1;
+            tempRotForShape+=3;
             if(tempRotForShape>=360)
                 tempRotForShape = (short) (tempRotForShape - 360);
             VariablesForPlayArea.Angle_Of_Shape.set(VariablesForPlayArea.shapeNumberSelected, tempRotForShape);
@@ -1002,7 +986,7 @@ public class TypeTwoArea implements Screen {
             }
             else {
                 //no shape is selected
-                DropAnyShapeButton.setAlpha(0.5f);
+                DropAnyShapeButton.setAlpha(0f);
                 isAnyShapeSelected = false;
             }
         }else {
@@ -1044,6 +1028,13 @@ public class TypeTwoArea implements Screen {
                 game.setScreen(new LevelCompleted(game));
             }
 
+        }
+
+        //to make dustbon wotk
+        if (VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y*AllVariables.PPM == -3000){
+            MoveToDustBin.setAlpha(0.8f);
+        }else{
+            MoveToDustBin.setAlpha(0);
         }
 
         //to check if any power is selected or not
@@ -1101,7 +1092,6 @@ public class TypeTwoArea implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         //System.out.println(screenX + "\t" + screenY);
-                        hardmoveFaultResolver = false;
 
                         if (VariablesForPlayArea.gameOver) {
                             if (screenX > (515 * AllVariables.inpM) + AllVariables.witdth_translation
@@ -1155,12 +1145,11 @@ public class TypeTwoArea implements Screen {
                                 if (screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 480 * AllVariables.inpM && screenY < 595 * AllVariables.inpM) {
-                                    hardMove = !hardMove;
+                                    /*hardMove = !hardMove;
                                     if (hardMove)
                                         HardMoveShapes.setAlpha(1);
                                     else
-                                        HardMoveShapes.setAlpha(0.4f);
-                                    hardmoveFaultResolver = true;
+                                        HardMoveShapes.setAlpha(0f);*/
                                     return false;
                                 }
 
@@ -1261,32 +1250,18 @@ public class TypeTwoArea implements Screen {
                         } else {
                             if (!paused) {
                                 if ((VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() + VariablesForPlayArea.powerUpList.size() - 1)) {
-                                    if (hardMove) {
-                                        if (powerUpSelected){
-                                            System.out.println("comming ");
-                                            VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).x = (short) (((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2))) - 250);
-                                            VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).y = (short) (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20);
-                                        }else {
-
-                                            VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
-                                                    ((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM) - VariablesForPlayArea.BigSqurePoints[0][0] / (2) / AllVariables.PPM,
-                                                    (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM) + VariablesForPlayArea.BigSqurePoints[12][1] / (2) / AllVariables.PPM,
-                                                    (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
-                                        }
-
-                                        return false;
-
-                                    } else {
-                                        if (!powerUpSelected) {
-                                            //dragging of objects
-                                            originX = screenX;
-                                            originY = screenY;
-                                            shapeX = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().x;
-                                            shapeY = VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y;
-                                        }
-
-                                        return false;
+                                    if (powerUpSelected){
+                                        VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).x = (short) (((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2))) - 250);
+                                        VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).y = (short) (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20);
+                                    }else {
+                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(
+                                                ((((screenX - AllVariables.witdth_translation) / AllVariables.inpM) * camscl + (cam.position.x - AllVariables.WIDTH / 2)) / AllVariables.PPM) - VariablesForPlayArea.BigSqurePoints[0][0] / (2) / AllVariables.PPM,
+                                                (((screenY / AllVariables.inpM) * camscl - 200 + (cam.position.y - AllVariables.HEIGHT / 2)) / AllVariables.PPM) + VariablesForPlayArea.BigSqurePoints[12][1] / (2) / AllVariables.PPM,
+                                                (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
                                     }
+                                    return false;
+
+
                                 }
                             }
                         }
@@ -1421,11 +1396,9 @@ public class TypeTwoArea implements Screen {
 
                         }else {
                             if (!paused) {
-                                if (!hardmoveFaultResolver) {
-                                    if (!hardMove) {
-                                        if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-                                            if (!hardMove) {
-                                                if (!ACWTouched && !CWtouched) {
+                                if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+
+                                    if (!ACWTouched && !CWtouched) {
                                                     //this is to prevent the ghost movement of the shapes
                                                     //start
                                                     if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
@@ -1450,10 +1423,10 @@ public class TypeTwoArea implements Screen {
                                                         }
                                                     }
                                                 }
-                                            }
+
                                         }
-                                    }
-                                }
+
+
                             }
                         }
 
@@ -1673,7 +1646,7 @@ public class TypeTwoArea implements Screen {
         Brake.getTexture().dispose();
         start.getTexture().dispose();
         chooseBody.getTexture().dispose();
-        HardMoveShapes.getTexture().dispose();
+        MoveToDustBin.getTexture().dispose();
         CamScroller.getTexture().dispose();
         DropAnyShapeButton.getTexture().dispose();
         ShapeRotACW.getTexture().dispose();
