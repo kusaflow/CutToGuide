@@ -1031,8 +1031,12 @@ public class TypeTwoArea implements Screen {
         }
 
         //to make dustbon wotk
-        if (VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y*AllVariables.PPM == -3000){
-            MoveToDustBin.setAlpha(0.8f);
+        if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
+            if (VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).getPosition().y * AllVariables.PPM == -3000) {
+                MoveToDustBin.setAlpha(0f);
+            } else {
+                MoveToDustBin.setAlpha(1);
+            }
         }else{
             MoveToDustBin.setAlpha(0);
         }
@@ -1397,7 +1401,6 @@ public class TypeTwoArea implements Screen {
                         }else {
                             if (!paused) {
                                 if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-
                                     if (!ACWTouched && !CWtouched) {
                                                     //this is to prevent the ghost movement of the shapes
                                                     //start
@@ -1423,7 +1426,6 @@ public class TypeTwoArea implements Screen {
                                                         }
                                                     }
                                                 }
-
                                         }
 
 
