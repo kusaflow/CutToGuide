@@ -934,12 +934,14 @@ public class TypeTwoArea implements Screen {
                 CamScrollerX = 950;
                 CamScrollerY = 735;
                 camScrollSize = 70;
+                VariablesForPlayArea.camposX-=20f;
             }
             //moved to right
             else if(dragged_touchX - originX > Gdx.graphics.getWidth()/28){
                 CamScrollerX = 1136;
                 CamScrollerY = 735;
                 camScrollSize = 70;
+                VariablesForPlayArea.camposX+=20f;
             }else{
                 CamScrollerX = 1020;
                 CamScrollerY = 710;
