@@ -1156,6 +1156,10 @@ public class TypeTwoArea implements Screen {
                                         HardMoveShapes.setAlpha(1);
                                     else
                                         HardMoveShapes.setAlpha(0f);*/
+                                    if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1){
+                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(640/AllVariables.PPM, -3000/AllVariables.PPM,180f);
+                                        VariablesForPlayArea.shapeNumberSelected = 21;
+                                    }
                                     return false;
                                 }
 
