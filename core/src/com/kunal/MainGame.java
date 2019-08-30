@@ -20,11 +20,17 @@ import java.util.Scanner;
 
 public class MainGame extends Game {
 
+
+	/*
+	instagram : https://www.instagram.com/kusaflow/?igshid=8y5b86e3yp6f
+	twitter : https://twitter.com/kusaflow?s=08
+	 */
     public MainGame() {
     }
 
-    public MainGame(AdVideoInterface adv) {
+    public MainGame(AdVideoInterface adv, openOtherApps openApp) {
 		AllVariables.adv = adv;
+		AllVariables.openApps = openApp;
 	}
 
 	@Override

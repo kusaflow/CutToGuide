@@ -37,6 +37,8 @@ public class AllVariables {
 
     public static AdVideoInterface adv = null;
 
+    public static openOtherApps openApps = null;
+
     public static short PresentAreaNumber = 0;
     public static short PresentLevelNumber = 0;
     /*

@@ -1,7 +1,11 @@
 package com.kunal;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
@@ -21,7 +25,7 @@ import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.kunal.MainGame;
 
-public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener {
+public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener, openOtherApps {
     private static final String TAG = "AndroidLauncher";
     private AdView adView;
 
@@ -37,20 +41,12 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
         super.onCreate(savedInstanceState);
         AndroidApplicationConfiguration config = new AndroidApplicationConfiguration();
 
-
-        //---------------------------------need to check------------------------------------------------
-        View decorView = getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-
-        //----------------------------------------------------------------------------------------------
         //initialize(new MainGame(this), config);
 
         //ad banner ---------------------------------------------------------------------------------
         RelativeLayout layout = new RelativeLayout(this);
 
-        View gameView = initializeForView(new MainGame(this), config);
+        View gameView = initializeForView(new MainGame(this,this), config);
 
         layout.addView(gameView);
 
@@ -90,7 +86,16 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
         //rewared ad video-----------------------------------------------------------------------------------------
         setupRewarded();
 
-	}
+        //---------------------------------need to check------------------------------------------------
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+        //----------------------------------------------------------------------------------------------
+
+
+    }
 
 
 	//rewared ad video
@@ -193,6 +198,18 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
     //end of rewared video-------------------------------------------------------------
 
+
+    @Override
+    public void OpenApp(String link) {
+
+        Intent intent = new Intent(this,AndroidLauncher.class);
+        try {;
+            intent = new Intent(Intent.ACTION_VIEW, Uri.parse(link));
+        } catch (Exception e) {
+
+        }
+        startActivity(intent);
+    }
 
     @Override
     protected void onPause() {

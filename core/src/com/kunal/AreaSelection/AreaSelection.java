@@ -17,6 +17,7 @@ import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Tutorial.tutScreen;
 import com.kunal.Shop.Shop;
+import com.kunal.credit.credits;
 import com.kunal.playScreen.playScreen;
 import com.kunal.utils.slideShow.slideShow;
 
@@ -282,6 +283,7 @@ public class AreaSelection implements Screen {
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
+                            dispose();
                             game.setScreen(new playScreen(game));
                             return false;
                         }
@@ -290,8 +292,8 @@ public class AreaSelection implements Screen {
                         if(screenX >= (250* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (450* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
-                            //code for credits
-                            System.out.println("credits");
+                            dispose();
+                            game.setScreen(new credits(game));
                             return false;
                         }
 
