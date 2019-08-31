@@ -555,11 +555,13 @@ public class TypeTwoArea implements Screen {
 
         //---------------------
 
-        Brake.draw(AllVariables.batch);
-        if (startBool) {
+        if (startBool && !VariablesForPlayArea.gameOver) {
             retryWhenStarted.draw(AllVariables.batch);
             ZoomOutCam.draw(AllVariables.batch);
-        }else {
+            Brake.draw(AllVariables.batch);
+        }
+        else if(VariablesForPlayArea.gameOver){}
+        else {
             start.draw(AllVariables.batch);
             chooseBody.draw(AllVariables.batch);
             MoveToDustBin.draw(AllVariables.batch);
@@ -679,7 +681,6 @@ public class TypeTwoArea implements Screen {
             retryTex.draw(AllVariables.batch);
             menuTex.draw(AllVariables.batch);
         }
-        System.out.println(cam.zoom);
         if (!startBool){
             AllVariables.batch.draw(kusaCoin,450+(cam.position.x - AllVariables.WIDTH/2),
                     770+(cam.position.y -AllVariables.HEIGHT/2),
