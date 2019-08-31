@@ -295,10 +295,6 @@ public class ReDirectToTheLevel {
                 powerupVar.TypeOfPower = 1;
                 VariablesForPlayArea.powerUpList.add(powerupVar);
 
-                powerupVar = new PowerUpInInventoryVariables();
-                powerupVar.TypeOfPower = 1;
-                VariablesForPlayArea.powerUpList.add(powerupVar);
-
 
                 powerupVar = new PowerUpInInventoryVariables();
                 powerupVar.TypeOfPower = 3;

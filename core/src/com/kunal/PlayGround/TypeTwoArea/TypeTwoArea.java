@@ -1418,7 +1418,7 @@ public class TypeTwoArea implements Screen {
                             if (screenX > (825 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (890 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 245 * AllVariables.inpM && screenY < 315 * AllVariables.inpM) {
-                                if (!hintThreeTaken) {
+                                if (!hintThreeTaken&& AllVariables.kusaCoin >= costOfH3) {
                                     hintThreeTaken = true;
                                     AllVariables.kusaCoin-=costOfH3;
                                     writeToFile();
