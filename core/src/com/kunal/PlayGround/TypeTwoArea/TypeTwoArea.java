@@ -457,6 +457,8 @@ public class TypeTwoArea implements Screen {
             update(dt);
         input(dt);
 
+
+
         b2dr.render(world, cam.combined.scl(AllVariables.PPM));
         //cam.combined.scl(AllVariables.PPM);
         //need to fix this
@@ -649,11 +651,35 @@ public class TypeTwoArea implements Screen {
 
         }
         if (VariablesForPlayArea.gameOver){
+            if (gameoverTexure.getScaleX() >cam.zoom){
+                if (cam.zoom<=1) {
+                    gameoverTexure.setScale(gameoverTexure.getScaleX() - 0.5f);
+                }else{
+                    gameoverTexure.setScale(gameoverTexure.getScaleX() - 1.5f);
+                    gameoverTexure.setPosition(gameoverTexure.getX(), gameoverTexure.getY()+30);
+                }
+            }
+            if (retryTex.getScaleX() >cam.zoom){
+                if (cam.zoom<=1) {
+                    retryTex.setScale(retryTex.getScaleX() - 0.5f);
+                }else {
+                    retryTex.setScale(retryTex.getScaleX() - 1.5f);
+                    retryTex.setPosition(retryTex.getX()+25, retryTex.getY());
+                }
+            }
+            if (menuTex.getScaleX() >cam.zoom){
+                if (cam.zoom<=1) {
+                    menuTex.setScale(menuTex.getScaleX()-0.5f);
+                }else {
+                    menuTex.setScale(menuTex.getScaleX()-1.5f);
+                    menuTex.setPosition(menuTex.getX()-25, menuTex.getY());
+                }
+            }
             gameoverTexure.draw(AllVariables.batch);
             retryTex.draw(AllVariables.batch);
             menuTex.draw(AllVariables.batch);
         }
-
+        System.out.println(cam.zoom);
         if (!startBool){
             AllVariables.batch.draw(kusaCoin,450+(cam.position.x - AllVariables.WIDTH/2),
                     770+(cam.position.y -AllVariables.HEIGHT/2),
@@ -864,6 +890,12 @@ public class TypeTwoArea implements Screen {
 
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
 
+        //scaling gameover and other buttons
+        gameoverTexure.setScale(cam.zoom*5);
+        retryTex.setScale(cam.zoom*5);
+        menuTex.setScale(cam.zoom*5);
+        //-------------------------------
+
         if (AllVariables.PresentLevelNumber >= 6)
         if (AllVariables.BackWheel.getLinearVelocity().x >= 17f) {
             if (AllVariables.BackWheel.getLinearVelocity().x>20.5f)
@@ -917,7 +949,6 @@ public class TypeTwoArea implements Screen {
                 }
             }
         }
-
 
 
         if (toDrawDropAnyShapeButton){
@@ -1141,7 +1172,7 @@ public class TypeTwoArea implements Screen {
                                     && screenX < (140 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM){
                                 ZoomOutBool = true;
-                                return true;
+                                return false;
                             }
                         }
 
