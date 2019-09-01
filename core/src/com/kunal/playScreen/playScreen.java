@@ -63,7 +63,7 @@ public class playScreen implements Screen {
     @Override
     public void render(float delta) {
         update(delta);
-        Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
+        Gdx.gl.glClearColor(0.2627450980f, 0.2705882f, 0.18431372f, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
@@ -77,56 +77,11 @@ public class playScreen implements Screen {
     }
 
     private void update(float dt){
-        Gdx.input.setInputProcessor(
-                new InputProcessor() {
-                    @Override
-                    public boolean keyDown(int keycode) {
-                        return false;
-                    }
 
-                    @Override
-                    public boolean keyUp(int keycode) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean keyTyped(char character) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-                        if (screenX > (550 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenX < (775 * AllVariables.inpM) + AllVariables.witdth_translation
-                                && screenY > 285 * AllVariables.inpM && screenY < 460 * AllVariables.inpM) {
-                            dispose();
-                            game.setScreen(new AreaSelection(game));
-                        }
-                        return false;
-                    }
-
-                    @Override
-                    public boolean touchDragged(int screenX, int screenY, int pointer) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean mouseMoved(int screenX, int screenY) {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean scrolled(int amount) {
-                        return false;
-                    }
-                }
-        );
-
+        if(Gdx.input.justTouched()){
+            dispose();
+            game.setScreen(new AreaSelection(game));
+        }
         alpha+=0.08f;
         if(alpha>1)
             alpha = 1;
