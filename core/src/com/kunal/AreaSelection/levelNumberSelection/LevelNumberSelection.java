@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.ReDirectToTheLevel;
 
 import java.util.LinkedList;
@@ -264,11 +265,13 @@ public class LevelNumberSelection implements Screen {
             AllVariables.batch.draw(stone, 850 + inc, 460, 120, 200);
             AllVariables.batch.draw(stone, 1050 + inc, 460, 120, 200);
 
-            AllVariables.batch.draw(stone, 250 + inc, 200, 120, 200);
-            AllVariables.batch.draw(stone, 450 + inc, 200, 120, 200);
-            AllVariables.batch.draw(stone, 650 + inc, 200, 120, 200);
-            AllVariables.batch.draw(stone, 850 + inc, 200, 120, 200);
-            AllVariables.batch.draw(stone, 1050 + inc, 200, 120, 200);
+            if (AllVariables.PresentAreaNumber !=1 || i!=1) {
+                AllVariables.batch.draw(stone, 250 + inc, 200, 120, 200);
+                AllVariables.batch.draw(stone, 450 + inc, 200, 120, 200);
+                AllVariables.batch.draw(stone, 650 + inc, 200, 120, 200);
+                AllVariables.batch.draw(stone, 850 + inc, 200, 120, 200);
+                AllVariables.batch.draw(stone, 1050 + inc, 200, 120, 200);
+            }
         }
 
         //number init
@@ -308,52 +311,54 @@ public class LevelNumberSelection implements Screen {
         //15
         AllVariables.batch.draw(number1,1040 + 1280, 470, 100,100);
         AllVariables.batch.draw(number5,1080 + 1280, 470, 100,100);
-        //16
-        AllVariables.batch.draw(number1,240 + 1280, 210, 100,100);
-        AllVariables.batch.draw(number6,280 + 1280, 210, 100,100);
-        //17
-        AllVariables.batch.draw(number1,440 + 1280, 210, 100,100);
-        AllVariables.batch.draw(number7,480 + 1280, 210, 100,100);
-        //18
-        AllVariables.batch.draw(number1,640 + 1280, 210, 100,100);
-        AllVariables.batch.draw(number8,680 + 1280, 210, 100,100);
-        //19
-        AllVariables.batch.draw(number1,840 + 1280, 210, 100,100);
-        AllVariables.batch.draw(number9,880 + 1280, 210, 100,100);
-        //20
-        AllVariables.batch.draw(number2,1040 + 1280, 210, 100,100);
-        AllVariables.batch.draw(number0,1080 + 1280, 210, 100,100);
-        //21
-        AllVariables.batch.draw(number2,240 + 1280*2, 470, 100,100);
-        AllVariables.batch.draw(number1,280 + 1280*2, 470, 100,100);
-        //22
-        AllVariables.batch.draw(number2,440 + 1280*2, 470, 100,100);
-        AllVariables.batch.draw(number2,480 + 1280*2, 470, 100,100);
-        //23
-        AllVariables.batch.draw(number2,640 + 1280*2, 470, 100,100);
-        AllVariables.batch.draw(number3,680 + 1280*2, 470, 100,100);
-        //24
-        AllVariables.batch.draw(number2,840 + 1280*2, 470, 100,100);
-        AllVariables.batch.draw(number4,880 + 1280*2, 470, 100,100);
-        //25
-        AllVariables.batch.draw(number2,1040 + 1280*2, 470, 100,100);
-        AllVariables.batch.draw(number5,1080 + 1280*2, 470, 100,100);
-        //26
-        AllVariables.batch.draw(number2,240 + 1280*2, 210, 100,100);
-        AllVariables.batch.draw(number6,280 + 1280*2, 210, 100,100);
-        //27
-        AllVariables.batch.draw(number2,440 + 1280*2, 210, 100,100);
-        AllVariables.batch.draw(number7,480 + 1280*2, 210, 100,100);
-        //28
-        AllVariables.batch.draw(number2,640 + 1280*2, 210, 100,100);
-        AllVariables.batch.draw(number8,680 + 1280*2, 210, 100,100);
-        //29
-        AllVariables.batch.draw(number2,840 + 1280*2, 210, 100,100);
-        AllVariables.batch.draw(number9,880 + 1280*2, 210, 100,100);
-        //30
-        AllVariables.batch.draw(number3,1040 + 1280*2, 210, 100,100);
-        AllVariables.batch.draw(number0,1080 + 1280*2, 210, 100,100);
+        if (AllVariables.PresentAreaNumber != 1) {
+            //16
+            AllVariables.batch.draw(number1, 240 + 1280, 210, 100, 100);
+            AllVariables.batch.draw(number6, 280 + 1280, 210, 100, 100);
+            //17
+            AllVariables.batch.draw(number1, 440 + 1280, 210, 100, 100);
+            AllVariables.batch.draw(number7, 480 + 1280, 210, 100, 100);
+            //18
+            AllVariables.batch.draw(number1, 640 + 1280, 210, 100, 100);
+            AllVariables.batch.draw(number8, 680 + 1280, 210, 100, 100);
+            //19
+            AllVariables.batch.draw(number1, 840 + 1280, 210, 100, 100);
+            AllVariables.batch.draw(number9, 880 + 1280, 210, 100, 100);
+            //20
+            AllVariables.batch.draw(number2, 1040 + 1280, 210, 100, 100);
+            AllVariables.batch.draw(number0, 1080 + 1280, 210, 100, 100);
+            //21
+            AllVariables.batch.draw(number2, 240 + 1280 * 2, 470, 100, 100);
+            AllVariables.batch.draw(number1, 280 + 1280 * 2, 470, 100, 100);
+            //22
+            AllVariables.batch.draw(number2, 440 + 1280 * 2, 470, 100, 100);
+            AllVariables.batch.draw(number2, 480 + 1280 * 2, 470, 100, 100);
+            //23
+            AllVariables.batch.draw(number2, 640 + 1280 * 2, 470, 100, 100);
+            AllVariables.batch.draw(number3, 680 + 1280 * 2, 470, 100, 100);
+            //24
+            AllVariables.batch.draw(number2, 840 + 1280 * 2, 470, 100, 100);
+            AllVariables.batch.draw(number4, 880 + 1280 * 2, 470, 100, 100);
+            //25
+            AllVariables.batch.draw(number2, 1040 + 1280 * 2, 470, 100, 100);
+            AllVariables.batch.draw(number5, 1080 + 1280 * 2, 470, 100, 100);
+            //26
+            AllVariables.batch.draw(number2, 240 + 1280 * 2, 210, 100, 100);
+            AllVariables.batch.draw(number6, 280 + 1280 * 2, 210, 100, 100);
+            //27
+            AllVariables.batch.draw(number2, 440 + 1280 * 2, 210, 100, 100);
+            AllVariables.batch.draw(number7, 480 + 1280 * 2, 210, 100, 100);
+            //28
+            AllVariables.batch.draw(number2, 640 + 1280 * 2, 210, 100, 100);
+            AllVariables.batch.draw(number8, 680 + 1280 * 2, 210, 100, 100);
+            //29
+            AllVariables.batch.draw(number2, 840 + 1280 * 2, 210, 100, 100);
+            AllVariables.batch.draw(number9, 880 + 1280 * 2, 210, 100, 100);
+            //30
+            AllVariables.batch.draw(number3, 1040 + 1280 * 2, 210, 100, 100);
+            AllVariables.batch.draw(number0, 1080 + 1280 * 2, 210, 100, 100);
 
+        }
         //Lock
         levelTrack = 0;
         for (int i =0, inci = 0; i<TotalLevel/10; i++){
@@ -368,6 +373,8 @@ public class LevelNumberSelection implements Screen {
                     inck+=200;
                 }
                 incj = 210;
+                if (AllVariables.PresentAreaNumber == 1)
+                    j++;
             }
             inci+=1280;
         }
@@ -611,6 +618,7 @@ public class LevelNumberSelection implements Screen {
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
                             dispose();
                             ReDirectToTheLevel.Direct(game, false);
+
                         }
                     }
 
@@ -620,8 +628,10 @@ public class LevelNumberSelection implements Screen {
                         if (UnlockedLevel >= 16){
                             AllVariables.PresentLevelNumber =16;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
-                            dispose();
-                            ReDirectToTheLevel.Direct(game, false);
+                            if (AllVariables.PresentAreaNumber != 1) {
+                                dispose();
+                                ReDirectToTheLevel.Direct(game, false);
+                            }
                         }
                     }
                     //17-------------------------------------------------------
@@ -629,8 +639,10 @@ public class LevelNumberSelection implements Screen {
                         if (UnlockedLevel >= 17){
                             AllVariables.PresentLevelNumber =17;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
-                            dispose();
-                            ReDirectToTheLevel.Direct(game, false);
+                            if (AllVariables.PresentAreaNumber != 1) {
+                                dispose();
+                                ReDirectToTheLevel.Direct(game, false);
+                            }
                         }
                     }
                     //18-------------------------------------------------------
@@ -638,8 +650,10 @@ public class LevelNumberSelection implements Screen {
                         if (UnlockedLevel >= 18){
                             AllVariables.PresentLevelNumber =18;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
-                            dispose();
-                            ReDirectToTheLevel.Direct(game, false);
+                            if (AllVariables.PresentAreaNumber != 1) {
+                                dispose();
+                                ReDirectToTheLevel.Direct(game, false);
+                            }
                         }
                     }
                     //19-------------------------------------------------------
@@ -647,8 +661,10 @@ public class LevelNumberSelection implements Screen {
                         if (UnlockedLevel >= 19){
                             AllVariables.PresentLevelNumber =19;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
-                            dispose();
-                            ReDirectToTheLevel.Direct(game, false);
+                            if (AllVariables.PresentAreaNumber != 1) {
+                                dispose();
+                                ReDirectToTheLevel.Direct(game, false);
+                            }
                         }
                     }
                     //20--------------------------------------------------------
@@ -656,8 +672,10 @@ public class LevelNumberSelection implements Screen {
                         if (UnlockedLevel >= 20){
                             AllVariables.PresentLevelNumber =20;
                             //game.setScreen(new TestClassToUnlockLevel(game, UnlockedLevel));
-                            dispose();
-                            ReDirectToTheLevel.Direct(game, false);
+                            if (AllVariables.PresentAreaNumber != 1) {
+                                dispose();
+                                ReDirectToTheLevel.Direct(game, false);
+                            }
                         }
                     }
                 }
