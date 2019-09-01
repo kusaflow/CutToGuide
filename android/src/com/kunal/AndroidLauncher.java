@@ -28,7 +28,7 @@ import com.kunal.MainGame;
 
 public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener, openOtherApps {
     private static final String TAG = "AndroidLauncher";
-    private AdView adView;
+    //private AdView adView;
 
     private RewardedVideoAd adRewardedVideoView;
     private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
@@ -55,6 +55,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
         layout.addView(gameView);
 
+        /*
 		adView = new AdView(this);
 
 		adView.setAdListener(
@@ -83,8 +84,10 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
         layout.addView(adView, adpream);
 
-        adView.loadAd(builder.build());
+        //adView.loadAd(builder.build());
+        */
         setContentView(layout);
+
         //banner ad finish here--------------------------------------------------------------------------------------
 
 
