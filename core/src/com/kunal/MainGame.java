@@ -250,11 +250,8 @@ public class MainGame extends Game {
 				tracker++;
 			}
 		}
-
-
-
-		//this.setScreen(new MainLoadingScreen(this));
-		this.setScreen(new temp(this));
+		this.setScreen(new MainLoadingScreen(this));
+		//this.setScreen(new temp(this));
 
 
 	}
