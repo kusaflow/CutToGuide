@@ -559,6 +559,53 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.y = 8500;
 
             if (!restarted) {
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 3;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 2;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = true;
+                speedctlrvar.x = 2200;
+                speedctlrvar.y = 520;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 517;
+                fullSawVariables.ypos = 542;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                halfSawVariables = new HalfSawVariables();
+                halfSawVariables.xdestination = 2920;
+                halfSawVariables.oneisSelected = true;
+                halfSawVariables.xorigin = 2450;
+                halfSawVariables.yorigin = 512;
+                VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
+                jumper = new JumperVariables();
+                jumper.x = 5827;
+                jumper.y = 380;
+                VariablesForPlayArea.jumperList.add(jumper);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 6957;
+                fullSawVariables.ypos = 547;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
             }
 
