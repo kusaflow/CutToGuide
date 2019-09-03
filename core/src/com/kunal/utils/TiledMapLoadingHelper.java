@@ -60,6 +60,8 @@ public class TiledMapLoadingHelper {
             return 17;
         }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 16){
             return 19;
+        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 17){
+            return 19;
         }
 
         //area one end--------------------------------------------------
@@ -147,6 +149,10 @@ public class TiledMapLoadingHelper {
             pos.y = 472;
             return pos;
         }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 16){
+            pos.x = 9297;
+            pos.y = 322;
+            return pos;
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 17){
             pos.x = 9297;
             pos.y = 322;
             return pos;
