@@ -616,6 +616,31 @@ public class ReDirectToTheLevel {
         VariablesForPlayArea.endPoint.y = 8500;
 
         if (!restarted) {
+            fullSawVariables = new FullSawVariables();
+            fullSawVariables.xpos = 332;
+            fullSawVariables.ypos = 292;
+            fullSawVariables.size = 128;
+            fullSawVariables.forwardDirection = true;
+            fullSawVariables.intialDirectionForward = true;
+            fullSawVariables.initialdead = false;
+            VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+            jumper = new JumperVariables();
+            jumper.x = 3390;
+            jumper.y = 192;
+            VariablesForPlayArea.jumperList.add(jumper);
+
+            powerupVar = new PowerUpInInventoryVariables();
+            powerupVar.TypeOfPower = 1;
+            VariablesForPlayArea.powerUpList.add(powerupVar);
+
+            halfSawVariables = new HalfSawVariables();
+            halfSawVariables.xdestination = 5087;
+            halfSawVariables.oneisSelected = true;
+            halfSawVariables.xorigin = 4480;
+            halfSawVariables.yorigin = 512;
+            VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
 
         }
 
