@@ -700,7 +700,7 @@ public class ReDirectToTheLevel {
 
 
 
-    }
+    } 
 
     //level basic template
     /*
