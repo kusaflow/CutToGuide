@@ -55,10 +55,8 @@ public class credits implements Screen {
         AllVariables.batch.begin();
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);
 
-        AllVariables.bitmapFont.draw(AllVariables.batch,"Hello, \n             |/\n", 100+100,600);
-        AllVariables.bitmapFont.draw(AllVariables.batch,"     I m |\\unal and hope you are enjoying this game :) ", 102+100,560);
-        AllVariables.bitmapFont.draw(AllVariables.batch,"             .", 104+100,571);
-        AllVariables.bitmapFont.draw(AllVariables.batch,"Follow us at :", 104+100,400);
+        AllVariables.bitmapFont.draw(AllVariables.batch,"Hope You Are Enjoying" , 400+100,600);
+        AllVariables.bitmapFont.draw(AllVariables.batch,"Follow me at :", 104+100,400);
 
         AllVariables.batch.draw(insta, 200, 200, 100, 100);
         AllVariables.batch.draw(twitter, 700, 200, 100, 100);
