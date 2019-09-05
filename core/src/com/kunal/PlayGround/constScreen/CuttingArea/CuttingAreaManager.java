@@ -304,7 +304,7 @@ public class CuttingAreaManager implements Screen {
 
                         screenY = Gdx.graphics.getHeight() - screenY;
 
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
 
                         if (hinystate){
                             hinystate = false;
@@ -443,9 +443,15 @@ public class CuttingAreaManager implements Screen {
                         } catch (Exception e) {
                         }
 
-
                         if (inputsToChop.isEmpty())
                             return false;
+
+                        for (int i=0; i<VariablesForPlayArea.cantuseDots.size(); i++){
+                            if (inputsToChop.getFirst() == VariablesForPlayArea.cantuseDots.get(i)) {
+                                inputsToChop.clear();
+                                return false;
+                            }
+                        }
 
                         fillingMissingPoints();
 

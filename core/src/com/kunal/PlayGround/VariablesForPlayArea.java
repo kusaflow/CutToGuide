@@ -89,6 +89,12 @@ public class VariablesForPlayArea {
         Angle_Of_Shape.add(180f);
         powerUpList = new LinkedList<PowerUpInInventoryVariables>();
 
+
+        cantuseDots.add((byte) 5);
+        cantuseDots.add((byte) 6);
+        cantuseDots.add((byte) 9);
+        cantuseDots.add((byte) 10);
+
         //obstacles
         flappyBirdPipesList = new LinkedList<flappyBirdPipesVariables>();
         createHoleList = new LinkedList<CreateHoleVariables>();
@@ -148,6 +154,10 @@ public class VariablesForPlayArea {
         Sh_pos.add(new Vector2(640f/AllVariables.PPM, -3000f/AllVariables.PPM));
 
         cantuseDots.clear();
+        cantuseDots.add((byte) 5);
+        cantuseDots.add((byte) 6);
+        cantuseDots.add((byte) 9);
+        cantuseDots.add((byte) 10);
 
         vertices.add((byte) 0);
         vertices.add((byte) 1);
