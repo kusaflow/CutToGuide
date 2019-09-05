@@ -625,6 +625,13 @@ public class ReDirectToTheLevel {
             fullSawVariables.initialdead = false;
             VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
+
+            speedctlrvar = new SpeedControllerVariables();
+            speedctlrvar.SpeedIncrementor = true;
+            speedctlrvar.x = 3150;
+            speedctlrvar.y = 300;
+            VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
             jumper = new JumperVariables();
             jumper.x = 3390;
             jumper.y = 192;

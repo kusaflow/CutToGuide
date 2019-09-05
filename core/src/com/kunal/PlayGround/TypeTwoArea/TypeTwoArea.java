@@ -1129,7 +1129,7 @@ public class TypeTwoArea implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
 
                         if (VariablesForPlayArea.gameOver) {
                             if (screenX > (515 * AllVariables.inpM) + AllVariables.witdth_translation
@@ -1445,34 +1445,39 @@ public class TypeTwoArea implements Screen {
                         }else {
                             if (!paused) {
                                 if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1) {
-                                    if (!ACWTouched && !CWtouched) {
-                                                    //this is to prevent the ghost movement of the shapes
-                                                    //start
-                                                    if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
-                                                            && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
-                                                            && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
-                                                    }else{
-                                                        //shape chooser
-                                                        if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
-                                                                && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
-                                                                && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
-                                                            // rot per 45 deg
-                                                        }else{
-                                                            if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
-                                                                    && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                                                    && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
-                                                            }else {
-                                                                //dragging statement-------------------------------------------------
-                                                                VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
-                                                                        ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100,
-                                                                        (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
-                                                            }
-                                                        }
+                                    if (screenX > (1160 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenX < (1280 * AllVariables.inpM) + AllVariables.witdth_translation
+                                            && screenY > 360 * AllVariables.inpM && screenY < 626 * AllVariables.inpM) {
+                                        //rotator
+                                    } else {
+                                        if (!ACWTouched && !CWtouched) {
+                                            //this is to prevent the ghost movement of the shapes
+                                            //start
+                                            if (screenX > (45 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                    && screenX < (200 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                    && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM) {
+                                            } else {
+                                                //shape chooser
+                                                if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                        && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                        && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM) {
+                                                    // rot per 45 deg
+                                                } else {
+                                                    if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                            && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
+                                                            && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
+                                                    } else {
+                                                        //dragging statement-------------------------------------------------
+                                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(((shapeX * AllVariables.PPM) + (screenX - originX)) / 100,
+                                                                ((shapeY * AllVariables.PPM) + (screenY - originY)) / 100,
+                                                                (float) (VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected) * (Math.PI / 180)));
                                                     }
                                                 }
+                                            }
                                         }
+                                    }
 
-
+                                }
                             }
                         }
 
