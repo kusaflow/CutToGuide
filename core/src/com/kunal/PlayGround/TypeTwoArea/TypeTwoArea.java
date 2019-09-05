@@ -1189,7 +1189,7 @@ public class TypeTwoArea implements Screen {
                                     else
                                         HardMoveShapes.setAlpha(0f);*/
                                     if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.CutOutBodies.size() - 1){
-                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(640/AllVariables.PPM, -3000/AllVariables.PPM,180f);
+                                        VariablesForPlayArea.CutOutBodies.get(VariablesForPlayArea.shapeNumberSelected).setTransform(640/AllVariables.PPM, -3000/AllVariables.PPM, (float) (180 * (Math.PI / 180)));
                                         VariablesForPlayArea.shapeNumberSelected = 21;
                                     }
                                     return false;
@@ -1208,7 +1208,7 @@ public class TypeTwoArea implements Screen {
 
                                 }
 
-                                //Drop any shape resolver
+                                //place the shape
                                 if (screenX > (25 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 415 * AllVariables.inpM && screenY < 470 * AllVariables.inpM) {
