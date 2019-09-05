@@ -611,87 +611,97 @@ public class ReDirectToTheLevel {
 
             game.setScreen(new TypeTwoArea(game, restarted));
         }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==17){
-        VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level17.tmx";
-        VariablesForPlayArea.endPoint.x = 1200;
-        VariablesForPlayArea.endPoint.y = 8500;
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level17.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
 
-        if (!restarted) {
-            fullSawVariables = new FullSawVariables();
-            fullSawVariables.xpos = 332;
-            fullSawVariables.ypos = 292;
-            fullSawVariables.size = 128;
-            fullSawVariables.forwardDirection = true;
-            fullSawVariables.intialDirectionForward = true;
-            fullSawVariables.initialdead = false;
-            VariablesForPlayArea.fullSawList.add(fullSawVariables);
+            if (!restarted) {
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 332;
+                fullSawVariables.ypos = 292;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
 
-            speedctlrvar = new SpeedControllerVariables();
-            speedctlrvar.SpeedIncrementor = true;
-            speedctlrvar.x = 3350;
-            speedctlrvar.y = 890;
-            VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = true;
+                speedctlrvar.x = 3350;
+                speedctlrvar.y = 890;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
 
-            jumper = new JumperVariables();
-            jumper.x = 3390;
-            jumper.y = 192;
-            VariablesForPlayArea.jumperList.add(jumper);
+                jumper = new JumperVariables();
+                jumper.x = 3390;
+                jumper.y = 192;
+                VariablesForPlayArea.jumperList.add(jumper);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower = 1;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 1;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            powerupVar = new PowerUpInInventoryVariables();
-            powerupVar.TypeOfPower = 2;
-            VariablesForPlayArea.powerUpList.add(powerupVar);
+                powerupVar = new PowerUpInInventoryVariables();
+                powerupVar.TypeOfPower = 2;
+                VariablesForPlayArea.powerUpList.add(powerupVar);
 
-            halfSawVariables = new HalfSawVariables();
-            halfSawVariables.xdestination = 4787;
-            halfSawVariables.oneisSelected = true;
-            halfSawVariables.xorigin = 4180;
-            halfSawVariables.yorigin = 512;
-            VariablesForPlayArea.halfSawList.add(halfSawVariables);
+                halfSawVariables = new HalfSawVariables();
+                halfSawVariables.xdestination = 4787;
+                halfSawVariables.oneisSelected = true;
+                halfSawVariables.xorigin = 4180;
+                halfSawVariables.yorigin = 512;
+                VariablesForPlayArea.halfSawList.add(halfSawVariables);
 
-            fullSawVariables = new FullSawVariables();
-            fullSawVariables.xpos = 7682;
-            fullSawVariables.ypos = 392;
-            fullSawVariables.size = 128;
-            fullSawVariables.forwardDirection = true;
-            fullSawVariables.intialDirectionForward = true;
-            fullSawVariables.initialdead = true;
-            VariablesForPlayArea.fullSawList.add(fullSawVariables);
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 7682;
+                fullSawVariables.ypos = 392;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
-            fullSawVariables = new FullSawVariables();
-            fullSawVariables.xpos = 7000;
-            fullSawVariables.ypos = 392;
-            fullSawVariables.size = 128;
-            fullSawVariables.forwardDirection = true;
-            fullSawVariables.intialDirectionForward = true;
-            fullSawVariables.initialdead = true;
-            VariablesForPlayArea.fullSawList.add(fullSawVariables);
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 7000;
+                fullSawVariables.ypos = 392;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
-            fullSawVariables = new FullSawVariables();
-            fullSawVariables.xpos = 6550;
-            fullSawVariables.ypos = 392;
-            fullSawVariables.size = 128;
-            fullSawVariables.forwardDirection = true;
-            fullSawVariables.intialDirectionForward = true;
-            fullSawVariables.initialdead = true;
-            VariablesForPlayArea.fullSawList.add(fullSawVariables);
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 6550;
+                fullSawVariables.ypos = 392;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
-            fullSawVariables = new FullSawVariables();
-            fullSawVariables.xpos = 5890;
-            fullSawVariables.ypos = 392;
-            fullSawVariables.size = 128;
-            fullSawVariables.forwardDirection = true;
-            fullSawVariables.intialDirectionForward = true;
-            fullSawVariables.initialdead = true;
-            VariablesForPlayArea.fullSawList.add(fullSawVariables);
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 5890;
+                fullSawVariables.ypos = 392;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = true;
+                fullSawVariables.intialDirectionForward = true;
+                fullSawVariables.initialdead = true;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
 
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==18){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level18.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
-
-        game.setScreen(new TypeTwoArea(game, restarted));
-    }
 
         return;
 
@@ -699,8 +709,7 @@ public class ReDirectToTheLevel {
         //area 1 end ----------------------------------------------------------------
 
 
-
-    } 
+    }
 
     //level basic template
     /*
