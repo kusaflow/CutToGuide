@@ -239,12 +239,13 @@ public class LevelCompleted implements Screen {
                     && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
-                if (AllVariables.PresentLevelNumber < 20)
-                    AllVariables.PresentLevelNumber++;
-                if (AllVariables.PresentAreaNumber == 20) {
+                if (AllVariables.PresentLevelNumber == 20) {
                     VariablesForPlayArea.flush();
                     game.setScreen(new LevelNumberSelection(game));
-                    //ReDirectToTheLevel.Direct(game, false);
+                    return;
+                } else if (AllVariables.PresentLevelNumber <= 19) {
+                    AllVariables.PresentLevelNumber++;
+                    ReDirectToTheLevel.Direct(game, false);
                 }
             }
         }
@@ -294,7 +295,7 @@ public class LevelCompleted implements Screen {
         }
 
         //to check to update unlockLEvel or not
-        if (UnlockedLevel == AllVariables.PresentLevelNumber && UnlockedLevel != 30){
+        if (UnlockedLevel == AllVariables.PresentLevelNumber && UnlockedLevel != 20){
             UnlockedLevel++;
             tempDAta = AllVariables.PresentAreaNumber + "\n" + UnlockedLevel + "\n" + TotalLevel + "\n";
             stars.set(UnlockedLevel-2,(short) VariablesForPlayArea.starsGained);
