@@ -247,6 +247,7 @@ public class LevelCompleted implements Screen {
                     return;
                 } else if (AllVariables.PresentLevelNumber <= 19) {
                     AllVariables.PresentLevelNumber++;
+                    VariablesForPlayArea.flush();
                     ReDirectToTheLevel.Direct(game, false);
                 }
             }
