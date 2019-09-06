@@ -740,9 +740,14 @@ public class ReDirectToTheLevel {
 
                 speedctlrvar = new SpeedControllerVariables();
                 speedctlrvar.SpeedIncrementor = true;
-                speedctlrvar.x = 6000;
+                speedctlrvar.x = 6100;
                 speedctlrvar.y = 307;
                 VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                jumper = new JumperVariables();
+                jumper.x = 8500;
+                jumper.y = 857;
+                VariablesForPlayArea.jumperList.add(jumper);
 
 
             }
@@ -754,7 +759,11 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.y = 8500;
 
             if (!restarted) {
-
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = true;
+                speedctlrvar.x = 5237;
+                speedctlrvar.y = 587;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
