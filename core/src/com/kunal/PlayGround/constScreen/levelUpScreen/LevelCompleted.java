@@ -28,7 +28,7 @@ public class LevelCompleted implements Screen {
     Viewport port;
     FileHandle file, kusaCoinFile;
 
-    int timmer, star1,star2,star3, coinsEarned=0;
+    int timmer, star1,star2,star3, coinsEarned=0, startsHave=0;
     Texture kusaCoin, menu, retry, next;
 
     BitmapFont bigText;
@@ -109,14 +109,20 @@ public class LevelCompleted implements Screen {
             i++;
         }
 
+        startsHave = VariablesForPlayArea.starsGained;
+
         coinsEarned = 1;
         short t = stars.get(AllVariables.PresentLevelNumber-1);
+        if (startsHave<t)
+            startsHave = t;
         if (VariablesForPlayArea.starsGained <= t){
 
         }else {
             short temp = (short) (VariablesForPlayArea.starsGained - t);
-            for (int i1 =0; i1<temp;i1++)
-                coinsEarned+=73;
+            for (int i1 =0; i1<temp;i1++) {
+                coinsEarned += 73;
+                startsHave++;
+            }
         }
         ///////////////////////////
 
@@ -225,7 +231,11 @@ public class LevelCompleted implements Screen {
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
                 VariablesForPlayArea.flush();
-                AllVariables.InterstitialAdOperator.showAd();
+                if (startsHave != 3) {
+                    try {
+                        AllVariables.InterstitialAdOperator.showAd();
+                    }catch (Exception e){}
+                }
                 game.setScreen(new LevelNumberSelection(game));
             }
             //retry
@@ -234,6 +244,11 @@ public class LevelCompleted implements Screen {
                     && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
+                if (startsHave != 3) {
+                    try {
+                        AllVariables.InterstitialAdOperator.showAd();
+                    }catch (Exception e){}
+                }
                 ReDirectToTheLevel.Direct(game, true);
             }
             //next
@@ -244,11 +259,20 @@ public class LevelCompleted implements Screen {
                 changeFile();
                 if (AllVariables.PresentLevelNumber == 20) {
                     VariablesForPlayArea.flush();
+                    if (startsHave != 3) {
+                        try {
+                            AllVariables.InterstitialAdOperator.showAd();
+                        }catch (Exception e){}
+                    }
                     game.setScreen(new LevelNumberSelection(game));
-                    return;
                 } else if (AllVariables.PresentLevelNumber <= 19) {
                     AllVariables.PresentLevelNumber++;
                     VariablesForPlayArea.flush();
+                    if (startsHave != 3) {
+                        try {
+                            AllVariables.InterstitialAdOperator.showAd();
+                        }catch (Exception e){}
+                    }
                     ReDirectToTheLevel.Direct(game, false);
                 }
             }
