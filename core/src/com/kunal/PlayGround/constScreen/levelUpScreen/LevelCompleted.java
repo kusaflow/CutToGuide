@@ -118,6 +118,7 @@ public class LevelCompleted implements Screen {
             for (int i1 =0; i1<temp;i1++)
                 coinsEarned+=53;
         }
+        ///////////////////////////
 
     }
     @Override
@@ -238,12 +239,13 @@ public class LevelCompleted implements Screen {
                     && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
-                if (AllVariables.PresentAreaNumber == 1){
-                    if (AllVariables.PresentLevelNumber < 30)
-                        AllVariables.PresentLevelNumber++;
+                if (AllVariables.PresentLevelNumber < 20)
+                    AllVariables.PresentLevelNumber++;
+                if (AllVariables.PresentAreaNumber == 20) {
+                    VariablesForPlayArea.flush();
+                    game.setScreen(new LevelNumberSelection(game));
+                    //ReDirectToTheLevel.Direct(game, false);
                 }
-                VariablesForPlayArea.flush();
-                ReDirectToTheLevel.Direct(game, false);
             }
         }
 

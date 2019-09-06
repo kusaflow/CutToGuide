@@ -701,6 +701,26 @@ public class ReDirectToTheLevel {
             }
 
             game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==19){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level19.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
+        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==20){
+            VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level20.tmx";
+            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.y = 8500;
+
+            if (!restarted) {
+
+            }
+
+            game.setScreen(new TypeTwoArea(game, restarted));
         }
 
         return;
