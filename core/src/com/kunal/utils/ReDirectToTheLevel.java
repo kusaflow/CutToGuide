@@ -707,6 +707,43 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.endPoint.y = 8500;
 
             if (!restarted) {
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 1327;
+                fullSawVariables.ypos = 577;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = true;
+                speedctlrvar.x = 952;
+                speedctlrvar.y = 537;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
+                fullSawVariables = new FullSawVariables();
+                fullSawVariables.xpos = 3797;
+                fullSawVariables.ypos = 1032;
+                fullSawVariables.size = 128;
+                fullSawVariables.forwardDirection = false;
+                fullSawVariables.intialDirectionForward = false;
+                fullSawVariables.initialdead = false;
+                VariablesForPlayArea.fullSawList.add(fullSawVariables);
+
+                halfSawVariables = new HalfSawVariables();
+                halfSawVariables.xdestination = 4800;
+                halfSawVariables.oneisSelected = true;
+                halfSawVariables.xorigin = 4300;
+                halfSawVariables.yorigin = 447;
+                VariablesForPlayArea.halfSawList.add(halfSawVariables);
+
+                speedctlrvar = new SpeedControllerVariables();
+                speedctlrvar.SpeedIncrementor = true;
+                speedctlrvar.x = 6000;
+                speedctlrvar.y = 307;
+                VariablesForPlayArea.speedCtrlList.add(speedctlrvar);
+
 
             }
 
