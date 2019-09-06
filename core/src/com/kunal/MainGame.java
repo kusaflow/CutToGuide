@@ -28,9 +28,10 @@ public class MainGame extends Game {
     public MainGame() {
     }
 
-    public MainGame(AdVideoInterface adv, openOtherApps openApp) {
+    public MainGame(AdVideoInterface adv, openOtherApps openApp, InterstitialAd interstitialAd) {
 		AllVariables.adv = adv;
 		AllVariables.openApps = openApp;
+		AllVariables.InterstitialAdOperator = interstitialAd;
 	}
 
 	@Override

@@ -225,6 +225,7 @@ public class LevelCompleted implements Screen {
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
                 VariablesForPlayArea.flush();
+                AllVariables.InterstitialAdOperator.showAd();
                 game.setScreen(new LevelNumberSelection(game));
             }
             //retry

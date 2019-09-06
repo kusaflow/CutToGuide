@@ -20,19 +20,23 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 import com.kunal.MainGame;
 
-public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener, openOtherApps {
+public class AndroidLauncher extends AndroidApplication implements AdVideoInterface, RewardedVideoAdListener, openOtherApps, com.kunal.InterstitialAd {
     private static final String TAG = "AndroidLauncher";
     //private AdView adView;
 
     private RewardedVideoAd adRewardedVideoView;
     private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
     private VideoEventListener vel;
+
+    //InterstitialAd
+    private InterstitialAd mInterstitialAd;
 
     Boolean is_video_ad_loaded = false;
 
@@ -51,7 +55,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
         //ad banner ---------------------------------------------------------------------------------
         RelativeLayout layout = new RelativeLayout(this);
 
-        View gameView = initializeForView(new MainGame(this,this), config);
+        View gameView = initializeForView(new MainGame(this,this, this), config);
 
 
         layout.addView(gameView);
@@ -94,6 +98,11 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
         //banner ad finish here--------------------------------------------------------------------------------------
 
+
+        //interstitial ad
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         //rewared ad video-----------------------------------------------------------------------------------------
         setupRewarded();
@@ -266,6 +275,28 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
     }
 
     /////////////////////
+
+    ///------------------------Interstitial Ads-------------------
+
+    @Override
+    public void loadAd() {
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+    }
+
+    @Override
+    public void showAd() {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                if (mInterstitialAd.isLoaded()) {
+                    mInterstitialAd.show();
+                } else {
+                    mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                }
+            }
+        });
+    }
+
+    //============================================================
 
     @Override
     protected void onPause() {

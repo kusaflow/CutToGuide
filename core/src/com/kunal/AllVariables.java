@@ -39,6 +39,8 @@ public class AllVariables {
 
     public static openOtherApps openApps = null;
 
+    public static InterstitialAd InterstitialAdOperator = null;
+
     public static short PresentAreaNumber = 0;
     public static short PresentLevelNumber = 0;
     /*
