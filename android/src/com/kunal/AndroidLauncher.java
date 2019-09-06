@@ -53,7 +53,9 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
         View gameView = initializeForView(new MainGame(this,this), config);
 
+
         layout.addView(gameView);
+
 
         /*
 		adView = new AdView(this);
@@ -86,7 +88,9 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
         //adView.loadAd(builder.build());
         */
+
         setContentView(layout);
+
 
         //banner ad finish here--------------------------------------------------------------------------------------
 
@@ -243,6 +247,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
     //end of rewared video-------------------------------------------------------------
 
 
+    ///open other apps and make toast
     @Override
     public void OpenApp(String link) {
 
@@ -254,6 +259,13 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
         }
         startActivity(intent);
     }
+
+    @Override
+    public void MakeToast(String text) {
+        //Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+
+    /////////////////////
 
     @Override
     protected void onPause() {

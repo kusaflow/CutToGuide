@@ -201,7 +201,9 @@ public class Shop implements Screen, VideoEventListener {
         CycleBars.setTexture(bicy_bars.get(barCh));
         //CycleBars.setOriginCenter();
 
-        //AllVariables.adv.setVideoEventListener(this);
+        try {
+            AllVariables.adv.setVideoEventListener(this);
+        }catch (Exception e){}
 
 
     }
@@ -604,10 +606,6 @@ public class Shop implements Screen, VideoEventListener {
                 bigText.draw(AllVariables.batch, "Cancel", 700, 250);
 
 
-
-
-
-
             }
 
 
@@ -765,9 +763,11 @@ public class Shop implements Screen, VideoEventListener {
                                     && screenY >= 435 * AllVariables.inpM
                                     && screenY <= 590 * AllVariables.inpM){
                                 System.out.println("Ad Will Play");
-                                //if(AllVariables.adv.hasVideoLoaded()) {
-                                  //  AllVariables.adv.showRewardedVideoAd();
-                                //}
+                                if(AllVariables.adv.hasVideoLoaded()) {
+                                    AllVariables.adv.showRewardedVideoAd();
+                                }else{
+                                    AllVariables.openApps.MakeToast("Can't Load any ad. Try Again Later");
+                                }
                                 return true;
                             }
                             //2
@@ -1193,7 +1193,7 @@ public class Shop implements Screen, VideoEventListener {
 
     @Override
     public void onRewardedEvent(String type, int amount) {
-        AllVariables.kusaCoin+=100;
+        AllVariables.kusaCoin+=220;
     }
 
     @Override
