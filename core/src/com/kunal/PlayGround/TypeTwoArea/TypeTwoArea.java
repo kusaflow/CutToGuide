@@ -695,6 +695,9 @@ public class TypeTwoArea implements Screen {
                     300+(cam.position.x - AllVariables.WIDTH/2), 150+(cam.position.y -AllVariables.HEIGHT/2));
         }
 
+        Font.draw(AllVariables.batch,AllVariables.PresentAreaNumber+"-"+AllVariables.PresentLevelNumber,
+                1400+(cam.position.x - AllVariables.WIDTH/2), 850+(cam.position.y -AllVariables.HEIGHT/2));
+
         AllVariables.batch.end();
 
     }

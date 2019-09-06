@@ -150,6 +150,8 @@ public class LevelCompleted implements Screen {
 
         AllVariables.batch.draw(kusaCoin, 1100,668,50,50);
         AllVariables.bitmapFont.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 1150, 700);
+        AllVariables.bitmapFont.draw(AllVariables.batch, AllVariables.PresentAreaNumber+"-"+AllVariables.PresentLevelNumber, AllVariables.WIDTH/2-15, AllVariables.HEIGHT/2+110);
+
 
         if (drawButton){
             AllVariables.batch.draw(menu, 400,130);
