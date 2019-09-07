@@ -1496,7 +1496,7 @@ public class TypeTwoArea implements Screen {
                             game.setScreen(new ShapeChooser(game));
                         }
                         if (keycode == Input.Keys.SPACE){
-                            VariablesForPlayArea.gameOver = true;
+                            ZoomOutBool = true;
                         }
                         if (keycode == Input.Keys.B){
                             game.setScreen(new LevelNumberSelection(game));
