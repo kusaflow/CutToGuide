@@ -46,6 +46,7 @@ import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
+import com.kunal.utils.slideShow.slideShow;
 
 import java.util.LinkedList;
 import java.util.Random;
@@ -1413,6 +1414,8 @@ public class TypeTwoArea implements Screen {
                                     VariablesForPlayArea.HintTwoEnabled = true;
                                     AllVariables.kusaCoin-=costOfH2;
                                     writeToFile();
+
+                                    game.setScreen(new slideShow(game, 0));
                                 }
 
                             }

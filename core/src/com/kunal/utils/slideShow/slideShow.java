@@ -65,13 +65,19 @@ public class slideShow implements Screen {
 
 
         if (senderCode == 0) {
-
+            fileLoc = "HintImg/HintTwo/area" + AllVariables.PresentAreaNumber +"/level" + AllVariables.PresentLevelNumber;
         }else if (senderCode == 1){
             fileLoc = "tut/basic/b";
         }
 
         for (int i =1; i<=imagesLoaded; i++){
-            Sprite s = new Sprite(new Texture(Gdx.files.internal(fileLoc + i + ".jpg")));
+            Sprite s = new Sprite();
+            if (senderCode ==0) {
+                s = new Sprite(new Texture(Gdx.files.internal(fileLoc + "/" + i + ".jpg")));
+            }else{
+                s = new Sprite(new Texture(Gdx.files.internal(fileLoc + i + ".jpg")));
+
+            }
             helpImg.add(s);
         }
 

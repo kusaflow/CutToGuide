@@ -1,12 +1,56 @@
 package com.kunal.utils.slideShow;
 
+import com.kunal.AllVariables;
+
 public class slideShowHelper {
 
     public static int ImageCount(int code){
         int ret =0;
 
         if (code ==0) {
-            // level wise classification
+            if (AllVariables.PresentAreaNumber == 1){
+                if (AllVariables.PresentLevelNumber == 1){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 2){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 3){
+                    ret = 3;
+                }else if (AllVariables.PresentLevelNumber == 4){
+                    ret = 3;
+                }else if (AllVariables.PresentLevelNumber == 5){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 6){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 7){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 8){
+                    ret = 5;
+                }else if (AllVariables.PresentLevelNumber == 9){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 10){
+                    ret = 6;
+                }else if (AllVariables.PresentLevelNumber == 11){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 12){
+                    ret = 6;
+                }else if (AllVariables.PresentLevelNumber == 13){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 14){
+                    ret = 4;
+                }else if (AllVariables.PresentLevelNumber == 15){
+                    ret = 5;
+                }else if (AllVariables.PresentLevelNumber == 16){
+                    ret = 5;
+                }else if (AllVariables.PresentLevelNumber == 17){
+                    ret = 5;
+                }else if (AllVariables.PresentLevelNumber == 18){
+                    ret = 3;
+                }else if (AllVariables.PresentLevelNumber == 19){
+                    ret = 5;
+                }else if (AllVariables.PresentLevelNumber == 20) {
+                    ret = 5;
+                }
+            }
         }else if (code == 1){
             ret = 39;
         }
@@ -18,6 +62,9 @@ public class slideShowHelper {
         String msg = "";
 
         if (code == 0){
+            //hint 2 -------------------------------------------------------------------------------
+
+            //=======================================================================================
 
         }else if (code == 1){
             if (focusImg == 1){
