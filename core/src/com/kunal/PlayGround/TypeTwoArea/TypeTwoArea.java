@@ -46,6 +46,7 @@ import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
+import com.kunal.utils.slideShow.simpleSlideShow;
 import com.kunal.utils.slideShow.slideShow;
 
 import java.util.LinkedList;
@@ -609,7 +610,7 @@ public class TypeTwoArea implements Screen {
 
             hintBox.setPosition(600+(cam.position.x - AllVariables.WIDTH/2), 200+(cam.position.y -AllVariables.HEIGHT/2));
             if (hintTwoTaken)
-                hintBox.setColor(1,0,0,1);
+                hintBox.setColor(.7f,.3f,.3f,1);
             else
                 hintBox.setColor(0,1,0,1);
             hintBox.draw(AllVariables.batch);
@@ -1415,7 +1416,11 @@ public class TypeTwoArea implements Screen {
                                     AllVariables.kusaCoin-=costOfH2;
                                     writeToFile();
 
-                                    game.setScreen(new slideShow(game, 0));
+                                    //game.setScreen(new slideShow(game, 0));
+                                    game.setScreen(new simpleSlideShow(game, 0));
+                                }else {
+                                    if (VariablesForPlayArea.HintTwoEnabled)
+                                        game.setScreen(new simpleSlideShow(game, 0));
                                 }
 
                             }
