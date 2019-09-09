@@ -65,6 +65,7 @@ public class tutScreen implements Screen {
         AllVariables.batch.begin();
         //cross to go back
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);
+        AllVariables.bitmapFont.draw(AllVariables.batch,"soon there will be in game tutorial", 200,100);
 
 
         //tutorials

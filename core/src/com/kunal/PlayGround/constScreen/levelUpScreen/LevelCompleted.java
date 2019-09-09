@@ -20,6 +20,7 @@ import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.ReDirectToTheLevel;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class LevelCompleted implements Screen {
     MainGame game;
@@ -231,11 +232,18 @@ public class LevelCompleted implements Screen {
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
                 VariablesForPlayArea.flush();
-                if (startsHave != 3) {
-                    try {
-                        AllVariables.InterstitialAdOperator.showAd();
-                    }catch (Exception e){}
-                }
+                try {
+                    if (startsHave != 3) {
+                        if (startsHave == 1)
+                            AllVariables.InterstitialAdOperator.showAd();
+                        else {
+                            Random r = new Random();
+                            int toshow = r.nextInt(3);
+                            if (toshow == 2)
+                                AllVariables.InterstitialAdOperator.showAd();
+                        }
+                    }
+                }catch (Exception e){}
                 game.setScreen(new LevelNumberSelection(game));
             }
             //retry
@@ -244,11 +252,19 @@ public class LevelCompleted implements Screen {
                     && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
-                if (startsHave != 3) {
-                    try {
-                        AllVariables.InterstitialAdOperator.showAd();
-                    }catch (Exception e){}
-                }
+                try {
+                    if (startsHave != 3) {
+                        if (startsHave == 1)
+                            AllVariables.InterstitialAdOperator.showAd();
+                        else {
+                            Random r = new Random();
+                            int toshow = r.nextInt(3);
+                            if (toshow == 2)
+                                AllVariables.InterstitialAdOperator.showAd();
+                        }
+                    }
+                }catch (Exception e){}
+
                 ReDirectToTheLevel.Direct(game, true);
             }
             //next
@@ -259,20 +275,35 @@ public class LevelCompleted implements Screen {
                 changeFile();
                 if (AllVariables.PresentLevelNumber == 20) {
                     VariablesForPlayArea.flush();
-                    if (startsHave != 3) {
-                        try {
-                            AllVariables.InterstitialAdOperator.showAd();
-                        }catch (Exception e){}
-                    }
+                    try {
+                        if (startsHave != 3) {
+                            if (startsHave == 1)
+                                AllVariables.InterstitialAdOperator.showAd();
+                            else {
+                                Random r = new Random();
+                                int toshow = r.nextInt(3);
+                                if (toshow == 2)
+                                    AllVariables.InterstitialAdOperator.showAd();
+                            }
+                        }
+                    }catch (Exception e){}
+
                     game.setScreen(new LevelNumberSelection(game));
                 } else if (AllVariables.PresentLevelNumber <= 19) {
                     AllVariables.PresentLevelNumber++;
                     VariablesForPlayArea.flush();
-                    if (startsHave != 3) {
-                        try {
-                            AllVariables.InterstitialAdOperator.showAd();
-                        }catch (Exception e){}
-                    }
+                    try {
+                        if (startsHave != 3) {
+                            if (startsHave == 1)
+                                AllVariables.InterstitialAdOperator.showAd();
+                            else {
+                                Random r = new Random();
+                                int toshow = r.nextInt(3);
+                                if (toshow == 2)
+                                    AllVariables.InterstitialAdOperator.showAd();
+                            }
+                        }
+                    }catch (Exception e){}
                     ReDirectToTheLevel.Direct(game, false);
                 }
             }
