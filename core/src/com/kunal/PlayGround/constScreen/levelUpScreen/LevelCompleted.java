@@ -232,18 +232,9 @@ public class LevelCompleted implements Screen {
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
                 VariablesForPlayArea.flush();
-                try {
-                    if (startsHave != 3) {
-                        if (startsHave == 1)
-                            AllVariables.InterstitialAdOperator.showAd();
-                        else {
-                            Random r = new Random();
-                            int toshow = r.nextInt(3);
-                            if (toshow == 2)
-                                AllVariables.InterstitialAdOperator.showAd();
-                        }
-                    }
-                }catch (Exception e){}
+
+                callAd();
+
                 game.setScreen(new LevelNumberSelection(game));
             }
             //retry
@@ -252,18 +243,8 @@ public class LevelCompleted implements Screen {
                     && Gdx.input.getY() > 470*AllVariables.inpM && Gdx.input.getY() < 600*AllVariables.inpM){
                 AllVariables.kusaCoin+=coinsEarned;
                 changeFile();
-                try {
-                    if (startsHave != 3) {
-                        if (startsHave == 1)
-                            AllVariables.InterstitialAdOperator.showAd();
-                        else {
-                            Random r = new Random();
-                            int toshow = r.nextInt(3);
-                            if (toshow == 2)
-                                AllVariables.InterstitialAdOperator.showAd();
-                        }
-                    }
-                }catch (Exception e){}
+
+                callAd();
 
                 ReDirectToTheLevel.Direct(game, true);
             }
@@ -275,35 +256,16 @@ public class LevelCompleted implements Screen {
                 changeFile();
                 if (AllVariables.PresentLevelNumber == 20) {
                     VariablesForPlayArea.flush();
-                    try {
-                        if (startsHave != 3) {
-                            if (startsHave == 1)
-                                AllVariables.InterstitialAdOperator.showAd();
-                            else {
-                                Random r = new Random();
-                                int toshow = r.nextInt(3);
-                                if (toshow == 2)
-                                    AllVariables.InterstitialAdOperator.showAd();
-                            }
-                        }
-                    }catch (Exception e){}
+
+                    callAd();
 
                     game.setScreen(new LevelNumberSelection(game));
                 } else if (AllVariables.PresentLevelNumber <= 19) {
                     AllVariables.PresentLevelNumber++;
                     VariablesForPlayArea.flush();
-                    try {
-                        if (startsHave != 3) {
-                            if (startsHave == 1)
-                                AllVariables.InterstitialAdOperator.showAd();
-                            else {
-                                Random r = new Random();
-                                int toshow = r.nextInt(3);
-                                if (toshow == 2)
-                                    AllVariables.InterstitialAdOperator.showAd();
-                            }
-                        }
-                    }catch (Exception e){}
+
+                    callAd();
+
                     ReDirectToTheLevel.Direct(game, false);
                 }
             }
@@ -376,6 +338,23 @@ public class LevelCompleted implements Screen {
             tempDAta+="\n$";
             file.writeString(tempDAta, false);
         }
+
+
+    }
+
+    private void callAd(){
+        try {
+            if (startsHave != 3) {
+                if (startsHave == 1)
+                    AllVariables.InterstitialAdOperator.showAd();
+                else {
+                    AllVariables.InterstitialAdOperator.showAd();
+                    Random r = new Random();
+                    int toshow = r.nextInt(3);
+                    if (toshow == 2){}
+                }
+            }
+        }catch (Exception e){}
 
 
     }

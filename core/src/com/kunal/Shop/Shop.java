@@ -239,41 +239,41 @@ public class Shop implements Screen, VideoEventListener {
             AllVariables.batch.draw(bgTobuy, 300, 440, 200, 150);
             AllVariables.batch.draw(freeKusaCoin, 350, 500, 100, 100);
             //4
-            AllVariables.batch.draw(bgTobuy, 300, 180, 200, 150);
+            //AllVariables.batch.draw(bgTobuy, 300, 180, 200, 150);
 
 
             //=======================================================================
             //2
-            AllVariables.batch.draw(bgTobuy, 600, 440, 200, 150);
+            //AllVariables.batch.draw(bgTobuy, 600, 440, 200, 150);
 
             //5
-            AllVariables.batch.draw(bgTobuy, 600, 180, 200, 150);
+            //AllVariables.batch.draw(bgTobuy, 600, 180, 200, 150);
 
 
 
             //=======================================================================
             //3
-            AllVariables.batch.draw(bgTobuy, 900, 440, 200, 150);
+            //AllVariables.batch.draw(bgTobuy, 900, 440, 200, 150);
             //6
-            AllVariables.batch.draw(bgTobuy, 900, 180, 200, 150);
+            //AllVariables.batch.draw(bgTobuy, 900, 180, 200, 150);
 
             //kusaCoinForDisplay----------------------------------------------------
             AllVariables.batch.draw(menuKusaCoin, 330, 400, 50, 50);//1
-            AllVariables.batch.draw(menuKusaCoin, 330, 140, 50, 50);//2
-            AllVariables.batch.draw(menuKusaCoin, 630, 400, 50, 50);//3
-            AllVariables.batch.draw(menuKusaCoin, 630, 140, 50, 50);//4
-            AllVariables.batch.draw(menuKusaCoin, 930, 400, 50, 50);//5
-            AllVariables.batch.draw(menuKusaCoin, 930, 140, 50, 50);//6
+            //AllVariables.batch.draw(menuKusaCoin, 330, 140, 50, 50);//2
+            //AllVariables.batch.draw(menuKusaCoin, 630, 400, 50, 50);//3
+            //AllVariables.batch.draw(menuKusaCoin, 630, 140, 50, 50);//4
+            //AllVariables.batch.draw(menuKusaCoin, 930, 400, 50, 50);//5
+            //AllVariables.batch.draw(menuKusaCoin, 930, 140, 50, 50);//6
 
 
             AllVariables.bitmapFont.setColor(Color.WHITE);
             //kusaCoinamount----------------------------------------------------------
-            AllVariables.bitmapFont.draw(AllVariables.batch, ":100", 380, 431);//1
-            AllVariables.bitmapFont.draw(AllVariables.batch, ":200", 380, 171);//2
-            AllVariables.bitmapFont.draw(AllVariables.batch, ":500", 680, 431);//3
-            AllVariables.bitmapFont.draw(AllVariables.batch, ":1000", 680, 171);//4
-            AllVariables.bitmapFont.draw(AllVariables.batch, ":10000", 980, 431);//5
-            AllVariables.bitmapFont.draw(AllVariables.batch, ":8000000", 980, 171);//6
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":150", 380, 431);//1
+            //AllVariables.bitmapFont.draw(AllVariables.batch, ":200", 380, 171);//2
+            //AllVariables.bitmapFont.draw(AllVariables.batch, ":500", 680, 431);//3
+            //AllVariables.bitmapFont.draw(AllVariables.batch, ":1000", 680, 171);//4
+            //AllVariables.bitmapFont.draw(AllVariables.batch, ":10000", 980, 431);//5
+            //AllVariables.bitmapFont.draw(AllVariables.batch, ":8000000", 980, 171);//6
 
 
 
@@ -282,15 +282,15 @@ public class Shop implements Screen, VideoEventListener {
             AllVariables.bitmapFont.setColor(Color.BLACK);
             //prize-------------------------------------------------
             //6
-            AllVariables.bitmapFont.draw(AllVariables.batch, "$250", 970, 260);
+            //AllVariables.bitmapFont.draw(AllVariables.batch, "$250", 970, 260);
             //3
-            AllVariables.bitmapFont.draw(AllVariables.batch, "$100", 970, 520);
+            //AllVariables.bitmapFont.draw(AllVariables.batch, "$100", 970, 520);
             //5
-            AllVariables.bitmapFont.draw(AllVariables.batch, "$200", 670, 260);
+            //AllVariables.bitmapFont.draw(AllVariables.batch, "$200", 670, 260);
             //2
-            AllVariables.bitmapFont.draw(AllVariables.batch, "$50", 670, 520);
+            //AllVariables.bitmapFont.draw(AllVariables.batch, "$50", 670, 520);
             //4
-            AllVariables.bitmapFont.draw(AllVariables.batch, "$250", 370, 260);
+            //AllVariables.bitmapFont.draw(AllVariables.batch, "$250", 370, 260);
             //1
             AllVariables.bitmapFont.draw(AllVariables.batch, "Rewarded \n           Ad", 320, 500);
 
@@ -1193,7 +1193,7 @@ public class Shop implements Screen, VideoEventListener {
 
     @Override
     public void onRewardedEvent(String type, int amount) {
-        AllVariables.kusaCoin+=220;
+        AllVariables.kusaCoin+=150;
     }
 
     @Override
