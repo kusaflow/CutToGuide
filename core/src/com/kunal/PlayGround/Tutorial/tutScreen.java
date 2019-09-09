@@ -65,7 +65,9 @@ public class tutScreen implements Screen {
         AllVariables.batch.begin();
         //cross to go back
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);
-        AllVariables.bitmapFont.draw(AllVariables.batch,"soon there will be in game tutorial", 200,100);
+        AllVariables.bitmapFont.draw(AllVariables.batch,"soon there will be in game tutorial", 400,100);
+        AllVariables.bitmapFont.draw(AllVariables.batch,"Learn Basic", 260,450);
+
 
 
         //tutorials
@@ -93,7 +95,7 @@ public class tutScreen implements Screen {
                     Gdx.input.getY() >= 87 * AllVariables.inpM && Gdx.input.getY() < 232 * AllVariables.inpM) {
                 //dispose();
                 //game.setScreen(new slideShow(game,1));
-                AllVariables.openApps.OpenApp("https://www.youtube.com/watch?v=M-3P59GtRW4");
+                AllVariables.openApps.OpenApp("https://youtu.be/hD6K6XK_AFY");
                 return;
             }
         }
