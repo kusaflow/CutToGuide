@@ -61,40 +61,40 @@ public class MainGame extends Game {
 			System.out.println("writing");
 		}
 		//creating local file
-		if (!Gdx.files.local("TextFilesToDelete/areas/area2").exists()){
+		/*if (!Gdx.files.local("TextFilesToDelete/areas/area2").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area2");
 			String data = "2\n1\n20\n000000000000000000000000000000\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
-		}
+		}*/
 		//creating local file
-		if (!Gdx.files.local("TextFilesToDelete/areas/area3").exists()){
+		/*if (!Gdx.files.local("TextFilesToDelete/areas/area3").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area3");
 			String data = "3\n1\n20\n000000000000000000000000000000\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
-		}
+		}*/
 		//creating local file
-		if (!Gdx.files.local("TextFilesToDelete/areas/area4").exists()){
+		/*if (!Gdx.files.local("TextFilesToDelete/areas/area4").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area4");
 			String data = "4\n1\n20\n000000000000000000000000000000\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
-		}
+		}*/
 		//creating local file
-		if (!Gdx.files.local("TextFilesToDelete/areas/area5").exists()){
+		/*if (!Gdx.files.local("TextFilesToDelete/areas/area5").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area5");
 			String data = "5\n1\n20\n000000000000000000000000000000\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
-		}
+		}*/
 		//creating local file
-		if (!Gdx.files.local("TextFilesToDelete/areas/area6").exists()){
+		/*if (!Gdx.files.local("TextFilesToDelete/areas/area6").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area6");
 			String data = "6\n1\n20\n000000000000000000000000000000\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
-		}
+		}*/
 		//hint logs
 		//for area1
 		if (!Gdx.files.local("TextFilesToDelete/hints/area1/log").exists()){
