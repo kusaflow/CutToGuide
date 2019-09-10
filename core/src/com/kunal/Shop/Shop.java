@@ -268,7 +268,7 @@ public class Shop implements Screen, VideoEventListener {
 
             AllVariables.bitmapFont.setColor(Color.WHITE);
             //kusaCoinamount----------------------------------------------------------
-            AllVariables.bitmapFont.draw(AllVariables.batch, ":150", 380, 431);//1
+            //AllVariables.bitmapFont.draw(AllVariables.batch, ":150", 380, 431);//1
             //AllVariables.bitmapFont.draw(AllVariables.batch, ":200", 380, 171);//2
             //AllVariables.bitmapFont.draw(AllVariables.batch, ":500", 680, 431);//3
             //AllVariables.bitmapFont.draw(AllVariables.batch, ":1000", 680, 171);//4
