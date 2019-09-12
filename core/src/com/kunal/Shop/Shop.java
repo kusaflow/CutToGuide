@@ -216,8 +216,11 @@ public class Shop implements Screen, VideoEventListener {
 
         //Gdx.gl.glClearColor(.1f, .1f, .1f, 1);
         //Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
-        Gdx.gl.glClearColor(0.6235f,0.854f,0.2666f,0.9f);
-
+        if (!drawBgblur) {
+            Gdx.gl.glClearColor(0.6235f, 0.854f, 0.2666f, 0.9f);
+        }else{
+            Gdx.gl.glClearColor(0.1f, 0.1f, 0.1f, 1f);
+        }
 
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -748,8 +751,8 @@ public class Shop implements Screen, VideoEventListener {
                                 && screenY <= 222 * AllVariables.inpM){
 
                             if (menuNumber != 3) {
-                                menuNumber = 3;
-                                InnerMenuNumber = 1;
+                                //menuNumber = 3;
+                                //InnerMenuNumber = 1;
                             }
                         }
 
@@ -1165,6 +1168,7 @@ public class Shop implements Screen, VideoEventListener {
         cancel.getTexture().dispose();
         CycleBars.getTexture().dispose();
         msgBoxTex.getTexture().dispose();
+        buttonBg.getTexture().dispose();
         menuKusaCoin.dispose();
         menuBicycle.dispose();
         astic.dispose();
@@ -1176,9 +1180,12 @@ public class Shop implements Screen, VideoEventListener {
         seat.dispose();
         handle.dispose();
         bgblur.dispose();
-        bicy_wheel.clear();
-        bicy_bars.clear();
-        typeOfCoin.clear();
+        for (int i =0; i<bicy_wheel.size(); i++)
+            bicy_wheel.get(i).dispose();
+        for (int i =0; i<bicy_bars.size(); i++)
+            bicy_bars.get(i).dispose();
+        for (int i =0; i<typeOfCoin.size(); i++)
+            typeOfCoin.get(i).dispose();
 
         PriceOfCoins.clear();
         PriceOfBars.clear();

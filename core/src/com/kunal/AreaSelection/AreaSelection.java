@@ -283,8 +283,7 @@ public class AreaSelection implements Screen {
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
-                            dispose();
-                            game.setScreen(new playScreen(game));
+                            Gdx.app.exit();
                             return false;
                         }
 
