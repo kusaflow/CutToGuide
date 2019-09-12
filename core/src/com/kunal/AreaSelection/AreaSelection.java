@@ -458,13 +458,17 @@ public class AreaSelection implements Screen {
 
     @Override
     public void dispose() {
-        AreaList.clear();
+        for (int i = 0; i<AreaList.size(); i++)
+            AreaList.get(i).getTexture().dispose();
         shop.getTexture().dispose();
         credit.getTexture().dispose();
         backToPrevScreen.getTexture().dispose();
         showMoreLevelsOnRight.getTexture().dispose();
         showMoreLevelsOnLeft.getTexture().dispose();
         Tutorial.getTexture().dispose();
+        bg.dispose();
+        kusaCoin.dispose();
+        font.dispose();
         Gdx.input.setInputProcessor(null);
     }
 }
