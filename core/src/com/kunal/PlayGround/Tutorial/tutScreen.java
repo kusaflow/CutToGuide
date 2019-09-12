@@ -3,9 +3,12 @@ package com.kunal.PlayGround.Tutorial;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
@@ -29,6 +32,8 @@ public class tutScreen implements Screen {
     // tut icons
     private Texture Basic_tut;
 
+    BitmapFont font;
+
     public tutScreen (MainGame game) {
         this.game = game;
 
@@ -43,6 +48,13 @@ public class tutScreen implements Screen {
 
         Basic_tut = new Texture(Gdx.files.internal("tut/icons/basic.png"));
 
+        font = new BitmapFont();
+
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 24;
+        prams.color = Color.ORANGE;
+        font = generator.generateFont(prams);
 
 
     }
@@ -66,7 +78,7 @@ public class tutScreen implements Screen {
         //cross to go back
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);
         AllVariables.bitmapFont.draw(AllVariables.batch,"soon there will be in game tutorial", 400,100);
-        AllVariables.bitmapFont.draw(AllVariables.batch,"Learn Basic", 260,450);
+        font.draw(AllVariables.batch,"Learn Basic", 290,470);
 
 
 

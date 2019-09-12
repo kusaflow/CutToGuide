@@ -467,7 +467,6 @@ public class AreaSelection implements Screen {
         Tutorial.getTexture().dispose();
         bg.dispose();
         kusaCoin.dispose();
-        font.dispose();
         Gdx.input.setInputProcessor(null);
     }
 }
