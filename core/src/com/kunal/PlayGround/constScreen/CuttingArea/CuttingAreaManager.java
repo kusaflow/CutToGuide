@@ -304,7 +304,7 @@ public class CuttingAreaManager implements Screen {
 
                         screenY = Gdx.graphics.getHeight() - screenY;
 
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
 
                         if (hinystate){
                             hinystate = false;
@@ -317,13 +317,17 @@ public class CuttingAreaManager implements Screen {
                                 screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM){
                             VariablesForPlayArea.flush();
 
-                        }if(screenX > 200*AllVariables.inpM + AllVariables.witdth_translation &&
+                        }
+                        //hint
+                        if(screenX > 200*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 325 * AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenY > 350 * AllVariables.inpM && screenY < 447* AllVariables.inpM){
                             if (VariablesForPlayArea.HintOneEnabled)
                                 hinystate = true;
 
-                        }if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
+                        }
+                        //when done
+                        if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 120 * AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenY > 230 * AllVariables.inpM && screenY < 355 * AllVariables.inpM){
 

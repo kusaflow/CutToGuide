@@ -107,37 +107,37 @@ public class VariablesForPlayArea {
 
         //all big squre Points
         BigSqurePoints[0][0] = 430;
-        BigSqurePoints[0][1] = 690;
+        BigSqurePoints[0][1] = 690 - 50;
         BigSqurePoints[1][0] = 690;
-        BigSqurePoints[1][1] = 690;
+        BigSqurePoints[1][1] = 690 - 50;
         BigSqurePoints[2][0] = 950;
-        BigSqurePoints[2][1] = 690;
+        BigSqurePoints[2][1] = 690 - 50;
         BigSqurePoints[3][0] = 1210;
-        BigSqurePoints[3][1] = 690;
+        BigSqurePoints[3][1] = 690 - 50;
         BigSqurePoints[4][0] = 430;
-        BigSqurePoints[4][1] = 496;
+        BigSqurePoints[4][1] = 496 - 50;
         BigSqurePoints[5][0] = 690;
-        BigSqurePoints[5][1] = 496;
+        BigSqurePoints[5][1] = 496 - 50;
         BigSqurePoints[6][0] = 950;
-        BigSqurePoints[6][1] = 496;
+        BigSqurePoints[6][1] = 496 - 50;
         BigSqurePoints[7][0] = 1210;
-        BigSqurePoints[7][1] = 496;
+        BigSqurePoints[7][1] = 496 - 50;
         BigSqurePoints[8][0] = 430;
-        BigSqurePoints[8][1] = 303;
+        BigSqurePoints[8][1] = 303 - 50;
         BigSqurePoints[9][0] = 690;
-        BigSqurePoints[9][1] = 303;
+        BigSqurePoints[9][1] = 303 - 50;
         BigSqurePoints[10][0] = 950;
-        BigSqurePoints[10][1] = 303;
+        BigSqurePoints[10][1] = 303 - 50;
         BigSqurePoints[11][0] = 1210;
-        BigSqurePoints[11][1] = 303;
+        BigSqurePoints[11][1] = 303 - 50;
         BigSqurePoints[12][0] = 430;
-        BigSqurePoints[12][1] = 110;
+        BigSqurePoints[12][1] = 110 - 50;
         BigSqurePoints[13][0] = 690;
-        BigSqurePoints[13][1] = 110;
+        BigSqurePoints[13][1] = 110 - 50;
         BigSqurePoints[14][0] = 950;
-        BigSqurePoints[14][1] = 110;
+        BigSqurePoints[14][1] = 110 - 50;
         BigSqurePoints[15][0] = 1210;
-        BigSqurePoints[15][1] = 110;
+        BigSqurePoints[15][1] = 110 - 50;
 
         //shapes and vertices
         vertices = new LinkedList<Byte>();
