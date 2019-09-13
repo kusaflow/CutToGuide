@@ -14,6 +14,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.Tutorial.InGameTutorial.BasicTutorial;
 import com.kunal.playScreen.playScreen;
 import com.kunal.utils.slideShow.slideShow;
 
@@ -106,8 +107,10 @@ public class tutScreen implements Screen {
                     Gdx.input.getX() < (440* AllVariables.inpM) + AllVariables.witdth_translation &&
                     Gdx.input.getY() >= 87 * AllVariables.inpM && Gdx.input.getY() < 232 * AllVariables.inpM) {
                 //dispose();
-                //game.setScreen(new slideShow(game,1));
-                AllVariables.openApps.OpenApp("https://youtu.be/hD6K6XK_AFY");
+                game.setScreen(new BasicTutorial(game));
+
+                //to Open YouTube in main
+                //AllVariables.openApps.OpenApp("https://youtu.be/hD6K6XK_AFY");
                 return;
             }
         }
