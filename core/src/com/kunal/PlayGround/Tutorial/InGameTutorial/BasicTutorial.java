@@ -48,6 +48,8 @@ import java.util.Random;
 public class BasicTutorial implements Screen {
     MainGame game;
 
+    int stateOfTutorial;
+
     private World world;
     private Box2DDebugRenderer b2dr;
     private OrthographicCamera cam;
@@ -301,6 +303,10 @@ public class BasicTutorial implements Screen {
         seat.setOriginCenter();
 
         //--------------------------------------------------------------------------------
+
+        //tutorial ---------------------------------------
+        stateOfTutorial = 0;
+        //-==============================================
 
 
 

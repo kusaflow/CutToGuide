@@ -113,24 +113,24 @@ public class Shop implements Screen, VideoEventListener {
         wheelCh = AllVariables.tyreType;
 
         PriceOfWheel = new LinkedList<Short>();
-        PriceOfWheel.add((short) 300);
-        PriceOfWheel.add((short) 600);
-        PriceOfWheel.add((short) 1000);
-        PriceOfWheel.add((short) 1300);
+        PriceOfWheel.add((short) 500);
+        PriceOfWheel.add((short) 800);
+        PriceOfWheel.add((short) 1200);
         PriceOfWheel.add((short) 1500);
-        PriceOfWheel.add((short) 2000);
+        PriceOfWheel.add((short) 1800);
+        PriceOfWheel.add((short) 2200);
 
         PriceOfBars = new LinkedList<Short>();
-        PriceOfBars.add((short) 300);
-        PriceOfBars.add((short) 700);
-        PriceOfBars.add((short) 1300);
-        PriceOfBars.add((short) 1500);
-        PriceOfBars.add((short) 1200);
-        PriceOfBars.add((short) 2000);
+        PriceOfBars.add((short) 500);
+        PriceOfBars.add((short) 900);
+        PriceOfBars.add((short) 1600);
+        PriceOfBars.add((short) 1800);
+        PriceOfBars.add((short) 1400);
+        PriceOfBars.add((short) 2300);
 
 
         PriceOfCoins = new LinkedList<Short>();
-        PriceOfCoins.add((short)600);
+        PriceOfCoins.add((short)700);
 
         kusaCoin = AllVariables.kusaCoin;
 
