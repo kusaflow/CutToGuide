@@ -102,4 +102,10 @@ public class PowerUpMngr {
             }
         }
     }
+
+    public void dispose() {
+        for (int i = 0; i < VariablesForPlayArea.powerUpList.size(); i++) {
+            VariablesForPlayArea.powerUpList.get(i).texture.dispose();
+        }
+    }
 }

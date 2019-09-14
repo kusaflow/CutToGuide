@@ -74,4 +74,9 @@ public class SpeedController {
 
         }
     }
+
+    public void dispose () {
+        speedInc.dispose();
+        speedDec.dispose();
+    }
 }

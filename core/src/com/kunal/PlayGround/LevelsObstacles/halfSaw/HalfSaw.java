@@ -78,6 +78,11 @@ public class HalfSaw {
                 AllVariables.batch.draw(tdead, VariablesForPlayArea.halfSawList.get(i).xpos, VariablesForPlayArea.halfSawList.get(i).ypos);
             }
         }
+    }
 
+    public void dispose () {
+        t1.dispose();
+        t2.dispose();
+        tdead.dispose();
     }
 }

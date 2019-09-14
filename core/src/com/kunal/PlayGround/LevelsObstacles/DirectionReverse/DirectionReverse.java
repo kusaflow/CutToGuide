@@ -25,4 +25,8 @@ public class DirectionReverse {
     public void update(){
 
     }
+
+    public void dispose(){
+        tex.dispose();
+    }
 }

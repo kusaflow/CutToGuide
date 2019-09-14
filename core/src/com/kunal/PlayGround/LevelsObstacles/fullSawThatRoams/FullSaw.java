@@ -261,4 +261,9 @@ public class FullSaw {
             }
         }
     }
+
+    public void dispose () {
+        fullSaw.getTexture().dispose();
+        dead.getTexture().dispose();
+    }
 }

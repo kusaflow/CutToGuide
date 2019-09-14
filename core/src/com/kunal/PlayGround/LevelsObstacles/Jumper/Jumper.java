@@ -56,4 +56,9 @@ public class Jumper {
         }
     }
 
+    public void dispose () {
+        spring.dispose();
+        spung.dispose();
+    }
+
 }

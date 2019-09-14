@@ -1714,9 +1714,41 @@ public class TypeTwoArea implements Screen {
         ShapeRotACW.getTexture().dispose();
         ShapeRotCW.getTexture().dispose();
         per45degRot.getTexture().dispose();
+        pause.getTexture().dispose();
+        fadedBG.getTexture().dispose();
+        resume.getTexture().dispose();
+        exit.getTexture().dispose();
+        flag.getTexture().dispose();
+        coin1.getTexture().dispose();
+        coin2.getTexture().dispose();
+        gameoverTexure.getTexture().dispose();
+        menuTex.getTexture().dispose();
+        retryTex.getTexture().dispose();
+        retryWhenStarted.getTexture().dispose();
+        ZoomOutCam.getTexture().dispose();
+        hintBox.getTexture().dispose();
         sred.dispose();
         map.dispose();
         tmr.dispose();
         Gdx.input.setInputProcessor(null);
+        posMap.getTexture().dispose();
+        powerups.dispose();
+        jumper.dispose();
+        halfSaw.dispose();
+        fullSaw.dispose();
+        speedController.dispose();
+        directionReverse.dispose();
+        frontTyre.getTexture().dispose();
+        backtyre.getTexture().dispose();
+        rod1.getTexture().dispose();
+        rod2.getTexture().dispose();
+        rod3.getTexture().dispose();
+        rod4.getTexture().dispose();
+        rod5.getTexture().dispose();
+        rod6.getTexture().dispose();
+        kusaCoin.dispose();
+        camScrollerBG.dispose();
+
+
     }
 }
