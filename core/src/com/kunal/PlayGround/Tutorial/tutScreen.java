@@ -16,6 +16,7 @@ import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Tutorial.InGameTutorial.BasicTutorial;
 import com.kunal.playScreen.playScreen;
+import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.slideShow.slideShow;
 
 import java.util.LinkedList;
@@ -107,7 +108,8 @@ public class tutScreen implements Screen {
                     Gdx.input.getX() < (440* AllVariables.inpM) + AllVariables.witdth_translation &&
                     Gdx.input.getY() >= 87 * AllVariables.inpM && Gdx.input.getY() < 232 * AllVariables.inpM) {
                 //dispose();
-                game.setScreen(new BasicTutorial(game, (short) 1));
+                //game.setScreen(new BasicTutorial(game, (short) 1));
+                ReDirectToTheLevel.Direct(game,false);
 
                 //to Open YouTube in main
                 //AllVariables.openApps.OpenApp("https://youtu.be/hD6K6XK_AFY");

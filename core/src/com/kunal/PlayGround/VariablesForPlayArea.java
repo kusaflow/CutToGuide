@@ -172,6 +172,8 @@ public class VariablesForPlayArea {
         vertices.add((byte) 8);
         vertices.add((byte) 4);
 
+        camposX = 1200f;
+
 
         shapes.add(vertices);
     }

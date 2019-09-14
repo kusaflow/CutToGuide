@@ -7,10 +7,7 @@ public class BasicTutorial implements Screen {
 
     MainGame game;
 
-    short ReturnBackScreen;
-
-    public BasicTutorial(MainGame game, short ReturnBackScreen){
-        this.ReturnBackScreen = ReturnBackScreen;
+    public BasicTutorial(MainGame game){
         this.game = game;
 
     }
