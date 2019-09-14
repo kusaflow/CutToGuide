@@ -206,8 +206,7 @@ public class ShapeChooser implements Screen {
         reCut.draw(AllVariables.batch);
         AllVariables.batch.end();
 
-        sred.begin(ShapeRenderer.ShapeType.Line);
-
+        sred.begin(ShapeRenderer.ShapeType.Line);//----------------------------------------------------
 
         //verticle
         sred.line(40,710,40,101);
@@ -250,7 +249,7 @@ public class ShapeChooser implements Screen {
             ver = null;
         }
 
-        sred.end();
+        sred.end();//-------------------------------------------------------------------------------
 
         for (int j =0; j < VariablesForPlayArea.powerUpList.size(); j++, i++){
             powerUpSprite = new Sprite(VariablesForPlayArea.powerUpList.get(j).texture);
@@ -349,7 +348,6 @@ public class ShapeChooser implements Screen {
                 //letsCut
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM) {
                     try {
-                        dispose();
                         game.setScreen(new CuttingAreaManager(game));
                     }catch (Exception e){
                     }
@@ -406,10 +404,6 @@ public class ShapeChooser implements Screen {
 
     @Override
     public void dispose() {
-        sred.dispose();
-        LetsCut.getTexture().dispose();
-        reCut.getTexture().dispose();
-        okTick.getTexture().dispose();
-        powerUpSprite.getTexture().dispose();
+
     }
 }

@@ -420,6 +420,7 @@ public class BasicTutorial implements Screen {
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
+        AllVariables.batch.begin();
         //bicycle
         frontTyre.draw(AllVariables.batch);
         backtyre.draw(AllVariables.batch);

@@ -109,6 +109,8 @@ public class tutScreen implements Screen {
                     Gdx.input.getY() >= 87 * AllVariables.inpM && Gdx.input.getY() < 232 * AllVariables.inpM) {
                 //dispose();
                 //game.setScreen(new BasicTutorial(game, (short) 1));
+                AllVariables.PresentLevelNumber = 0;
+                AllVariables.PresentAreaNumber = 0;
                 ReDirectToTheLevel.Direct(game,false);
 
                 //to Open YouTube in main

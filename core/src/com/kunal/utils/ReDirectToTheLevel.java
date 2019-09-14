@@ -60,7 +60,7 @@ public class ReDirectToTheLevel {
         if (AllVariables.PresentAreaNumber == 0 && AllVariables.PresentLevelNumber == 0){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/tut/tutorial.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
-            VariablesForPlayArea.endPoint.y = 5600;
+            VariablesForPlayArea.endPoint.y = 6000;
 
             game.setScreen(new BasicTutorial(game));
         }
