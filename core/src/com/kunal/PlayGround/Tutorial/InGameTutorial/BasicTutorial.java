@@ -104,7 +104,7 @@ public class BasicTutorial implements Screen {
 
     private Boolean[] bgRandNumber = new Boolean[15];
 
-    public BasicTutorial(MainGame game, Boolean reset) {
+    public BasicTutorial(MainGame game) {
         this.game = game;
 
         cam = new OrthographicCamera();

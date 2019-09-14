@@ -311,7 +311,7 @@ public class CuttingAreaManager implements Screen {
                             return false;
                         }
 
-                        //back to shape choose class
+                        //reset the model
                         if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 110 * AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM){
@@ -360,8 +360,10 @@ public class CuttingAreaManager implements Screen {
                                 }
                             }
 
-                            dispose();
-                            game.setScreen(new ShapeChooser(game));
+                            try {
+                                dispose();
+                                game.setScreen(new ShapeChooser(game));
+                            }catch (Exception e){}
 
                         }
 

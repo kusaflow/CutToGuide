@@ -348,14 +348,21 @@ public class ShapeChooser implements Screen {
 
                 //letsCut
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507*AllVariables.inpM) && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM) {
-                    game.setScreen(new CuttingAreaManager(game));
+                    try {
+                        dispose();
+                        game.setScreen(new CuttingAreaManager(game));
+                    }catch (Exception e){
+                    }
                     //System.out.println("up wala");
                 }
 
                 //okTick
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM &&  (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM){
                     if (AllVariables.PresentAreaNumber == 1){
-                        game.setScreen(new TypeTwoArea(game, false));
+                        try {
+                            dispose();
+                            game.setScreen(new TypeTwoArea(game, false));
+                        }catch (Exception e){}
 
                     }
                     //System.out.println("down wala");
@@ -399,6 +406,10 @@ public class ShapeChooser implements Screen {
 
     @Override
     public void dispose() {
-
+        sred.dispose();
+        LetsCut.getTexture().dispose();
+        reCut.getTexture().dispose();
+        okTick.getTexture().dispose();
+        powerUpSprite.getTexture().dispose();
     }
 }

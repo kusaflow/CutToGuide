@@ -1140,15 +1140,19 @@ public class TypeTwoArea implements Screen {
                             if (screenX > (515 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (610 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 345 * AllVariables.inpM && screenY < 425 * AllVariables.inpM) {
-                                game.setScreen(new LevelNumberSelection(game));
+                                try {
+                                    game.setScreen(new LevelNumberSelection(game));
+                                }catch (Exception e){return false;}
                             }
 
                             //reset
                             if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (790 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 355 * AllVariables.inpM && screenY < 424 * AllVariables.inpM) {
-                                dispose();
-                                ReDirectToTheLevel.Direct(game, true);
+                                try {
+                                    dispose();
+                                    ReDirectToTheLevel.Direct(game, true);
+                                }catch (Exception e){return false;}
                             }
                         }
 
@@ -1169,8 +1173,12 @@ public class TypeTwoArea implements Screen {
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM){
-                                dispose();
-                                ReDirectToTheLevel.Direct(game, true);
+                                try {
+                                    dispose();
+                                    ReDirectToTheLevel.Direct(game, true);
+                                }catch (Exception e){
+                                    return false;
+                                }
                                 return true;
                             }
                             //zoomout
@@ -1367,8 +1375,12 @@ public class TypeTwoArea implements Screen {
                                         && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM) {
                                     //code to choosing body
-                                    dispose();
-                                    game.setScreen(new ShapeChooser(game));
+                                    try {
+                                        dispose();
+                                        game.setScreen(new ShapeChooser(game));
+                                    }catch (Exception e){
+                                        return false;
+                                    }
                                     return false;
                                 }
                             }
@@ -1389,8 +1401,13 @@ public class TypeTwoArea implements Screen {
                             if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-                                game.setScreen(new LevelNumberSelection(game));
-                                VariablesForPlayArea.flush();
+                                try {
+                                    dispose();
+                                    VariablesForPlayArea.flush();
+                                    game.setScreen(new LevelNumberSelection(game));
+                                }catch (Exception e){
+                                    return false;
+                                }
 
                             }
 
@@ -1732,12 +1749,6 @@ public class TypeTwoArea implements Screen {
         tmr.dispose();
         Gdx.input.setInputProcessor(null);
         posMap.getTexture().dispose();
-        powerups.dispose();
-        jumper.dispose();
-        halfSaw.dispose();
-        fullSaw.dispose();
-        speedController.dispose();
-        directionReverse.dispose();
         frontTyre.getTexture().dispose();
         backtyre.getTexture().dispose();
         rod1.getTexture().dispose();
