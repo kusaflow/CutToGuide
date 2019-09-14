@@ -137,10 +137,10 @@ public class MainGame extends Game {
 
 		if (!Gdx.files.local("TextFilesToDelete/kusaCoin").exists()){
 			FileHandle kusaCoin = Gdx.files.local("TextFilesToDelete/kusaCoin");
-			String data = "10000";
+			String data = "10";
 
 			kusaCoin.writeString(data, false);
-			AllVariables.kusaCoin = 10000;
+			AllVariables.kusaCoin = 10;
 		}else {
 			FileHandle kusaCoin = Gdx.files.local("TextFilesToDelete/kusaCoin");
 			AllVariables.kusaCoin = new Short(kusaCoin.readString());

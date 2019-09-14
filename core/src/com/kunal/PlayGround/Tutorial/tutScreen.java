@@ -107,7 +107,7 @@ public class tutScreen implements Screen {
                     Gdx.input.getX() < (440* AllVariables.inpM) + AllVariables.witdth_translation &&
                     Gdx.input.getY() >= 87 * AllVariables.inpM && Gdx.input.getY() < 232 * AllVariables.inpM) {
                 //dispose();
-                game.setScreen(new BasicTutorial(game));
+                game.setScreen(new BasicTutorial(game, (short) 1));
 
                 //to Open YouTube in main
                 //AllVariables.openApps.OpenApp("https://youtu.be/hD6K6XK_AFY");
