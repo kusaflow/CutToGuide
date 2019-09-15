@@ -1317,7 +1317,6 @@ public class BasicTutorial implements Screen {
         }else if (VariablesForPlayArea.tutState == 1){
             if (cam.position.x >=5560){
                 CamScroller.setAlpha(1);
-                CamScroller.setSize(camScrollSize*camscl, camScrollSize*camscl);
                 VariablesForPlayArea.tutState++;
                 timestamp = System.currentTimeMillis();
                 start.setAlpha(0.8f);

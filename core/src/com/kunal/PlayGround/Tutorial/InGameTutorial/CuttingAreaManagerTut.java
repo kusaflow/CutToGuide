@@ -373,7 +373,51 @@ public class CuttingAreaManagerTut implements Screen {
                 tut_SizeVal-=0.5f;
             }
 
+        }else if (VariablesForPlayArea.tutState == 10){
+            if (VariablesForPlayArea.shapes.size() == 2){
+                if (VariablesForPlayArea.shapes.get(1).get(0) == 4){
+
+                }else if (VariablesForPlayArea.shapes.get(1).get(0) == 14){
+
+                }else {
+                    resetLayout();
+                    VariablesForPlayArea.tutState--;
+                }
+            }else {
+                resetLayout();
+                VariablesForPlayArea.tutState--;
+            }
         }
+
+    }
+
+    private void resetLayout () {
+
+
+        VariablesForPlayArea.cantuseDots.clear();
+        VariablesForPlayArea.cantuseDots.add((byte) 5);
+        VariablesForPlayArea.cantuseDots.add((byte) 6);
+        VariablesForPlayArea.cantuseDots.add((byte) 9);
+        VariablesForPlayArea.cantuseDots.add((byte) 10);
+
+        VariablesForPlayArea.shapes.clear();
+        VariablesForPlayArea.vertices.clear();
+        VariablesForPlayArea.vertices.add((byte) 0);
+        VariablesForPlayArea.vertices.add((byte) 1);
+        VariablesForPlayArea.vertices.add((byte) 2);
+        VariablesForPlayArea.vertices.add((byte) 3);
+        VariablesForPlayArea.vertices.add((byte) 7);
+        VariablesForPlayArea.vertices.add((byte) 11);
+        VariablesForPlayArea.vertices.add((byte) 15);
+        VariablesForPlayArea.vertices.add((byte) 14);
+        VariablesForPlayArea.vertices.add((byte) 13);
+        VariablesForPlayArea.vertices.add((byte) 12);
+        VariablesForPlayArea.vertices.add((byte) 8);
+        VariablesForPlayArea.vertices.add((byte) 4);
+        VariablesForPlayArea.shapes.add(VariablesForPlayArea.vertices);
+
+
+
     }
 
     private void input(float dt) {
@@ -460,6 +504,9 @@ public class CuttingAreaManagerTut implements Screen {
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
 
                         if (inputsToChop.isEmpty())
+                            return false;
+
+                        if (VariablesForPlayArea.tutState != 9)
                             return false;
 
                         presentX = screenX;
@@ -550,18 +597,6 @@ public class CuttingAreaManagerTut implements Screen {
                         } catch (Exception e) {
                         }
 
-
-                        if (VariablesForPlayArea.tutState == 9){
-                            if (!inputsToChop.isEmpty()) {
-                                if (checkForCut()) {
-
-                                } else {
-                                    inputsToChop.clear();
-                                    return false;
-                                }
-                            }
-                        }
-
                         if (inputsToChop.isEmpty())
                             return false;
 
@@ -584,6 +619,8 @@ public class CuttingAreaManagerTut implements Screen {
 //
 //                        System.out.println("\n\n\n");
 
+                        if (VariablesForPlayArea.tutState == 9)
+                            VariablesForPlayArea.tutState++;
 
                         inputsToChop.clear();
 
@@ -633,32 +670,8 @@ public class CuttingAreaManagerTut implements Screen {
 
     }
 
-    private Boolean checkForCut() {
-        if (VariablesForPlayArea.tutState == 9) {
-            if (inputsToChop.get(0) == 4
-                    && inputsToChop.get(1) == 9
-                    && inputsToChop.get(2) == 14
-                    &&inputsToChop.getLast() != 4){
-                if (inputsToChop.getLast() == 5 || inputsToChop.getLast() == 6 || inputsToChop.getLast() == 9 && inputsToChop.getLast() == 10){
+    private void checkForCut() {
 
-                }else {
-                    VariablesForPlayArea.tutState++;
-                    return true;
-                }
-            }else if (inputsToChop.get(0) == 14
-                    && inputsToChop.get(1) == 9
-                    && inputsToChop.get(2) == 4
-                    &&inputsToChop.getLast() != 14){
-                if (inputsToChop.getLast() == 5 || inputsToChop.getLast() == 6 || inputsToChop.getLast() == 9 && inputsToChop.getLast() == 10){
-
-                }else {
-                    VariablesForPlayArea.tutState++;
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     private void fillingMissingPoints() {
