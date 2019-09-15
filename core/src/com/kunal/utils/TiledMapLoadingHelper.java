@@ -82,6 +82,12 @@ public class TiledMapLoadingHelper {
     public static Vector2 flagpos(){
         Vector2 pos = new Vector2(0,0);
 
+        //-------------for tutorial---------------------------------------[
+        pos.x = 6367;
+        pos.y = 700;
+        if (AllVariables.PresentAreaNumber == 0 && AllVariables.PresentLevelNumber == 0)
+        //=================================================================
+
         //area one ------------------------------------------------------
         if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
             pos.x = 6145;

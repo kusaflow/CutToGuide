@@ -920,7 +920,8 @@ public class BasicTutorial implements Screen {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenX < (1230* AllVariables.inpM)+AllVariables.witdth_translation
-                                    && screenY > 140*AllVariables.inpM && screenY < 290*AllVariables.inpM) {
+                                    && screenY > 140*AllVariables.inpM && screenY < 290*AllVariables.inpM
+                                    && VariablesForPlayArea.tutState ==202) {
                                 Brake.setAlpha(0.9f);
                                 brakeBool = true;
                                 return true;
@@ -929,7 +930,8 @@ public class BasicTutorial implements Screen {
                             //retry
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM){
+                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM
+                                    && VariablesForPlayArea.tutState ==202){
                                 dispose();
                                 ReDirectToTheLevel.Direct(game, true);
                                 return true;
@@ -937,7 +939,8 @@ public class BasicTutorial implements Screen {
                             //zoomout
                             if (screenX > (55 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (140 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM){
+                                    && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM
+                                    && VariablesForPlayArea.tutState ==202){
                                 ZoomOutBool = true;
                                 return false;
                             }
@@ -948,7 +951,8 @@ public class BasicTutorial implements Screen {
                                 //hardmove
                                 if (screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 480 * AllVariables.inpM && screenY < 595 * AllVariables.inpM) {
+                                        && screenY > 480 * AllVariables.inpM && screenY < 595 * AllVariables.inpM
+                                        && VariablesForPlayArea.tutState ==202) {
                                     /*hardMove = !hardMove;
                                     if (hardMove)
                                         HardMoveShapes.setAlpha(1);
@@ -964,7 +968,8 @@ public class BasicTutorial implements Screen {
                                 //camScroller
                                 if (screenX > (910 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1010 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 600 * AllVariables.inpM && screenY < 710 * AllVariables.inpM) {
+                                        && screenY > 600 * AllVariables.inpM && screenY < 710 * AllVariables.inpM
+                                        && VariablesForPlayArea.tutState ==1) {
                                     //System.out.println("omPLan");
                                     isCamScrollerTouched = true;
                                     CamScroller.setAlpha(0.9f);
@@ -977,7 +982,8 @@ public class BasicTutorial implements Screen {
                                 //place the shape
                                 if (screenX > (25 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 415 * AllVariables.inpM && screenY < 470 * AllVariables.inpM) {
+                                        && screenY > 415 * AllVariables.inpM && screenY < 470 * AllVariables.inpM
+                                        && VariablesForPlayArea.tutState ==202) {
                                     VariablesForPlayArea.shapeNumberSelected = 21;
                                 }
 
@@ -986,7 +992,8 @@ public class BasicTutorial implements Screen {
                                     //for clock Wise
                                     if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                            && screenY > 535 * AllVariables.inpM && screenY < 585 * AllVariables.inpM) {
+                                            && screenY > 535 * AllVariables.inpM && screenY < 585 * AllVariables.inpM
+                                            && VariablesForPlayArea.tutState ==202) {
 
                                         ACWTouched = true;
                                     }
@@ -994,7 +1001,8 @@ public class BasicTutorial implements Screen {
                                     //for anti Clock Wise
                                     else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                            && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM) {
+                                            && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM
+                                            && VariablesForPlayArea.tutState ==202) {
 
                                         CWtouched = true;
                                     }
@@ -1002,7 +1010,8 @@ public class BasicTutorial implements Screen {
                                     //for 45 deg rotation
                                     else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
-                                            && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM) {
+                                            && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM
+                                            && VariablesForPlayArea.tutState ==202) {
 
                                         //get the present angle of the shape selected
                                         tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
@@ -1030,7 +1039,8 @@ public class BasicTutorial implements Screen {
                             //pause
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM) {
+                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM
+                                    && VariablesForPlayArea.tutState ==202) {
                                 paused = true;
                                 pause.setAlpha(0);
                             }
@@ -1128,7 +1138,8 @@ public class BasicTutorial implements Screen {
                             //for start
                             if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
-                                    && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM) {
+                                    && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM
+                                    && VariablesForPlayArea.tutState ==202) {
                                 startAnimToMoveCycle = true;
                                 VariablesForPlayArea.endPoint.x = 200;
                                 return true;
@@ -1137,10 +1148,16 @@ public class BasicTutorial implements Screen {
                                 //shape chooser
                                 if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM) {
+                                        && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM
+                                        && (VariablesForPlayArea.tutState == 3)) {
                                     //code to choosing body
+
+                                    if (VariablesForPlayArea.tutState ==3){
+                                        VariablesForPlayArea.tutState++;
+                                    }
+
                                     dispose();
-                                    game.setScreen(new ShapeChooser(game));
+                                    game.setScreen(new ShapeChooserTut(game));
                                     return false;
                                 }
                             }
@@ -1150,7 +1167,8 @@ public class BasicTutorial implements Screen {
                             //resume
                             if (screenX > (335 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (595 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM
+                                    && VariablesForPlayArea.tutState ==202) {
                                 paused = false;
                                 if (!startBool)
                                     pause.setAlpha(1);
@@ -1160,7 +1178,8 @@ public class BasicTutorial implements Screen {
                             //exit
                             if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
+                                    && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM
+                                    && VariablesForPlayArea.tutState ==202) {
                                 VariablesForPlayArea.flush();
                                 dispose();
                                 game.setScreen(new AreaSelection(game));
@@ -1246,7 +1265,7 @@ public class BasicTutorial implements Screen {
                         }
 
                         if (keycode == Input.Keys.P){
-                            System.out.println(VariablesForPlayArea.shapes);
+                            VariablesForPlayArea.tutState++;
                         }
 
 
@@ -1280,6 +1299,9 @@ public class BasicTutorial implements Screen {
 
 
     private void tutorialUpdate(){
+
+        //System.out.println(cam.position.x);
+
         notifierToHints();
         if (VariablesForPlayArea.tutState == 0){
             if (timestamp + 2000 < System.currentTimeMillis()){
@@ -1292,12 +1314,34 @@ public class BasicTutorial implements Screen {
                 tut_SizeVal = -0.2f;
                 return;
             }
+        }else if (VariablesForPlayArea.tutState == 1){
+            if (cam.position.x >=5560){
+                CamScroller.setAlpha(1);
+                CamScroller.setSize(camScrollSize*camscl, camScrollSize*camscl);
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                start.setAlpha(0.8f);
+                pause.setAlpha(0.8f);
+                chooseBody.setAlpha(0.8f);
+                CamScroller.setSize(camScrollSize*camscl, camScrollSize*camscl);
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 2) {
+            if (timestamp + 2000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                start.setAlpha(0.3f);
+                pause.setAlpha(0.3f);
+                chooseBody.setAlpha(1f);
+                CamScroller.setAlpha(0.3f);
+                tut_SizeVal = -0.2f;
+                return;
+            }
         }
 
     }
 
     private void notifierToHints() {
-        System.out.println(CamScroller.getScaleX());
         if (VariablesForPlayArea.tutState == 1) {
             if (tut_SizeVal <= -0.05f) {
                 tut_isInc = true;
@@ -1313,7 +1357,25 @@ public class BasicTutorial implements Screen {
             }
 
             CamScroller.scale(tut_SizeVal);
+        } else if (VariablesForPlayArea.tutState == 3) {
+            if (tut_SizeVal <= -0.05f) {
+                tut_isInc = true;
+                tut_SizeVal = -0.05f;
+            } else if (tut_SizeVal >= 0.05f) {
+                tut_isInc = false;
+                tut_SizeVal = 0.05f;
+            }
+            if (tut_isInc){
+                tut_SizeVal+=0.01f;
+            } else {
+                tut_SizeVal-=0.01f;
+            }
+
+            chooseBody.scale(tut_SizeVal);
         }
+
+
+
     }
 
 
