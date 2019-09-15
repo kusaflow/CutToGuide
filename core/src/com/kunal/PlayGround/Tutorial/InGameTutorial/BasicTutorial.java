@@ -108,6 +108,8 @@ public class BasicTutorial implements Screen {
     //================================================================
     //tutorial related stuff
     long timestamp;
+    float tut_SizeVal= 0;
+    boolean tut_isInc = true;
     //----------------------------------------------------------------
 
 
@@ -146,7 +148,7 @@ public class BasicTutorial implements Screen {
         TutorialFont = new BitmapFont();
         generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
         prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        prams.size = 40;
+        prams.size = 60;
         prams.color = Color.RED;
         TutorialFont = generator.generateFont(prams);
 
@@ -494,17 +496,6 @@ public class BasicTutorial implements Screen {
             fadedBG.draw(AllVariables.batch);
             resume.draw(AllVariables.batch);
             exit.draw(AllVariables.batch);
-
-            Font.draw(AllVariables.batch,"Hints",
-                    560+(cam.position.x - AllVariables.WIDTH/2), 400+(cam.position.y -AllVariables.HEIGHT/2));
-
-            Font.draw(AllVariables.batch,"1",
-                    340+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
-            Font.draw(AllVariables.batch,"2",
-                    635+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
-            Font.draw(AllVariables.batch,"3",
-                    935+(cam.position.x - AllVariables.WIDTH/2), 270+(cam.position.y -AllVariables.HEIGHT/2));
-
         }
 
         Font.draw(AllVariables.batch,AllVariables.PresentAreaNumber+"-"+AllVariables.PresentLevelNumber,
@@ -925,25 +916,6 @@ public class BasicTutorial implements Screen {
                         screenY = Gdx.graphics.getHeight() - screenY;
                         System.out.println(screenX + "\t" + screenY);
 
-                        if (VariablesForPlayArea.gameOver) {
-                            if (screenX > (515 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (610 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 345 * AllVariables.inpM && screenY < 425 * AllVariables.inpM) {
-                                game.setScreen(new LevelNumberSelection(game));
-                            }
-
-                            //reset
-                            if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (790 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 355 * AllVariables.inpM && screenY < 424 * AllVariables.inpM) {
-                                dispose();
-                                ReDirectToTheLevel.Direct(game, true);
-                            }
-                        }
-
-                        //System.out.println(screenX + "\t" + screenY);
-
-
                         if (startBool && !VariablesForPlayArea.gameOver) {
                             //for brake
                             if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
@@ -1123,6 +1095,7 @@ public class BasicTutorial implements Screen {
                                 && screenX < (355* AllVariables.inpM)+AllVariables.witdth_translation
                                 && screenY > 0* AllVariables.inpM && screenY < 70* AllVariables.inpM){
                             dispose();
+                            VariablesForPlayArea.flush();
                             game.setScreen(new AreaSelection(game));
                         }
 
@@ -1188,9 +1161,9 @@ public class BasicTutorial implements Screen {
                             if (screenX > (700 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (960 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 530 * AllVariables.inpM && screenY < 635 * AllVariables.inpM) {
-                                game.setScreen(new LevelNumberSelection(game));
                                 VariablesForPlayArea.flush();
-
+                                dispose();
+                                game.setScreen(new AreaSelection(game));
                             }
                         }
 
@@ -1307,14 +1280,40 @@ public class BasicTutorial implements Screen {
 
 
     private void tutorialUpdate(){
+        notifierToHints();
         if (VariablesForPlayArea.tutState == 0){
             if (timestamp + 2000 < System.currentTimeMillis()){
                 VariablesForPlayArea.tutState++;
                 timestamp = System.currentTimeMillis();
+                start.setAlpha(0.3f);
+                pause.setAlpha(0.3f);
+                chooseBody.setAlpha(0.3f);
+                CamScroller.setAlpha(1);
+                tut_SizeVal = -0.2f;
                 return;
             }
         }
 
+    }
+
+    private void notifierToHints() {
+        System.out.println(CamScroller.getScaleX());
+        if (VariablesForPlayArea.tutState == 1) {
+            if (tut_SizeVal <= -0.05f) {
+                tut_isInc = true;
+                tut_SizeVal = -0.05f;
+            } else if (tut_SizeVal >= 0.05f) {
+                tut_isInc = false;
+                tut_SizeVal = 0.05f;
+            }
+            if (tut_isInc){
+                tut_SizeVal+=0.01f;
+            } else {
+                tut_SizeVal-=0.01f;
+            }
+
+            CamScroller.scale(tut_SizeVal);
+        }
     }
 
 

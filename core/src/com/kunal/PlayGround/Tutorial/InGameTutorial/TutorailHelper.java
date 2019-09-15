@@ -13,16 +13,18 @@ public class TutorailHelper {
         if (VariablesForPlayArea.tutState == 0){
             s = "Welcome";
         }else if (VariablesForPlayArea.tutState == 1){
-            s = "First find the red flag.";
+            s = "First find the red flag\n                   >>";
         }
 
         return s;
     }
 
     public static Vector2 cord(){
-        Vector2 v = new Vector2(200,200);
+        Vector2 v = new Vector2(500,500);
         if (VariablesForPlayArea.tutState == 0){
-            v = new Vector2(200,200);
+            v = new Vector2(500,500);
+        } else if (VariablesForPlayArea.tutState == 1){
+            v = new Vector2(350,500);
         }
         return v;
     }
