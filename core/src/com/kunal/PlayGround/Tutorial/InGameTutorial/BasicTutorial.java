@@ -23,6 +23,7 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
+import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
@@ -48,14 +49,12 @@ import java.util.Random;
 public class BasicTutorial implements Screen {
     MainGame game;
 
-    int stateOfTutorial;
-
     private World world;
     private Box2DDebugRenderer b2dr;
     private OrthographicCamera cam;
     private Viewport port;
 
-    BitmapFont Font;
+    BitmapFont Font, TutorialFont;
 
     private Sprite Brake, start, chooseBody, MoveToDustBin, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, retryWhenStarted, ZoomOutCam;
@@ -106,6 +105,12 @@ public class BasicTutorial implements Screen {
 
     private Boolean[] bgRandNumber = new Boolean[15];
 
+    //================================================================
+    //tutorial related stuff
+    long timestamp;
+    //----------------------------------------------------------------
+
+
     public BasicTutorial(MainGame game) {
         this.game = game;
 
@@ -132,12 +137,20 @@ public class BasicTutorial implements Screen {
         poly = new Polygon();
 
         Font = new BitmapFont();
-
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
         prams.size = 50;
         prams.color = Color.BLUE;
         Font = generator.generateFont(prams);
+
+        TutorialFont = new BitmapFont();
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
+        prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 40;
+        prams.color = Color.RED;
+        TutorialFont = generator.generateFont(prams);
+
+
 
         //for testing
         //AllVariables.PresentAreaNumber = 101;
@@ -304,11 +317,6 @@ public class BasicTutorial implements Screen {
 
         //--------------------------------------------------------------------------------
 
-        //tutorial ---------------------------------------
-        stateOfTutorial = 0;
-        //-==============================================
-
-
 
 
 
@@ -339,6 +347,8 @@ public class BasicTutorial implements Screen {
     public void show() {
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
+        timestamp = System.currentTimeMillis();
     }
 
     @Override
@@ -350,6 +360,9 @@ public class BasicTutorial implements Screen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         if (!VariablesForPlayArea.gameOver)
             update(dt);
+        //tutorial
+        tutorialUpdate();
+
         input(dt);
 
 
@@ -424,6 +437,12 @@ public class BasicTutorial implements Screen {
 
         sred.end();
 
+        //exit Tutorial
+        sred.begin(ShapeRenderer.ShapeType.Filled);
+        sred.rect(-260+(cam.position.x - AllVariables.WIDTH/2), -145+(cam.position.y - AllVariables.HEIGHT/2), 500,100);
+        sred.end();
+
+
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
         AllVariables.batch.begin();
@@ -491,6 +510,11 @@ public class BasicTutorial implements Screen {
         Font.draw(AllVariables.batch,AllVariables.PresentAreaNumber+"-"+AllVariables.PresentLevelNumber,
                 1400+(cam.position.x - AllVariables.WIDTH/2), 850+(cam.position.y -AllVariables.HEIGHT/2));
 
+        Font.draw(AllVariables.batch, "Exit Tutorial", -230+(cam.position.x - AllVariables.WIDTH/2), -80+(cam.position.y - AllVariables.HEIGHT/2));
+
+        TutorialFont.draw(AllVariables.batch, TutorailHelper.msgOnScreen(),
+                TutorailHelper.cord().x+(cam.position.x - AllVariables.WIDTH/2),
+                TutorailHelper.cord().y+(cam.position.y - AllVariables.HEIGHT/2));
         AllVariables.batch.end();
 
     }
@@ -1094,6 +1118,16 @@ public class BasicTutorial implements Screen {
 
                         ZoomOutBool = false;
 
+                        //exit tutoial
+                        if (screenX > (0* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenX < (355* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenY > 0* AllVariables.inpM && screenY < 70* AllVariables.inpM){
+                            dispose();
+                            game.setScreen(new AreaSelection(game));
+                        }
+
+
+
                         if (brakeBool) {
                             Brake.setAlpha(0.4f);
                             brakeBool = false;
@@ -1269,9 +1303,22 @@ public class BasicTutorial implements Screen {
                     }
                 }
         );
+    }
 
+
+    private void tutorialUpdate(){
+        if (VariablesForPlayArea.tutState == 0){
+            if (timestamp + 2000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        }
 
     }
+
+
+
 
     private void makeupOfCycle(){
         frontTyre.setPosition(AllVariables.FrontWheel.getPosition().x * AllVariables.PPM - 25,

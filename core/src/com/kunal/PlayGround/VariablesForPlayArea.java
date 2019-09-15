@@ -50,7 +50,7 @@ public class VariablesForPlayArea {
     //positions of shapes
     public static LinkedList<Vector2> Sh_pos;
 
-    //linked list for bodies
+    //linked list for bokagdies
     public static LinkedList<Body> CutOutBodies;
     public static LinkedList<Float> Angle_Of_Shape;
     public static LinkedList<LinkedList<Byte>> CutoutShapeVertices;
@@ -78,6 +78,11 @@ public class VariablesForPlayArea {
     public static LinkedList<DirectionReverseVariables> dirRevList;
 
     //------------------------------------------
+
+
+    //--------Tutorial-------------------------------------------------------
+    public static int tutState= 0;
+    //------------------------------------------------------------------------
 
     public VariablesForPlayArea() {
         cantuseDots = new LinkedList<Byte>();

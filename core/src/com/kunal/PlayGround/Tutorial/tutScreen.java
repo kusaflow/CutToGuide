@@ -15,6 +15,7 @@ import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Tutorial.InGameTutorial.BasicTutorial;
+import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.playScreen.playScreen;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.slideShow.slideShow;
@@ -111,6 +112,7 @@ public class tutScreen implements Screen {
                 //game.setScreen(new BasicTutorial(game, (short) 1));
                 AllVariables.PresentLevelNumber = 0;
                 AllVariables.PresentAreaNumber = 0;
+                VariablesForPlayArea.tutState = 0;
                 ReDirectToTheLevel.Direct(game,false);
 
                 //to Open YouTube in main
