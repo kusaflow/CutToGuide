@@ -4,15 +4,19 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
+import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -46,6 +50,16 @@ public class CuttingAreaManagerTut implements Screen {
     private Texture doneSh, retry, key;
     private Sprite  hintImg;
 
+    private BitmapFont font;
+
+
+    //================================================================
+    //tutorial related stuff
+    long timestamp;
+    float tut_SizeVal= 0;
+    boolean tut_isInc = true;
+    //----------------------------------------------------------------
+
     @Override
     public void dispose() {
         sr.dispose();
@@ -66,6 +80,14 @@ public class CuttingAreaManagerTut implements Screen {
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
+
+
+        font = new BitmapFont();
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 50;
+        prams.color = Color.RED;
+        font = generator.generateFont(prams);
 
         sr = new ShapeRenderer();
 
@@ -132,6 +154,8 @@ public class CuttingAreaManagerTut implements Screen {
     public void show() {
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
+
+        timestamp = System.currentTimeMillis();
     }
 
     @Override
@@ -220,6 +244,10 @@ public class CuttingAreaManagerTut implements Screen {
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
         sr.begin(ShapeRenderer.ShapeType.Filled);
+        //extit Tut
+        sr.setColor(1f, 1f, 1f,1f);
+        sr.rect(40, 0, 350,100);
+
 
         //sr.rect(0,300, 200, 200);
         //sr.setColor(0,1,0.5f,1);
@@ -233,7 +261,16 @@ public class CuttingAreaManagerTut implements Screen {
             if (i ==5 || i == 6 || i ==9 || i==10)
                 sr.setColor(1,0,0,1);
 
-            sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 7);
+            if (VariablesForPlayArea.tutState == 9) {
+                if (i == 4 || i == 14) {
+                    sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 7 + tut_SizeVal);
+                }else {
+                    sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 3);
+                }
+            }else {
+                sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 7);
+
+            }
         }
 
         sr.setColor(1f, 0f, 0f, 1);
@@ -264,12 +301,21 @@ public class CuttingAreaManagerTut implements Screen {
                 hintImg.draw(AllVariables.batch);
 
         }
+        font.draw(AllVariables.batch,  "Exit Tutorial", 80, 70);
+        font.draw(AllVariables.batch, TutorailHelper.msgOnScreen(),
+                TutorailHelper.cord().x,
+                TutorailHelper.cord().y);
         AllVariables.batch.end();
 
     }
 
     private void update(float dt) {
-        input(dt);
+        tutUpdate();
+
+        try {
+            input(dt);
+        } catch (Exception e) {
+        }
         try {
             cam.update();
         } catch (Exception e) {
@@ -290,6 +336,44 @@ public class CuttingAreaManagerTut implements Screen {
 //        }
 
 
+    }
+
+    private void tutUpdate () {
+        notifierHint();
+        if (VariablesForPlayArea.tutState == 7){
+            if (timestamp + 2000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 8){
+            if (timestamp + 2000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.01f;
+                return;
+            }
+        }
+
+    }
+
+    private void notifierHint(){
+        if (VariablesForPlayArea.tutState == 9) {
+            if (tut_SizeVal <= -2.5f) {
+                tut_isInc = true;
+                tut_SizeVal = -2.5f;
+            } else if (tut_SizeVal >= 2.5f) {
+                tut_isInc = false;
+                tut_SizeVal = 2.5f;
+            }
+            if (tut_isInc){
+                tut_SizeVal+=0.5f;
+            } else {
+                tut_SizeVal-=0.5f;
+            }
+
+        }
     }
 
     private void input(float dt) {
@@ -313,14 +397,16 @@ public class CuttingAreaManagerTut implements Screen {
                         //reset the model
                         if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 110 * AllVariables.inpM + AllVariables.witdth_translation &&
-                                screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM){
+                                screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM
+                                && VariablesForPlayArea.tutState ==202){
                             VariablesForPlayArea.flush();
 
                         }
                         //hint
                         if(screenX > 200*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 325 * AllVariables.inpM + AllVariables.witdth_translation &&
-                                screenY > 350 * AllVariables.inpM && screenY < 447* AllVariables.inpM){
+                                screenY > 350 * AllVariables.inpM && screenY < 447* AllVariables.inpM
+                                && VariablesForPlayArea.tutState ==202){
                             if (VariablesForPlayArea.HintOneEnabled)
                                 hinystate = true;
 
@@ -328,7 +414,8 @@ public class CuttingAreaManagerTut implements Screen {
                         //when done
                         if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 120 * AllVariables.inpM + AllVariables.witdth_translation &&
-                                screenY > 230 * AllVariables.inpM && screenY < 355 * AllVariables.inpM){
+                                screenY > 230 * AllVariables.inpM && screenY < 355 * AllVariables.inpM
+                                && VariablesForPlayArea.tutState ==202){
 
                             VariablesForPlayArea.Sh_pos.clear();
 
@@ -371,6 +458,9 @@ public class CuttingAreaManagerTut implements Screen {
 
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
+
+                        if (inputsToChop.isEmpty())
+                            return false;
 
                         presentX = screenX;
                         presntY = screenY;
@@ -439,6 +529,18 @@ public class CuttingAreaManagerTut implements Screen {
 
                     @Override
                     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+
+                        screenY = Gdx.graphics.getHeight() - screenY;
+
+                        //exit tutoial
+                        if (screenX > (40* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenX < (390* AllVariables.inpM)+AllVariables.witdth_translation
+                                && screenY > 0* AllVariables.inpM && screenY < 100* AllVariables.inpM){
+                            dispose();
+                            VariablesForPlayArea.flush();
+                            game.setScreen(new AreaSelection(game));
+                        }
+
                         //remove first element
                         try {
                             inputsToChop.removeFirst();
@@ -446,6 +548,18 @@ public class CuttingAreaManagerTut implements Screen {
                             presntY = Gdx.graphics.getHeight() - VariablesForPlayArea.BigSqurePoints[inputsToChop.getLast()][1];
 
                         } catch (Exception e) {
+                        }
+
+
+                        if (VariablesForPlayArea.tutState == 9){
+                            if (!inputsToChop.isEmpty()) {
+                                if (checkForCut()) {
+
+                                } else {
+                                    inputsToChop.clear();
+                                    return false;
+                                }
+                            }
                         }
 
                         if (inputsToChop.isEmpty())
@@ -517,6 +631,34 @@ public class CuttingAreaManagerTut implements Screen {
                 }
         );
 
+    }
+
+    private Boolean checkForCut() {
+        if (VariablesForPlayArea.tutState == 9) {
+            if (inputsToChop.get(0) == 4
+                    && inputsToChop.get(1) == 9
+                    && inputsToChop.get(2) == 14
+                    &&inputsToChop.getLast() != 4){
+                if (inputsToChop.getLast() == 5 || inputsToChop.getLast() == 6 || inputsToChop.getLast() == 9 && inputsToChop.getLast() == 10){
+
+                }else {
+                    VariablesForPlayArea.tutState++;
+                    return true;
+                }
+            }else if (inputsToChop.get(0) == 14
+                    && inputsToChop.get(1) == 9
+                    && inputsToChop.get(2) == 4
+                    &&inputsToChop.getLast() != 14){
+                if (inputsToChop.getLast() == 5 || inputsToChop.getLast() == 6 || inputsToChop.getLast() == 9 && inputsToChop.getLast() == 10){
+
+                }else {
+                    VariablesForPlayArea.tutState++;
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 
     private void fillingMissingPoints() {

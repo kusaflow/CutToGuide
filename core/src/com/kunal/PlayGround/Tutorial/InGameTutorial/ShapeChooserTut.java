@@ -15,6 +15,7 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
+import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -40,6 +41,14 @@ public class ShapeChooserTut implements Screen {
 
     int i =0;
 
+    //================================================================
+    //tutorial related stuff
+    long timestamp;
+    float tut_SizeVal= 0;
+    boolean tut_isInc = true;
+    //----------------------------------------------------------------
+
+
     public ShapeChooserTut(MainGame game) {
         this.game = game;
         sred = new ShapeRenderer();
@@ -58,7 +67,7 @@ public class ShapeChooserTut implements Screen {
         font = new BitmapFont();
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        prams.size = 60;
+        prams.size = 50;
         prams.color = Color.RED;
         font = generator.generateFont(prams);
 
@@ -196,10 +205,14 @@ public class ShapeChooserTut implements Screen {
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
 
+        timestamp = System.currentTimeMillis();
+
     }
 
     @Override
     public void render(float dt) {
+
+        tutUpdate();
         input(dt);
         cam.update();
 
@@ -290,7 +303,7 @@ public class ShapeChooserTut implements Screen {
         sred.rect(x, y,220,153);
 
         sred.setColor(0f, 0f, 0f,1f);
-        sred.rect(0, 0, 500,100);
+        sred.rect(40, 0, 350,100);
         sred.setColor(0.963f, 0.901f, 0.265f,0.2f);
 
         sred.end();
@@ -299,7 +312,7 @@ public class ShapeChooserTut implements Screen {
 
         //fonts
         AllVariables.batch.begin();
-        font.draw(AllVariables.batch,  "Exit Tutorial", 100, 80);
+        font.draw(AllVariables.batch,  "Exit Tutorial", 80, 70);
         font.draw(AllVariables.batch, TutorailHelper.msgOnScreen(),
                 TutorailHelper.cord().x,
                 TutorailHelper.cord().y);
@@ -313,7 +326,19 @@ public class ShapeChooserTut implements Screen {
             game.setScreen(new TypeTwoArea(game, false));
 
 
+
         if (Gdx.input.justTouched()) {
+
+            //exit Tutorial
+            if (Gdx.input.getX() > (40* AllVariables.inpM)+AllVariables.witdth_translation
+                    && Gdx.input.getX() <(390* AllVariables.inpM)+AllVariables.witdth_translation
+                    &&(Gdx.graphics.getHeight() - Gdx.input.getY()) > (0*AllVariables.inpM)
+                    && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 100* AllVariables.inpM) {
+                game.setScreen(new AreaSelection(game));
+            }
+
+
+            //System.out.println(Gdx.input.getX() + "\t" + Gdx.input.getY());
             if (Gdx.input.getX() > (40 * AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() < (260* AllVariables.inpM)+AllVariables.witdth_translation) {
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > 100* AllVariables.inpM && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 252* AllVariables.inpM) {
                     x=40;y=100;VariablesForPlayArea.shapeNumberSelected =15;
@@ -367,17 +392,16 @@ public class ShapeChooserTut implements Screen {
                     x=920;y=557;VariablesForPlayArea.shapeNumberSelected =4;
                 }
             }
-
             else if (Gdx.input.getX() > (1140* AllVariables.inpM)+AllVariables.witdth_translation && Gdx.input.getX() <(1300* AllVariables.inpM)+AllVariables.witdth_translation) {
 
                 //letsCut
                 if ((Gdx.graphics.getHeight() - Gdx.input.getY()) > (507*AllVariables.inpM)
                         && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 710* AllVariables.inpM
-                        && (VariablesForPlayArea.tutState ==202)) {
-                    try {
-                        game.setScreen(new CuttingAreaManager(game));
-                    }catch (Exception e){
-                    }
+                        && (VariablesForPlayArea.tutState ==6)) {
+                    if (VariablesForPlayArea.tutState == 6)
+                        VariablesForPlayArea.tutState++;
+                    game.setScreen(new CuttingAreaManagerTut(game));
+
                     //System.out.println("up wala");
                 }
 
@@ -408,6 +432,48 @@ public class ShapeChooserTut implements Screen {
 
         }
 
+    }
+
+    private void tutUpdate () {
+        notifierHints();
+        if (VariablesForPlayArea.tutState == 4){
+            if (timestamp + 2400 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 5){
+            if (timestamp + 2400 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                LetsCut.setAlpha(1);
+                okTick.setAlpha(0.3f);
+                reCut.setAlpha(0.3f);
+                return;
+            }
+        }
+    }
+
+    private void notifierHints(){
+        if (VariablesForPlayArea.tutState == 6) {
+            if (tut_SizeVal <= -0.05f) {
+                tut_isInc = true;
+                tut_SizeVal = -0.05f;
+            } else if (tut_SizeVal >= 0.05f) {
+                tut_isInc = false;
+                tut_SizeVal = 0.05f;
+            }
+            if (tut_isInc){
+                tut_SizeVal+=0.01f;
+            } else {
+                tut_SizeVal-=0.01f;
+            }
+
+            LetsCut.scale(tut_SizeVal);
+        }
     }
 
     @Override

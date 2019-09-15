@@ -83,9 +83,10 @@ public class TiledMapLoadingHelper {
         Vector2 pos = new Vector2(0,0);
 
         //-------------for tutorial---------------------------------------[
-        pos.x = 6367;
-        pos.y = 700;
-        if (AllVariables.PresentAreaNumber == 0 && AllVariables.PresentLevelNumber == 0)
+        if (AllVariables.PresentAreaNumber == 0 && AllVariables.PresentLevelNumber == 0){
+            pos.x = 6367;
+            pos.y = 700;
+        }
         //=================================================================
 
         //area one ------------------------------------------------------

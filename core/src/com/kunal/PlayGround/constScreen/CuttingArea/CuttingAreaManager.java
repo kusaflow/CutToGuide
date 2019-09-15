@@ -373,8 +373,12 @@ public class CuttingAreaManager implements Screen {
                     @Override
                     public boolean touchDragged(int screenX, int screenY, int pointer) {
 
+                        if (inputsToChop.isEmpty())
+                            return false;
+
                         presentX = screenX;
                         presntY = screenY;
+
 
                         if (screenX > ((VariablesForPlayArea.BigSqurePoints[0][0] - 25)* AllVariables.inpM)+AllVariables.witdth_translation && screenX < ((VariablesForPlayArea.BigSqurePoints[0][0] + 25)* AllVariables.inpM)+AllVariables.witdth_translation) {
                             if (screenY > Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] + 25)* AllVariables.inpM && screenY < Gdx.graphics.getHeight() - (VariablesForPlayArea.BigSqurePoints[0][1] - 25)* AllVariables.inpM) {
