@@ -31,6 +31,18 @@ public class TutorailHelper {
         }else if (VariablesForPlayArea.tutState == 9){
             s = "Lets cut a triangle\n\nJoin these two \npoints";
         }
+        else if (VariablesForPlayArea.tutState == 10){
+            s = "                             Cool now we have two shapes";
+        }
+        else if (VariablesForPlayArea.tutState == 11){
+            s = "                             Cool now we have two shapes\n\nYou see the green\npoints turned red\n";
+        }
+        else if (VariablesForPlayArea.tutState == 12){
+            s = "                             Cool now we have two shapes\n\nYou see the green\npoints turned red\n\n                                                                You can Only start with \n                                                                      green points\n(tap anywhere to \ncontinue)";
+        }
+        else if (VariablesForPlayArea.tutState == 13){
+            s = "\nTry joining these\npoints\n";
+        }
 
         return s;
     }
@@ -56,6 +68,14 @@ public class TutorailHelper {
         }else if (VariablesForPlayArea.tutState == 8){
             v = new Vector2(20,600);
         }else if (VariablesForPlayArea.tutState == 9){
+            v = new Vector2(20,600);
+        }else if (VariablesForPlayArea.tutState == 10){
+            v = new Vector2(20,700);
+        }else if (VariablesForPlayArea.tutState == 11){
+            v = new Vector2(20,700);
+        }else if (VariablesForPlayArea.tutState == 12){
+            v = new Vector2(20,700);
+        }else if (VariablesForPlayArea.tutState == 13){
             v = new Vector2(20,600);
         }
         return v;

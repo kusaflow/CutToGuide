@@ -261,15 +261,20 @@ public class CuttingAreaManagerTut implements Screen {
             if (i ==5 || i == 6 || i ==9 || i==10)
                 sr.setColor(1,0,0,1);
 
-            if (VariablesForPlayArea.tutState == 9) {
+            if (VariablesForPlayArea.tutState == 9 || VariablesForPlayArea.tutState ==11 || VariablesForPlayArea.tutState==12) {
                 if (i == 4 || i == 14) {
+                    sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 7 + tut_SizeVal);
+                }else {
+                    sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 3);
+                }
+            }else if (VariablesForPlayArea.tutState == 13) {
+                if (i == 5 || i == 6 || i == 9 || i == 10) {
                     sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 7 + tut_SizeVal);
                 }else {
                     sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 3);
                 }
             }else {
                 sr.circle(VariablesForPlayArea.BigSqurePoints[i][0], VariablesForPlayArea.BigSqurePoints[i][1], 7);
-
             }
         }
 
@@ -355,11 +360,27 @@ public class CuttingAreaManagerTut implements Screen {
                 return;
             }
         }
+        else if (VariablesForPlayArea.tutState == 11){
+            if (timestamp + 3500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 12){
+            if (timestamp + 2000 < System.currentTimeMillis()){
+                if (Gdx.input.justTouched()) {
+                    VariablesForPlayArea.tutState++;
+                    timestamp = System.currentTimeMillis();
+                    return;
+                }
+            }
+        }
 
     }
 
     private void notifierHint(){
-        if (VariablesForPlayArea.tutState == 9) {
+        if (VariablesForPlayArea.tutState == 9 || VariablesForPlayArea.tutState == 11 || VariablesForPlayArea.tutState ==12 || VariablesForPlayArea.tutState == 13) {
             if (tut_SizeVal <= -2.5f) {
                 tut_isInc = true;
                 tut_SizeVal = -2.5f;
@@ -373,12 +394,44 @@ public class CuttingAreaManagerTut implements Screen {
                 tut_SizeVal-=0.5f;
             }
 
-        }else if (VariablesForPlayArea.tutState == 10){
+        }
+        // tut 10
+        else if (VariablesForPlayArea.tutState == 10){
             if (VariablesForPlayArea.shapes.size() == 2){
                 if (VariablesForPlayArea.shapes.get(1).get(0) == 4){
-
-                }else if (VariablesForPlayArea.shapes.get(1).get(0) == 14){
-
+                    if (VariablesForPlayArea.shapes.get(1).get(1) == 8
+                            &&VariablesForPlayArea.shapes.get(1).get(2) == 12
+                            &&VariablesForPlayArea.shapes.get(1).get(3) == 13
+                            &&VariablesForPlayArea.shapes.get(1).get(4) == 14
+                            &&VariablesForPlayArea.shapes.get(1).get(5) == 9){
+                        //--------------------------------------------------
+                        if (timestamp + 3000 < System.currentTimeMillis()){
+                            VariablesForPlayArea.tutState++;
+                            timestamp = System.currentTimeMillis();
+                            tut_SizeVal = -0.01f;
+                            return;
+                        }
+                    }else{
+                        resetLayout();
+                        VariablesForPlayArea.tutState--;
+                    }
+                }else if (VariablesForPlayArea.shapes.get(0).get(0) == 14){
+                    if (VariablesForPlayArea.shapes.get(0).get(1) == 13
+                            &&VariablesForPlayArea.shapes.get(0).get(2) == 12
+                            &&VariablesForPlayArea.shapes.get(0).get(3) == 8
+                            &&VariablesForPlayArea.shapes.get(0).get(4) == 4
+                            &&VariablesForPlayArea.shapes.get(0).get(5) == 9){
+                        //--------------------------------------------------
+                        if (timestamp + 3000 < System.currentTimeMillis()){
+                            VariablesForPlayArea.tutState++;
+                            timestamp = System.currentTimeMillis();
+                            tut_SizeVal = -0.01f;
+                            return;
+                        }
+                    }else{
+                        resetLayout();
+                        VariablesForPlayArea.tutState--;
+                    }
                 }else {
                     resetLayout();
                     VariablesForPlayArea.tutState--;
@@ -388,33 +441,78 @@ public class CuttingAreaManagerTut implements Screen {
                 VariablesForPlayArea.tutState--;
             }
         }
+        //tut 13
+        if (VariablesForPlayArea.tutState == 14){
+            if (VariablesForPlayArea.shapes.size() == 2){
+                VariablesForPlayArea.tutState++;
+            }else {
+                resetLayout();
+                VariablesForPlayArea.tutState--;
+            }
+        }
+
 
     }
 
     private void resetLayout () {
+        if (VariablesForPlayArea.tutState == 14) {
+            VariablesForPlayArea.cantuseDots.clear();
+            VariablesForPlayArea.cantuseDots.add((byte) 5);
+            VariablesForPlayArea.cantuseDots.add((byte) 6);
+            VariablesForPlayArea.cantuseDots.add((byte) 9);
+            VariablesForPlayArea.cantuseDots.add((byte) 10);
+            VariablesForPlayArea.cantuseDots.add((byte) 4);
+            VariablesForPlayArea.cantuseDots.add((byte) 14);
 
 
-        VariablesForPlayArea.cantuseDots.clear();
-        VariablesForPlayArea.cantuseDots.add((byte) 5);
-        VariablesForPlayArea.cantuseDots.add((byte) 6);
-        VariablesForPlayArea.cantuseDots.add((byte) 9);
-        VariablesForPlayArea.cantuseDots.add((byte) 10);
+            VariablesForPlayArea.shapes.clear();
+            VariablesForPlayArea.vertices.clear();
+            VariablesForPlayArea.vertices.add((byte) 4);
+            VariablesForPlayArea.vertices.add((byte) 0);
+            VariablesForPlayArea.vertices.add((byte) 1);
+            VariablesForPlayArea.vertices.add((byte) 2);
+            VariablesForPlayArea.vertices.add((byte) 3);
+            VariablesForPlayArea.vertices.add((byte) 7);
+            VariablesForPlayArea.vertices.add((byte) 11);
+            VariablesForPlayArea.vertices.add((byte) 15);
+            VariablesForPlayArea.vertices.add((byte) 14);
+            VariablesForPlayArea.vertices.add((byte) 9);
+            VariablesForPlayArea.shapes.add(VariablesForPlayArea.vertices);
 
-        VariablesForPlayArea.shapes.clear();
-        VariablesForPlayArea.vertices.clear();
-        VariablesForPlayArea.vertices.add((byte) 0);
-        VariablesForPlayArea.vertices.add((byte) 1);
-        VariablesForPlayArea.vertices.add((byte) 2);
-        VariablesForPlayArea.vertices.add((byte) 3);
-        VariablesForPlayArea.vertices.add((byte) 7);
-        VariablesForPlayArea.vertices.add((byte) 11);
-        VariablesForPlayArea.vertices.add((byte) 15);
-        VariablesForPlayArea.vertices.add((byte) 14);
-        VariablesForPlayArea.vertices.add((byte) 13);
-        VariablesForPlayArea.vertices.add((byte) 12);
-        VariablesForPlayArea.vertices.add((byte) 8);
-        VariablesForPlayArea.vertices.add((byte) 4);
-        VariablesForPlayArea.shapes.add(VariablesForPlayArea.vertices);
+            VariablesForPlayArea.vertices.add((byte) 4);
+            VariablesForPlayArea.vertices.add((byte) 8);
+            VariablesForPlayArea.vertices.add((byte) 12);
+            VariablesForPlayArea.vertices.add((byte) 13);
+            VariablesForPlayArea.vertices.add((byte) 14);
+            VariablesForPlayArea.vertices.add((byte) 9);
+            VariablesForPlayArea.shapes.add(VariablesForPlayArea.vertices);
+
+
+        }
+
+        if (VariablesForPlayArea.tutState == 10) {
+            VariablesForPlayArea.cantuseDots.clear();
+            VariablesForPlayArea.cantuseDots.add((byte) 5);
+            VariablesForPlayArea.cantuseDots.add((byte) 6);
+            VariablesForPlayArea.cantuseDots.add((byte) 9);
+            VariablesForPlayArea.cantuseDots.add((byte) 10);
+
+            VariablesForPlayArea.shapes.clear();
+            VariablesForPlayArea.vertices.clear();
+            VariablesForPlayArea.vertices.add((byte) 0);
+            VariablesForPlayArea.vertices.add((byte) 1);
+            VariablesForPlayArea.vertices.add((byte) 2);
+            VariablesForPlayArea.vertices.add((byte) 3);
+            VariablesForPlayArea.vertices.add((byte) 7);
+            VariablesForPlayArea.vertices.add((byte) 11);
+            VariablesForPlayArea.vertices.add((byte) 15);
+            VariablesForPlayArea.vertices.add((byte) 14);
+            VariablesForPlayArea.vertices.add((byte) 13);
+            VariablesForPlayArea.vertices.add((byte) 12);
+            VariablesForPlayArea.vertices.add((byte) 8);
+            VariablesForPlayArea.vertices.add((byte) 4);
+            VariablesForPlayArea.shapes.add(VariablesForPlayArea.vertices);
+        }
 
 
 
@@ -506,8 +604,11 @@ public class CuttingAreaManagerTut implements Screen {
                         if (inputsToChop.isEmpty())
                             return false;
 
-                        if (VariablesForPlayArea.tutState != 9)
+                        if (VariablesForPlayArea.tutState == 9 || VariablesForPlayArea.tutState ==13){
+
+                        }else{
                             return false;
+                        }
 
                         presentX = screenX;
                         presntY = screenY;
@@ -619,8 +720,10 @@ public class CuttingAreaManagerTut implements Screen {
 //
 //                        System.out.println("\n\n\n");
 
-                        if (VariablesForPlayArea.tutState == 9)
+                        if (VariablesForPlayArea.tutState == 9 || VariablesForPlayArea.tutState == 13) {
                             VariablesForPlayArea.tutState++;
+                            timestamp = System.currentTimeMillis();
+                        }
 
                         inputsToChop.clear();
 
