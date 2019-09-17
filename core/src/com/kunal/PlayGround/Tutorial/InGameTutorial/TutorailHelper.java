@@ -44,7 +44,16 @@ public class TutorailHelper {
             s = "                             Experiment here\n\n\ntap here to\ncontinue";
         }else if (VariablesForPlayArea.tutState == 14) {
             s = "You know how to\nclear this?";
+        }else if (VariablesForPlayArea.tutState == 15){
+            s = "Great";
+        }else if (VariablesForPlayArea.tutState == 16){
+            s = "                             Draw anything(atleast 2 shapes)\n\n\ntap here to\ncontinue";
+        }else if (VariablesForPlayArea.tutState == 17){
+            s = "lets take these\nshapes to our\n level";
+        }else if (VariablesForPlayArea.tutState == 18){
+            s = "You see now we have " +VariablesForPlayArea.shapes.size() + " shapes";
         }
+
 
         return s;
     }
@@ -81,6 +90,21 @@ public class TutorailHelper {
             v = new Vector2(20,700);
         }else if (VariablesForPlayArea.tutState == 14){
             v = new Vector2(20,500);
+        }else if (VariablesForPlayArea.tutState == 15){
+            v = new Vector2(750,500);
+        }else if (VariablesForPlayArea.tutState == 16){
+            v = new Vector2(20,700);
+        }else if (VariablesForPlayArea.tutState == 17){
+            v = new Vector2(20,600);
+        }else if (VariablesForPlayArea.tutState == 18){
+            if (VariablesForPlayArea.shapes.size() <=5)
+                v = new Vector2(60,500);
+            else if (VariablesForPlayArea.shapes.size() >=5  && VariablesForPlayArea.shapes.size() <=10)
+                v = new Vector2(60,350);
+            else if (VariablesForPlayArea.shapes.size() >=11  && VariablesForPlayArea.shapes.size() <=15)
+                v = new Vector2(60,200);
+
+
         }
         return v;
     }
