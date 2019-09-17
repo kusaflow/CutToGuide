@@ -41,7 +41,9 @@ public class TutorailHelper {
             s = "                             Cool now we have two shapes\n\nYou see the green\npoints turned red\n\n                                                                You can Only start with \n                                                                      green points\n(tap anywhere to \ncontinue)";
         }
         else if (VariablesForPlayArea.tutState == 13){
-            s = "\nTry joining these\npoints\n";
+            s = "                             Experiment here\n\n\ntap here to\ncontinue";
+        }else if (VariablesForPlayArea.tutState == 14) {
+            s = "You know how to\nclear this?";
         }
 
         return s;
@@ -76,7 +78,9 @@ public class TutorailHelper {
         }else if (VariablesForPlayArea.tutState == 12){
             v = new Vector2(20,700);
         }else if (VariablesForPlayArea.tutState == 13){
-            v = new Vector2(20,600);
+            v = new Vector2(20,700);
+        }else if (VariablesForPlayArea.tutState == 14){
+            v = new Vector2(20,500);
         }
         return v;
     }

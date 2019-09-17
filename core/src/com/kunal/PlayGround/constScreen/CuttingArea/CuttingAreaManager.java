@@ -137,7 +137,7 @@ public class CuttingAreaManager implements Screen {
 
     @Override
     public void render(float delta) {
-        System.out.println(VariablesForPlayArea.shapes.size());
+        System.out.println(VariablesForPlayArea.shapes.size()   );
         update(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
