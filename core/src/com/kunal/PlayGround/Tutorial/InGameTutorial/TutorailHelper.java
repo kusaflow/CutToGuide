@@ -77,13 +77,39 @@ public class TutorailHelper {
         }else if (VariablesForPlayArea.tutState == 30){
             s = "First tap anywhere to bring the \n       shape in front of you";
         }else if (VariablesForPlayArea.tutState == 31){
-            s = "Rotate anticlockwise";
-        }else if (VariablesForPlayArea.tutState == 32){
             s = "Rotate clockwise";
+        }else if (VariablesForPlayArea.tutState == 32){
+            s = "Rotate anticlockwise";
         }else if (VariablesForPlayArea.tutState == 33){
             s = "Rotate in multiple\nof 45 degree";
         }else if (VariablesForPlayArea.tutState == 34){
             s = "Fantastic";
+        }else if (VariablesForPlayArea.tutState == 35){
+            s = "Let me give you a secret";
+        }else if (VariablesForPlayArea.tutState == 36){
+            s = "Let me give you a secret,\n\nonly gravity is applicable on shapes";
+        }else if (VariablesForPlayArea.tutState == 37){
+            s = "Let me give you a secret\n\nonly gravity is applicable on shapes,\nangle of your shape is constant";
+        }else if (VariablesForPlayArea.tutState == 38){
+            s = "To explain this,\ngive this shape a weird rotation";
+        }else if (VariablesForPlayArea.tutState == 39){
+            s = "To explain this,\ngive this shape a weird rotation\n\nwhen done place this shape inside\nthe level by taping here";
+        }else if (VariablesForPlayArea.tutState == 40){
+            s = "Never place your shape inside the ground. \nGround will pop the shape up";
+        }else if (VariablesForPlayArea.tutState == 41){
+            s = "Now call Your Bicycle";
+        }else if (VariablesForPlayArea.tutState == 42){
+            s = "Shape is holding the rotation you provided";
+        }else if (VariablesForPlayArea.tutState == 43){
+            s = "Your aim in the game is to guide the bicycle";
+        }else if (VariablesForPlayArea.tutState == 44){
+            s = "Your aim in the game is to guide the bicycle\ntowards the flag";
+        }else if (VariablesForPlayArea.tutState == 45){
+            s = "Your aim in the game is to guide the bicycle\ntowards the flag by using\npowerups and cutting shapes";
+        }else if (VariablesForPlayArea.tutState == 46){
+            s = "Touch the flag to clear the level ";
+        }else if (VariablesForPlayArea.tutState == 47){
+            s = "Tap anywhere to exit the tutorial";
         }
 
         return s;
@@ -157,9 +183,37 @@ public class TutorailHelper {
         } else if (VariablesForPlayArea.tutState == 31){
             v = new Vector2(900,670);
         } else if (VariablesForPlayArea.tutState == 32){
-            v = new Vector2(900,420);
+            v = new Vector2(850,420);
         } else if (VariablesForPlayArea.tutState == 33){
             v = new Vector2(900,590);
+        } else if (VariablesForPlayArea.tutState == 34){
+            v = new Vector2(450,600);
+        } else if (VariablesForPlayArea.tutState == 35){
+            v = new Vector2(250,600);
+        } else if (VariablesForPlayArea.tutState == 36){
+            v = new Vector2(250,600);
+        } else if (VariablesForPlayArea.tutState == 37){
+            v = new Vector2(250,600);
+        } else if (VariablesForPlayArea.tutState == 38){
+            v = new Vector2(250,700);
+        } else if (VariablesForPlayArea.tutState == 39){
+            v = new Vector2(250,700);
+        } else if (VariablesForPlayArea.tutState == 40){
+            v = new Vector2(250,400);
+        } else if (VariablesForPlayArea.tutState == 41){
+            v = new Vector2(450,600);
+        } else if (VariablesForPlayArea.tutState == 42){
+            v = new Vector2(250,500);
+        } else if (VariablesForPlayArea.tutState == 43){
+            v = new Vector2(150,700);
+        } else if (VariablesForPlayArea.tutState == 44){
+            v = new Vector2(150,700);
+        } else if (VariablesForPlayArea.tutState == 45){
+            v = new Vector2(150,700);
+        } else if (VariablesForPlayArea.tutState == 46){
+            v = new Vector2(150,600);
+        } else if (VariablesForPlayArea.tutState == 47){
+            v = new Vector2(300,600);
         }
         return v;
     }

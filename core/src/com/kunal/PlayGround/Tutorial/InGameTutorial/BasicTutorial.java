@@ -114,7 +114,6 @@ public class BasicTutorial implements Screen {
 
 
     public BasicTutorial(MainGame game) {
-        VariablesForPlayArea.tutState = 33;
         this.game = game;
 
         cam = new OrthographicCamera();
@@ -974,7 +973,7 @@ public class BasicTutorial implements Screen {
                                 if (screenX > (910 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1010 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 600 * AllVariables.inpM && screenY < 710 * AllVariables.inpM
-                                        && VariablesForPlayArea.tutState ==1) {
+                                        && (VariablesForPlayArea.tutState ==1 || VariablesForPlayArea.tutState >=34)) {
                                     //System.out.println("omPLan");
                                     isCamScrollerTouched = true;
                                     CamScroller.setAlpha(0.9f);
@@ -988,7 +987,9 @@ public class BasicTutorial implements Screen {
                                 if (screenX > (25 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (125 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 415 * AllVariables.inpM && screenY < 470 * AllVariables.inpM
-                                        && VariablesForPlayArea.tutState ==202) {
+                                        && VariablesForPlayArea.tutState ==39) {
+                                    VariablesForPlayArea.tutState++;
+                                    timestamp = System.currentTimeMillis();
                                     VariablesForPlayArea.shapeNumberSelected = 21;
                                 }
 
@@ -998,7 +999,9 @@ public class BasicTutorial implements Screen {
                                     if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenY > 535 * AllVariables.inpM && screenY < 585 * AllVariables.inpM
-                                            && VariablesForPlayArea.tutState ==202) {
+                                            && VariablesForPlayArea.tutState >=31) {
+                                        if (VariablesForPlayArea.tutState==31)
+                                            VariablesForPlayArea.tutState++;
 
                                         ACWTouched = true;
                                     }
@@ -1007,7 +1010,9 @@ public class BasicTutorial implements Screen {
                                     else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenY > 370 * AllVariables.inpM && screenY < 420 * AllVariables.inpM
-                                            && VariablesForPlayArea.tutState ==202) {
+                                            && VariablesForPlayArea.tutState >=32) {
+                                        if (VariablesForPlayArea.tutState == 32)
+                                            VariablesForPlayArea.tutState++;
 
                                         CWtouched = true;
                                     }
@@ -1016,7 +1021,11 @@ public class BasicTutorial implements Screen {
                                     else if (screenX > (1190 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenX < (1250 * AllVariables.inpM) + AllVariables.witdth_translation
                                             && screenY > 455 * AllVariables.inpM && screenY < 505 * AllVariables.inpM
-                                            && VariablesForPlayArea.tutState ==202) {
+                                            && VariablesForPlayArea.tutState >=33) {
+                                        if (VariablesForPlayArea.tutState == 33) {
+                                            VariablesForPlayArea.tutState++;
+                                            timestamp = System.currentTimeMillis();
+                                        }
 
                                         //get the present angle of the shape selected
                                         tempRotForShape = VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected);
@@ -1144,7 +1153,9 @@ public class BasicTutorial implements Screen {
                             if (screenX > (45* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenX < (200* AllVariables.inpM)+AllVariables.witdth_translation
                                     && screenY > 140* AllVariables.inpM && screenY < 290* AllVariables.inpM
-                                    && VariablesForPlayArea.tutState ==202) {
+                                    && VariablesForPlayArea.tutState ==41) {
+                                VariablesForPlayArea.tutState++;
+                                timestamp = System.currentTimeMillis();
                                 startAnimToMoveCycle = true;
                                 VariablesForPlayArea.endPoint.x = 200;
                                 return true;
@@ -1411,12 +1422,103 @@ public class BasicTutorial implements Screen {
                 VariablesForPlayArea.tutState++;
                 timestamp = System.currentTimeMillis();
             }
+        }else if (VariablesForPlayArea.tutState == 34) {
+            if (timestamp + 3500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        } else if (VariablesForPlayArea.tutState == 35) {
+            if (timestamp + 3000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        } else if (VariablesForPlayArea.tutState == 36) {
+            if (timestamp + 3000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        } else if (VariablesForPlayArea.tutState == 37) {
+            if (timestamp + 4000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 38) {
+            if (timestamp + 3000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                start.setAlpha(0.3f);
+                pause.setAlpha(0.3f);
+                chooseBody.setAlpha(0.3f);
+                CamScroller.setAlpha(0.3f);
+                MoveToDustBin.setAlpha(0.3f);
+                DropAnyShapeButton.setAlpha(1f);
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 40) {
+            if (timestamp + 5000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                start.setAlpha(1);
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 42) {
+            if (timestamp + 4200 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 43) {
+            if (timestamp + 4500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 44) {
+            if (timestamp + 4500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 45) {
+            if (timestamp + 4500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 46) {
+            if (timestamp + 4500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 47) {
+            if (Gdx.input.justTouched()){
+                VariablesForPlayArea.flush();
+                game.setScreen(new AreaSelection(game));
+            }
         }
+
 
     }
 
     private void notifierToHints() {
-        if (VariablesForPlayArea.tutState == 1 || VariablesForPlayArea.tutState == 3 || VariablesForPlayArea.tutState == 25) {
+        if (VariablesForPlayArea.tutState == 1 || VariablesForPlayArea.tutState == 3 || VariablesForPlayArea.tutState == 25
+                ||VariablesForPlayArea.tutState  == 31 || VariablesForPlayArea.tutState == 32 || VariablesForPlayArea.tutState == 33
+                || VariablesForPlayArea.tutState == 39 || VariablesForPlayArea.tutState == 41) {
             if (tut_SizeVal <= -0.05f) {
                 tut_isInc = true;
                 tut_SizeVal = -0.05f;
@@ -1436,6 +1538,16 @@ public class BasicTutorial implements Screen {
                 chooseBody.scale(tut_SizeVal);
             }else if (VariablesForPlayArea.tutState == 25){
                 MoveToDustBin.scale(tut_SizeVal);
+            }else if (VariablesForPlayArea.tutState == 31){
+                ShapeRotCW.scale(tut_SizeVal);
+            }else if (VariablesForPlayArea.tutState == 32){
+                ShapeRotACW.scale(tut_SizeVal);
+            }else if (VariablesForPlayArea.tutState == 33){
+                per45degRot.scale(tut_SizeVal);
+            }else if (VariablesForPlayArea.tutState == 39){
+                DropAnyShapeButton.scale(tut_SizeVal);
+            }else if (VariablesForPlayArea.tutState == 41){
+                start.scale(tut_SizeVal);
             }
         }
 
