@@ -31,7 +31,7 @@ public class AreaSelection implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
-    Sprite shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial;
+    Sprite shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial, repair;
 
     short LevelState=0;
 
@@ -72,6 +72,9 @@ public class AreaSelection implements Screen {
         credit.setSize(200,70);
         credit.setPosition(250, 620);
 
+        repair = new Sprite(new Texture(Gdx.files.internal("AreaSelection/repair.png")));
+        repair.setSize(200,70);
+        repair.setPosition(950, 620);
 
         shop = new Sprite(new Texture(Gdx.files.internal("AreaSelection/shop.png")));
         shop.setSize(130,130);
@@ -170,6 +173,7 @@ public class AreaSelection implements Screen {
             s.draw(AllVariables.batch);
         shop.draw(AllVariables.batch);
         credit.draw(AllVariables.batch);
+        repair.draw(AllVariables.batch);
         Tutorial.draw(AllVariables.batch);
         backToPrevScreen.draw(AllVariables.batch);
         showMoreLevelsOnLeft.draw(AllVariables.batch);
@@ -254,6 +258,7 @@ public class AreaSelection implements Screen {
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
 
+                        System.out.println(screenX + "\t" + screenY);
 
                         //shop
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
@@ -293,6 +298,30 @@ public class AreaSelection implements Screen {
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
                             dispose();
                             game.setScreen(new credits(game));
+                            return false;
+                        }
+
+                        //credits
+                        if(screenX >= (944* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenX <= (1154* AllVariables.inpM) + AllVariables.witdth_translation
+                                && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
+                            dispose();
+                            try {
+                                Gdx.files.local("TextFilesToDelete/areas/area1").delete();
+                            }catch (Exception e){}
+                            try {
+                                Gdx.files.local("TextFilesToDelete/hints/area1/log").delete();
+                            }catch (Exception e){}
+                            try {
+                                Gdx.files.local("TextFilesToDelete/kusaCoin").delete();
+                            }catch (Exception e){}
+                            try {
+                                Gdx.files.local("TextFilesToDelete/LockUnlock").delete();
+                            }catch (Exception e){}
+
+
+
+                            Gdx.app.exit();
                             return false;
                         }
 
