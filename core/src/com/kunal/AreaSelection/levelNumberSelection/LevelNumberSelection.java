@@ -16,6 +16,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.ReDirectToTheLevel;
 
 import java.util.LinkedList;
@@ -32,7 +33,7 @@ public class LevelNumberSelection implements Screen {
     private short UnlockedLevel, TotalLevel, levelState, levelTrack;
     private LinkedList<Short> stars;
 
-    private Texture stone;
+    private Texture stone, HowTOPlay;
     private Texture number0, number1, number2, number3, number4, number5, number6, number7, number8, number9;
 
     private Texture cross, movRight, movLeft, lock, starTex, bg, kusaCoin;
@@ -66,6 +67,8 @@ public class LevelNumberSelection implements Screen {
         font = generator.generateFont(prams);
 
         kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
+
+        HowTOPlay = new Texture(Gdx.files.internal("AreaSelection/Tutorial.png"));
 
         stars = new LinkedList<Short>();
 
@@ -245,8 +248,11 @@ public class LevelNumberSelection implements Screen {
 
         AllVariables.batch.draw(bg,0,0,AllVariables.WIDTH, AllVariables.HEIGHT);
         AllVariables.batch.draw(bg,1280,0,AllVariables.WIDTH, AllVariables.HEIGHT);
-        AllVariables.batch.draw(bg,2560,0,AllVariables.WIDTH, AllVariables.HEIGHT);
+        //AllVariables.batch.draw(bg,2560,0,AllVariables.WIDTH, AllVariables.HEIGHT);
 
+
+        //howtoplay
+        AllVariables.batch.draw(HowTOPlay,0+cam.position.x-AllVariables.WIDTH/2,250);
 
         //cross to go back
         AllVariables.batch.draw(cross,0+cam.position.x-AllVariables.WIDTH/2,720-128);
@@ -437,6 +443,17 @@ public class LevelNumberSelection implements Screen {
         }
 
         if (Gdx.input.justTouched()){
+
+            //how to play
+            if (Gdx.input.getX() >= (0*AllVariables.inpM)+AllVariables.witdth_translation &&
+                    Gdx.input.getX() < (190*AllVariables.inpM)+AllVariables.witdth_translation &&
+                    Gdx.input.getY() >= 284 * AllVariables.inpM && Gdx.input.getY() < 450*AllVariables.inpM){
+                AllVariables.PresentLevelNumber = 0;
+                AllVariables.PresentAreaNumber = 0;
+                VariablesForPlayArea.tutState = 0;
+                ReDirectToTheLevel.Direct(game,false);
+            }
+
             //cross
             if (Gdx.input.getX() >= (0*AllVariables.inpM)+AllVariables.witdth_translation &&
                 Gdx.input.getX() < (128*AllVariables.inpM)+AllVariables.witdth_translation &&
