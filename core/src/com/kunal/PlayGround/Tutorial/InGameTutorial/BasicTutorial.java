@@ -948,11 +948,13 @@ public class BasicTutorial implements Screen {
 
                         if(!startBool && !startAnimToMoveCycle) {
                             if (!paused) {
-                                //hardmove
+                                //cdelete the shape
                                 if (screenX > (15 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 480 * AllVariables.inpM && screenY < 595 * AllVariables.inpM
-                                        && VariablesForPlayArea.tutState ==202) {
+                                        && VariablesForPlayArea.tutState ==25) {
+                                    if (VariablesForPlayArea.tutState == 25)
+                                        VariablesForPlayArea.tutState++;
                                     /*hardMove = !hardMove;
                                     if (hardMove)
                                         HardMoveShapes.setAlpha(1);
@@ -1334,6 +1336,46 @@ public class BasicTutorial implements Screen {
                 chooseBody.setAlpha(1f);
                 CamScroller.setAlpha(0.3f);
                 tut_SizeVal = -0.2f;
+                return;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 21) {
+            if (timestamp + 3500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 22) {
+            if (timestamp + 3500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 23) {
+            System.out.println(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).y*AllVariables.PPM);
+            if (VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).y*AllVariables.PPM != -3000){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 24) {
+            if (timestamp + 2500 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 27) {
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size()){
+                VariablesForPlayArea.tutState++;
+            }
+        }
+        else if (VariablesForPlayArea.tutState == 28) {
+            if (timestamp + 2000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
                 return;
             }
         }

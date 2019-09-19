@@ -408,14 +408,15 @@ public class ShapeChooserTut implements Screen {
                 //okTick
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM
                         && (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM
-                        && (VariablesForPlayArea.tutState ==202)){
-                    if (AllVariables.PresentAreaNumber == 1){
-                        try {
+                        && (VariablesForPlayArea.tutState ==20)){
+                    if (VariablesForPlayArea.tutState == 20){
+                        VariablesForPlayArea.tutState = 21;
+                    }
+                    try {
                             dispose();
-                            game.setScreen(new TypeTwoArea(game, false));
+                            game.setScreen(new BasicTutorial(game));
                         }catch (Exception e){}
 
-                    }
                     //System.out.println("down wala");
                 }
 
@@ -455,10 +456,34 @@ public class ShapeChooserTut implements Screen {
                 return;
             }
         }
+        if (VariablesForPlayArea.tutState == 18){
+            if (timestamp + 2400 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                tut_SizeVal = -0.2f;
+                return;
+            }
+        }
+
+        if (VariablesForPlayArea.tutState == 19){
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size()){
+                VariablesForPlayArea.tutState++;
+                tut_SizeVal = -0.2f;
+            }
+        }
+
+        if (VariablesForPlayArea.tutState == 20){
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size()){
+
+            }else{
+                VariablesForPlayArea.tutState--;
+            }
+        }
+
     }
 
     private void notifierHints(){
-        if (VariablesForPlayArea.tutState == 6) {
+        if (VariablesForPlayArea.tutState == 6 || VariablesForPlayArea.tutState == 20) {
             if (tut_SizeVal <= -0.05f) {
                 tut_isInc = true;
                 tut_SizeVal = -0.05f;
@@ -472,7 +497,10 @@ public class ShapeChooserTut implements Screen {
                 tut_SizeVal-=0.01f;
             }
 
-            LetsCut.scale(tut_SizeVal);
+            if (VariablesForPlayArea.tutState == 6)
+                LetsCut.scale(tut_SizeVal);
+            else if (VariablesForPlayArea.tutState == 20)
+                okTick.scale(tut_SizeVal);
         }
     }
 
