@@ -546,7 +546,7 @@ public class CuttingAreaManagerTut implements Screen {
                         if(screenX > 0*AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenX < 110 * AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM
-                                && VariablesForPlayArea.tutState >= 14){
+                                && VariablesForPlayArea.tutState >= 14 && VariablesForPlayArea.tutState !=17){
                             if (VariablesForPlayArea.tutState == 14) {
                                 VariablesForPlayArea.tutState++;
                                 timestamp = System.currentTimeMillis();

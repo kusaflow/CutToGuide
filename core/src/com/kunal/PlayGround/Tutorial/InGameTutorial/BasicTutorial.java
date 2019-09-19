@@ -114,6 +114,7 @@ public class BasicTutorial implements Screen {
 
 
     public BasicTutorial(MainGame game) {
+        VariablesForPlayArea.tutState = 33;
         this.game = game;
 
         cam = new OrthographicCamera();
@@ -953,8 +954,10 @@ public class BasicTutorial implements Screen {
                                         && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 480 * AllVariables.inpM && screenY < 595 * AllVariables.inpM
                                         && VariablesForPlayArea.tutState ==25) {
-                                    if (VariablesForPlayArea.tutState == 25)
-                                        VariablesForPlayArea.tutState++;
+                                    if (VariablesForPlayArea.tutState == 25) {
+                                        timestamp = System.currentTimeMillis();
+                                        VariablesForPlayArea.tutState = 26;
+                                    }
                                     /*hardMove = !hardMove;
                                     if (hardMove)
                                         HardMoveShapes.setAlpha(1);
@@ -1151,7 +1154,7 @@ public class BasicTutorial implements Screen {
                                 if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM
-                                        && (VariablesForPlayArea.tutState == 3)) {
+                                        && (VariablesForPlayArea.tutState == 3 || VariablesForPlayArea.tutState == 27)) {
                                     //code to choosing body
 
                                     if (VariablesForPlayArea.tutState ==3){
@@ -1354,36 +1357,66 @@ public class BasicTutorial implements Screen {
             }
         }
         else if (VariablesForPlayArea.tutState == 23) {
-            System.out.println(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).y*AllVariables.PPM);
             if (VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).y*AllVariables.PPM != -3000){
                 VariablesForPlayArea.tutState++;
                 timestamp = System.currentTimeMillis();
             }
         }
         else if (VariablesForPlayArea.tutState == 24) {
-            if (timestamp + 2500 < System.currentTimeMillis()){
+            if (timestamp + 3500 < System.currentTimeMillis()){
                 VariablesForPlayArea.tutState++;
                 timestamp = System.currentTimeMillis();
+                start.setAlpha(0.3f);
+                pause.setAlpha(0.3f);
+                chooseBody.setAlpha(0.3f);
+                CamScroller.setAlpha(0.3f);
+                MoveToDustBin.setAlpha(1f);
+                DropAnyShapeButton.setAlpha(0.3f);
+                ShapeRotACW.setAlpha(0.3f);
+                ShapeRotCW.setAlpha(0.3f);
+                per45degRot.setAlpha(0.3f);
+                tut_SizeVal = -0.2f;
+
+                return;
+            }
+        } else if (VariablesForPlayArea.tutState == 26) {
+            if (timestamp + 3000 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                chooseBody.setAlpha(1f);
+                tut_SizeVal = -0.2f;
                 return;
             }
         }
         else if (VariablesForPlayArea.tutState == 27) {
             if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size()){
                 VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
             }
         }
         else if (VariablesForPlayArea.tutState == 28) {
-            if (timestamp + 2000 < System.currentTimeMillis()){
+            if (timestamp + 3200 < System.currentTimeMillis()){
                 VariablesForPlayArea.tutState++;
                 timestamp = System.currentTimeMillis();
                 return;
+            }
+        } else if (VariablesForPlayArea.tutState == 29) {
+            if (timestamp + 3200 < System.currentTimeMillis()){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
+                return;
+            }
+        }else if (VariablesForPlayArea.tutState == 30) {
+            if (VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected).y*AllVariables.PPM != -3000){
+                VariablesForPlayArea.tutState++;
+                timestamp = System.currentTimeMillis();
             }
         }
 
     }
 
     private void notifierToHints() {
-        if (VariablesForPlayArea.tutState == 1) {
+        if (VariablesForPlayArea.tutState == 1 || VariablesForPlayArea.tutState == 3 || VariablesForPlayArea.tutState == 25) {
             if (tut_SizeVal <= -0.05f) {
                 tut_isInc = true;
                 tut_SizeVal = -0.05f;
@@ -1397,22 +1430,13 @@ public class BasicTutorial implements Screen {
                 tut_SizeVal-=0.01f;
             }
 
-            CamScroller.scale(tut_SizeVal);
-        } else if (VariablesForPlayArea.tutState == 3) {
-            if (tut_SizeVal <= -0.05f) {
-                tut_isInc = true;
-                tut_SizeVal = -0.05f;
-            } else if (tut_SizeVal >= 0.05f) {
-                tut_isInc = false;
-                tut_SizeVal = 0.05f;
+            if (VariablesForPlayArea.tutState == 1) {
+                CamScroller.scale(tut_SizeVal);
+            }else if (VariablesForPlayArea.tutState == 3){
+                chooseBody.scale(tut_SizeVal);
+            }else if (VariablesForPlayArea.tutState == 25){
+                MoveToDustBin.scale(tut_SizeVal);
             }
-            if (tut_isInc){
-                tut_SizeVal+=0.01f;
-            } else {
-                tut_SizeVal-=0.01f;
-            }
-
-            chooseBody.scale(tut_SizeVal);
         }
 
 

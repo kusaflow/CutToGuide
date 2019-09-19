@@ -32,13 +32,13 @@ public class TutorailHelper {
             s = "Lets cut a triangle\n\nJoin these two \npoints";
         }
         else if (VariablesForPlayArea.tutState == 10){
-            s = "                             Cool now we have two shapes";
+            s = "                             Cool, now we have two shapes";
         }
         else if (VariablesForPlayArea.tutState == 11){
-            s = "                             Cool now we have two shapes\n\nYou see the green\npoints turned red\n";
+            s = "                             Cool, now we have two shapes\n\nYou see the green\npoints turned red\n";
         }
         else if (VariablesForPlayArea.tutState == 12){
-            s = "                             Cool now we have two shapes\n\nYou see the green\npoints turned red\n\n                                                                You can Only start with \n                                                                      green points\n(tap anywhere to \ncontinue)";
+            s = "                             Cool, now we have two shapes\n\nYou see the green\npoints turned red\n\n                                                                You can Only start with \n                                                                      green points\n(tap anywhere to \ncontinue)";
         }
         else if (VariablesForPlayArea.tutState == 13){
             s = "                             Experiment here\n\n\ntap here to\ncontinue";
@@ -63,9 +63,9 @@ public class TutorailHelper {
         }else if (VariablesForPlayArea.tutState == 23){
             s = "Tap and drag your finger";
         }else if (VariablesForPlayArea.tutState == 24){
-            s = "This is how you can manipulate shapes.\ntap and drag anywhere";
+            s = "This is how you can manipulate shapes.\nTap and drag anywhere";
         }else if (VariablesForPlayArea.tutState == 25){
-            s = "You know how to delete a shape";
+            s = "This is how you can manipulate shapes.\nTap and drag anywhere\n\nYou know how to delete the shape?";
         }else if (VariablesForPlayArea.tutState == 26){
             s = "Perfect";
         }else if (VariablesForPlayArea.tutState == 27){
@@ -73,15 +73,17 @@ public class TutorailHelper {
         }else if (VariablesForPlayArea.tutState == 28){
             s = "Great";
         }else if (VariablesForPlayArea.tutState == 29){
-            s = "You know you can also rotate the shapes";
+            s = "You know you can also rotate the \n               shapes";
         }else if (VariablesForPlayArea.tutState == 30){
-            s = "Rotate anticlockwise";
+            s = "First tap anywhere to bring the \n       shape in front of you";
         }else if (VariablesForPlayArea.tutState == 31){
-            s = "Rotate clockwise";
+            s = "Rotate anticlockwise";
         }else if (VariablesForPlayArea.tutState == 32){
-            s = "Rotate in multiple of 45 degree";
+            s = "Rotate clockwise";
         }else if (VariablesForPlayArea.tutState == 33){
-            s = "Tap and drag your finger";
+            s = "Rotate in multiple\nof 45 degree";
+        }else if (VariablesForPlayArea.tutState == 34){
+            s = "Fantastic";
         }
 
         return s;
@@ -133,29 +135,31 @@ public class TutorailHelper {
             else if (VariablesForPlayArea.shapes.size() >=11  && VariablesForPlayArea.shapes.size() <=15)
                 v = new Vector2(60,200);
         } else if (VariablesForPlayArea.tutState == 21){
-            v = new Vector2(250,600);
+            v = new Vector2(200,600);
         } else if (VariablesForPlayArea.tutState == 22){
             v = new Vector2(250,600);
         } else if (VariablesForPlayArea.tutState == 23){
             v = new Vector2(250,600);
         } else if (VariablesForPlayArea.tutState == 24){
-            v = new Vector2(250,600);
+            v = new Vector2(200,600);
         } else if (VariablesForPlayArea.tutState == 25){
-            v = new Vector2(250,600);
+            v = new Vector2(200,600);
         } else if (VariablesForPlayArea.tutState == 26){
-            v = new Vector2(250,600);
+            v = new Vector2(450,600);
         } else if (VariablesForPlayArea.tutState == 27){
             v = new Vector2(200,350);
         } else if (VariablesForPlayArea.tutState == 28){
-            v = new Vector2(250,600);
+            v = new Vector2(450,600);
         } else if (VariablesForPlayArea.tutState == 29){
-            v = new Vector2(250,600);
+            v = new Vector2(180,600);
         } else if (VariablesForPlayArea.tutState == 30){
-            v = new Vector2(250,600);
+            v = new Vector2(180,600);
         } else if (VariablesForPlayArea.tutState == 31){
-            v = new Vector2(250,600);
+            v = new Vector2(900,670);
         } else if (VariablesForPlayArea.tutState == 32){
-            v = new Vector2(250,600);
+            v = new Vector2(900,420);
+        } else if (VariablesForPlayArea.tutState == 33){
+            v = new Vector2(900,590);
         }
         return v;
     }

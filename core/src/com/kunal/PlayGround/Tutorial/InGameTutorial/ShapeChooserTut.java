@@ -302,7 +302,7 @@ public class ShapeChooserTut implements Screen {
 
         sred.rect(x, y,220,153);
 
-        sred.setColor(0f, 0f, 0f,1f);
+        sred.setColor(1f, 1f, 1f,1f);
         sred.rect(40, 0, 350,100);
         sred.setColor(0.963f, 0.901f, 0.265f,0.2f);
 
@@ -334,6 +334,7 @@ public class ShapeChooserTut implements Screen {
                     && Gdx.input.getX() <(390* AllVariables.inpM)+AllVariables.witdth_translation
                     &&(Gdx.graphics.getHeight() - Gdx.input.getY()) > (0*AllVariables.inpM)
                     && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 100* AllVariables.inpM) {
+                VariablesForPlayArea.flush();
                 game.setScreen(new AreaSelection(game));
             }
 
@@ -408,9 +409,15 @@ public class ShapeChooserTut implements Screen {
                 //okTick
                 if ((Gdx.graphics.getHeight() -Gdx.input.getY()) > 304* AllVariables.inpM
                         && (Gdx.graphics.getHeight() -Gdx.input.getY()) < 507* AllVariables.inpM
-                        && (VariablesForPlayArea.tutState ==20)){
+                        && (VariablesForPlayArea.tutState ==20 || VariablesForPlayArea.tutState == 27)){
                     if (VariablesForPlayArea.tutState == 20){
                         VariablesForPlayArea.tutState = 21;
+                    }else if (VariablesForPlayArea.tutState == 27){
+                        if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size()){
+                                //shape is selected
+                        }else{
+                            return;
+                        }
                     }
                     try {
                             dispose();
@@ -436,6 +443,18 @@ public class ShapeChooserTut implements Screen {
     }
 
     private void tutUpdate () {
+
+        if (VariablesForPlayArea.tutState == 27){
+            if (VariablesForPlayArea.shapeNumberSelected <= VariablesForPlayArea.shapes.size()){
+                reCut.setAlpha(0.2f);
+                LetsCut.setAlpha(0.2f);
+            }else{
+                reCut.setAlpha(1);
+                okTick.setAlpha(1);
+                LetsCut.setAlpha(1);
+            }
+        }
+
         notifierHints();
         if (VariablesForPlayArea.tutState == 4){
             if (timestamp + 2400 < System.currentTimeMillis()){
