@@ -19,6 +19,7 @@ import com.kunal.PlayGround.Tutorial.tutScreen;
 import com.kunal.Shop.Shop;
 import com.kunal.credit.credits;
 import com.kunal.playScreen.playScreen;
+import com.kunal.quitGame.QuitGame;
 import com.kunal.utils.slideShow.slideShow;
 
 import java.util.LinkedList;
@@ -288,7 +289,8 @@ public class AreaSelection implements Screen {
                         if(screenX >= (15* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (140* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
-                            Gdx.app.exit();
+                            dispose();
+                            game.setScreen(new QuitGame(game));
                             return false;
                         }
 
