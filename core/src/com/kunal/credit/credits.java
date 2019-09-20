@@ -95,18 +95,23 @@ public class credits implements Screen {
             }
 
             //insta
-            if (Gdx.input.getX() >= (187 * AllVariables.inpM) + AllVariables.witdth_translation &&
-                    Gdx.input.getX() < (525* AllVariables.inpM) + AllVariables.witdth_translation &&
-                    Gdx.input.getY() >= 400 * AllVariables.inpM && Gdx.input.getY() < 552 * AllVariables.inpM) {
+            if (Gdx.input.getX() >= (182 * AllVariables.inpM) + AllVariables.witdth_translation &&
+                    Gdx.input.getX() < (440* AllVariables.inpM) + AllVariables.witdth_translation &&
+                    Gdx.input.getY() >= 290 * AllVariables.inpM && Gdx.input.getY() < 530 * AllVariables.inpM) {
                 //dispose();
-                AllVariables.openApps.OpenApp("https://www.instagram.com/kusaflow/?igshid=8y5b86e3yp6f");
+                try {
+                    AllVariables.openApps.OpenApp("https://www.instagram.com/kusaflow/?igshid=8y5b86e3yp6f");
+                }catch (Exception e){}
             }
             //twitter
-            if (Gdx.input.getX() >= (685* AllVariables.inpM) + AllVariables.witdth_translation &&
-                    Gdx.input.getX() < (1052* AllVariables.inpM) + AllVariables.witdth_translation &&
-                    Gdx.input.getY() >= 400 * AllVariables.inpM && Gdx.input.getY() < 552 * AllVariables.inpM) {
+            if (Gdx.input.getX() >= (680* AllVariables.inpM) + AllVariables.witdth_translation &&
+                    Gdx.input.getX() < (1025* AllVariables.inpM) + AllVariables.witdth_translation &&
+                    Gdx.input.getY() >= 290 * AllVariables.inpM && Gdx.input.getY() < 530 * AllVariables.inpM) {
                 //dispose();
-                AllVariables.openApps.OpenApp("https://twitter.com/kusaflow?s=08");
+                try {
+                    AllVariables.openApps.OpenApp("https://twitter.com/kusaflow?s=08");
+                }catch (Exception e){}
+
             }
         }
     }
