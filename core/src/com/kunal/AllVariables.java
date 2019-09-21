@@ -33,7 +33,7 @@ public class AllVariables {
 
 
     //the coins in the game I will call them KusaCoin
-    public static int kusaCoin = 100;
+    public static long kusaCoin = 100;
 
     public static AdVideoInterface adv = null;
 

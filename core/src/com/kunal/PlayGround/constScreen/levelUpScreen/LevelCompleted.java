@@ -112,7 +112,7 @@ public class LevelCompleted implements Screen {
 
         startsHave = VariablesForPlayArea.starsGained;
 
-        coinsEarned = 1;
+        coinsEarned = 10;
         short t = stars.get(AllVariables.PresentLevelNumber-1);
         if (startsHave<t)
             startsHave = t;
@@ -121,7 +121,7 @@ public class LevelCompleted implements Screen {
         }else {
             short temp = (short) (VariablesForPlayArea.starsGained - t);
             for (int i1 =0; i1<temp;i1++) {
-                coinsEarned += 53;
+                coinsEarned += 70;
                 startsHave++;
             }
         }

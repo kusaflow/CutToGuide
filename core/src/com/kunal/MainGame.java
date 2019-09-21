@@ -143,7 +143,7 @@ public class MainGame extends Game {
 			AllVariables.kusaCoin = 10;
 		}else {
 			FileHandle kusaCoin = Gdx.files.local("TextFilesToDelete/kusaCoin");
-			AllVariables.kusaCoin = new Short(kusaCoin.readString());
+			AllVariables.kusaCoin = new Long(kusaCoin.readString());
 		}
 
 		AllVariables.unlockedCoin = new LinkedList<Byte>();

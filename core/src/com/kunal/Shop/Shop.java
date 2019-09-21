@@ -88,7 +88,7 @@ public class Shop implements Screen, VideoEventListener {
     BitmapFont bigText;
 
     short moneyHolder=0;
-    int kusaCoin;
+    long kusaCoin;
 
     public Shop(MainGame game, Byte mN, Byte Imn) {
         this.game = game;

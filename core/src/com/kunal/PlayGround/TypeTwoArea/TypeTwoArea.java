@@ -778,7 +778,11 @@ public class TypeTwoArea implements Screen {
 
 
         //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
-        world.step(1/(1/dt), 6,2);
+        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
+            world.step(1 / 2000f, 6, 2);
+        }else{
+            world.step(1 / (1 / dt), 6, 2);
+        }
 
         //ends here
 
@@ -902,7 +906,8 @@ public class TypeTwoArea implements Screen {
         menuTex.setScale(cam.zoom*5);
         //-------------------------------
 
-        if (AllVariables.PresentLevelNumber >= 6)
+        //for testing
+        if (AllVariables.PresentLevelNumber >= 86)
         if (AllVariables.BackWheel.getLinearVelocity().x >= 17f) {
             if (AllVariables.BackWheel.getLinearVelocity().x>20.5f)
                 AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.04f) ,
@@ -1520,27 +1525,13 @@ public class TypeTwoArea implements Screen {
                         if (keycode == Input.Keys.Z){
                             game.setScreen(new ShapeChooser(game));
                         }
-                        if (keycode == Input.Keys.SPACE){
-                            ZoomOutBool = true;
-                        }
                         if (keycode == Input.Keys.B){
                             game.setScreen(new LevelNumberSelection(game));
                         }
                         if (keycode == Input.Keys.L){
-                            levelCompleteCAmMove = true;
+                            VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
                         }
 
-
-                        if (keycode == Input.Keys.E){
-                            System.out.println(posMap.getX() + "\t" + posMap.getY());
-                        }
-                        if (keycode == Input.Keys.T){
-                            writeToFile();
-                        }
-
-                        if (keycode == Input.Keys.P){
-                            System.out.println(VariablesForPlayArea.shapes);
-                        }
 
 
 

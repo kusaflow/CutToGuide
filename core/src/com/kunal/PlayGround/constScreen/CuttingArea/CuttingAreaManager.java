@@ -35,6 +35,8 @@ public class CuttingAreaManager implements Screen {
     private LinkedList<Float> UsedShapes_Rotation;
     private LinkedList<Byte> trackerTousedObj;
 
+    private LinkedList<Vector2> WhitehintLines;
+
     private ShapeRenderer sr;
 
     //drawing shapes
@@ -76,7 +78,17 @@ public class CuttingAreaManager implements Screen {
 
         trackerTousedObj = new LinkedList<Byte>();
 
+
+        WhitehintLines = new LinkedList<Vector2>();
+
+        if (VariablesForPlayArea.HintOneEnabled) {
+            WhitehintLines.addAll(HintOneData.axis());
+        }
+
+
         Byte   temp[];
+
+
 
         ///initializing already used shapes
         for (int i =0; i<VariablesForPlayArea.Sh_pos.size(); i++){
@@ -106,7 +118,7 @@ public class CuttingAreaManager implements Screen {
 
         }
 
-        System.out.println(UsedShapes_cord.size());
+        //System.out.println(UsedShapes_cord.size());
 
         //inputs to chop
         inputsToChop = new LinkedList<Byte>();
@@ -137,7 +149,6 @@ public class CuttingAreaManager implements Screen {
 
     @Override
     public void render(float delta) {
-        System.out.println(VariablesForPlayArea.shapes.size());
         update(delta);
         Gdx.gl.glClearColor(0, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
@@ -153,6 +164,13 @@ public class CuttingAreaManager implements Screen {
         sr.begin(ShapeRenderer.ShapeType.Line);
 
         trackerTousedObj.clear();
+
+        sr.setColor(1,1,1,0.6f);
+        for (int i=0; i<WhitehintLines.size(); i+=2){
+            sr.line(WhitehintLines.get(i), WhitehintLines.get(i+1));
+        }
+
+        System.out.println(WhitehintLines);
 
         sr.setColor(0, 0.6f, 1, 1);
         //sr.setColor(0, 1f, 0, 0.5f);
