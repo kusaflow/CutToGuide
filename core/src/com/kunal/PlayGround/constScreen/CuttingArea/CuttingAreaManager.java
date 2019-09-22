@@ -165,12 +165,10 @@ public class CuttingAreaManager implements Screen {
 
         trackerTousedObj.clear();
 
-        sr.setColor(1,1,1,0.6f);
+        sr.setColor(0.5f,1,0.5f,0.5f);
         for (int i=0; i<WhitehintLines.size(); i+=2){
             sr.line(WhitehintLines.get(i), WhitehintLines.get(i+1));
         }
-
-        System.out.println(WhitehintLines);
 
         sr.setColor(0, 0.6f, 1, 1);
         //sr.setColor(0, 1f, 0, 0.5f);
@@ -278,12 +276,6 @@ public class CuttingAreaManager implements Screen {
         AllVariables.batch.begin();
         AllVariables.batch.draw(retry, 0, 610,100,100);
         AllVariables.batch.draw(doneSh, 0, 250,100,100);
-        if (VariablesForPlayArea.HintOneEnabled) {
-            AllVariables.batch.draw(key,200, 330);
-            if (hinystate)
-                hintImg.draw(AllVariables.batch);
-
-        }
         AllVariables.batch.end();
 
     }
@@ -335,14 +327,6 @@ public class CuttingAreaManager implements Screen {
                                 screenX < 110 * AllVariables.inpM + AllVariables.witdth_translation &&
                                 screenY > 615 * AllVariables.inpM && screenY < 711 * AllVariables.inpM){
                             VariablesForPlayArea.flush();
-
-                        }
-                        //hint
-                        if(screenX > 200*AllVariables.inpM + AllVariables.witdth_translation &&
-                                screenX < 325 * AllVariables.inpM + AllVariables.witdth_translation &&
-                                screenY > 350 * AllVariables.inpM && screenY < 447* AllVariables.inpM){
-                            if (VariablesForPlayArea.HintOneEnabled)
-                                hinystate = true;
 
                         }
                         //when done
