@@ -12,9 +12,6 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.AreaSelection;
 import com.kunal.MainGame;
-import com.kunal.credit.credits;
-
-import sun.applet.Main;
 
 public class QuitGame implements Screen {
 
@@ -91,7 +88,7 @@ public class QuitGame implements Screen {
                     Gdx.input.getX() < (895 * AllVariables.inpM) + AllVariables.witdth_translation &&
                     Gdx.input.getY() >= 373 * AllVariables.inpM && Gdx.input.getY() < 490 * AllVariables.inpM) {
                 dispose();
-                game.setScreen(new AreaSelection(game));
+                game.setScreen(new AreaSelection(game,true));
                 return;
             }
 

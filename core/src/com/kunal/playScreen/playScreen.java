@@ -80,7 +80,7 @@ public class playScreen implements Screen {
 
         if(Gdx.input.justTouched()){
             dispose();
-            game.setScreen(new AreaSelection(game));
+            game.setScreen(new AreaSelection(game,true));
         }
         alpha+=0.08f;
         if(alpha>1)

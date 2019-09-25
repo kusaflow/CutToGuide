@@ -46,7 +46,7 @@ public class temp implements Screen {
 
             //game.setScreen(new AreaOneClass(game));
 
-            game.setScreen(new AreaSelection(game));
+            game.setScreen(new AreaSelection(game,true));
             //AllVariables.PresentAreaNumber = 1;
             //AllVariables.PresentLevelNumber = 1;
             //ReDirectToTheLevel.Direct(game);

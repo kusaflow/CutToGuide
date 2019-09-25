@@ -419,7 +419,7 @@ public class LevelNumberSelection implements Screen {
 
     private void input(float dt){
         if (Gdx.input.isKeyJustPressed(Input.Keys.B))
-            game.setScreen(new AreaSelection(game));
+            game.setScreen(new AreaSelection(game, false));
         if (Gdx.input.isKeyJustPressed(Input.Keys.D)) {
             System.out.println("Unlock Levels : \t" + UnlockedLevel);
             System.out.println("Total Levels : \t" + TotalLevel);
@@ -459,7 +459,7 @@ public class LevelNumberSelection implements Screen {
                 Gdx.input.getX() < (128*AllVariables.inpM)+AllVariables.witdth_translation &&
                 Gdx.input.getY() >= 0 * AllVariables.inpM && Gdx.input.getY() < 128*AllVariables.inpM){
                 //dispose();
-                game.setScreen(new AreaSelection(game));
+                game.setScreen(new AreaSelection(game,false));
             }
 
             //left

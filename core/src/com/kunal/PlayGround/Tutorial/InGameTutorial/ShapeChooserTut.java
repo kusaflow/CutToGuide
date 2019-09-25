@@ -335,7 +335,7 @@ public class ShapeChooserTut implements Screen {
                     &&(Gdx.graphics.getHeight() - Gdx.input.getY()) > (0*AllVariables.inpM)
                     && (Gdx.graphics.getHeight() - Gdx.input.getY()) < 100* AllVariables.inpM) {
                 VariablesForPlayArea.flush();
-                game.setScreen(new AreaSelection(game));
+                game.setScreen(new AreaSelection(game,true));
             }
 
 

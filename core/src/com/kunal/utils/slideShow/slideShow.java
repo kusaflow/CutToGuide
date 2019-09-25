@@ -129,7 +129,7 @@ public class slideShow implements Screen {
 
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.B))
-            game.setScreen(new AreaSelection(game));
+            game.setScreen(new AreaSelection(game,true));
 
 
     }

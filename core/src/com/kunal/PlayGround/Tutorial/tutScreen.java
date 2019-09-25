@@ -100,7 +100,7 @@ public class tutScreen implements Screen {
                     Gdx.input.getX() < (128 * AllVariables.inpM) + AllVariables.witdth_translation &&
                     Gdx.input.getY() >= 0 * AllVariables.inpM && Gdx.input.getY() < 128 * AllVariables.inpM) {
                 //dispose();
-                game.setScreen(new AreaSelection(game));
+                game.setScreen(new AreaSelection(game,true));
                 return;
             }
             //basic tut

@@ -1120,7 +1120,7 @@ public class BasicTutorial implements Screen {
                                 && screenY > 0* AllVariables.inpM && screenY < 70* AllVariables.inpM){
                             dispose();
                             VariablesForPlayArea.flush();
-                            game.setScreen(new AreaSelection(game));
+                            game.setScreen(new AreaSelection(game, true));
                         }
 
 
@@ -1198,7 +1198,7 @@ public class BasicTutorial implements Screen {
                                     && VariablesForPlayArea.tutState ==202) {
                                 VariablesForPlayArea.flush();
                                 dispose();
-                                game.setScreen(new AreaSelection(game));
+                                game.setScreen(new AreaSelection(game,true));
                             }
                         }
 
@@ -1508,7 +1508,7 @@ public class BasicTutorial implements Screen {
         }else if (VariablesForPlayArea.tutState == 47) {
             if (Gdx.input.justTouched()){
                 VariablesForPlayArea.flush();
-                game.setScreen(new AreaSelection(game));
+                game.setScreen(new AreaSelection(game,true));
             }
         }
 

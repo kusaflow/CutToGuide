@@ -697,7 +697,7 @@ public class CuttingAreaManagerTut implements Screen {
                                 && screenY > 0* AllVariables.inpM && screenY < 100* AllVariables.inpM){
                             dispose();
                             VariablesForPlayArea.flush();
-                            game.setScreen(new AreaSelection(game));
+                            game.setScreen(new AreaSelection(game,true));
                         }
 
                         //remove first element

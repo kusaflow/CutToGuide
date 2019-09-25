@@ -720,7 +720,7 @@ public class Shop implements Screen, VideoEventListener {
                                 && screenY >= 620 * AllVariables.inpM
                                 && screenY <= 700 * AllVariables.inpM){
                             dispose();
-                            game.setScreen(new AreaSelection(game));
+                            game.setScreen(new AreaSelection(game, true));
                         }
 
                         //KusaCoin
