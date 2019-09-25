@@ -46,18 +46,13 @@ public class CuttingAreaManager implements Screen {
 
     private int presentX, presntY;
 
-    private Texture doneSh, retry, key;
-    private Sprite  hintImg;
+    private Texture doneSh, retry;
 
     @Override
     public void dispose() {
         sr.dispose();
         doneSh.dispose();
         retry.dispose();
-        try {
-            key.dispose();
-            hintImg.getTexture().dispose();
-        }catch (Exception e){}
         Gdx.input.setInputProcessor(null);
     }
 
@@ -125,15 +120,6 @@ public class CuttingAreaManager implements Screen {
 
         doneSh = new Texture("utils/arrowLeft.png");
         retry = new Texture("utils/retry.png");
-
-        if (VariablesForPlayArea.HintOneEnabled) {
-            key = new Texture("utils/key.png");
-            hintImg = new Sprite(new Texture("HintImg/HintOne/hint1_" + AllVariables.PresentAreaNumber + "_" + AllVariables.PresentLevelNumber+".JPG"));
-            hintImg.setPosition(0,110);
-            hintImg.setSize(600,500);
-
-
-        }
 
         AllVariables.inpM = (float)Gdx.graphics.getHeight()/AllVariables.HEIGHT;
         AllVariables.witdth_translation =  (Gdx.graphics.getWidth() - ((Gdx.graphics.getHeight()*16)/9))/2;
