@@ -8,8 +8,12 @@ import com.kunal.utils.TiledMapLoadingHelper;
 
 public class ExtraUpdateMethods {
 
-    public ExtraUpdateMethods () {
+    boolean slowmo, activeSlowMoCheck;
+    long time;
 
+    public ExtraUpdateMethods () {
+        activeSlowMoCheck = true;
+        slowmo = false;
     }
 
     public void update (World world, float dt) {
@@ -27,17 +31,33 @@ public class ExtraUpdateMethods {
             world.step(1 / (1 / dt), 6, 2);
         }*/
 
-        //slow motion
-        if (AllVariables.BackWheel.getPosition().x * AllVariables.PPM + 250 >= TiledMapLoadingHelper.flagpos().x
-                && AllVariables.BackWheel.getPosition().y * AllVariables.PPM >= 0
-                && AllVariables.BackWheel.getPosition().y * AllVariables.PPM >= TiledMapLoadingHelper.flagpos().y -200
-                && AllVariables.BackWheel.getPosition().y * AllVariables.PPM <= TiledMapLoadingHelper.flagpos().y +700
-                && AllVariables.BackWheel.getPosition().x * AllVariables.PPM  <= TiledMapLoadingHelper.flagpos().x - 180) {
-            world.step(1 / 2000f, 6, 2);
+        if (activeSlowMoCheck) {
+            //slow motion
+            if (AllVariables.BackWheel.getPosition().x * AllVariables.PPM + 250 >= TiledMapLoadingHelper.flagpos().x
+                    && AllVariables.BackWheel.getPosition().y * AllVariables.PPM >= 0
+                    && AllVariables.BackWheel.getPosition().y * AllVariables.PPM >= TiledMapLoadingHelper.flagpos().y - 200
+                    && AllVariables.BackWheel.getPosition().y * AllVariables.PPM <= TiledMapLoadingHelper.flagpos().y + 700) {
+                slowmo = true;
+                time = System.currentTimeMillis();
+                activeSlowMoCheck = false;
+            } else {
+                slowmo = false;
+            }
+        }
+
+        if (slowmo){
+            if (time+1000 >= System.currentTimeMillis()){
+                world.step(1 / 1000f, 6, 2);
+            }else {
+                world.step(1 / (1 / dt), 6, 2);
+
+            }
 
         }else {
             world.step(1 / (1 / dt), 6, 2);
         }
+
+
 
     }
 }
