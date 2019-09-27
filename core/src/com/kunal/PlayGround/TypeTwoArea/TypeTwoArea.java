@@ -20,15 +20,11 @@ import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.viewport.FitViewport;
-import com.badlogic.gdx.utils.viewport.ScreenViewport;
-import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
-import com.kunal.PlayGround.LevelsObstacles.CreateHole.createHole;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
@@ -41,6 +37,7 @@ import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.constScreen.levelUpScreen.LevelCompleted;
+import com.kunal.PlayGround.hint2.Hint2shapeDrawer;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpMngr;
 import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
@@ -48,7 +45,6 @@ import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
 import com.kunal.utils.slideShow.simpleSlideShow;
 import com.kunal.utils.slideShow.slideShow;
-
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -107,6 +103,10 @@ public class TypeTwoArea implements Screen {
     //posision mapper sprite
     Sprite posMap;
 
+    //hint 2--------------------------
+    Hint2shapeDrawer hint2shapeDrawer;
+    //--------------------------------
+
     //obstables
         //these class will get initialize only if required otherwise no
     private PowerUpMngr powerups;
@@ -149,6 +149,10 @@ public class TypeTwoArea implements Screen {
 
         hintOneTaken = VariablesForPlayArea.HintOneEnabled;
         hintTwoTaken = VariablesForPlayArea.HintTwoEnabled;
+
+        //hint 2
+        hint2shapeDrawer = new Hint2shapeDrawer(cam);
+        //--------------
 
         poly = new Polygon();
 
@@ -498,6 +502,12 @@ public class TypeTwoArea implements Screen {
         AllVariables.batch.end();
 
         tmr.render();
+
+        //hint 2
+        if (true){
+            hint2shapeDrawer.render();
+        }
+        //------------------------
 
         sred.begin(ShapeRenderer.ShapeType.Line);
 
@@ -1531,6 +1541,11 @@ public class TypeTwoArea implements Screen {
                         if (keycode == Input.Keys.L){
                             VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
                         }
+                        if (keycode == Input.Keys.P){
+                            System.out.println(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected));
+                            System.out.println(VariablesForPlayArea.shapes.get(VariablesForPlayArea.shapeNumberSelected));
+                            System.out.println(VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected));
+                        }
 
 
 
@@ -1750,6 +1765,7 @@ public class TypeTwoArea implements Screen {
         rod6.getTexture().dispose();
         kusaCoin.dispose();
         camScrollerBG.dispose();
+        hint2shapeDrawer.dispose();
 
 
     }

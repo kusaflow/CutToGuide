@@ -1,6 +1,7 @@
 package com.kunal.AreaSelection;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -58,13 +59,13 @@ public class AreaSelection implements Screen {
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
 
-        if (zoomIn) {
+        /*if (zoomIn) {
             cam.zoom = -4;
             cam.rotate(180);
         }
         else {
             cam.zoom = 4;
-        }
+        }*/
 
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
@@ -203,18 +204,18 @@ public class AreaSelection implements Screen {
     private void update(float dt){
 
         //initial zoom in/out animation;
-        if (cam.zoom != 1) {
+        /*if (cam.zoom != 1) {
             if (zoomIn) {
                 if (cam.zoom == -1) {
                     cam.rotate(180);
-                    cam.zoom =1;
-                }else {
+                    cam.zoom = 1;
+                } else {
                     cam.zoom = cam.zoom + 0.1f;
                 }
             } else {
                 cam.zoom = cam.zoom - 0.5f;
             }
-        }
+        }*/
 
         //System.out.println(LevelState);
         if (transparency >= 1){
