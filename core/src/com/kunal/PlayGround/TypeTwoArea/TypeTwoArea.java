@@ -504,7 +504,7 @@ public class TypeTwoArea implements Screen {
         tmr.render();
 
         //hint 2
-        if (true){
+        if (VariablesForPlayArea.HintTwoEnabled){
             hint2shapeDrawer.render();
         }
         //------------------------
@@ -1447,12 +1447,8 @@ public class TypeTwoArea implements Screen {
                                     VariablesForPlayArea.HintTwoEnabled = true;
                                     AllVariables.kusaCoin-=costOfH2;
                                     writeToFile();
-
                                     //game.setScreen(new slideShow(game, 0));
-                                    game.setScreen(new simpleSlideShow(game, 0));
-                                }else {
-                                    if (VariablesForPlayArea.HintTwoEnabled)
-                                        game.setScreen(new simpleSlideShow(game, 0));
+                                   // game.setScreen(new simpleSlideShow(game, 0));
                                 }
 
                             }

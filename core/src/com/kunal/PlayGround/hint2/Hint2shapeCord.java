@@ -17,7 +17,33 @@ public class Hint2shapeCord {
                 shapeCoed.add((byte) 10);
 
                 allShapes.add(shapeCoed);
+            }
+            else if (AllVariables.PresentLevelNumber == 2){
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 6);
+                shapeCoed.add((byte) 9);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
 
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 0);
+                shapeCoed.add((byte) 4);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 6);
+                shapeCoed.add((byte) 5);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
             }
         }
 
@@ -30,6 +56,10 @@ public class Hint2shapeCord {
             if (AllVariables.PresentLevelNumber == 1){
                 positionsl.add(new Vector2(29,5.3f));
             }
+            else if (AllVariables.PresentLevelNumber == 2){
+                positionsl.add(new Vector2(11.62f,5.134f));
+                positionsl.add(new Vector2(45.666f,4.427f));
+            }
         }
 
         return positionsl;
@@ -40,6 +70,10 @@ public class Hint2shapeCord {
         if (AllVariables.PresentAreaNumber == 1){
             if (AllVariables.PresentLevelNumber == 1){
                 rot.add(180);
+            }
+            else if (AllVariables.PresentLevelNumber == 2){
+                rot.add(180);
+                rot.add(0);
             }
         }
 

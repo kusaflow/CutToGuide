@@ -84,8 +84,6 @@ public class Hint2shapeDrawer {
         }else {
             scale-=1f;
         }
-        System.out.println(scale);
-
     }
 
     public void dispose(){
