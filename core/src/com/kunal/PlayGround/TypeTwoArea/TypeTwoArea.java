@@ -25,6 +25,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.ExtraUpdateMethods;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
@@ -124,6 +125,9 @@ public class TypeTwoArea implements Screen {
 
     private Boolean[] bgRandNumber = new Boolean[15];
 
+    //extra update methods
+    ExtraUpdateMethods updateExtra;
+
     public TypeTwoArea(MainGame game, Boolean reset) {
         this.game = game;
 
@@ -144,6 +148,8 @@ public class TypeTwoArea implements Screen {
 
         objectCreation.CreateBicycle(world, 600,0);
         objectCreation.CreateCutouts(world);
+
+        updateExtra = new ExtraUpdateMethods();
 
         levelCompleteCAmMove = false;
 
@@ -299,8 +305,6 @@ public class TypeTwoArea implements Screen {
         frontTyre = new Sprite(TextureGiver.tyre((short) (AllVariables.tyreType+1)));
         backtyre = new Sprite(TextureGiver.tyre((short) (AllVariables.tyreType+1)));
 
-
-
         frontTyre.setSize(50,50);
         frontTyre.setOriginCenter();
 
@@ -316,7 +320,6 @@ public class TypeTwoArea implements Screen {
 
         rod1.setSize(6,50);
         rod1.setOriginCenter();
-
 
         rod2.setSize(6,65);
         rod2.setOriginCenter();
@@ -342,11 +345,6 @@ public class TypeTwoArea implements Screen {
         seat.setOriginCenter();
 
         //--------------------------------------------------------------------------------
-
-
-
-
-
 
         //to check if any power is selected or not
         if (VariablesForPlayArea.shapeNumberSelected > VariablesForPlayArea.CutOutBodies.size() - 1 &&
@@ -726,6 +724,7 @@ public class TypeTwoArea implements Screen {
 
         //this statement here because it will always be false and the program will not went in and this save some sweet time
         //flag
+
         if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().x-5 &&
                 (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5)<=TiledMapLoadingHelper.flagpos().x-5){
             if ((AllVariables.FrontWheel.getPosition().y*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().y-5 ||
@@ -787,12 +786,9 @@ public class TypeTwoArea implements Screen {
         //System.out.println(((AllVariables.BackWheel.getPosition().y * AllVariables.PPM)));
 
 
-        //if(Gdx.input.isKeyPressed(Input.Keys.SPACE))
-        if (Gdx.input.isKeyPressed(Input.Keys.SPACE)){
-            world.step(1 / 2000f, 6, 2);
-        }else{
-            world.step(1 / (1 / dt), 6, 2);
-        }
+        //extra update
+        updateExtra.update(world, dt);
+
 
         //ends here
 
