@@ -28,7 +28,7 @@ public class Hint2shapeCord {
         LinkedList<Vector2> positionsl = new LinkedList<Vector2>();
         if (AllVariables.PresentAreaNumber == 1){
             if (AllVariables.PresentLevelNumber == 1){
-                positionsl.add(new Vector2(29,5.1f));
+                positionsl.add(new Vector2(29,5.3f));
             }
         }
 
