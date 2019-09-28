@@ -1534,9 +1534,21 @@ public class TypeTwoArea implements Screen {
                             VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
                         }
                         if (keycode == Input.Keys.P){
-                            System.out.println(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected));
-                            System.out.println(VariablesForPlayArea.shapes.get(VariablesForPlayArea.shapeNumberSelected));
-                            System.out.println(VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected));
+                            try {
+                                System.out.println(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected));
+                                System.out.println(VariablesForPlayArea.shapes.get(VariablesForPlayArea.shapeNumberSelected));
+                                System.out.println(VariablesForPlayArea.Angle_Of_Shape.get(VariablesForPlayArea.shapeNumberSelected));
+                            }catch (Exception e){
+
+                            }
+
+                            try {
+                                System.out.println(VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).x);
+                                System.out.println(VariablesForPlayArea.powerUpList.get(VariablesForPlayArea.shapeNumberSelected - VariablesForPlayArea.CutOutBodies.size()).y);
+                            }catch (Exception e){
+
+                            }
+
                         }
 
 

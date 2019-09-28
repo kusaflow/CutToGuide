@@ -206,6 +206,27 @@ public class Hint2shapeCord {
                 //===============================
 
             }
+            else if (AllVariables.PresentLevelNumber == 8){
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 2);
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 5);
+                shapeCoed.add((byte) 6);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }
         }
 
         return allShapes;
@@ -247,8 +268,10 @@ public class Hint2shapeCord {
                 positionsl.add(new Vector2(18.867f,5.789f));
             }
             else if (AllVariables.PresentLevelNumber == 8){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(42.406f,4.324f));
+                positionsl.add(new Vector2(3.942f,5.288f));
+                positionsl.add(new Vector2(5789f,554f));
+                positionsl.add(new Vector2(6845f,552f));
             }
             else if (AllVariables.PresentLevelNumber == 9){
                 positionsl.add(new Vector2(11.62f,5.134f));
@@ -334,7 +357,7 @@ public class Hint2shapeCord {
                 rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 8){
                 rot.add(180);
-                rot.add(0);
+                rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 9){
                 rot.add(180);
                 rot.add(0);
@@ -375,6 +398,59 @@ public class Hint2shapeCord {
         }
 
         return rot;
+    }
+
+    public static LinkedList<Byte> typeOfHintImg () {
+        //1. green Pill
+        //2. red Pill
+        LinkedList<Byte> ret = new LinkedList<Byte>();
+        if (AllVariables.PresentAreaNumber == 1){
+            if (AllVariables.PresentLevelNumber == 1){
+
+            }
+            else if (AllVariables.PresentLevelNumber == 2){
+
+            }else if (AllVariables.PresentLevelNumber == 3){
+
+            }else if (AllVariables.PresentLevelNumber == 4){
+
+            }else if (AllVariables.PresentLevelNumber == 5){
+
+            }else if (AllVariables.PresentLevelNumber == 6){
+
+            }else if (AllVariables.PresentLevelNumber == 7){
+
+            }else if (AllVariables.PresentLevelNumber == 8){
+                ret.add((byte) 1);
+                ret.add((byte) 1);
+            }else if (AllVariables.PresentLevelNumber == 9){
+
+            }else if (AllVariables.PresentLevelNumber == 10){
+
+            }else if (AllVariables.PresentLevelNumber == 11){
+
+            }else if (AllVariables.PresentLevelNumber == 12){
+
+            }else if (AllVariables.PresentLevelNumber == 13){
+
+            }else if (AllVariables.PresentLevelNumber == 14){
+
+            }else if (AllVariables.PresentLevelNumber == 15){
+
+            }else if (AllVariables.PresentLevelNumber == 16){
+
+            }else if (AllVariables.PresentLevelNumber == 17){
+
+            }else if (AllVariables.PresentLevelNumber == 18){
+
+            }else if (AllVariables.PresentLevelNumber == 19){
+
+            }else if (AllVariables.PresentLevelNumber == 20){
+
+            }
+        }
+
+        return ret;
     }
 
 }

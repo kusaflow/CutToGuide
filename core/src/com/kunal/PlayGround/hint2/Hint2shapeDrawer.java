@@ -3,9 +3,12 @@ package com.kunal.PlayGround.hint2;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
+import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
 import java.util.LinkedList;
@@ -20,7 +23,9 @@ public class Hint2shapeDrawer {
     private float ver[];
     Polygon poly;
     float scale = 0;
-    boolean inc = true;
+    boolean inc = true, incImg = true;
+    LinkedList<Sprite> img;
+    float imgAlpha = 1;
 
     public Hint2shapeDrawer(OrthographicCamera camera) {
         sred = new ShapeRenderer();
@@ -34,9 +39,24 @@ public class Hint2shapeDrawer {
         pos.addAll(Hint2shapeCord.Location());
         shapes.addAll(Hint2shapeCord.Hintshapes());
         rot.addAll(Hint2shapeCord.Rotation());
+
+        img = new LinkedList<Sprite>();
+
+        for (int i =0, j = shapes.size(); i<Hint2shapeCord.typeOfHintImg().size(); i++, j++){
+            if (Hint2shapeCord.typeOfHintImg().get(i) == 1){
+                img.add(new Sprite(new Texture(Gdx.files.internal("playArea/speedPowers/GreenPill.png"))));
+            }else if (Hint2shapeCord.typeOfHintImg().get(i) == 2){
+                img.add(new Sprite(new Texture(Gdx.files.internal("playArea/speedPowers/RedPill.png"))));
+            }
+
+            img.get(i).setPosition(pos.get(j).x, pos.get(j).y);
+            img.get(i).scale(0.1f);
+        }
+
     }
 
     public void render () {
+        System.out.println(Hint2shapeCord.typeOfHintImg().size());
         update();
         sred.setProjectionMatrix(cam.combined);
 
@@ -70,6 +90,17 @@ public class Hint2shapeDrawer {
         sred.end();
         Gdx.gl.glDisable(GL20.GL_BLEND);
 
+        //-----------------------------------------------
+        //img draw
+        AllVariables.batch.begin();
+        for (int i =0; i<img.size(); i++){
+            img.get(i).setAlpha(imgAlpha);
+            img.get(i).draw(AllVariables.batch);
+        }
+        AllVariables.batch.end();
+        //=---------------------------------------------=
+
+
     }
 
     public void update(){
@@ -84,6 +115,21 @@ public class Hint2shapeDrawer {
         }else {
             scale-=1f;
         }
+
+        //alpha value of img
+        if (imgAlpha >= 1f){
+            incImg = false;
+        }else if (imgAlpha <= 0f){
+            incImg = true;
+        }
+
+
+        if (incImg){
+            imgAlpha += 0.1f;
+        }else {
+            imgAlpha -= 0.1f;
+        }
+
     }
 
     public void dispose(){
