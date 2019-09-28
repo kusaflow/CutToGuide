@@ -101,6 +101,111 @@ public class Hint2shapeCord {
                 allShapes.add(shapeCoed);
                 //===============================
             }
+            else if (AllVariables.PresentLevelNumber == 5){
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 2);
+                shapeCoed.add((byte) 6);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 2);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 10);
+                shapeCoed.add((byte) 6);
+                shapeCoed.add((byte) 2);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }
+            else if (AllVariables.PresentLevelNumber == 6){
+                shapeCoed.add((byte) 0);
+                shapeCoed.add((byte) 4);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 10);
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 5);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 11);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 10);
+                shapeCoed.add((byte) 11);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }
+            else if (AllVariables.PresentLevelNumber == 7){
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 11);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 10);
+                shapeCoed.add((byte) 11);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 2);
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 6);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 4);
+                shapeCoed.add((byte) 0);
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 5);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+            }
         }
 
         return allShapes;
@@ -126,16 +231,20 @@ public class Hint2shapeCord {
                 positionsl.add(new Vector2(47.307f,4f));
             }
             else if (AllVariables.PresentLevelNumber == 5){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(23.054f,4f));
+                positionsl.add(new Vector2(32.652f,4.637f));
+                positionsl.add(new Vector2(52.989f,3.974f));
             }
             else if (AllVariables.PresentLevelNumber == 6){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(35.146f,4.538f));
+                positionsl.add(new Vector2(10.074f,5.430f));
+                positionsl.add(new Vector2(54.812f,3.634f));
             }
             else if (AllVariables.PresentLevelNumber == 7){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(11.157f,5.367f));
+                positionsl.add(new Vector2(34.954f,6.3f));
+                positionsl.add(new Vector2(66.916f,7.834f));
+                positionsl.add(new Vector2(18.867f,5.789f));
             }
             else if (AllVariables.PresentLevelNumber == 8){
                 positionsl.add(new Vector2(11.62f,5.134f));
@@ -212,13 +321,17 @@ public class Hint2shapeCord {
                 rot.add(135);
             }else if (AllVariables.PresentLevelNumber == 5){
                 rot.add(180);
-                rot.add(0);
+                rot.add(90);
+                rot.add(270);
             }else if (AllVariables.PresentLevelNumber == 6){
+                rot.add(270);
                 rot.add(180);
                 rot.add(0);
             }else if (AllVariables.PresentLevelNumber == 7){
                 rot.add(180);
                 rot.add(0);
+                rot.add(90);
+                rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 8){
                 rot.add(180);
                 rot.add(0);

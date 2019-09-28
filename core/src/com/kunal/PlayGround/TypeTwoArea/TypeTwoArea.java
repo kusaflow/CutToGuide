@@ -502,7 +502,7 @@ public class TypeTwoArea implements Screen {
         tmr.render();
 
         //hint 2
-        if (VariablesForPlayArea.HintTwoEnabled){
+        if (VariablesForPlayArea.HintTwoEnabled && !startBool){
             hint2shapeDrawer.render();
         }
         //------------------------
