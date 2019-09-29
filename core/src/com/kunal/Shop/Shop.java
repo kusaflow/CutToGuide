@@ -239,8 +239,8 @@ public class Shop implements Screen, VideoEventListener {
 
             //=======================================================================
             //1
-            //AllVariables.batch.draw(bgTobuy, 300, 440, 200, 150);
-            //AllVariables.batch.draw(freeKusaCoin, 350, 500, 100, 100);
+            AllVariables.batch.draw(bgTobuy, 300, 440, 200, 150);
+            AllVariables.batch.draw(freeKusaCoin, 350, 500, 100, 100);
             //4
             //AllVariables.batch.draw(bgTobuy, 300, 180, 200, 150);
 
@@ -261,7 +261,7 @@ public class Shop implements Screen, VideoEventListener {
             //AllVariables.batch.draw(bgTobuy, 900, 180, 200, 150);
 
             //kusaCoinForDisplay----------------------------------------------------
-            //AllVariables.batch.draw(menuKusaCoin, 330, 400, 50, 50);//1
+            AllVariables.batch.draw(menuKusaCoin, 330, 400, 50, 50);//1
             //AllVariables.batch.draw(menuKusaCoin, 330, 140, 50, 50);//2
             //AllVariables.batch.draw(menuKusaCoin, 630, 400, 50, 50);//3
             //AllVariables.batch.draw(menuKusaCoin, 630, 140, 50, 50);//4
@@ -271,7 +271,7 @@ public class Shop implements Screen, VideoEventListener {
 
             AllVariables.bitmapFont.setColor(Color.WHITE);
             //kusaCoinamount----------------------------------------------------------
-            //AllVariables.bitmapFont.draw(AllVariables.batch, ":150", 380, 431);//1
+            AllVariables.bitmapFont.draw(AllVariables.batch, ":150", 380, 431);//1
             //AllVariables.bitmapFont.draw(AllVariables.batch, ":200", 380, 171);//2
             //AllVariables.bitmapFont.draw(AllVariables.batch, ":500", 680, 431);//3
             //AllVariables.bitmapFont.draw(AllVariables.batch, ":1000", 680, 171);//4
@@ -295,7 +295,7 @@ public class Shop implements Screen, VideoEventListener {
             //4
             //AllVariables.bitmapFont.draw(AllVariables.batch, "$250", 370, 260);
             //1
-            //AllVariables.bitmapFont.draw(AllVariables.batch, "Rewarded \n           Ad", 320, 500);
+            AllVariables.bitmapFont.draw(AllVariables.batch, "Rewarded \n           Ad", 320, 500);
 
 
 

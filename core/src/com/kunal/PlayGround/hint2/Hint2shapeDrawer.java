@@ -1,10 +1,13 @@
 package com.kunal.PlayGround.hint2;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Vector2;
@@ -26,10 +29,19 @@ public class Hint2shapeDrawer {
     boolean inc = true, incImg = true;
     LinkedList<Sprite> img;
     float imgAlpha = 1;
+    BitmapFont font;
 
     public Hint2shapeDrawer(OrthographicCamera camera) {
         sred = new ShapeRenderer();
         cam = camera;
+
+        //font
+        font = new BitmapFont();
+        FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
+        FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 24;
+        prams.color = Color.ORANGE;
+        font = generator.generateFont(prams);
 
         pos = new LinkedList<Vector2>();
         shapes = new LinkedList<LinkedList<Byte>>();
@@ -50,13 +62,12 @@ public class Hint2shapeDrawer {
             }
 
             img.get(i).setPosition(pos.get(j).x, pos.get(j).y);
-            img.get(i).scale(0.1f);
+            img.get(i).scale(-0.5f);
         }
 
     }
 
     public void render () {
-        System.out.println(Hint2shapeCord.typeOfHintImg().size());
         update();
         sred.setProjectionMatrix(cam.combined);
 

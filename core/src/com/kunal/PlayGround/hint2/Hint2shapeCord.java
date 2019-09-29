@@ -1,5 +1,6 @@
 package com.kunal.PlayGround.hint2;
 
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 
@@ -403,6 +404,7 @@ public class Hint2shapeCord {
     public static LinkedList<Byte> typeOfHintImg () {
         //1. green Pill
         //2. red Pill
+        //3. direction reverse
         LinkedList<Byte> ret = new LinkedList<Byte>();
         if (AllVariables.PresentAreaNumber == 1){
             if (AllVariables.PresentLevelNumber == 1){
@@ -451,6 +453,52 @@ public class Hint2shapeCord {
         }
 
         return ret;
+    }
+
+    public static void RenderText(BitmapFont font){
+        if (AllVariables.PresentAreaNumber == 1){
+            if (AllVariables.PresentLevelNumber == 1){
+            }
+            else if (AllVariables.PresentLevelNumber == 2){
+
+            }else if (AllVariables.PresentLevelNumber == 3){
+
+            }else if (AllVariables.PresentLevelNumber == 4){
+
+            }else if (AllVariables.PresentLevelNumber == 5){
+
+            }else if (AllVariables.PresentLevelNumber == 6){
+
+            }else if (AllVariables.PresentLevelNumber == 7){
+
+            }else if (AllVariables.PresentLevelNumber == 8){
+
+            }else if (AllVariables.PresentLevelNumber == 9){
+
+            }else if (AllVariables.PresentLevelNumber == 10){
+
+            }else if (AllVariables.PresentLevelNumber == 11){
+
+            }else if (AllVariables.PresentLevelNumber == 12){
+
+            }else if (AllVariables.PresentLevelNumber == 13){
+
+            }else if (AllVariables.PresentLevelNumber == 14){
+
+            }else if (AllVariables.PresentLevelNumber == 15){
+
+            }else if (AllVariables.PresentLevelNumber == 16){
+
+            }else if (AllVariables.PresentLevelNumber == 17){
+
+            }else if (AllVariables.PresentLevelNumber == 18){
+
+            }else if (AllVariables.PresentLevelNumber == 19){
+
+            }else if (AllVariables.PresentLevelNumber == 20){
+
+            }
+        }
     }
 
 }

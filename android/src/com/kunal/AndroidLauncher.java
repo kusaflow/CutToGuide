@@ -32,7 +32,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
     //private AdView adView;
 
     private RewardedVideoAd adRewardedVideoView;
-    private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-8496254583090645/4139281753";
+    private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-7957099377651888/4125418430";
     //sample ad ====================================================
     //private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
     //--------------------------------------------------------------------
@@ -105,7 +105,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
         //interstitial ad
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-8496254583090645/6525771944");
+        mInterstitialAd.setAdUnitId("ca-app-pub-7957099377651888/1461109538");
 
         //sample Ad-----------------------------------------------------------
         //mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
