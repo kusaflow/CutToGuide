@@ -30,6 +30,7 @@ public class Hint2shapeDrawer {
     LinkedList<Sprite> img;
     float imgAlpha = 1;
     BitmapFont font;
+    Sprite arrow;
 
     public Hint2shapeDrawer(OrthographicCamera camera) {
         sred = new ShapeRenderer();
@@ -39,9 +40,12 @@ public class Hint2shapeDrawer {
         font = new BitmapFont();
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
-        prams.size = 24;
-        prams.color = Color.ORANGE;
+        prams.size = 32;
+        prams.color = Color.WHITE;
         font = generator.generateFont(prams);
+
+        //arrow
+        arrow = new Sprite(new Texture(Gdx.files.internal("utils/arrow.png")));
 
         pos = new LinkedList<Vector2>();
         shapes = new LinkedList<LinkedList<Byte>>();
@@ -59,6 +63,8 @@ public class Hint2shapeDrawer {
                 img.add(new Sprite(new Texture(Gdx.files.internal("playArea/speedPowers/GreenPill.png"))));
             }else if (Hint2shapeCord.typeOfHintImg().get(i) == 2){
                 img.add(new Sprite(new Texture(Gdx.files.internal("playArea/speedPowers/RedPill.png"))));
+            }else if (Hint2shapeCord.typeOfHintImg().get(i) == 3){
+                img.add(new Sprite(new Texture(Gdx.files.internal("playArea/LevelObstacles/dirReverse/dirRev.png"))));
             }
 
             img.get(i).setPosition(pos.get(j).x, pos.get(j).y);
@@ -111,7 +117,11 @@ public class Hint2shapeDrawer {
         AllVariables.batch.end();
         //=---------------------------------------------=
 
+    }
 
+    public void renderText(){
+        //textDraw
+        Hint2shapeCord.RenderText(font, arrow);
     }
 
     public void update(){

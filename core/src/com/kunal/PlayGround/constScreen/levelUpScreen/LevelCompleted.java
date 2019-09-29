@@ -121,7 +121,7 @@ public class LevelCompleted implements Screen {
         }else {
             short temp = (short) (VariablesForPlayArea.starsGained - t);
             for (int i1 =0; i1<temp;i1++) {
-                coinsEarned += 70;
+                coinsEarned += 40;
                 startsHave++;
             }
         }
@@ -172,7 +172,7 @@ public class LevelCompleted implements Screen {
         else
             AllVariables.bitmapFont.draw(AllVariables.batch, coinsEarned+"", 580, 432);
 
-        AllVariables.bitmapFont.draw(AllVariables.batch, "  earned", 630, 432);
+        AllVariables.bitmapFont.draw(AllVariables.batch, "     earned", 630, 432);
 
 
 

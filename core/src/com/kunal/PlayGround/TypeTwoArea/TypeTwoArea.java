@@ -502,8 +502,10 @@ public class TypeTwoArea implements Screen {
         tmr.render();
 
         //hint 2
-        if (VariablesForPlayArea.HintTwoEnabled && !startBool){
-            hint2shapeDrawer.render();
+        if (VariablesForPlayArea.HintTwoEnabled){
+            hint2shapeDrawer.renderText();
+            if (!startBool)
+                hint2shapeDrawer.render();
         }
         //------------------------
 
@@ -912,8 +914,7 @@ public class TypeTwoArea implements Screen {
         menuTex.setScale(cam.zoom*5);
         //-------------------------------
 
-        //for testing
-        if (AllVariables.PresentLevelNumber >= 86)
+        //for testing rage mode
         if (AllVariables.BackWheel.getLinearVelocity().x >= 17f) {
             if (AllVariables.BackWheel.getLinearVelocity().x>20.5f)
                 AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.04f) ,
@@ -1533,6 +1534,10 @@ public class TypeTwoArea implements Screen {
                         if (keycode == Input.Keys.L){
                             VariablesForPlayArea.rageMode = !VariablesForPlayArea.rageMode;
                         }
+                        if (keycode == Input.Keys.E){
+                            System.out.println(posMap.getX() + "\t" + posMap.getY());
+                        }
+
                         if (keycode == Input.Keys.P){
                             try {
                                 System.out.println(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected));

@@ -1,6 +1,7 @@
 package com.kunal.PlayGround.hint2;
 
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 
@@ -228,6 +229,16 @@ public class Hint2shapeCord {
                 allShapes.add(shapeCoed);
                 //===============================
             }
+            else if (AllVariables.PresentLevelNumber == 9){
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 11);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }
         }
 
         return allShapes;
@@ -275,8 +286,9 @@ public class Hint2shapeCord {
                 positionsl.add(new Vector2(6845f,552f));
             }
             else if (AllVariables.PresentLevelNumber == 9){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(77.236f,4.376f));
+                positionsl.add(new Vector2(1576f,529f));
+                positionsl.add(new Vector2(5080f,540f));
             }
             else if (AllVariables.PresentLevelNumber == 10){
                 positionsl.add(new Vector2(11.62f,5.134f));
@@ -361,7 +373,6 @@ public class Hint2shapeCord {
                 rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 9){
                 rot.add(180);
-                rot.add(0);
             }else if (AllVariables.PresentLevelNumber == 10){
                 rot.add(180);
                 rot.add(0);
@@ -426,7 +437,8 @@ public class Hint2shapeCord {
                 ret.add((byte) 1);
                 ret.add((byte) 1);
             }else if (AllVariables.PresentLevelNumber == 9){
-
+                ret.add((byte) 1);
+                ret.add((byte) 3);
             }else if (AllVariables.PresentLevelNumber == 10){
 
             }else if (AllVariables.PresentLevelNumber == 11){
@@ -455,7 +467,7 @@ public class Hint2shapeCord {
         return ret;
     }
 
-    public static void RenderText(BitmapFont font){
+    public static void RenderText(BitmapFont font, Sprite s){
         if (AllVariables.PresentAreaNumber == 1){
             if (AllVariables.PresentLevelNumber == 1){
             }
@@ -472,7 +484,12 @@ public class Hint2shapeCord {
             }else if (AllVariables.PresentLevelNumber == 7){
 
             }else if (AllVariables.PresentLevelNumber == 8){
-
+                AllVariables.batch.begin();
+                s.setRotation(90);
+                s.setPosition(7150,420);
+                s.draw(AllVariables.batch);
+                font.draw(AllVariables.batch, "hold brake here \n  for 3-4 sec", 7150, 360);
+                AllVariables.batch.end();
             }else if (AllVariables.PresentLevelNumber == 9){
 
             }else if (AllVariables.PresentLevelNumber == 10){
