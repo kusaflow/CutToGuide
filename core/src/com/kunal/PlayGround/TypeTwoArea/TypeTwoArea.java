@@ -1149,10 +1149,13 @@ public class TypeTwoArea implements Screen {
                         System.out.println(screenX + "\t" + screenY);
 
                         if (VariablesForPlayArea.gameOver) {
+                            //menu
                             if (screenX > (515 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (610 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 345 * AllVariables.inpM && screenY < 425 * AllVariables.inpM) {
                                 try {
+                                    dispose();
+                                    VariablesForPlayArea.flush();
                                     game.setScreen(new LevelNumberSelection(game));
                                 }catch (Exception e){return false;}
                             }

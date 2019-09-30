@@ -427,6 +427,160 @@ public class Hint2shapeCord {
                 allShapes.add(shapeCoed);
                 //===============================
             }
+            else if (AllVariables.PresentLevelNumber == 15){
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 6);
+                shapeCoed.add((byte) 9);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }
+            else if (AllVariables.PresentLevelNumber == 16){
+                shapeCoed.add((byte) 4);
+                shapeCoed.add((byte) 0);
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 2);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }
+            else if (AllVariables.PresentLevelNumber == 17){
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 13);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 2);
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 0);
+                shapeCoed.add((byte) 4);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 10);
+                shapeCoed.add((byte) 6);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }else if (AllVariables.PresentLevelNumber == 18){
+                shapeCoed.add((byte) 4);
+                shapeCoed.add((byte) 0);
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 2);
+                shapeCoed.add((byte) 6);
+                shapeCoed.add((byte) 5);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 9);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }else if (AllVariables.PresentLevelNumber == 19){
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 11);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 0);
+                shapeCoed.add((byte) 4);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 9);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 15);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }else if (AllVariables.PresentLevelNumber == 20){
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 7);
+                shapeCoed.add((byte) 6);
+                shapeCoed.add((byte) 5);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 3);
+                shapeCoed.add((byte) 2);
+                shapeCoed.add((byte) 1);
+                shapeCoed.add((byte) 5);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 13);
+                shapeCoed.add((byte) 14);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+
+
+                shapeCoed = new LinkedList<Byte>();
+                shapeCoed.add((byte) 12);
+                shapeCoed.add((byte) 8);
+                shapeCoed.add((byte) 9);
+                shapeCoed.add((byte) 10);
+                //--------------------------------
+                allShapes.add(shapeCoed);
+                //===============================
+            }
         }
 
         return allShapes;
@@ -516,28 +670,39 @@ public class Hint2shapeCord {
                 positionsl.add(new Vector2(920f,390f));
             }
             else if (AllVariables.PresentLevelNumber == 15){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(54.74f,4.036f));
+                positionsl.add(new Vector2(5294,400));
+                positionsl.add(new Vector2(6870,928));
+                positionsl.add(new Vector2(7676,933));
             }
             else if (AllVariables.PresentLevelNumber == 16){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(37.600f,6.212f));
+                positionsl.add(new Vector2(12.055f,5.215f));
+                positionsl.add(new Vector2(1713,508));
+                positionsl.add(new Vector2(5664,394));
+                positionsl.add(new Vector2(5714,708));
             }
             else if (AllVariables.PresentLevelNumber == 17){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(32.994f,6.234f));
+                positionsl.add(new Vector2(57.852f,9.430f));
+                positionsl.add(new Vector2(4080,524));
+                positionsl.add(new Vector2(5103,526));
             }
             else if (AllVariables.PresentLevelNumber == 18){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(21.388f,3.612f));
+                positionsl.add(new Vector2(26.884f,5.548f));
             }
             else if (AllVariables.PresentLevelNumber == 19){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(63.986f,3.09f));
+                positionsl.add(new Vector2(23.208f,5.270f));
+                positionsl.add(new Vector2(41.197f,9.092f));
+                positionsl.add(new Vector2(9.168f,5.312f));
             }
             else if (AllVariables.PresentLevelNumber == 20){
-                positionsl.add(new Vector2(11.62f,5.134f));
-                positionsl.add(new Vector2(45.666f,4.427f));
+                positionsl.add(new Vector2(18.926f,6.175f));
+                positionsl.add(new Vector2(33.125f,5.295f));
+                positionsl.add(new Vector2(53.621f,5.809f));
+                positionsl.add(new Vector2(90.085f,7.746f));
             }
         }
 
@@ -603,22 +768,25 @@ public class Hint2shapeCord {
                 rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 15){
                 rot.add(180);
-                rot.add(0);
             }else if (AllVariables.PresentLevelNumber == 16){
-                rot.add(180);
                 rot.add(0);
+                rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 17){
                 rot.add(180);
-                rot.add(0);
+                rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 18){
                 rot.add(180);
-                rot.add(0);
-            }else if (AllVariables.PresentLevelNumber == 19){
                 rot.add(180);
+            }else if (AllVariables.PresentLevelNumber == 19){
+                rot.add(315);
+                rot.add(270);
                 rot.add(0);
+                rot.add(180);
             }else if (AllVariables.PresentLevelNumber == 20){
                 rot.add(180);
                 rot.add(0);
+                rot.add(180);
+                rot.add(270);
             }
         }
 
@@ -669,11 +837,16 @@ public class Hint2shapeCord {
             }else if (AllVariables.PresentLevelNumber == 14){
                 ret.add((byte) 1);
             }else if (AllVariables.PresentLevelNumber == 15){
-
+                ret.add((byte) 1);
+                ret.add((byte) 3);
+                ret.add((byte) 3);
             }else if (AllVariables.PresentLevelNumber == 16){
-
+                ret.add((byte) 4);
+                ret.add((byte) 1);
+                ret.add((byte) 2);
             }else if (AllVariables.PresentLevelNumber == 17){
-
+                ret.add((byte) 1);
+                ret.add((byte) 2);
             }else if (AllVariables.PresentLevelNumber == 18){
 
             }else if (AllVariables.PresentLevelNumber == 19){
@@ -741,15 +914,39 @@ public class Hint2shapeCord {
             }else if (AllVariables.PresentLevelNumber == 14){
 
             }else if (AllVariables.PresentLevelNumber == 15){
-
+                AllVariables.batch.begin();
+                s.setRotation(90);
+                s.setPosition(1232,400);
+                s.draw(AllVariables.batch);
+                font.draw(AllVariables.batch, "stop here", 1232, 350);
+                s.setRotation(90);
+                s.setPosition(3562,400);
+                s.draw(AllVariables.batch);
+                font.draw(AllVariables.batch, "stop here", 3562, 350);
+                AllVariables.batch.end();
             }else if (AllVariables.PresentLevelNumber == 16){
-
+                AllVariables.batch.begin();
+                s.setRotation(-90);
+                s.setPosition(5717,847);
+                s.draw(AllVariables.batch);
+                font.draw(AllVariables.batch, "wait here until\nfullsaw reaches the pit", 5417, 850);
+                AllVariables.batch.end();
             }else if (AllVariables.PresentLevelNumber == 17){
-
+                AllVariables.batch.begin();
+                s.setRotation(-90);
+                s.setPosition(1402,607);
+                s.draw(AllVariables.batch);
+                font.draw(AllVariables.batch, "hold brake here \n  for 3-4 sec", 1202, 667);
+                AllVariables.batch.end();
             }else if (AllVariables.PresentLevelNumber == 18){
 
             }else if (AllVariables.PresentLevelNumber == 19){
-
+                AllVariables.batch.begin();
+                s.setRotation(90);
+                s.setPosition(8272,732);
+                s.draw(AllVariables.batch);
+                font.draw(AllVariables.batch, "slow down here", 8272, 680);
+                AllVariables.batch.end();
             }else if (AllVariables.PresentLevelNumber == 20){
 
             }
