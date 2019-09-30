@@ -65,6 +65,8 @@ public class Hint2shapeDrawer {
                 img.add(new Sprite(new Texture(Gdx.files.internal("playArea/speedPowers/RedPill.png"))));
             }else if (Hint2shapeCord.typeOfHintImg().get(i) == 3){
                 img.add(new Sprite(new Texture(Gdx.files.internal("playArea/LevelObstacles/dirReverse/dirRev.png"))));
+            }else if (Hint2shapeCord.typeOfHintImg().get(i) == 4){
+                img.add(new Sprite(new Texture(Gdx.files.internal("playArea/LevelObstacles/Jumper/spring.png"))));
             }
 
             img.get(i).setPosition(pos.get(j).x, pos.get(j).y);
