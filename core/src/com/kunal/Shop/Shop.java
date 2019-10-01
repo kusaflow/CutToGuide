@@ -318,8 +318,27 @@ public class Shop implements Screen, VideoEventListener {
                 //AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),400,300,70,70);
                 //AllVariables.batch.draw(bicy_wheel.get(AllVariables.tyreType-1),400,300,70,70);
 
-                if (wheelCh == AllVariables.tyreType && barCh == AllVariables.bodyOfCycle)
+                if (wheelCh == AllVariables.tyreType)
                     buttonBg.setColor(0f,1f,0f,1f);
+
+                // button to confirm wheels
+                buttonBg.setPosition(400, 280);
+                buttonBg.setSize(130,100);
+                buttonBg.draw(AllVariables.batch);
+                AllVariables.bitmapFont.draw(AllVariables.batch, " equip", 420, 340);
+
+                buttonBg.setColor(1,0f,0f,0.8f);
+
+                if (barCh == AllVariables.bodyOfCycle)
+                    buttonBg.setColor(0f,1f,0f,1f);
+
+
+                // button to confirm bars
+                buttonBg.setPosition(400, 390);
+                buttonBg.setSize(130,100);
+                buttonBg.draw(AllVariables.batch);
+                AllVariables.bitmapFont.draw(AllVariables.batch, " equip", 420, 450);
+
 
                 //lower Arrow
                 AllVariables.batch.draw(arrowL, 300, 110, 100, 100);
@@ -535,16 +554,13 @@ public class Shop implements Screen, VideoEventListener {
                 AllVariables.batch.draw(typeOfCoin.get(coinCh), 800, 350, 160, 160);
 
 
-
+                // button to confirm
+                buttonBg.setPosition(400, 330);
+                buttonBg.setSize(130,100);
+                buttonBg.draw(AllVariables.batch);
+                AllVariables.bitmapFont.draw(AllVariables.batch, " equip", 420, 390);
 
             }
-
-            // button to confirm
-            buttonBg.setPosition(400, 330);
-            buttonBg.setSize(130,100);
-            buttonBg.draw(AllVariables.batch);
-            AllVariables.bitmapFont.draw(AllVariables.batch, " equip", 420, 390);
-
         }
 
         AllVariables.bitmapFont.setColor(Color.ORANGE);
@@ -831,14 +847,24 @@ public class Shop implements Screen, VideoEventListener {
                             if (InnerMenuNumber == 1){//-----------------------------------------------------------
 
 
-                                //confirm the choice
+                                //confirm the choice of bars
                                 if(screenX >= (400* AllVariables.inpM) + AllVariables.witdth_translation
                                         && screenX <= (530* AllVariables.inpM) + AllVariables.witdth_translation
-                                        && screenY >= 325 * AllVariables.inpM
-                                        && screenY <= 425 * AllVariables.inpM){
-                                    if (!wheelLocked && !barsLocked) {
-                                        AllVariables.tyreType = wheelCh;
+                                        && screenY >= 392 * AllVariables.inpM
+                                        && screenY <= 490 * AllVariables.inpM){
+                                    if (!barsLocked) {
                                         AllVariables.bodyOfCycle = barCh;
+                                        writeToFile();
+                                    }
+                                }
+
+                                //confirm the choice of wheels
+                                if(screenX >= (400* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenX <= (530* AllVariables.inpM) + AllVariables.witdth_translation
+                                        && screenY >= 280 * AllVariables.inpM
+                                        && screenY <= 382 * AllVariables.inpM){
+                                    if (!wheelLocked) {
+                                        AllVariables.tyreType = wheelCh;
                                         writeToFile();
                                     }
                                 }
