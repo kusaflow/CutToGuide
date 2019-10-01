@@ -101,7 +101,10 @@ public class LevelNumberSelection implements Screen {
 
         starTex = new Texture(Gdx.files.internal("AreaSelection/levelSelection/star.png"));
 
-        bg = new Texture(Gdx.files.internal("AreaSelection/bg.png"));
+        if (AllVariables.PresentAreaNumber == 1) {
+            bg = new Texture(Gdx.files.internal("LevelBG/one.jpg"));
+        }
+
 
 
 

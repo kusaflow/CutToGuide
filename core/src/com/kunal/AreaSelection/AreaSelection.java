@@ -21,6 +21,7 @@ import com.kunal.Shop.Shop;
 import com.kunal.credit.credits;
 import com.kunal.playScreen.playScreen;
 import com.kunal.quitGame.QuitGame;
+import com.kunal.reset.resetGame;
 import com.kunal.utils.slideShow.slideShow;
 
 import java.util.LinkedList;
@@ -331,27 +332,12 @@ public class AreaSelection implements Screen {
                             return false;
                         }
 
-                        //credits
+                        //repair
                         if(screenX >= (944* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenX <= (1154* AllVariables.inpM) + AllVariables.witdth_translation
                                 && screenY >= 620* AllVariables.inpM && screenY <= 700* AllVariables.inpM) {
                             dispose();
-                            try {
-                                Gdx.files.local("TextFilesToDelete/areas/area1").delete();
-                            }catch (Exception e){}
-                            try {
-                                Gdx.files.local("TextFilesToDelete/hints/area1/log").delete();
-                            }catch (Exception e){}
-                            try {
-                                Gdx.files.local("TextFilesToDelete/kusaCoin").delete();
-                            }catch (Exception e){}
-                            try {
-                                Gdx.files.local("TextFilesToDelete/LockUnlock").delete();
-                            }catch (Exception e){}
-
-
-
-                            Gdx.app.exit();
+                            game.setScreen(new resetGame(game));
                             return false;
                         }
 
