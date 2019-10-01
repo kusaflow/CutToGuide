@@ -111,7 +111,7 @@ public class AreaSelection implements Screen {
         backToPrevScreen.setSize(128,128);
         backToPrevScreen.setPosition(0, 720-128);
 
-        bg = new Texture(Gdx.files.internal("AreaSelection/bg.png"));
+        bg = new Texture(Gdx.files.internal("AreaSelection/bg.jpg"));
 
 
 

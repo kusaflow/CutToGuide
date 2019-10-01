@@ -252,6 +252,11 @@ public class MainGame extends Game {
 				tracker++;
 			}
 		}
+
+		if (AllVariables.kusaCoin <= 0){
+			AllVariables.kusaCoin *=-1;
+		}
+
 		this.setScreen(new MainLoadingScreen(this));
 		//this.setScreen(new temp(this));
 

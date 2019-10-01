@@ -89,7 +89,7 @@ public class TutorailHelper {
         }else if (VariablesForPlayArea.tutState == 36){
             s = "Let me give you a secret,\n\nonly gravity is applicable on shapes";
         }else if (VariablesForPlayArea.tutState == 37){
-            s = "Let me give you a secret\n\nonly gravity is applicable on shapes,\nangle of your shape is constant";
+            s = "Let me give you a secret\n\nonly gravity is applicable on shapes,\nmeans angle of your shape will be constant";
         }else if (VariablesForPlayArea.tutState == 38){
             s = "To explain this,\ngive this shape a weird rotation";
         }else if (VariablesForPlayArea.tutState == 39){
