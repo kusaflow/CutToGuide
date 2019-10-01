@@ -31,11 +31,16 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
     private static final String TAG = "AndroidLauncher";
     //private AdView adView;
 
+    final AndroidLauncher context=this;
+
     private RewardedVideoAd adRewardedVideoView;
     private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-7957099377651888/4125418430";
     //sample ad ====================================================
     //private static final String REWARDED_VIDEO_AD_UNIT_ID = "ca-app-pub-3940256099942544/5224354917";
     //--------------------------------------------------------------------
+
+    //rewarded
+    boolean rewarded = false;
 
     private VideoEventListener vel;
 
@@ -215,6 +220,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
     public void onRewardedVideoAdLoaded() {
         if(vel != null) {
             vel.onRewardedVideoAdLoadedEvent();
+            rewarded = false;
         }
         is_video_ad_loaded = true;
     }
@@ -231,6 +237,14 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
 
     @Override
     public void onRewardedVideoAdClosed() {
+        if (rewarded) {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    Toast.makeText(context, "150 kusacoin collected", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
         is_video_ad_loaded = false;
         loadRewardedVideoAd();
         if(vel != null) {
@@ -244,6 +258,7 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
             // The type and the amount can be set in your AdMob console
             vel.onRewardedEvent(reward.getType(), reward.getAmount());
         }
+        rewarded = true;
     }
 
     @Override
@@ -278,8 +293,17 @@ public class AndroidLauncher extends AndroidApplication implements AdVideoInterf
     }
 
     @Override
-    public void MakeToast(String text) {
-        //Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    public void MakeToast(final String text) {
+        handler.post(new Runnable()
+        {
+
+            @Override
+            public void run() {
+                Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+            }
+
+        });
+
     }
 
     /////////////////////

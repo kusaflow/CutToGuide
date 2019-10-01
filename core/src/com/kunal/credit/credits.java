@@ -24,6 +24,8 @@ public class credits implements Screen {
     private Texture cross, insta, twitter, kusacoin;
     BitmapFont font;
 
+    boolean thisIsIt = false;
+
 
     public credits(MainGame game){
         this.game = game;
@@ -116,6 +118,9 @@ public class credits implements Screen {
                 if (AllVariables.showRewardForInsta) {
                     AllVariables.showRewardForInsta = false;
                     writeFile("insta");
+                    thisIsIt = true;
+                    //AllVariables.kusaCoin+=100;
+                    //AllVariables.openApps.MakeToast("100 kusacoinEarned");
                 }
                 try {
                     AllVariables.openApps.OpenApp("https://www.instagram.com/kusaflow/?igshid=8y5b86e3yp6f");
@@ -129,6 +134,9 @@ public class credits implements Screen {
                 if (AllVariables.showRewardFortwitter) {
                     AllVariables.showRewardFortwitter = false;
                     writeFile("twitter");
+                    thisIsIt = true;
+                    //AllVariables.kusaCoin+=100;
+                    //AllVariables.openApps.MakeToast("100 kusacoinEarned");
                 }
                 try {
                     AllVariables.openApps.OpenApp("https://twitter.com/kusaflow?s=08");
@@ -166,6 +174,11 @@ public class credits implements Screen {
 
     @Override
     public void resume() {
+        if (thisIsIt) {
+            AllVariables.kusaCoin+=100;
+            AllVariables.openApps.MakeToast("100 kusacoinEarned");
+            thisIsIt = false;
+        }
 
     }
 

@@ -63,7 +63,7 @@ public class LevelNumberSelection implements Screen {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
         prams.size = 34;
-        prams.color = Color.ORANGE;
+        prams.color = Color.BLUE;
         font = generator.generateFont(prams);
 
         kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));

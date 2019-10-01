@@ -1226,7 +1226,8 @@ public class Shop implements Screen, VideoEventListener {
 
     @Override
     public void onRewardedEvent(String type, int amount) {
-        AllVariables.kusaCoin+=150;
+        //AllVariables.openApps.MakeToast("150 kusacoin collected");
+        AllVariables.kusaCoin += 150;
     }
 
     @Override
