@@ -42,7 +42,7 @@ public class AreaSelection implements Screen {
 
     Texture bg, kusaCoin;
 
-    BitmapFont font;
+    BitmapFont font, font2;
 
     Boolean zoomIn;
 
@@ -74,12 +74,18 @@ public class AreaSelection implements Screen {
         AreaList = new LinkedList<Sprite>();
 
         font = new BitmapFont();
-
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
         prams.size = 34;
-        prams.color = Color.ORANGE;
+        prams.color = Color.BLUE;
         font = generator.generateFont(prams);
+
+        font2 = new BitmapFont();
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
+        prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 200;
+        prams.color = Color.BLUE;
+        font2 = generator.generateFont(prams);
 
         kusaCoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
 
@@ -112,7 +118,6 @@ public class AreaSelection implements Screen {
         backToPrevScreen.setPosition(0, 720-128);
 
         bg = new Texture(Gdx.files.internal("AreaSelection/bg.jpg"));
-
 
 
         //first 3
@@ -196,6 +201,8 @@ public class AreaSelection implements Screen {
         AllVariables.batch.draw(kusaCoin, 620, 630, 80,80);
         font.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 700, 680);
 
+
+        font.draw(AllVariables.batch, "+" + "200", 270, 620);
 
 
         AllVariables.batch.end();
