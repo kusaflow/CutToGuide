@@ -284,8 +284,6 @@ public class AreaSelection implements Screen {
     }
 
     private void input(float dt){
-
-        System.out.println(AllVariables.showRewardForInsta + "\t" + AllVariables.showRewardFortwitter);
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
                     @Override

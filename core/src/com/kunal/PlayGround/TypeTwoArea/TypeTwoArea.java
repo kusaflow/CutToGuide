@@ -35,18 +35,15 @@ import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedController;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.VariablesForPlayArea;
-import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.constScreen.ShapeChooser;
 import com.kunal.PlayGround.constScreen.levelUpScreen.LevelCompleted;
 import com.kunal.PlayGround.hint2.Hint2shapeDrawer;
+import com.kunal.PlayGround.hintToGuide.HintsToGuide;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpMngr;
 import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
-import com.kunal.utils.slideShow.simpleSlideShow;
-import com.kunal.utils.slideShow.slideShow;
-import java.util.LinkedList;
 import java.util.Random;
 
 
@@ -58,7 +55,7 @@ public class TypeTwoArea implements Screen {
     private OrthographicCamera cam;
     private Viewport port;
 
-    BitmapFont Font;
+    BitmapFont Font, guideFont;
 
     private Sprite Brake, start, chooseBody, MoveToDustBin, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex,
@@ -169,6 +166,14 @@ public class TypeTwoArea implements Screen {
         prams.size = 50;
         prams.color = Color.BLUE;
         Font = generator.generateFont(prams);
+
+        guideFont = new BitmapFont();
+        generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
+        prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
+        prams.size = 50;
+        prams.color = Color.BLACK;
+        guideFont = generator.generateFont(prams);
+
 
         //for testing
         //AllVariables.PresentAreaNumber = 101;
@@ -545,6 +550,8 @@ public class TypeTwoArea implements Screen {
 
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
+
+        HintsToGuide.renterText(guideFont);
 
         AllVariables.batch.begin();
         if (!VariablesForPlayArea.halfSawList.isEmpty())
