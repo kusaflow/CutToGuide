@@ -146,6 +146,29 @@ public class MainGame extends Game {
 			AllVariables.kusaCoin = new Long(kusaCoin.readString());
 		}
 
+
+		try {
+			if (!Gdx.files.local("TextFilesToDelete/followme").exists()) {
+				FileHandle follow = Gdx.files.local("TextFilesToDelete/followme");
+				String data = "0\n0";
+				follow.writeString(data, false);
+			} else {
+				FileHandle follow = Gdx.files.local("TextFilesToDelete/followme");
+				char[] d = follow.readString().toCharArray();
+				if (d[0] == '1') {
+					AllVariables.showRewardForInsta = false;
+				} else {
+					AllVariables.showRewardForInsta = true;
+				}
+
+				if (d[2] == '1') {
+					AllVariables.showRewardFortwitter = false;
+				} else {
+					AllVariables.showRewardFortwitter = true;
+				}
+			}
+		}catch (Exception e){}
+
 		AllVariables.unlockedCoin = new LinkedList<Byte>();
 
 		AllVariables.unlockedBar = new LinkedList<Byte>();

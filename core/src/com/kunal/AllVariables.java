@@ -35,6 +35,9 @@ public class AllVariables {
     //the coins in the game I will call them KusaCoin
     public static long kusaCoin = 100;
 
+    //extra coins to follow me
+    public static boolean showRewardForInsta = true, showRewardFortwitter= true;
+
     public static AdVideoInterface adv = null;
 
     public static openOtherApps openApps = null;

@@ -46,6 +46,8 @@ public class AreaSelection implements Screen {
 
     Boolean zoomIn;
 
+    short showRewardVal = 0;
+
 
     public AreaSelection(MainGame game, Boolean doZoomIn) {
         this.game = game;
@@ -59,6 +61,13 @@ public class AreaSelection implements Screen {
 
         cam = new OrthographicCamera();
         cam.setToOrtho(false, AllVariables.WIDTH, AllVariables.HEIGHT);
+
+        if (AllVariables.showRewardForInsta){
+            showRewardVal+=100;
+        }
+        if (AllVariables.showRewardFortwitter){
+            showRewardVal+=100;
+        }
 
         /*if (zoomIn) {
             cam.zoom = -4;
@@ -201,8 +210,10 @@ public class AreaSelection implements Screen {
         AllVariables.batch.draw(kusaCoin, 620, 630, 80,80);
         font.draw(AllVariables.batch, ">"+AllVariables.kusaCoin, 700, 680);
 
-
-        font.draw(AllVariables.batch, "+" + "200", 270, 620);
+        if (AllVariables.showRewardFortwitter || AllVariables.showRewardForInsta) {
+            AllVariables.batch.draw(kusaCoin, 292, 585, 50,50);
+            font.draw(AllVariables.batch, "+" + "     " + showRewardVal, 270, 620);
+        }
 
 
         AllVariables.batch.end();
@@ -274,6 +285,7 @@ public class AreaSelection implements Screen {
 
     private void input(float dt){
 
+        System.out.println(AllVariables.showRewardForInsta + "\t" + AllVariables.showRewardFortwitter);
         Gdx.input.setInputProcessor(
                 new InputProcessor() {
                     @Override

@@ -2,6 +2,7 @@ package com.kunal.credit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -20,7 +21,7 @@ public class credits implements Screen {
     OrthographicCamera cam;
     Viewport port;
 
-    private Texture cross, insta, twitter;
+    private Texture cross, insta, twitter, kusacoin;
     BitmapFont font;
 
 
@@ -32,6 +33,8 @@ public class credits implements Screen {
 
         port = new FitViewport(AllVariables.WIDTH, AllVariables.HEIGHT, cam);
 
+        kusacoin = new Texture(Gdx.files.internal("utils/kusaCoin.png"));
+
         cross = new Texture(Gdx.files.internal("utils/hudX.png"));
 
         insta = new Texture(Gdx.files.internal("referenceAppLogos/insta.png"));
@@ -42,7 +45,7 @@ public class credits implements Screen {
         FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/font2.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter prams = new FreeTypeFontGenerator.FreeTypeFontParameter();
         prams.size = 30;
-        prams.color = Color.ORANGE;
+        prams.color = Color.WHITE;
         font = generator.generateFont(prams);
 
 
@@ -76,6 +79,17 @@ public class credits implements Screen {
         font.draw(AllVariables.batch,"@kusaflow", 350,250+100);
         font.draw(AllVariables.batch,"@kusaflow", 850,250+100);
 
+        font.setColor(Color.WHITE);
+        if (AllVariables.showRewardForInsta){
+            AllVariables.batch.draw(kusacoin, 218, 395, 50,50);
+            font.draw(AllVariables.batch, "+" + "         100", 200, 430);
+        }
+        if (AllVariables.showRewardFortwitter){
+            AllVariables.batch.draw(kusacoin, 718, 395, 50,50);
+            font.draw(AllVariables.batch, "+" + "         100", 700, 430);
+        }
+        font.setColor(Color.ORANGE);
+
 
 
         AllVariables.batch.end();
@@ -99,6 +113,10 @@ public class credits implements Screen {
                     Gdx.input.getX() < (440* AllVariables.inpM) + AllVariables.witdth_translation &&
                     Gdx.input.getY() >= 290 * AllVariables.inpM && Gdx.input.getY() < 530 * AllVariables.inpM) {
                 //dispose();
+                if (AllVariables.showRewardForInsta) {
+                    AllVariables.showRewardForInsta = false;
+                    writeFile("insta");
+                }
                 try {
                     AllVariables.openApps.OpenApp("https://www.instagram.com/kusaflow/?igshid=8y5b86e3yp6f");
                 }catch (Exception e){}
@@ -108,12 +126,29 @@ public class credits implements Screen {
                     Gdx.input.getX() < (1025* AllVariables.inpM) + AllVariables.witdth_translation &&
                     Gdx.input.getY() >= 290 * AllVariables.inpM && Gdx.input.getY() < 530 * AllVariables.inpM) {
                 //dispose();
+                if (AllVariables.showRewardFortwitter) {
+                    AllVariables.showRewardFortwitter = false;
+                    writeFile("twitter");
+                }
                 try {
                     AllVariables.openApps.OpenApp("https://twitter.com/kusaflow?s=08");
                 }catch (Exception e){}
 
             }
         }
+    }
+
+    private void writeFile(String s){
+        FileHandle file = Gdx.files.local("TextFilesToDelete/followme");
+        char[] d = file.readString().toCharArray();
+        if (s.equals("twitter")){
+            d[2] = '1';
+            file.writeString(new String(d),false);
+        }else {
+            d[0] = '1';
+            file.writeString(new String(d),false);
+        }
+
     }
 
     @Override
