@@ -23,7 +23,15 @@ more optimization
 hint 1 remastered
 hint 2 remastered
 /////////////////////////////////////////////////////////////////////
-
+2.1.0
+210
+full ui update
+slow motion
+rewarded videos
+more optimization
+hint 1 remastered
+hint 2 remastered
+/////////////////////////////////////////////////////////////////////
 
 
 

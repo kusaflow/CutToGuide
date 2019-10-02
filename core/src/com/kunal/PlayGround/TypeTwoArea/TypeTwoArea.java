@@ -551,7 +551,7 @@ public class TypeTwoArea implements Screen {
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
 
-        HintsToGuide.renterText(guideFont);
+        //HintsToGuide.renterText(guideFont);
 
         AllVariables.batch.begin();
         if (!VariablesForPlayArea.halfSawList.isEmpty())
@@ -575,9 +575,9 @@ public class TypeTwoArea implements Screen {
         //---------------------
 
         if (startBool && !VariablesForPlayArea.gameOver) {
-            retryWhenStarted.draw(AllVariables.batch);
-            ZoomOutCam.draw(AllVariables.batch);
-            Brake.draw(AllVariables.batch);
+            retryWhenStarted.draw(AllVariables.batch);//=====================================
+            ZoomOutCam.draw(AllVariables.batch);//=======================================
+            Brake.draw(AllVariables.batch);//==========================================
         }
         else if(VariablesForPlayArea.gameOver){}
         else {
@@ -596,7 +596,7 @@ public class TypeTwoArea implements Screen {
             per45degRot.draw(AllVariables.batch);
         }
 
-        posMap.draw(AllVariables.batch);
+        //posMap.draw(AllVariables.batch);
         //coin
         coin1.draw(AllVariables.batch);
         coin2.draw(AllVariables.batch);
@@ -709,10 +709,6 @@ public class TypeTwoArea implements Screen {
 
         }
 
-        if (hintOneTaken && paused){
-            AllVariables.bitmapFont.draw(AllVariables.batch, "Hint 1 enabled go \nto CuttingArea to get help" ,
-                    300+(cam.position.x - AllVariables.WIDTH/2), 150+(cam.position.y -AllVariables.HEIGHT/2));
-        }
 
         Font.draw(AllVariables.batch,AllVariables.PresentAreaNumber+"-"+AllVariables.PresentLevelNumber,
                 1400+(cam.position.x - AllVariables.WIDTH/2), 850+(cam.position.y -AllVariables.HEIGHT/2));
@@ -797,6 +793,8 @@ public class TypeTwoArea implements Screen {
 
         //extra update
         updateExtra.update(world, dt);
+
+
 
 
         //ends here
