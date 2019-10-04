@@ -28,25 +28,25 @@ import java.util.LinkedList;
 
 public class AreaSelection implements Screen {
 
-    MainGame game;
+    private MainGame game;
 
-    LinkedList<Sprite> AreaList;
-    OrthographicCamera cam;
-    Viewport port;
+    private LinkedList<Sprite> AreaList;
+    private OrthographicCamera cam;
+    private Viewport port;
 
-    Sprite shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial, repair;
+    private Sprite shop, credit, backToPrevScreen, showMoreLevelsOnRight, showMoreLevelsOnLeft, Tutorial, repair;
 
-    short LevelState=0;
+    private short LevelState=0;
 
-    float positionY, transparency;
+    private float positionY, transparency;
 
-    Texture bg, kusaCoin;
+    private Texture bg, kusaCoin;
 
-    BitmapFont font, font2;
+    private BitmapFont font, font2;
 
-    Boolean zoomIn;
+    private Boolean zoomIn;
 
-    short showRewardVal = 0;
+    private short showRewardVal = 0;
 
 
     public AreaSelection(MainGame game, Boolean doZoomIn) {
@@ -221,9 +221,9 @@ public class AreaSelection implements Screen {
     }
 
     private void update(float dt){
-
+/*
         //initial zoom in/out animation;
-        /*if (cam.zoom != 1) {
+        if (cam.zoom != 0) {
             if (zoomIn) {
                 if (cam.zoom == -1) {
                     cam.rotate(180);
@@ -234,8 +234,27 @@ public class AreaSelection implements Screen {
             } else {
                 cam.zoom = cam.zoom - 0.5f;
             }
+        }else {
+            cam.zoom = 0.0f;
         }*/
 
+        /*// animation for starting
+        if (zoomIn) {
+            if (cam.zoom <= 0) {
+                if (cam.zoom == -1) {
+                    cam.rotate(180);
+                    cam.zoom = 1;
+                } else {
+                    cam.zoom = cam.zoom + 0.1f;
+                }
+            }
+        } else {
+            cam.zoom = cam.zoom - 0.5f;
+        }
+
+
+        System.out.println(cam.zoom);
+*/
         //System.out.println(LevelState);
         if (transparency >= 1){
 

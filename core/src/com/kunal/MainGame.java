@@ -280,8 +280,8 @@ public class MainGame extends Game {
 			AllVariables.kusaCoin *=-1;
 		}
 
-		this.setScreen(new MainLoadingScreen(this));
-		//this.setScreen(new temp(this));
+		//this.setScreen(new MainLoadingScreen(this));
+		this.setScreen(new temp(this));
 
 
 	}
