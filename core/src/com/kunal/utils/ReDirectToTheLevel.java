@@ -773,6 +773,18 @@ public class ReDirectToTheLevel {
             }
         }
 
+        //area 2-----------------------------------------------------------
+        else if (AllVariables.PresentAreaNumber == 2){
+            if (AllVariables.PresentLevelNumber == 1) {
+                VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
+                VariablesForPlayArea.endPoint.x = 1200;
+                VariablesForPlayArea.endPoint.y = 5600;
+
+                game.setScreen(new TypeTwoArea(game, restarted));
+            }
+
+        }
+
         return;
 
 

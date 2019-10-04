@@ -17,60 +17,76 @@ public class TiledMapLoadingHelper {
             return 2;
         }
 
+
         //area one ------------------------------------------------------
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
-            return 1;
-        }
+        if (AllVariables.PresentAreaNumber == 1) {
+            if (AllVariables.PresentLevelNumber == 1) {
+                return 1;
+            }
 
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber == 2){
-            return 6;
-        }
+            if (AllVariables.PresentLevelNumber == 2) {
+                return 6;
+            }
 
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber == 3){
-            return 8;
-        }
+            if (AllVariables.PresentLevelNumber == 3) {
+                return 8;
+            }
 
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber == 4){
-            return 8;
-        }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber == 5){
-            return 11;
-        }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
-            return 6;
-        }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
-            return 3;
-        }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 8){
-            return 10;
-        }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 9){
-            return 15;
-        }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 10){
-            return 10;
-        }
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
-            return 12;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 12){
-            return 15;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 13){
-            return 20;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 14){
-            return 11;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 15){
-            return 17;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 16){
-            return 19;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 17){
-            return 11;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 18){
-            return 21;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 19){
-            return 6;
-        }if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 20){
-            return 10;
+            if (AllVariables.PresentLevelNumber == 4) {
+                return 8;
+            }
+            if (AllVariables.PresentLevelNumber == 5) {
+                return 11;
+            }
+            if (AllVariables.PresentLevelNumber == 6) {
+                return 6;
+            }
+            if (AllVariables.PresentLevelNumber == 7) {
+                return 3;
+            }
+            if (AllVariables.PresentLevelNumber == 8) {
+                return 10;
+            }
+            if (AllVariables.PresentLevelNumber == 9) {
+                return 15;
+            }
+            if (AllVariables.PresentLevelNumber == 10) {
+                return 10;
+            }
+            if (AllVariables.PresentLevelNumber == 11) {
+                return 12;
+            }
+            if (AllVariables.PresentLevelNumber == 12) {
+                return 15;
+            }
+            if (AllVariables.PresentLevelNumber == 13) {
+                return 20;
+            }
+            if (AllVariables.PresentLevelNumber == 14) {
+                return 11;
+            }
+            if (AllVariables.PresentLevelNumber == 15) {
+                return 17;
+            }
+            if (AllVariables.PresentLevelNumber == 16) {
+                return 19;
+            }
+            if (AllVariables.PresentLevelNumber == 17) {
+                return 11;
+            }
+            if (AllVariables.PresentLevelNumber == 18) {
+                return 21;
+            }
+            if (AllVariables.PresentLevelNumber == 19) {
+                return 6;
+            }
+            if (AllVariables.PresentLevelNumber == 20) {
+                return 10;
+            }
+        }else if (AllVariables.PresentAreaNumber == 2){
+            if (AllVariables.PresentLevelNumber == 1) {
+                return 1;
+            }
         }
 
         //area one end--------------------------------------------------
@@ -90,101 +106,98 @@ public class TiledMapLoadingHelper {
         //=================================================================
 
         //area one ------------------------------------------------------
-        if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 1){
-            pos.x = 6145;
-            pos.y = 510;
-            return pos;
+        if (AllVariables.PresentAreaNumber == 1) {
+            if (AllVariables.PresentLevelNumber == 1) {
+                pos.x = 6145;
+                pos.y = 510;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 2) {
+                pos.x = 6445;
+                pos.y = 510;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 3) {
+                pos.x = 5710;
+                pos.y = 608;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 4) {
+                pos.x = 6440;
+                pos.y = 511;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 5) {
+                pos.x = 6540;
+                pos.y = 511;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 6) {
+                pos.x = 7000;
+                pos.y = 511;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 7) {
+                pos.x = 9000;
+                pos.y = 765;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 8) {
+                pos.x = 9000;
+                pos.y = 512;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 9) {
+                pos.x = 9000;
+                pos.y = 512;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 10) {
+                pos.x = 9000;
+                pos.y = 540;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 11) {
+                pos.x = 9372;
+                pos.y = 380;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 12) {
+                pos.x = 9372;
+                pos.y = 380;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 13) {
+                pos.x = 9297;
+                pos.y = 322;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 14) {
+                pos.x = 9127;
+                pos.y = 317;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 15) {
+                pos.x = 8550;
+                pos.y = 472;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 16) {
+                pos.x = 9297;
+                pos.y = 322;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 17) {
+                pos.x = 9297;
+                pos.y = 322;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 18) {
+                pos.x = 9297;
+                pos.y = 322;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 19) {
+                pos.x = 8762;
+                pos.y = 857;
+                return pos;
+            } else if (AllVariables.PresentLevelNumber == 20) {
+                pos.x = 9297;
+                pos.y = 322;
+                return pos;
+            }
         }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 2){
-            pos.x = 6445;
-            pos.y = 510;
-            return pos;
+        //area 2---------------------------------------
+        if (AllVariables.PresentAreaNumber == 2){
+            if (AllVariables.PresentLevelNumber == 1) {
+                pos.x = 6145;
+                pos.y = 510;
+                return pos;
+            }
         }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 3){
-            pos.x = 5710;
-            pos.y = 608;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 4){
-            pos.x = 6440;
-            pos.y = 511;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 5){
-            pos.x = 6540;
-            pos.y = 511;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 6){
-            pos.x = 7000;
-            pos.y = 511;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 7){
-            pos.x = 9000;
-            pos.y = 765;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==8){
-            pos.x = 9000;
-            pos.y = 512;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==9){
-            pos.x = 9000;
-            pos.y = 512;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber==10){
-            pos.x = 9000;
-            pos.y = 540;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 11){
-            pos.x = 9372;
-            pos.y = 380;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 12){
-            pos.x = 9372;
-            pos.y = 380;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 13){
-            pos.x = 9297;
-            pos.y = 322;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 14){
-            pos.x = 9127;
-            pos.y = 317;
-            return pos;
-        }
-        else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 15){
-            pos.x = 8550;
-            pos.y = 472;
-            return pos;
-        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 16){
-            pos.x = 9297;
-            pos.y = 322;
-            return pos;
-        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 17){
-            pos.x = 9297;
-            pos.y = 322;
-            return pos;
-        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 18){
-            pos.x = 9297;
-            pos.y = 322;
-            return pos;
-        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 19){
-            pos.x = 8762;
-            pos.y = 857;
-            return pos;
-        }else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber== 20){
-            pos.x = 9297;
-            pos.y = 322;
-            return pos;
-        }
+
 
         return pos;
     }
