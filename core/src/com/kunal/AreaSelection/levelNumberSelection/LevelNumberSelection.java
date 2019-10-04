@@ -103,6 +103,8 @@ public class LevelNumberSelection implements Screen {
 
         if (AllVariables.PresentAreaNumber == 1) {
             bg = new Texture(Gdx.files.internal("LevelBG/one.jpg"));
+        }if (AllVariables.PresentAreaNumber == 2) {
+            bg = new Texture(Gdx.files.internal("LevelBG/one.jpg"));
         }
 
 

@@ -61,12 +61,12 @@ public class MainGame extends Game {
 			System.out.println("writing");
 		}
 		//creating local file
-		/*if (!Gdx.files.local("TextFilesToDelete/areas/area2").exists()){
+		if (!Gdx.files.local("TextFilesToDelete/areas/area2").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area2");
 			String data = "2\n1\n20\n000000000000000000000000000000\n" + "$";
 			savedata.writeString(data,true);
 			System.out.println("writing");
-		}*/
+		}
 		//creating local file
 		/*if (!Gdx.files.local("TextFilesToDelete/areas/area3").exists()){
 			FileHandle savedata = Gdx.files.local("TextFilesToDelete/areas/area3");
@@ -129,7 +129,44 @@ public class MainGame extends Game {
 					"000\n" +
 					"000\n" +
 					"000";
-			savedata.writeString(data,true);
+			savedata.writeString(data,false);
+			System.out.println("writing");
+		}
+
+		//area 2 hint 2
+		if (!Gdx.files.local("TextFilesToDelete/hints/area2/log").exists()){
+			FileHandle savedata = Gdx.files.local("TextFilesToDelete/hints/area2/log");
+			String data = "000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000\n" +
+					"000";
+			savedata.writeString(data,false);
 			System.out.println("writing");
 		}
 

@@ -457,8 +457,11 @@ public class AreaSelection implements Screen {
 
                             if(LevelState == 0){
                                 //System.out.println("Area 2");
-                                //dispose();
-                                //AllVariables.PresentAreaNumber = 2;
+                                dispose();
+                                AllVariables.PresentAreaNumber = 2;
+
+                                Gdx.input.setInputProcessor(null);
+                                game.setScreen(new LevelNumberSelection(game));
                             }
                             else if (LevelState == 1){
                                 //System.out.println("Area 5");
