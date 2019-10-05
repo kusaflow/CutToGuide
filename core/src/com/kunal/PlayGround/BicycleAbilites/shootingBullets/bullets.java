@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
+import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class bullets {
     int xdesPos, ydesPos;
@@ -14,6 +15,8 @@ public class bullets {
     Sprite bulletTex;
     Vector2 velocity;
     float initPosX, initPosY;
+
+    int speed = 1000;
 
     OrthographicCamera camera;
 
@@ -28,25 +31,32 @@ public class bullets {
 
         velocity = new Vector2(0,0);
 
-        xdesPos = xdes;
-        ydesPos = ydes;
-
         //initPosX = 850 + xdes;
-        initPosX = ((((((715 - AllVariables.witdth_translation) / AllVariables.inpM) * 1.4f + (cam.position.x - AllVariables.WIDTH / 2f))) - 280));
+        //initPosX = ((((((750 - AllVariables.witdth_translation) / AllVariables.inpM) * 1.4f + (cam.position.x - AllVariables.WIDTH / 2f))) - 280));
         //initPosY = 650 + ydes;
-        initPosY = (((317 / AllVariables.inpM) * 1.4f - 200 + (cam.position.y - AllVariables.HEIGHT / 2f))+20);
+        //initPosY = (((350 / AllVariables.inpM) * 1.4f - 200 + (cam.position.y - AllVariables.HEIGHT / 2f))+20);
+        initPosX = AllVariables.FrontWheel.getPosition().x * 100;
+        initPosY = AllVariables.FrontWheel.getPosition().y * 100;
+
+        xdesPos = (int) (xdes);// - initPosX);
+        ydesPos = (int) (ydes);// - initPosY);
+
         bulletTex.setPosition(initPosX, initPosY);
 
     }
 
     public void update(float dt) {
-        angle = (float) Math.atan2(ydesPos-bulletTex.getY(), xdesPos - bulletTex.getX());
-        velocity.set((float)Math.cos(angle) * 100, (float)Math.sin(angle)*100);
+        angle = (float) Math.atan2(ydesPos, xdesPos);
+        if (!VariablesForPlayArea.doSlowMo) {
+            velocity.set((float) Math.cos(angle) * speed, (float) Math.sin(angle) * speed);
+        }else {
+            velocity.set((float) Math.cos(angle) * speed/10, (float) Math.sin(angle) * speed/10);
+        }
 
         //bulletTex.setPosition(bulletTex.getX() + velocity.x * dt,  bulletTex.getY() + velocity.y * dt);
         initPosX += velocity.x * dt;
         initPosY += velocity.y * dt;
-        //bulletTex.setPosition(initPosX, initPosY);
+        bulletTex.setPosition(initPosX, initPosY);
         bulletTex.setRotation(angle * MathUtils.radiansToDegrees);
     }
 
