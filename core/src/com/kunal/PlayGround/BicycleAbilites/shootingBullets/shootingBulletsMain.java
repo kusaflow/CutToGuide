@@ -7,12 +7,16 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
+import java.util.LinkedList;
+
 public class shootingBulletsMain {
 
     OrthographicCamera cam;
     Sprite aim;
     short alpha = 0;
     boolean doIncreaseAplhaOfAim;
+    LinkedList<bullets> bulletsList;
+    bullets bulletsObj;
 
     public shootingBulletsMain(OrthographicCamera camera){
         cam = camera;
@@ -22,15 +26,23 @@ public class shootingBulletsMain {
         aim = new Sprite(new Texture(Gdx.files.internal("playArea/bicycleAbilites/shootingBullets/aim.png")));
         aim.setPosition(0,0);
 
+        bulletsList = new LinkedList<bullets>();
+
+
     }
 
-    public void render(){
+    public void render(float dt){
         AllVariables.batch.begin();
         aim.draw(AllVariables.batch);
+        for (int i =0; i<bulletsList.size(); i++){
+            bulletsList.get(i).update(dt);
+            bulletsList.get(i).getBullet().draw(AllVariables.batch);
+        }
         AllVariables.batch.end();
     }
 
     public void update(){
+
         if (doIncreaseAplhaOfAim){
             if (alpha<100){
                 alpha+=10;
@@ -43,7 +55,7 @@ public class shootingBulletsMain {
     }
 
     public void shoot(int x, int y){
-        //System.out.println("shooting bullets and we have "+ VariablesForPlayArea.bulletsHave + " bullets");
+        //System.out.println(x + "\t" + y);
 
         //place the aim
         //doIncreaseAplhaOfAim = true;
@@ -55,6 +67,10 @@ public class shootingBulletsMain {
     }
 
     public void fire(int x, int y){
+
+        //starting point for bicycle
+        //850 630
+
         //System.out.println("shooting bullets and we have "+ VariablesForPlayArea.bulletsHave + " bullets");
 
         //place the aim
@@ -64,6 +80,12 @@ public class shootingBulletsMain {
         doIncreaseAplhaOfAim = true;
         alpha = 0;
         aim.setScale(1);
+
+        //bullet.setPosition(AllVariables.FrontWheel.getPosition().x * 100, AllVariables.FrontWheel.getPosition().y*100);
+        bulletsObj = new bullets(x - 715, y-317, cam);
+
+        bulletsList.add(bulletsObj);
+
 
     }
 

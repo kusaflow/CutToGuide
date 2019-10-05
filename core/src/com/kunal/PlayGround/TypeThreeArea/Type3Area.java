@@ -732,7 +732,7 @@ public class Type3Area implements Screen {
         AllVariables.batch.end();
 
         //bicycle shooting
-        shooting.render();
+        shooting.render(dt);
 
 
     }
@@ -1174,7 +1174,7 @@ public class Type3Area implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
-                        //System.out.println(screenX + "\t" + screenY);
+                        System.out.println(screenX + "\t" + screenY);
 
                         if (VariablesForPlayArea.gameOver) {
                             //menu
