@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.TypeThreeArea.Type3Area;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.constScreen.CuttingArea.CuttingAreaManager;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -360,6 +361,12 @@ public class ShapeChooser implements Screen {
                         try {
                             dispose();
                             game.setScreen(new TypeTwoArea(game, false));
+                        }catch (Exception e){}
+
+                    }if (AllVariables.PresentAreaNumber == 2){
+                        try {
+                            dispose();
+                            game.setScreen(new Type3Area(game, false));
                         }catch (Exception e){}
 
                     }

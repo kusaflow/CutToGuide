@@ -33,6 +33,9 @@ public class VariablesForPlayArea {
     public static Boolean HintTwoEnabled = false;
 
 
+    public static short bulletsHave = 0;
+
+
 
     public static byte starsGained =0;
 
@@ -58,6 +61,9 @@ public class VariablesForPlayArea {
     public static byte shapeNumberSelected = 25 ;
 
     public static String LevelMapToBeLoaded = "";
+
+    //do slowmo
+    public static boolean doSlowMo = false;
 
     //tut state
     public static short tutstep = 0;
@@ -109,6 +115,8 @@ public class VariablesForPlayArea {
         speedCtrlList = new LinkedList<SpeedControllerVariables>();
         dirRevList = new LinkedList<DirectionReverseVariables>();
 
+        //bullets
+        bulletsHave = 0;
 
         //all big squre Points
         BigSqurePoints[0][0] = 430;
@@ -157,6 +165,9 @@ public class VariablesForPlayArea {
         Sh_pos.clear();
 
         Sh_pos.add(new Vector2(640f/AllVariables.PPM, -3000f/AllVariables.PPM));
+
+        bulletsHave = 0;
+        doSlowMo = false;
 
         cantuseDots.clear();
         cantuseDots.add((byte) 5);

@@ -781,6 +781,8 @@ public class ReDirectToTheLevel {
                 VariablesForPlayArea.endPoint.x = 1200;
                 VariablesForPlayArea.endPoint.y = 5600;
 
+                VariablesForPlayArea.bulletsHave = 3;
+
                 game.setScreen(new Type3Area(game, restarted));
             }
 

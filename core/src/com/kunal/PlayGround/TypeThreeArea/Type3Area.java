@@ -25,6 +25,7 @@ import com.badlogic.gdx.utils.viewport.Viewport;
 import com.kunal.AllVariables;
 import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
+import com.kunal.PlayGround.BicycleAbilites.shootingBullets.shootingBulletsMain;
 import com.kunal.PlayGround.ExtraUpdateMethods;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
@@ -124,6 +125,10 @@ public class Type3Area implements Screen {
     //extra update methods
     ExtraUpdateMethods updateExtra;
 
+
+    //for shooting
+    shootingBulletsMain shooting;
+
     public Type3Area(MainGame game, Boolean reset) {
         this.game = game;
 
@@ -148,6 +153,9 @@ public class Type3Area implements Screen {
         updateExtra = new ExtraUpdateMethods();
 
         levelCompleteCAmMove = false;
+
+        //shooting
+        shooting = new shootingBulletsMain(cam);
 
         hintOneTaken = VariablesForPlayArea.HintOneEnabled;
         hintTwoTaken = VariablesForPlayArea.HintTwoEnabled;
@@ -720,6 +728,10 @@ public class Type3Area implements Screen {
 
         AllVariables.batch.end();
 
+        //bicycle shooting
+        shooting.render();
+
+
     }
 
 
@@ -798,6 +810,9 @@ public class Type3Area implements Screen {
 
         //extra update
         updateExtra.update(world, dt);
+
+        //shooting update
+        shooting.update();
 
 
 
@@ -1156,7 +1171,7 @@ public class Type3Area implements Screen {
                     @Override
                     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
-                        System.out.println(screenX + "\t" + screenY);
+                        //System.out.println(screenX + "\t" + screenY);
 
                         if (VariablesForPlayArea.gameOver) {
                             //menu
@@ -1211,8 +1226,14 @@ public class Type3Area implements Screen {
                                     && screenX < (140 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM){
                                 ZoomOutBool = true;
-                                return false;
+                                return true;
                             }
+
+                            //shooting bullets
+                            VariablesForPlayArea.doSlowMo = true;
+                            shooting.shoot(screenX, screenY);
+                            return true;
+
                         }
 
                         if(!startBool && !startAnimToMoveCycle) {
@@ -1361,6 +1382,7 @@ public class Type3Area implements Screen {
                         screenY = Gdx.graphics.getHeight() - screenY;
 
                         ZoomOutBool = false;
+                        VariablesForPlayArea.doSlowMo = false;
 
                         if (brakeBool) {
                             Brake.setAlpha(0.4f);

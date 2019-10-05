@@ -43,16 +43,33 @@ public class ExtraUpdateMethods {
             }
         }
 
-        if (slowmo){
-            if (time+1000 >= System.currentTimeMillis()){
-                world.step(1 / 1000f, 6, 2);
-            }else {
-                world.step(1 / (1 / dt), 6, 2);
+        if (AllVariables.PresentAreaNumber >= 2){
+            if (VariablesForPlayArea.doSlowMo){
+                world.step(1 / 500f, 6, 2);
+            }else{
+                if (slowmo) {
+                    if (time + 1000 >= System.currentTimeMillis()) {
+                        world.step(1 / 1000f, 6, 2);
+                    } else {
+                        world.step(1 / (1 / dt), 6, 2);
 
+                    }
+                } else {
+                    world.step(1 / (1 / dt), 6, 2);
+                }
             }
-
         }else {
-            world.step(1 / (1 / dt), 6, 2);
+            // for area one
+            if (slowmo) {
+                if (time + 1000 >= System.currentTimeMillis()) {
+                    world.step(1 / 1000f, 6, 2);
+                } else {
+                    world.step(1 / (1 / dt), 6, 2);
+
+                }
+            } else {
+                world.step(1 / (1 / dt), 6, 2);
+            }
         }
 
 
