@@ -24,6 +24,7 @@ public class shootingBulletsMain {
         alpha = 0;
         doIncreaseAplhaOfAim = false;
         aim = new Sprite(new Texture(Gdx.files.internal("playArea/bicycleAbilites/shootingBullets/aim.png")));
+        aim.setOriginCenter();
         aim.setPosition(0,0);
 
         bulletsList = new LinkedList<bullets>();

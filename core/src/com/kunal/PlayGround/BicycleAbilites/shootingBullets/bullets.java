@@ -27,7 +27,9 @@ public class bullets {
         bulletTex = new Sprite(new Texture(Gdx.files.internal("playArea/bicycleAbilites/shootingBullets/bulletForBicycle.png")));
         //bulletTex.setPosition(((((((xdes - AllVariables.witdth_translation) / AllVariables.inpM) * 1.4f + (cam.position.x - AllVariables.WIDTH / 2f))) - 280)),
           //      (((ydes / AllVariables.inpM) * 1.4f - 200 + (cam.position.y - AllVariables.HEIGHT / 2f))+20));
+        bulletTex.setOriginCenter();
         bulletTex.setPosition(0,0);
+
 
         velocity = new Vector2(0,0);
 
@@ -38,8 +40,8 @@ public class bullets {
         initPosX = AllVariables.FrontWheel.getPosition().x * 100;
         initPosY = AllVariables.FrontWheel.getPosition().y * 100;
 
-        xdesPos = (int) (xdes);// - initPosX);
-        ydesPos = (int) (ydes);// - initPosY);
+        xdesPos = (int) (xdes);
+        ydesPos = (int) (ydes);
 
         bulletTex.setPosition(initPosX, initPosY);
 
