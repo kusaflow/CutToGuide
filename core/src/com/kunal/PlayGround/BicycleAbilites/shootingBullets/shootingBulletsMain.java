@@ -46,10 +46,24 @@ public class shootingBulletsMain {
         //System.out.println("shooting bullets and we have "+ VariablesForPlayArea.bulletsHave + " bullets");
 
         //place the aim
-        doIncreaseAplhaOfAim = true;
-        alpha = 0;
+        //doIncreaseAplhaOfAim = true;
+        alpha = 70;
+        aim.setScale(3);
         aim.setPosition((((((x - AllVariables.witdth_translation) / AllVariables.inpM) * 1.4f + (cam.position.x - AllVariables.WIDTH / 2))) - 280),
                 (((y / AllVariables.inpM) * 1.4f - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20));
+
+    }
+
+    public void fire(int x, int y){
+        //System.out.println("shooting bullets and we have "+ VariablesForPlayArea.bulletsHave + " bullets");
+
+        //place the aim
+        aim.setPosition((((((x - AllVariables.witdth_translation) / AllVariables.inpM) * 1.4f + (cam.position.x - AllVariables.WIDTH / 2))) - 280),
+                (((y / AllVariables.inpM) * 1.4f - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20));
+
+        doIncreaseAplhaOfAim = true;
+        alpha = 0;
+        aim.setScale(1);
 
     }
 

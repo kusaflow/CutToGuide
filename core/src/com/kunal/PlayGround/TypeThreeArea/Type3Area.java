@@ -82,6 +82,9 @@ public class Type3Area implements Screen {
     //temp Rotation Folder for shapes
     float tempRotForShape;
 
+    //set aim
+    boolean setAim = false;
+
     //tiled map
     private TiledMap map;
     private OrthogonalTiledMapRenderer tmr;
@@ -1201,9 +1204,9 @@ public class Type3Area implements Screen {
 
                         if (startBool && !VariablesForPlayArea.gameOver) {
                             //for brake
-                            if (screenX > (1040* AllVariables.inpM)+AllVariables.witdth_translation
-                                    && screenX < (1230* AllVariables.inpM)+AllVariables.witdth_translation
-                                    && screenY > 140*AllVariables.inpM && screenY < 290*AllVariables.inpM) {
+                            if (screenX > (1040 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (1230 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 140 * AllVariables.inpM && screenY < 290 * AllVariables.inpM) {
                                 Brake.setAlpha(0.9f);
                                 brakeBool = true;
                                 return true;
@@ -1212,11 +1215,11 @@ public class Type3Area implements Screen {
                             //retry
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (130 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM){
+                                    && screenY > 600 * AllVariables.inpM && screenY < 700 * AllVariables.inpM) {
                                 try {
                                     dispose();
                                     ReDirectToTheLevel.Direct(game, true);
-                                }catch (Exception e){
+                                } catch (Exception e) {
                                     return false;
                                 }
                                 return true;
@@ -1224,7 +1227,7 @@ public class Type3Area implements Screen {
                             //zoomout
                             if (screenX > (55 * AllVariables.inpM) + AllVariables.witdth_translation
                                     && screenX < (140 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM){
+                                    && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM) {
                                 ZoomOutBool = true;
                                 return true;
                             }
@@ -1232,8 +1235,8 @@ public class Type3Area implements Screen {
                             //shooting bullets
                             VariablesForPlayArea.doSlowMo = true;
                             shooting.shoot(screenX, screenY);
+                            setAim = true;
                             return true;
-
                         }
 
                         if(!startBool && !startAnimToMoveCycle) {
@@ -1384,6 +1387,13 @@ public class Type3Area implements Screen {
                         ZoomOutBool = false;
                         VariablesForPlayArea.doSlowMo = false;
 
+                        if (setAim){
+                            shooting.fire(screenX, screenY);
+                            setAim = false;
+                        }
+
+
+
                         if (brakeBool) {
                             Brake.setAlpha(0.4f);
                             brakeBool = false;
@@ -1509,6 +1519,10 @@ public class Type3Area implements Screen {
                         screenY = Gdx.graphics.getHeight() - screenY;
 
                         //this else is placed to prevent drag to happen for cam when touched on cam buttin and if not then the shape drag will happen
+
+                        if (setAim){
+                            shooting.shoot(screenX, screenY);
+                        }
 
                         if (isCamScrollerTouched){
                             dragged_touchX = screenX;
