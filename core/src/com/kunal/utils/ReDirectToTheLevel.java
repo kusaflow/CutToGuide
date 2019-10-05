@@ -18,6 +18,7 @@ import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedController;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedControllerVariables;
 import com.kunal.PlayGround.Tutorial.InGameTutorial.BasicTutorial;
+import com.kunal.PlayGround.TypeThreeArea.Type3Area;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
@@ -780,7 +781,7 @@ public class ReDirectToTheLevel {
                 VariablesForPlayArea.endPoint.x = 1200;
                 VariablesForPlayArea.endPoint.y = 5600;
 
-                game.setScreen(new TypeTwoArea(game, restarted));
+                game.setScreen(new Type3Area(game, restarted));
             }
 
         }
