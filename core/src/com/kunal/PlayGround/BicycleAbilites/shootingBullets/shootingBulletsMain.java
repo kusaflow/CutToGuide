@@ -1,9 +1,11 @@
 package com.kunal.PlayGround.BicycleAbilites.shootingBullets;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
@@ -17,6 +19,7 @@ public class shootingBulletsMain {
     boolean doIncreaseAplhaOfAim;
     LinkedList<bullets> bulletsList;
     bullets bulletsObj;
+
 
     public shootingBulletsMain(OrthographicCamera camera){
         cam = camera;
@@ -40,6 +43,7 @@ public class shootingBulletsMain {
             bulletsList.get(i).getBullet().draw(AllVariables.batch);
         }
         AllVariables.batch.end();
+
     }
 
     public void update(){
@@ -83,7 +87,7 @@ public class shootingBulletsMain {
         aim.setScale(1);
 
         //bullet.setPosition(AllVariables.FrontWheel.getPosition().x * 100, AllVariables.FrontWheel.getPosition().y*100);
-        bulletsObj = new bullets(x - 715, y-317, cam);
+        bulletsObj = new bullets(x, y, cam);
 
         bulletsList.add(bulletsObj);
 

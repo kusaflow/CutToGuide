@@ -4,13 +4,14 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class bullets {
-    int xdesPos, ydesPos;
+    float xdesPos, ydesPos;
     float angle;
     Sprite bulletTex;
     Vector2 velocity;
@@ -40,15 +41,28 @@ public class bullets {
         initPosX = AllVariables.FrontWheel.getPosition().x * 100;
         initPosY = AllVariables.FrontWheel.getPosition().y * 100;
 
-        xdesPos = (int) (xdes);
-        ydesPos = (int) (ydes);
+        xdesPos =(((((xdes - AllVariables.witdth_translation) / AllVariables.inpM) * 1.4f + (cam.position.x - AllVariables.WIDTH / 2))) - 280);
+        ydesPos = (((ydes / AllVariables.inpM) * 1.4f - 200 + (cam.position.y - AllVariables.HEIGHT / 2))+20);
 
         bulletTex.setPosition(initPosX, initPosY);
+
+        /*
+        //let the bullet travel to infinity
+        float slope = (ydesPos - initPosY) / (xdesPos - initPosX);
+
+        float c = ydesPos - (slope*xdesPos);
+
+        xdesPos+= 1000;
+
+        ydesPos = slope * xdes + c;
+        */
+
+        angle = (float) Math.atan2(ydesPos - bulletTex.getY(), xdesPos - bulletTex.getX());
 
     }
 
     public void update(float dt) {
-        angle = (float) Math.atan2(ydesPos, xdesPos);
+        //angle = (float) Math.atan2(ydesPos - bulletTex.getY(), xdesPos - bulletTex.getX());
         if (!VariablesForPlayArea.doSlowMo) {
             velocity.set((float) Math.cos(angle) * speed, (float) Math.sin(angle) * speed);
         }else {
@@ -62,11 +76,11 @@ public class bullets {
         bulletTex.setRotation(angle * MathUtils.radiansToDegrees);
     }
 
-    public int getXdesPos() {
+    public float getXdesPos() {
         return xdesPos;
     }
 
-    public int getYdesPos() {
+    public float getYdesPos() {
         return ydesPos;
     }
 
