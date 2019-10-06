@@ -158,7 +158,7 @@ public class Type3Area implements Screen {
         levelCompleteCAmMove = false;
 
         //shooting
-        shooting = new shootingBulletsMain(cam);
+        shooting = new shootingBulletsMain(cam, world);
 
         hintOneTaken = VariablesForPlayArea.HintOneEnabled;
         hintTwoTaken = VariablesForPlayArea.HintTwoEnabled;

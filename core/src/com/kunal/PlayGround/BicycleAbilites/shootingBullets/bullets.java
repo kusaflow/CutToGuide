@@ -3,34 +3,57 @@ package com.kunal.PlayGround.BicycleAbilites.shootingBullets;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.World;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
+import com.kunal.utils.BodyGenerator;
 
 public class bullets {
     float xdesPos, ydesPos;
     float angle;
     Sprite bulletTex;
     Vector2 velocity;
+
+    ParticleEffect pe;
+
+
     float initPosX, initPosY;
 
     int speed = 1000;
 
+
     OrthographicCamera camera;
 
-    public bullets(int xdes, int ydes, OrthographicCamera cam){
+    World world;
+    Body body;
+
+    public bullets(int xdes, int ydes, OrthographicCamera cam, World world){
 
         camera = cam;
+
+        this.world = world;
+
+        body = BodyGenerator.BodyAssemble(world, true, "BicycleBullet",
+                new Vector2(AllVariables.BackWheel.getPosition().x*100, AllVariables.BackWheel.getPosition().x*100),
+                new Vector2(60,30), 0.5f,1,AllVariables.Bit_Tool, AllVariables.Bit_enimes);
+
+        pe = new ParticleEffect();
+        pe.load(Gdx.files.internal("particles/bullets/fireTail.p"), Gdx.files.internal(""));
+        //pe.getEmitters().first().setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
+        pe.start();
+        //pe.getEmitters().first().getAngle().setHigh(90,90);
+
 
         bulletTex = new Sprite(new Texture(Gdx.files.internal("playArea/bicycleAbilites/shootingBullets/bulletForBicycle.png")));
         //bulletTex.setPosition(((((((xdes - AllVariables.witdth_translation) / AllVariables.inpM) * 1.4f + (cam.position.x - AllVariables.WIDTH / 2f))) - 280)),
           //      (((ydes / AllVariables.inpM) * 1.4f - 200 + (cam.position.y - AllVariables.HEIGHT / 2f))+20));
         bulletTex.setOriginCenter();
-        bulletTex.setPosition(0,0);
-
 
         velocity = new Vector2(0,0);
 
@@ -59,6 +82,12 @@ public class bullets {
 
         angle = (float) Math.atan2(ydesPos - bulletTex.getY(), xdesPos - bulletTex.getX());
 
+        //pe.getEmitters().first().getAngle().setHigh(angle * MathUtils.radiansToDegrees,angle * MathUtils.radiansToDegrees);
+        pe.getEmitters().first().getAngle().setHigh(angle * MathUtils.radiansToDegrees);
+
+        //body.setTransform(body.getPosition().x, body.getPosition().y);
+
+
     }
 
     public void update(float dt) {
@@ -74,6 +103,28 @@ public class bullets {
         initPosY += velocity.y * dt;
         bulletTex.setPosition(initPosX, initPosY);
         bulletTex.setRotation(angle * MathUtils.radiansToDegrees);
+
+
+        //body
+        body.setTransform( (bulletTex.getX()+ bulletTex.getWidth()/2)/100 ,
+                (bulletTex.getY()+ bulletTex.getHeight()/2)/100,angle);
+
+
+        //particle
+        pe.getEmitters().first().setPosition(body.getPosition().x*100, body.getPosition().y*100);
+        //pe.getEmitters().first().setPosition();
+
+        pe.update(Gdx.graphics.getDeltaTime());
+
+
+        pe.draw(AllVariables.batch);
+
+
+        if (pe.isComplete())
+            pe.reset();
+
+
+
     }
 
     public float getXdesPos() {
@@ -90,5 +141,9 @@ public class bullets {
 
     public Sprite getBullet() {
         return bulletTex;
+    }
+
+    public void dispose(){
+        pe.dispose();
     }
 }

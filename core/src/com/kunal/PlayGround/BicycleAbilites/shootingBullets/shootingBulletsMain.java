@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.physics.box2d.World;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
@@ -20,9 +21,13 @@ public class shootingBulletsMain {
     LinkedList<bullets> bulletsList;
     bullets bulletsObj;
 
+    World world;
 
-    public shootingBulletsMain(OrthographicCamera camera){
+
+    public shootingBulletsMain(OrthographicCamera camera, World world){
         cam = camera;
+
+        this.world = world;
 
         alpha = 0;
         doIncreaseAplhaOfAim = false;
@@ -87,7 +92,7 @@ public class shootingBulletsMain {
         aim.setScale(1);
 
         //bullet.setPosition(AllVariables.FrontWheel.getPosition().x * 100, AllVariables.FrontWheel.getPosition().y*100);
-        bulletsObj = new bullets(x, y, cam);
+        bulletsObj = new bullets(x, y, cam, world);
 
         bulletsList.add(bulletsObj);
 

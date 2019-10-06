@@ -34,6 +34,8 @@ public class temp implements Screen {
         pe.getEmitters().first().setPosition(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2);
         pe.start();
 
+        //pe.getEmitters().first().getAngle().setLow(50);
+        pe.getEmitters().first().getAngle().setHigh(90,90);
 
 
 
@@ -68,7 +70,7 @@ public class temp implements Screen {
 
             //game.setScreen(new AreaOneClass(game));
 
-            //game.setScreen(new AreaSelection(game,true));
+            game.setScreen(new AreaSelection(game,true));
             //AllVariables.PresentAreaNumber = 1;
             //AllVariables.PresentLevelNumber = 1;
             //ReDirectToTheLevel.Direct(game);
