@@ -1,5 +1,6 @@
 package com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars;
 
+import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Joint;
 
 import java.util.LinkedList;
@@ -16,5 +17,10 @@ public class BreakableCandyBarVariables {
      */
     public LinkedList<Joint> joints;
     public int originX, originY;
-    public boolean
+    public short size=10;
+    public boolean contactHappend = false;
+    public boolean broken = false;
+
+    public Body controllingBoneEnd1, controllingBoneEnd2;
+
 }
