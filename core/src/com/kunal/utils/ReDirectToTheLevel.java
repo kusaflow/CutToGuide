@@ -791,10 +791,10 @@ public class ReDirectToTheLevel {
 
                 if (!restarted) {
                     breakableCandyBar = new BreakableCandyBarVariables();
-                    breakableCandyBar.length = 2;
-                    breakableCandyBar.type = 2;
-                    breakableCandyBar.originX = 500;
-                    breakableCandyBar.originY = 500;
+                    breakableCandyBar.length = 4;
+                    breakableCandyBar.type = 3;
+                    breakableCandyBar.originX = 800;
+                    breakableCandyBar.originY = 800;
                     breakableCandyBar.size = 15;
                     VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
                 }

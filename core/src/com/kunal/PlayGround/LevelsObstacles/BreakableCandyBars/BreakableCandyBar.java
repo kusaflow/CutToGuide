@@ -41,7 +41,7 @@ public class BreakableCandyBar {
             for (int j =0; j < VariablesForPlayArea.breakingCandyBar.get(i).length; j++){
                 body = BodyGenerator.BodyAssemble(world,false, "candyBar"+i,
                         new Vector2(VariablesForPlayArea.breakingCandyBar.get(i).originX ,
-                                VariablesForPlayArea.breakingCandyBar.get(i).originY ),
+                                VariablesForPlayArea.breakingCandyBar.get(i).originY - VariablesForPlayArea.breakingCandyBar.get(i).size*2),
                         new Vector2(VariablesForPlayArea.breakingCandyBar.get(i).size,VariablesForPlayArea.breakingCandyBar.get(i).size),
                         0.6f,0.8f, AllVariables.Bit_Tool, (short)(AllVariables.Bit_land | AllVariables.Bit_Bicycle | AllVariables.Bit_enimes | AllVariables.Bit_Tool));
                 VariablesForPlayArea.breakingCandyBar.get(i).body.add(body);
@@ -50,8 +50,10 @@ public class BreakableCandyBar {
                     rdef.bodyA = VariablesForPlayArea.breakingCandyBar.get(i).body.get(j-1);
                     rdef.bodyB = VariablesForPlayArea.breakingCandyBar.get(i).body.get(j);
                     rdef.collideConnected = true;
-                    rdef.localAnchorA.set(0,-VariablesForPlayArea.breakingCandyBar.get(i).size/AllVariables.PPM);
+                    rdef.localAnchorA.set(0,-1*VariablesForPlayArea.breakingCandyBar.get(i).size/AllVariables.PPM);
                     rdef.localAnchorB.set(0,VariablesForPlayArea.breakingCandyBar.get(i).size/AllVariables.PPM);
+                    rdef.lowerAngle = (float) (-0.1f * Math.PI);
+                    rdef.upperAngle = (float) (0.1f * Math.PI);
                     VariablesForPlayArea.breakingCandyBar.get(i).joints.add(world.createJoint(rdef));
                 }
             }
@@ -70,12 +72,12 @@ public class BreakableCandyBar {
                 VariablesForPlayArea.breakingCandyBar.get(i).endPart.setRotation(VariablesForPlayArea.breakingCandyBar.get(i).body.get(j).getAngle()* MathUtils.radiansToDegrees);
 
                 if (j==0 || j == VariablesForPlayArea.breakingCandyBar.get(i).length-1) {
-                    if (j == 0)
+                    if (j == 0) {
                         VariablesForPlayArea.breakingCandyBar.get(i).endPart.draw(AllVariables.batch);
-                    else{
-                        VariablesForPlayArea.breakingCandyBar.get(i).endPart.setRotation(180);
+                    }else{
+                        VariablesForPlayArea.breakingCandyBar.get(i).endPart.flip(true, true);
                         VariablesForPlayArea.breakingCandyBar.get(i).endPart.draw(AllVariables.batch);
-                        VariablesForPlayArea.breakingCandyBar.get(i).endPart.setRotation(0);
+                        VariablesForPlayArea.breakingCandyBar.get(i).endPart.flip(true, true);
                     }
                 } else {
                     VariablesForPlayArea.breakingCandyBar.get(i).midPart.draw(AllVariables.batch);

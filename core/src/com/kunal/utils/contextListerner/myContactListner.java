@@ -3,6 +3,7 @@ package com.kunal.utils.contextListerner;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 
 public class myContactListner implements ContactListener {
@@ -13,6 +14,8 @@ public class myContactListner implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
+        Fixture A = contact.getFixtureA();
+        Fixture B = contact.getFixtureB();
 
     }
 
