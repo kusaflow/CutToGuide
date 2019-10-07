@@ -402,7 +402,7 @@ public class Type3Area implements Screen {
 
         //candy World
         if (!VariablesForPlayArea.breakingCandyBar.isEmpty())
-            candyBar = new BreakableCandyBar();
+            candyBar = new BreakableCandyBar(world);
 
         //=================obstacles
 
