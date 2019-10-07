@@ -27,6 +27,7 @@ import com.kunal.AreaSelection.levelNumberSelection.LevelNumberSelection;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.BicycleAbilites.shootingBullets.shootingBulletsMain;
 import com.kunal.PlayGround.ExtraUpdateMethods;
+import com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars.BreakableCandyBar;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
@@ -44,6 +45,7 @@ import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
+import com.kunal.utils.contextListerner.myContactListner;
 
 import java.util.Random;
 
@@ -117,6 +119,9 @@ public class Type3Area implements Screen {
     private FullSaw fullSaw;
     private SpeedController speedController;
     private DirectionReverse directionReverse;
+
+    //candy world
+    private BreakableCandyBar candyBar;
 
     //bicycle maleup
     private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat, bg1, bg2;
@@ -394,7 +399,16 @@ public class Type3Area implements Screen {
             speedController = new SpeedController();
         if (!VariablesForPlayArea.dirRevList.isEmpty())
             directionReverse = new DirectionReverse();
+
+        //candy World
+        if (!VariablesForPlayArea.breakingCandyBar.isEmpty())
+            candyBar = new BreakableCandyBar();
+
         //=================obstacles
+
+        //contact listerner ---------------
+        world.setContactListener(new myContactListner());
+        //-====================
 
 
         VariablesForPlayArea.starsGained = 0;
@@ -493,21 +507,21 @@ public class Type3Area implements Screen {
         //bg
         sred.begin(ShapeRenderer.ShapeType.Filled);
         sred.setColor(.8117f, .9529f, .9647f, 1f);
-        sred.rect(-1300*4,1236,20000,1900);
+        //sred.rect(-1300*4,1236,20000,1900);//------------------------------------------------------------
 
         sred.setColor(.6235294118f, .8549019608f, .26666667f, 1f);
-        sred.rect(-1300*4,-2000,20000,2550);
+        //sred.rect(-1300*4,-2000,20000,2550);//--------------------------------------------------------------
         sred.end();
 
         AllVariables.batch.begin();
         for (int i =0, xbg =-1300*4 ; i< 15; i++, xbg+=1024) {
             if(bgRandNumber[i]) {
                 bg1.setPosition(xbg, 512);
-                bg1.draw(AllVariables.batch);
+                //bg1.draw(AllVariables.batch);//-------------------------------------------------------------------
             }
             else {
                 bg2.setPosition(xbg, 512);
-                bg2.draw(AllVariables.batch);
+                //bg2.draw(AllVariables.batch);//------------------------------------------------------------------
             }
             if (xbg==-80){
                 i = 0;
@@ -520,7 +534,7 @@ public class Type3Area implements Screen {
             fBPipes.render();
         AllVariables.batch.end();
 
-        tmr.render();
+        //tmr.render();//----------------------------------------------------------------------------------
 
         //hint 2
         if (VariablesForPlayArea.HintTwoEnabled){
@@ -574,6 +588,8 @@ public class Type3Area implements Screen {
             halfSaw.render();
         if (!VariablesForPlayArea.fullSawList.isEmpty())
             fullSaw.render();
+        if (!VariablesForPlayArea.breakingCandyBar.isEmpty())
+            candyBar.render();
 
         //bicycle
         frontTyre.draw(AllVariables.batch);
@@ -1142,7 +1158,8 @@ public class Type3Area implements Screen {
             speedController.update();
         if (!VariablesForPlayArea.dirRevList.isEmpty())
             directionReverse.update();
-
+        if (!VariablesForPlayArea.breakingCandyBar.isEmpty())
+            candyBar.update();
 
 
 

@@ -7,6 +7,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
 import com.kunal.PlayGround.Area1.AreaOneClass;
+import com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars.BreakableCandyBar;
+import com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars.BreakableCandyBarVariables;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
@@ -30,7 +32,7 @@ public class ReDirectToTheLevel {
     public ReDirectToTheLevel() {
     }
 
-    public static void Direct(MainGame game, Boolean restarted){
+    public static void Direct(MainGame game, Boolean restarted) {
 
         flappyBirdPipesVariables fbPipes;
         //CreateHoleVariables createHole;
@@ -40,6 +42,9 @@ public class ReDirectToTheLevel {
         PowerUpInInventoryVariables powerupVar;
         SpeedControllerVariables speedctlrvar;
         DirectionReverseVariables dirRev;
+
+        //candy world
+        BreakableCandyBarVariables breakableCandyBar;
 
         if (!restarted) {
             //clear it all
@@ -53,12 +58,15 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.dirRevList.clear();
             VariablesForPlayArea.HintOneEnabled = false;
             VariablesForPlayArea.HintTwoEnabled = false;
+
+            //candy world
+            VariablesForPlayArea.breakingCandyBar.clear();
         }
 
-        VariablesForPlayArea.gameOver =false;
+        VariablesForPlayArea.gameOver = false;
 
         //tutorial=============================================================
-        if (AllVariables.PresentAreaNumber == 0 && AllVariables.PresentLevelNumber == 0){
+        if (AllVariables.PresentAreaNumber == 0 && AllVariables.PresentLevelNumber == 0) {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/tut/tutorial.tmx";
             VariablesForPlayArea.endPoint.x = 1200;
             VariablesForPlayArea.endPoint.y = 6000;
@@ -68,7 +76,7 @@ public class ReDirectToTheLevel {
         //=======================================================================
 
         // area 1 ----------------------------------------------------------------
-        if(AllVariables.PresentAreaNumber == 1) {
+        if (AllVariables.PresentAreaNumber == 1) {
             if (AllVariables.PresentLevelNumber == 1) {
                 VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
                 VariablesForPlayArea.endPoint.x = 1200;
@@ -775,11 +783,14 @@ public class ReDirectToTheLevel {
         }
 
         //area 2-----------------------------------------------------------
-        else if (AllVariables.PresentAreaNumber == 2){
+        else if (AllVariables.PresentAreaNumber == 2) {
             if (AllVariables.PresentLevelNumber == 1) {
                 VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
                 VariablesForPlayArea.endPoint.x = 1200;
                 VariablesForPlayArea.endPoint.y = 5600;
+
+
+
 
                 VariablesForPlayArea.bulletsHave = 3;
 
@@ -795,8 +806,15 @@ public class ReDirectToTheLevel {
 
 
     }
+}
 
     //level basic template
+    /*
+        candy bar
+
+    */
+
+
     /*
     else if (AllVariables.PresentAreaNumber == 1 && AllVariables.PresentLevelNumber ==10){
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level10.tmx";
@@ -959,4 +977,4 @@ public class ReDirectToTheLevel {
     //        }
     // sds
 
-}
+

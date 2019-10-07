@@ -3,6 +3,7 @@ package com.kunal.PlayGround;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.kunal.AllVariables;
+import com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars.BreakableCandyBarVariables;
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
@@ -83,6 +84,8 @@ public class VariablesForPlayArea {
     public static LinkedList<SpeedControllerVariables> speedCtrlList;
     public static LinkedList<DirectionReverseVariables> dirRevList;
 
+    //candy world
+    public static LinkedList<BreakableCandyBarVariables> breakingCandyBar;
     //------------------------------------------
 
 
@@ -114,6 +117,9 @@ public class VariablesForPlayArea {
         fullSawList = new LinkedList<FullSawVariables>();
         speedCtrlList = new LinkedList<SpeedControllerVariables>();
         dirRevList = new LinkedList<DirectionReverseVariables>();
+
+        //candyWorld
+        breakingCandyBar = new LinkedList<BreakableCandyBarVariables>();
 
         //bullets
         bulletsHave = 0;
