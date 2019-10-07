@@ -1,5 +1,6 @@
 package com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Joint;
 
@@ -16,11 +17,12 @@ public class BreakableCandyBarVariables {
         4 - red
      */
     public LinkedList<Joint> joints;
+    public LinkedList<Body> body;
     public int originX, originY;
     public short size=10;
     public boolean contactHappend = false;
     public boolean broken = false;
 
-    public Body controllingBoneEnd1, controllingBoneEnd2;
+    public Sprite midPart, endPart;
 
 }
