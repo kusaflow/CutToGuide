@@ -785,7 +785,7 @@ public class ReDirectToTheLevel {
         //area 2-----------------------------------------------------------
         else if (AllVariables.PresentAreaNumber == 2) {
             if (AllVariables.PresentLevelNumber == 1) {
-                VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area1/Area1Level1.tmx";
+                VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area2/Area2Level1.tmx";
                 VariablesForPlayArea.endPoint.x = 1200;
                 VariablesForPlayArea.endPoint.y = 5600;
 
@@ -793,10 +793,22 @@ public class ReDirectToTheLevel {
                     breakableCandyBar = new BreakableCandyBarVariables();
                     breakableCandyBar.length = 5;
                     breakableCandyBar.type = 1;
-                    breakableCandyBar.originX = 1600;
-                    breakableCandyBar.originY = 800;
-                    breakableCandyBar.size = 15;
+                    breakableCandyBar.originX = 800;
+                    breakableCandyBar.originY = 600;
+                    breakableCandyBar.size = 9;
+                    breakableCandyBar.angle = 90;
                     VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
+
+
+                    breakableCandyBar = new BreakableCandyBarVariables();
+                    breakableCandyBar.length = 7;
+                    breakableCandyBar.type = 2;
+                    breakableCandyBar.originX = 1600;
+                    breakableCandyBar.originY = 600;
+                    breakableCandyBar.size = 15;
+                    breakableCandyBar.angle = 90;
+                    VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
+
 
                     powerupVar = new PowerUpInInventoryVariables();
                     powerupVar.TypeOfPower = 1;

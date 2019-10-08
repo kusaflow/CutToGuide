@@ -9,6 +9,7 @@ import java.util.LinkedList;
 public class BreakableCandyBarVariables {
     public short length = 0;
     public short type = 0;
+    public short angle = 0;
     /*
     type :
         1 - chocolate

@@ -557,7 +557,7 @@ public class TypeTwoArea implements Screen {
         AllVariables.batch.setProjectionMatrix(cam.combined);
 
 
-        //HintsToGuide.renterText(guideFont);
+        HintsToGuide.renterText(guideFont);
 
         AllVariables.batch.begin();
         if (!VariablesForPlayArea.halfSawList.isEmpty())

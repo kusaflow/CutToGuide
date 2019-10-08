@@ -21,6 +21,7 @@ public class BreakableCandyBar {
 
     Body body;
     RevoluteJointDef rdef;
+    int xcord, ycord;
 
     World world;
 
@@ -45,12 +46,23 @@ public class BreakableCandyBar {
             VariablesForPlayArea.breakingCandyBar.get(i).midPart.setOriginCenter();
             VariablesForPlayArea.breakingCandyBar.get(i).endPart.setOriginCenter();
 
+            //cord to draw
+            xcord = VariablesForPlayArea.breakingCandyBar.get(i).originX;
+            ycord = VariablesForPlayArea.breakingCandyBar.get(i).originY;
+
+
             for (int j =0; j < VariablesForPlayArea.breakingCandyBar.get(i).length; j++){
                 body = BodyGenerator.BodyAssemble(world,false, "candyBar"+i,
-                        new Vector2(VariablesForPlayArea.breakingCandyBar.get(i).originX ,
-                                VariablesForPlayArea.breakingCandyBar.get(i).originY - VariablesForPlayArea.breakingCandyBar.get(i).size*2),
+                        new Vector2(xcord,
+                                ycord),
                         new Vector2(VariablesForPlayArea.breakingCandyBar.get(i).size,VariablesForPlayArea.breakingCandyBar.get(i).size),
                         0.6f,0.8f, AllVariables.Bit_Tool, (short)(AllVariables.Bit_land | AllVariables.Bit_Bicycle | AllVariables.Bit_enimes | AllVariables.Bit_Tool));
+                body.setTransform(body.getPosition().x, body.getPosition().y, (VariablesForPlayArea.breakingCandyBar.get(i).angle+90)*MathUtils.degreesToRadians);
+
+                //updating postion
+                xcord += VariablesForPlayArea.breakingCandyBar.get(i).size * 2 * (MathUtils.cos(VariablesForPlayArea.breakingCandyBar.get(i).angle * MathUtils.degreesToRadians));
+                ycord += VariablesForPlayArea.breakingCandyBar.get(i).size * 2 * (MathUtils.sin(VariablesForPlayArea.breakingCandyBar.get(i).angle * MathUtils.degreesToRadians));
+
                 VariablesForPlayArea.breakingCandyBar.get(i).body.add(body);
                 if (j >=1){
                     rdef = new RevoluteJointDef();
