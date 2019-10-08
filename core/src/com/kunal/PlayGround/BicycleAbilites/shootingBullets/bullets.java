@@ -41,7 +41,7 @@ public class bullets {
 
         body = BodyGenerator.BodyAssemble(world, true, "BicycleBullet",
                 new Vector2(AllVariables.BackWheel.getPosition().x*100, AllVariables.BackWheel.getPosition().x*100),
-                new Vector2(60,30), 0.5f,1,AllVariables.Bit_Tool, AllVariables.Bit_enimes);
+                new Vector2(60,30), 0.5f,1,AllVariables.Bit_Tool,(short) (AllVariables.Bit_enimes | AllVariables.Bit_Tool));
 
         pe = new ParticleEffect();
         pe.load(Gdx.files.internal("particles/bullets/fireTail.p"), Gdx.files.internal(""));

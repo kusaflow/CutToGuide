@@ -791,12 +791,16 @@ public class ReDirectToTheLevel {
 
                 if (!restarted) {
                     breakableCandyBar = new BreakableCandyBarVariables();
-                    breakableCandyBar.length = 4;
-                    breakableCandyBar.type = 3;
-                    breakableCandyBar.originX = 800;
+                    breakableCandyBar.length = 5;
+                    breakableCandyBar.type = 1;
+                    breakableCandyBar.originX = 1600;
                     breakableCandyBar.originY = 800;
                     breakableCandyBar.size = 15;
                     VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
+
+                    powerupVar = new PowerUpInInventoryVariables();
+                    powerupVar.TypeOfPower = 1;
+                    VariablesForPlayArea.powerUpList.add(powerupVar);
                 }
 
                 VariablesForPlayArea.bulletsHave = 3;

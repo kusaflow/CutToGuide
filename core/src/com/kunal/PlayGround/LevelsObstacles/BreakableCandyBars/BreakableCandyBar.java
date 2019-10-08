@@ -15,16 +15,23 @@ import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.utils.BodyGenerator;
 
 import java.util.LinkedList;
+import java.util.Random;
 
 public class BreakableCandyBar {
 
     Body body;
     RevoluteJointDef rdef;
 
+    World world;
+
     public BreakableCandyBar (World world) {
         rdef = new RevoluteJointDef();
 
+        this.world = world;
+
         for (int i =0; i<VariablesForPlayArea.breakingCandyBar.size(); i++) {
+            VariablesForPlayArea.breakingCandyBar.get(i).broken = false;
+            VariablesForPlayArea.breakingCandyBar.get(i).contactHappend = false;
             //init
             VariablesForPlayArea.breakingCandyBar.get(i).body = new LinkedList<Body>();
             VariablesForPlayArea.breakingCandyBar.get(i).joints = new LinkedList<Joint>();
@@ -88,7 +95,27 @@ public class BreakableCandyBar {
     }
 
     public void update () {
+        for (int i =0; i<VariablesForPlayArea.breakingCandyBar.size(); i++){
+            //System.out.println(VariablesForPlayArea.breakingCandyBar.get(i).broken);
+            if (VariablesForPlayArea.breakingCandyBar.get(i).contactHappend){
+                if (!VariablesForPlayArea.breakingCandyBar.get(i).broken){
+                    VariablesForPlayArea.breakingCandyBar.get(i).broken = true;
+                    breakThem(i);
+                }
+            }
+        }
+    }
 
+    private void breakThem(int i){
+        Random r = new Random();
+        int randomVar;
+        for (int j =0; j<VariablesForPlayArea.breakingCandyBar.get(i).joints.size(); j++){
+            System.out.println(j);
+            randomVar = r.nextInt(3);
+            if (randomVar != 1){
+                world.destroyJoint(VariablesForPlayArea.breakingCandyBar.get(i).joints.get(j));
+            }
+        }
     }
 
 }

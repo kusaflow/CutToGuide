@@ -1605,6 +1605,7 @@ public class Type3Area implements Screen {
                             System.out.println(posMap.getX() + "\t" + posMap.getY());
                         }
 
+
                         if (keycode == Input.Keys.P){
                             try {
                                 System.out.println(VariablesForPlayArea.Sh_pos.get(VariablesForPlayArea.shapeNumberSelected));
