@@ -58,6 +58,7 @@ public class BreakableCandyBar {
                         new Vector2(VariablesForPlayArea.breakingCandyBar.get(i).size,VariablesForPlayArea.breakingCandyBar.get(i).size),
                         0.6f,0.8f, AllVariables.Bit_Tool, (short)(AllVariables.Bit_land | AllVariables.Bit_Bicycle | AllVariables.Bit_enimes | AllVariables.Bit_Tool));
                 body.setTransform(body.getPosition().x, body.getPosition().y, (VariablesForPlayArea.breakingCandyBar.get(i).angle+90)*MathUtils.degreesToRadians);
+                body.setFixedRotation(true);
 
                 //updating postion
                 xcord += VariablesForPlayArea.breakingCandyBar.get(i).size * 2 * (MathUtils.cos(VariablesForPlayArea.breakingCandyBar.get(i).angle * MathUtils.degreesToRadians));
@@ -122,6 +123,7 @@ public class BreakableCandyBar {
         Random r = new Random();
         int randomVar;
         for (int j =0; j<VariablesForPlayArea.breakingCandyBar.get(i).joints.size(); j++){
+            VariablesForPlayArea.breakingCandyBar.get(i).body.get(j).setFixedRotation(false);
             System.out.println(j);
             randomVar = r.nextInt(3);
             if (randomVar != 1){
