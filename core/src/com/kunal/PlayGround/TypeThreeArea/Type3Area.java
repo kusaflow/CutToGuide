@@ -746,6 +746,8 @@ public class Type3Area implements Screen {
         Font.draw(AllVariables.batch,AllVariables.PresentAreaNumber+"-"+AllVariables.PresentLevelNumber,
                 1400+(cam.position.x - AllVariables.WIDTH/2), 850+(cam.position.y -AllVariables.HEIGHT/2));
 
+        posMap.draw(AllVariables.batch);
+
         AllVariables.batch.end();
 
         //bicycle shooting

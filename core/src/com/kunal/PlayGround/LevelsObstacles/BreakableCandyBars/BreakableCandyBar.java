@@ -71,8 +71,8 @@ public class BreakableCandyBar {
                     rdef.collideConnected = true;
                     rdef.localAnchorA.set(0,-1*VariablesForPlayArea.breakingCandyBar.get(i).size/AllVariables.PPM);
                     rdef.localAnchorB.set(0,VariablesForPlayArea.breakingCandyBar.get(i).size/AllVariables.PPM);
-                    rdef.lowerAngle = (float) (-0.1f * Math.PI);
-                    rdef.upperAngle = (float) (0.1f * Math.PI);
+                    rdef.lowerAngle = (float) (-0.5f * Math.PI);
+                    rdef.upperAngle = (float) (0.5f * Math.PI);
                     VariablesForPlayArea.breakingCandyBar.get(i).joints.add(world.createJoint(rdef));
                 }
             }
