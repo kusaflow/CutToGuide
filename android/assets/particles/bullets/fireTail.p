@@ -138,4 +138,3 @@ premultipliedAlpha: false
 spriteMode: single
 - Image Paths -
 particle.png
-
