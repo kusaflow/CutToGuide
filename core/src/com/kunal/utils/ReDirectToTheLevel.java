@@ -12,6 +12,7 @@ import com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars.BreakableCandyBar
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
+import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
@@ -45,6 +46,7 @@ public class ReDirectToTheLevel {
 
         //candy world
         BreakableCandyBarVariables breakableCandyBar;
+        RoundCandyVariables roundCandy;
 
         if (!restarted) {
             //clear it all
@@ -61,6 +63,7 @@ public class ReDirectToTheLevel {
 
             //candy world
             VariablesForPlayArea.breakingCandyBar.clear();
+            VariablesForPlayArea.roundCandies.clear();
         }
 
         VariablesForPlayArea.gameOver = false;
@@ -790,25 +793,13 @@ public class ReDirectToTheLevel {
                 VariablesForPlayArea.endPoint.y = 5600;
 
                 if (!restarted) {
-                    breakableCandyBar = new BreakableCandyBarVariables();
-                    breakableCandyBar.length = 11;
-                    breakableCandyBar.type = 1;
-                    breakableCandyBar.originX = 1700;
-                    breakableCandyBar.originY = 500;
-                    breakableCandyBar.size = 25;
-                    breakableCandyBar.angle = 0;
-                    VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
 
-
-                    breakableCandyBar = new BreakableCandyBarVariables();
-                    breakableCandyBar.length = 14;
-                    breakableCandyBar.type = 4;
-                    breakableCandyBar.originX = 4122;
-                    breakableCandyBar.originY = 527;
-                    breakableCandyBar.size = 15;
-                    breakableCandyBar.angle = 60;
-                    VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
-
+                    roundCandy = new RoundCandyVariables();
+                    roundCandy.x = 700;
+                    roundCandy.y = 600;
+                    roundCandy.baseSize = 10;
+                    roundCandy.count = 5;
+                    VariablesForPlayArea.roundCandies.add(roundCandy);
 
                     powerupVar = new PowerUpInInventoryVariables();
                     powerupVar.TypeOfPower = 1;
@@ -834,6 +825,25 @@ public class ReDirectToTheLevel {
     //level basic template
     /*
         candy bar
+        //breaking candy bars
+        breakableCandyBar = new BreakableCandyBarVariables();
+        breakableCandyBar.length = 11;
+        breakableCandyBar.type = 1;
+        breakableCandyBar.originX = 1700;
+        breakableCandyBar.originY = 500;
+        breakableCandyBar.size = 25;
+        breakableCandyBar.angle = 0;
+        VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
+
+
+        breakableCandyBar = new BreakableCandyBarVariables();
+        breakableCandyBar.length = 14;
+        breakableCandyBar.type = 4;
+        breakableCandyBar.originX = 4122;
+        breakableCandyBar.originY = 527;
+        breakableCandyBar.size = 15;
+        breakableCandyBar.angle = 60;
+        VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
 
     */
 

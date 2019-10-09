@@ -7,6 +7,7 @@ import com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars.BreakableCandyBar
 import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
+import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
@@ -86,8 +87,8 @@ public class VariablesForPlayArea {
 
     //candy world
     public static LinkedList<BreakableCandyBarVariables> breakingCandyBar;
+    public static LinkedList<RoundCandyVariables> roundCandies;
     //------------------------------------------
-
 
     //--------Tutorial-------------------------------------------------------
     public static int tutState= 0;
@@ -120,6 +121,7 @@ public class VariablesForPlayArea {
 
         //candyWorld
         breakingCandyBar = new LinkedList<BreakableCandyBarVariables>();
+        roundCandies = new LinkedList<RoundCandyVariables>();
 
         //bullets
         bulletsHave = 0;
