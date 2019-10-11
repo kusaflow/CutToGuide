@@ -27,8 +27,8 @@ public class RoundCandyMain {
             xcord = VariablesForPlayArea.roundCandies.get(i).x;
 
             for (int j =0; j<VariablesForPlayArea.roundCandies.get(i).count; j++){
-                size = VariablesForPlayArea.roundCandies.get(i).baseSize * r.nextInt(20)/10;
-                if (size <2){
+                size = VariablesForPlayArea.roundCandies.get(i).baseSize * r.nextInt(10)/10;
+                if (size <5){
                     j--;
                     continue;
                 }

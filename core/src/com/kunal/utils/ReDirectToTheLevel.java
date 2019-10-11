@@ -795,11 +795,28 @@ public class ReDirectToTheLevel {
                 if (!restarted) {
 
                     roundCandy = new RoundCandyVariables();
-                    roundCandy.x = 700;
-                    roundCandy.y = 600;
+                    roundCandy.x = 1697;
+                    roundCandy.y = 700;
                     roundCandy.baseSize = 10;
-                    roundCandy.count = 5;
+                    roundCandy.count = 40;
                     VariablesForPlayArea.roundCandies.add(roundCandy);
+
+
+                    roundCandy = new RoundCandyVariables();
+                    roundCandy.x = 1697;
+                    roundCandy.y = 500;
+                    roundCandy.baseSize = 15;
+                    roundCandy.count = 28;
+                    VariablesForPlayArea.roundCandies.add(roundCandy);
+
+
+                    roundCandy = new RoundCandyVariables();
+                    roundCandy.x = 1697;
+                    roundCandy.y = 900;
+                    roundCandy.baseSize = 20;
+                    roundCandy.count = 20;
+                    VariablesForPlayArea.roundCandies.add(roundCandy);
+
 
                     powerupVar = new PowerUpInInventoryVariables();
                     powerupVar.TypeOfPower = 1;
