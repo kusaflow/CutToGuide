@@ -53,6 +53,12 @@ import java.util.Random;
 public class Type3Area implements Screen {
     MainGame game;
 
+
+    //tilesmap//
+    //h 1600
+    //w 11200
+
+
     private World world;
     private Box2DDebugRenderer b2dr;
     private OrthographicCamera cam;
@@ -504,29 +510,29 @@ public class Type3Area implements Screen {
 
 
 
-        b2dr.render(world, cam.combined.scl(AllVariables.PPM));//----------------------------------------------------
-        //cam.combined.scl(AllVariables.PPM);//---------------------------------------------------------------
+        //b2dr.render(world, cam.combined.scl(AllVariables.PPM));//----------------------------------------------------
+        cam.combined.scl(AllVariables.PPM);//---------------------------------------------------------------
 
         sred.setProjectionMatrix(cam.combined.scl(1/100f));
 
         //bg
         sred.begin(ShapeRenderer.ShapeType.Filled);
         sred.setColor(.8117f, .9529f, .9647f, 1f);
-        //sred.rect(-1300*4,1236,20000,1900);//------------------------------------------------------------
+        sred.rect(-1300*4,1236,20000,1900);//------------------------------------------------------------
 
         sred.setColor(.6235294118f, .8549019608f, .26666667f, 1f);
-        //sred.rect(-1300*4,-2000,20000,2550);//--------------------------------------------------------------
+        sred.rect(-1300*4,-2000,20000,2550);//--------------------------------------------------------------
         sred.end();
 
         AllVariables.batch.begin();
         for (int i =0, xbg =-1300*4 ; i< 15; i++, xbg+=1024) {
             if(bgRandNumber[i]) {
                 bg1.setPosition(xbg, 512);
-                //bg1.draw(AllVariables.batch);//-------------------------------------------------------------------
+                bg1.draw(AllVariables.batch);//-------------------------------------------------------------------
             }
             else {
                 bg2.setPosition(xbg, 512);
-                //bg2.draw(AllVariables.batch);//------------------------------------------------------------------
+                bg2.draw(AllVariables.batch);//------------------------------------------------------------------
             }
             if (xbg==-80){
                 i = 0;
@@ -539,7 +545,7 @@ public class Type3Area implements Screen {
             fBPipes.render();
         AllVariables.batch.end();
 
-        //tmr.render();//----------------------------------------------------------------------------------
+        tmr.render();//----------------------------------------------------------------------------------
 
         //hint 2
         if (VariablesForPlayArea.HintTwoEnabled){

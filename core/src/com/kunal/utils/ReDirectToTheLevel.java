@@ -788,7 +788,8 @@ public class ReDirectToTheLevel {
         //area 2-----------------------------------------------------------
         else if (AllVariables.PresentAreaNumber == 2) {
             if (AllVariables.PresentLevelNumber == 1) {
-                VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area2/Area2Level1.tmx";
+                //VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area2/Area2Level1.tmx";
+                VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area2/test.tmx";
                 VariablesForPlayArea.endPoint.x = 1200;
                 VariablesForPlayArea.endPoint.y = 5600;
 
