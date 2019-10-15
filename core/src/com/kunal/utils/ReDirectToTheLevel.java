@@ -789,35 +789,11 @@ public class ReDirectToTheLevel {
         else if (AllVariables.PresentAreaNumber == 2) {
             if (AllVariables.PresentLevelNumber == 1) {
                 //VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area2/Area2Level1.tmx";
-                VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area2/test.tmx";
+                VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/area2/Area2Level1.tmx";
                 VariablesForPlayArea.endPoint.x = 1200;
                 VariablesForPlayArea.endPoint.y = 5600;
 
                 if (!restarted) {
-
-                    roundCandy = new RoundCandyVariables();
-                    roundCandy.x = 1697;
-                    roundCandy.y = 700;
-                    roundCandy.baseSize = 10;
-                    roundCandy.count = 40;
-                    VariablesForPlayArea.roundCandies.add(roundCandy);
-
-
-                    roundCandy = new RoundCandyVariables();
-                    roundCandy.x = 1697;
-                    roundCandy.y = 500;
-                    roundCandy.baseSize = 15;
-                    roundCandy.count = 28;
-                    VariablesForPlayArea.roundCandies.add(roundCandy);
-
-
-                    roundCandy = new RoundCandyVariables();
-                    roundCandy.x = 1697;
-                    roundCandy.y = 900;
-                    roundCandy.baseSize = 20;
-                    roundCandy.count = 20;
-                    VariablesForPlayArea.roundCandies.add(roundCandy);
-
 
                     powerupVar = new PowerUpInInventoryVariables();
                     powerupVar.TypeOfPower = 1;
@@ -862,6 +838,31 @@ public class ReDirectToTheLevel {
         breakableCandyBar.size = 15;
         breakableCandyBar.angle = 60;
         VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
+
+
+        roundCandy = new RoundCandyVariables();
+        roundCandy.x = 1697;
+        roundCandy.y = 700;
+        roundCandy.baseSize = 10;
+        roundCandy.count = 40;
+        VariablesForPlayArea.roundCandies.add(roundCandy);
+
+
+        roundCandy = new RoundCandyVariables();
+        roundCandy.x = 1697;
+        roundCandy.y = 500;
+        roundCandy.baseSize = 15;
+        roundCandy.count = 28;
+        VariablesForPlayArea.roundCandies.add(roundCandy);
+
+
+        roundCandy = new RoundCandyVariables();
+        roundCandy.x = 1697;
+        roundCandy.y = 900;
+        roundCandy.baseSize = 20;
+        roundCandy.count = 20;
+        VariablesForPlayArea.roundCandies.add(roundCandy);
+
 
     */
 
