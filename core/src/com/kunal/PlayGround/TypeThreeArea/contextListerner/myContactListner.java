@@ -1,16 +1,20 @@
-package com.kunal.utils.contextListerner;
+package com.kunal.PlayGround.TypeThreeArea.contextListerner;
 
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
 import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.kunal.AllVariables;
+import com.kunal.PlayGround.TypeThreeArea.ParticleManagerArea2;
 import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class myContactListner implements ContactListener {
 
-    public myContactListner(){
+    ParticleManagerArea2 pm;
 
+    public myContactListner(ParticleManagerArea2 pmT){
+        pm = pmT;
     }
 
     @Override
@@ -33,12 +37,29 @@ public class myContactListner implements ContactListener {
         }
 
 
+        if ((a.getUserData().equals("land") && b.getUserData().equals("Bicycle"))
+                || ((b.getUserData().equals("land") && a.getUserData().equals("Bicycle")))){
+            pm.dirtTailReady = true;
+        }
+
+
 
 
     }
 
     @Override
     public void endContact(Contact contact) {
+        Fixture a = contact.getFixtureA();
+        Fixture b = contact.getFixtureB();
+
+
+        if (a == null || b == null) return;
+        if (a.getUserData() == null || b.getUserData() == null) return;
+
+        if ((a.getUserData().equals("land") && b.getUserData().equals("Bicycle"))
+                || ((b.getUserData().equals("land") && a.getUserData().equals("Bicycle")))){
+            pm.dirtTailReady = false;
+        }
 
     }
 

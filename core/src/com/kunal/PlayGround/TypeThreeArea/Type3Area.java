@@ -46,7 +46,7 @@ import com.kunal.utils.BodyGenerator;
 import com.kunal.utils.ReDirectToTheLevel;
 import com.kunal.utils.TextureGiver;
 import com.kunal.utils.TiledMapLoadingHelper;
-import com.kunal.utils.contextListerner.myContactListner;
+import com.kunal.PlayGround.TypeThreeArea.contextListerner.myContactListner;
 
 import java.util.Random;
 
@@ -145,6 +145,9 @@ public class Type3Area implements Screen {
 
     //for shooting
     shootingBulletsMain shooting;
+
+    //particle manager
+    ParticleManagerArea2 pm;
 
     public Type3Area(MainGame game, Boolean reset) {
         this.game = game;
@@ -417,10 +420,15 @@ public class Type3Area implements Screen {
 
         //=================obstacles
 
-        //contact listerner ---------------
-        world.setContactListener(new myContactListner());
-        //-====================
 
+        //particle manager-------------------------
+        pm = new ParticleManagerArea2();
+        //=======================================
+
+
+        //contact listerner ---------------
+        world.setContactListener(new myContactListner(pm));
+        //-====================
 
         VariablesForPlayArea.starsGained = 0;
         HintInit();
@@ -765,6 +773,9 @@ public class Type3Area implements Screen {
         //bicycle shooting
         shooting.render(dt);
 
+        //particles
+        pm.dirtTail();
+
 
     }
 
@@ -780,6 +791,9 @@ public class Type3Area implements Screen {
 
         //this statement here because it will always be false and the program will not went in and this save some sweet time
         //flag
+
+        //particle update
+        pm.update();
 
         if ((AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)+(25+5) >= TiledMapLoadingHelper.flagpos().x-5 &&
                 (AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)-(25+100+5)<=TiledMapLoadingHelper.flagpos().x-5){

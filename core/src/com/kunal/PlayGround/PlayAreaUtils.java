@@ -60,7 +60,7 @@ public class PlayAreaUtils {
             fdef.restitution = 0.4f;
             fdef.shape = shape;
             fdef.friction = 1f;
-            body.createFixture(fdef);
+            body.createFixture(fdef).setUserData("land");
             shape.dispose();
         }
     }
