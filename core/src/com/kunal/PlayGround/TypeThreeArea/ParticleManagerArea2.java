@@ -10,14 +10,16 @@ public class ParticleManagerArea2 {
     public Boolean dirtTailReady = false;
 
     public ParticleManagerArea2(){
+        //load according to level
+
         dirtTailParticle = new ParticleEffect();
-        dirtTailParticle.load(Gdx.files.internal("particles/area2Dirt/dirtTail.p"), Gdx.files.internal(""));
+        dirtTailParticle.load(Gdx.files.internal("particles/area2Dirt/dirtTailC.p"), Gdx.files.internal(""));
         dirtTailParticle.getEmitters().first().scaleSize(0.6f);
 
         dirtTailParticle.start();
 
         dirtTailParticle2 = new ParticleEffect();
-        dirtTailParticle2.load(Gdx.files.internal("particles/area2Dirt/dirtTail.p"), Gdx.files.internal(""));
+        dirtTailParticle2.load(Gdx.files.internal("particles/area2Dirt/dirtTailC.p"), Gdx.files.internal(""));
         dirtTailParticle2.getEmitters().first().scaleSize(0.6f);
         dirtTailParticle2.start();
 
