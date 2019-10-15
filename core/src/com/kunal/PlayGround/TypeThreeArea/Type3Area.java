@@ -774,7 +774,7 @@ public class Type3Area implements Screen {
         shooting.render(dt);
 
         //particles
-        pm.dirtTail();
+        pm.render();
 
 
     }

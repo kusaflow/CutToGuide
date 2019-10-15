@@ -37,11 +37,6 @@ public class myContactListner implements ContactListener {
         }
 
 
-        if ((a.getUserData().equals("land") && b.getUserData().equals("Bicycle"))
-                || ((b.getUserData().equals("land") && a.getUserData().equals("Bicycle")))){
-            pm.dirtTailReady = true;
-        }
-
 
 
 
@@ -56,10 +51,6 @@ public class myContactListner implements ContactListener {
         if (a == null || b == null) return;
         if (a.getUserData() == null || b.getUserData() == null) return;
 
-        if ((a.getUserData().equals("land") && b.getUserData().equals("Bicycle"))
-                || ((b.getUserData().equals("land") && a.getUserData().equals("Bicycle")))){
-            pm.dirtTailReady = false;
-        }
 
     }
 
