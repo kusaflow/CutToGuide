@@ -8,6 +8,7 @@ import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
+import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipopVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
@@ -88,6 +89,7 @@ public class VariablesForPlayArea {
     //candy world
     public static LinkedList<BreakableCandyBarVariables> breakingCandyBar;
     public static LinkedList<RoundCandyVariables> roundCandies;
+    public static LinkedList<DropingLolipopVariables> dropingLolipop;
     //------------------------------------------
 
     //--------Tutorial-------------------------------------------------------
@@ -122,6 +124,7 @@ public class VariablesForPlayArea {
         //candyWorld
         breakingCandyBar = new LinkedList<BreakableCandyBarVariables>();
         roundCandies = new LinkedList<RoundCandyVariables>();
+        dropingLolipop = new LinkedList<DropingLolipopVariables>();
 
         //bullets
         bulletsHave = 0;

@@ -13,6 +13,7 @@ import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
+import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipopVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
@@ -47,6 +48,7 @@ public class ReDirectToTheLevel {
         //candy world
         BreakableCandyBarVariables breakableCandyBar;
         RoundCandyVariables roundCandy;
+        DropingLolipopVariables dropingLolipop;
 
         if (!restarted) {
             //clear it all
@@ -64,6 +66,7 @@ public class ReDirectToTheLevel {
             //candy world
             VariablesForPlayArea.breakingCandyBar.clear();
             VariablesForPlayArea.roundCandies.clear();
+            VariablesForPlayArea.dropingLolipop.clear();
         }
 
         VariablesForPlayArea.gameOver = false;
@@ -71,7 +74,7 @@ public class ReDirectToTheLevel {
         //tutorial=============================================================
         if (AllVariables.PresentAreaNumber == 0 && AllVariables.PresentLevelNumber == 0) {
             VariablesForPlayArea.LevelMapToBeLoaded = "playArea/tiledMap/tut/tutorial.tmx";
-            VariablesForPlayArea.endPoint.x = 1200;
+            VariablesForPlayArea.endPoint.x = 1200+1000;
             VariablesForPlayArea.endPoint.y = 6000;
 
             game.setScreen(new BasicTutorial(game));
@@ -798,6 +801,9 @@ public class ReDirectToTheLevel {
                     powerupVar = new PowerUpInInventoryVariables();
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
+
+
+
                 }
 
                 VariablesForPlayArea.bulletsHave = 3;
