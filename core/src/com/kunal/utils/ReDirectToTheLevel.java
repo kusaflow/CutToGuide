@@ -802,7 +802,13 @@ public class ReDirectToTheLevel {
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
-
+                    dropingLolipop = new DropingLolipopVariables();
+                    dropingLolipop.x = 1000;
+                    dropingLolipop.y = 1050;
+                    dropingLolipop.stickLen = 100;
+                    dropingLolipop.stickWid = 5;
+                    dropingLolipop.candyRadius = 50;
+                    VariablesForPlayArea.dropingLolipop.add(dropingLolipop);
 
                 }
 
