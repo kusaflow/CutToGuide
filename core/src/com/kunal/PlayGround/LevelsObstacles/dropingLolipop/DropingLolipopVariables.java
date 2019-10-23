@@ -5,7 +5,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Joint;
 
 public class DropingLolipopVariables {
-    public Sprite tex;
+    public Sprite stickTex, candyTex;
     public int x,y;
     public int stickLen, stickWid, candyRadius;
     public short type;
