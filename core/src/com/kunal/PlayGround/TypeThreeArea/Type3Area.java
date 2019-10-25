@@ -69,11 +69,11 @@ public class Type3Area implements Screen {
 
     private Sprite Brake, start, chooseBody, MoveToDustBin, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex,
-            retryWhenStarted, ZoomOutCam, hintBox;
+            retryWhenStarted, hintBox;
     private Boolean brakeBool = false, startBool = false,/* todrawMoveToDustBin = true, MoveToDustBinBoolFaultResolver = false,*/
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
-            coin2anim = false, coin3anim= false, powerUpSelected = false, ZoomOutBool = false, levelCompleteCAmMove,
+            coin2anim = false, coin3anim= false, powerUpSelected = false, levelCompleteCAmMove,
             hintOneTaken = false ,hintTwoTaken = false ,hintThreeTaken = false,
             hintOnePurchased =false, hintTwoPurchased =false, hintThreePurchased =false;
     private Byte costOfH1=0, costOfH2=0, costOfH3=0;
@@ -329,8 +329,6 @@ public class Type3Area implements Screen {
 
         retryWhenStarted = new Sprite(new Texture(Gdx.files.internal("utils/retry.png")));
         retryWhenStarted.setColor(0,0,0,1);
-        ZoomOutCam = new Sprite(new Texture(Gdx.files.internal("playArea/Zoomout.png")));
-        ZoomOutCam.setSize(100,100);
 
         //bicycle makeUp
 
@@ -615,7 +613,6 @@ public class Type3Area implements Screen {
 
         if (startBool && !VariablesForPlayArea.gameOver) {
             retryWhenStarted.draw(AllVariables.batch);//=====================================
-            ZoomOutCam.draw(AllVariables.batch);//=======================================
             Brake.draw(AllVariables.batch);//==========================================
         }
         else if(VariablesForPlayArea.gameOver){}
@@ -965,7 +962,6 @@ public class Type3Area implements Screen {
         retryTex.setPosition(740+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
         //when started retry
         retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
-        ZoomOutCam.setPosition(-170+(cam.position.x - (AllVariables.WIDTH)/2), 100+(cam.position.y - AllVariables.HEIGHT/2));
 
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
 
@@ -991,7 +987,7 @@ public class Type3Area implements Screen {
 
 
         //to zoom out the cam
-        if (!levelCompleteCAmMove) {
+        /*if (!levelCompleteCAmMove) {
             if (ZoomOutBool) {
                 if (cam.zoom < 5) {
                     cam.zoom += 0.4f;
@@ -1027,7 +1023,7 @@ public class Type3Area implements Screen {
                     Brake.setAlpha(cam.zoom / 5 * 0.4f);
                 }
             }
-        }
+        }*/
 
 
         if (toDrawDropAnyShapeButton){
@@ -1261,13 +1257,6 @@ public class Type3Area implements Screen {
                                 }
                                 return true;
                             }
-                            //zoomout
-                            if (screenX > (55 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenX < (140 * AllVariables.inpM) + AllVariables.witdth_translation
-                                    && screenY > 170 * AllVariables.inpM && screenY < 250 * AllVariables.inpM) {
-                                ZoomOutBool = true;
-                                return true;
-                            }
 
                             //shooting bullets
                             VariablesForPlayArea.doSlowMo = true;
@@ -1421,7 +1410,6 @@ public class Type3Area implements Screen {
                     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
                         screenY = Gdx.graphics.getHeight() - screenY;
 
-                        ZoomOutBool = false;
                         VariablesForPlayArea.doSlowMo = false;
 
                         if (setAim){
@@ -1844,7 +1832,6 @@ public class Type3Area implements Screen {
         menuTex.getTexture().dispose();
         retryTex.getTexture().dispose();
         retryWhenStarted.getTexture().dispose();
-        ZoomOutCam.getTexture().dispose();
         hintBox.getTexture().dispose();
         sred.dispose();
         map.dispose();
