@@ -139,8 +139,6 @@ public class Type3Area implements Screen {
 
     private Texture kusaCoin,camScrollerBG;
 
-    private Boolean[] bgRandNumber = new Boolean[15];
-
     //extra update methods
     ExtraUpdateMethods updateExtra;
 
@@ -391,12 +389,6 @@ public class Type3Area implements Screen {
         //}
 
 
-        //random bg
-        Random r = new Random();
-        for (int i =0; i< 15; i++)
-            bgRandNumber[i] = r.nextBoolean();
-
-
         //powerUps
         if (!VariablesForPlayArea.powerUpList.isEmpty())
             powerups = new PowerUpMngr(reset);
@@ -537,19 +529,7 @@ public class Type3Area implements Screen {
         sred.end();
 
         AllVariables.batch.begin();
-        for (int i =0, xbg =-1300*4 ; i< 15; i++, xbg+=1024) {
-            if(bgRandNumber[i]) {
-                bg1.setPosition(xbg, 512);
-                //bg1.draw(AllVariables.batch);//-------------------------------------------------------------------
-            }
-            else {
-                bg2.setPosition(xbg, 512);
-                //bg2.draw(AllVariables.batch);//------------------------------------------------------------------
-            }
-            if (xbg==-80){
-                i = 0;
-            }
-        }
+        //bg
 
 
         //things at bg of the of the tiled map goes here

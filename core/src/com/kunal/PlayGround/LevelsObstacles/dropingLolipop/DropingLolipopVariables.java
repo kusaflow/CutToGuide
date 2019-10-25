@@ -10,5 +10,6 @@ public class DropingLolipopVariables {
     public int stickLen, stickWid, candyRadius;
     public short type;
     public Joint joint;
-    Body stick, candy;
+    public Body stick, candy;
+    public short angle = 20;
 }
