@@ -80,6 +80,8 @@ public class Type3Area implements Screen {
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
+    private Sprite BottomBG;
+
     //CamScroller
     private short CamScrollerX = 1020, CamScrollerY = 710;
     private byte camScrollSize = 100;
@@ -135,7 +137,7 @@ public class Type3Area implements Screen {
 
 
     //bicycle maleup
-    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat, bg1, bg2;
+    private Sprite frontTyre, backtyre, rod1, rod2, rod3, rod4, rod5, rod6, handle, seat;
 
     private Texture kusaCoin,camScrollerBG;
 
@@ -221,12 +223,10 @@ public class Type3Area implements Screen {
 
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
-        //background
-        bg1 = new Sprite(new Texture(Gdx.files.internal("backGround/colored_grass.png")));
-        bg2 = new Sprite(new Texture(Gdx.files.internal("backGround/colored_land.png")));
-        //bg1.setAlpha(0.5f);
+        //Backgroung==================
+        BottomBG = new Sprite(new Texture(Gdx.files.internal("backGround/candyWorld/bg1_1.png")));
+        //-----------------
 
-        //bg2.setAlpha(0.5f);
 
         Brake = new Sprite(new Texture(Gdx.files.internal("playArea/Brake.png")));
         Brake.setPosition(1050,140);
@@ -527,7 +527,8 @@ public class Type3Area implements Screen {
         sred.end();
 
         AllVariables.batch.begin();
-        //bg
+        //bg-----------------------------
+        BottomBG.draw(AllVariables.batch);
 
 
         //things at bg of the of the tiled map goes here
@@ -962,6 +963,9 @@ public class Type3Area implements Screen {
         retryTex.setPosition(740+(cam.position.x - AllVariables.WIDTH/2), 340+(cam.position.y -AllVariables.HEIGHT/2));
         //when started retry
         retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
+        //---------background
+        BottomBG.setScale(camscl);
+        BottomBG.setPosition(100+(cam.position.x - (AllVariables.WIDTH/2))-(cam.position.x/10), 0+(cam.position.y - AllVariables.HEIGHT/2));
 
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
 
