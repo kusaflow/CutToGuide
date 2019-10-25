@@ -528,7 +528,7 @@ public class Type3Area implements Screen {
 
         AllVariables.batch.begin();
         //bg-----------------------------
-        BottomBG.draw(AllVariables.batch);
+        //BottomBG.draw(AllVariables.batch);//---------------------------
 
 
         //things at bg of the of the tiled map goes here

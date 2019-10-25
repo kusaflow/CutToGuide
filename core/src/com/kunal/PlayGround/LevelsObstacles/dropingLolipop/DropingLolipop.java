@@ -51,6 +51,12 @@ public class DropingLolipop {
             rdef.localAnchorB.set(0,-1*VariablesForPlayArea.dropingLolipop.get(i).stickLen/AllVariables.PPM);
             world.createJoint(rdef);
 
+            rdef.localAnchorA.set(0, VariablesForPlayArea.dropingLolipop.get(i).candyRadius/AllVariables.PPM);//VariablesForPlayArea.dropingLolipop.get(i).candyRadius/AllVariables.PPM);
+            rdef.localAnchorB.set(0,0);
+            world.createJoint(rdef);
+
+
+
             VariablesForPlayArea.dropingLolipop.get(i).stick.setTransform(VariablesForPlayArea.dropingLolipop.get(i).stick.getPosition().x,
                     VariablesForPlayArea.dropingLolipop.get(i).stick.getPosition().y, VariablesForPlayArea.dropingLolipop.get(i).angle);// * MathUtils.radiansToDegrees);
 
@@ -67,12 +73,29 @@ public class DropingLolipop {
     }
 
     public void update () {
+        for (int i = 0; i < VariablesForPlayArea.dropingLolipop.size(); i++) {
+            //stick
+            VariablesForPlayArea.dropingLolipop.get(i).stickTex.setOriginCenter();
+            VariablesForPlayArea.dropingLolipop.get(i).stickTex.setSize(VariablesForPlayArea.dropingLolipop.get(i).stickWid*2, VariablesForPlayArea.dropingLolipop.get(i).stickLen*2);
+            VariablesForPlayArea.dropingLolipop.get(i).stickTex.setRotation(VariablesForPlayArea.dropingLolipop.get(i).stick.getAngle() * MathUtils.radiansToDegrees);
+            VariablesForPlayArea.dropingLolipop.get(i).stickTex.setPosition((VariablesForPlayArea.dropingLolipop.get(i).stick.getPosition().x * 100) - VariablesForPlayArea.dropingLolipop.get(i).stickWid,
+                    (VariablesForPlayArea.dropingLolipop.get(i).stick.getPosition().y * 100) - VariablesForPlayArea.dropingLolipop.get(i).stickLen);
 
+            //candy
+            VariablesForPlayArea.dropingLolipop.get(i).candyTex.setOriginCenter();
+            VariablesForPlayArea.dropingLolipop.get(i).candyTex.setSize(VariablesForPlayArea.dropingLolipop.get(i).candyRadius*2, VariablesForPlayArea.dropingLolipop.get(i).candyRadius*2);
+            VariablesForPlayArea.dropingLolipop.get(i).candyTex.setRotation((VariablesForPlayArea.dropingLolipop.get(i).candy.getAngle() )+180);
+            VariablesForPlayArea.dropingLolipop.get(i).candyTex.setPosition((VariablesForPlayArea.dropingLolipop.get(i).candy.getPosition().x * 100) - VariablesForPlayArea.dropingLolipop.get(i).candyRadius,
+                    (VariablesForPlayArea.dropingLolipop.get(i).candy.getPosition().y * 100) - VariablesForPlayArea.dropingLolipop.get(i).candyRadius);
+
+
+        }
     }
 
     public void render() {
         for (int i = 0; i < VariablesForPlayArea.dropingLolipop.size(); i++) {
-            
+            VariablesForPlayArea.dropingLolipop.get(i).stickTex.draw(AllVariables.batch);
+            VariablesForPlayArea.dropingLolipop.get(i).candyTex.draw(AllVariables.batch);
         }
     }
 

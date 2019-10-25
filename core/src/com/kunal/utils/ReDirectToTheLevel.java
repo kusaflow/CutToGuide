@@ -3,6 +3,7 @@ package com.kunal.utils;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.kunal.AllVariables;
 import com.kunal.MainGame;
@@ -809,6 +810,7 @@ public class ReDirectToTheLevel {
                     dropingLolipop.stickWid = 5;
                     dropingLolipop.candyRadius = 50;
                     dropingLolipop.type = 1;
+                    dropingLolipop.angle = 2;
                     VariablesForPlayArea.dropingLolipop.add(dropingLolipop);
 
                 }
