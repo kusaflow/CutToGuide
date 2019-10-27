@@ -18,9 +18,13 @@ public class DropingLolipop {
 
     Body b;
     RevoluteJointDef rdef;
+    World world;
+    Random r;
 
     public DropingLolipop(World world) {
         rdef = new RevoluteJointDef();
+        r = new Random();
+        this.world = world;
 
         for (int i =0; i< VariablesForPlayArea.dropingLolipop.size(); i++){
             b = BodyGenerator.BodyAssemble(world, true, "dropLolipop",
@@ -38,13 +42,6 @@ public class DropingLolipop {
                     AllVariables.Bit_Tool, (short)(AllVariables.Bit_land | AllVariables.Bit_Tool | AllVariables.Bit_Bicycle | AllVariables.Bit_enimes));
 
             rdef = new RevoluteJointDef();
-            rdef.bodyA = b;
-            rdef.bodyB = VariablesForPlayArea.dropingLolipop.get(i).stick;
-            rdef.localAnchorA.set(0,-10/AllVariables.PPM);
-            rdef.localAnchorB.set(0,VariablesForPlayArea.dropingLolipop.get(i).stickLen/AllVariables.PPM);
-            VariablesForPlayArea.dropingLolipop.get(i).joint = world.createJoint(rdef);
-
-            rdef = new RevoluteJointDef();
             rdef.bodyA = VariablesForPlayArea.dropingLolipop.get(i).candy;
             rdef.bodyB = VariablesForPlayArea.dropingLolipop.get(i).stick;
             rdef.localAnchorA.set(0,0);//VariablesForPlayArea.dropingLolipop.get(i).candyRadius/AllVariables.PPM);
@@ -54,6 +51,14 @@ public class DropingLolipop {
             rdef.localAnchorA.set(0, VariablesForPlayArea.dropingLolipop.get(i).candyRadius/AllVariables.PPM);//VariablesForPlayArea.dropingLolipop.get(i).candyRadius/AllVariables.PPM);
             rdef.localAnchorB.set(0,0);
             world.createJoint(rdef);
+
+            rdef = new RevoluteJointDef();
+            rdef.bodyA = b;
+            rdef.bodyB = VariablesForPlayArea.dropingLolipop.get(i).stick;
+            rdef.localAnchorA.set(0,-10/AllVariables.PPM);
+            rdef.localAnchorB.set(0,VariablesForPlayArea.dropingLolipop.get(i).stickLen/AllVariables.PPM);
+            VariablesForPlayArea.dropingLolipop.get(i).joint = world.createJoint(rdef);
+
 
 
 
@@ -87,6 +92,18 @@ public class DropingLolipop {
             VariablesForPlayArea.dropingLolipop.get(i).candyTex.setRotation((VariablesForPlayArea.dropingLolipop.get(i).candy.getAngle()* MathUtils.radiansToDegrees) + 180);
             VariablesForPlayArea.dropingLolipop.get(i).candyTex.setPosition((VariablesForPlayArea.dropingLolipop.get(i).candy.getPosition().x * 100) - VariablesForPlayArea.dropingLolipop.get(i).candyRadius,
                     (VariablesForPlayArea.dropingLolipop.get(i).candy.getPosition().y * 100) - VariablesForPlayArea.dropingLolipop.get(i).candyRadius);
+
+
+            //droping randomly
+            if (VariablesForPlayArea.dropingLolipop.get(i).x <= (AllVariables.BackWheel.getPosition().x*AllVariables.PPM + AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)/2){
+                try {
+                    world.destroyJoint(VariablesForPlayArea.dropingLolipop.get(i).joint);
+                    VariablesForPlayArea.dropingLolipop.get(i).joint = null;
+                }catch (Exception e){
+                    System.out.println(e);
+                }
+            }
+
 
 
         }

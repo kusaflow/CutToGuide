@@ -124,7 +124,7 @@ public class BreakableCandyBar {
         int randomVar;
         for (int j =0; j<VariablesForPlayArea.breakingCandyBar.get(i).joints.size(); j++){
             VariablesForPlayArea.breakingCandyBar.get(i).body.get(j).setFixedRotation(false);
-            System.out.println(j);
+            //System.out.println(j);
             randomVar = r.nextInt(3);
             if (randomVar != 1){
                 world.destroyJoint(VariablesForPlayArea.breakingCandyBar.get(i).joints.get(j));
