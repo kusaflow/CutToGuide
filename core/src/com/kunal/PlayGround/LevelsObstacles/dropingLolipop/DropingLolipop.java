@@ -27,6 +27,9 @@ public class DropingLolipop {
         this.world = world;
 
         for (int i =0; i< VariablesForPlayArea.dropingLolipop.size(); i++){
+
+            VariablesForPlayArea.dropingLolipop.get(i).jointdestroyed = false;
+
             b = BodyGenerator.BodyAssemble(world, true, "dropLolipop",
                     new Vector2(VariablesForPlayArea.dropingLolipop.get(i).x, VariablesForPlayArea.dropingLolipop.get(i).y),
                     new Vector2(10,10),0.5f,1, AllVariables.Bit_Tool,AllVariables.Bit_enimes);
@@ -36,9 +39,9 @@ public class DropingLolipop {
                     new Vector2(VariablesForPlayArea.dropingLolipop.get(i).stickWid,VariablesForPlayArea.dropingLolipop.get(i).stickLen),
                     0.5f,1, AllVariables.Bit_Tool, (short)(AllVariables.Bit_land | AllVariables.Bit_Tool | AllVariables.Bit_Bicycle | AllVariables.Bit_enimes));
 
-            VariablesForPlayArea.dropingLolipop.get(i).candy = BodyGenerator.CircleBody(world, false, "dropLolipop",
+            VariablesForPlayArea.dropingLolipop.get(i).candy = BodyGenerator.CircleBody2(world, false, "dropLolipop",
                     new Vector2(VariablesForPlayArea.dropingLolipop.get(i).x, VariablesForPlayArea.dropingLolipop.get(i).y - VariablesForPlayArea.dropingLolipop.get(i).stickLen*2 - VariablesForPlayArea.dropingLolipop.get(i).candyRadius - 10),
-                    VariablesForPlayArea.dropingLolipop.get(i).candyRadius,0.8f,0.5f,
+                    VariablesForPlayArea.dropingLolipop.get(i).candyRadius,0.8f,0.5f,0.7f,
                     AllVariables.Bit_Tool, (short)(AllVariables.Bit_land | AllVariables.Bit_Tool | AllVariables.Bit_Bicycle | AllVariables.Bit_enimes));
 
             rdef = new RevoluteJointDef();
@@ -95,12 +98,16 @@ public class DropingLolipop {
 
 
             //droping randomly
-            if (VariablesForPlayArea.dropingLolipop.get(i).x <= (AllVariables.BackWheel.getPosition().x*AllVariables.PPM + AllVariables.FrontWheel.getPosition().x*AllVariables.PPM)/2){
-                try {
-                    world.destroyJoint(VariablesForPlayArea.dropingLolipop.get(i).joint);
-                    VariablesForPlayArea.dropingLolipop.get(i).joint = null;
-                }catch (Exception e){
-                    System.out.println(e);
+            if (!VariablesForPlayArea.dropingLolipop.get(i).jointdestroyed) {
+                if (VariablesForPlayArea.dropingLolipop.get(i).x <= (AllVariables.FrontWheel.getPosition().x * AllVariables.PPM) + 300) {
+                    try {
+                        VariablesForPlayArea.dropingLolipop.get(i).jointdestroyed = true;
+                        world.destroyJoint(VariablesForPlayArea.dropingLolipop.get(i).joint);
+                        VariablesForPlayArea.dropingLolipop.get(i).joint = null;
+                        VariablesForPlayArea.dropingLolipop.get(i).candy.applyForceToCenter(50, -400, true);
+                    } catch (Exception e) {
+                        System.out.println(e);
+                    }
                 }
             }
 

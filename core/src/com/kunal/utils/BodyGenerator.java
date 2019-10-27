@@ -78,6 +78,39 @@ public class BodyGenerator {
         return b;
     }
 
+    public static Body CircleBody2(World world, Boolean isStatic, String fixtureId, Vector2 initPos, float Radius, float density,float friction, float restitution,short cbit, short mbit){
+        Body b ;
+        BodyDef bdef = new BodyDef();
+
+        if(isStatic) {
+            bdef.type = BodyDef.BodyType.StaticBody;
+        }else{
+            bdef.type = BodyDef.BodyType.DynamicBody;
+        }
+        bdef.position.set(initPos.x/ AllVariables.PPM, initPos.y/AllVariables.PPM);
+
+        //bdef.fixedRotation = true;
+
+
+        b = world.createBody(bdef);
+
+        CircleShape shape = new CircleShape();
+        shape.setRadius(Radius / AllVariables.PPM);
+
+        FixtureDef fdef = new FixtureDef();
+        fdef.shape = shape;
+        fdef.density=density;
+        fdef.restitution = restitution;
+        fdef.friction = friction;
+        fdef.filter.categoryBits = cbit;
+        fdef.filter.maskBits = mbit;
+
+
+        b.createFixture(fdef).setUserData(fixtureId);
+        shape.dispose();
+        return b;
+    }
+
     public static Body ChainLand(World world, Boolean isStatic, String fixtureId, Vector2 initPos, float[] dim, float density, float Bouncy, float friction,short cbit, short mbit) {
         Body b ;
         BodyDef bdef = new BodyDef();

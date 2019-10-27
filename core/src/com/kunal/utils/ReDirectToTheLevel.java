@@ -804,7 +804,7 @@ public class ReDirectToTheLevel {
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
                     dropingLolipop = new DropingLolipopVariables();
-                    dropingLolipop.x = 1000;
+                    dropingLolipop.x = 1500;
                     dropingLolipop.y = 1050;
                     dropingLolipop.stickLen = 100;
                     dropingLolipop.stickWid = 5;
