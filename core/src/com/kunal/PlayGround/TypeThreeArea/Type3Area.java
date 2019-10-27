@@ -69,13 +69,13 @@ public class Type3Area implements Screen {
 
     private Sprite Brake, start, chooseBody, MoveToDustBin, CamScroller, DropAnyShapeButton, ShapeRotACW, ShapeRotCW,
             per45degRot, pause, fadedBG, resume, exit, flag,coin1,coin2,coin3, gameoverTexure, menuTex, retryTex,
-            retryWhenStarted, hintBox;
+            retryWhenStarted, hintBox, speedUp;
     private Boolean brakeBool = false, startBool = false,/* todrawMoveToDustBin = true, MoveToDustBinBoolFaultResolver = false,*/
             isCamScrollerTouched = false, toDrawDropAnyShapeButton = true, isAnyShapeSelected = false,
             ACWTouched = false, CWtouched = false, paused = false, coin1anim = false,
             coin2anim = false, coin3anim= false, powerUpSelected = false, levelCompleteCAmMove,
             hintOneTaken = false ,hintTwoTaken = false ,hintThreeTaken = false,
-            hintOnePurchased =false, hintTwoPurchased =false, hintThreePurchased =false;
+            hintOnePurchased =false, hintTwoPurchased =false, hintThreePurchased =false, speedUpBool = false;
     private Byte costOfH1=0, costOfH2=0, costOfH3=0;
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
@@ -232,6 +232,12 @@ public class Type3Area implements Screen {
         Brake.setPosition(1050,140);
         Brake.setSize(180*camscl,150*camscl);
         Brake.setAlpha(0f);
+
+        speedUp = new Sprite(new Texture(Gdx.files.internal("playArea/speedUp.png")));
+        speedUp.setPosition(1050,140);
+        speedUp.setSize(140*camscl,140*camscl);
+        speedUp.setAlpha(1f);
+
 
         start = new Sprite(new Texture(Gdx.files.internal("playArea/Start.png")));
         start.setPosition(-190, 50);
@@ -536,7 +542,7 @@ public class Type3Area implements Screen {
             fBPipes.render();
         AllVariables.batch.end();
 
-        //tmr.render();//----------------------------------------------------------------------------------
+        tmr.render();//----------------------------------------------------------------------------------
 
         //hint 2
         if (VariablesForPlayArea.HintTwoEnabled){
@@ -615,6 +621,7 @@ public class Type3Area implements Screen {
         if (startBool && !VariablesForPlayArea.gameOver) {
             retryWhenStarted.draw(AllVariables.batch);//=====================================
             Brake.draw(AllVariables.batch);//==========================================
+            speedUp.draw(AllVariables.batch);
         }
         else if(VariablesForPlayArea.gameOver){}
         else {
@@ -925,6 +932,7 @@ public class Type3Area implements Screen {
 
                 world.setGravity(new Vector2(0,-10));
                 Brake.setAlpha(0.4f);
+                speedUp.setAlpha(0.4f);
                 PlayAreaUtils.MoveShapesToRealWorld();
                 VariablesForPlayArea.shapeNumberSelected = 21;
                 CamfollowCycle = true;
@@ -950,6 +958,7 @@ public class Type3Area implements Screen {
         //position of sprites
         start.setPosition(-190+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         Brake.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
+        speedUp.setPosition(-160+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         chooseBody.setPosition(1200+(cam.position.x - AllVariables.WIDTH/2), 50+(cam.position.y - AllVariables.HEIGHT/2));
         MoveToDustBin.setPosition(-220+(cam.position.x - AllVariables.WIDTH/2), 540+(cam.position.y -AllVariables.HEIGHT/2));
         CamScroller.setPosition(CamScrollerX+(cam.position.x - AllVariables.WIDTH/2), CamScrollerY+(cam.position.y - AllVariables.HEIGHT/2));
@@ -976,7 +985,7 @@ public class Type3Area implements Screen {
         //-------------------------------
 
         //for testing rage mode
-        if (AllVariables.BackWheel.getLinearVelocity().x >= 17f) {
+        /*if (AllVariables.BackWheel.getLinearVelocity().x >= 17f) {
             if (AllVariables.BackWheel.getLinearVelocity().x>20.5f)
                 AllVariables.BackWheel.setLinearVelocity((AllVariables.BackWheel.getLinearVelocity().x - AllVariables.BackWheel.getLinearVelocity().x*.04f) ,
                         AllVariables.BackWheel.getLinearVelocity().y);
@@ -988,6 +997,7 @@ public class Type3Area implements Screen {
                 VariablesForPlayArea.rageMode = true;
         } else
             VariablesForPlayArea.rageMode = false;
+            */
 
 
         //to zoom out the cam
@@ -1121,9 +1131,12 @@ public class Type3Area implements Screen {
         if (startBool){
             if (brakeBool) {
                 //AllVariables.BackWheel.setAngularVelocity(0);
-                AllVariables.FrontWheel.setAngularVelocity(AllVariables.BackWheel.getLinearVelocity().x * 50);
-                AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getLinearVelocity().x * 50);
-            }else{
+                AllVariables.FrontWheel.setAngularVelocity(AllVariables.BackWheel.getLinearVelocity().x * 100);
+                AllVariables.BackWheel.setAngularVelocity(AllVariables.BackWheel.getLinearVelocity().x * 100);
+            }else if (speedUpBool){
+                AllVariables.FrontWheel.setAngularVelocity(-700);
+                AllVariables.BackWheel.setAngularVelocity(-700);
+            } else{
                 if (AllVariables.BackWheel.getAngularVelocity() > -8)
                     AllVariables.BackWheel.setAngularVelocity(-10);
                 else
@@ -1248,6 +1261,16 @@ public class Type3Area implements Screen {
                                 brakeBool = true;
                                 return true;
                             }
+
+                            //speedUp
+                            if (screenX > (68 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenX < (210 * AllVariables.inpM) + AllVariables.witdth_translation
+                                    && screenY > 140 * AllVariables.inpM && screenY < 275 * AllVariables.inpM) {
+                                speedUp.setAlpha(0.9f);
+                                speedUpBool = true;
+                                return true;
+                            }
+
 
                             //retry
                             if (screenX > (30 * AllVariables.inpM) + AllVariables.witdth_translation
@@ -1426,6 +1449,11 @@ public class Type3Area implements Screen {
                         if (brakeBool) {
                             Brake.setAlpha(0.4f);
                             brakeBool = false;
+                        }
+
+                        if (speedUpBool) {
+                            speedUp.setAlpha(0.4f);
+                            speedUpBool = false;
                         }
 
                         if(isCamScrollerTouched) {
