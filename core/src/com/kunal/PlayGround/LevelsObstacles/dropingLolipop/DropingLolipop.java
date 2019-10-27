@@ -104,7 +104,7 @@ public class DropingLolipop {
                         VariablesForPlayArea.dropingLolipop.get(i).jointdestroyed = true;
                         world.destroyJoint(VariablesForPlayArea.dropingLolipop.get(i).joint);
                         VariablesForPlayArea.dropingLolipop.get(i).joint = null;
-                        VariablesForPlayArea.dropingLolipop.get(i).candy.applyForceToCenter(50, -400, true);
+                        VariablesForPlayArea.dropingLolipop.get(i).candy.applyForceToCenter(50, VariablesForPlayArea.dropingLolipop.get(i).velToDrop, true);
                     } catch (Exception e) {
                         System.out.println(e);
                     }

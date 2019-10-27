@@ -806,10 +806,11 @@ public class ReDirectToTheLevel {
                     dropingLolipop = new DropingLolipopVariables();
                     dropingLolipop.x = 1500;
                     dropingLolipop.y = 1050;
-                    dropingLolipop.stickLen = 100;
+                    dropingLolipop.stickLen = 50;
                     dropingLolipop.stickWid = 5;
-                    dropingLolipop.candyRadius = 50;
-                    dropingLolipop.type = 1;
+                    dropingLolipop.candyRadius = 25;
+                    dropingLolipop.velToDrop = -200;
+                    dropingLolipop.type = 3;
                     dropingLolipop.angle = 2;
                     VariablesForPlayArea.dropingLolipop.add(dropingLolipop);
 

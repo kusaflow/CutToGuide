@@ -542,7 +542,7 @@ public class Type3Area implements Screen {
             fBPipes.render();
         AllVariables.batch.end();
 
-        tmr.render();//----------------------------------------------------------------------------------
+        //tmr.render();//----------------------------------------------------------------------------------
 
         //hint 2
         if (VariablesForPlayArea.HintTwoEnabled){
