@@ -15,6 +15,7 @@ import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVar
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
 import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipopVariables;
+import com.kunal.PlayGround.LevelsObstacles.fireOnFloor.FireOnFloorVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
@@ -27,6 +28,8 @@ import com.kunal.PlayGround.TypeThreeArea.Type3Area;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
 import com.kunal.PlayGround.VariablesForPlayArea;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
+
+import java.util.LinkedList;
 
 public class ReDirectToTheLevel {
 
@@ -50,6 +53,7 @@ public class ReDirectToTheLevel {
         BreakableCandyBarVariables breakableCandyBar;
         RoundCandyVariables roundCandy;
         DropingLolipopVariables dropingLolipop;
+        FireOnFloorVariables fire;
 
         if (!restarted) {
             //clear it all
@@ -68,6 +72,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.breakingCandyBar.clear();
             VariablesForPlayArea.roundCandies.clear();
             VariablesForPlayArea.dropingLolipop.clear();
+            VariablesForPlayArea.fire.clear();
         }
 
         VariablesForPlayArea.gameOver = false;
@@ -803,16 +808,28 @@ public class ReDirectToTheLevel {
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
-                    dropingLolipop = new DropingLolipopVariables();
-                    dropingLolipop.x = 1500;
-                    dropingLolipop.y = 1050;
-                    dropingLolipop.stickLen = 50;
-                    dropingLolipop.stickWid = 5;
-                    dropingLolipop.candyRadius = 25;
-                    dropingLolipop.velToDrop = -200;
-                    dropingLolipop.type = 3;
-                    dropingLolipop.angle = 2;
-                    VariablesForPlayArea.dropingLolipop.add(dropingLolipop);
+                    fire = new FireOnFloorVariables();
+                    fire.x = 700;
+                    fire.y = 500;
+                    fire.type = 1;
+                    VariablesForPlayArea.fire.add(fire);
+
+                    fire = new FireOnFloorVariables();
+                    fire.x = 800;
+                    fire.y = 500;fire.type = 2;
+                    VariablesForPlayArea.fire.add(fire);
+
+                    fire = new FireOnFloorVariables();
+                    fire.x = 850;
+                    fire.y = 500;
+                    fire.type = 3;
+                    VariablesForPlayArea.fire.add(fire);
+
+                    fire = new FireOnFloorVariables();
+                    fire.x = 920;
+                    fire.y = 500;
+                    fire.type = 4;
+                    VariablesForPlayArea.fire.add(fire);
 
                 }
 
@@ -856,6 +873,7 @@ public class ReDirectToTheLevel {
         VariablesForPlayArea.breakingCandyBar.add(breakableCandyBar);
 
 
+//round candies
         roundCandy = new RoundCandyVariables();
         roundCandy.x = 1697;
         roundCandy.y = 700;
@@ -878,6 +896,20 @@ public class ReDirectToTheLevel {
         roundCandy.baseSize = 20;
         roundCandy.count = 20;
         VariablesForPlayArea.roundCandies.add(roundCandy);
+
+        //droping lolipop
+        dropingLolipop = new DropingLolipopVariables();
+        dropingLolipop.x = 1500;
+        dropingLolipop.y = 1050;
+        dropingLolipop.stickLen = 50;
+        dropingLolipop.stickWid = 5;
+        dropingLolipop.candyRadius = 25;
+        dropingLolipop.velToDrop = -200;
+        dropingLolipop.type = 3;
+        dropingLolipop.angle = 2;
+        VariablesForPlayArea.dropingLolipop.add(dropingLolipop);
+
+
 
 
     */

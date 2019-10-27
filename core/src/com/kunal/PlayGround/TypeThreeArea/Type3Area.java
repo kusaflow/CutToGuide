@@ -32,6 +32,7 @@ import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyMain;
 import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipop;
+import com.kunal.PlayGround.LevelsObstacles.fireOnFloor.FireOnFloor;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
@@ -134,6 +135,7 @@ public class Type3Area implements Screen {
     private BreakableCandyBar candyBar;
     private RoundCandyMain roundCandy;
     private DropingLolipop dropingLolipop;
+    private FireOnFloor fire;
 
 
     //bicycle maleup
@@ -417,6 +419,8 @@ public class Type3Area implements Screen {
             roundCandy = new RoundCandyMain(world);
         if (!VariablesForPlayArea.dropingLolipop.isEmpty())
             dropingLolipop = new DropingLolipop(world);
+        if (!VariablesForPlayArea.fire.isEmpty())
+            fire = new FireOnFloor(world);
 
         //=================obstacles
 
@@ -592,6 +596,11 @@ public class Type3Area implements Screen {
         //HintsToGuide.renterText(guideFont);
 
         AllVariables.batch.begin();
+
+        //fire
+        if (!VariablesForPlayArea.fire.isEmpty())
+            fire.render();
+
         if (!VariablesForPlayArea.halfSawList.isEmpty())
             halfSaw.render();
         if (!VariablesForPlayArea.fullSawList.isEmpty())
@@ -1194,6 +1203,8 @@ public class Type3Area implements Screen {
             roundCandy.update();
         if (!VariablesForPlayArea.dropingLolipop.isEmpty())
             dropingLolipop.update();
+        if (!VariablesForPlayArea.fire.isEmpty())
+            fire.update();
 
 
         //obstacles===================
