@@ -37,8 +37,11 @@ com_crashlytics_export_strings.xml
 .project
 .metadata/
 /android/bin/
+/android/src/
+/apks/
+/android/
 /core/bin/
-/desktop/bin/
+/desktop/bin/AndroidManifest.xml
 /html/bin/
 /ios/bin/
 /ios-moe/bin/
