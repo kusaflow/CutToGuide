@@ -84,7 +84,7 @@ public class DropingLolipop {
             //candy
             VariablesForPlayArea.dropingLolipop.get(i).candyTex.setOriginCenter();
             VariablesForPlayArea.dropingLolipop.get(i).candyTex.setSize(VariablesForPlayArea.dropingLolipop.get(i).candyRadius*2, VariablesForPlayArea.dropingLolipop.get(i).candyRadius*2);
-            VariablesForPlayArea.dropingLolipop.get(i).candyTex.setRotation((VariablesForPlayArea.dropingLolipop.get(i).candy.getAngle() )+180);
+            VariablesForPlayArea.dropingLolipop.get(i).candyTex.setRotation((VariablesForPlayArea.dropingLolipop.get(i).candy.getAngle()* MathUtils.radiansToDegrees) + 180);
             VariablesForPlayArea.dropingLolipop.get(i).candyTex.setPosition((VariablesForPlayArea.dropingLolipop.get(i).candy.getPosition().x * 100) - VariablesForPlayArea.dropingLolipop.get(i).candyRadius,
                     (VariablesForPlayArea.dropingLolipop.get(i).candy.getPosition().y * 100) - VariablesForPlayArea.dropingLolipop.get(i).candyRadius);
 
