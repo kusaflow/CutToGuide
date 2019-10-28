@@ -429,6 +429,10 @@ public class Type3Area implements Screen {
         pm = new ParticleManagerArea2();
         //=======================================
 
+        //bicycleOnFire====================
+        VariablesForPlayArea.bicycleOnFire = false;
+        //===============================
+
 
         //contact listerner ---------------
         world.setContactListener(new myContactListner(pm));
@@ -504,6 +508,7 @@ public class Type3Area implements Screen {
 
     @Override
     public void render(float dt) {
+        System.out.println(VariablesForPlayArea.bicycleOnFire);
         //Gdx.gl.glClearColor(.7f, 0.7f, .9f, 1);
         //Gdx.gl.glClearColor(0.764f,0.925f,0.937f,0.9f);
         Gdx.gl.glClearColor(0.1f,0.1f,0.1f,1f);

@@ -92,6 +92,7 @@ public class VariablesForPlayArea {
     public static LinkedList<RoundCandyVariables> roundCandies;
     public static LinkedList<DropingLolipopVariables> dropingLolipop;
     public static LinkedList<FireOnFloorVariables> fire;
+    public static Boolean bicycleOnFire = false;
     //------------------------------------------
 
     //--------Tutorial-------------------------------------------------------

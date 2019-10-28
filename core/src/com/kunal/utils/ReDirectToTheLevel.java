@@ -808,26 +808,11 @@ public class ReDirectToTheLevel {
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
-                    fire = new FireOnFloorVariables();
-                    fire.x = 700;
-                    fire.y = 500;
-                    fire.type = 1;
-                    VariablesForPlayArea.fire.add(fire);
-
-                    fire = new FireOnFloorVariables();
-                    fire.x = 800;
-                    fire.y = 500;fire.type = 2;
-                    VariablesForPlayArea.fire.add(fire);
-
-                    fire = new FireOnFloorVariables();
-                    fire.x = 850;
-                    fire.y = 500;
-                    fire.type = 3;
-                    VariablesForPlayArea.fire.add(fire);
 
                     fire = new FireOnFloorVariables();
                     fire.x = 920;
-                    fire.y = 500;
+                    fire.y = 450;
+                    fire.angle = 0;
                     fire.type = 4;
                     VariablesForPlayArea.fire.add(fire);
 
@@ -908,6 +893,25 @@ public class ReDirectToTheLevel {
         dropingLolipop.type = 3;
         dropingLolipop.angle = 2;
         VariablesForPlayArea.dropingLolipop.add(dropingLolipop);
+
+        //fire
+
+        fire = new FireOnFloorVariables();
+        fire.x = 700;
+        fire.y = 500;
+        fire.type = 1;
+        VariablesForPlayArea.fire.add(fire);
+
+        fire = new FireOnFloorVariables();
+        fire.x = 800;
+        fire.y = 500;fire.type = 2;
+        VariablesForPlayArea.fire.add(fire);
+
+        fire = new FireOnFloorVariables();
+        fire.x = 850;
+        fire.y = 500;
+        fire.type = 3;
+        VariablesForPlayArea.fire.add(fire);
 
 
 

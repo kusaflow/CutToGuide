@@ -8,7 +8,7 @@ import com.badlogic.gdx.physics.box2d.Body;
 import java.util.LinkedList;
 
 public class FireOnFloorVariables {
-    public int x,y;
+    public int x,y,angle;
     public short type;
     public Sprite tex;
     public ParticleEffect mainFire;
