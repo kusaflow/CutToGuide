@@ -3,6 +3,7 @@ package com.kunal.PlayGround.TypeThreeArea;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.kunal.AllVariables;
+import com.kunal.PlayGround.VariablesForPlayArea;
 
 public class ParticleManagerArea2 {
 
@@ -23,29 +24,33 @@ public class ParticleManagerArea2 {
     }
 
     public void update(){
-        frontTyreFire.getEmitters().first().setPosition(AllVariables.FrontWheel.getPosition().x*AllVariables.PPM-20,
-                AllVariables.FrontWheel.getPosition().y*AllVariables.PPM-20);
-        backTyreFire.getEmitters().first().setPosition(AllVariables.BackWheel.getPosition().x*AllVariables.PPM -20,
-                AllVariables.BackWheel.getPosition().y*AllVariables.PPM-20);
+        if (VariablesForPlayArea.bicycleOnFire) {
+            frontTyreFire.getEmitters().first().setPosition(AllVariables.FrontWheel.getPosition().x * AllVariables.PPM - 20,
+                    AllVariables.FrontWheel.getPosition().y * AllVariables.PPM - 20);
+            backTyreFire.getEmitters().first().setPosition(AllVariables.BackWheel.getPosition().x * AllVariables.PPM - 20,
+                    AllVariables.BackWheel.getPosition().y * AllVariables.PPM - 20);
 
-        frontTyreFire.update(Gdx.graphics.getDeltaTime());
-        backTyreFire  .update(Gdx.graphics.getDeltaTime());
+            frontTyreFire.update(Gdx.graphics.getDeltaTime());
+            backTyreFire.update(Gdx.graphics.getDeltaTime());
 
 
-        if (frontTyreFire.isComplete())
-            frontTyreFire.reset();
+            if (frontTyreFire.isComplete())
+                frontTyreFire.reset();
 
-        if (backTyreFire.isComplete())
-            backTyreFire.reset();
+            if (backTyreFire.isComplete())
+                backTyreFire.reset();
+        }
 
 
     }
 
     public void render(){
-        AllVariables.batch.begin();
-        frontTyreFire.draw(AllVariables.batch);
-        backTyreFire.draw(AllVariables.batch);
-        AllVariables.batch.end();
+        if (VariablesForPlayArea.bicycleOnFire) {
+            AllVariables.batch.begin();
+            frontTyreFire.draw(AllVariables.batch);
+            backTyreFire.draw(AllVariables.batch);
+            AllVariables.batch.end();
+        }
 
     }
 }
