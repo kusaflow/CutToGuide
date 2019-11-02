@@ -81,7 +81,9 @@ public class Type3Area implements Screen {
 
     private float coin1Alpha = 0, coin2Alpha = 0,coin3Alpha = 0;
 
+    //backGroungs
     private Sprite BottomBG;
+    //====================================
 
     //CamScroller
     private short CamScrollerX = 1020, CamScrollerY = 710;
@@ -226,7 +228,14 @@ public class Type3Area implements Screen {
         //cam.position.set(port.getWorldWidth()/2, port.getWorldHeight()/2,0);
 
         //Backgroung==================
-        BottomBG = new Sprite(new Texture(Gdx.files.internal("backGround/candyWorld/bg1_1.png")));
+        //BottomBG = new Sprite(new Texture(Gdx.files.internal("backGround/candyWorld/bg1_1.png")));
+        BottomBG = new Sprite(new Texture(Gdx.files.internal("backGround/candyWorld/l0_lollipop.png")));
+
+        //BottomBG = new Sprite(new Texture(Gdx.files.internal("backGround/candyWorld/l0_lollipop2.png")));
+
+        BottomBG.setSize(2500,720);
+
+
         //-----------------
 
 
@@ -534,17 +543,20 @@ public class Type3Area implements Screen {
 
         //bg
         sred.begin(ShapeRenderer.ShapeType.Filled);
-        sred.setColor(.8117f, .9529f, .9647f, 1f);
+        //sred.setColor(.8117f, .9529f, .9647f, 1f);
         //sred.rect(-1300*4,1236,20000,1900);//------------------------------------------------------------
 
-        sred.setColor(.6235294118f, .8549019608f, .26666667f, 1f);
+        //sred.setColor(.6235294118f, .8549019608f, .26666667f, 1f);
         //sred.rect(-1300*4,-2000,20000,2550);//--------------------------------------------------------------
+
+        sred.setColor(0.6f, 0.6f, 0.8f, 1f);
+        //sred.rect(0,0,20000,3000);//--------------------------------------------------------------
+
         sred.end();
 
         AllVariables.batch.begin();
         //bg-----------------------------
-        //BottomBG.draw(AllVariables.batch);//---------------------------
-
+        BottomBG.draw(AllVariables.batch);//---------------------------
 
         //things at bg of the of the tiled map goes here
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
