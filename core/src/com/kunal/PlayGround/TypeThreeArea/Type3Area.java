@@ -1000,7 +1000,7 @@ public class Type3Area implements Screen {
         retryWhenStarted.setPosition(-200+(cam.position.x - AllVariables.WIDTH/2), 700+(cam.position.y -AllVariables.HEIGHT/2));
         //---------background
         BottomBG.setScale(camscl);
-        BottomBG.setPosition(100+(cam.position.x - (AllVariables.WIDTH/2))-(cam.position.x/10), 0+(cam.position.y - AllVariables.HEIGHT/2));
+        BottomBG.setPosition(0f+(cam.position.x - (AllVariables.WIDTH/2))-(cam.position.x/20f), 0+(cam.position.y - AllVariables.HEIGHT/2));
 
         //System.out.println(AllVariables.BackWheel.getLinearVelocity().x);
 
