@@ -813,17 +813,11 @@ public class ReDirectToTheLevel {
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
 
-                    fire = new FireOnFloorVariables();
-                    fire.x = 920;
-                    fire.y = 450;
-                    fire.angle = 0;
-                    fire.type = 4;
-                    VariablesForPlayArea.fire.add(fire);
-
                     spikes = new SpikesVariables();
-                    spikes.x = 600;
-                    spikes.y = 450;
-                    spikes.angle = 90;
+                    spikes.x = 900;
+                    spikes.y = 480;
+                    spikes.angle = 0;
+                    VariablesForPlayArea.spike.add(spikes);
 
                 }
 
