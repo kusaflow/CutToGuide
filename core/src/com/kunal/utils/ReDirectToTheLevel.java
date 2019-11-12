@@ -813,11 +813,6 @@ public class ReDirectToTheLevel {
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
 
-                    spikes = new SpikesVariables();
-                    spikes.x = 900;
-                    spikes.y = 480;
-                    spikes.angle = 0;
-                    VariablesForPlayArea.spike.add(spikes);
 
                 }
 
@@ -915,6 +910,27 @@ public class ReDirectToTheLevel {
         fire.y = 500;
         fire.type = 3;
         VariablesForPlayArea.fire.add(fire);
+
+//constant spines
+        spikes = new SpikesVariables();
+        spikes.x = 900;
+        spikes.y = 480;
+        spikes.angle = 0;
+        VariablesForPlayArea.spike.add(spikes);
+
+        spikes = new SpikesVariables();
+        spikes.x = 1300;
+        spikes.y = 480;
+        spikes.angle = 0;
+        VariablesForPlayArea.spike.add(spikes);
+
+        spikes = new SpikesVariables();
+        spikes.x = 1900;
+        spikes.y = 480;
+        spikes.angle = 0;
+        VariablesForPlayArea.spike.add(spikes);
+
+
 
 
 

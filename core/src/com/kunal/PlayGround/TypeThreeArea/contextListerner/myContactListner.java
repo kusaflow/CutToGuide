@@ -36,7 +36,10 @@ public class myContactListner implements ContactListener {
             }
         }
 
-
+        if ((a.getUserData().equals("spine") && b.getUserData().equals("Bicycle"))
+                || ((b.getUserData().equals("spine") && a.getUserData().equals("Bicycle")))){
+            VariablesForPlayArea.gameOver = true;
+        }
 
 
 
