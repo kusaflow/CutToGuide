@@ -15,6 +15,8 @@ import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVar
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
 import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipopVariables;
+import com.kunal.PlayGround.LevelsObstacles.droppingSpinkes.DroppingSpikeVariables;
+import com.kunal.PlayGround.LevelsObstacles.droppingSpinkes.DroppingSpikes;
 import com.kunal.PlayGround.LevelsObstacles.fireOnFloor.FireOnFloorVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
@@ -57,6 +59,7 @@ public class ReDirectToTheLevel {
         DropingLolipopVariables dropingLolipop;
         FireOnFloorVariables fire;
         SpikesVariables spikes;
+        DroppingSpikeVariables droppingSpikes;
 
         if (!restarted) {
             //clear it all
@@ -77,6 +80,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.dropingLolipop.clear();
             VariablesForPlayArea.fire.clear();
             VariablesForPlayArea.spike.clear();
+            VariablesForPlayArea.dropingSpike.clear();
         }
 
         VariablesForPlayArea.gameOver = false;
@@ -811,6 +815,8 @@ public class ReDirectToTheLevel {
                     powerupVar = new PowerUpInInventoryVariables();
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                    droppingSpikes = new DroppingSpikeVariables();
 
 
 
