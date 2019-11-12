@@ -14,6 +14,7 @@ import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVaria
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedControllerVariables;
+import com.kunal.PlayGround.LevelsObstacles.spikes.SpikesVariables;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
 
 import java.util.LinkedList;
@@ -92,6 +93,9 @@ public class VariablesForPlayArea {
     public static LinkedList<RoundCandyVariables> roundCandies;
     public static LinkedList<DropingLolipopVariables> dropingLolipop;
     public static LinkedList<FireOnFloorVariables> fire;
+    public static LinkedList<SpikesVariables> spike;
+
+
     public static Boolean bicycleOnFire = false;
     //------------------------------------------
 
@@ -129,6 +133,7 @@ public class VariablesForPlayArea {
         roundCandies = new LinkedList<RoundCandyVariables>();
         dropingLolipop = new LinkedList<DropingLolipopVariables>();
         fire = new LinkedList<FireOnFloorVariables>();
+        spike = new LinkedList<SpikesVariables>();
 
 
         //bullets

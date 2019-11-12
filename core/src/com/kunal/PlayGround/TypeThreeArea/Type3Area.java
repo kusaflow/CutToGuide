@@ -37,6 +37,7 @@ import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedController;
+import com.kunal.PlayGround.LevelsObstacles.spikes.Spikes;
 import com.kunal.PlayGround.ObjectCreation;
 import com.kunal.PlayGround.PlayAreaUtils;
 import com.kunal.PlayGround.VariablesForPlayArea;
@@ -120,7 +121,7 @@ public class Type3Area implements Screen {
     Sprite posMap;
 
     //hint 2--------------------------
-    Hint2shapeDrawer hint2shapeDrawer;
+    private Hint2shapeDrawer hint2shapeDrawer;
     //--------------------------------
 
     //obstables
@@ -138,6 +139,7 @@ public class Type3Area implements Screen {
     private RoundCandyMain roundCandy;
     private DropingLolipop dropingLolipop;
     private FireOnFloor fire;
+    private Spikes spike;
 
 
     //bicycle maleup
@@ -430,6 +432,8 @@ public class Type3Area implements Screen {
             dropingLolipop = new DropingLolipop(world);
         if (!VariablesForPlayArea.fire.isEmpty())
             fire = new FireOnFloor(world);
+        if (!VariablesForPlayArea.spike.isEmpty())
+            spike = new Spikes(world);
 
         //=================obstacles
 
@@ -556,7 +560,7 @@ public class Type3Area implements Screen {
 
         AllVariables.batch.begin();
         //bg-----------------------------
-        BottomBG.draw(AllVariables.batch);//---------------------------
+        /BottomBG.draw(AllVariables.batch);//---------------------------
 
         //things at bg of the of the tiled map goes here
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
@@ -628,6 +632,8 @@ public class Type3Area implements Screen {
             roundCandy.render();
         if (!VariablesForPlayArea.dropingLolipop.isEmpty())
             dropingLolipop.render();
+        if (!VariablesForPlayArea.spike.isEmpty())
+            spike.render();
 
         //bicycle
         frontTyre.draw(AllVariables.batch);
@@ -1222,6 +1228,8 @@ public class Type3Area implements Screen {
             dropingLolipop.update();
         if (!VariablesForPlayArea.fire.isEmpty())
             fire.update();
+        if (!VariablesForPlayArea.spike.isEmpty())
+            spike.update();
 
 
         //obstacles===================

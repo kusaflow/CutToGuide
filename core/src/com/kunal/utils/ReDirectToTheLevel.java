@@ -23,6 +23,8 @@ import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedController;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedControllerVariables;
+import com.kunal.PlayGround.LevelsObstacles.spikes.Spikes;
+import com.kunal.PlayGround.LevelsObstacles.spikes.SpikesVariables;
 import com.kunal.PlayGround.Tutorial.InGameTutorial.BasicTutorial;
 import com.kunal.PlayGround.TypeThreeArea.Type3Area;
 import com.kunal.PlayGround.TypeTwoArea.TypeTwoArea;
@@ -54,6 +56,7 @@ public class ReDirectToTheLevel {
         RoundCandyVariables roundCandy;
         DropingLolipopVariables dropingLolipop;
         FireOnFloorVariables fire;
+        SpikesVariables spikes;
 
         if (!restarted) {
             //clear it all
@@ -73,6 +76,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.roundCandies.clear();
             VariablesForPlayArea.dropingLolipop.clear();
             VariablesForPlayArea.fire.clear();
+            VariablesForPlayArea.spike.clear();
         }
 
         VariablesForPlayArea.gameOver = false;
@@ -816,6 +820,11 @@ public class ReDirectToTheLevel {
                     fire.type = 4;
                     VariablesForPlayArea.fire.add(fire);
 
+                    spikes = new SpikesVariables();
+                    spikes.x = 600;
+                    spikes.y = 450;
+                    spikes.angle = 90;
+
                 }
 
                 VariablesForPlayArea.bulletsHave = 3;
@@ -882,7 +891,7 @@ public class ReDirectToTheLevel {
         roundCandy.count = 20;
         VariablesForPlayArea.roundCandies.add(roundCandy);
 
-        //droping lolipop
+//droping lolipop
         dropingLolipop = new DropingLolipopVariables();
         dropingLolipop.x = 1500;
         dropingLolipop.y = 1050;
@@ -894,7 +903,7 @@ public class ReDirectToTheLevel {
         dropingLolipop.angle = 2;
         VariablesForPlayArea.dropingLolipop.add(dropingLolipop);
 
-        //fire
+//fire
 
         fire = new FireOnFloorVariables();
         fire.x = 700;
