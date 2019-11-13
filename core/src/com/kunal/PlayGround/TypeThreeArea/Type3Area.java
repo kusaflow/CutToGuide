@@ -32,6 +32,7 @@ import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyMain;
 import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipop;
+import com.kunal.PlayGround.LevelsObstacles.droppingSpinkes.DroppingSpikes;
 import com.kunal.PlayGround.LevelsObstacles.fireOnFloor.FireOnFloor;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipes;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSaw;
@@ -140,6 +141,7 @@ public class Type3Area implements Screen {
     private DropingLolipop dropingLolipop;
     private FireOnFloor fire;
     private Spikes spike;
+    private DroppingSpikes droppingSpikes;
 
 
     //bicycle maleup
@@ -434,6 +436,8 @@ public class Type3Area implements Screen {
             fire = new FireOnFloor(world);
         if (!VariablesForPlayArea.spike.isEmpty())
             spike = new Spikes(world);
+        if (!VariablesForPlayArea.dropingSpike.isEmpty())
+            droppingSpikes = new DroppingSpikes(world);
 
         //=================obstacles
 
@@ -634,6 +638,8 @@ public class Type3Area implements Screen {
             dropingLolipop.render();
         if (!VariablesForPlayArea.spike.isEmpty())
             spike.render();
+        if (!VariablesForPlayArea.dropingSpike.isEmpty())
+            droppingSpikes.render();
 
         //bicycle
         frontTyre.draw(AllVariables.batch);
@@ -1230,6 +1236,8 @@ public class Type3Area implements Screen {
             fire.update();
         if (!VariablesForPlayArea.spike.isEmpty())
             spike.update();
+        if (!VariablesForPlayArea.dropingSpike.isEmpty())
+            droppingSpikes.update();
 
 
         //obstacles===================

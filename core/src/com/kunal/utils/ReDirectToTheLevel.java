@@ -817,6 +817,9 @@ public class ReDirectToTheLevel {
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
                     droppingSpikes = new DroppingSpikeVariables();
+                    droppingSpikes.x = 2000;
+                    droppingSpikes.y = 1000;
+                    VariablesForPlayArea.dropingSpike.add(droppingSpikes);
 
 
 
