@@ -23,6 +23,7 @@ import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVaria
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSaw;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
+import com.kunal.PlayGround.LevelsObstacles.snake.SnakeVariables;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedController;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedControllerVariables;
 import com.kunal.PlayGround.LevelsObstacles.spikes.Spikes;
@@ -60,6 +61,7 @@ public class ReDirectToTheLevel {
         FireOnFloorVariables fire;
         SpikesVariables spikes;
         DroppingSpikeVariables droppingSpikes;
+        SnakeVariables snakes;
 
         if (!restarted) {
             //clear it all
@@ -81,6 +83,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.fire.clear();
             VariablesForPlayArea.spike.clear();
             VariablesForPlayArea.dropingSpike.clear();
+            VariablesForPlayArea.snakes.clear();
         }
 
         VariablesForPlayArea.gameOver = false;
@@ -816,12 +819,9 @@ public class ReDirectToTheLevel {
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
-                    droppingSpikes = new DroppingSpikeVariables();
-                    droppingSpikes.x = 2000;
-                    droppingSpikes.y = 1000;
-                    VariablesForPlayArea.dropingSpike.add(droppingSpikes);
-
-
+                    snakes = new SnakeVariables();
+                    snakes.x = 1000;
+                    snakes.y = 530;
 
                 }
 
@@ -939,6 +939,11 @@ public class ReDirectToTheLevel {
         spikes.angle = 0;
         VariablesForPlayArea.spike.add(spikes);
 
+//dropping spines
+        droppingSpikes = new DroppingSpikeVariables();
+        droppingSpikes.x = 2000;
+        droppingSpikes.y = 1000;
+        VariablesForPlayArea.dropingSpike.add(droppingSpikes);
 
 
 

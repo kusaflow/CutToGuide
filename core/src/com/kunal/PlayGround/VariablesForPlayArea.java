@@ -14,6 +14,7 @@ import com.kunal.PlayGround.LevelsObstacles.fireOnFloor.FireOnFloorVariables;
 import com.kunal.PlayGround.LevelsObstacles.flappyBirdPipes.flappyBirdPipesVariables;
 import com.kunal.PlayGround.LevelsObstacles.fullSawThatRoams.FullSawVariables;
 import com.kunal.PlayGround.LevelsObstacles.halfSaw.HalfSawVariables;
+import com.kunal.PlayGround.LevelsObstacles.snake.SnakeVariables;
 import com.kunal.PlayGround.LevelsObstacles.speedController.SpeedControllerVariables;
 import com.kunal.PlayGround.LevelsObstacles.spikes.SpikesVariables;
 import com.kunal.PlayGround.powerUpInInventory.PowerUpInInventoryVariables;
@@ -96,6 +97,7 @@ public class VariablesForPlayArea {
     public static LinkedList<FireOnFloorVariables> fire;
     public static LinkedList<SpikesVariables> spike;
     public static LinkedList<DroppingSpikeVariables> dropingSpike;
+    public static LinkedList<SnakeVariables> snakes;
 
 
     public static Boolean bicycleOnFire = false;
@@ -137,6 +139,7 @@ public class VariablesForPlayArea {
         fire = new LinkedList<FireOnFloorVariables>();
         spike = new LinkedList<SpikesVariables>();
         dropingSpike = new LinkedList<DroppingSpikeVariables>();
+        snakes = new LinkedList<SnakeVariables>();
 
 
         //bullets
