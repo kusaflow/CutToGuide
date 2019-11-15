@@ -6,4 +6,5 @@ public class SnakeVariables {
     public int x,y;
     public Body hitBox;
     public Boolean isDead;
+    public boolean is180rot;
 }

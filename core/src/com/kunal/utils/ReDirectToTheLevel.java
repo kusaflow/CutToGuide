@@ -819,10 +819,6 @@ public class ReDirectToTheLevel {
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
-                    snakes = new SnakeVariables();
-                    snakes.x = 1000;
-                    snakes.y = 530;
-
                 }
 
                 VariablesForPlayArea.bulletsHave = 3;
@@ -945,6 +941,12 @@ public class ReDirectToTheLevel {
         droppingSpikes.y = 1000;
         VariablesForPlayArea.dropingSpike.add(droppingSpikes);
 
+//snakes
+        snakes = new SnakeVariables();
+        snakes.x = 1000;
+        snakes.y =450-147;
+        snakes.is180rot = true;
+        VariablesForPlayArea.snakes.add(snakes);
 
 
 

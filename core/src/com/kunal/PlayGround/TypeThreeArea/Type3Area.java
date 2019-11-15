@@ -573,6 +573,9 @@ public class Type3Area implements Screen {
         //things at bg of the of the tiled map goes here
         if (!VariablesForPlayArea.flappyBirdPipesList.isEmpty())
             fBPipes.render();
+
+        if (!VariablesForPlayArea.snakes.isEmpty())
+            snake.render();
         AllVariables.batch.end();
 
         //tmr.render();//----------------------------------------------------------------------------------
@@ -644,8 +647,6 @@ public class Type3Area implements Screen {
             spike.render();
         if (!VariablesForPlayArea.dropingSpike.isEmpty())
             droppingSpikes.render();
-        if (!VariablesForPlayArea.snakes.isEmpty())
-            snake.render();
 
         //bicycle
         frontTyre.draw(AllVariables.batch);
