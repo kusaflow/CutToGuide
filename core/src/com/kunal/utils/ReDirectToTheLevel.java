@@ -830,8 +830,8 @@ public class ReDirectToTheLevel {
 
                     barnacle = new BarnacleVariables();
                     barnacle.x = 1500;
-                    barnacle.y =450-80;
-                    barnacle.is180rot = false;
+                    barnacle.y =750-80;
+                    barnacle.is180rot = true;
                     VariablesForPlayArea.barnacle.add(barnacle);
 
 

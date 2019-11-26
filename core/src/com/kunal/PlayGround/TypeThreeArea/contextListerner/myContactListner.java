@@ -41,6 +41,11 @@ public class myContactListner implements ContactListener {
             VariablesForPlayArea.gameOver = true;
         }
 
+        if ((a.getUserData().equals("Evil") && b.getUserData().equals("Bicycle"))
+                || ((b.getUserData().equals("Evil") && a.getUserData().equals("Bicycle")))){
+            VariablesForPlayArea.gameOver = true;
+        }
+
 
 
     }

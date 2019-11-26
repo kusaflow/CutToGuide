@@ -4,9 +4,11 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
 import com.kunal.AllVariables;
 import com.kunal.PlayGround.VariablesForPlayArea;
+import com.kunal.utils.BodyGenerator;
 
 public class Barnacle {
 
@@ -27,7 +29,10 @@ public class Barnacle {
 
         for (int i = 0; i< VariablesForPlayArea.barnacle.size(); i++){
             VariablesForPlayArea.barnacle.get(i).isDead = false;
-
+            VariablesForPlayArea.barnacle.get(i).hitBox = BodyGenerator.BodyAssemble(world, true, "Evil",
+                    new Vector2(VariablesForPlayArea.barnacle.get(i).x, VariablesForPlayArea.barnacle.get(i).y),
+                    new Vector2(30,30),0,1,AllVariables.Bit_enimes,
+                    (short)(AllVariables.Bit_Bicycle | AllVariables.Bit_Tool | AllVariables.Bit_enimes));
 
         }
 
@@ -39,6 +44,10 @@ public class Barnacle {
         for (int i =0; i<VariablesForPlayArea.barnacle.size(); i++){
             img.setPosition(VariablesForPlayArea.barnacle.get(i).x, VariablesForPlayArea.barnacle.get(i).y);
             img.setScale(1.5f);
+
+            VariablesForPlayArea.barnacle.get(i).hitBox.setTransform((VariablesForPlayArea.barnacle.get(i).x+27)/AllVariables.PPM,
+                    (VariablesForPlayArea.barnacle.get(i).y+27)/AllVariables.PPM, 0);
+
             if (VariablesForPlayArea.barnacle.get(i).is180rot){
                 img.setRotation(180);
             }else {
