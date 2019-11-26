@@ -38,6 +38,7 @@ public class Barnacle {
     public void render () {
         for (int i =0; i<VariablesForPlayArea.barnacle.size(); i++){
             img.setPosition(VariablesForPlayArea.barnacle.get(i).x, VariablesForPlayArea.barnacle.get(i).y);
+            img.setScale(1.5f);
             if (VariablesForPlayArea.barnacle.get(i).is180rot){
                 img.setRotation(180);
             }else {
@@ -59,7 +60,7 @@ public class Barnacle {
 
     public void update () {
         //change texture------------------------------------------
-        if (System.currentTimeMillis() - timer >= 300){
+        if (System.currentTimeMillis() - timer >= 100){
             img1 = !img1;
             timer = System.currentTimeMillis();
         }
@@ -81,7 +82,7 @@ public class Barnacle {
         }
 
 
-        if (upchecker>=50) {
+        if (upchecker>=90) {
             upchecker = 0;
             goingUp = !goingUp;
         }
