@@ -822,24 +822,17 @@ public class ReDirectToTheLevel {
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
 
-                    barnacle = new BarnacleVariables();
-                    barnacle.x = 1000;
-                    barnacle.y =450-80;
-                    barnacle.is180rot = false;
-                    VariablesForPlayArea.barnacle.add(barnacle);
+                    snakes = new SnakeVariables();
+                    snakes.x = 1000;
+                    snakes.y =450-147;
+                    snakes.is180rot = false;
+                    VariablesForPlayArea.snakes.add(snakes);
 
-                    barnacle = new BarnacleVariables();
-                    barnacle.x = 1500;
-                    barnacle.y =750-80;
-                    barnacle.is180rot = true;
-                    VariablesForPlayArea.barnacle.add(barnacle);
-
-
-                    barnacle = new BarnacleVariables();
-                    barnacle.x = 2000;
-                    barnacle.y =450-80;
-                    barnacle.is180rot = false;
-                    VariablesForPlayArea.barnacle.add(barnacle);
+                    snakes = new SnakeVariables();
+                    snakes.x = 1500;
+                    snakes.y =850-147;
+                    snakes.is180rot = true;
+                    VariablesForPlayArea.snakes.add(snakes);
 
 
                 }
@@ -970,6 +963,27 @@ public class ReDirectToTheLevel {
         snakes.y =450-147;
         snakes.is180rot = true;
         VariablesForPlayArea.snakes.add(snakes);
+
+//barnace
+        barnacle = new BarnacleVariables();
+        barnacle.x = 1000;
+        barnacle.y =450-80;
+        barnacle.is180rot = false;
+        VariablesForPlayArea.barnacle.add(barnacle);
+
+        barnacle = new BarnacleVariables();
+        barnacle.x = 1500;
+        barnacle.y =750-80;
+        barnacle.is180rot = true;
+        VariablesForPlayArea.barnacle.add(barnacle);
+
+
+        barnacle = new BarnacleVariables();
+        barnacle.x = 2000;
+        barnacle.y =450-80;
+        barnacle.is180rot = false;
+        VariablesForPlayArea.barnacle.add(barnacle);
+
 
 
 
