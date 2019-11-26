@@ -8,6 +8,8 @@ import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
+import com.kunal.PlayGround.LevelsObstacles.barnacle.Barnacle;
+import com.kunal.PlayGround.LevelsObstacles.barnacle.BarnacleVariables;
 import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipopVariables;
 import com.kunal.PlayGround.LevelsObstacles.droppingSpinkes.DroppingSpikeVariables;
 import com.kunal.PlayGround.LevelsObstacles.fireOnFloor.FireOnFloorVariables;
@@ -98,6 +100,7 @@ public class VariablesForPlayArea {
     public static LinkedList<SpikesVariables> spike;
     public static LinkedList<DroppingSpikeVariables> dropingSpike;
     public static LinkedList<SnakeVariables> snakes;
+    public static LinkedList<BarnacleVariables> barnacle;
 
 
     public static Boolean bicycleOnFire = false;
@@ -140,6 +143,7 @@ public class VariablesForPlayArea {
         spike = new LinkedList<SpikesVariables>();
         dropingSpike = new LinkedList<DroppingSpikeVariables>();
         snakes = new LinkedList<SnakeVariables>();
+        barnacle = new LinkedList<BarnacleVariables>();
 
 
         //bullets

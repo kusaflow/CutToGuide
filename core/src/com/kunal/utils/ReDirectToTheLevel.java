@@ -14,6 +14,7 @@ import com.kunal.PlayGround.LevelsObstacles.CreateHole.CreateHoleVariables;
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverseVariables;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.JumperVariables;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyVariables;
+import com.kunal.PlayGround.LevelsObstacles.barnacle.BarnacleVariables;
 import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipopVariables;
 import com.kunal.PlayGround.LevelsObstacles.droppingSpinkes.DroppingSpikeVariables;
 import com.kunal.PlayGround.LevelsObstacles.droppingSpinkes.DroppingSpikes;
@@ -62,6 +63,7 @@ public class ReDirectToTheLevel {
         SpikesVariables spikes;
         DroppingSpikeVariables droppingSpikes;
         SnakeVariables snakes;
+        BarnacleVariables barnacle;
 
         if (!restarted) {
             //clear it all
@@ -84,6 +86,7 @@ public class ReDirectToTheLevel {
             VariablesForPlayArea.spike.clear();
             VariablesForPlayArea.dropingSpike.clear();
             VariablesForPlayArea.snakes.clear();
+            VariablesForPlayArea.barnacle.clear();
         }
 
         VariablesForPlayArea.gameOver = false;
@@ -818,6 +821,12 @@ public class ReDirectToTheLevel {
                     powerupVar = new PowerUpInInventoryVariables();
                     powerupVar.TypeOfPower = 1;
                     VariablesForPlayArea.powerUpList.add(powerupVar);
+
+                    barnacle = new BarnacleVariables();
+                    barnacle.x = 1000;
+                    barnacle.y =450-147;
+                    barnacle.is180rot = false;
+                    VariablesForPlayArea.barnacle.add(barnacle);
 
                 }
 

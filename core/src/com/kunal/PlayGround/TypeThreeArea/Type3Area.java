@@ -31,6 +31,7 @@ import com.kunal.PlayGround.LevelsObstacles.BreakableCandyBars.BreakableCandyBar
 import com.kunal.PlayGround.LevelsObstacles.DirectionReverse.DirectionReverse;
 import com.kunal.PlayGround.LevelsObstacles.Jumper.Jumper;
 import com.kunal.PlayGround.LevelsObstacles.Roundcandy.RoundCandyMain;
+import com.kunal.PlayGround.LevelsObstacles.barnacle.Barnacle;
 import com.kunal.PlayGround.LevelsObstacles.dropingLolipop.DropingLolipop;
 import com.kunal.PlayGround.LevelsObstacles.droppingSpinkes.DroppingSpikes;
 import com.kunal.PlayGround.LevelsObstacles.fireOnFloor.FireOnFloor;
@@ -144,6 +145,7 @@ public class Type3Area implements Screen {
     private Spikes spike;
     private DroppingSpikes droppingSpikes;
     private Snake snake;
+    private Barnacle barnacle;
 
 
     //bicycle maleup
@@ -442,6 +444,8 @@ public class Type3Area implements Screen {
             droppingSpikes = new DroppingSpikes(world);
         if (!VariablesForPlayArea.snakes.isEmpty())
             snake = new Snake(world);
+        if (!VariablesForPlayArea.barnacle.isEmpty())
+            barnacle = new Barnacle(world);
 
         //=================obstacles
 
@@ -576,6 +580,8 @@ public class Type3Area implements Screen {
 
         if (!VariablesForPlayArea.snakes.isEmpty())
             snake.render();
+        if (!VariablesForPlayArea.barnacle.isEmpty())
+            barnacle.render();
         AllVariables.batch.end();
 
         //tmr.render();//----------------------------------------------------------------------------------
@@ -1247,6 +1253,8 @@ public class Type3Area implements Screen {
             droppingSpikes.update();
         if (!VariablesForPlayArea.snakes.isEmpty())
             snake.update();
+        if (!VariablesForPlayArea.barnacle.isEmpty())
+            barnacle.update();
 
 
         //obstacles===================
